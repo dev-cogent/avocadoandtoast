@@ -1,0 +1,70 @@
+[04-Nov-2016 13:47:11 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 17
+[04-Nov-2016 13:47:11 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 114
+[04-Nov-2016 13:47:11 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 135
+[04-Nov-2016 13:51:11 America/Chicago] PHP Fatal error:  Uncaught Exception: DateTime::__construct(): Failed to parse time string (1477436644) at position 8 (4): Unexpected character in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php:39
+Stack trace:
+#0 /home3/l5o0c8t4/public_html/lightbox/media-ajax.php(39): DateTime->__construct('1477436644')
+#1 /home3/l5o0c8t4/public_html/lightbox/media-ajax.php(165): time_elapsed_string('1477436644')
+#2 {main}
+  thrown in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 39
+[04-Nov-2016 13:52:41 America/Chicago] PHP Fatal error:  Uncaught Exception: DateTime::__construct(): Failed to parse time string (1477436644) at position 8 (4): Unexpected character in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php:39
+Stack trace:
+#0 /home3/l5o0c8t4/public_html/lightbox/media-ajax.php(39): DateTime->__construct('1477436644')
+#1 /home3/l5o0c8t4/public_html/lightbox/media-ajax.php(166): time_elapsed_string('1477436644')
+#2 {main}
+  thrown in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 39
+[04-Nov-2016 15:41:23 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 17
+[04-Nov-2016 15:41:23 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 153
+[04-Nov-2016 15:41:23 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 181
+[04-Nov-2016 15:41:37 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 17
+[04-Nov-2016 15:41:37 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 153
+[04-Nov-2016 15:41:37 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 181
+[04-Nov-2016 16:02:37 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/l5o0c8t4/public_html/lightbox/media-ajax.php:2) in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 3
+[04-Nov-2016 16:02:44 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/l5o0c8t4/public_html/lightbox/media-ajax.php:2) in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 3
+[04-Nov-2016 16:02:48 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/l5o0c8t4/public_html/lightbox/media-ajax.php:2) in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 3
+[04-Nov-2016 16:03:09 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/l5o0c8t4/public_html/lightbox/media-ajax.php:2) in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 3
+[04-Nov-2016 16:04:52 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/l5o0c8t4/public_html/lightbox/media-ajax.php:3) in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 5
+[04-Nov-2016 16:05:33 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/l5o0c8t4/public_html/lightbox/media-ajax.php:2) in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 3
+[04-Nov-2016 18:07:30 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 17
+[04-Nov-2016 18:07:30 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 142
+[04-Nov-2016 18:07:30 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 170
+[07-Nov-2016 13:07:27 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 17
+[07-Nov-2016 13:07:27 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 142
+[07-Nov-2016 13:07:27 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 170
+[07-Nov-2016 14:27:20 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 17
+[07-Nov-2016 14:27:20 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 142
+[07-Nov-2016 14:27:20 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 170
+[07-Nov-2016 14:27:22 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 17
+[07-Nov-2016 14:27:22 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 142
+[07-Nov-2016 14:27:22 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 170
+[07-Nov-2016 14:27:39 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 17
+[07-Nov-2016 14:27:39 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 142
+[07-Nov-2016 14:27:39 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 170
+[07-Nov-2016 14:33:14 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 17
+[07-Nov-2016 14:33:14 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 142
+[07-Nov-2016 14:33:14 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 170
+[09-Nov-2016 12:28:47 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 17
+[09-Nov-2016 12:28:47 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 142
+[09-Nov-2016 12:28:47 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 170
+[09-Nov-2016 12:56:35 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 17
+[09-Nov-2016 12:56:35 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 142
+[09-Nov-2016 12:56:35 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 170
+[09-Nov-2016 13:29:53 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 17
+[09-Nov-2016 13:29:53 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 142
+[09-Nov-2016 13:29:53 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 170
+[14-Nov-2016 14:04:28 America/Chicago] PHP Warning:  Illegal string offset 'standard_resolution' in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 10
+[14-Nov-2016 14:04:28 America/Chicago] PHP Warning:  Illegal string offset 'url' in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 10
+[14-Nov-2016 14:04:48 America/Chicago] PHP Warning:  Illegal string offset 'standard_resolution' in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 10
+[14-Nov-2016 14:04:48 America/Chicago] PHP Warning:  Illegal string offset 'url' in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 10
+[14-Nov-2016 14:41:55 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 141
+[14-Nov-2016 14:43:08 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 141
+[14-Nov-2016 14:44:09 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 142
+[14-Nov-2016 14:55:33 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 20
+[14-Nov-2016 14:55:33 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 142
+[14-Nov-2016 14:55:33 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 170
+[14-Nov-2016 14:55:40 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 20
+[14-Nov-2016 14:55:40 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 142
+[14-Nov-2016 14:55:40 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 170
+[14-Nov-2016 14:55:43 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 20
+[14-Nov-2016 14:55:43 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 142
+[14-Nov-2016 14:55:43 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/lightbox/media-ajax.php on line 170

@@ -1,0 +1,235 @@
+#header{
+  width:100%;
+  height:80px;
+  background-color:#191d59;
+}
+#spacing{
+  padding-top:40px;
+  width:100%;
+}
+
+.box{
+  height:100px;
+
+  margin-bottom:2%;
+  background-color:#ffffff;
+  border-radius: 5px;
+  display:inline-block;
+  top:20%;
+
+}
+
+.influencerpic{
+  height:50px;
+  width:50px;
+  margin-right:10px;
+  margin-top:20px;
+  margin-left:30px;
+}
+
+.icon{
+  height:20px;
+  width:20px;
+  margin-bottom:8px;
+  margin-top:8px;
+}
+
+#container{
+  margin-left:12%;
+  margin-right:12%;
+}
+
+
+
+
+#name{
+  font-size:15px;
+  text-transform: capitalize;
+  text-overflow:ellipsis;
+  min-width: 61px;
+  max-width: 170px;
+  overflow: hidden;
+  white-space: nowrap;
+  position: absolute;
+  top: 25px;
+}
+.location{
+  font-size:12px;
+  float:left;
+  clear:left;
+  margin-top:1px;
+  display:none;
+}
+
+
+.info{
+  display:inline-block;
+}
+
+#twitter{
+  margin-top:4%;
+  border-left: 1px solid #edf0f4;
+
+}
+#instagram{
+ margin-top:4%;
+ border-left: 1px solid rgba(243,244,245,1);
+}
+#facebook{
+  border-left:1px solid rgba(243,244,245,1);
+  margin-top:4%;
+}
+.followers{
+  font-size:12px;
+}
+.border{
+border:1px solid rgba(243,244,245,1);
+border-radius:3px;
+margin-right:2%;
+
+}
+
+.checkmark{
+width:10px;
+height:10px;
+background-color:red;
+}
+
+#icons{
+  display:inline;
+  padding-top: 2.5%;
+  float:right; /*take this out later*/
+}
+
+.btn-outline.btn-disc{
+  background-color: #fff;
+
+}
+.btn-disc{
+  color:#76838f;
+  border-color:#191d59;
+}
+
+
+ .navbar-default  {
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d2d3e2+0,a2a3c6+31,35358b+100 */
+background: rgb(210,211,226); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(210,211,226,1) 0%, rgba(162,163,198,1) 31%, rgba(53,53,139,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(210,211,226,1) 0%,rgba(162,163,198,1) 31%,rgba(53,53,139,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(210,211,226,1) 0%,rgba(162,163,198,1) 31%,rgba(53,53,139,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2d3e2', endColorstr='#35358b',GradientType=0 ); /* IE6-9 */
+
+}
+.view{
+  margin-top: 11px;
+}
+
+
+#circles{
+display: inline;
+margin-left: 5%;
+
+}
+
+#overlayusers{
+display: inline;
+margin-left: 5%;
+
+}
+
+
+.added{
+width:50px;
+height:50px;
+margin-right: 1%;
+}
+
+
+#scrollcircle{
+height:50px;
+width:50px;
+border-radius: 100px;
+border:1px solid white;
+display:flex;
+align-items: center;
+justify-content: center;
+visibility:hidden;
+background-color:white;
+}
+
+
+
+.wrapper{
+    position:relative;
+}
+.tooltip {
+    transform: none;
+    display:inline;
+    opacity:1 !important;
+}
+
+.tooltip:hover > .tooltip-text, .tooltip:hover > .wrapper {
+    pointer-events: auto;
+    opacity: 1.0;
+}
+
+.tooltip > .tooltip-text, .tooltip >.wrapper {
+    display: block;
+    position: absolute;
+    z-index: 6000;
+    overflow: visible;
+    padding: 5px 8px;
+    margin-top: 10px;
+    line-height: 16px;
+    border-radius: 4px;
+    text-align: left;
+    color: #fff;
+    background: rgba(243,244,245,1);  ;
+    pointer-events: none;
+    opacity: 0.0;
+    -o-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+/* Arrow */
+.tooltip > .tooltip-text:before, .tooltip > .wrapper:before  {
+    display: inline;
+    top: -5px;
+    content: "";
+    position: absolute;
+    border: solid;
+    border-color: rgba(243,244,245,1) transparent;
+    border-width: 0 .5em .5em .5em;
+    z-index: 6000;
+    left: 20px;
+}
+
+/* Invisible area so you can hover over tooltip */
+.tooltip > .tooltip-text:after, .tooltip > .wrapper:after  {
+    top: -20px;
+    content: " ";
+    display: block;
+    height: 20px;
+    position: absolute;
+    width: 60px;
+    left: 20px;
+}
+
+.wrapper > .tooltip-text {
+    overflow-y: auto;
+    max-height: 150px;
+    display: block;
+}
+.image-container{
+  display:inline;
+  margin-left:2%;
+}
+
+#usercount{
+  margin-top: 10px;
+  font-size: 20px;
+  margin-left: 10px;
+}

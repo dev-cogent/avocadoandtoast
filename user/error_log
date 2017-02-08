@@ -1,0 +1,98 @@
+[10-Nov-2016 11:54:54 EST] PHP Fatal error:  Uncaught Error: Call to a member function getNavBarUsers() on null in /home3/l5o0c8t4/public_html/includes/nav.php:55
+Stack trace:
+#0 /home3/l5o0c8t4/public_html/user/general.php(16): include()
+#1 {main}
+  thrown in /home3/l5o0c8t4/public_html/includes/nav.php on line 55
+[10-Nov-2016 10:55:00 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/l5o0c8t4/public_html/user/general.php:7) in /home3/l5o0c8t4/public_html/includes/class/useroptions.php on line 11
+[10-Nov-2016 11:55:00 EST] PHP Fatal error:  Uncaught Error: Call to a member function getNavBarUsers() on null in /home3/l5o0c8t4/public_html/includes/nav.php:55
+Stack trace:
+#0 /home3/l5o0c8t4/public_html/user/general.php(15): include()
+#1 {main}
+  thrown in /home3/l5o0c8t4/public_html/includes/nav.php on line 55
+[10-Nov-2016 11:55:35 EST] PHP Fatal error:  Uncaught Error: Call to a member function getNavBarUsers() on null in /home3/l5o0c8t4/public_html/includes/nav.php:55
+Stack trace:
+#0 /home3/l5o0c8t4/public_html/user/general.php(16): include()
+#1 {main}
+  thrown in /home3/l5o0c8t4/public_html/includes/nav.php on line 55
+[10-Nov-2016 10:56:41 America/Chicago] PHP Warning:  include(includes/getUserInfo.php): failed to open stream: No such file or directory in /home3/l5o0c8t4/public_html/user/general.php on line 2
+[10-Nov-2016 10:56:41 America/Chicago] PHP Warning:  include(): Failed opening 'includes/getUserInfo.php' for inclusion (include_path='.:/opt/php70/lib/php') in /home3/l5o0c8t4/public_html/user/general.php on line 2
+[10-Nov-2016 10:56:41 America/Chicago] PHP Warning:  include(includes/class/useroptions.php): failed to open stream: No such file or directory in /home3/l5o0c8t4/public_html/user/general.php on line 3
+[10-Nov-2016 10:56:41 America/Chicago] PHP Warning:  include(): Failed opening 'includes/class/useroptions.php' for inclusion (include_path='.:/opt/php70/lib/php') in /home3/l5o0c8t4/public_html/user/general.php on line 3
+[10-Nov-2016 10:56:41 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'userOptions' not found in /home3/l5o0c8t4/public_html/user/general.php:4
+Stack trace:
+#0 {main}
+  thrown in /home3/l5o0c8t4/public_html/user/general.php on line 4
+[10-Nov-2016 12:36:17 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'userSettings' not found in /home3/l5o0c8t4/public_html/user/general.php:4
+Stack trace:
+#0 {main}
+  thrown in /home3/l5o0c8t4/public_html/user/general.php on line 4
+[10-Nov-2016 12:36:36 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function getBasicInstagramInfoDB() on null in /home3/l5o0c8t4/public_html/user/general.php:5
+Stack trace:
+#0 {main}
+  thrown in /home3/l5o0c8t4/public_html/user/general.php on line 5
+[10-Nov-2016 12:36:52 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function getBasicInstagramInfoDB() on null in /home3/l5o0c8t4/public_html/user/general.php:5
+Stack trace:
+#0 {main}
+  thrown in /home3/l5o0c8t4/public_html/user/general.php on line 5
+[10-Nov-2016 12:36:54 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function getBasicInstagramInfoDB() on null in /home3/l5o0c8t4/public_html/user/general.php:5
+Stack trace:
+#0 {main}
+  thrown in /home3/l5o0c8t4/public_html/user/general.php on line 5
+[10-Nov-2016 12:37:01 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function getBasicInstagramInfoDB() on null in /home3/l5o0c8t4/public_html/user/general.php:6
+Stack trace:
+#0 {main}
+  thrown in /home3/l5o0c8t4/public_html/user/general.php on line 6
+[10-Nov-2016 12:37:15 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function getBasicInstagramInfoDB() on null in /home3/l5o0c8t4/public_html/user/general.php:5
+Stack trace:
+#0 {main}
+  thrown in /home3/l5o0c8t4/public_html/user/general.php on line 5
+[10-Nov-2016 12:37:44 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function getBasicInstagramInfoDB() on null in /home3/l5o0c8t4/public_html/user/general.php:6
+Stack trace:
+#0 {main}
+  thrown in /home3/l5o0c8t4/public_html/user/general.php on line 6
+[10-Nov-2016 12:37:59 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function getBasicInstagramInfoDB() on null in /home3/l5o0c8t4/public_html/user/general.php:5
+Stack trace:
+#0 {main}
+  thrown in /home3/l5o0c8t4/public_html/user/general.php on line 5
+[10-Nov-2016 13:38:46 EST] PHP Fatal error:  Cannot declare class userOptions, because the name is already in use in /home3/l5o0c8t4/public_html/includes/class/useroptions.php on line 2
+[10-Nov-2016 13:40:45 EST] PHP Fatal error:  Cannot declare class userOptions, because the name is already in use in /home3/l5o0c8t4/public_html/includes/class/useroptions.php on line 2
+[10-Nov-2016 13:42:46 EST] PHP Fatal error:  Uncaught Error: Call to a member function getNavBarUsers() on null in /home3/l5o0c8t4/public_html/includes/nav.php:55
+Stack trace:
+#0 /home3/l5o0c8t4/public_html/user/general.php(22): include()
+#1 {main}
+  thrown in /home3/l5o0c8t4/public_html/includes/nav.php on line 55
+[10-Nov-2016 16:16:10 EST] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/includes/nav.php on line 56
+[10-Nov-2016 17:33:21 EST] PHP Warning:  Wrong parameter count for mysqli_stmt::bind_param() in /home3/l5o0c8t4/public_html/includes/class/usersettings.php on line 69
+[11-Nov-2016 14:41:22 EST] PHP Fatal error:  Uncaught Error: Using $this when not in object context in /home3/l5o0c8t4/public_html/user/security.php:31
+Stack trace:
+#0 {main}
+  thrown in /home3/l5o0c8t4/public_html/user/security.php on line 31
+[11-Nov-2016 14:45:40 EST] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on boolean in /home3/l5o0c8t4/public_html/includes/class/usersettings.php:93
+Stack trace:
+#0 /home3/l5o0c8t4/public_html/user/security.php(37): userSettings->changePassword('Jackmiami1!')
+#1 {main}
+  thrown in /home3/l5o0c8t4/public_html/includes/class/usersettings.php on line 93
+[11-Nov-2016 16:13:37 EST] PHP Fatal error:  Uncaught Error: Using $this when not in object context in /home3/l5o0c8t4/public_html/user/ighandles.php:7
+Stack trace:
+#0 {main}
+  thrown in /home3/l5o0c8t4/public_html/user/ighandles.php on line 7
+[14-Nov-2016 11:39:24 EST] PHP Warning:  Missing argument 2 for userOptions::addInstagram(), called in /home3/l5o0c8t4/public_html/user/ighandles.php on line 9 and defined in /home3/l5o0c8t4/public_html/includes/class/useroptions.php on line 175
+[14-Nov-2016 11:39:25 EST] PHP Fatal error:  Uncaught Error: Call to a member function dbinfo() on null in /home3/l5o0c8t4/public_html/includes/class/useroptions.php:202
+Stack trace:
+#0 /home3/l5o0c8t4/public_html/user/ighandles.php(9): userOptions->addInstagram('d48bc568e908489...')
+#1 {main}
+  thrown in /home3/l5o0c8t4/public_html/includes/class/useroptions.php on line 202
+[14-Nov-2016 11:39:34 EST] PHP Warning:  Missing argument 2 for userOptions::addInstagram(), called in /home3/l5o0c8t4/public_html/user/ighandles.php on line 9 and defined in /home3/l5o0c8t4/public_html/includes/class/useroptions.php on line 175
+[14-Nov-2016 11:39:35 EST] PHP Fatal error:  Uncaught Error: Call to a member function dbinfo() on null in /home3/l5o0c8t4/public_html/includes/class/useroptions.php:202
+Stack trace:
+#0 /home3/l5o0c8t4/public_html/user/ighandles.php(9): userOptions->addInstagram('058d319d5ce44de...')
+#1 {main}
+  thrown in /home3/l5o0c8t4/public_html/includes/class/useroptions.php on line 202
+[14-Nov-2016 11:40:12 EST] PHP Warning:  Missing argument 2 for userOptions::addInstagram(), called in /home3/l5o0c8t4/public_html/user/ighandles.php on line 9 and defined in /home3/l5o0c8t4/public_html/includes/class/useroptions.php on line 175
+[14-Nov-2016 14:08:51 EST] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/includes/nav.php on line 56
+[14-Nov-2016 14:08:51 EST] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/user/ighandles.php on line 62
+[14-Nov-2016 14:08:51 EST] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/includes/nav.php on line 56
+[14-Nov-2016 14:08:51 EST] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/user/ighandles.php on line 62
+[14-Nov-2016 14:08:55 EST] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/includes/nav.php on line 56
+[14-Nov-2016 14:08:55 EST] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/user/ighandles.php on line 62
+[14-Nov-2016 14:08:56 EST] PHP Warning:  Invalid argument supplied for foreach() in /home3/l5o0c8t4/public_html/includes/nav.php on line 56
