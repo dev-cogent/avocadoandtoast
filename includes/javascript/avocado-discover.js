@@ -1,4 +1,5 @@
 $(document).on('click','#calculate',function(){
+    if(selectedusers.length == 0) return 0;
     calculate = true;
     $.ajax({
     type: 'POST',
@@ -252,7 +253,7 @@ $(window).scroll(function () {
     
 if(calculate == false){
     if (document.body.scrollTop > target) {
-        $('#fixed-position').css('margin-top', '-5%');
+        $('#fixed-position').css('margin-top', '-9%');
     }
     else {
         $('#fixed-position').css('margin-top', '0px');
@@ -264,7 +265,7 @@ $(window).scroll(function () {
  
     if (document.body.scrollTop > target) {
         $('.sidebar-left').css('position', 'fixed');
-        $('.sidebar-left').css('margin-top', '-10%');
+        $('.sidebar-left').css('margin-top', '-131px');
     }
     else {
         $('.sidebar-left').css('position', 'absolute');

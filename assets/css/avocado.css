@@ -1,3 +1,9 @@
+.avocado-button-focus:focus{
+    outline: none !important;
+    border: 1px solid #73C48D;
+    color: #73C48D;
+    box-shadow: 0 0 10px #73C48D;
+}
 .avocado-hover:hover{
     border:1px solid #73C48D;
     color:#73C48D;

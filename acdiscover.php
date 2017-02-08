@@ -25,9 +25,12 @@ include 'includes/numberAbbreviation.php';
 </head>
 
 <body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
+    <div class="col-xs-12" style="border-top: 1px solid rgb(210,215,220); border-bottom:1px solid rgb(210,215,220); height:66px;">
+       <img src="/assets/images/at-logo-black.png" style="margin-top:-8px;">
 
+    </div>
 <!-- Content where the discover, communicatie, order management would be -->
-<div class="mininav" >
+<div class="mininav" style="margin-top:65px" >
     <p class="nav2">DISCOVER</p>
 </div>
 
@@ -40,7 +43,16 @@ include 'includes/numberAbbreviation.php';
 
 <!-- Add side bar here -->
 
-<div class="col-xs-1 sidebar-left"></div>
+<div class="col-xs-1 sidebar-left">
+<i class="icon fa-bars" aria-hidden="true" style="
+    color: white;
+    text-align: center;
+    font-size: 21px;
+    margin-left: 5px;
+    height: 20px;
+    padding-top: 15px;
+"></i>
+</div>
 
 
 <!-- The third nav bar , we might be able to take this out. In the mean time, we'll keep it here -->
@@ -91,9 +103,9 @@ include 'includes/numberAbbreviation.php';
     <p style="margin-top:1rem; font-weight:600;" class="filter-text"> Influencers Inside this Campaign </p>
     <p id="count">0</p>
     
-    <button id="viewall" >View All </button>
-    <button id="calculate" class="show-hidden">Calculate Campaign </button>
-
+    <button id="viewall" class="show-hidden">View All </button>
+    <button id="calculate" class="avocado-button-focus">Calculate Campaign </button>
+ 
 
 <!-- Eventually items will be appened here -->
     <div id="added-influencers">
