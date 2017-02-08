@@ -252,7 +252,7 @@ $(window).scroll(function () {
     
 if(calculate == false){
     if (document.body.scrollTop > target) {
-        $('#fixed-position').css('margin-top', '-10%');
+        $('#fixed-position').css('margin-top', '-5%');
     }
     else {
         $('#fixed-position').css('margin-top', '0px');
