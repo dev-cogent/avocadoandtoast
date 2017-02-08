@@ -65,7 +65,7 @@ include 'includes/numberAbbreviation.php';
 <!--Filter content -->
 
     <div class="filter-container col-xs-9">
-            <p class="desc-header col-xs-12">Discover Influencers by Selecting the Audience You Seek</p>
+            <p class="desc-header col-xs-12" style="padding-left:0px;">Discover Influencers by Selecting the Audience You Seek</p>
             <div class="col-xs-6"id="searchA">
                 <p class="filter-text col-xs-12"> Search by Industry or Hashtags</p>
                     <select class="form-control category avocado-focus col-xs-6 col-sm-12 dropdown">
