@@ -90,29 +90,28 @@ while($stmt->fetch()){
                                         <div class="icons col-xs-12">';
 
                                         if(strpos($where,'instagram_count') !== FALSE){
-                                            echo '
-                                           <a> <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" style="color:#73C48D" aria-hidden="true"></i></a>
+                                            echo checkDisplayInstagram($instagramurl,$id,true);
+                                            echo checkDisplayFacebook($facebookurl,$id,false);
+                                            echo checkDisplayTwitter($twitterurl,$id,false);
+                                           /*<a> <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" style="color:#73C48D" aria-hidden="true"></i></a>
                                            <a> <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true"></i></a>
-                                           <a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true"></i></a>';
+                                           <a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true"></i></a>';*/
                                         }
                                         elseif(strpos($where,'facebook_count') !== FALSE){
-                                            echo '
-                                           <a> <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram"  aria-hidden="true"></i></a>
-                                           <a> <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true" style="color:#73C48D"></i></a>
-                                           <a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true"></i></a>';
+                                            echo checkDisplayInstagram($instagramurl,$id,false);
+                                            echo checkDisplayFacebook($facebookurl,$id,true);
+                                            echo checkDisplayTwitter($twitterurl,$id,false);
                                         }
 
                                         elseif(strpos($where,'twitter_count') !== FALSE){
-                                            echo '
-                                           <a> <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram"  aria-hidden="true"></i></a>
-                                           <a> <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true" ></i></a>
-                                           <a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true" style="color:#73C48D"></i></a>';
+                                            echo checkDisplayInstagram($instagramurl,$id,false);
+                                            echo checkDisplayFacebook($facebookurl,$id,false);
+                                            echo checkDisplayTwitter($twitterurl,$id,true);
                                         }
                                         else{
-                                            echo '
-                                           <a> <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" style="color:#73C48D" aria-hidden="true"></i></a>
-                                           <a> <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true"></i></a>
-                                           <a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true"></i></a>';
+                                            echo checkDisplayInstagram($instagramurl,$id,true);
+                                            echo checkDisplayFacebook($facebookurl,$id,false);
+                                            echo checkDisplayTwitter($twitterurl,$id,false);
 
                                         }
 
@@ -302,4 +301,42 @@ function makeValuesReferenced($arr){
     return $refs;
 }
 
+function checkDisplayInstagram($url,$id, $filtered){
+if($url == NULL || $url == '') return '<a> <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" style="display:none;" aria-hidden="true"></i></a>';
+if(!$filtered) return '<a> <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" aria-hidden="true"></i></a>';
+else return '<a> <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" aria-hidden="true"  style="color:#73C48D"></i></a>';
+}
+
+function checkDisplayFacebook($url,$id,$filtered){
+if($url == NULL || $url == '') return '<a> <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" style="display:none;" aria-hidden="true"></i></a>';
+if(!$filtered) return '<a> <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true" ></i></a>';
+else return '<a> <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true" style="color:#73C48D"></i></a>';
+}
+
+
+function checkDisplayTwitter($url,$id){
+if($url == NULL || $url == '') return '<a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true" style="display:none;"></i></a>';
+if(!$filtered)return '<a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true"></i></a>';
+else return '<a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true" style="color:#73C48D"></i></a>';
+}
+
+
+
+
+function checkDisplayAll($instagramurl,$facebookurl,$twitterurl,$id){
+$html ='';
+if($instagramurl == NULL || $instagramurl == ''){
+    $html .= '<a> <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" style="display:none;" aria-hidden="true"></i></a>';
+}
+else{
+    $html .='<a> <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" aria-hidden="true"  style="color:#73C48D"></i></a>';
+}
+
+//if($facebookurl == NULL )
+
+
+
+
+}
 ?>
+
