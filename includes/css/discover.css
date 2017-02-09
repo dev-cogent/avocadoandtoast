@@ -581,6 +581,19 @@ border:0px;
 
 }
 
+.main-button:hover{
+    outline: none !important;
+    border: 1px solid #73C48D;
+    box-shadow: 0 0 10px #73C48D;
+}
+
+.secondary-button:hover{
+    outline: none !important;
+    border: 1px solid #73C48D;
+    color: #73C48D;
+    box-shadow: 0 0 10px #73C48D;
+}
+
 .campaign-select{
     padding-left:75px;
     padding-top:20px;

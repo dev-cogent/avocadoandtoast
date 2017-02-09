@@ -185,9 +185,9 @@ include 'includes/numberAbbreviation.php';
         <div class="found-influencers col-xs-12">
             <?php
                 $count = 3;
-                $stmt = $conn->prepare('SELECT `id`,`image_url`,`instagram_url`,`instagram_count`,`facebook_url`,`facebook_count`,`twitter_count`,`twitter_url` FROM `Influencer_Information` ORDER BY `instagram_count` DESC LIMIT 0,32');
+                $stmt = $conn->prepare('SELECT `id`,`image_url`,`instagram_url`,`instagram_count`,`facebook_url`,`facebook_count`,`twitter_count`,`twitter_url` FROM `Influencer_Information` ORDER BY `total` DESC LIMIT 0,32');
                 $stmt->execute();
-                $stmt->bind_result($id,$image,$instagramurl,$instagramcount,$facebookurl,$facebookcount,$twittercount,$twitterurl);
+                $stmt->bind_result($id,$image,$instagramurl,$instagramcount,$facebookurl,$facebookcount,$twittercount,$twitterurl); 
                 while($stmt->fetch()){
                 $insthandle = explode('.com/',$instagramurl);
                 $insthandle = explode('/',$insthandle[1]);

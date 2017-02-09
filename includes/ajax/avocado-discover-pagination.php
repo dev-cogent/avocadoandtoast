@@ -45,6 +45,7 @@ if($where == '')
     $default = 'ORDER BY `total` DESC';
 else
     $default = '';
+    
 $stmt = $conn->prepare("SELECT `id`, `image_url` , `instagram_count`, `instagram_url`, `twitter_url`, `twitter_count`, `facebook_count`,`facebook_url` FROM `Influencer_Information` $where $default LIMIT $position, 32");
 if($where != ''){
 $types = '';
@@ -109,52 +110,56 @@ while($stmt->fetch()){
                                             echo checkDisplayTwitter($twitterurl,$id,true);
                                         }
                                         else{
-                                            echo checkDisplayInstagram($instagramurl,$id,true);
-                                            echo checkDisplayFacebook($facebookurl,$id,false);
-                                            echo checkDisplayTwitter($twitterurl,$id,false);
-
+                                            echo checkDisplayAll($instagramurl,$facebookurl,$twitterurl,$id);
                                         }
 
                                         echo '
                                         </div>
                                         <div class="col-xs-12 insthandle-info">
                                             <!--icon here -->';
-                                            if(strpos($where,'instagram_count') !== FALSE){
+                                            if(strpos($where,'instagram_count') !== FALSE || $instagramurl != NULL){
                                                 echo '<p class="instagram-handle insthandle-text" data-id="'.$id.'">'.$insthandle.'</p>
                                                       <p class="facebook-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</p>
                                                       <p class="twitter-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</p>';
                                             }
-                                            if(strpos($where,'facebook_count') !== FALSE){
+                                            elseif(strpos($where,'facebook_count') !== FALSE || ($facebookurl != NULL && $instagramurl == NULL)){
                                                 echo '<p class="instagram-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$insthandle.'</p>
                                                       <p class="facebook-handle insthandle-text" data-id="'.$id.'">'.$facebookhandle.'</p>
                                                       <p class="twitter-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</p>';
                                             }
-                                            if(strpos($where,'twitter_count') !== FALSE){
+                                            elseif(strpos($where,'twitter_count') !== FALSE || ($twitterurl != NULL && $facebookurl == NULL && $instagramurl == NULL)){
                                                 echo '<p class="instagram-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$insthandle.'</p>
                                                       <p class="facebook-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</p>
                                                       <p class="twitter-handle insthandle-text" data-id="'.$id.'">'.$twitterhandle.'</p>';
                                             }
+
+                                            else{
+
+                                                
+                                            }
+
+                                            
                                             
                                 echo '
                                         </div>
                                     <!-- followers -->
                                     <div class="col-xs-12">
                                         ';
-                                        if(strpos($where,'instagram_count') !== FALSE){
+                                        if(strpos($where,'instagram_count') !== FALSE || $instagramurl != NULL){
                                             echo '
                                         <p class="instagram-follower-count follower-count" data-id="'.$id.'">'.numberAbbreviation($instagramcount).' Followers</p>
                                         <p class="facebook-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($facebookcount).' Likes</p>
                                         <p class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($twittercount).' Followers</p>
                                         ';
                                         }
-                                        if(strpos($where,'facebook_count') !== FALSE){
+                                        elseif(strpos($where,'facebook_count') !== FALSE || ($facebookurl != NULL && $instagramurl == NULL)){
                                             echo '
                                         <p class="instagram-follower-count follower-count" data-id="'.$id.'" style="display:none">'.numberAbbreviation($instagramcount).' Followers</p>
                                         <p class="facebook-follower-count follower-count"  data-id="'.$id.'">'.numberAbbreviation($facebookcount).' Likes</p>
                                         <p class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($twittercount).' Followers</p>
                                         ';
                                         }
-                                        if(strpos($where,'twitter_count') !== FALSE){
+                                        elseif(strpos($where,'twitter_count') !== FALSE || ($twitterurl != NULL && $facebookurl == NULL && $instagramurl == NULL)){
                                             echo '
                                         <p class="instagram-follower-count follower-count" data-id="'.$id.'" style="display:none">'.numberAbbreviation($instagramcount).' Followers</p>
                                         <p class="facebook-follower-count follower-count"  data-id="'.$id.'" style="display:none">'.numberAbbreviation($facebookcount).' Likes</p>
@@ -332,9 +337,29 @@ else{
     $html .='<a> <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" aria-hidden="true"  style="color:#73C48D"></i></a>';
 }
 
-//if($facebookurl == NULL )
 
+//For facebook 
+if($facebookurl == NULL || $facebookurl == ''){
+    $html .= '<a> <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" style="display:none;" aria-hidden="true"></i></a>';
+}
+elseif($instagramurl == NULL || $instagramurl == '' && $facebookurl != NULL){
+    $html .= '<a> <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true" style="color:#73C48D"></i></a>';
+}
+else {
+    $html .= '<a> <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true"></i></a>';
+}
 
+if($twitterurl == NULL || $twitterurl == ''){
+    $html .= '<a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true" style="display:none;"></i></a>';
+}
+elseif((($facebookurl == NULL || $facebookurl) == '' && ($twitterurl == NULL || $twitterurl == '')) && ($twitterurl != NULL || $twitterurl !== '') ){
+    $html .= '<a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true" style="color:#73C48D"></i></a>';
+}
+else{
+    $html .= '<a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true"></i></a>';
+}
+
+return $html;
 
 
 }
