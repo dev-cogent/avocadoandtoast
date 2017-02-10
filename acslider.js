@@ -151,16 +151,16 @@ facebookslider.noUiSlider.on('update', function (values, handle) {
     if (checkMax != 'string') {
         $('#min-facebook').val(displayMin);
         $('#min-facebook').attr('data-number',min);
-        filters['max'] = $('#max-facebook').attr('data-number');
+        /*filters['max'] = $('#max-facebook').attr('data-number');
         filters['min'] =  min;
-        filters['platform'] = 'facebook';
+        filters['platform'] = 'facebook';*/
     }
     if (checkMin != 'string') {
         $('#max-facebook').val(displayMax);
         $('#max-facebook').attr('data-number',max);
-        filters['max'] = max;
+        /*filters['max'] = max;
         filters['min'] =  $('#min-facebook').attr('data-number');
-        filters['platform'] = 'facebook';
+        filters['platform'] = 'facebook';*/
     }
     //console.log(filters);
 
@@ -178,16 +178,16 @@ facebookEngagementslider.noUiSlider.on('update', function (values, handle) {
     if (checkMax != 'string') {
         $('#min-facebook-engagement').val(displayMin);
         $('#min-facebook-engagement').attr('data-number',min);
-        filters['max'] = $('#max-facebook-engagement').attr('data-number');
+        /*filters['max'] = $('#max-facebook-engagement').attr('data-number');
         filters['min'] =  min;
-        filters['platform'] = 'facebook';
+        filters['platform'] = 'facebook';*/
     }
     if (checkMin != 'string') {
         $('#max-facebook-engagement').val(displayMax);
         $('#max-facebook-engagement').attr('data-number',max);
-        filters['max'] = max;
+        /*filters['max'] = max;
         filters['min'] =  $('#min-facebook-engagement').attr('data-number');
-        filters['platform'] = 'facebook';
+        filters['platform'] = 'facebook';*/
     }
     //console.log(filters);
 
@@ -214,16 +214,16 @@ instagramslider.noUiSlider.on('update', function (values, handle) {
     if (checkMax != 'string') {
         $('#min-instagram').val(displayMin);
         $('#min-instagram').attr('data-number',min);
-        filters['max'] = $('#max-instagram').attr('data-number');
+        /*filters['max'] = $('#max-instagram').attr('data-number');
         filters['min'] =  min;
-        filters['platform'] = 'instagram';
+        filters['platform'] = 'instagram';*/
     }
     if (checkMin != 'string') {
         $('#max-instagram').val(displayMax);
         $('#max-instagram').attr('data-number',max);
-        filters['max'] = max;
+        /*filters['max'] = max;
         filters['min'] =  $('#min-instagram').attr('data-number');
-        filters['platform'] = 'instagram';
+        filters['platform'] = 'instagram';*/
     }
     //console.log(filters);
 
@@ -242,16 +242,16 @@ instagramEngagementslider.noUiSlider.on('update', function (values, handle) {
     if (checkMax != 'string') {
         $('#min-instagram-engagement').val(displayMin);
         $('#min-instagram-engagement').attr('data-number',min);
-        filters['max'] = $('#max-instagram-engagement').attr('data-number');
+        /*filters['max'] = $('#max-instagram-engagement').attr('data-number');
         filters['min'] =  min;
-        filters['platform'] = 'instagram';
+        filters['platform'] = 'instagram';*/
     }
     if (checkMin != 'string') {
         $('#max-instagram-engagement').val(displayMax);
         $('#max-instagram-engagement').attr('data-number',max);
-        filters['max'] = max;
+        /*filters['max'] = max;
         filters['min'] =  $('#min-instagram-engagement').attr('data-number');
-        filters['platform'] = 'instagram';
+        filters['platform'] = 'instagram';*/
     }
 
 });
@@ -269,16 +269,16 @@ twitterslider.noUiSlider.on('update', function (values, handle) {
     if (checkMax != 'string') {
         $('#min-twitter').val(displayMin);
         $('#min-twitter').attr('data-number',min);
-        filters['max'] = $('#max-twitter').attr('data-number');
+        /*filters['max'] = $('#max-twitter').attr('data-number');
         filters['min'] =  min;
-        filters['platform'] = 'twitter';
+        filters['platform'] = 'twitter';*/
     }
     if (checkMin != 'string') {
         $('#max-twitter').val(displayMax);
         $('#max-twitter').attr('data-number',max);
-        filters['max'] = max;
+        /*filters['max'] = max;
         filters['min'] =  $('#min-twitter').attr('data-number');
-        filters['platform'] = 'twitter';
+        filters['platform'] = 'twitter';*/
     }
     console.log(filters);
 
@@ -296,16 +296,16 @@ twitterengagementslider.noUiSlider.on('update', function (values, handle) {
     if (checkMax != 'string') {
         $('#min-twitter-engagement').val(displayMin);
         $('#min-twitter-engagement').attr('data-number',min);
-        filters['max'] = $('#max-twitter-engagement').attr('data-number');
+        /*filters['max'] = $('#max-twitter-engagement').attr('data-number');
         filters['min'] =  min;
-        filters['platform'] = 'twitter';
+        filters['platform'] = 'twitter';*/
     }
     if (checkMin != 'string') {
         $('#max-twitter-engagement').val(displayMax);
         $('#max-twitter-engagement').attr('data-number',max);
-        filters['max'] = max;
+        /*filters['max'] = max;
         filters['min'] =  $('#min-twitter-engagement').attr('data-number');
-        filters['platform'] = 'twitter';
+        filters['platform'] = 'twitter';*/
     }
 
 });

@@ -31,15 +31,11 @@ $(document).on('click', '#search-keyword', function () {
         var keyword = $('.dropdown').val();
         filters['keywords'] = [keyword];
     } 
-    
-    delete filters['user'];
-    applyFilters(filters);
-});
-
-
-$(document).on('click', '#search-influencer', function () {
-    filters['user'] = $('#right-input-field').val();
-    delete filters['keywords'];
+    var user = $('#influencer-search-name').val();
+    console.log(user.length);
+    if(user.length > 0 ) filters['user'] = user;    
+    else  delete filters['user'];
+    console.log(filters);
     applyFilters(filters);
 });
 
@@ -151,12 +147,15 @@ function selectInfluencer(id, element) {
 $('#slider-instagram').click(function () {
     filters['min'] = $('#min-instagram').attr('data-number');
     filters['max'] = $('#max-instagram').attr('data-number');
+    filters['platform'] = 'instagram';
     applyFilters(filters);
 });
 
 $('#slider-twitter').click(function () {
+    console.log('being applied');
     filters['min'] = $('#min-twitter').attr('data-number');
     filters['max'] = $('#max-twitter').attr('data-number');
+    filters['platform'] = 'twitter';
     applyFilters(filters);
 });
 
@@ -164,18 +163,21 @@ $('#slider-twitter').click(function () {
 $('#slider-facebook').click(function () {
     filters['min'] = $('#min-facebook').attr('data-number');
     filters['max'] = $('#max-facebook').attr('data-number');
+    filters['platform'] = 'facebook';
     applyFilters(filters);
 });
 
 $('#slider-instagram-engagement').click(function () {
     filters['min'] = $('#min-instagram-engagement').attr('data-number');
     filters['max'] = $('#max-instagram-engagement').attr('data-number');
+    filters['platform'] = 'instagram';
     applyFilters(filters);
 });
 
 $('#slider-twitter-engagement').click(function () {
     filters['min'] = $('#min-twitter-engagement').attr('data-number');
     filters['max'] = $('#max-twitter-engagement').attr('data-number');
+    filters['platform'] = 'twitter';
     applyFilters(filters);
 });
 
@@ -183,6 +185,7 @@ $('#slider-twitter-engagement').click(function () {
 $('#slider-facebook-engagement').click(function () {
     filters['min'] = $('#min-facebook-engagement').attr('data-number');
     filters['max'] = $('#max-facebook-engagement').attr('data-number');
+    filters['platform'] = 'twitter';
     applyFilters(filters);
 });
 
@@ -227,6 +230,7 @@ $(document).ready(function () {
         if ($(window).scrollTop() == $(document).height() - $(window).height()) {
             page = page + 1;
             console.log(page);
+            console.log(filters);
             $.ajax({
                 type: 'POST',
                 url: '/includes/ajax/avocado-discover-pagination.php',

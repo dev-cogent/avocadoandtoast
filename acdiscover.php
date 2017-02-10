@@ -67,29 +67,22 @@ include 'includes/numberAbbreviation.php';
 
 <!--Filter content -->
 
-    <div class="filter-container col-xs-9">
-            <p class="desc-header col-xs-12" style="padding-left:0px;">Discover Influencers by Selecting the Audience You Seek</p>
-            <div class="col-xs-6"id="searchA">
-                <p class="filter-text col-xs-12"> Search by Industry or Hashtags</p>
-                    <select class="form-control category avocado-focus col-xs-6 col-sm-12 dropdown">
-                        <option class="option" value="fitness">Fitness</option>
-                        <option class="option" value="music">Music</option>
-                        <option class="option" value="movie">Film/Movies</option>
-                        <option class="option" value="fashion">Fashion</option>
-                        <option class="option" value="beauty">Beauty</option>
-                        <option class="option" value=""> None</option>
-                    </select>
+<div class="filter-container col-xs-9">
+            <p class="desc-header col-xs-12" style="padding-left:0px; padding-top:10px;text-align:center; font-family:'montserratsemibold'; letter-spacing: 2px; font-size:32px;">DISCOVER</p>
+            
+            <div class="col-xs-2"></div>
+            <div class="col-xs-8" id="searchA">
+                <p class="filter-text col-xs-12" style="text-align: center;">Search by Influencer handles and key words</p>
+                    <input type="text" class="form-control category avocado-focus" id="influencer-search-name" placeholder="lebronjames">
                     <input type="text" class="form-control category avocado-focus col-xs-6 col-sm-12" style="margin-top:12px;" id="tokenfield"/>
-                    <p class="description-text col-xs-12">Seperate tags with commas or by pressing "tab". Use double quotes for multi-word tags (e.g. "avocado toast")</p>
+                    <p class="description-text col-xs-12">Seperate tags with commas or by pressing "tab" in the above field. Use double quotes for multi-word tags (e.g. "avocado toast")</p>
                     <button class="search avocado-hover col-xs-12" id="search-keyword">SEARCH</button>
             </div>
+            <div class="col-xs-2"></div>
 
-<!-- Divider goes  here -->
-            <div id="divider">
-                <div id="divider1"> </div>
-                <p class="divider-text">or</p>
-                <div id="divider2"> </div>
-            </div>
+            
+
+    </div>
 
 
             <div class="col-xs-5"id="searchB">
@@ -97,7 +90,6 @@ include 'includes/numberAbbreviation.php';
                     <input id="right-input-field" type="text" class="form-control category avocado-focus" value="@blobdoesnotexist"/>
                     <button id="search-influencer" class="search avocado-hover">SEARCH</button>
             </div>
-
 
     </div>
 
@@ -188,9 +180,9 @@ include 'includes/numberAbbreviation.php';
         <div class="found-influencers col-xs-12">
             <?php
                 $count = 3;
-                $stmt = $conn->prepare('SELECT `id`,`image_url`,`instagram_url`,`instagram_count`,`facebook_url`,`facebook_count`,`twitter_count`,`twitter_url` FROM `Influencer_Information` ORDER BY `instagram_count` DESC LIMIT 0,32');
+                $stmt = $conn->prepare('SELECT `id`,`image_url`,`instagram_url`,`instagram_count`,`facebook_url`,`facebook_count`,`twitter_count`,`twitter_url` FROM `Influencer_Information` ORDER BY `total` DESC LIMIT 0,32');
                 $stmt->execute();
-                $stmt->bind_result($id,$image,$instagramurl,$instagramcount,$facebookurl,$facebookcount,$twittercount,$twitterurl);
+                $stmt->bind_result($id,$image,$instagramurl,$instagramcount,$facebookurl,$facebookcount,$twittercount,$twitterurl); 
                 while($stmt->fetch()){
                 $insthandle = explode('.com/',$instagramurl);
                 $insthandle = explode('/',$insthandle[1]);
