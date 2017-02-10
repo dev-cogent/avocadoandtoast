@@ -31,10 +31,7 @@ include 'includes/numberAbbreviation.php';
     </div>
 <!-- Content where the discover, communicatie, order management would be -->
 <div class="mininav" style="margin-top:65px" >
-    <p class="nav2"> <a href="" class="discover-nav"> DISCOVER </a> </p>
-      <p class="nav2"> <a href="" class="create-nav"> CREATE </a> </p>
-        <p class="nav2"> <a href="" class="price-nav">  PRICE CAMPAIGN </a></p>
-          <p class="nav2"> <a href="" class="campaign-nav"> YOUR CAMPAIGNS </a>  </p>
+    <p class="nav2">DISCOVER</p>
 </div>
 
 
@@ -84,23 +81,18 @@ include 'includes/numberAbbreviation.php';
 
     </div>
 
-
-            <div class="col-xs-5"id="searchB">
-                    <p class="filter-text"> Search Specific Influencer by Name </p>
-                    <input id="right-input-field" type="text" class="form-control category avocado-focus" value="@blobdoesnotexist"/>
-                    <button id="search-influencer" class="search avocado-hover">SEARCH</button>
-            </div>
+            
 
     </div>
 
-<div class="user-container col-xs-3" id="test-height">
+<div class="user-container col-xs-3" id="test-height"> 
     <div id="fixed-position">
     <p style="margin-top:1rem; font-weight:600;" class="filter-text"> Influencers Inside this Campaign </p>
     <p id="count">0</p>
-
+    
     <button id="viewall" class="show-hidden">View All </button>
     <button id="calculate" class="avocado-button-focus">Calculate Campaign </button>
-
+ 
 
 <!-- Eventually items will be appened here -->
     <div id="added-influencers">
@@ -117,14 +109,14 @@ include 'includes/numberAbbreviation.php';
             <button class="col-xs-12 filter-option" data-platform="instagram" style="    background-color: rgb(115, 196, 141);"><div class="filter-option-text"> <i class="button-icon icon bd-instagram"  data-platform="instagram" aria-hidden="true"></i> INSTAGRAM</div></button>
             <button class="col-xs-12 filter-option" data-platform="facebook"><div class="filter-option-text"> <i class="button-icon icon bd-facebook"  data-platform="facebook" aria-hidden="true"></i> FACEBOOK</div></button>
             <button class="col-xs-12 filter-option" data-platform="twitter"><div class="filter-option-text"> <i class="button-icon icon bd-twitter"  data-platform="twitter" aria-hidden="true"></i> TWITTER</div></button>
-
+            
 
         </div>
 
 
-        <div class="col-xs-12 col-md-4 col-lg-3 col-xl-2" id="text-container" style="padding-bottom:25px;">
-                <p class="filter-text">Filter Results</p>
-                <p class="measure-text">FOLLOWERS</p>
+        <div class="col-xs-12 col-md-4 col-lg-3 col-xl-2" id="text-container" style="padding-bottom:25px;"> 
+                <p class="filter-text">Filter Results</p> 
+                <p class="measure-text">FOLLOWERS</p> 
                 <p class="measure-text">LIKES PER POST </p>
         </div>
         <div class="col-xs-12 col-md-8 col-lg-6 col-xl-8" id="slider-container">
@@ -171,7 +163,7 @@ include 'includes/numberAbbreviation.php';
                 <input id="max-twitter-engagement" class="col-xs-1 input-filter engagement-slider"style="display:inline; padding-left:2%; padding-right:0px;" type="text">
             </div>
             <!--end Twitter slider-->
-
+            
         </div>
 
 
@@ -193,7 +185,7 @@ include 'includes/numberAbbreviation.php';
                 $facebookhandle = explode('/',$facebookhandle[1]);
                 $facebookhandle = explode('?',$facebookhandle[0]);
                 $facebookhandle = $facebookhandle[0];
-                //twitter handle
+                //twitter handle 
                 $twitterhandle = explode('.com/',$twitterurl);
                 $twitterhandle = explode('/',$twitterhandle[1]);
                 $twitterhandle = explode('?',$twitterhandle[0]);
@@ -212,7 +204,7 @@ include 'includes/numberAbbreviation.php';
                                         </div>
                                         <div class="col-xs-12 insthandle-info">
                                             <!--icon here -->
-
+                                            
                                             <p class="instagram-handle insthandle-text" data-id="'.$id.'">'.$insthandle.'</p>
                                             <p class="facebook-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</p>
                                             <p class="twitter-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</p>
@@ -230,7 +222,7 @@ include 'includes/numberAbbreviation.php';
                                         <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$id.'">1.5K Likes per post</p>
                                     </div>
                                     <div class="col-xs-12">
-
+                                        
                                         <div style="display:inline;"class="col-xs-12 invite avocado-hover avocado-focus" data-id="'.$id.'" data-image="'.$image.'">
                                               <i class="thumb-up icon fa-plus" aria-hidden="true"></i>
                                                  INVITE</div>
