@@ -150,17 +150,58 @@ $id = '5AUgZ0C';
 <div class="col-lg-7 col-xl-5" style="margin-left: 3%;">
 <!-- social buttons and stats -->
 <?php echo '<p  class="col-xs-12"style="padding-top:49px;"> Viewing @'.$insthandle.' latest instagram posts</p>
-    <div class="col-xs-12 social-buttons">
-            <div class="col-xs-4 button-container">
+    <div class="col-xs-12 social-buttons">';
+    //Start looking for instagram 
+         if($instagramurl == NULL || $instagramurl == ''){
+             echo '
+            <div class="col-xs-4 button-container" style="display:none;">
                 <button class="col-xs-12 social-button instagram-platform" data-platform="instagram" data-handle="'.$insthandle.'" style="background-color: rgb(115, 196, 141);"><div class="button-option-text"> <i class="button-icon icon bd-instagram"  data-platform="instagram" aria-hidden="true"></i> INSTAGRAM</div></button>
-            </div>
-            <div class="col-xs-4 button-container">
+            </div>';
+         }
+         else{
+             echo '
+             <div class="col-xs-4 button-container">
+                <button class="col-xs-12 social-button instagram-platform" data-platform="instagram" data-handle="'.$insthandle.'" style="background-color: rgb(115, 196, 141);"><div class="button-option-text"> <i class="button-icon icon bd-instagram"  data-platform="instagram" aria-hidden="true"></i> INSTAGRAM</div></button>
+            </div>';    
+         }
+         //Start facebook 
+         if($facebookurl == NULL || $facebookurl == ''){
+          echo '<div class="col-xs-4 button-container" style="display:none;">
                 <button class="col-xs-12 social-button facebook-platform" data-platform="facebook" data-handle="'.$facebookhandle.'"><div class="button-option-text"> <i class="button-icon icon bd-facebook"  data-platform="facebook" aria-hidden="true"></i> FACEBOOK</div>
                 </button>
-            </div>
-           <div class="col-xs-4 button-container twitter-platform">
+            </div>';
+         }
+        elseif(($instagramurl == NULL || $instagramurl == '') && ($facebookurl != NULL)){
+          echo '<div class="col-xs-4 button-container" style="background-color:rgb(115, 196, 141);">
+                <button class="col-xs-12 social-button facebook-platform" data-platform="facebook" data-handle="'.$facebookhandle.'"><div class="button-option-text"> <i class="button-icon icon bd-facebook"  data-platform="facebook" aria-hidden="true"></i> FACEBOOK</div>
+                </button>
+            </div>';
+        }
+        else{
+            echo '<div class="col-xs-4 button-container">
+                <button class="col-xs-12 social-button facebook-platform" data-platform="facebook" data-handle="'.$facebookhandle.'"><div class="button-option-text"> <i class="button-icon icon bd-facebook"  data-platform="facebook" aria-hidden="true"></i> FACEBOOK</div>
+                </button>
+            </div>';
+
+        }
+        //Start Twitter 
+        if($twitterurl == NULL || $twitterurl == ''){
+        echo '
+           <div class="col-xs-4 button-container twitter-platform" style="display:none;">
                 <button class="col-xs-12 social-button" data-platform="twitter" data-handle="'.$twitterhandle.'"><div class="button-option-text"> <i class="button-icon icon bd-twitter"  data-platform="twitter" aria-hidden="true"></i> TWITTER</div></button>
-            </div>
+            </div>';
+        }
+        elseif(($instagramurl == NULL || $instagramurl == '') && ($facebookurl == NULL || $facebookurl == '') && ($twitterurl != '' || $twitterurl != NULL)){
+        echo '   <div class="col-xs-4 button-container twitter-platform" style="background-color:rgb(115, 196, 141);">
+                <button class="col-xs-12 social-button" data-platform="twitter" data-handle="'.$twitterhandle.'"><div class="button-option-text"> <i class="button-icon icon bd-twitter"  data-platform="twitter" aria-hidden="true"></i> TWITTER</div></button>
+            </div>';
+        }
+        else{
+        echo '   <div class="col-xs-4 button-container twitter-platform">
+                <button class="col-xs-12 social-button" data-platform="twitter" data-handle="'.$twitterhandle.'"><div class="button-option-text"> <i class="button-icon icon bd-twitter"  data-platform="twitter" aria-hidden="true"></i> TWITTER</div></button>
+            </div>';
+        }
+      echo '  
     </div>';
 ?>
 <!-- content  -->
@@ -177,6 +218,7 @@ $id = '5AUgZ0C';
 <div id="facebook" style="display:none" class="col-xs-12">
     <?php
     //We start getting the facebook information from now since for some reason calling through ajax doesn't work. It will be put on a display none. 
+    if($facebookurl != NULL || $facebookurl != ''){
     $facebooktoken = '1075628395822185|Y0CgNIZP8EiF2esClPtNaki4hiE';
     $info = curl('https://graph.facebook.com/v2.7/'.$facebookhandle.'?fields=posts.limit(10){permalink_url}&access_token='.$facebooktoken);
     $facebookpost = array();  
@@ -186,6 +228,7 @@ $id = '5AUgZ0C';
     foreach($facebookpost as $id){
         echo '<div class="fb-post" data-href="'.$id.'" data-width="50" data-height="100"></div>';
     }
+}
     ?>
 </div>
 <!-- End facebook -->

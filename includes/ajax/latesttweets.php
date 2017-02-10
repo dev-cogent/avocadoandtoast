@@ -22,7 +22,7 @@ foreach($json_twitter as $tweet){
 
 foreach($tweetid as $id){
 $ta_url='https://api.twitter.com/1.1/statuses/oembed.json';  
-$getfield = '?id='.$id;
+$getfield = '?id='.$id.'&width=300';
 $requestMethod = 'GET';
 $twitter = new TwitterAPIExchange($settings);
 $follow_count=$twitter->setGetfield($getfield)
