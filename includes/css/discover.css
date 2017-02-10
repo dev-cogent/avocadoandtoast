@@ -1,4 +1,4 @@
-
+/*hello world*/
 .nav2{
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
@@ -23,7 +23,7 @@
         height:66px;
         padding-left:125px;
         border-bottom: 1px solid rgb(210,215,220);
-        
+
 }
 
 .sidebar-left{
@@ -35,7 +35,7 @@
     position:absolute;
     z-index:1;
     min-height: 100%;
-    
+
 }
 
 
@@ -51,7 +51,7 @@ float:left;
 .user-container{
 border-top:1px solid rgb(210,215,220);
 border-bottom:0px;
-height:100%;    
+height:100%;
 padding-left:26px;
 padding-right:25px;
 min-height:100%;
@@ -186,7 +186,7 @@ float:right;
     color: white;
     border: 0px;
     margin-right: 10px;
-    
+
 }
 
 #viewall:focus{
@@ -263,7 +263,7 @@ float:right;
     width:100%;
     object-fit: cover;
     object-position: 0 33%
-    
+
 }
 
 
@@ -276,7 +276,7 @@ float:right;
 }
 .divider-text{
 color: black;
-font-size: 18px; 
+font-size: 18px;
 margin-bottom: 2px;
 }
 
@@ -297,8 +297,8 @@ width:110%;
 }
 
 #text-container{
-    padding-right:5.5%; 
-    display:inline; 
+    padding-right:5.5%;
+    display:inline;
     float:left;
     padding-left:0px;
 }
@@ -456,7 +456,7 @@ padding-right:0px;
 
 
 .tokenfield{
-position:inherit; 
+position:inherit;
 margin-top:14px;
 height:35px;
 border: 1px solid #30363F;
@@ -561,7 +561,7 @@ height:150px;
     height: 50px;
     margin-left: 20px;
     width: 200px;
-    
+
 }
 .info-button:focus{
 
@@ -605,7 +605,7 @@ border:0px;
 #campaign-select-text{
     color:#30363F;
     padding-left: 25px;
-    display:inline; 
+    display:inline;
     padding-top:7px;
 }
 
@@ -659,9 +659,9 @@ padding-right:3%;
 }
 .campaignfocus{
 background-color:transparent;
-border:none; 
-text-align:center; 
-font-size:3em; 
+border:none;
+text-align:center;
+font-size:3em;
 width:200px;
 color: #30363F;
 font-family: 'Montserrat', sans-serif;
@@ -676,7 +676,7 @@ font-family: 'Montserrat', sans-serif;
     font-size:16px;
     font-family: 'Montserrat', sans-serif;
     color:#515862;
-    
+
 }
 
 .handle{
@@ -701,7 +701,7 @@ tbody{
 
 #campaign-label{
 font-family: 'Montserrat', sans-serif;
-color: #30363F; 
+color: #30363F;
 padding-right:10px;
 
 }
