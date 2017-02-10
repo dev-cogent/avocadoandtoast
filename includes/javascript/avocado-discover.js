@@ -31,15 +31,11 @@ $(document).on('click', '#search-keyword', function () {
         var keyword = $('.dropdown').val();
         filters['keywords'] = [keyword];
     } 
-    
-    delete filters['user'];
-    applyFilters(filters);
-});
-
-
-$(document).on('click', '#search-influencer', function () {
-    filters['user'] = $('#right-input-field').val();
-    delete filters['keywords'];
+    var user = $('#influencer-search-name').val();
+    console.log(user.length);
+    if(user.length > 0 ) filters['user'] = user;    
+    else  delete filters['user'];
+    console.log(filters);
     applyFilters(filters);
 });
 

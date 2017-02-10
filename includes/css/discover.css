@@ -100,34 +100,35 @@ float:right;
 
 
 
-.search{
-    width: 100%;
-    border-radius: 1px; 
-    border: 1px solid #1F232A;
-    color:#1F232A;
-    background-color:white;
-    height:50px;
-    font-size:16px;
-    font-family: 'Montserrat', sans-serif;
-}
-.search:hover{
-    border: 1px solid #73C48D;
-    color:#73C48D;
-}
-.search:focus{
-    outline: none !important;
-    border: 1px solid #73C48D;
-    color:#73C48D;
-    box-shadow: 0 0 10px #73C48D;
-}
-#divider{
-float: left;
-padding-left: 0.2%;
-}
+    .search{
+        width: 35%;
+        border-radius: 1px;
+        border: 0px;
+        color: white;
+        background-color: white;
+        height: 50px;
+        font-size: 16px;
+        font-family: 'Montserrat', sans-serif;
+        background-color: #73C48D;
+        margin-left: 31%;
+    }
+    .search:hover{
+        color: white !important;
+        border: 1px solid #73C48D;
+        box-shadow: 0 0 10px #73C48D;
+    }
+    .search:focus{
+        outline: none !important;
+        border: 1px solid #73C48D;
+        box-shadow: 0 0 10px #73C48D;
+    }
+    #divider{
+    float: left;
+    padding-left: 0.2%;
+    }
 
 
 #divider1{
-    
     background-color: rgb(210,215,220);
     height: 104px;
     width: 2px;
@@ -147,9 +148,10 @@ padding-left: 0.2%;
     /*font-family: 'Open Sans', sans-serif;*/
     font-weight:100;
     margin-top:1rem;
-    font-size:14px;
-    max-width:632px;
+    font-size:13px;
     padding-left:0px;
+    text-align:center;
+    padding-right:0px;
 
 }
 #count{
@@ -284,9 +286,6 @@ margin-top:120px;
 width:110%;
 }
 
-#right-input-field{
-width:110%;
-}
 
 .measure-text{
     font-size: 13px;
@@ -458,7 +457,7 @@ padding-right:0px;
 
 .tokenfield{
 position:inherit; 
-margin-top:93px;
+margin-top:14px;
 height:35px;
 border: 1px solid #30363F;
 border-radius: 1px;

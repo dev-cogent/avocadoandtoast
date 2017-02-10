@@ -45,7 +45,8 @@ if($where == '')
     $default = 'ORDER BY `total` DESC';
 else
     $default = '';
-    
+
+
 $stmt = $conn->prepare("SELECT `id`, `image_url` , `instagram_count`, `instagram_url`, `twitter_url`, `twitter_count`, `facebook_count`,`facebook_url` FROM `Influencer_Information` $where $default LIMIT $position, 32");
 if($where != ''){
 $types = '';
@@ -197,7 +198,7 @@ function checkBio($bio, $searchoptions, $options, &$where, &$arr){
     foreach($bio as $keyword){
         
          $tags = '`bio` LIKE ? OR `tags` LIKE ?';
-         $arr['term'][] = '% '.$keyword.'%';
+         $arr['term'][] = '%'.$keyword.'%';
          $arr['term'][] = '%'.$keyword.'%';
     
 
@@ -277,7 +278,7 @@ function checkLocation($location,&$where, &$arr){
 
 function checkUser($user,&$where, &$arr){
     if(checkWhere($where))
-    $where .= ' AND `user` LIKE ? OR `instagram_url` LIKE ? OR `facebook_url` LIKE ? OR `twitter_url` LIKE ? OR `full_name` LIKE ? ';
+    $where .= ' AND (`user` LIKE ? OR `instagram_url` LIKE ? OR `facebook_url` LIKE ? OR `twitter_url` LIKE ? OR `full_name` LIKE ? )';
     else
     $where .= ' WHERE `user` LIKE ? OR `instagram_url` LIKE ? OR `facebook_url` LIKE ? OR `twitter_url` LIKE ? OR `full_name` LIKE ? ';
     $arr['term'][] = '%'.$user.'%';
