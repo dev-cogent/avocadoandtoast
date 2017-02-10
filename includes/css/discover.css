@@ -7,7 +7,42 @@
     letter-spacing: 1px;
     font-weight: 400;
     line-height: 65px;
+    padding-right: 18%;
 }
+.discover-nav {
+  padding-bottom: 21px;
+  box-shadow: inset 0 0px 0 white, inset 0 -3.5px 0 #73c48d;
+}
+.discover-nav, .create-nav, .price-nav, .campaign-nav {
+  color: rgb(29, 40, 76);
+}
+@media(min-width:650px) and (max-width:900px){
+  .nav2 {
+    margin-left: -8%;
+    padding-right: 12%;
+  }
+}
+
+@media(min-width:901px) and (max-width:1300px){
+  .nav2 {
+    padding-right: 10%;
+  }
+}
+
+@media(min-width:300px) and (max-width:649px){
+  .nav2 {
+    padding-right: 10%;
+    line-height: 42px;
+  }
+  div.mininav{
+    padding-left: 10px;
+    text-align: center;
+    height: 90px;
+  }
+}
+
+
+
 
 
 .nav3{
@@ -23,7 +58,7 @@
         height:66px;
         padding-left:125px;
         border-bottom: 1px solid rgb(210,215,220);
-        
+
 }
 
 .sidebar-left{
@@ -35,7 +70,7 @@
     position:absolute;
     z-index:1;
     min-height: 100%;
-    
+
 }
 
 
@@ -51,7 +86,7 @@ float:left;
 .user-container{
 border-top:1px solid rgb(210,215,220);
 border-bottom:0px;
-height:100%;    
+height:100%;
 padding-left:26px;
 padding-right:25px;
 min-height:100%;
@@ -100,6 +135,34 @@ float:right;
 
 
 
+.search{
+    width: 100%;
+    border-radius: 1px;
+    border: 1px solid #1F232A;
+    color:#1F232A;
+    background-color:white;
+    height:50px;
+    font-size:16px;
+    font-family: 'Montserrat', sans-serif;
+}
+.search:hover{
+    border: 1px solid #73C48D;
+    color:#73C48D;
+}
+.search:focus{
+    outline: none !important;
+    border: 1px solid #73C48D;
+    color:#73C48D;
+    box-shadow: 0 0 10px #73C48D;
+}
+#divider{
+float: left;
+padding-left: 0.2%;
+}
+
+
+#divider1{
+
     .search{
         width: 35%;
         border-radius: 1px;
@@ -129,6 +192,7 @@ float:right;
 
 
 #divider1{
+  
     background-color: rgb(210,215,220);
     height: 104px;
     width: 2px;
@@ -186,7 +250,7 @@ float:right;
     color: white;
     border: 0px;
     margin-right: 10px;
-    
+
 }
 
 #viewall:focus{
@@ -263,7 +327,7 @@ float:right;
     width:100%;
     object-fit: cover;
     object-position: 0 33%
-    
+
 }
 
 
@@ -276,7 +340,7 @@ float:right;
 }
 .divider-text{
 color: black;
-font-size: 18px; 
+font-size: 18px;
 margin-bottom: 2px;
 }
 
@@ -297,8 +361,8 @@ width:110%;
 }
 
 #text-container{
-    padding-right:5.5%; 
-    display:inline; 
+    padding-right:5.5%;
+    display:inline;
     float:left;
     padding-left:0px;
 }
@@ -456,6 +520,9 @@ padding-right:0px;
 
 
 .tokenfield{
+
+position:inherit;
+margin-top:93px;
 position:inherit; 
 margin-top:14px;
 height:35px;
@@ -561,7 +628,7 @@ height:150px;
     height: 50px;
     margin-left: 20px;
     width: 200px;
-    
+
 }
 .info-button:focus{
 
@@ -605,7 +672,7 @@ border:0px;
 #campaign-select-text{
     color:#30363F;
     padding-left: 25px;
-    display:inline; 
+    display:inline;
     padding-top:7px;
 }
 
@@ -659,9 +726,9 @@ padding-right:3%;
 }
 .campaignfocus{
 background-color:transparent;
-border:none; 
-text-align:center; 
-font-size:3em; 
+border:none;
+text-align:center;
+font-size:3em;
 width:200px;
 color: #30363F;
 font-family: 'Montserrat', sans-serif;
@@ -676,7 +743,7 @@ font-family: 'Montserrat', sans-serif;
     font-size:16px;
     font-family: 'Montserrat', sans-serif;
     color:#515862;
-    
+
 }
 
 .handle{
@@ -701,7 +768,7 @@ tbody{
 
 #campaign-label{
 font-family: 'Montserrat', sans-serif;
-color: #30363F; 
+color: #30363F;
 padding-right:10px;
 
 }
