@@ -298,9 +298,11 @@ $(window).scroll(function () {
 
 if(calculate == false){
     if (document.body.scrollTop > target) {
-        $('#fixed-position').css('margin-top', '-9%');
+        $('#fixed-position').css('position','fixed');
+        $('#fixed-position').css('margin-top', '-190px');
     }
     else {
+        $('#fixed-position').css('position','relative');
         $('#fixed-position').css('margin-top', '0px');
     }
 }
@@ -308,7 +310,7 @@ if(calculate == false){
 
 $(window).scroll(function () {
 
-    if (document.body.scrollTop > target) {
+    if (document.body.scrollTop > target2) {
         $('.sidebar-left').css('position', 'fixed');
         $('.sidebar-left').css('margin-top', '-131px');
     }
@@ -408,7 +410,7 @@ $(document).on('click','.filter-option',function(){
 
 
 
-$(document).on('keyup', '.campaignfocus', function () {
+$(document).on('change', '.campaignfocus', function () {
 
     var posts = [];
     var type = $(this).attr('data-platform');

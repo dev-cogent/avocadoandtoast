@@ -1042,11 +1042,12 @@ img.insta-logo, .fb-logo {
 td.campaign-tablerow, td.insta-column, td.twit-column, td.face-column{
   border-left: hidden;
   border-right: hidden;
-  padding-top: 3%;
-  padding-bottom: 3%
+  padding-top: 2%;
+  padding-bottom: 2%
 }
 tr.campaign-list-table{
   text-align: center;
+  border-bottom:1px solid #efefef;
 }
 
 th.text-center{

@@ -251,6 +251,7 @@ var page = 0;
 var selectedusers = [];
 var filters = {};
 var target = $("#test-height").offset().top;
+var target2 = $('#stuff').offset().top;
 function abbrNum(number, decPlaces = 2) {
     var orig = number;
     var dec = decPlaces;

@@ -526,7 +526,7 @@ color:#73C48D;
 
 #fixed-position{
     padding-right:29px;
-    position: fixed;
+    position: relative;
     border-left: 1px solid rgb(210,215,220);
     margin-left: -27px;
     padding-left: 20px;
@@ -688,6 +688,7 @@ padding-right:3%;
     color: rgba(0, 0, 44, 0.37);
 }
 .campaignfocus{
+font-weight:600;
 background-color:transparent;
 border:none;
 text-align:center;
@@ -721,9 +722,10 @@ font-family: 'Montserrat', sans-serif;
 
 .results-text{
     color: #73C48D;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'montserratsemibold';
     font-size: 3em;
     padding-right: 17px;
+    font-weight:600;
 }
 tbody{
     border-top:1px solid rgb(210,215,220);
