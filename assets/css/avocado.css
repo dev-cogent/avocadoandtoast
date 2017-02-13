@@ -512,7 +512,7 @@ span.software{
   color: #73c48d;
 }
 .first-sect-header {
-  margin-top: -30%;
+  margin-top: -22%;
 }
 
 .second-sect-index {
@@ -667,7 +667,7 @@ span.software{
     position: relative;
   }
   .dashboard-img-div{
-    top:-400px;
+    top:-280px;
   }
   .software-head.lg{
     font-size: 32px;
