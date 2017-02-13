@@ -320,7 +320,7 @@ else return '<a> <i class="switch show-facebook inst-icon icon bd-facebook" data
 }
 
 
-function checkDisplayTwitter($url,$id){
+function checkDisplayTwitter($url,$id,$filtered){
 if($url == NULL || $url == '') return '<a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true" style="display:none;"></i></a>';
 if(!$filtered)return '<a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true"></i></a>';
 else return '<a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true" style="color:#73C48D"></i></a>';

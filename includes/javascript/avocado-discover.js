@@ -12,7 +12,51 @@ $(document).on('click','#calculate',function(){
         $('#stuff').empty();
         $('#stuff').append(jqXHR);
     }
+
+}); // end ajax request*/ 
+
+
+$(document).on('click','#apply',function(){
+
+    dialog = bootbox.dialog({
+        message: '<input type="text" id="get-instagram"> <input type="text" id="get-facebook"> <input type="text" id="get-twitter"> <button id="applyall">Submit</button>',
+        closeButton: true
+    });
+    dialog.modal();
+
+});
+    
+$(document).on('click','#applyall',function(){
+var instval = $('#get-instagram').val();
+var facebookval = $('#get-facebook').val();
+var twitterval = $('#get-twitter').val();
+var instposts = [];
+var facebookposts = [];
+var twitterposts = [];
+$('.instagraminput').each(function(){
+    $(this).val(instval);
+   instposts.push(instval);
+});
+getCalculation('instagram',instposts,selectedusers);
+
+$('.facebookinput').each(function(){
+    $(this).val(facebookval);
+   facebookposts.push(facebookval);
+});
+getCalculation('facebook',facebookposts,selectedusers);
+
+$('.twitterinput').each(function(){
+    $(this).val(twitterval);
+   twitterposts.push(twitterval);
+});
+
+getCalculation('twitter',twitterposts,selectedusers);
+
+
+});
+
 }); // end ajax request*/
+
 
 
 
@@ -365,7 +409,11 @@ $(document).on('click','.filter-option',function(){
 
 
 
+
+$(document).on('change', '.campaignfocus', function () { 
+
 $(document).on('keyup', '.campaignfocus', function () {
+
     var posts = [];
     var type = $(this).attr('data-platform');
     var id = $(this).attr('data-id');
