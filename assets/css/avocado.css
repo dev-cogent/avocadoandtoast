@@ -36,6 +36,21 @@ ul.nav.navbar-nav.login-sect{
 a.about-us{
   max-width: 50px;
 }
+.icon.wb-menu {
+  color: black;
+  font-size: 32px;
+}
+.navbar-toggle {
+  padding-top: 3%;
+  float:right;
+  background: transparent;
+  border:none;
+}
+.navbar{
+  box-shadow: none;
+  -webkit-box-shadow:none;
+}
+
 
 @media (min-width: 768px){
 .navbar-nav.avocado-ul {
@@ -686,10 +701,7 @@ span.software{
 
 
 
-@media(min-width:767px) and (max-width:974px) {
-  img.mobile-menu{
-    display:none;
-  }
+@media(min-width:600px) and (max-width:974px) {
   ul.nav.navbar-nav.avocado-ul.center-ul{
     padding: 10px;
   }
@@ -776,11 +788,264 @@ span.software{
     overflow: hidden;
     white-space: nowrap;
   }
-
-
-@media(min-width:767px) {
-  img.mobile-menu{
-    display:none;
-  }
 }
 
+
+
+
+@media (min-width:700px) and (max-width:3000px) {
+i.icon.wb-menu {
+  display: none;
+}
+}
+
+/*iphone 5*/
+@media (min-width:1px) and (max-width:359px) {
+.third-sect-index{
+    padding-left: 0;
+    padding-right: 0;
+}
+.software-head{
+  font-size: 14px;
+  padding-left: 0;
+  padding-right: 0;
+}
+.first-sect-header{
+  margin-top: -30%;
+  margin-bottom: 3%;
+}
+.start-btn{
+  font-size: 9px;
+  margin-left: 4%;
+  padding: 7px 5px 7px 10px;
+}
+.learn-more{
+  font-size: 10px;
+}
+.start-button-div{
+  top: -96px;
+}
+.main-banner-header{
+  font-size: 16px;
+  padding-left: 4%;
+  max-width: 150px;
+  top: -111px;
+  line-height: 12px;
+}
+.main-banner-det{
+  font-size: 11px;
+  top: -107px;
+  padding-left: 4%;
+  line-height: 18px;
+}
+img.at-logo-nav{
+  width: 75%;
+}
+.navbar-header{
+  display: flex;
+}
+
+.analytics-mockup{
+  min-width: 0;
+  margin-left: 0;
+  margin-top: 10px;
+}
+.number-02{
+  font-size: 115px;
+}
+.box-words{
+  top: -42px;
+}
+.second-sect-word {
+  font-size: 25px;
+}
+.second-word-det{
+  font-size: 16px;
+  position: relative;
+  top: -30px;
+}
+.icon.wb-menu{
+  position: relative;
+  right: -6px;
+}
+.button-protect{
+  padding-top: 6%;
+  padding-bottom: 6%;
+}
+footer.avocado-footer{
+  padding: 10px 10px;
+}
+.footer-links{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.footer-offices-title{
+  padding-top: 10%;
+}
+}
+
+@media (min-width:360px) and (max-width:411px){
+  .third-sect-index{
+      padding-left: 0;
+      padding-right: 0;
+  }
+  .software-head{
+    font-size: 16px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .first-sect-header{
+    margin-top: -30%;
+    margin-bottom: 3%;
+  }
+  .start-btn{
+    font-size: 11px;
+    margin-left: 3%;
+    padding: 8px 5px 8px 10px;
+  }
+  .learn-more{
+    font-size: 12px;
+  }
+  .start-button-div{
+    top: -111px;
+  }
+  .main-banner-header{
+    font-size: 19px;
+    padding-left: 3%;
+    max-width: 178px;
+    top: -132px;
+    line-height: 18px;
+  }
+  .main-banner-det{
+    font-size: 14px;
+    top: -128px;
+    padding-left: 3%;
+    line-height: 18px;
+  }
+  img.at-logo-nav{
+    width: 75%;
+  }
+  .navbar-header{
+    display: flex;
+  }
+
+  .analytics-mockup{
+    min-width: 0;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+  .number-02{
+    font-size: 120px;
+  }
+  .box-words{
+    top: -42px;
+  }
+  .second-sect-word {
+    font-size: 25px;
+  }
+  .second-word-det{
+    font-size: 16px;
+    position: relative;
+    top: -30px;
+  }
+  .icon.wb-menu{
+    position: relative;
+    right: -6px;
+  }
+  .button-protect{
+    padding-top: 6%;
+    padding-bottom: 6%;
+  }
+  footer.avocado-footer{
+    padding: 10px 10px;
+  }
+  .footer-links{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .footer-offices-title{
+    padding-top: 10%;
+  }
+}
+@media (min-width:412px) and (max-width:699px) {
+  .analytics-mockup{
+    margin-top: 0;
+    min-width: 0;
+    margin-left: 0;
+  }
+  footer.avocado-footer{
+    padding: 10px 10px;
+  }
+  .footer-links{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  img.newyork-map{
+    margin-top: 0;
+  }
+  .icon-section{
+    padding-bottom: 15px;
+  }
+  .first-sect-header{
+    margin-top: -40%;
+  }
+  img.at-logo-nav{
+    width: 70%;
+  }
+  .software-head{
+    font-size: 18px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .main-banner-header {
+    font-size: 20px;
+    padding-left: 6%;
+    max-width: 170px;
+    top: -158px;
+    line-height: 20px;
+  }
+  .main-banner-det{
+    font-size: 12px;
+    top: -158px;
+    padding-left: 3%;
+    line-height: 22px;
+  }
+  .start-button-div{
+    top: -149px;
+  }
+  .start-btn {
+    font-size: 11px;
+    margin-left: 5%;
+    padding: 8px 8px;
+  }
+  .learn-more{
+    font-size: 12px;
+  }
+  .number-02{
+    font-size: 120px;
+  }
+  .box-words{
+    top: -40px;
+  }
+  .second-sect-index{
+    padding-bottom: 0;
+  }
+  .second-sect-word{
+    padding-left: 4%;
+    top: -30px;
+  }
+  .button-protect{
+    padding-top: 6%;
+    padding-bottom: 6%;
+  }
+  .second-word-det{
+    font-size: 16px;
+    top: -20px;
+    position: relative;
+    padding-left: 4%;
+  }
+
+}
