@@ -15,6 +15,8 @@ $(document).on('click','#calculate',function(){
 
 }); // end ajax request*/ 
 
+});
+
 
 $(document).on('click','#apply',function(){
 
@@ -55,12 +57,7 @@ getCalculation('twitter',twitterposts,selectedusers);
 
 });
 
-}); // end ajax request*/
 
-
-
-
-});
 
 $(document).on('click', '#search-keyword', function () {
     var temparr = [];
@@ -296,7 +293,7 @@ $(document).ready(function () {
 
 
 
-function to have fixed positioning after scroll.
+//function to have fixed positioning after scroll.
 $(window).scroll(function () {
 
 if(calculate == false){
@@ -410,7 +407,6 @@ $(document).on('click','.filter-option',function(){
 
 
 
-$(document).on('change', '.campaignfocus', function () { 
 
 $(document).on('keyup', '.campaignfocus', function () {
 
@@ -475,3 +471,7 @@ function getCalculation(type, posts, selectedusers) {
 
 
 }
+
+
+
+
