@@ -86,7 +86,7 @@ include 'includes/numberAbbreviation.php';
 
 
 
-    </div>
+
 
 <div class="user-container col-xs-3" id="test-height">
     <div id="fixed-position">
@@ -294,3 +294,8 @@ $('#tokenfield').tokenfield();
 </script>
 <script src="/acslider.js"></script>
 <script src="/includes/javascript/avocado-discover.js"></script>
+
+
+
+
+
