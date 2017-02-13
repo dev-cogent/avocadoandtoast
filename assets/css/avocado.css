@@ -50,6 +50,12 @@ a.about-us{
   box-shadow: none;
   -webkit-box-shadow:none;
 }
+.collapse.in {
+  display: table-caption;
+  width: 50%;
+  float: right;
+  background-color: rgb(226, 226, 226);
+}
 
 
 @media (min-width: 768px){
@@ -793,7 +799,7 @@ span.software{
 
 
 
-@media (min-width:700px) and (max-width:3000px) {
+@media (min-width:738px) and (max-width:3000px) {
 i.icon.wb-menu {
   display: none;
 }
@@ -801,6 +807,12 @@ i.icon.wb-menu {
 
 /*iphone 5*/
 @media (min-width:1px) and (max-width:359px) {
+  .row.avocado-row{
+    position: initial;
+  }
+  .navbar-toggle{
+    padding-top: 5%;
+  }
 .third-sect-index{
     padding-left: 0;
     padding-right: 0;
@@ -823,18 +835,18 @@ i.icon.wb-menu {
   font-size: 10px;
 }
 .start-button-div{
-  top: -96px;
+  top: -115px;
 }
 .main-banner-header{
   font-size: 16px;
   padding-left: 4%;
   max-width: 150px;
-  top: -111px;
+  top: -135px;
   line-height: 12px;
 }
 .main-banner-det{
-  font-size: 11px;
-  top: -107px;
+  font-size: 12px;
+  top: -125px;
   padding-left: 4%;
   line-height: 18px;
 }
@@ -890,6 +902,12 @@ footer.avocado-footer{
       padding-left: 0;
       padding-right: 0;
   }
+  .navbar-toggle{
+    padding-top: 4%;
+  }
+  .row.avocado-row{
+    position: initial;
+  }
   .software-head{
     font-size: 16px;
     padding-left: 0;
@@ -908,18 +926,18 @@ footer.avocado-footer{
     font-size: 12px;
   }
   .start-button-div{
-    top: -111px;
+    top: -125px;
   }
   .main-banner-header{
     font-size: 19px;
     padding-left: 3%;
     max-width: 178px;
-    top: -132px;
+    top: -155px;
     line-height: 18px;
   }
   .main-banner-det{
     font-size: 14px;
-    top: -128px;
+    top: -145px;
     padding-left: 3%;
     line-height: 18px;
   }
@@ -975,8 +993,14 @@ footer.avocado-footer{
     min-width: 0;
     margin-left: 0;
   }
+  .row.avocado-row{
+    position: initial;
+  }
   footer.avocado-footer{
     padding: 10px 10px;
+  }
+  .navbar-toggle{
+    padding-top: 4%;
   }
   .footer-links{
     text-overflow: ellipsis;
@@ -993,7 +1017,7 @@ footer.avocado-footer{
     margin-top: -40%;
   }
   img.at-logo-nav{
-    width: 70%;
+    width: 75%;
   }
   .software-head{
     font-size: 18px;
@@ -1001,28 +1025,28 @@ footer.avocado-footer{
     padding-right: 0;
   }
   .main-banner-header {
-    font-size: 20px;
-    padding-left: 6%;
+    font-size: 23px;
+    padding-left: 3%;
     max-width: 170px;
-    top: -158px;
+    top: -185px;
     line-height: 20px;
   }
   .main-banner-det{
-    font-size: 12px;
-    top: -158px;
+    font-size: 14px;
+    top: -176px;
     padding-left: 3%;
     line-height: 22px;
   }
   .start-button-div{
-    top: -149px;
+    top: -154px;
   }
   .start-btn {
-    font-size: 11px;
-    margin-left: 5%;
-    padding: 8px 8px;
+    font-size: 13px;
+    margin-left: 3%;
+    padding: 8px 5px 8px 10px;
   }
   .learn-more{
-    font-size: 12px;
+    font-size: 13px;
   }
   .number-02{
     font-size: 120px;
@@ -1048,4 +1072,69 @@ footer.avocado-footer{
     padding-left: 4%;
   }
 
+}
+
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+    /*iphone 6 landscape */
+
+      .navbar-toggle {
+        padding-top: 17px;
+      }
+      img.at-logo-nav{
+        margin-top: 5%;
+      }
+      .main-banner-header{
+        font-size: 28px;
+        max-width: 200px;
+        top:-300px;
+        line-height: 24px;
+      }
+      .main-banner-det{
+        font-size: 18px;
+        top: -290px;
+        line-height: 25px;
+      }
+      .start-button-div{
+        top: -270px;
+      }
+      .dashboard-img{
+        width: calc(100% - 97px);
+      }
+      .dashboard-img-div{
+        top: -267px;
+        right: 65px;
+      }
+      .second-word-det{
+        top: 0px;
+      }
+      .influencers-first, .brands-second, .agency-third{
+        min-height: 181px;
+      }
+
+}
+
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+    .main-banner-header{
+      top: -255px;
+      max-width: 250px;
+      line-height: 22px;
+    }
+    .main-banner-det{
+      top: -250px;
+      line-height: 25px;
+    }
+    .start-button-div{
+      top: -235px;
+    }
+    .dashboard-img-div{
+      top: -218px;
+    }
 }

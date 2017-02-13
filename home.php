@@ -8,10 +8,6 @@
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 </head>
 
-<div class="nav">
-
-
-</div>
 
   <header class="header avocado-header">
 
@@ -25,7 +21,7 @@
             <div class="container-fluid">
                 <div class="navbar-header">
                    <a class="navbar-brand" href="#"><img src="assets/images/at-logo-black.png" class="at-logo-nav"> </a>
-             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false">
+             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
                <span class="sr-only"> Toggle Navigation </span>
                       <span class="icon-bar"> </span>
                         <span class="icon-bar"> </span>

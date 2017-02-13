@@ -1,5 +1,7 @@
 /*If you're reading this then you shall know that this..... is my favortie page.......... i'll see myself out. 💩 👽 */
 
+// IF YOU'RE READING IT'S TOO LATE
+// if you don't comprehend this reference then too bad for you
 
 $(document).on('click','.favorite', function(){
 var item = $(this);
@@ -7,7 +9,7 @@ var id = $(this).attr('data-id');
 var check = $(this).attr('data-favorite');
 $.ajax({
     type: 'POST',
-    url: '/includes/ajax/addfavorite.php',   
+    url: '/includes/ajax/addfavorite.php',
     data: {
         id:id,
         check:check
@@ -19,10 +21,10 @@ $.ajax({
              }
              else{
                 item.attr('data-favorite','false');
-                item.css('color','');  
+                item.css('color','');
              }
-    }   
-    
-}); // end ajax request*/ 
-    
+    }
+
+}); // end ajax request*/
+
 });
