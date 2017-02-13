@@ -1,4 +1,5 @@
 $(document).on('click','#calculate',function(){
+    if(selectedusers.length == 0) return 0;
     calculate = true;
     $.ajax({
     type: 'POST',
@@ -11,11 +12,52 @@ $(document).on('click','#calculate',function(){
         $('#stuff').empty();
         $('#stuff').append(jqXHR);
     }
-}); // end ajax request*/ 
-    
 
-    
+}); // end ajax request*/ 
+
 });
+
+
+$(document).on('click','#apply',function(){
+
+    dialog = bootbox.dialog({
+        message: '<input type="text" id="get-instagram"> <input type="text" id="get-facebook"> <input type="text" id="get-twitter"> <button id="applyall">Submit</button>',
+        closeButton: true
+    });
+    dialog.modal();
+
+});
+    
+$(document).on('click','#applyall',function(){
+var instval = $('#get-instagram').val();
+var facebookval = $('#get-facebook').val();
+var twitterval = $('#get-twitter').val();
+var instposts = [];
+var facebookposts = [];
+var twitterposts = [];
+$('.instagraminput').each(function(){
+    $(this).val(instval);
+   instposts.push(instval);
+});
+getCalculation('instagram',instposts,selectedusers);
+
+$('.facebookinput').each(function(){
+    $(this).val(facebookval);
+   facebookposts.push(facebookval);
+});
+getCalculation('facebook',facebookposts,selectedusers);
+
+$('.twitterinput').each(function(){
+    $(this).val(twitterval);
+   twitterposts.push(twitterval);
+});
+
+getCalculation('twitter',twitterposts,selectedusers);
+
+
+});
+
+
 
 $(document).on('click', '#search-keyword', function () {
     var temparr = [];
@@ -29,16 +71,12 @@ $(document).on('click', '#search-keyword', function () {
     else{
         var keyword = $('.dropdown').val();
         filters['keywords'] = [keyword];
-    } 
-    
-    delete filters['user'];
-    applyFilters(filters);
-});
-
-
-$(document).on('click', '#search-influencer', function () {
-    filters['user'] = $('#right-input-field').val();
-    delete filters['keywords'];
+    }
+    var user = $('#influencer-search-name').val();
+    console.log(user.length);
+    if(user.length > 0 ) filters['user'] = user;
+    else  delete filters['user'];
+    console.log(filters);
     applyFilters(filters);
 });
 
@@ -150,12 +188,15 @@ function selectInfluencer(id, element) {
 $('#slider-instagram').click(function () {
     filters['min'] = $('#min-instagram').attr('data-number');
     filters['max'] = $('#max-instagram').attr('data-number');
+    filters['platform'] = 'instagram';
     applyFilters(filters);
 });
 
 $('#slider-twitter').click(function () {
+    console.log('being applied');
     filters['min'] = $('#min-twitter').attr('data-number');
     filters['max'] = $('#max-twitter').attr('data-number');
+    filters['platform'] = 'twitter';
     applyFilters(filters);
 });
 
@@ -163,18 +204,21 @@ $('#slider-twitter').click(function () {
 $('#slider-facebook').click(function () {
     filters['min'] = $('#min-facebook').attr('data-number');
     filters['max'] = $('#max-facebook').attr('data-number');
+    filters['platform'] = 'facebook';
     applyFilters(filters);
 });
 
 $('#slider-instagram-engagement').click(function () {
     filters['min'] = $('#min-instagram-engagement').attr('data-number');
     filters['max'] = $('#max-instagram-engagement').attr('data-number');
+    filters['platform'] = 'instagram';
     applyFilters(filters);
 });
 
 $('#slider-twitter-engagement').click(function () {
     filters['min'] = $('#min-twitter-engagement').attr('data-number');
     filters['max'] = $('#max-twitter-engagement').attr('data-number');
+    filters['platform'] = 'twitter';
     applyFilters(filters);
 });
 
@@ -182,6 +226,7 @@ $('#slider-twitter-engagement').click(function () {
 $('#slider-facebook-engagement').click(function () {
     filters['min'] = $('#min-facebook-engagement').attr('data-number');
     filters['max'] = $('#max-facebook-engagement').attr('data-number');
+    filters['platform'] = 'twitter';
     applyFilters(filters);
 });
 
@@ -218,7 +263,7 @@ $(document).ready(function () {
         success: function (jqXHR, textStatus, errorThrown) {
             $('#content').append(jqXHR);
         }
-    }); // end ajax request*/ 
+    }); // end ajax request*/
 
 
     $(window).scroll(function () {
@@ -226,6 +271,7 @@ $(document).ready(function () {
         if ($(window).scrollTop() == $(document).height() - $(window).height()) {
             page = page + 1;
             console.log(page);
+            console.log(filters);
             $.ajax({
                 type: 'POST',
                 url: '/includes/ajax/avocado-discover-pagination.php',
@@ -238,21 +284,21 @@ $(document).ready(function () {
 
                 }
 
-            }); // end ajax request*/ 
+            }); // end ajax request*/
         }
         }
     });
-    
+
 });
 
 
 
-//function to have fixed positioning after scroll. 
+//function to have fixed positioning after scroll.
 $(window).scroll(function () {
-    
+
 if(calculate == false){
     if (document.body.scrollTop > target) {
-        $('#fixed-position').css('margin-top', '-10%');
+        $('#fixed-position').css('margin-top', '-9%');
     }
     else {
         $('#fixed-position').css('margin-top', '0px');
@@ -261,16 +307,16 @@ if(calculate == false){
 });
 
 $(window).scroll(function () {
- 
+
     if (document.body.scrollTop > target) {
         $('.sidebar-left').css('position', 'fixed');
-        $('.sidebar-left').css('margin-top', '-10%');
+        $('.sidebar-left').css('margin-top', '-131px');
     }
     else {
         $('.sidebar-left').css('position', 'absolute');
         $('.sidebar-left').css('margin-top', '0px');
     }
- 
+
 });
 
 
@@ -360,7 +406,10 @@ $(document).on('click','.filter-option',function(){
 
 
 
-$(document).on('keyup', '.campaignfocus', function () { 
+
+
+$(document).on('keyup', '.campaignfocus', function () {
+
     var posts = [];
     var type = $(this).attr('data-platform');
     var id = $(this).attr('data-id');
@@ -422,3 +471,7 @@ function getCalculation(type, posts, selectedusers) {
 
 
 }
+
+
+
+

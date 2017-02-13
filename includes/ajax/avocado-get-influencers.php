@@ -15,7 +15,7 @@ echo '
                 <option class="option" value=""> None</option>
             </select>
         -->
-    <div class="col-md-12 col-lg-6" style="margin-top:59px;margin-left: 5%;">
+    <div class="col-md-12 col-lg-6 campaign-info">
     <label id="campaign-label">CAMPAIGN NAME:</label><input id="campaign-name" type="text" placeholder="Untitled Campaign">
     </div>
     <button class="col-md-6 col-lg-3 info-button secondary-button" style="margin-right: 100px;">SUBMIT FOR PRICING</button>

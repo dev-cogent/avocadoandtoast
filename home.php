@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html class="no-js css-menubar" lang="en">
 <head>
   <?php include 'includes/head.php' ?>
     <title>Blank Page | Project Social</title>
@@ -9,10 +8,6 @@
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 </head>
 
-<div class="nav">
-
-
-</div>
 
   <header class="header avocado-header">
 
@@ -22,31 +17,35 @@
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="row avocado-row">
 
-        <div class="navbar-header">
-             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <nav class="navbar">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                   <a class="navbar-brand" href="#"><img src="assets/images/at-logo-black.png" class="at-logo-nav"> </a>
+             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
                <span class="sr-only"> Toggle Navigation </span>
-
+                      <span class="icon-bar"> </span>
+                        <span class="icon-bar"> </span>
+                      <i class="icon wb-menu" style=""></i>
+                          <span class="icon-bar"> </span>
              </button>
-             <a class="navbar-brand" href="#"><img src="assets/images/at-logo-black.png" class="at-logo-nav"> </a>
-             <div class="logo-mobile"> </div>
            </div>
 
 
 
-   <div class="navbar-collapse collapse" id="navbar1">
+   <div class="collapse navbar-collapse" id="myNavBar">
       <ul class="nav navbar-nav avocado-ul center-ul">
           <li class="nav-href"><a href="#" class="main-nav-dark"> Influencers </li>
           <li class="nav-href"><a href="#" class="main-nav-dark"> Agencies </li>
           <li class="nav-href"><a href="#" class="about-us main-nav-dark"> About Us </li>
           </ul>
 
-      <ul class="nav navbar-nav login-sect">
+      <ul class="nav navbar-nav navbar-right login-sect">
           <li class="login border-dark"> <a href="#" class="login-nav main-nav-dark"> LOGIN </a> </li>
         </ul>
 
       </div>
     </div>
-  </div>
+  </nav>
 
 
 </div>
@@ -207,9 +206,3 @@
 
 
         </footer>
-
-
-
-
-
-</html>
