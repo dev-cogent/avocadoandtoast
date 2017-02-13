@@ -12,6 +12,7 @@ $(document).on('click','#calculate',function(){
         $('#stuff').empty();
         $('#stuff').append(jqXHR);
     }
+
 }); // end ajax request*/ 
 
 
@@ -54,7 +55,11 @@ getCalculation('twitter',twitterposts,selectedusers);
 
 });
 
-    
+}); // end ajax request*/
+
+
+
+
 });
 
 $(document).on('click', '#search-keyword', function () {
@@ -69,10 +74,10 @@ $(document).on('click', '#search-keyword', function () {
     else{
         var keyword = $('.dropdown').val();
         filters['keywords'] = [keyword];
-    } 
+    }
     var user = $('#influencer-search-name').val();
     console.log(user.length);
-    if(user.length > 0 ) filters['user'] = user;    
+    if(user.length > 0 ) filters['user'] = user;
     else  delete filters['user'];
     console.log(filters);
     applyFilters(filters);
@@ -261,7 +266,7 @@ $(document).ready(function () {
         success: function (jqXHR, textStatus, errorThrown) {
             $('#content').append(jqXHR);
         }
-    }); // end ajax request*/ 
+    }); // end ajax request*/
 
 
     $(window).scroll(function () {
@@ -282,18 +287,18 @@ $(document).ready(function () {
 
                 }
 
-            }); // end ajax request*/ 
+            }); // end ajax request*/
         }
         }
     });
-    
+
 });
 
 
 
-//function to have fixed positioning after scroll. 
+function to have fixed positioning after scroll.
 $(window).scroll(function () {
-    
+
 if(calculate == false){
     if (document.body.scrollTop > target) {
         $('#fixed-position').css('margin-top', '-9%');
@@ -305,7 +310,7 @@ if(calculate == false){
 });
 
 $(window).scroll(function () {
- 
+
     if (document.body.scrollTop > target) {
         $('.sidebar-left').css('position', 'fixed');
         $('.sidebar-left').css('margin-top', '-131px');
@@ -314,7 +319,7 @@ $(window).scroll(function () {
         $('.sidebar-left').css('position', 'absolute');
         $('.sidebar-left').css('margin-top', '0px');
     }
- 
+
 });
 
 
@@ -404,7 +409,11 @@ $(document).on('click','.filter-option',function(){
 
 
 
+
 $(document).on('change', '.campaignfocus', function () { 
+
+$(document).on('keyup', '.campaignfocus', function () {
+
     var posts = [];
     var type = $(this).attr('data-platform');
     var id = $(this).attr('data-id');
