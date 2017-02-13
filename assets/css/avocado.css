@@ -52,9 +52,6 @@ a.about-us{
 }
 .collapse.in {
   display: table-caption;
-  width: 50%;
-  float: right;
-  background-color: rgb(226, 226, 226);
 }
 
 
@@ -807,6 +804,12 @@ i.icon.wb-menu {
 
 /*iphone 5*/
 @media (min-width:1px) and (max-width:359px) {
+  ul.nav.navbar-nav{
+    padding: 0;
+  }
+  .dashboard-img{
+    display: none;
+  }
   .row.avocado-row{
     position: initial;
   }
@@ -823,7 +826,7 @@ i.icon.wb-menu {
   padding-right: 0;
 }
 .first-sect-header{
-  margin-top: -30%;
+  margin-top: -20%;
   margin-bottom: 3%;
 }
 .start-btn{
@@ -898,6 +901,12 @@ footer.avocado-footer{
 }
 
 @media (min-width:360px) and (max-width:411px){
+  ul.nav.navbar-nav{
+    padding: 0;
+  }
+  .dashboard-img{
+    display: none;
+  }
   .third-sect-index{
       padding-left: 0;
       padding-right: 0;
@@ -914,7 +923,7 @@ footer.avocado-footer{
     padding-right: 0;
   }
   .first-sect-header{
-    margin-top: -30%;
+    margin-top: -20%;
     margin-bottom: 3%;
   }
   .start-btn{
@@ -988,6 +997,12 @@ footer.avocado-footer{
   }
 }
 @media (min-width:412px) and (max-width:699px) {
+  ul.nav.navbar-nav{
+    padding: 0;
+  }
+  .dashboard-img{
+    display: none;
+  }
   .analytics-mockup{
     margin-top: 0;
     min-width: 0;
@@ -1014,7 +1029,7 @@ footer.avocado-footer{
     padding-bottom: 15px;
   }
   .first-sect-header{
-    margin-top: -40%;
+    margin-top: -28%;
   }
   img.at-logo-nav{
     width: 75%;
