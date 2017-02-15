@@ -20,7 +20,7 @@
         <nav class="navbar">
             <div class="container-fluid">
                 <div class="navbar-header">
-                   <a class="navbar-brand" href="/"><img src="assets/images/at-logo-black.png" class="at-logo-nav"> </a>
+                   <a class="navbar-brand" href="/"><img src="assets/images/at-logo-black.png" class="logo-nav-index"> </a>
              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
                <span class="sr-only"> Toggle Navigation </span>
                       <span class="icon-bar"> </span>
@@ -54,7 +54,7 @@
 
 <div class="header-container">
 <div class="background-img">
-  <img src="assets/images/main-page-banner.png" class="avocado-img-header img-responsive">
+  <img src="assets/images/main-page-banner.png" class="main-img-header img-responsive">
   <div class="text-container">
   <div class="main-banner-header large"> Two things that go well together:  </div>
   <div class="main-banner-det"> AVOCADO <i class="icon wb-plus list-icon avo med lg" aria-hidden="true"></i> TOAST <br>
