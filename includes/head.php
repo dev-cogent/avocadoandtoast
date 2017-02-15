@@ -4,7 +4,7 @@
   <meta name="description" content="bootstrap admin template">
   <meta name="author" content="">
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
-  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="shortcut icon" href="/assets/images/avocado.png">
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/global/css/bootstrap.min.css">
   <link rel="stylesheet" href="/global/css/bootstrap-extend.min.css">
