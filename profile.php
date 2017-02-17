@@ -53,14 +53,8 @@ $id = '5AUgZ0C';
 
 
 
-    <div class="col-xs-12" style="border-top: 1px solid rgb(210,215,220); border-bottom:1px solid rgb(210,215,220); height:66px;">
-       <img src="/assets/images/at-logo-black.png" style="margin-top:-8px;">
+<?php include 'acnav.php'; ?>
 
-    </div>
-<!-- Content where the discover, communicatie, order management would be -->
-<div class="mininav" style="margin-top:65px" >
-    <p class="nav2">DISCOVER</p>
-</div>
 
 
 
