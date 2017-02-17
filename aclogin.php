@@ -100,14 +100,39 @@ border-radius:0px;
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #c4c4c4 !important;
 }
-#inputPlaceholder{
-    border:1px solid black;
-    color:#1F232A;
-    border-radius:0px !important;
+
+#header-text{
+    text-align:center; 
+    font-family:'Montserrat', sans-serif; 
+    color:#515862; 
+    letter-spacing: 2px; 
+    font-size:55px; 
+    padding-bottom:50px; 
+    padding-top:50px;
 }
+
+@media screen and (max-width:480px){
+    #header-text{
+    text-align:center; 
+    font-family:'Montserrat', sans-serif; 
+    color:#515862; 
+    letter-spacing: 2px; 
+    font-size:25px; 
+    padding-bottom:50px; 
+    padding-top:50px;
+}
+
+    #icon{
+        height:90px;
+        width:97px;
+    }
+
+
+}
+
 </style>
   <?php include 'includes/head.php' ?>
-    <title>Blank Page | Project Social</title>
+    <title>Login</title>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700" rel="stylesheet">
@@ -123,7 +148,7 @@ border-radius:0px;
 </head>
 
 <body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
-    <div class="col-xs-12" style="border-top: 1px solid rgb(210,215,220); border-bottom:1px solid rgb(210,215,220); height:66px;">
+    <div class="col-xs-12" style="border-top: 1px solid rgb(210,215,220); border-bottom:1px solid white; height:66px; background-color:#fcfcfc;">
        <img src="/assets/images/at-logo-black.png" style="margin-top:-8px;">
 
 </div>
@@ -131,22 +156,25 @@ border-radius:0px;
 
 <!-- logo goes here -->
 <div id="spacing"></div>
-<h1 style="text-align:center; font-family:'Montserrat', sans-serif; color:#1F232A; letter-spacing: 2px;"> SIGN IN </h1>
-<div id="centercontent" style="text-align:center;">
+<div class="col-xs-1 col-xl-4" style="height: 100%;margin-top: -35px;background-color: #fcfcfc;"></div>
+<div class="col-xs-10 col-xl-4"> 
 
-      <div id="agencycontent" style="padding-bottom:10px; ">
-          <form method="POST" action="">
-          <input style="width:72%; height:50px; margin-left:14%;"type="email" class="form-control m-b-30" id="inputPlaceholder" name="email"    placeholder="Email">
-          <input style="width:72%; height:50px; margin-left:14%;"type="password" class="form-control m-b-30" id="inputPlaceholder" name="password" placeholder="Password">
-          <p style="font-size:10px; float:left; margin-left:14%;"><strong style="text-decoration: underline; color:#1F232A">FORGOT PASSWORD</strong> </p>
-          <br/>
-          <button class="form-control" id="login-button"> SIGN IN </button>
-          </form>
-          <a href="/register.php" style="text-decoration:none;"><button class="form-control" id="register-button" > REGISTER </button></a>
-      </div>
-
-
+<div style="text-align:center;"> <img id="icon" src="/assets/images/avocado.png"></div>
+    <h1 id="header-text"> SIGN IN </h1>
+        <div style="text-align:center;">
+                <form method="POST" action="">
+                <input style="width:72%; height:50px; margin-left:14%; text-transform:none; "type="email" class="avocado-focus form-control m-b-30"  name="email"    placeholder="Email">
+                <input style="width:72%; height:50px; margin-left:14%; text-transform:none; "type="password" class="avocado-focus form-control m-b-30"  name="password" placeholder="Password">
+                <p style="font-size:10px; float:left; margin-left:14%;"><strong style="text-decoration: underline; color:#1F232A">FORGOT PASSWORD</strong> </p>
+                <br/>
+                <button class="form-control" id="login-button"> SIGN IN </button>
+                </form>
+                <a href="/register.php" style="text-decoration:none;"><button class="form-control" id="register-button" > REGISTER </button></a>
+    </div>
 </div>
+
+<div class="col-xs-1 col-xl-4" style="height: 100%;margin-top: -35px;background-color: #fcfcfc;"></div>
+
 
 
 

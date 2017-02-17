@@ -1,17 +1,17 @@
 <?php
+ 
 
 include 'favorite.php';
 
 class signUp extends favorite{
 
  function register($arr){
-
+	 
     $first = $arr['firstname'];
     $last = $arr['lastname'];
     $email = $arr['email'];
     $password = $arr['password'];
     $confirmpassword = $arr['confirm'];
-    //$accounttype = $arr['accounttype'];
     $company = $arr['company'];
     $checkEmail = $this->checkEmail($email);
     $checkPassword = $this->checkPassword($password);
@@ -29,9 +29,10 @@ class signUp extends favorite{
     $confirmed = 'false';
     $conn = $this->dbinfo();
     $favoritedb = $this->favoriteDB();
-    $stmt = $conn->prepare("INSERT INTO `login_information`(`userid`,`email`, `firstname`, `lastname`,`salt`, `password`, `column_id`, `confirmed`,`confirmation_key`,`company`)
-    VALUES (?,?,?,?,?,?,?,?,?,?)");
-    $stmt->bind_param('ssssssssss', $userid, $email, $first, $last, $salt, $password,$columnid,$confirmed,$confirmationkey,$company);
+	$date = time();
+    $stmt = $conn->prepare("INSERT INTO `login_information`(`userid`,`email`, `firstname`, `lastname`,`salt`, `password`, `column_id`, `confirmed`,`confirmation_key`,`company`,`date_created`)
+    VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param('sssssssssss', $userid, $email, $first, $last, $salt, $password,$columnid,$confirmed,$confirmationkey,$company,$date);
     if(!$stmt->execute()){
         echo 'here';
         if(strpos($stmt->error, 'Duplicate') !== FALSE){

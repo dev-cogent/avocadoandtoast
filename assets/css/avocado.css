@@ -609,6 +609,7 @@ span.software{
   font-size: 26px;
   font-family: 'Montserrat', sans-serif;
   color: #515862;
+  letter-spacing:1px;
 
 }
 .col-xs-12.signup-col{
@@ -631,11 +632,14 @@ span.software{
 }
  .form-control{
    font-size: 20px;
-   text-transform: uppercase;
+   /*Commenting out text transform due to the fact that it is confusing to UX. Let me know if this is confusing -- Trump 
+   text-transform: uppercase;*/
    letter-spacing: 2px;
    font-family: 'Open Sans', sans-serif;
      color: #515862;
  }
+
+ 
 
 #field{
   margin-bottom: 2%;
@@ -648,8 +652,9 @@ span.software{
   letter-spacing: 1.5px;
   font-family: 'montserratlight', sans-serif;
   padding: 14px 23px;
-  text-align: center;
   color: white;
+  width: 100%;
+  border:0px;
 }
 
 /*large screen size */
