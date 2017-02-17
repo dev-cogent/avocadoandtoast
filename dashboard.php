@@ -104,9 +104,9 @@ echo '<div class="campaign-block col-xs-9 data-id="'.$campaignid.'" data-desc="N
             <tr>
                 <td class="stats">'.$numberOfInfluencers.'</td>
                 <td class="stats">'.$totalpost.'</td>
-                <td class="stats">'.number_format($avgimpressions).'</td>
+                <td class="stats">'.numberAbbreviation($avgimpressions).'</td>
                 <td class="stats">1,000</td>
-                <td class="stats">'.number_format($totalimpressions).'</td>
+                <td class="stats">'.numberAbbreviation($totalimpressions).'</td>
             </tr>
             <tr>
                 <td class="label-info"># of Influencers</td>

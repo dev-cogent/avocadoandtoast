@@ -51,7 +51,7 @@ echo '
                     $insthandle = $insthandle[0];
                   echo'
                     <tr class="campaign-list-table">
-                        <td class="campaign-tablerow" style="width:15%;">
+                        <td class="campaign-tablerow" style="width:15%; padding-left:1%;">
                                 <div class="information"> 
                             <img src="http://project.social/'.$image.'" class="influencer-campaign-image ">
                             <h4 class="influencer-handle-text handle">@'.$insthandle.'</h4>
