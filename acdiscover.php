@@ -25,17 +25,7 @@ include 'includes/numberAbbreviation.php';
 </head>
 
 <body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
-    <div class="col-xs-12" style="border-top: 1px solid rgb(210,215,220); border-bottom:1px solid rgb(210,215,220); height:66px;">
-       <img src="/assets/images/at-logo-black.png" style="margin-top:-8px;">
-
-    </div>
-<!-- Content where the discover, communicatie, order management would be -->
-<div class="mininav" style="margin-top:65px" >
-    <p class="nav2"> <a href="" class="discover-nav"> DISCOVER </a> </p>
-      <p class="nav2"> <a href="" class="create-nav"> CREATE </a> </p>
-        <p class="nav2"> <a href="" class="price-nav">  PRICE CAMPAIGN </a></p>
-          <p class="nav2"> <a href="" class="campaign-nav"> YOUR CAMPAIGNS </a>  </p>
-</div>
+<?php include 'acnav.php';?>
 
 
 
@@ -295,7 +285,7 @@ $('#tokenfield').tokenfield();
 </script>
 <script src="/acslider.js"></script>
 <script src="/includes/javascript/avocado-discover.js"></script>
-
+<script src="/includes/javascript/create-campaign.js"></script>
 
 
 

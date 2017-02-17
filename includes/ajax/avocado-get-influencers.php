@@ -19,7 +19,7 @@ echo '
     <label id="campaign-label">CAMPAIGN NAME:</label><input id="campaign-name" type="text" placeholder="Untitled Campaign">
     </div>
     <button class="col-md-6 col-lg-3 info-button secondary-button" style="margin-right: 100px;">SUBMIT FOR PRICING</button>
-    <button class="col-md-6 col-lg-3 info-button main-button">CREATE CAMPAIGN </button>
+    <button class="col-md-6 col-lg-3 info-button main-button" id="createcampaign">CREATE CAMPAIGN </button>
 
 
 

@@ -3,6 +3,13 @@ session_start();
 //error_reporting(0);
 include 'includes/dbinfo.php';
 include 'includes/numberAbbreviation.php';
+include 'includes/class/savecampaign.php';
+
+$save = new saveCampaign;
+$campaigninfo = $save->getSavedCampaigns($_SESSION['column_id']);
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -21,112 +28,12 @@ include 'includes/numberAbbreviation.php';
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
 <link rel="stylesheet" href="/includes/css/discover.css">
-<style>
-a:hover{
-    text-decoration:none;
-}
-#allcampaigns{
-    font-size: 22px;
-    font-family: 'open sans';
-    color: #515862;
-    letter-spacing: 1px;
-}
-
-.divider-top{
-    border-bottom:1px solid rgb(210,215,220);
-    padding-bottom:20px;
-    border-right:1px solid rgb(210,215,220);
-}
-
-#campaign-details{
-    position: fixed;
-    width: 21%;
-    border-left: 1px solid rgb(210,215,220);
-    margin-left: -14px;
-    padding-left: 14px;
-    margin-bottom: 20px;
-    padding-bottom: 100%;
-}
-
-.stats{
-    color: #73C48D;
-    font-family: 'montserratsemibold';
-    font-size: 3em;
-    padding-right: 17px;
-    font-weight: 600;
-        padding-top: 20px;
-}
-
-.label-info{
-
-    color: rgb(29, 40, 76);
-    font-weight: 600;
-    font-size: 15px;
-    font-family: 'open sans';
-    padding-bottom: 10px;
-
-}
-
-.campaign-block{
-    border-bottom: 1px solid rgb(210,215,220);
-    padding-bottom: 10px;
-    padding-top: 0px;
-    border-right:1px solid rgb(210,215,220);
-}
-
-#campaign-title{
-color: rgb(29, 40, 76);
-font-size: 20px;
-font-family:'open sans';
-
-}
-
-.title{
-    font-weight:600;
-    font-family:'open sans';
-    font-size:15px;
-    color:rgb(29, 40, 76);
-}
-
-#summary{
-    color:#515862;
-    font-size:13px;
-    width: 70%;
-}
-
-.option-button{
-    border: 1px solid black;
-    border-radius: 0px;
-    background-color: white;
-    font-size: 13px;
-    font-family: 'montserratthin';
-    padding-left: 1px;
-    margin-right: 5px;
-    height: 40px;
-    width: 130px;
-}
-.campaign-block:hover{
-    background-color:#eaeaea;
-}
-.other-nav{
-    padding-bottom:21px;
-}
-</style>
+<link rel="stylesheet" href="/assets/css/dashboard.css">
 </head>
 
 <body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
 
-    <div class="col-xs-12" style="border-top: 1px solid rgb(210,215,220); border-bottom:1px solid rgb(210,215,220); height:66px;">
-       <img src="/assets/images/at-logo-black.png" style="margin-top:-8px;">
-
-    </div>
-<!-- Content where the discover, communicatie, order management would be -->
-<div class="mininav" style="margin-top:65px" >
-    <p class="nav2"> <a href="" class="other-nav discover-nav"> DISCOVER </a> </p>
-      <p class="nav2"> <a href="" class="other-nav create-nav"> CREATE </a> </p>
-        <p class="nav2"> <a href="" class="other-nav price-nav">  PRICE CAMPAIGN </a></p>
-          <p class="nav2"> <a href="" class="other-nav campaign-nav"> YOUR CAMPAIGNS </a>  </p>
-</div>
+<?php include 'acnav.php'; ?>
 
 
 
@@ -165,30 +72,11 @@ font-family:'open sans';
 </div>
 
 
-<div class="col-xs-2 col-xl-2" style="padding-top: 75px;">
-    <div id="campaign-details">
-       <p id="campaign-title">T-shirt Spring Frenzy </p>
-       <p class="title"> Campaign Summary</p>
-       <p id="summary"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet hendrerit turpis id consectetur. 
-           Aliquam eget risus egestas, placerat leo non, tincidunt est. Aliquam fringilla ultrices vulputate. Nunc magna tellus, egestas ac posuere sit amet, sagittis vitae orci. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </p>
-       <p class="title">Campaign Schedule</p>
-       <p id="schedule"> <strong> Start</strong> April 1 <strong> April 6 </strong>
-       <div id="button-container"> 
-           <button class="option-button"> Delete Campaign </button>
-           <button class="option-button"> View Campaign </button>
-        </div>
+<div class="col-xs-2" style="padding-top: 75px;" id="campaign-info">
 
 
 
-
-
-
-
-
-
-
-
-    </div>
+</div>
 
 
 
@@ -196,82 +84,45 @@ font-family:'open sans';
 
 
 <div id="campaign-container">
+<?php 
+foreach($campaigninfo as $campaignid => $info){
+$comment = json_decode($info['comment'],true);
+$numberOfInfluencers = count($info['influencer']);
+$name = $info['campaignname'];
+$totalimpressions = $comment['totalimpressions'];
+$avgimpressions = $totalimpressions/$numberOfInfluencers;
+$totalpost = $comment['totalposts'];
+$datecreated = $comment['created'];
+echo '<div class="campaign-block col-xs-9 data-id="'.$campaignid.'" data-desc="Nothing seems to be here." data-name="'.$name.'" ">
+        <table class="col-xs-12">
+            <tbody style="border-top:0px;">
+            <tr>
+                <td class="campaign-details" >'.$name.'</td>
+                <td class="campaign-details" >&#9679; Campaign not in progress </td>
+                <td class="campaign-details" > Created '.$datecreated.'</td>
+            </tr>
+            <tr>
+                <td class="stats">'.$numberOfInfluencers.'</td>
+                <td class="stats">'.$totalpost.'</td>
+                <td class="stats">'.number_format($avgimpressions).'</td>
+                <td class="stats">1,000</td>
+                <td class="stats">'.number_format($totalimpressions).'</td>
+            </tr>
+            <tr>
+                <td class="label-info"># of Influencers</td>
+                <td class="label-info">Total Post</td>
+                <td class="label-info">Average Impressions</td>
+                <td class="label-info"> Average Engagement</td>
+                <td class="label-info"> Total Reach</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>';
 
-    <div class="campaign-block col-xl-9">
-        <table class="col-xl-12">
-            <tbody style="border-top:0px;">
-            <tr>
-                <td style="font-size:17px; color:rgb(29, 40, 76); font-family:'open sans'; padding-top: 30px;"> T-shirt Spring Frenzy </td>
-                <td style="font-size:15px; color:rgb(29, 40, 76); font-family:'open sans'; padding-top: 30px;">&#9679; Campaign in process </td>
-                <td style="font-size:15px; color:rgb(29, 40, 76); font-family:'open sans'; padding-top: 30px;"> Created 6/22/2015</td>
-            </tr>
-            <tr>
-                <td class="stats"> 107</td>
-                <td class="stats"> 7 </td>
-                <td class="stats"> 22,000 </td>
-                <td class="stats">1,000</td>
-                <td class="stats">23,000</td>
-            </tr>
-            <tr>
-                <td class="label-info"># of Influencers invited</td>
-                <td class="label-info"> Unread Messages </td>
-                <td class="label-info"> Number of likes </td>
-                <td class="label-info"> Number of comments </td>
-                <td class="label-info"> Total Reach</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="campaign-block col-xl-9">
-        <table class="col-xl-12">
-            <tbody style="border-top:0px;">
-            <tr>
-                <td style="font-size:17px; color:rgb(29, 40, 76); font-family:'open sans'; padding-top: 30px;"> T-shirt Spring Frenzy </td>
-                <td style="font-size:15px; color:rgb(29, 40, 76); font-family:'open sans'; padding-top: 30px;">&#9679; Campaign in process </td>
-                <td style="font-size:15px; color:rgb(29, 40, 76); font-family:'open sans'; padding-top: 30px;"> Created 6/22/2015</td>
-            </tr>
-            <tr>
-                <td class="stats"> 107</td>
-                <td class="stats"> 7 </td>
-                <td class="stats"> 22,000 </td>
-                <td class="stats">1,000</td>
-                <td class="stats">23,000</td>
-            </tr>
-            <tr>
-                <td class="label-info"># of Influencers invited</td>
-                <td class="label-info"> Unread Messages </td>
-                <td class="label-info"> Number of likes </td>
-                <td class="label-info"> Number of comments </td>
-                <td class="label-info"> Total Reach</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="campaign-block col-xl-9">
-        <table class="col-xl-12">
-            <tbody style="border-top:0px;">
-            <tr>
-                <td style="font-size:17px; color:rgb(29, 40, 76); font-family:'open sans'; padding-top: 30px;"> T-shirt Spring Frenzy </td>
-                <td style="font-size:15px; color:rgb(29, 40, 76); font-family:'open sans'; padding-top: 30px;">&#9679; Campaign in process </td>
-                <td style="font-size:15px; color:rgb(29, 40, 76); font-family:'open sans'; padding-top: 30px;"> Created 6/22/2015</td>
-            </tr>
-            <tr>
-                <td class="stats"> 107</td>
-                <td class="stats"> 7 </td>
-                <td class="stats"> 22,000 </td>
-                <td class="stats">1,000</td>
-                <td class="stats">23,000</td>
-            </tr>
-            <tr>
-                <td class="label-info"># of Influencers invited</td>
-                <td class="label-info"> Unread Messages </td>
-                <td class="label-info"> Number of likes </td>
-                <td class="label-info"> Number of comments </td>
-                <td class="label-info"> Total Reach</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+}
+
+
+?>
 
 
 
@@ -289,6 +140,30 @@ $(document).on('mouseleave', '.other-nav',function(){
 
 $(this).css('box-shadow','none');
 });
+
+
+
+$(document).on('click','.campaign-block',function(){
+    $('#campaign-info').empty();
+    var name = $(this).attr('data-name');
+    var desc = $(this).attr('data-desc');
+    var id = $(this).attr('data-id');
+
+    $('#campaign-info').append('<div id="campaign-details">'+
+       '<p id="campaign-title">'+name+'</p>'+
+      ' <p class="title"> Campaign Summary</p>'+
+       '<p id="summary">'+desc+'</p>'+
+       '<p class="title">Campaign Schedule</p>'+
+       '<p id="schedule"> <strong> Start</strong> April 1 <strong> April 6 </strong>'+
+       '<div id="button-container">'+
+           '<button class="option-button"> Delete Campaign </button>'+
+           '<button class="option-button" id="'+id+'"> View Campaign </button>'+
+    '</div>');
+});
+
+
+
+
 
 </script>
 

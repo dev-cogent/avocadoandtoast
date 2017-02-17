@@ -165,7 +165,13 @@ public function getSavedCampaigns($columnid){
         while($stmt2->fetch()){
             $arr[$campaignid]['influencer'][$influencerid] = $influencerid;
         }
-
+        unset($stmt2);
+        $stmt2 = $listconn->prepare("SELECT table_comment FROM INFORMATION_SCHEMA.TABLES WHERE table_name = '$campaignid' and table_schema = 'l5o0c8t4_save_campaign'");
+        $stmt2->execute();
+        $stmt2->bind_result($comment);
+        $stmt2->fetch();
+        $arr[$campaignid]['comment'] = $comment;
+        unset($stmt2);
     }
     return $arr;
 }
