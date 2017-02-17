@@ -1,11 +1,22 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+include 'includes/registerinfo.php';
+}
+
+?>
 <!DOCTYPE html>
 <head>
   <?php include 'includes/head.php' ?>
-    <title>Avocado & Toast</title>
+    <title>Sign Up | Avocado & Toast</title>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/includes/javascript/savecampaign.js"></script>
 <script src="/includes/javascript/addtolist.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
+<style>
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #C7C7CD !important;
+}
+</style>
 </head>
 
 
@@ -59,39 +70,39 @@
             IT'S TIME TO PUT SOME AVOCADO ON YOUR TOAST </div>
     </div>
   </div>
-
+<form method="POST" action="">
   <div class="row signup-form">
           <div class="col-xs-6 form-col">
-                <div class="input-group name">
+                <div class="input-group name"> 
                     <span class=""><i class="glyphicon glyphicon-user mycolor"></i></span>
-                      <input size="60" maxlength="255" class="form-control" style="color:#515862;" placeholder="First Name*" name="UserRegistration[username]" id="field" type="text">
+                      <input size="60" maxlength="255" class="form-control avocado-focus " style="color:#515862;" placeholder="FIRST NAME*" id="field" type="text" name="firstname">
                   </div>
 
                   <div class="input-group email">
                     <span class=""><i class="glyphicon glyphicon-user mycolor"></i></span>
-                    <input size="60" maxlength="255" class="form-control" placeholder="Email*" name="UserRegistration[username]" id="field" type="text">
+                    <input size="60" maxlength="255" class="form-control avocado-focus " placeholder="EMAIL*"  id="field" type="text" name="email">
                   </div>
 
                   <div class="input-group password">
                       <span class=""><i class="glyphicon glyphicon-user mycolor"></i></span>
-                        <input size="60" maxlength="255" class="form-control" placeholder="Password*"name="UserRegistration[username]" id="field" type="text">
+                        <input data-toggle="tooltip" data-placement="right" data-trigger="click" data-original-title="Click to tooltip"  size="60" maxlength="255" class="form-control avocado-focus " placeholder="PASSWORD*"  id="field" type="password" name="password">
                     </div>
                 </div>
 
                 <div class="col-xs-6 form-col">
                       <div class="input-group password">
                           <span class=""><i class="glyphicon glyphicon-user mycolor"></i></span>
-                            <input size="60" maxlength="255" class="form-control" placeholder="Password*" name="UserRegistration[username]" id="field" type="text">
+                            <input size="60" maxlength="255" class="form-control avocado-focus " placeholder="LAST NAME*"  id="field" type="text" name="lastname">
                         </div>
 
                         <div class="input-group">
                           <span class=""><i class="glyphicon glyphicon-user mycolor"></i></span>
-                          <input size="60" maxlength="255" class="form-control" placeholder="Email" name="UserRegistration[username]" id="field" type="text">
+                          <input size="60" maxlength="255" class="form-control avocado-focus " placeholder="COMPANY*" name="company" id="field" >
                         </div>
 
                         <div class="input-group password">
                             <span class=""><i class="glyphicon glyphicon-user mycolor"></i></span>
-                              <input size="60" maxlength="255" class="form-control" placeholder="Password*" name="UserRegistration[username]" id="field" type="text">
+                              <input size="60" maxlength="255" class="form-control avocado-focus " placeholder="VERIFY PASSWORD*" name="confirm" id="field" type="password">
                           </div>
                       </div>
   </div>
@@ -105,8 +116,8 @@
 
                   <div class="col-sm-4 signup-btn-col">
                       <div class="started-btn-div">
-                          <div class="get-started-btn">  GET STARTED
-                          </div>
+                          <button class="get-started-btn" type="submit">  GET STARTED
+                          </button>
                         </div>
                       </div>
 
@@ -114,7 +125,7 @@
 
                       </div>
   </div>
-
+</form>
 
 
 </div>

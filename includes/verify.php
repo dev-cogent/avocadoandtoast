@@ -56,7 +56,7 @@ if($login !== false){
     $stmt->prepare('UPDATE `login_information` SET `login_attempts` = ? WHERE `email` = ?');
     $stmt->bind_param('is',$login_attempts,$email);
     $stmt->execute();
-    header('Location:/discover.php');
+    header('Location:/dashboard.php');
 }
 else{
     //If the email is right but
