@@ -25,13 +25,19 @@ a:hover{
     padding-bottom: 100%;
 }
 
+td.campaign-details.name{
+  max-width: 180px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 .stats{
     color: #73C48D;
     font-family: 'montserratsemibold';
     font-size: 3em;
     padding-right: 17px;
     font-weight: 600;
-        padding-top: 20px;
+    padding-top: 10px;
 }
 
 .label-info{
@@ -94,8 +100,13 @@ table{
 }
 
 .campaign-details{
-font-size:17px; 
-color:rgb(29, 40, 76); 
-font-family:'open sans'; 
+font-size:17px;
+color:rgb(29, 40, 76);
+font-family:'open sans';
 padding-top: 30px;
+}
+
+i.fa.fa-exclamation-triangle {
+  font-size: 22px;
+  color: #EC3241;
 }

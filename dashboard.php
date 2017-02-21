@@ -84,7 +84,7 @@ $campaigninfo = $save->getSavedCampaigns($_SESSION['column_id']);
 
 
 <div id="campaign-container">
-<?php 
+<?php
 foreach($campaigninfo as $campaignid => $info){
 $comment = json_decode($info['comment'],true);
 $numberOfInfluencers = count($info['influencer']);
@@ -97,9 +97,9 @@ echo '<div class="campaign-block col-xs-9 data-id="'.$campaignid.'" data-desc="N
         <table class="col-xs-12">
             <tbody style="border-top:0px;">
             <tr>
-                <td class="campaign-details" >'.$name.'</td>
-                <td class="campaign-details" >&#9679; Campaign not in progress </td>
-                <td class="campaign-details" > Created '.$datecreated.'</td>
+                <td class="campaign-details name" >'.$name.'</td>
+                <td class="campaign-details" > <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Campaign not in progress </td>
+                <td class="campaign-details date" > Created '.$datecreated.'</td>
             </tr>
             <tr>
                 <td class="stats">'.$numberOfInfluencers.'</td>
@@ -166,4 +166,3 @@ $(document).on('click','.campaign-block',function(){
 
 
 </script>
-
