@@ -88,7 +88,7 @@ $totalimpressions = $comment['totalimpressions'];
 $avgimpressions = $totalimpressions/$numberOfInfluencers;
 $totalpost = $comment['totalposts'];
 $datecreated = $comment['created'];
-echo '<div class="campaign-block col-xs-9 data-id="'.$campaignid.'" data-desc="Nothing seems to be here." data-name="'.$name.'" ">
+echo '<div class="campaign-block col-xs-9" data-id="'.$campaignid.'" data-desc="Nothing seems to be here." data-name="'.$name.'" ">
         <table class="col-xs-12">
             <tbody style="border-top:0px;">
             <tr>
@@ -134,7 +134,9 @@ $(document).on('click','.campaign-block',function(){
     var name = $(this).attr('data-name');
     var desc = $(this).attr('data-desc');
     var id = $(this).attr('data-id');
-    $('#campaign-info').append('<div id="campaign-details">'+
+    $('#campaign-info').append(
+        '<form action="/yourcampaigns.php/'+name+'" method="POST">'+
+        '<div id="campaign-details">'+
        '<p id="campaign-title">'+name+'</p>'+
       ' <p class="title"> Campaign Summary</p>'+
        '<p id="summary">'+desc+'</p>'+
@@ -142,7 +144,7 @@ $(document).on('click','.campaign-block',function(){
        '<p id="schedule"> <strong> Start</strong> April 1 <strong> April 6 </strong>'+
        '<div id="button-container">'+
            '<button class="option-button"> Delete Campaign </button>'+
-           '<button class="option-button" id="'+id+'"> View Campaign </button>'+
-    '</div>');
+           '<button class="option-button" name="campaign" value="'+id+'"> View Campaign </button>'+
+    '</div></form>');
 });
 </script>

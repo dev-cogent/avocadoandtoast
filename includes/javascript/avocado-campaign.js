@@ -1,19 +1,6 @@
 // same ajax call but calling a different php file that contains different bootstrap styling
 // for the view campaigns onscroll pagination
 
-$(document).ready(function () {
-    $.ajax({
-        type: 'POST',
-        url: '/includes/ajax/avocado-campaign-pagination.php',
-        data: {
-            page: '0'
-        },
-        success: function (jqXHR, textStatus, errorThrown) {
-            $('#content').append(jqXHR);
-        }
-    }); // end ajax request*/
-
-
     $(window).scroll(function () {
         if(calculate == false){
         if ($(window).scrollTop() == $(document).height() - $(window).height()) {
@@ -25,7 +12,7 @@ $(document).ready(function () {
                 url: '/includes/ajax/avocado-campaign-pagination.php',
                 data: {
                     page: page,
-                    filters: filters
+                    campaignid: campaignid
                 },
                 success: function (jqXHR, textStatus, errorThrown) {
                     $('.found-influencers').append(jqXHR);
@@ -37,25 +24,10 @@ $(document).ready(function () {
         }
     });
 
-});
 
 
 
 
-//function to have fixed positioning after scroll.
-$(window).scroll(function () {
-
-if(calculate == false){
-    if (document.body.scrollTop > target) {
-        $('#fixed-position').css('position','fixed');
-        $('#fixed-position').css('margin-top', '-190px');
-    }
-    else {
-        $('#fixed-position').css('position','relative');
-        $('#fixed-position').css('margin-top', '0px');
-    }
-}
-});
 
 $(window).scroll(function () {
 if(calculate == false){

@@ -176,6 +176,72 @@ public function getSavedCampaigns($columnid){
     return $arr;
 }
 
+ 
+
+ public function getCampaign($campaignid, $position = 0, $influencernumber = 30){
+    $influencerarr = array();
+    $infoarr = array();
+    $conn = $this->dbinfo();
+    $saved = $this->savedDB();
+    $stmt = $saved->prepare("SELECT `influencer_id` FROM `$campaignid`");
+    $stmt->execute();
+    $stmt->bind_result($influencerid);
+    while($stmt->fetch()){
+        array_push($influencerarr,$influencerid);
+    }
+    unset($stmt);
+    $influencerid = implode("','",$influencerarr);
+    $stmt = $conn->prepare("SELECT `id`,`image_url` ,`instagram_count`, `instagram_url`, `twitter_url`, `twitter_count`, `facebook_count`,`facebook_url` FROM `Influencer_Information` WHERE `id` IN ('$influencerid') ORDER BY `total` DESC LIMIT $position, $influencernumber");
+    $stmt->execute();
+    $stmt->bind_result($id,$image,$instagramcount,$instagramurl,$twitterurl,$twittercount,$facebookcount,$facebookurl);
+    while($stmt->fetch()){
+
+        $insthandle = explode('.com/',$instagramurl);
+        $insthandle = explode('/',$insthandle[1]);
+        $insthandle = explode('?',$insthandle[0]);
+        $insthandle = $insthandle[0];
+        //Facebook handle
+        $facebookhandle = explode('.com/',$facebookurl);
+        $facebookhandle = explode('/',$facebookhandle[1]);
+        $facebookhandle = explode('?',$facebookhandle[0]);
+        $facebookhandle = $facebookhandle[0];
+        //twitter handle
+        $twitterhandle = explode('.com/',$twitterurl);
+        $twitterhandle = explode('/',$twitterhandle[1]);
+        $twitterhandle = explode('?',$twitterhandle[0]);
+        $twitterhandle = $twitterhandle[0];
+
+        $infoarr['influencer'][$id]['image'] = $image;
+        $infoarr['influencer'][$id]['instagram_count'] = $instagramcount;
+        $infoarr['influencer'][$id]['instagram_url'] = $instagramurl;
+        $infoarr['influencer'][$id]['instagram_handle'] = $insthandle;
+        $infoarr['influencer'][$id]['facebook_count'] = $facebookcount;
+        $infoarr['influencer'][$id]['facebook_url'] = $facebookurl;
+        $infoarr['influencer'][$id]['facebook_handle'] = $facebookhandle;
+        $infoarr['influencer'][$id]['twitter_count'] = $twittercount;
+        $infoarr['influencer'][$id]['twitter_url'] = $twitterurl;
+        $infoarr['influencer'][$id]['twitter_handle'] = $twitterhandle;
+    }
+
+    unset($stmt);
+    $stmt = $conn->prepare("SELECT `campaign_name` FROM `campaign_save_link` WHERE `campaign_id` = ? ");
+    $stmt->bind_param('s',$campaignid);
+    $stmt->execute();
+    $stmt->bind_result($campaignname);
+    $stmt->fetch();
+    $infoarr['campaign_name'] = $campaignname;
+    unset($stmt);
+    $stmt = $saved->prepare("SELECT COUNT(*) FROM `$campaignid`");
+    $stmt->execute();
+    $stmt->bind_result($count);
+    $stmt->fetch();
+    $infoarr['campaign_count'] = $count;
+    return $infoarr;
+
+
+
+ }
+
 
 
 
