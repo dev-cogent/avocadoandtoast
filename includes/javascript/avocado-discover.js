@@ -13,7 +13,7 @@ $(document).on('click','#calculate',function(){
         $('#stuff').append(jqXHR);
     }
 
-}); // end ajax request*/ 
+}); // end ajax request*/
 
 });
 
@@ -21,13 +21,25 @@ $(document).on('click','#calculate',function(){
 $(document).on('click','#apply',function(){
 
     dialog = bootbox.dialog({
-        message: '<input type="text" id="get-instagram"> <input type="text" id="get-facebook"> <input type="text" id="get-twitter"> <button id="applyall">Submit</button>',
+        message: '<div class="bootbox-body">'+
+   '<div class="icon-popup-div"> <img src="https://68.media.tumblr.com/0bd527025c6131b779c1d692c294354a/tumblr_o5asqmb3WP1txllk0o1_r2_500.gif" class="avocado-popup-icon"/> </div>'+
+    '<div class="row"> <div class="col-xs-12 popup-detail">  How many posts would you like your influencer to post on each platform?  </div>'+
+    '<div class="col-xs-4 input-div">'+
+      '<img src="assets/images/fb_black.png" class="fb-logo-popup">'+
+    '<input type="text" id="get-instagram" class="input-popup"> </div>'+
+    '<div class="col-xs-4 input-div"> <img src="assets/images/ig_black.png" class="insta-logo-popup"> <input type="text" id="get-facebook" class="input-popup"> </div>'+
+    '<div class="col-xs-4 input-div">'+
+  '<img src="assets/images/twitter_black.png" class="twitter-icon-popup">'+
+    '<input type="text" id="get-twitter" class="input-popup"> '+
+    '</div></div>'+
+      '<div class="submit-btn-div"> <button id="applyall" class="submit-btn">Submit</button>'+
+    '</div> </div>',
         closeButton: true
     });
     dialog.modal();
 
 });
-    
+
 $(document).on('click','#applyall',function(){
 var instval = $('#get-instagram').val();
 var facebookval = $('#get-facebook').val();
@@ -291,6 +303,47 @@ $(document).ready(function () {
 
 });
 
+// same ajax call but calling a different php file that contains different bootstrap styling
+// for the view campaigns onscroll pagination
+$(document).ready(function () {
+    $.ajax({
+        type: 'POST',
+        url: '/includes/ajax/avocado-campaign-pagination.php',
+        data: {
+            page: '0'
+        },
+        success: function (jqXHR, textStatus, errorThrown) {
+            $('#content').append(jqXHR);
+        }
+    }); // end ajax request*/
+
+
+    $(window).scroll(function () {
+        if(calculate == false){
+        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+            page = page + 1;
+            console.log(page);
+            console.log(filters);
+            $.ajax({
+                type: 'POST',
+                url: '/includes/ajax/avocado-campaign-pagination.php',
+                data: {
+                    page: page,
+                    filters: filters
+                },
+                success: function (jqXHR, textStatus, errorThrown) {
+                    $('.found-influencers').append(jqXHR);
+
+                }
+
+            }); // end ajax request*/
+        }
+        }
+    });
+
+});
+
+
 
 
 //function to have fixed positioning after scroll.
@@ -473,7 +526,3 @@ function getCalculation(type, posts, selectedusers) {
 
 
 }
-
-
-
-

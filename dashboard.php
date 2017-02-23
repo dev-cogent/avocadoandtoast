@@ -2,15 +2,10 @@
 session_start();
 //error_reporting(0);
 include 'includes/dbinfo.php';
-include 'includes/numberAbbreviation.php';
+ include 'includes/numberAbbreviation.php';
 include 'includes/class/savecampaign.php';
-
 $save = new saveCampaign;
 $campaigninfo = $save->getSavedCampaigns($_SESSION['column_id']);
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
@@ -118,10 +113,7 @@ echo '<div class="campaign-block col-xs-9 data-id="'.$campaignid.'" data-desc="N
             </tbody>
         </table>
     </div>';
-
 }
-
-
 ?>
 
 
@@ -132,23 +124,16 @@ echo '<div class="campaign-block col-xs-9 data-id="'.$campaignid.'" data-desc="N
 <script>
 // for nav bar
 $(document).on('mouseover', '.other-nav',function(){
-
 $(this).css('box-shadow','inset 0 0px 0 white, inset 0 -3.5px 0 #73c48d');
 });
-
 $(document).on('mouseleave', '.other-nav',function(){
-
 $(this).css('box-shadow','none');
 });
-
-
-
 $(document).on('click','.campaign-block',function(){
     $('#campaign-info').empty();
     var name = $(this).attr('data-name');
     var desc = $(this).attr('data-desc');
     var id = $(this).attr('data-id');
-
     $('#campaign-info').append('<div id="campaign-details">'+
        '<p id="campaign-title">'+name+'</p>'+
       ' <p class="title"> Campaign Summary</p>'+
@@ -160,9 +145,4 @@ $(document).on('click','.campaign-block',function(){
            '<button class="option-button" id="'+id+'"> View Campaign </button>'+
     '</div>');
 });
-
-
-
-
-
 </script>

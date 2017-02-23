@@ -6,10 +6,10 @@ class saveCampaign extends campaignCalculator{
 
 
 /**
-*@param {array} - influencers ids 
-*@param {string} - userid 
-*@param {string} - campaign name 
-*@param {String} - general information database connection 
+*@param {array} - influencers ids
+*@param {string} - userid
+*@param {string} - campaign name
+*@param {String} - general information database connection
 *@param {string} - campaign database connection.
 *@return {bool}
 */
@@ -21,16 +21,16 @@ if($saveconn === NULL)
 if($campaignname == NULL || $campaignname == "")
     $campaignname = 'Campaign Calculator '.time();
 
-#Get the column id 
+#Get the column id
 $columnid = $this->getUserColumnID($userid);
-#Insert into campaign link 
+#Insert into campaign link
 $campaignid = $this->randomString(20);
 
 $genstmt = $genconn->prepare("INSERT INTO `campaign_save_link` (`campaign_name`,`column_id`,`campaign_id`) VALUES (?,?,?) ");
 $genstmt->bind_param('sss',$campaignname,$columnid,$campaignid);
-if($genstmt->execute() === FALSE) return false; 
+if($genstmt->execute() === FALSE) return false;
 
-#Now Create table in campaign database. 
+#Now Create table in campaign database.
 $camstmt = $saveconn->prepare("
    CREATE TABLE IF NOT EXISTS `$campaignid` (
   `influencer_id` varchar(100) COLLATE utf8_unicode_ci NOT NULL PRIMARY KEY,
@@ -38,7 +38,7 @@ $camstmt = $saveconn->prepare("
   `instagram_post` varchar(10) COLLATE utf8_unicode_ci  NULL,
   `instagram_impressions` varchar(10) COLLATE utf8_unicode_ci  NULL,
   `twitter_post` varchar(10) COLLATE utf8_unicode_ci  NULL,
-  `twitter_impressions` varchar(10) COLLATE utf8_unicode_ci  NULL, 
+  `twitter_impressions` varchar(10) COLLATE utf8_unicode_ci  NULL,
   `facebook_post` varchar(10) COLLATE utf8_unicode_ci  NULL,
   `facebook_impressions` varchar(10) COLLATE utf8_unicode_ci  NULL
    ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;");
@@ -51,10 +51,10 @@ foreach($arr as $influencerid => $info){
         if($camstmt->execute() === false)
             $check = false;
 }
-if(isset($check)) return false; 
+if(isset($check)) return false;
 
 $camstmt->prepare("ALTER TABLE `$campaignid` COMMENT = '$stats'");
-if(!$camstmt->execute()) return false; 
+if(!$camstmt->execute()) return false;
 
 
 return true;
@@ -72,11 +72,11 @@ if($campaignname == NULL || $campaignname == "")
     $campaignname = 'Campaign Calculator '.time();
 
 $check = updateCampaignName($campaignid,$columnid,$campaignname);
-if (!$check) return false; 
+if (!$check) return false;
 
 foreach($arr as $influencerid => $info){
     $camstmt->prepare("INSERT INTO `$campaignid` (`influencer_id`,`instagram_post`,`instagram_impressions`,`twitter_post`,`twitter_impressions`,`facebook_post`,`facebook_impressions`) VALUES (?,?,?,?,?,?,?)
-    ON DUPLICATE KEY UPDATE 
+    ON DUPLICATE KEY UPDATE
        instagram_id =  VALUES(instagram_post),
        instagram_impressions = VALUES(instagram_impressions),
        twitter_post = VALUES(twitter_post),
@@ -88,7 +88,7 @@ foreach($arr as $influencerid => $info){
             $check = false;
 }
 $camstmt->prepare("ALTER TABLE `$campaignid` COMMENT = '$stats'");
-if(!$camstmt->execute()) return false; 
+if(!$camstmt->execute()) return false;
 
 
 
@@ -119,7 +119,7 @@ public function updateCampaignDescription($campaignid,$columnid,$description = N
     $comment = json_encode($comment);
     unset($stmt);
     $stmt->$saveconnprepare("ALTER TABLE `$campaignid` COMMENT = '$stats'");
-    if($stmt->execute()) return true; 
+    if($stmt->execute()) return true;
     else return false;
 }
 
@@ -129,20 +129,20 @@ public function updateCampaignDescription($campaignid,$columnid,$description = N
 
 /**
 *
-*@return {array} - database connection. 
+*@return {array} - database connection.
 */
 public function savedDB(){
 date_default_timezone_set('EST'); # setting timezone
-$dbusername ='l5o0c8t4_blaze'; 
-$password = 'Platinum1!'; 
-$db = 'l5o0c8t4_save_campaign'; 
-$servername = '162.144.181.131'; 
+$dbusername ='l5o0c8t4_blaze';
+$password = 'Platinum1!';
+$db = 'l5o0c8t4_save_campaign';
+$servername = '162.144.181.131';
 $conn = new mysqli($servername, $dbusername, $password, $db);
 $date = new DateTime();
 $last_updated = $date->getTimestamp();
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} 
+}
 return $conn;
 }
 
@@ -190,5 +190,3 @@ public function getSavedCampaigns($columnid){
 
 
 }
-
-

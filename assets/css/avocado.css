@@ -629,6 +629,7 @@ span.software{
     background: url(https://source.unsplash.com/nvzvOPQW0gc/1600x1100);
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
 }
 .col-xs-6.form-col {
   width: 35%;
@@ -915,7 +916,20 @@ span.software{
     font-size: 28px;
     padding-top: 44%;
   }
-
+  .signup-header{
+    font-size: 68px;
+    margin-top: 15%;
+  }
+  .col-xs-6.form-col{
+    width: 40%;
+    margin-left: 10%;
+    margin-right: -10%;
+  }
+  #field{
+    padding-top: 9%;
+    padding-bottom: 9%;
+    margin-bottom: 4%;
+  }
 }
 
 

@@ -84,7 +84,7 @@ while($stmt->fetch()){
                 $twitterhandle = explode('/',$twitterhandle[1]);
                 $twitterhandle = explode('?',$twitterhandle[0]);
                 $twitterhandle = $twitterhandle[0];
-    echo '<div  class="influencer-box col-xs-12 col-md-6 col-lg-4 col-xl-3">
+    echo '<div  class="influencer-box col-xs-12 col-md-6 col-lg-3 col-xl-2">
                             <div class="influencer-card-discover">
                                 <img class="influencer-image-card" src="https://project.social/'.$image.'">
                                 <div class="col-xs-12" style="height:170px;">
