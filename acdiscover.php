@@ -9,7 +9,7 @@ include 'includes/numberAbbreviation.php';
 <html class="no-js css-menubar" lang="en">
 <head>
   <?php include 'includes/head.php' ?>
-    <title>Blank Page | Project Social</title>
+    <title>Discover | Avocado & Toast</title>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700" rel="stylesheet">
@@ -21,7 +21,13 @@ include 'includes/numberAbbreviation.php';
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
 <link rel="stylesheet" href="/includes/css/discover.css">
+<style>
+.form-control{
+    font-size:15px;
+    letter-spacing:1px;
 
+}
+</style>
 </head>
 
 <body class="col-xs-12" style="padding-left:0px;padding-right:0px;">

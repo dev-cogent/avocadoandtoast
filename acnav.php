@@ -5,9 +5,16 @@
 <!-- Content where the discover, communicatie, order management would be -->
 <div class="mininav" style="margin-top:65px" >
     <p class="nav2"> <a href="/acdiscover.php" class="other-nav discover-nav"> DISCOVER </a> </p>
-      <p class="nav2"> <a href="" class="other-nav create-nav"> CREATE </a> </p>
-        <p class="nav2"> <a href="" class="other-nav price-nav">  PRICE CAMPAIGN </a></p>
-          <p class="nav2"> <a href="/dashboard.php" class="other-nav campaign-nav"> YOUR CAMPAIGNS </a>  </p>
+      <p class="nav2"> <a href="" class="other-nav discover-nav"> CREATE </a> </p>
+        <p class="nav2"> <a href="" class="other-nav discover-nav">  PRICE CAMPAIGN </a></p>
+          <p class="nav2"> <a href="/dashboard.php" class="other-nav discover-nav"> YOUR CAMPAIGNS </a>  </p>
 </div>';
 
 ?>
+
+<script src="/includes/javascript/nav.js"></script>
+<style>
+a:hover{
+  text-decoration:none;
+}
+</style>

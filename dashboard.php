@@ -93,7 +93,7 @@ echo '<div class="campaign-block col-xs-9" data-id="'.$campaignid.'" data-desc="
             <tbody style="border-top:0px;">
             <tr>
                 <td class="campaign-details name" >'.$name.'</td>
-                <td class="campaign-details" > <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Campaign not in progress </td>
+                <td class="campaign-details" > Campaign not in progress </td>
                 <td class="campaign-details date" > Created '.$datecreated.'</td>
             </tr>
             <tr>
@@ -122,13 +122,6 @@ echo '<div class="campaign-block col-xs-9" data-id="'.$campaignid.'" data-desc="
 
 </body>
 <script>
-// for nav bar
-$(document).on('mouseover', '.other-nav',function(){
-$(this).css('box-shadow','inset 0 0px 0 white, inset 0 -3.5px 0 #73c48d');
-});
-$(document).on('mouseleave', '.other-nav',function(){
-$(this).css('box-shadow','none');
-});
 $(document).on('click','.campaign-block',function(){
     $('#campaign-info').empty();
     var name = $(this).attr('data-name');
