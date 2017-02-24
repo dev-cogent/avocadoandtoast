@@ -313,7 +313,3 @@ $('#tokenfield').tokenfield();
 <script src="/acslider.js"></script>
 <script src="/includes/javascript/avocado-discover.js"></script>
 <script src="/includes/javascript/create-campaign.js"></script>
-
-
-
-
