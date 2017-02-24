@@ -133,11 +133,14 @@ echo '<div class="campaign-block col-xs-9" data-id="'.$campaignid.'" data-desc="
 <script>
 var target = $("#campaign-info").offset().top;
 var target2 = $('#stuff').offset().top;
+var sidebar = false;
 $(document).on('click','.campaign-block',function(){
     $('#campaign-info').empty();
     var name = $(this).attr('data-name');
     var desc = $(this).attr('data-desc');
     var id = $(this).attr('data-id');
+    
+    
     $('#campaign-info').append(
         '<div id="campaign-details" style="max-width: 330px;">'+
        '<p id="campaign-title">'+name+'</p>'+
@@ -156,6 +159,28 @@ $(document).on('click','.delete',function(){
 alert("You're about to delete the campaign!... Rest of pop up goes here");
 console.log($(this).attr('id'));
 //Ajac will go here 
+
+});
+
+$(document).on('click','.sidebar-left',function(){
+
+if(sidebar == false){
+$(this).animate({
+'max-width':'300px',
+ 'width':'300px'
+}, 'slow');
+sidebar = true;
+}
+
+else{
+    $(this).animate({
+    'width':'55px',
+    'max-width':'55px'
+},'slow');
+sidebar = false;
+}
+
+
 
 });
 </script>
