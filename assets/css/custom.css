@@ -1,12 +1,3 @@
-.dropdown-item{ /* changes color for all links */
-color: #ffffff;
-}
-
-a{
-  color: rgb(29, 40, 76);
-}
-
-
 
 /*search icon */
 .wb-search:before {
@@ -461,14 +452,6 @@ h3.add-list{
   word-spacing: 5px;
   letter-spacing: 2px;
 }
-
-.close{
-  opacity: 1;
-  font-size: 3rem;
-  margin-right: 10px;
-  color: #000;
-}
-
 button.btn.add-popup, .create-popup{
   font-family: "Roboto";
   font-size: 16px;
@@ -484,34 +467,8 @@ button.btn.add-popup, .create-popup{
   position: relative;
 }
 
-
-.btn-2::after {
-  height: 100%;
-  left: 0;
-  top: 0;
-  width: 0;
-}
-
-.btn-2:hover:after {
-  width: 100%;
-}
-/*discover page b8 */
-.img-circle{
-  display:block;
-}
-
 .wrapper{
     position:relative;
-}
-.tooltip {
-    transform: none;
-    display:inline;
-    opacity:1 !important;
-}
-
-.tooltip:hover > .tooltip-text, .tooltip:hover > .wrapper {
-    pointer-events: auto;
-    opacity: 1.0;
 }
 
 .tooltip > .tooltip-text, .tooltip >.wrapper {
@@ -533,30 +490,6 @@ button.btn.add-popup, .create-popup{
     -moz-transition: all 0.3s ease-out;
     -webkit-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
-}
-
-/* Arrow */
-.tooltip > .tooltip-text:before, .tooltip > .wrapper:before  {
-    display: inline;
-    top: -5px;
-    content: "";
-    position: absolute;
-    border: solid;
-    border-color: rgba(243,244,245,1) transparent;
-    border-width: 0 .5em .5em .5em;
-    z-index: 6000;
-    left: 20px;
-}
-
-/* Invisible area so you can hover over tooltip */
-.tooltip > .tooltip-text:after, .tooltip > .wrapper:after  {
-    top: -20px;
-    content: " ";
-    display: block;
-    height: 20px;
-    position: absolute;
-    width: 60px;
-    left: 20px;
 }
 
 
@@ -918,9 +851,7 @@ a.btn.btn-primary.main-btn.next-btn{
 
 }
 
-a:focus, a:hover, .breadcrumb>.active  {
-  color: rgb(29, 40, 76);
-}
+
 
 a.second-breadcrumb{
   color: rgb(181,183,189);

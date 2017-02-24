@@ -116,6 +116,7 @@ echo '<div class="campaign-block col-xs-9 data-id="'.$campaignid.'" data-desc="N
 }
 ?>
 
+<?php include 'acfooter.php'; ?>
 
 
 </div>

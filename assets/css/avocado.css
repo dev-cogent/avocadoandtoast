@@ -492,6 +492,13 @@ i.icon.wb-plus.list-icon.avo{
   box-shadow:inset 0 0px 0 white, inset 0 -1.5px 0 rgb(99,99,99);
   padding-bottom: 1px;
 }
+
+.shadow-grey{
+  box-shadow: -1px 5px 13px 1px #E6E6E6;
+-webkit-box-shadow: -1px 5px 13px 1px #E6E6E6;
+-moz-box-shadow: -1px 5px 13px 1px #E6E6E6;
+-o-box-shadow: -1px 5px 13px 1px #E6E6E6;
+}
 .dashboard-img-div {
   display: inline;
   position: relative;
@@ -503,11 +510,12 @@ i.icon.wb-plus.list-icon.avo.med{
 
 .dashboard-img {
   position: relative;
-  left: calc(120px);
-  width: calc(100% - 230px);
+  margin: 63px auto;
+  left: calc(175px);
+  width: calc(100% - 290px);
 }
 .software-head{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'montserratsemibold';
     font-size: 28px;
     text-align: center;
     text-transform: uppercase;
@@ -516,7 +524,8 @@ i.icon.wb-plus.list-icon.avo.med{
     padding-right: 20%;
     color: black;
     margin-bottom: 4%;
-    max-width:1400px;
+    margin-top: -9%;
+    max-width:1450px;
 }
 span.software{
   color: #73c48d;
@@ -532,8 +541,8 @@ span.software{
 }
 .analytics-mockup {
   margin-top: -55px;
-  min-width: 740px;
-  margin-left: 14%;
+  min-width: 830px;
+  margin-left: 7%;
 }
 .number-02{
   font-size: 170px;
@@ -558,7 +567,7 @@ span.software{
   line-height: 35px;
   letter-spacing: 1px;
   position:relative;
-  top:-35px;
+  top:-40px;
   font-family: 'Montserrat', sans-serif;
   color: rgb(70, 70, 70);
 }
@@ -569,6 +578,7 @@ span.software{
     line-height: 25px;
     max-width: 400px;
     font-size: 17px;
+    margin-top: -3%;
 }
 .third-sect-index {
   padding-top: 4%;
@@ -606,7 +616,6 @@ span.software{
 
 /*sign up page */
 .signup-header {
-  margin-top: 9%;
   font-size: 100px;
   font-family: 'montserratsemibold';
   color: #515862;
@@ -620,6 +629,7 @@ span.software{
 }
 .col-xs-12.signup-col{
   text-align: center;
+  margin-top: 9%;
 }
 .signup-btn-row{
   margin-bottom: 32%;

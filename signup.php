@@ -30,7 +30,7 @@ include 'includes/registerinfo.php';
     <div class="container-fluid">
 
         <div class="navbar-header">
-           <a class="navbar-brand" href="/"><img src="assets/images/at-logo-black.png" class="logo-nav-index"> </a>
+           <a class="navbar-brand" href="/index.php"><img src="assets/images/at-logo-black.png" class="logo-nav-index"> </a>
      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
        <span class="sr-only"> Toggle Navigation </span>
               <span class="icon-bar"> </span>
@@ -50,7 +50,7 @@ include 'includes/registerinfo.php';
   </ul>
 
 <ul class="nav navbar-nav navbar-right login-sect">
-  <li class="login border-dark"> <a href="#" class="login-nav main-nav-dark"> LOGIN </a> </li>
+  <li class="login border-dark"> <a href="/login.php" class="login-nav main-nav-dark"> LOGIN </a> </li>
 </ul>
 
 </div>
@@ -73,7 +73,7 @@ include 'includes/registerinfo.php';
 <form method="POST" action="">
   <div class="row signup-form">
           <div class="col-xs-6 form-col">
-                <div class="input-group name"> 
+                <div class="input-group name">
                     <span class=""><i class="glyphicon glyphicon-user mycolor"></i></span>
                       <input size="60" maxlength="255" class="form-control avocado-focus " style="color:#515862;" placeholder="FIRST NAME*" id="field" type="text" name="firstname">
                   </div>
