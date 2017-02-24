@@ -101,7 +101,7 @@ echo '<div class="campaign-block col-xs-9" data-id="'.$campaignid.'" data-desc="
         <table class="col-xs-12">
             <tbody style="border-top:0px;">
             <tr>
-                <td class="campaign-details name" >'.$name.'</td>
+                <td class="campaign-details name" ><a href="/yourcampaigns"'.$name.'</td>
                 <td class="campaign-details" > Campaign not in progress </td>
                 <td class="campaign-details date" > Created '.$datecreated.'</td>
             </tr>
@@ -139,7 +139,7 @@ $(document).on('click','.campaign-block',function(){
     var desc = $(this).attr('data-desc');
     var id = $(this).attr('data-id');
     $('#campaign-info').append(
-        '<form action="/yourcampaigns.php/'+id+'" method="POST">'+
+        '<form action="/campaigns/'+id+'" method="POST">'+
         '<div id="campaign-details" style="max-width: 330px;">'+
        '<p id="campaign-title">'+name+'</p>'+
       ' <p class="title"> Campaign Summary</p>'+

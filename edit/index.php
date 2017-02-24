@@ -1,9 +1,9 @@
 <?php
 session_start();
 //error_reporting(0);
-include 'includes/dbinfo.php';
-include 'includes/class/savecampaign.php';
-include 'includes/numberAbbreviation.php';
+include '../includes/dbinfo.php';
+include '../includes/class/savecampaign.php';
+include '../includes/numberAbbreviation.php';
 $url = $_SERVER['REQUEST_URI'];
 $id = explode('/',$url);
 $id = $id[2];
@@ -14,22 +14,30 @@ else{
 $campaignid = $id;
 }
 
-$today = date('Y-m-d');
-$tomorrow = date("Y-m-d", strtotime('tomorrow'));
+
 $save = new saveCampaign;
-//Checking for campaign validity
 $checkcampaign = $save->checkCampaign($campaignid, $_SESSION['column_id']);
 if($checkcampaign === false) header('Location: /dashboard.php');
+$today = date('Y-m-d');
+$tomorrow = date("Y-m-d", strtotime('tomorrow'));
 
-//If all is good, we continue. 
-$influencerinfo = $save->getCampaign($campaignid);
+//Checking for campaign validity
+
+$campaigninfo = $save->getCampaignInfo($campaignid);
+$campaigninfo = json_decode($campaigninfo,true);
+$campaignsummary = $campaigninfo['description'];
+$campaignstart = $campaigninfo['start'];
+$campaignend = $campaigninfo['end'];
+$campaignrequest = $campaigninfo['request'];
+$campaignname = $save->getCampaignName($campaignid);
+
 
 
 ?>
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
-<head>
-  <?php include 'includes/head.php' ?>
+<head> 
+  <?php include '../includes/head.php' ?>
     <title><?php echo $influencerinfo['campaign_name'];?> | Avocado & Toast</title>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
@@ -58,7 +66,7 @@ $influencerinfo = $save->getCampaign($campaignid);
 </head>
 
 <body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
-<?php include 'acnav.php';?>
+<?php include '../acnav.php';?>
 
 <div class="col-xs-1 sidebar-left" style="position:absolute;">
 <i class="icon fa-bars" aria-hidden="true" style="
@@ -78,21 +86,21 @@ $influencerinfo = $save->getCampaign($campaignid);
 
 <div class="container" style="margin-left:28.2%; padding-bottom:100px;">
 
-<p class="desc-header" style="padding-top:30px;"> Edit Campaign </p>
+<p class="desc-header" style="padding-top:30px;"> Edit Campaign - Not functioning yet </p>
 <div class="input-container" style="width:45%;">
 
     <label class="title">Campaign Name </label>
-    <input type="text" class="form-control category avocado-focus" value="Some Campaign">
+    <input type="text" class="form-control category avocado-focus" value="<?php echo $campaignname; ?>">
 
     <label class="title">Campaign Summary </label>
     <br/>
     <label>What is it you are trying to do? </label>
-    <textarea type="text" class="form-control category avocado-focus" value="Some Campaign"  style="height:150px;">
+    <textarea type="text" class="form-control category avocado-focus" value="<?php echo $campaignsummary;?>"  style="height:150px;">
     </textarea>
     <label class="title">Campaign Requests </label>
     <br/>
     <label>What type of content do you want? Be specific about what the influencer should be posting about.</label>
-    <textarea type="text" class="form-control category avocado-focus" value="Some Campaign"  style="height:150px;">
+    <textarea type="text" class="form-control category avocado-focus" value="<?php echo $campaignrequest; ?>"  style="height:150px;">
     </textarea>
 
     <label class="title">Campaign Schedule </label>
@@ -102,7 +110,7 @@ $influencerinfo = $save->getCampaign($campaignid);
         <input type="date" class="form-control category avocado-focus"  id="end" style="float:left; width:45%;" value="<?php echo $tomorrow;?>">
     </div>
 
-    <button class="search avocado-hover col-xs-12" id="search-keyword" style="margin-top:50px;">SUBMIT</button>
+    <button class="search avocado-hover col-xs-12" id="search-keyword" style="margin-top:50px;" id="submit">SUBMIT</button>
 
 
 </div>

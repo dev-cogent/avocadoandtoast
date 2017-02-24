@@ -259,6 +259,30 @@ else
 }
 
 
+public function getCampaignInfo($campaignid){
+    $conn = $this->savedDB();
+    $stmt = $conn->prepare("SELECT table_comment FROM INFORMATION_SCHEMA.TABLES WHERE table_name = '$campaignid' and table_schema = 'l5o0c8t4_save_campaign'");
+    $stmt->execute();
+    $stmt->bind_result($comment);
+    $stmt->fetch();
+    unset($stmt);
+    return $comment;
+
+}
+
+public function getCampaignName($campaignid){
+    $conn = $this->dbinfo();
+    $stmt = $conn->prepare("SELECT `campaign_name` FROM `campaign_save_link` WHERE `campaign_id` = ?");
+    $stmt->bind_param('s',$campaignid);
+    $stmt->execute();
+    $stmt->bind_result($campaignname);
+    $stmt->fetch();
+    unset($stmt);
+    return $campaignname;
+
+}
+
+
 
 
 
