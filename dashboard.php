@@ -101,7 +101,7 @@ echo '<div class="campaign-block col-xs-9" data-id="'.$campaignid.'" data-desc="
         <table class="col-xs-12">
             <tbody style="border-top:0px;">
             <tr>
-                <td class="campaign-details name" ><a href="/yourcampaigns"'.$name.'</td>
+                <td class="campaign-details name" ><a class="campaign-details" href="/campaigns/'.$campaignid.'">'.$name.' </a></td>
                 <td class="campaign-details" > Campaign not in progress </td>
                 <td class="campaign-details date" > Created '.$datecreated.'</td>
             </tr>
@@ -139,7 +139,6 @@ $(document).on('click','.campaign-block',function(){
     var desc = $(this).attr('data-desc');
     var id = $(this).attr('data-id');
     $('#campaign-info').append(
-        '<form action="/campaigns/'+id+'" method="POST">'+
         '<div id="campaign-details" style="max-width: 330px;">'+
        '<p id="campaign-title">'+name+'</p>'+
       ' <p class="title"> Campaign Summary</p>'+
@@ -147,9 +146,9 @@ $(document).on('click','.campaign-block',function(){
        '<p class="title">Campaign Schedule</p>'+
        '<p id="schedule"> <strong> Start</strong> April 1 <strong> April 6 </strong>'+
        '<div id="button-container">'+
-           '<button class="option-button delete" id="'+id+'"> Delete Campaign </button>'+
-           '<button class="option-button" name="campaign" value="'+id+'"> View Campaign </button>'+
-    '</div></form>');
+           '<button class="option-button delete avocado-hover avocado-focus" id="'+id+'"> Delete Campaign </button>'+
+           '<a style="color:#76838f;"href="/campaigns/'+id+'"><button class="option-button avocado-hover avocado-focus" name="campaign" value="'+id+'">View Campaign </button></a>'+
+    '</div>');
 });
 
 
