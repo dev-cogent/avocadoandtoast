@@ -248,6 +248,7 @@ var selectedusers = [];
 var filters = {};
 var target = $("#test-height").offset().top;
 var target2 = $('#stuff').offset().top;
+var sidebar = false;
 function abbrNum(number, decPlaces = 2) {
     var orig = number;
     var dec = decPlaces;
@@ -286,7 +287,27 @@ function abbrNum(number, decPlaces = 2) {
 
     return number;
 }
+$(document).on('click','.sidebar-left',function(){
 
+if(sidebar == false){
+$(this).animate({
+'max-width':'300px',
+ 'width':'300px'
+}, 'slow');
+sidebar = true;
+}
+
+else{
+    $(this).animate({
+    'width':'55px',
+    'max-width':'55px'
+},'slow');
+sidebar = false;
+}
+
+
+
+});
 $('#tokenfield').tokenfield();
 </script>
 <script src="/acslider.js"></script>
