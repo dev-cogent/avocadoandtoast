@@ -24,11 +24,29 @@ $campaigninfo = $save->getSavedCampaigns($_SESSION['column_id']);
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
 <link rel="stylesheet" href="/includes/css/discover.css">
 <link rel="stylesheet" href="/assets/css/dashboard.css">
+<style>
+.campaign-block{
+    background-color:#fcfcfc;
+
+}
+</style>
 </head>
 
 <body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
 
 <?php include 'acnav.php'; ?>
+<div class="col-xs-1 sidebar-left" style="position:absolute;">
+<i class="icon fa-bars" aria-hidden="true" style="
+    color: white;
+    text-align: center;
+    font-size: 21px;
+    margin-left: 5px;
+    height: 20px;
+    padding-top: 15px;
+"></i>
+</div>
+<div id="stuff"></div>
+<script src="/includes/javascript/sidebar-left.js"></script>
 
 
 
@@ -39,16 +57,7 @@ $campaigninfo = $save->getSavedCampaigns($_SESSION['column_id']);
 
 <!-- Add side bar here -->
 
-<div class="col-xs-1 sidebar-left" style="position:relative;">
-<i class="icon fa-bars" aria-hidden="true" style="
-    color: white;
-    text-align: center;
-    font-size: 21px;
-    margin-left: 5px;
-    height: 20px;
-    padding-top: 15px;
-"></i>
-</div>
+
 
 
 <!-- The third nav bar , we might be able to take this out. In the mean time, we'll keep it here -->
@@ -59,7 +68,7 @@ $campaigninfo = $save->getSavedCampaigns($_SESSION['column_id']);
 
 
 <!-- Start Campains here -->
-<div class="col-xs-9 col-xl-9 divider-top" style="margin-top: 49px;padding-top: 16px;">
+<div class="col-xs-9 col-xl-9 divider-top" style="margin-top: 49px;padding-top: 16px; padding-left:75px;">
     <div id="allcampaigns" class="col-xs-12">
     All Campaigns
     </div>
@@ -88,7 +97,7 @@ $totalimpressions = $comment['totalimpressions'];
 $avgimpressions = $totalimpressions/$numberOfInfluencers;
 $totalpost = $comment['totalposts'];
 $datecreated = $comment['created'];
-echo '<div class="campaign-block col-xs-9" data-id="'.$campaignid.'" data-desc="Nothing seems to be here." data-name="'.$name.'" ">
+echo '<div class="campaign-block col-xs-9" data-id="'.$campaignid.'" data-desc="Nothing seems to be here." data-name="'.$name.'" style="padding-left:75px;" >
         <table class="col-xs-12">
             <tbody style="border-top:0px;">
             <tr>
@@ -122,22 +131,32 @@ echo '<div class="campaign-block col-xs-9" data-id="'.$campaignid.'" data-desc="
 
 </body>
 <script>
+var target = $("#campaign-info").offset().top;
+var target2 = $('#stuff').offset().top;
 $(document).on('click','.campaign-block',function(){
     $('#campaign-info').empty();
     var name = $(this).attr('data-name');
     var desc = $(this).attr('data-desc');
     var id = $(this).attr('data-id');
     $('#campaign-info').append(
-        '<form action="/yourcampaigns.php/'+name+'" method="POST">'+
-        '<div id="campaign-details">'+
+        '<form action="/yourcampaigns.php/'+id+'" method="POST">'+
+        '<div id="campaign-details" style="max-width: 330px;">'+
        '<p id="campaign-title">'+name+'</p>'+
       ' <p class="title"> Campaign Summary</p>'+
        '<p id="summary">'+desc+'</p>'+
        '<p class="title">Campaign Schedule</p>'+
        '<p id="schedule"> <strong> Start</strong> April 1 <strong> April 6 </strong>'+
        '<div id="button-container">'+
-           '<button class="option-button"> Delete Campaign </button>'+
+           '<button class="option-button delete" id="'+id+'"> Delete Campaign </button>'+
            '<button class="option-button" name="campaign" value="'+id+'"> View Campaign </button>'+
     '</div></form>');
+});
+
+
+$(document).on('click','.delete',function(){
+alert("You're about to delete the campaign!... Rest of pop up goes here");
+console.log($(this).attr('id'));
+//Ajac will go here 
+
 });
 </script>

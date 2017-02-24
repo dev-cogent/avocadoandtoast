@@ -30,7 +30,7 @@
 
 
 $(window).scroll(function () {
-if(calculate == false){
+
     if (document.body.scrollTop > target2) {
         $('.sidebar-left').css('position', 'fixed');
         $('.sidebar-left').css('margin-top', '-131px');
@@ -39,7 +39,7 @@ if(calculate == false){
         $('.sidebar-left').css('position', 'absolute');
         $('.sidebar-left').css('margin-top', '0px');
     }
-}
+
 });
 
 

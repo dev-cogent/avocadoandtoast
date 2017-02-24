@@ -17,7 +17,7 @@ a:hover{
 
 #campaign-details{
     position: fixed;
-    width: 21%;
+    width: 100%;
     border-left: 1px solid rgb(210,215,220);
     margin-left: -14px;
     padding-left: 14px;
@@ -38,6 +38,9 @@ td.campaign-details.name{
     padding-right: 17px;
     font-weight: 600;
     padding-top: 10px;
+    width: 100px;
+    max-width: 100px;
+
 }
 
 .label-info{
@@ -104,6 +107,7 @@ font-size:17px;
 color:rgb(29, 40, 76);
 font-family:'open sans';
 padding-top: 30px;
+width:20%;
 }
 
 i.fa.fa-exclamation-triangle {
