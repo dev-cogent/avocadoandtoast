@@ -4,15 +4,23 @@ session_start();
 include 'includes/dbinfo.php';
 include 'includes/class/savecampaign.php';
 include 'includes/numberAbbreviation.php';
-if(isset($_POST['campaign'])){
-    $_SESSION['temp_campaign_id'] = $_POST['campaign'];
-    $campaignid = $_POST['campaign'];
+$url = $_SERVER['REQUEST_URI'];
+$id = explode('/',$url);
+$id = $id[2];
+if($id == NULL){
+$campaignid = $_SESSION['temp_campaign_id'];
 }
 else{
-    $campaignid = $_SESSION['temp_campaign_id'];
+$campaignid = $id;
 }
 
+
 $save = new saveCampaign;
+//Checking for campaign validity
+$checkcampaign = $save->checkCampaign($campaignid, $_SESSION['column_id']);
+if($checkcampaign === false) header('Location: /dashboard.php');
+
+//If all is good, we continue. 
 $influencerinfo = $save->getCampaign($campaignid);
 
 
@@ -47,7 +55,7 @@ $influencerinfo = $save->getCampaign($campaignid);
 
 <!-- Add side bar here -->
 
-<div class="col-xs-1 sidebar-left">
+<div class="col-xs-1 sidebar-left" style="position:fixed">
 <i class="icon fa-bars" aria-hidden="true" style="
     color: white;
     text-align: center;

@@ -245,6 +245,21 @@ public function getSavedCampaigns($columnid){
 
 
 
+public function checkCampaign($campaignid, $columnid){
+$conn = $this->dbinfo();
+$stmt = $conn->prepare("SELECT `campaign_id` FROM `campaign_save_link` WHERE `campaign_id` = ? AND `column_id` = ?");
+$stmt->bind_param('ss',$campaignid,$columnid);
+$stmt->execute();
+$stmt->bind_result($check);
+$stmt->fetch();
+if($check === $campaignid)
+    return true;
+else
+    return false;
+}
+
+
+
 
 
 
