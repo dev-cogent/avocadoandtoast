@@ -111,7 +111,7 @@ border-radius:0px;
     letter-spacing: 2px; 
     font-size:55px; 
     padding-bottom:50px; 
-    padding-top:50px;
+    padding-top:25px;
 }
 
 @media screen and (max-width:480px){
@@ -151,7 +151,7 @@ border-radius:0px;
 </head>
 
 <body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
-    <div class="col-xs-12" style="border-top: 1px solid rgb(210,215,220); border-bottom:1px solid white; height:66px; background-color:#fcfcfc;">
+    <div class="col-xs-12" style="border-top: 1px solid rgb(210,215,220); border-bottom:1px solid white; height:66px; background-color:#f7f7f7;">
        <img src="/assets/images/at-logo-black.png" style="margin-top:-8px;">
 
 </div>
@@ -159,10 +159,10 @@ border-radius:0px;
 
 <!-- logo goes here -->
 <div id="spacing"></div>
-<div class="col-xs-1 col-xl-4" style="height: 100%;margin-top: -35px;background-color: #fcfcfc;"></div>
+<div class="col-xs-1 col-xl-4" style="height: 100%;margin-top: -35px;background-color: #f7f7f7;"></div>
 <div class="col-xs-10 col-xl-4"> 
 
-<div style="text-align:center;"> <img id="icon" src="/assets/images/avocado.png"></div>
+<div style="text-align:center; padding-top:30px;"> <img id="icon" src="/assets/images/avocado.png"></div>
     <h1 id="header-text"> SIGN IN </h1>
         <div style="text-align:center;">
                 <form method="POST" action="">
@@ -176,7 +176,7 @@ border-radius:0px;
     </div>
 </div>
 
-<div class="col-xs-1 col-xl-4" style="height: 100%;margin-top: -35px;background-color: #fcfcfc;"></div>
+<div class="col-xs-1 col-xl-4" style="height: 100%;margin-top: -35px;background-color: #f7f7f7;"></div>
 
 
 
