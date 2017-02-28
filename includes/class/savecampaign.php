@@ -63,7 +63,7 @@ return true;
 
 
 
-public function updateCampaign($arr,$userid,$stats,$campaignname,$description,$campaignid,$columnid){
+public function updateCampaignCalculations($arr,$userid,$stats,$campaignname,$description,$campaignid,$columnid){
 if($genconn === NULL)
     $genconn = $this->dbinfo();
 if($saveconn === NULL)
@@ -121,6 +121,45 @@ public function updateCampaignDescription($campaignid,$columnid,$description = N
     $stmt->$saveconnprepare("ALTER TABLE `$campaignid` COMMENT = '$stats'");
     if($stmt->execute()) return true;
     else return false;
+}
+
+
+
+/**
+*@About Function to update the campaign, this includes the name, summary, request, start and end date of the campaign
+*@param {string} - campaignid
+*@param {string} - campaign name 
+*@param {string} - campaign summary default NULL
+*@param {string} - campaign request  default NULL 
+*@param {string} - campaignstart default NULL 
+*@param {string} - campaignend default NULL
+*@return {bool}
+*/
+public function updateCampaign($campaignid,$campaignname,$campaignsummary = NULL, $campaignrequest = NULL, $campaignstart = NULL, $campaignend = NULL){
+    $conn = $this->dbinfo();
+    $saveconn = $this->savedDB();
+    //First we will change the name for the campaign name 
+    $campaignname = trim($campaignname);
+    $stmt = $conn->prepare("UPDATE `campaign_save_link` SET `campaign_name` = ? WHERE `campaign_id` = ?");
+    $stmt->bind_param('ss',$campaignname,$campaignid);
+    if($stmt->execute()){
+        unset($stmt);
+        $description = $this->getCampaignInfo($campaignid);
+        $description = json_decode($description,true);
+        $description['description'] = $campaignsummary;
+        $description['campaignrequest'] = $campaignrequest;
+        $description['campaignstart'] = $campaignstart;
+        $description['campaignend'] = $campaignend;
+        $description = json_encode($description);
+        $stmt = $saveconn->prepare("ALTER TABLE `$campaignid` COMMENT = '$description'");
+        if($stmt->execute()){
+            return true;
+        }
+
+    }
+    else{
+        return false;
+    }
 }
 
 

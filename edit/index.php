@@ -26,10 +26,18 @@ $tomorrow = date("Y-m-d", strtotime('tomorrow'));
 $campaigninfo = $save->getCampaignInfo($campaignid);
 $campaigninfo = json_decode($campaigninfo,true);
 $campaignsummary = $campaigninfo['description'];
-$campaignstart = $campaigninfo['start'];
-$campaignend = $campaigninfo['end'];
 $campaignrequest = $campaigninfo['request'];
+$campaignstart = $campaigninfo['campaignstart'];
+$campaignend = $campaigninfo['campaignend'];
+$campaignrequest = $campaigninfo['campaignrequest'];
 $campaignname = $save->getCampaignName($campaignid);
+if(isset($campaignstart)){
+    $today = $campaignstart;
+}
+if(isset($campaignend)){
+    $tomorrow = $campaignend;
+}
+
 
 
 
@@ -38,7 +46,7 @@ $campaignname = $save->getCampaignName($campaignid);
 <html class="no-js css-menubar" lang="en">
 <head> 
   <?php include '../includes/head.php' ?>
-    <title><?php echo $influencerinfo['campaign_name'];?> | Avocado & Toast</title>
+    <title><?php echo $campaignname;?> | Avocado & Toast</title>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 <script src="/assets/wnumb/wNumb.js"></script>
@@ -61,6 +69,10 @@ $campaignname = $save->getCampaignName($campaignid);
     font-family: 'Open Sans', sans-serif;
     padding-top:20px;
     font-weight:600;
+}
+
+.search{
+    min-width:143.5px;
 }
 </style>
 </head>
@@ -86,33 +98,71 @@ $campaignname = $save->getCampaignName($campaignid);
 
 <div class="container" style="margin-left:28.2%; padding-bottom:100px;">
 
-<p class="desc-header" style="padding-top:30px;"> Edit Campaign - Not functioning yet </p>
+<p class="desc-header" style="padding-top:30px;"> Edit updatecampaign</p>
 <div class="input-container" style="width:45%;">
 
     <label class="title">Campaign Name </label>
-    <input type="text" class="form-control category avocado-focus" value="<?php echo $campaignname; ?>">
+    <input type="text" class="form-control category avocado-focus" id="name" value="<?php echo $campaignname; ?>">
 
     <label class="title">Campaign Summary </label>
     <br/>
     <label>What is it you are trying to do? </label>
-    <textarea type="text" class="form-control category avocado-focus" value="<?php echo $campaignsummary;?>"  style="height:150px;">
-    </textarea>
+    <textarea type="text" class="form-control category avocado-focus" id="campaign-summary"   style="height:150px;"><?php echo $campaignsummary;?></textarea>
     <label class="title">Campaign Requests </label>
     <br/>
     <label>What type of content do you want? Be specific about what the influencer should be posting about.</label>
-    <textarea type="text" class="form-control category avocado-focus" value="<?php echo $campaignrequest; ?>"  style="height:150px;">
-    </textarea>
+    <textarea type="text" class="form-control category avocado-focus" id="campaign-request" style="height:150px;"><?php echo $campaignrequest; ?></textarea>
 
     <label class="title">Campaign Schedule </label>
     <br/>
     <div class="col-xs-12" style="padding-left:0px; padding-right:0px;">
-        <input type="date" class="form-control category avocado-focus" id="start" style="float:left; width:45%;" value="<?php echo $today;?>"><p style="float:left; padding-left:3%;padding-right:3%;">to</p> 
-        <input type="date" class="form-control category avocado-focus"  id="end" style="float:left; width:45%;" value="<?php echo $tomorrow;?>">
+        <input type="date" class="form-control category avocado-focus" id="campaign-start" style="float:left; width:45%;" value="<?php echo $today;?>"><p style="float:left; padding-left:3%;padding-right:3%;">to</p> 
+        <input type="date" class="form-control category avocado-focus"  id="campaign-end" style="float:left; width:45%;" value="<?php echo $tomorrow;?>">
+    </div>
+    <div style="margin-top:50px;">
+        <button class="search avocado-hover col-xs-4 delete" id="search-keyword" style="float:left; margin-left: 4.2%; width:40%;">DELETE</button>
+        <button class="search avocado-hover col-xs-4 submit" id="search-keyword" style="float:left; margin-left:10%; width:40%;">SUBMIT</button>
     </div>
 
-    <button class="search avocado-hover col-xs-12" id="search-keyword" style="margin-top:50px;" id="submit">SUBMIT</button>
-
 
 </div>
 
 </div>
+
+<script>
+
+const campaignid = '<?php echo $campaignid; ?>';
+
+$(document).on('click','.submit',function(){
+    const campaignname = $('#name').val();
+    const campaignsummary = $('#campaign-summary').val();
+    const campaignrequest = $('#campaign-request').val();
+    const campaignstart = $('#campaign-start').val();
+    const campaignend = $('#campaign-end').val();
+    $.ajax({
+        type: 'POST',
+        url: '/includes/ajax/updatecampaign.php',
+        data: {
+            campaignid : campaignid,
+            campaignname: campaignname,
+            campaignsummary: campaignsummary,
+            campaignrequest:campaignrequest,
+            campaignstart:campaignstart,
+            campaignend:campaignend
+        },
+        success: function (jqXHR, textStatus, errorThrown) {
+            console.log('success');
+
+        }
+
+    }); // end ajax request*/
+
+});
+
+
+$(document).on('click','.delete',function(){
+
+console.log('deleting...');
+
+});
+</script>

@@ -11,7 +11,7 @@ $(window).scroll(function () {
 
 });
 
-
+if(typeof target !== 'undefined'){
 $(window).scroll(function () {
     if (document.body.scrollTop > target) {
         $('#campaign-details').css('position','fixed');
@@ -23,3 +23,5 @@ $(window).scroll(function () {
     }
 
 });
+
+}
