@@ -180,14 +180,19 @@ public function getSavedCampaigns($columnid){
 
  public function getCampaign($campaignid, $position = 0, $influencernumber = 30){
     $influencerarr = array();
+    $influencertemp = array();
     $infoarr = array();
     $conn = $this->dbinfo();
     $saved = $this->savedDB();
-    $stmt = $saved->prepare("SELECT `influencer_id` FROM `$campaignid`");
+    $stmt = $saved->prepare("SELECT `influencer_id`,`facebook_post`,`instagram_post`,`twitter_post` FROM `$campaignid`");
     $stmt->execute();
-    $stmt->bind_result($influencerid);
+    $stmt->bind_result($influencerid,$facebookpost,$instagrampost,$twitterpost);
     while($stmt->fetch()){
+        $influencertemp[$influencerid]['facebook_post'] = $facebookpost;
+        $influencertemp[$influencerid]['instagram_post'] = $instagrampost;
+        $influencertemp[$influencerid]['twitter_post'] = $twitterpost;
         array_push($influencerarr,$influencerid);
+
     }
     unset($stmt);
     $influencerid = implode("','",$influencerarr);
@@ -215,12 +220,15 @@ public function getSavedCampaigns($columnid){
         $infoarr['influencer'][$id]['instagram_count'] = $instagramcount;
         $infoarr['influencer'][$id]['instagram_url'] = $instagramurl;
         $infoarr['influencer'][$id]['instagram_handle'] = $insthandle;
+        $infoarr['influencer'][$id]['instagram_post'] = $influencertemp[$id]['instagram_post'];
         $infoarr['influencer'][$id]['facebook_count'] = $facebookcount;
         $infoarr['influencer'][$id]['facebook_url'] = $facebookurl;
         $infoarr['influencer'][$id]['facebook_handle'] = $facebookhandle;
+        $infoarr['influencer'][$id]['facebook_post'] = $influencertemp[$id]['facebook_post'];
         $infoarr['influencer'][$id]['twitter_count'] = $twittercount;
         $infoarr['influencer'][$id]['twitter_url'] = $twitterurl;
         $infoarr['influencer'][$id]['twitter_handle'] = $twitterhandle;
+        $infoarr['influencer'][$id]['twitter_post'] = $influencertemp[$id]['twitter_post'];
     }
 
     unset($stmt);

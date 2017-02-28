@@ -8,7 +8,7 @@
             console.log(page);
             console.log(filters);
             $.ajax({
-                type: 'POST',
+                type: 'POST', 
                 url: '/includes/ajax/avocado-campaign-pagination.php',
                 data: {
                     page: page,
@@ -126,71 +126,37 @@ $(document).on('click','.filter-option',function(){
 });
 
 
+// function that uninvited or invites user to campaign 
+$(document).on('click','.invite',function(){
+var id = $(this).attr('data-id');
+var element = $(this);
+selectInfluencer(id, element);
 
 
 
 
 
-$(document).on('change', '.campaignfocus', function () {
+}); 
 
-    var posts = [];
-    var type = $(this).attr('data-platform');
-    var id = $(this).attr('data-id');
-    console.log(selectedusers);
 
-    if (type == 'instagram') {
-        $('.instagraminput').each(function () {
-            posts.push($(this).val());
-        });
-        getCalculation(type, posts, selectedusers);
+
+function selectInfluencer(id, element) {
+    if(element.attr('data-type') == 'uninvited'){
+        console.log('meh');
     }
-
-    if (type == 'twitter') {
-        $('.twitterinput').each(function () {
-            posts.push($(this).val());
-        });
-        getCalculation(type, posts, selectedusers);
-    }
-
-    if (type == 'facebook') {
-        $('.facebookinput').each(function () {
-            posts.push($(this).val());
-        });
-        getCalculation(type, posts, selectedusers);
-    }
-
-
-
-
-});
-
-function getCalculation(type, posts, selectedusers) {
-    $.ajax({
-        type: 'POST',
-        url: '/includes/ajax/calculate.php',
-        data: {
-            type: type,
-            posts: posts,
-            selected: selectedusers
-        },
-        success: function (jqXHR, textStatus, errorThrown) {
-            if (type == 'instagram') {
-                $('.instagram-posts').empty();
-                $('.instagram-posts').append(jqXHR);
-            }
-            if (type == 'twitter') {
-                $('.twitter-posts').empty();
-                $('.twitter-posts').append(jqXHR);
-            }
-            if (type == 'facebook') {
-                $('.facebook-posts').empty();
-                $('.facebook-posts').append(jqXHR);
-            }
-
-
-        }
-
-    }); // end ajax request*/
-
+    element.empty();
+    element.css('background-color','white');
+    element.css('color','#515862');
+    element.css('border','1px solid #515862');
+    element.append('<i class="thumb-up icon fa-plus" aria-hidden="true"></i> INVITE');
+    element.attr('data-type','uninvited');
+    //Ajax goes here to remove user from the campaign. 
 
 }
+
+
+
+
+
+
+

@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start(); 
 //error_reporting(0);
 include '../includes/dbinfo.php';
 include '../includes/class/savecampaign.php';
@@ -22,7 +22,8 @@ if($checkcampaign === false) header('Location: /dashboard.php');
 
 //If all is good, we continue. 
 $influencerinfo = $save->getCampaign($campaignid);
-
+$campaigninfo = $save->getCampaignInfo($campaignid);
+$campaigninfo = json_decode($campaigninfo,true);
 
 ?>
 <!DOCTYPE html>
@@ -40,7 +41,40 @@ $influencerinfo = $save->getCampaign($campaignid);
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
 <link rel="stylesheet" href="/includes/css/discover.css">
+<style>
+.stats{
+    color: #73C48D;
+    font-family: 'montserratsemibold';
+    font-size: 40px;
+    padding-right: 17px;
+    font-weight: 600;
+    padding-top: 10px;
 
+}
+.label-info{
+
+    color: rgb(29, 40, 76);
+    font-weight: 600;
+    font-size: 13px;
+    font-family: 'open sans';
+    padding-bottom: 10px;
+
+}
+.campaign-details{
+font-size:15px;
+color:rgb(29, 40, 76);
+font-family:'open sans';
+padding-top: 30px;
+width:20%;
+}
+
+.influencer-box{
+
+}
+
+
+
+</style>
 </head>
 
 <body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
@@ -73,14 +107,56 @@ $influencerinfo = $save->getCampaign($campaignid);
 <!--Filter content -->
 
 
-<div class="filter-container col-xs-12" style="height:100%; border-bottom:0px;">
+<div class="filter-container col-xs-12" style="border-bottom:0px; height:145px;">
     <div class="go-back-btn-div"> <a class="back-btn" href="/dashboard.php"> Go Back </a> </div>
     <div class="go-back-btn-div"> <a class="back-btn" href="/edit/<?php echo $campaignid;?>"> Edit Campaign </a> </div>
-    <div class="user-campaign-name"> <?php echo $influencerinfo['campaign_name'];?></div>
-    <div class="user-campaign-inf-count"> <span class="campaign-inf-count"><?php echo $influencerinfo['campaign_count'];?> </span> Influencers Invited to this Campaign </div>
+    <div class="go-back-btn-div"> <a class="back-btn" href="/edit/<?php echo $campaignid;?>"> Export Campaign </a> </div>
+    <div class="go-back-btn-div"> <a class="back-btn" href="/edit/<?php echo $campaignid;?>"> Price Campaign </a> </div>
+</div>
+
+<div class="col-xs-12" style="padding-left:75px;">
+    <div class="user-campaign-name col-xs-2" style="padding-left:13px; padding-bottom:20px; margin-left:0px; margin-top: -12px; color:#73C48D;"> <?php echo $influencerinfo['campaign_name'];?> 
+    
+    <p style="font-size:13px; color:rgb(29, 40, 76);"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
+    
+    </div>
+  <!--  <div class="user-campaign-inf-count"> <span class="campaign-inf-count"><?php// echo $influencerinfo['campaign_count'];?> </span> Influencers Invited to this Campaign </div> -->
+  <?php echo '
+    <div class="col-xs-9" id="campaign-breakdown" style="height:240px; padding-bottom:30px; border-radius: 4px;">
+        <div class="col-xs-12" style="border:1px solid black;">
+        <div class="campaign-block col-xs-12"  style="padding-left:75px;" >
+        <table class="col-xs-12">
+            <tbody style="border-top:0px;">
+            <tr>
+                <td class="campaign-details" > Campaign not in progress </td>
+                <td class="campaign-details date" > Created 02/17/2017</td>
+            </tr>
+            <tr>
+                <td class="stats">'.$influencerinfo['campaign_count'].'</td>
+                <td class="stats">'.$campaigninfo['totalposts'].'</td>
+                <td class="stats">'.numberAbbreviation($campaigninfo['totalimpressions']/3).'</td>
+                <td class="stats">1,000</td>
+                <td class="stats">'.numberAbbreviation($campaigninfo['totalimpressions']).'</td>
+            </tr>
+            <tr>
+                <td class="label-info">Influencers</td>
+                <td class="label-info">Total Post</td>
+                <td class="label-info">Avg Impressions</td>
+                <td class="label-info"> Avg Engagement</td>
+                <td class="label-info"> Total Reach</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
 
 
 
+    </div>';
+    ?>
+
+
+ 
 
 
 
@@ -101,6 +177,11 @@ $influencerinfo = $save->getCampaign($campaignid);
                 $instagramcount = $info['instagram_count'];
                 $facebookcount = $info['facebook_count'];
                 $twittercount = $info['twitter_count'];
+                $instagrampost = $info['instagram_post'];
+                $facebookpost = $info['facebook_post'];
+                $twitterpost = $info['twitter_post'];
+
+
                 echo '
                     <div  class="influencer-box col-xs-12 col-md-6 col-lg-3 col-xl-2">
                             <div class="influencer-card-discover">
@@ -137,38 +218,41 @@ $influencerinfo = $save->getCampaign($campaignid);
                                     
                                         if($instagramurl != NULL){
                                             echo '
-                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'">'.numberAbbreviation($instagramcount).' Followers</p>
-                                        <p class="facebook-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($facebookcount).' Likes</p>
-                                        <p class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($twittercount).' Followers</p>
+                                        
+                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'">'.numberAbbreviation($instagramcount * $instagrampost).' Impressions</p>
+                                        <p class="facebook-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($facebookcount * $facebookpost).' Impressions</p>
+                                        <p class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($twittercount * $twitterpost).' Impressions</p>
                                         ';
                                         }
                                         elseif($facebookurl != NULL && $instagramurl == NULL){
                                             echo '
-                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'" style="display:none">'.numberAbbreviation($instagramcount).' Followers</p>
-                                        <p class="facebook-follower-count follower-count"  data-id="'.$id.'">'.numberAbbreviation($facebookcount).' Likes</p>
-                                        <p class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($twittercount).' Followers</p>
+                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'" style="display:none">'.numberAbbreviation($instagramcount * $instagrampost).' Impressions</p>
+                                        <p class="facebook-follower-count follower-count"  data-id="'.$id.'">'.numberAbbreviation($facebookcount * $facebookpost).' Impressions</p>
+                                        <p class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($twittercount * $twitterpost).' Impressions</p>
                                         ';
                                         }
                                         elseif($twitterurl != NULL && $facebookurl == NULL && $instagramurl == NULL){
                                             echo '
-                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'" style="display:none">'.numberAbbreviation($instagramcount).' Followers</p>
-                                        <p class="facebook-follower-count follower-count"  data-id="'.$id.'" style="display:none">'.numberAbbreviation($facebookcount).' Likes</p>
-                                        <p class="twitter-follower-count follower-count"  data-id="'.$id.'">'.numberAbbreviation($twittercount).' Followers</p>
+                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'" style="display:none">'.numberAbbreviation($instagramcount * $instagrampost).' Impressions</p>
+                                        <p class="facebook-follower-count follower-count"  data-id="'.$id.'" style="display:none">'.numberAbbreviation($facebookcount * $facebookpost).' Impressions</p>
+                                        <p class="twitter-follower-count follower-count"  data-id="'.$id.'">'.numberAbbreviation($twittercount * $twitterpost).' Impressions</p>
                                         ';
                                         }
                                     echo '
                                     </div>
                                     <!-- Engagement ?-->
                                     <div class="col-xs-12">
-                                        <p class="instagram-engagement engagement-count" data-id="'.$influencerid.'">1.5K Likes per post</p>
-                                        <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$influencerid.'">1.5K Likes per post</p>
-                                        <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$influencerid.'">1.5K Likes per post</p>
+                                        <p class="instagram-engagement engagement-count" data-id="'.$influencerid.'">1.5K Avg Engagement</p>
+                                        <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$influencerid.'">1.5K Avg Engagaement</p>
+                                        <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$influencerid.'">1.5K Avg Engagement</p>
                                     </div>
+                                    
                                     <div class="col-xs-12">
 
-                                        <div style="display:inline; background-color:#73C48D; color:white; border:1px solid #73C48D;"class="col-xs-12 invite avocado-hover avocado-focus" data-id="'.$influencerid.'" data-image="'.$info['image'].'">
+                                        <div style="display:inline; background-color:#73C48D; color:white; border:1px solid #73C48D; margin-top:-10px; margin-bottom:4px; height:28px padding-top:0px;"class="col-xs-12 invite avocado-hover avocado-focus" data-id="'.$influencerid.'" data-image="'.$info['image'].'">
                                               <i class="thumb-up icon fa-check" aria-hidden="true"></i>INVITED
-                                                 </div>
+                                        </div>
+                                        <p style="text-align:center;padding-top: 3px; color:#73C48D;"> 1 total post </p>
                                     </div>
                                 </div>
                             </div>
