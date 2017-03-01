@@ -3,7 +3,7 @@
 
 include 'campaign.php';
 class saveCampaign extends campaignCalculator{
-
+ 
 
 /**
 *@param {array} - influencers ids
@@ -26,9 +26,14 @@ $columnid = $this->getUserColumnID($userid);
 #Insert into campaign link
 $campaignid = $this->randomString(20);
 
-$genstmt = $genconn->prepare("INSERT INTO `campaign_save_link` (`campaign_name`,`column_id`,`campaign_id`) VALUES (?,?,?) ");
-$genstmt->bind_param('sss',$campaignname,$columnid,$campaignid);
-if($genstmt->execute() === FALSE) return false;
+//Inserting comments into mysql 
+$genstmt = $genconn->prepare("INSERT INTO `campaign_save_link` (`campaign_name`,`column_id`,`campaign_id`,`created_date`,`total_instagram_impressions`,`total_twitter_impressions`
+,`total_facebook_impressions`,`total_impressions`,`total_instagram_engagement`,`total_twitter_engagement`,`total_facebook_engagement`,`total_engagement`,`total_post`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?) ");
+$genstmt->bind_param('ssssiiiiiiiii',$campaignname,$columnid,$campaignid,$stats['created'],$stats['totalinstagramimpressions'],$stats['totaltwitterimpressions'],
+$stats['totalfacebookimpressions'],$stats['totalimpressions'],$stats['totalinstagramengagement'],$stats['totaltwitterengagement'],$stats['totalfacebookengagement'],$stats['totalengagement'],$stats['totalposts']);
+
+if($genstmt->execute() === FALSE) return $genstmt->error;
+
 
 #Now Create table in campaign database.
 $camstmt = $saveconn->prepare("
@@ -53,11 +58,7 @@ foreach($arr as $influencerid => $info){
 }
 if(isset($check)) return false;
 
-$camstmt->prepare("ALTER TABLE `$campaignid` COMMENT = '$stats'");
-if(!$camstmt->execute()) return false;
-
-
-return true;
+return $campaignid;
 
 }
 
@@ -135,27 +136,15 @@ public function updateCampaignDescription($campaignid,$columnid,$description = N
 *@param {string} - campaignend default NULL
 *@return {bool}
 */
-public function updateCampaign($campaignid,$campaignname,$campaignsummary = NULL, $campaignrequest = NULL, $campaignstart = NULL, $campaignend = NULL){
+public function updateCampaign($campaignid,$campaignname,$campaigndesc = NULL, $campaignrequest = NULL, $campaignstart = NULL, $campaignend = NULL){
     $conn = $this->dbinfo();
     $saveconn = $this->savedDB();
     //First we will change the name for the campaign name 
     $campaignname = trim($campaignname);
-    $stmt = $conn->prepare("UPDATE `campaign_save_link` SET `campaign_name` = ? WHERE `campaign_id` = ?");
-    $stmt->bind_param('ss',$campaignname,$campaignid);
+    $stmt = $conn->prepare("UPDATE `campaign_save_link` SET `campaign_name` = ?, `campaign_desc` = ?, `campaign_request` = ?, `start_date` = ?, `end_date` = ?  WHERE `campaign_id` = ?");
+    $stmt->bind_param('ssssss',$campaignname,$campaigndesc,$campaignrequest,$campaignstart,$campaignend,$campaignid);
     if($stmt->execute()){
-        unset($stmt);
-        $description = $this->getCampaignInfo($campaignid);
-        $description = json_decode($description,true);
-        $description['description'] = $campaignsummary;
-        $description['campaignrequest'] = $campaignrequest;
-        $description['campaignstart'] = $campaignstart;
-        $description['campaignend'] = $campaignend;
-        $description = json_encode($description);
-        $stmt = $saveconn->prepare("ALTER TABLE `$campaignid` COMMENT = '$description'");
-        if($stmt->execute()){
-            return true;
-        }
-
+        return true;
     }
     else{
         return false;
@@ -191,27 +180,28 @@ public function getSavedCampaigns($columnid){
     $arr = array();
     $generalconn = $this->dbinfo();
     $listconn = $this->savedDB();
-    $stmt = $generalconn->prepare('SELECT `campaign_name`,`campaign_id` FROM `campaign_save_link` WHERE `column_id` = ?');
+    $stmt = $generalconn->prepare('SELECT `campaign_name`,`campaign_id`,`campaign_desc`,`campaign_request`,`created_date`,`start_date`,`end_date`,`total_impressions`,`total_engagement`,`total_post` FROM `campaign_save_link` WHERE `column_id` = ?');
     $stmt->bind_param('s',$columnid);
     $stmt->execute();
-    $stmt->bind_result($campaignname,$campaignid);
+    $stmt->bind_result($campaignname,$campaignid,$campaigndesc,$campaignrequest,$created,$start,$end,$totalimpressions,$totalengagement,$totalpost);
     while($stmt->fetch()){
         $arr[$campaignid]['campaignname'] = $campaignname;
         $arr[$campaignid]['campaignid'] = $campaignid;
+        $arr[$campaignid]['description'] = $campaigndesc;
+        $arr[$campaignid]['created'] = $created;
+        $arr[$campaignid]['totalposts'] = $totalpost;
+        $arr[$campaignid]['totalimpressions'] = $totalimpressions;
+        $arr[$campaignid]['totalengagement'] = $totalengagement;
+        $arr[$campaignid]['campaignstart'] = $start;
+        $arr[$campaignid]['campaignend'] = $end;
         $stmt2 = $listconn->prepare("SELECT `influencer_id` FROM $campaignid");
         $stmt2->execute();
         $stmt2->bind_result($influencerid);
         while($stmt2->fetch()){
             $arr[$campaignid]['influencer'][$influencerid] = $influencerid;
         }
-        unset($stmt2);
-        $stmt2 = $listconn->prepare("SELECT table_comment FROM INFORMATION_SCHEMA.TABLES WHERE table_name = '$campaignid' and table_schema = 'l5o0c8t4_save_campaign'");
-        $stmt2->execute();
-        $stmt2->bind_result($comment);
-        $stmt2->fetch();
-        $arr[$campaignid]['comment'] = $comment;
-        unset($stmt2);
     }
+    unset($listconn);
     return $arr;
 }
 
@@ -283,6 +273,7 @@ public function getSavedCampaigns($columnid){
     $stmt->bind_result($count);
     $stmt->fetch();
     $infoarr['campaign_count'] = $count;
+    unset($saved);
     return $infoarr;
 
 
@@ -304,17 +295,27 @@ if($check === $campaignid)
 else
     return false;
 }
-
+ 
 
 public function getCampaignInfo($campaignid){
-    $conn = $this->savedDB();
-    $stmt = $conn->prepare("SELECT table_comment FROM INFORMATION_SCHEMA.TABLES WHERE table_name = '$campaignid' and table_schema = 'l5o0c8t4_save_campaign'");
+    $conn = $this->dbinfo();
+    $stmt = $conn->prepare('SELECT `campaign_desc`,`campaign_request`,`created_date`,`start_date`,`end_date`,`total_impressions`,`total_engagement`,`total_post` FROM `campaign_save_link` WHERE `campaign_id` = ?');
+    $stmt->bind_param('s',$campaignid);
     $stmt->execute();
-    $stmt->bind_result($comment);
-    $stmt->fetch();
-    unset($stmt);
-    return $comment;
+    $stmt->bind_result($campaigndesc,$campaignrequest,$created,$start,$end,$totalimpressions,$totalengagement,$totalpost);
+    while($stmt->fetch()){
+        $arr['campaignname'] = $campaignname;
+        $arr['campaignid'] = $campaignid;
+        $arr['description'] = $campaigndesc;
+        $arr['created'] = $created;
+        $arr['totalposts'] = $totalpost;
+        $arr['totalimpressions'] = $totalimpressions;
+        $arr['totalengagement'] = $totalengagement;
+        $arr['campaignstart'] = $start;
+        $arr['campaignend'] = $end;
+    return $arr;
 
+}
 }
 
 public function getCampaignName($campaignid){
@@ -330,6 +331,34 @@ public function getCampaignName($campaignid){
 }
 
 
+public function deleteCampaign($campaignid,$columnid){
+    $conn = $this->dbinfo();
+    $saveconn= $this->savedDB();
+    $stmt = $conn->prepare("DELETE FROM `campaign_save_link` WHERE `column_id` = ? AND `campaign_id` = ?");
+    $stmt->bind_param('ss',$columnid,$campaignid);
+    if($stmt->execute()){
+        unset($stmt);
+        $stmt = $saveconn->prepare("DROP TABLE `$campaignid`");
+        if($stmt->execute()){
+            return true;
+        }
+        else return false;
+    }
+    return false;
+}
+
+
+public function check_in_range($start_date, $end_date)
+{
+  // Convert to timestamp
+  $now = new DateTime();
+  $start_ts = strtotime($start_date);
+  $end_ts = strtotime($end_date);
+  $user_ts = time();
+
+  // Check that user date is between start & end
+  return (($user_ts >= $start_ts) && ($user_ts <= $end_ts));
+}
 
 
 

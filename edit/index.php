@@ -24,7 +24,6 @@ $tomorrow = date("Y-m-d", strtotime('tomorrow'));
 //Checking for campaign validity
 
 $campaigninfo = $save->getCampaignInfo($campaignid);
-$campaigninfo = json_decode($campaigninfo,true);
 $campaignsummary = $campaigninfo['description'];
 $campaignrequest = $campaigninfo['request'];
 $campaignstart = $campaigninfo['campaignstart'];
@@ -98,7 +97,7 @@ if(isset($campaignend)){
 
 <div class="container" style="margin-left:28.2%; padding-bottom:100px;">
 
-<p class="desc-header" style="padding-top:30px;"> Edit updatecampaign</p>
+<p class="desc-header" style="padding-top:30px;"> Edit <?php echo $campaignname; ?></p>
 <div class="input-container" style="width:45%;">
 
     <label class="title">Campaign Name </label>
@@ -151,7 +150,14 @@ $(document).on('click','.submit',function(){
             campaignend:campaignend
         },
         success: function (jqXHR, textStatus, errorThrown) {
-            console.log('success');
+            dialog = bootbox.dialog({
+                message: '<div class="bootbox-body">'+
+            '<div class="icon-popup-div"> <img src="https://68.media.tumblr.com/0abd1f3bfd0a2594ea81787691cb6af2/tumblr_o33ti7IZMI1t4twpao1_500.gif" class="success-popup-icon"/> </div>'+
+            '<div class="row"> <div class="col-xs-12 popup-detail success">   <span class="yay"> YAY! </span> <br/> Your campaign has been edited.  </div>'+
+            '</div> </div>',
+                closeButton: true
+            });
+            dialog.modal();
 
         }
 
@@ -161,8 +167,18 @@ $(document).on('click','.submit',function(){
 
 
 $(document).on('click','.delete',function(){
+        $.ajax({
+        type: 'POST',
+        url: '/includes/ajax/deletecampaign.php',
+        data: {
+            campaignid : campaignid,
+        },
+        success: function (jqXHR, textStatus, errorThrown) {
+            console.log('success');
 
-console.log('deleting...');
+        }
+
+    }); // end ajax request*/
 
 });
 </script>

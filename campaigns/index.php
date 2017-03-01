@@ -23,7 +23,8 @@ if($checkcampaign === false) header('Location: /dashboard.php');
 //If all is good, we continue. 
 $influencerinfo = $save->getCampaign($campaignid);
 $campaigninfo = $save->getCampaignInfo($campaignid);
-$campaigninfo = json_decode($campaigninfo,true);
+
+$description = $campaigninfo['description'];
 
 ?>
 <!DOCTYPE html>
@@ -117,7 +118,7 @@ width:20%;
 <div class="col-xs-12" style="padding-left:75px;">
     <div class="user-campaign-name col-xs-2" style="padding-left:13px; padding-bottom:20px; margin-left:0px; margin-top: -12px; color:#73C48D;"> <?php echo $influencerinfo['campaign_name'];?> 
     
-    <p style="font-size:13px; color:rgb(29, 40, 76);"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
+    <p style="font-size:13px; color:rgb(29, 40, 76);"> <?php echo $description; ?></p>
     
     </div>
   <!--  <div class="user-campaign-inf-count"> <span class="campaign-inf-count"><?php// echo $influencerinfo['campaign_count'];?> </span> Influencers Invited to this Campaign </div> -->
@@ -134,7 +135,7 @@ width:20%;
             <tr>
                 <td class="stats">'.$influencerinfo['campaign_count'].'</td>
                 <td class="stats">'.$campaigninfo['totalposts'].'</td>
-                <td class="stats">'.numberAbbreviation($campaigninfo['totalimpressions']/3).'</td>
+                <td class="stats">'.numberAbbreviation($campaigninfo['totalimpressions']/$influencerinfo['campaign_count']).'</td>
                 <td class="stats">1,000</td>
                 <td class="stats">'.numberAbbreviation($campaigninfo['totalimpressions']).'</td>
             </tr>
