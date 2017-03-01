@@ -40,6 +40,5 @@ foreach($selectedusers as $user => $postnumber){
     $stats['totalposts'] = $totalpost;
     $stats['created'] = date('m/d/Y');
     $stats['description'] = $_POST['campaigndescription'];
-    $stats = json_encode($stats);    
     $savecampaign = $save->createSavedCampaign($arr,$_SESSION['userid'],$stats,$_POST['campaignname']);
     echo $savecampaign;

@@ -1,6 +1,6 @@
 <?php
 session_start();
-//error_reporting(0);
+//error_reporting(-1);
 include 'includes/dbinfo.php';
  include 'includes/numberAbbreviation.php';
 include 'includes/class/savecampaign.php';
@@ -90,19 +90,37 @@ $campaigninfo = $save->getSavedCampaigns($_SESSION['column_id']);
 <div id="campaign-container">
 <?php
 foreach($campaigninfo as $campaignid => $info){
-$comment = json_decode($info['comment'],true);
 $numberOfInfluencers = count($info['influencer']);
 $name = $info['campaignname'];
-$totalimpressions = $comment['totalimpressions'];
+$totalimpressions = $info['totalimpressions'];
 $avgimpressions = $totalimpressions/$numberOfInfluencers;
-$totalpost = $comment['totalposts'];
-$datecreated = $comment['created'];
-echo '<div class="campaign-block col-xs-9" data-id="'.$campaignid.'" data-desc="Nothing seems to be here." data-name="'.$name.'" style="padding-left:75px;" >
+$totalpost = $info['totalposts'];
+$datecreated = $info['created'];
+$description = $info['description'];
+if(isset($info['campaignstart']) && isset($info['campaignend'])){
+$start = date('m/d/Y',strtotime($info['campaignstart']));
+$end = date('m/d/Y',strtotime($info['campaignend']));
+$state = $save->check_in_range($start,$end);
+if($state) $state = 'Campaign in progress';
+else $state = 'Campaign not in progress';
+
+}
+else{
+    unset($state);
+    unset($start);
+    unset($end);
+    $end = 'Campaign has not been scheduled';
+    $state = 'Campaign not in progress';
+}
+if(!isset($description)){
+    $description = 'Nothing seems to be here!';
+}
+echo '<div class="campaign-block col-xs-9" data-id="'.$campaignid.'" data-desc="'.$description.'" data-name="'.$name.'" data-start="'.$start.'" data-end="'.$end.'" style="padding-left:75px;" >
         <table class="col-xs-12">
             <tbody style="border-top:0px;">
             <tr>
                 <td class="campaign-details name" ><a class="campaign-details" href="/campaigns/'.$campaignid.'">'.$name.' </a></td>
-                <td class="campaign-details" > Campaign not in progress </td>
+                <td class="campaign-details" > '.$state.' </td>
                 <td class="campaign-details date" > Created '.$datecreated.'</td>
             </tr>
             <tr>
@@ -140,6 +158,8 @@ $(document).on('click','.campaign-block',function(){
     var name = $(this).attr('data-name');
     var desc = $(this).attr('data-desc');
     var id = $(this).attr('data-id');
+    var start = $(this).attr('data-start');
+    var end = $(this).attr('data-end');
     
     
     $('#campaign-info').append(
@@ -148,9 +168,9 @@ $(document).on('click','.campaign-block',function(){
       ' <p class="title"> Campaign Summary</p>'+
        '<p id="summary">'+desc+'</p>'+
        '<p class="title">Campaign Schedule</p>'+
-       '<p id="schedule"> <strong> Start</strong> April 1 <strong> April 6 </strong>'+
+       '<p id="schedule"> <strong> Campaign Schedule </strong> '+start+' - '+end+ ''+
        '<div id="button-container">'+
-           '<button class="option-button delete avocado-hover avocado-focus" id="'+id+'"> Delete Campaign </button>'+
+           '<a style="color:#76838f;"href="/edit/'+id+'"><button class="option-button avocado-hover avocado-focus" id="'+id+'"> Edit Campaign </button></a>'+
            '<a style="color:#76838f;"href="/campaigns/'+id+'"><button class="option-button avocado-hover avocado-focus" name="campaign" value="'+id+'">View Campaign </button></a>'+
     '</div>');
 });
