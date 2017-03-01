@@ -206,10 +206,6 @@ textarea.form-control.category.avocado-focus {
     var target2 = $('#stuff').offset().top;
 </script>
 
-<!-- <div class="container" style="">
-  <div class="row"> -->
-
-
 
 <div class="col-xs-9 settings-lg-col">
 
