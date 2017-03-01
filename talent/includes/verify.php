@@ -6,19 +6,17 @@ unset($_SESSION);
 }
 session_start();
 
-include 'class/useroptions.php';
-include 'class/favorite.php';
-$favoriteobj = new favorite; 
-$useroptionsobj = new userOptions;
+include 'class/useroptionstalent.php';
+$useroptionsobj = new userOptionsTalent;
 
 $conn = $useroptionsobj->dbinfo();
 $inputemail = $_POST['email'];
 $inputpassword = $_POST['password'];
 //Preparing sql statement 
-$stmt = $conn->prepare("SELECT `userid`,`email`,`firstname`,`lastname`,`salt`,`password`,`column_id`,`pdf_logo`,`login_attempts`,`temporary_lockout`,`lockout`,`confirmed` FROM `login_information` WHERE `email` = ?");
+$stmt = $conn->prepare("SELECT `userid`,`email`,`firstname`,`lastname`,`salt`,`password`,`column_id`,`login_attempts`,`temporary_lockout`,`lockout` FROM `login_information` WHERE `email` = ?");
 $stmt->bind_param('s',$inputemail);
 $stmt->execute();
-$stmt->bind_result($userid,$email,$firstname,$lastname,$salt,$realpassword,$columnid,$pdf_logo,$login_attempts,$temporary_lockout,$lockout,$confirmed);
+$stmt->bind_result($userid,$email,$firstname,$lastname,$salt,$realpassword,$columnid,$login_attempts,$temporary_lockout,$lockout);
 $stmt->fetch();
 //We will now check if there is anything wrong with the user user i.e lockedout temporary locked out. 
 $password = hash_pbkdf2("sha256", $inputpassword, $salt, 1000, 20);
@@ -43,21 +41,18 @@ if($temporary_lockout != NULL){
 }
 
 if($login !== false){
-    $_SESSION['project_id'] = md5(session_id());
+    $_SESSION['talent_id'] = md5(session_id());
     $_SESSION['column_id'] = $columnid;
     $_SESSION['firstname'] = $firstname;
     $_SESSION['lastname'] = $lastname;
     $_SESSION['email'] = $email;
     $_SESSION['pdf_logo'] = $pdf_logo;
     $_SESSION['userid'] = $userid;
-    //$_SESSION['campaigns'] = $useroptionsobj->getCampaigns($userid,$columnid);
-    //$_SESSION['campaignids'] = $useroptionsobj->getCampaignsWithID($userid,$columnid);
-    $_SESSION['favoriteinfluencers'] = $favoriteobj->getFavorites($userid);
     $login_attempts = 0;
     $stmt->prepare('UPDATE `login_information` SET `login_attempts` = ? WHERE `email` = ?');
     $stmt->bind_param('is',$login_attempts,$email);
     $stmt->execute();
-    header('Location:/dashboard.php');
+    header('Location:/talent/dashboard.php');
 }
 else{
     //If the email is right but

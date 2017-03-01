@@ -2,8 +2,8 @@
 session_start();
 //error_reporting(-1);
 include 'includes/dbinfo.php';
- include 'includes/numberAbbreviation.php';
-include 'includes/class/savecampaign.php';
+include 'includes/numberAbbreviation.php';
+
 $save = new saveCampaign;
 $campaigninfo = $save->getSavedCampaigns($_SESSION['column_id']);
 ?>

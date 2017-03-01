@@ -2,7 +2,7 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 include 'includes/registerinfo.php';
 }
-
+ 
 ?>
 <!DOCTYPE html>
 <head>
@@ -107,7 +107,7 @@ include 'includes/registerinfo.php';
                       </div>
   </div>
 
-    <input type="text" placeholder="referral password" style="text-align: center;/* margin-right: 45%; */ margin-left: 31%;height: 68px;width: 39%;margin-top: 30px;">
+    <input type="password" name="referral" placeholder="referral password" style="text-align: center;/* margin-right: 45%; */ margin-left: 31%;height: 68px;width: 39%;margin-top: 30px;">
 
     <div class="row signup-btn-row">
 

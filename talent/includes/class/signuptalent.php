@@ -1,11 +1,9 @@
 <?php
  
 
-class signUp {
+class signUpTalent {
  
  function register($arr){
-	/* echo 'MEH';
-	 return false;
     $first = $arr['firstname'];
     $last = $arr['lastname'];
     $email = $arr['email'];
@@ -15,7 +13,7 @@ class signUp {
 	$referral = $arr['referral'];
     $checkEmail = $this->checkEmail($email);
     $checkPassword = $this->checkPassword($password);
-	$checkRefferal = $this->checkReferral($referral);
+	$checkReferral = $this->checkReferral($referral);
     $error = $this->errorHandling($arr);
     if($error !== FALSE){
         return $error;
@@ -31,7 +29,6 @@ class signUp {
     VALUES (?,?,?,?,?,?,?)");
     $stmt->bind_param('sssssss', $userid, $email, $first, $last, $salt, $password,$columnid);
     if(!$stmt->execute()){
-        echo 'here';
         if(strpos($stmt->error, 'Duplicate') !== FALSE){
             $error = 'That email address is already being used.';
             return $error;
@@ -44,7 +41,7 @@ class signUp {
 	else{
         $this->sendConfirmationEmail($email,$confirmationkey);
         return true;
-	}*/
+	}
  }
 
 
@@ -69,7 +66,7 @@ return true;
 	$referral = $arr['referral'];
     $checkEmail = $this->checkEmail($email);
     $checkPassword = $this->checkPassword($password);
-	$checkRefferal = $this->checkRefferal($referral);
+	$checkReferral = $this->checkReferral($referral);
 
     if($checkEmail === false){
     $error .= '<li>Email is not properly formatted</li>';
@@ -95,7 +92,7 @@ return true;
     $error .= '<li>You have to enter a company name in</li>';
     $signup = false;
     }
-	if($checkRefferal === false){
+	if($checkReferral === false){
 		$error .= 'Referral password is incorrect';
 		$signup = false;
 	}
@@ -116,7 +113,7 @@ return false;
 }
 
 
-protected function checkRefferal($referral){
+protected function checkReferral($referral){
 $salt = '7Pas+2ADrAneducR';
 $realpassword = hash_pbkdf2("sha256", $salt, 'T6_BruTRuFr=2rap', 1000, 20);
 $userpassword =  hash_pbkdf2("sha256", $salt, $referral, 1000, 20);
@@ -173,8 +170,22 @@ $last_updated = $date->getTimestamp();
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
+else{
+    return $conn;
+}
 
 }
+
+function randomString($length = 5) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+
 
 public function emailWelcome($link){
   $html = '
