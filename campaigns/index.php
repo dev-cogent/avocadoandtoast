@@ -42,6 +42,7 @@ $description = $campaigninfo['description'];
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
 <link rel="stylesheet" href="/includes/css/discover.css">
+<link rel="stylesheet" href="/assets/css/sidebar.css">
 <style>
 .stats{
     color: #73C48D;
@@ -99,7 +100,17 @@ width:20%;
     height: 20px;
     padding-top: 15px;
 "></i>
+  <div id="li-container" style="display:none;">
+    <li class="item"><a class="side-link" href="dashboard.php"> DASHBOARD </a> </li>
+    <li class="item"><a class="side-link" href="acdiscover.php"> DISCOVER </a></li>
+    <li class="item"><a class="side-link" href="#"> ACCOUNT SETTINGS </a></li>
+    <li class="item"><a class="side-link" href="#"> FAQ</a> </li>
+    <li class="item"><a class="side-link" href="#"> CONTACT</a> </li>
+    <li class="item"><a class="side-link" href="#"> LATEST UPDATES</a></li>
+    <li class="item"><a class="side-link" href="#"> LOGOUT</a></li>
+  </div>
 </div>
+
 <div id="stuff"></div>
 
 
@@ -112,7 +123,7 @@ width:20%;
     <div class="go-back-btn-div"> <a class="back-btn" href="/dashboard.php"> Go Back </a> </div>
     <div class="go-back-btn-div"> <a class="back-btn" href="/edit/<?php echo $campaignid;?>"> Edit Campaign </a> </div>
     <div class="go-back-btn-div"> <a class="back-btn" href="/edit/<?php echo $campaignid;?>"> Export Campaign </a> </div>
-    <div class="go-back-btn-div"> <a class="back-btn" href="/edit/<?php echo $campaignid;?>"> Price Campaign </a> </div>
+    <div class="go-back-btn-div"> <a class="back-btn" href="/price/<?php echo $campaignid;?>"> Price Campaign </a> </div>
 </div>
 
 <div class="col-xs-12" style="padding-left:75px;">
@@ -319,46 +330,32 @@ var page = 0;
 var selectedusers = [];
 var filters = {};
 var target2 = $('#stuff').offset().top;
+var sidebar = false;
 console.log(target2);
-function abbrNum(number, decPlaces = 2) {
-    var orig = number;
-    var dec = decPlaces;
-    // 2 decimal places => 100, 3 => 1000, etc
-    decPlaces = Math.pow(10, decPlaces);
 
-    // Enumerate number abbreviations
-    var abbrev = ["k", "m", "b", "t"];
+$(document).on('click','.sidebar-left',function(){
 
-    // Go through the array backwards, so we do the largest first
-    for (var i = abbrev.length - 1; i >= 0; i--) {
-
-        // Convert array index to "1000", "1000000", etc
-        var size = Math.pow(10, (i + 1) * 3);
-
-        // If the number is bigger or equal do the abbreviation
-        if (size <= number) {
-            // Here, we multiply by decPlaces, round, and then divide by decPlaces.
-            // This gives us nice rounding to a particular decimal place.
-            var number = Math.round(number * decPlaces / size) / decPlaces;
-
-            // instHandle special case where we round up to the next abbreviation
-            if((number == 1000) && (i < abbrev.length - 1)) {
-                number = 1;
-                i++;
-            }
-
-            // console.log(number);
-            // Add the letter for the abbreviation
-            number += abbrev[i];
-
-            // We are done... stop
-            break;
-        }
-    }
-
-    return number;
+if(sidebar == false){
+$(this).animate({
+'max-width':'300px',
+ 'width':'300px'
+}, 'slow');
+$('#li-container').fadeIn();
+sidebar = true;
 }
 
+else{
+    $(this).animate({
+    'width':'55px',
+    'max-width':'55px'
+},'slow');
+$('#li-container').fadeOut();
+sidebar = false;
+}
+
+
+
+});
 $('#tokenfield').tokenfield();
 </script>
 <script src="/acslider.js"></script>

@@ -21,6 +21,7 @@ include 'includes/numberAbbreviation.php';
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
 <link rel="stylesheet" href="/includes/css/discover.css">
+<link rel="stylesheet" href="/assets/css/sidebar.css">
 <style>
 .form-control{
     font-size:15px;
@@ -51,6 +52,15 @@ include 'includes/numberAbbreviation.php';
     height: 20px;
     padding-top: 15px;
 "></i>
+  <div id="li-container" style="display:none;">
+    <li class="item"><a class="side-link" href="dashboard.php"> DASHBOARD </a> </li>
+    <li class="item"><a class="side-link" href="acdiscover.php"> DISCOVER </a></li>
+    <li class="item"><a class="side-link" href="#"> ACCOUNT SETTINGS </a></li>
+    <li class="item"><a class="side-link" href="#"> FAQ</a> </li>
+    <li class="item"><a class="side-link" href="#"> CONTACT</a> </li>
+    <li class="item"><a class="side-link" href="#"> LATEST UPDATES</a></li>
+    <li class="item"><a class="side-link" href="#"> LOGOUT</a></li>
+  </div>
 </div>
 
 
@@ -294,6 +304,7 @@ $(this).animate({
 'max-width':'300px',
  'width':'300px'
 }, 'slow');
+$('#li-container').fadeIn();
 sidebar = true;
 }
 
@@ -302,6 +313,7 @@ else{
     'width':'55px',
     'max-width':'55px'
 },'slow');
+$('#li-container').fadeOut();
 sidebar = false;
 }
 
