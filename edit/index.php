@@ -90,8 +90,8 @@ if(isset($campaignend)){
     padding-top: 15px;
 "></i>
   <div id="li-container" style="display:none;">
-    <li class="item"><a class="side-link" href="dashboard.php"> DASHBOARD </a> </li>
-    <li class="item"><a class="side-link" href="acdiscover.php"> DISCOVER </a></li>
+    <li class="item"><a class="side-link" href="/dashboard.php"> DASHBOARD </a> </li>
+    <li class="item"><a class="side-link" href="/acdiscover.php"> DISCOVER </a></li>
     <li class="item"><a class="side-link" href="#"> ACCOUNT SETTINGS </a></li>
     <li class="item"><a class="side-link" href="#"> FAQ</a> </li>
     <li class="item"><a class="side-link" href="#"> CONTACT</a> </li>
