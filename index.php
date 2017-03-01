@@ -20,7 +20,7 @@
         <nav class="navbar">
             <div class="container-fluid">
                 <div class="navbar-header">
-                   <a class="navbar-brand" href="/"><img src="assets/images/at-logo-black.png" class="at-logo-nav"> </a>
+                   <a class="navbar-brand" href="/"><img src="assets/images/at-logo-black.png" class="logo-nav-index"> </a>
              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
                <span class="sr-only"> Toggle Navigation </span>
                       <span class="icon-bar"> </span>
@@ -40,7 +40,7 @@
           </ul>
 
       <ul class="nav navbar-nav navbar-right login-sect">
-          <li class="login border-dark"> <a href="#" class="login-nav main-nav-dark"> LOGIN </a> </li>
+          <li class="login border-dark"> <a href="/login.php" class="login-nav main-nav-dark"> LOGIN </a> </li>
         </ul>
 
       </div>
@@ -54,14 +54,14 @@
 
 <div class="header-container">
 <div class="background-img">
-  <img src="assets/images/main-page-banner.png" class="avocado-img-header img-responsive">
+  <img src="assets/images/main-page-banner.png" class="main-img-header img-responsive">
   <div class="text-container">
   <div class="main-banner-header large"> Two things that go well together:  </div>
   <div class="main-banner-det"> AVOCADO <i class="icon wb-plus list-icon avo med lg" aria-hidden="true"></i> TOAST <br>
   INFLUENCER <i class="icon wb-plus list-icon avo med lg" aria-hidden="true"></i> BRANDS</div>
-  <div class="start-button-div"> <a href="#" class="start-btn"> Get Started </a> <a href="#" class="learn-more shadow"> Learn More </a> </div>
+  <div class="start-button-div"> <a href="/signup.php" class="start-btn"> Get Started </a> <a href="#" class="learn-more shadow"> Learn More </a> </div>
   <div class="dashboard-img-div">
-    <img src="assets/images/test.png" class="dashboard-img img-responsive">
+    <img src="assets/images/dashboard-main.png" class="dashboard-img img-responsive shadow-grey">
   </div>
       </div>
 
@@ -130,7 +130,7 @@
 
         <div class="row third-sect">
           <div class="button-protect">
-            <a href="#" class="signup-btn"> Sign up it's free </a>
+            <a href="/signup.php" class="signup-btn"> Sign up it's free </a>
           </div>
       </div>
 
@@ -140,69 +140,4 @@
     </div>
 
 
-
-    <footer class="avocado-footer">
-        <div class="container">
-          <div class="row">
-            <div class="col-xs-3">
-                <ul class="nav nav-pills nav-stacked">
-                    <li class="footer-title"> Who are you? </li>
-                      <li class="footer-links"> Agencies </li>
-                      <li class="footer-links"> Influencers </li>
-                    </ul>
-                  </div>
-
-                  <div class="col-xs-3">
-                      <ul class="nav nav-pills nav-stacked">
-                          <li class="footer-title"> Quick links </li>
-                            <li class="footer-links"> The Global Hype </li>
-                            <li class="footer-links"> About us </li>
-                            <li class="footer-links"> Login </li>
-                          </ul>
-                        </div>
-
-              <div class="col-xs-3">
-                <ul class="nav nav-pills nav-stacked">
-                    <li class="footer-title"> Sales </li>
-                      <li class="footer-links sales"> Sales@AvocadoandToast.com </li>
-                      <li class="footer-links"> 917.243.4354</li>
-                    </ul>
-                  </div>
-
-
-                  <div class="col-xs-3">
-                    <ul class="nav nav-pills nav-stacked">
-                        <li class="footer-title"> Support </li>
-                          <li class="footer-links support"> Support@AvocadoandToast.com </li>
-                          <li class="footer-links"> 917.454.3645 </li>
-                        </ul>
-                      </div>
-
-            </div>             <!-- first row on footer ends -->
-
-            <div class="row">
-                <div class="col-xs-8">
-                  <ul class="nav nav-pills nav-stacked">
-                    <li class="footer-offices-title"> Our Offices </li>
-                    <li class="footer-office">
-                       <img src="assets/images/newyorkmap.png" class="newyork-map">
-                       <div class="office-loc">  <h6 class="new-york"> New York </h6> </br>  <div class="address">150 5th Ave </br> New York, NY 10011 </div> </div> </li>
-                  </ul>
-                </div>
-
-                <div class="col-xs-4">
-                  <ul class="nav nav-pills nav-stacked">
-                    <li class="footer-title">  </li>
-                    <li class="footer-office">  </li>
-                  </ul>
-                </div>
-
-
-
-              </div>
-
-
-          </div>      <!-- foooter container ends  -->
-
-
-        </footer>
+    <?php include 'acfooter.php'; ?>

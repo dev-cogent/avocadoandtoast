@@ -1,17 +1,17 @@
 <?php
+ 
 
 include 'favorite.php';
 
 class signUp extends favorite{
 
  function register($arr){
-
+	 
     $first = $arr['firstname'];
     $last = $arr['lastname'];
     $email = $arr['email'];
     $password = $arr['password'];
     $confirmpassword = $arr['confirm'];
-    //$accounttype = $arr['accounttype'];
     $company = $arr['company'];
     $checkEmail = $this->checkEmail($email);
     $checkPassword = $this->checkPassword($password);
@@ -29,9 +29,10 @@ class signUp extends favorite{
     $confirmed = 'false';
     $conn = $this->dbinfo();
     $favoritedb = $this->favoriteDB();
-    $stmt = $conn->prepare("INSERT INTO `login_information`(`userid`,`email`, `firstname`, `lastname`,`salt`, `password`, `column_id`, `confirmed`,`confirmation_key`,`company`)
-    VALUES (?,?,?,?,?,?,?,?,?,?)");
-    $stmt->bind_param('ssssssssss', $userid, $email, $first, $last, $salt, $password,$columnid,$confirmed,$confirmationkey,$company);
+	$date = time();
+    $stmt = $conn->prepare("INSERT INTO `login_information`(`userid`,`email`, `firstname`, `lastname`,`salt`, `password`, `column_id`, `confirmed`,`confirmation_key`,`company`,`date_created`)
+    VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param('sssssssssss', $userid, $email, $first, $last, $salt, $password,$columnid,$confirmed,$confirmationkey,$company,$date);
     if(!$stmt->execute()){
         echo 'here';
         if(strpos($stmt->error, 'Duplicate') !== FALSE){
@@ -56,11 +57,11 @@ class signUp extends favorite{
 
 
 public function sendConfirmationEmail($email,$confirmationkey){
-$headers = "From: support@project.social \r\n";
+$headers = "From: support@avocadoandtoast \r\n";
 $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 $message = $this->emailWelcome($confirmationkey);
-$mail = mail($email, 'Please Confirm Project Social Account', $message, $headers);
+$mail = mail($email, 'Please Confirm avocado and  toast Account', $message, $headers);
 return true;
 }
 
@@ -888,7 +889,7 @@ public function emailWelcome($link){
 
                             <h2 style="display: block;margin: 0;padding: 0;color: #202020;font-family: Helvetica;font-size: 24px;font-style: normal;font-weight: bold;line-height: 150%;letter-spacing: normal;text-align: center;">WELCOME *|FNAME|*</h2>
 
-<p style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #666666;font-family: Georgia, Times, `Times New Roman`, serif;font-size: 16px;line-height: 150%;text-align: center;">Thank you for your joining Project Social. Please confirm your acccount <a href="https://project.social/confirmation?q='.$link.'" class="confirmation-link" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #888888;font-weight: normal;text-decoration: underline;"> HERE. </a><br>
+<p style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #666666;font-family: Georgia, Times, `Times New Roman`, serif;font-size: 16px;line-height: 150%;text-align: center;">Thank you for your joining Project Social. Please confirm your acccount <a href="https://dev.avocadoandtoast.com/confirmation?q='.$link.'" class="confirmation-link" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #888888;font-weight: normal;text-decoration: underline;"> HERE. </a><br>
 <br>
 I appreciate you taking the time to sign up for&nbsp;our tool that will&nbsp;provide you with realistic pricing for the influencers you want to work with.&nbsp;Here are some additional resources that you can use to get the most out of Project Social!<br>
 &nbsp;</p>

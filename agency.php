@@ -9,51 +9,50 @@
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 </head>
 
-<div class="nav">
 
 
-</div>
+<header class="header avocado-header">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="row avocado-row">
 
-  <header class="header avocado-header">
+      <nav class="navbar">
+          <div class="container-fluid">
+              <div class="navbar-header">
+                 <a class="navbar-brand" href="/">
+                   <img src="assets/images/at-logo-black.png" class="at-logo-nav">
+                   <img src="assets/images/at-logo.png" class="white-logo"> </a>
+           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+             <span class="sr-only"> Toggle Navigation </span>
+                    <span class="icon-bar"> </span>
+                      <span class="icon-bar"> </span>
+                    <i class="icon wb-menu" style=""></i>
+                        <span class="icon-bar"> </span>
+           </button>
+         </div>
 
 
 
-      <!-- <div class="container-fluid avocado-container"> -->
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="row avocado-row">
+ <div class="collapse navbar-collapse" id="myNavBar">
+   <ul class="nav navbar-nav avocado-ul center-ul">
+       <li class="nav-href"><a href="#" class="main-nav-dark"> Influencers </li>
+       <li class="nav-href"><a href="/agency.php" class="main-nav-dark"> Agencies </li>
+       <li class="nav-href"><a href="#" class="about-us main-nav-dark"> About Us </li>
+       </ul>
 
-        <div class="navbar-header">
-             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-               <span class="sr-only"> Toggle Navigation </span>
+    <ul class="nav navbar-nav navbar-right login-sect">
+        <li class="login"> <a href="/login.php" class="login-nav"> LOGIN </a> </li>
+      </ul>
 
-             </button>
-             <a class="navbar-brand" href="#"><img src="assets/images/at-logo.png" class="at-logo-nav"> </a>
-             <div class="logo-mobile"> </div>
-           </div>
-
-
-
-   <div class="navbar-collapse collapse" id="navbar1">
-      <ul class="nav navbar-nav avocado-ul">
-          <li class="nav-href"><a href="#"> Influencers </li>
-          <li class="nav-href"><a href="#"> Agencies </li>
-          <li class="nav-href"><a href="#" class="about-us"> About Us </li>
-          </ul>
-
-      <ul class="nav navbar-nav login-sect">
-          <li class="login"> <a href="#" class="login-nav"> LOGIN </a> </li>
-        </ul>
-
-      </div>
     </div>
   </div>
+</nav>
 
 
 </div>
 </div>
 </header>
 
-
+<div class="header-container">
 <div class="background-img">
   <img src="assets/images/Toast-Banner.png" class="avocado-img-header">
 
@@ -62,12 +61,12 @@
   <div class="view-button"> <a href="#" class="view-btn"> View More </a> </div>
 
 </div>
-
+</div>
 
 
   <div class="container-fluid agency-section">
     <div class="row first-sect">
-      <div class="col-xs-6">
+      <div class="col-xs-6 powerful-col">
         <div class="powerful-tool">
           Powerful Tools to Manage All of your Clients in One Dashboard
       </div>
@@ -101,7 +100,7 @@
 
         <div class="row third-sect">
           <div class="button-protect">
-            <a href="#" class="signup-btn"> Sign up it's free </a>
+            <a href="/signup.php" class="signup-btn"> Sign up it's free </a>
           </div>
       </div>
 
@@ -110,68 +109,7 @@
 </div>
 
 
-
-    <footer class="avocado-footer">
-        <div class="container">
-          <div class="row">
-            <div class="col-xs-3">
-                <ul class="nav nav-pills nav-stacked">
-                    <li class="footer-title"> Who are you? </li>
-                      <li class="footer-links"> Agencies </li>
-                      <li class="footer-links"> Influencers </li>
-                    </ul>
-                  </div>
-
-                  <div class="col-xs-3">
-                      <ul class="nav nav-pills nav-stacked">
-                          <li class="footer-title"> Quick links </li>
-                            <li class="footer-links"> The Global Hype </li>
-                            <li class="footer-links"> About us </li>
-                            <li class="footer-links"> Login </li>
-                          </ul>
-                        </div>
-
-              <div class="col-xs-3">
-                <ul class="nav nav-pills nav-stacked">
-                    <li class="footer-title"> Sales </li>
-                      <li class="footer-links sales"> Sales@AvocadoandToast.com </li>
-                      <li class="footer-links"> 917.243.4354</li>
-                    </ul>
-                  </div>
+<?php include 'acfooter.php'; ?>
 
 
-                  <div class="col-xs-3">
-                    <ul class="nav nav-pills nav-stacked">
-                        <li class="footer-title"> Support </li>
-                          <li class="footer-links support"> Support@AvocadoandToast.com </li>
-                          <li class="footer-links"> 917.454.3645 </li>
-                        </ul>
-                      </div>
-
-            </div>             <!-- first row on footer ends -->
-
-            <div class="row">
-                <div class="col-xs-8">
-                  <ul class="nav nav-pills nav-stacked">
-                    <li class="footer-offices-title"> Our Offices </li>
-                    <li class="footer-office">
-                       <img src="assets/images/newyorkmap.png" class="newyork-map">
-                       <div class="office-loc">  <h6 class="new-york"> New York </h6> </br>  <div class="address">150 5th Ave </br> New York, NY 10011 </div> </div> </li>
-                  </ul>
-                </div>
-
-                <div class="col-xs-4">
-                  <ul class="nav nav-pills nav-stacked">
-                    <li class="footer-title">  </li>
-                    <li class="footer-office">  </li>
-                  </ul>
-                </div>
-
-              </div>
-
-
-          </div>      <!-- foooter container ends  -->
-
-
-        </footer>
 </html>

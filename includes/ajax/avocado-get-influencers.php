@@ -19,7 +19,7 @@ echo '
     <label id="campaign-label">CAMPAIGN NAME:</label><input id="campaign-name" type="text" placeholder="Untitled Campaign">
     </div>
     <button class="col-md-6 col-lg-3 info-button secondary-button" style="margin-right: 100px;">SUBMIT FOR PRICING</button>
-    <button class="col-md-6 col-lg-3 info-button main-button">CREATE CAMPAIGN </button>
+    <button class="col-md-6 col-lg-3 info-button main-button" id="createcampaign">CREATE CAMPAIGN </button>
 
 
 
@@ -51,7 +51,7 @@ echo '
                     $insthandle = $insthandle[0];
                   echo'
                     <tr class="campaign-list-table">
-                        <td class="campaign-tablerow" style="width:15%;">
+                        <td class="campaign-tablerow" style="width:15%; padding-left:1%;">
                                 <div class="information"> 
                             <img src="http://project.social/'.$image.'" class="influencer-campaign-image ">
                             <h4 class="influencer-handle-text handle">@'.$insthandle.'</h4>

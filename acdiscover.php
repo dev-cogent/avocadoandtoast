@@ -9,7 +9,7 @@ include 'includes/numberAbbreviation.php';
 <html class="no-js css-menubar" lang="en">
 <head>
   <?php include 'includes/head.php' ?>
-    <title>Blank Page | Project Social</title>
+    <title>Discover | Avocado & Toast</title>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700" rel="stylesheet">
@@ -21,21 +21,17 @@ include 'includes/numberAbbreviation.php';
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
 <link rel="stylesheet" href="/includes/css/discover.css">
+<style>
+.form-control{
+    font-size:15px;
+    letter-spacing:1px;
 
+}
+</style>
 </head>
 
 <body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
-    <div class="col-xs-12" style="border-top: 1px solid rgb(210,215,220); border-bottom:1px solid rgb(210,215,220); height:66px;">
-       <img src="/assets/images/at-logo-black.png" style="margin-top:-8px;">
-
-    </div>
-<!-- Content where the discover, communicatie, order management would be -->
-<div class="mininav" style="margin-top:65px" >
-    <p class="nav2"> <a href="" class="discover-nav"> DISCOVER </a> </p>
-      <p class="nav2"> <a href="" class="create-nav"> CREATE </a> </p>
-        <p class="nav2"> <a href="" class="price-nav">  PRICE CAMPAIGN </a></p>
-          <p class="nav2"> <a href="" class="campaign-nav"> YOUR CAMPAIGNS </a>  </p>
-</div>
+<?php include 'acnav.php';?>
 
 
 
@@ -251,6 +247,8 @@ var page = 0;
 var selectedusers = [];
 var filters = {};
 var target = $("#test-height").offset().top;
+var target2 = $('#stuff').offset().top;
+var sidebar = false;
 function abbrNum(number, decPlaces = 2) {
     var orig = number;
     var dec = decPlaces;
@@ -289,13 +287,29 @@ function abbrNum(number, decPlaces = 2) {
 
     return number;
 }
+$(document).on('click','.sidebar-left',function(){
 
+if(sidebar == false){
+$(this).animate({
+'max-width':'300px',
+ 'width':'300px'
+}, 'slow');
+sidebar = true;
+}
+
+else{
+    $(this).animate({
+    'width':'55px',
+    'max-width':'55px'
+},'slow');
+sidebar = false;
+}
+
+
+
+});
 $('#tokenfield').tokenfield();
 </script>
 <script src="/acslider.js"></script>
 <script src="/includes/javascript/avocado-discover.js"></script>
-
-
-
-
-
+<script src="/includes/javascript/create-campaign.js"></script>

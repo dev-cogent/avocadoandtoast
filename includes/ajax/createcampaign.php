@@ -1,11 +1,14 @@
 <?php 
-session_start();
-include '../class/campaign.php';
+session_start(); 
+include '../class/savecampaign.php';
 $campaignname = $_POST['campaignname'];
 $influencerids = $_POST['users'];
 $userid = $_SESSION['userid'];
-$campaign = new campaignCalculator;
-$createcampaign = $campaign->createCampaign($influencerids,$userid,$campaignname);
+
+if($userid == NULL)
+return 0;
+$campaign = new saveCampaign;
+$createcampaign = $campaign->createSavedCampaign($influencerids,$userid,$campaignname);
 if($createcampaign === true){
     array_push($_SESSION['campaigns'],$campaignname);
     echo $createcampaign;

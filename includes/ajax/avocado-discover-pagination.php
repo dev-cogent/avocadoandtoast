@@ -1,5 +1,5 @@
 <?php
-//TODO: CHANGE CHECKBIO TO SEARCH FOR TAGS FROM POSTS WHEN DATABASE IS UPDATED. 
+//TODO: CHANGE CHECKBIO TO SEARCH FOR TAGS FROM POSTS WHEN DATABASE IS UPDATED.
 include '../dbinfo.php';
 include '../numberAbbreviation.php';
 $c = 0;
@@ -79,7 +79,7 @@ while($stmt->fetch()){
                 $facebookhandle = explode('/',$facebookhandle[1]);
                 $facebookhandle = explode('?',$facebookhandle[0]);
                 $facebookhandle = $facebookhandle[0];
-                //twitter handle 
+                //twitter handle
                 $twitterhandle = explode('.com/',$twitterurl);
                 $twitterhandle = explode('/',$twitterhandle[1]);
                 $twitterhandle = explode('?',$twitterhandle[0]);
@@ -136,11 +136,11 @@ while($stmt->fetch()){
 
                                             else{
 
-                                                
+
                                             }
 
-                                            
-                                            
+
+
                                 echo '
                                         </div>
                                     <!-- followers -->
@@ -176,7 +176,7 @@ while($stmt->fetch()){
                                         <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$id.'">1.5K Likes per post</p>
                                     </div>
                                     <div class="col-xs-12">
-                                        
+
                                         <div style="display:inline;"class="col-xs-12 invite avocado-hover avocado-focus" data-id="'.$id.'" data-image="'.$image.'">
                                              <i class="thumb-up icon fa-plus" aria-hidden="true"></i>
                                                  INVITE</div>
@@ -196,11 +196,11 @@ function checkBio($bio, $searchoptions, $options, &$where, &$arr){
 
 
     foreach($bio as $keyword){
-        
+
          $tags = '`bio` LIKE ? OR `tags` LIKE ?';
          $arr['term'][] = '%'.$keyword.'%';
          $arr['term'][] = '%'.$keyword.'%';
-    
+
 
     /*if(in_array('names',$searchoptions)){
         if(isset($tags))
@@ -339,7 +339,7 @@ else{
 }
 
 
-//For facebook 
+//For facebook
 if($facebookurl == NULL || $facebookurl == ''){
     $html .= '<a> <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" style="display:none;" aria-hidden="true"></i></a>';
 }
@@ -365,4 +365,3 @@ return $html;
 
 }
 ?>
-

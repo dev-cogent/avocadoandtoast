@@ -13,7 +13,7 @@ $(document).on('click','#calculate',function(){
         $('#stuff').append(jqXHR);
     }
 
-}); // end ajax request*/ 
+}); // end ajax request*/
 
 });
 
@@ -21,13 +21,25 @@ $(document).on('click','#calculate',function(){
 $(document).on('click','#apply',function(){
 
     dialog = bootbox.dialog({
-        message: '<input type="text" id="get-instagram"> <input type="text" id="get-facebook"> <input type="text" id="get-twitter"> <button id="applyall">Submit</button>',
+        message: '<div class="bootbox-body">'+
+   '<div class="icon-popup-div"> <img src="https://68.media.tumblr.com/0bd527025c6131b779c1d692c294354a/tumblr_o5asqmb3WP1txllk0o1_r2_500.gif" class="avocado-popup-icon"/> </div>'+
+    '<div class="row"> <div class="col-xs-12 popup-detail">  How many posts would you like your influencer to post on each platform?  </div>'+
+    '<div class="col-xs-1" style="width: 12.499999995%"></div><div class="col-xs-3 input-div">'+
+      '<img src="assets/images/fb-logo-green.png" class="fb-logo-popup">'+
+    '<div class="quantity"><input type="number" id="get-facebook" value="0" class="input-popup avocado-focus"></div> </div>'+
+    '<div class="col-xs-3 input-div"> <img src="assets/images/instagram-logo-green.png" class="insta-logo-popup"> <input type="number" id="get-instagram" value="0" class="input-popup avocado-focus"> </div>'+
+    '<div class="col-xs-3 input-div">'+
+  '<img src="assets/images/twitter-logo-green.png" class="twitter-icon-popup">'+
+    '<input type="number" id="get-twitter" value="0"  class="input-popup"> '+
+    '</div><div class="col-xs-1" style="width: 12.499999995%"></div></div>'+
+      '<div class="submit-btn-div"> <button id="applyall" class="submit-btn">Submit</button>'+
+    '</div> </div>',
         closeButton: true
     });
     dialog.modal();
 
 });
-    
+
 $(document).on('click','#applyall',function(){
 var instval = $('#get-instagram').val();
 var facebookval = $('#get-facebook').val();
@@ -291,6 +303,47 @@ $(document).ready(function () {
 
 });
 
+// same ajax call but calling a different php file that contains different bootstrap styling
+// for the view campaigns onscroll pagination
+$(document).ready(function () {
+    $.ajax({
+        type: 'POST',
+        url: '/includes/ajax/avocado-campaign-pagination.php',
+        data: {
+            page: '0'
+        },
+        success: function (jqXHR, textStatus, errorThrown) {
+            $('#content').append(jqXHR);
+        }
+    }); // end ajax request*/
+
+
+    $(window).scroll(function () {
+        if(calculate == false){
+        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+            page = page + 1;
+            console.log(page);
+            console.log(filters);
+            $.ajax({
+                type: 'POST',
+                url: '/includes/ajax/avocado-campaign-pagination.php',
+                data: {
+                    page: page,
+                    filters: filters
+                },
+                success: function (jqXHR, textStatus, errorThrown) {
+                    $('.found-influencers').append(jqXHR);
+
+                }
+
+            }); // end ajax request*/
+        }
+        }
+    });
+
+});
+
+
 
 
 //function to have fixed positioning after scroll.
@@ -298,17 +351,19 @@ $(window).scroll(function () {
 
 if(calculate == false){
     if (document.body.scrollTop > target) {
-        $('#fixed-position').css('margin-top', '-9%');
+        $('#fixed-position').css('position','fixed');
+        $('#fixed-position').css('margin-top', '-190px');
     }
     else {
+        $('#fixed-position').css('position','relative');
         $('#fixed-position').css('margin-top', '0px');
     }
 }
 });
 
 $(window).scroll(function () {
-
-    if (document.body.scrollTop > target) {
+if(calculate == false){
+    if (document.body.scrollTop > target2) {
         $('.sidebar-left').css('position', 'fixed');
         $('.sidebar-left').css('margin-top', '-131px');
     }
@@ -316,7 +371,7 @@ $(window).scroll(function () {
         $('.sidebar-left').css('position', 'absolute');
         $('.sidebar-left').css('margin-top', '0px');
     }
-
+}
 });
 
 
@@ -408,7 +463,7 @@ $(document).on('click','.filter-option',function(){
 
 
 
-$(document).on('keyup', '.campaignfocus', function () {
+$(document).on('change', '.campaignfocus', function () {
 
     var posts = [];
     var type = $(this).attr('data-platform');
@@ -471,7 +526,3 @@ function getCalculation(type, posts, selectedusers) {
 
 
 }
-
-
-
-

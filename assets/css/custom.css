@@ -1,12 +1,3 @@
-.dropdown-item{ /* changes color for all links */
-color: #ffffff;
-}
-
-a{
-  color: rgb(29, 40, 76);
-}
-
-
 
 /*search icon */
 .wb-search:before {
@@ -178,9 +169,6 @@ form .form-control::-webkit-input-placeholder {
 }
 
 
-
-
-
 nav {
 	text-align:center;
 	width:100%;
@@ -211,24 +199,6 @@ a.btn-open, a.btn-close{
   display: inline-block;
 }
 
-
-/*syle the x button on menu overlay*/
-/*i.fa.fa-times.x-button {
-  padding: 2px 11px ;
-  border: 3px solid white;
-  border-radius: 10px;
-  font-size: 32px;
-}
-
-i.fa.fa-times.fa-border {
-    font-size: 20px;
-}
-
-.fa-border{
-  border: solid 3px #eee !important;
-  border-radius: 10px !important;
-
-}*/
 
 li.x-button{
 margin-top: 20px;
@@ -293,19 +263,6 @@ h2.list-title{
   width: 100%;
 }
 
-
-.thumbnail{
-  text-align: center;
-  border: 1px solid rgba(243,244,245,1);
-  /*outline*/
-  /*-webkit-box-shadow: 2px 2px 2px 1px rgba(250,250,250,0.9);
-  -moz-box-shadow: 2px 2px 2px 1px rgba(250,250,250,0.9);
-  box-shadow: 2px 2px 2px 1px rgba(250,250,250,0.9);*/
-/*inset*/
-/*-webkit-box-shadow: inset 2px 2px 2px 1px rgba(250,250,250,0.9);
--moz-box-shadow: inset 2px 2px 2px 1px rgba(250,250,250,0.9);
-box-shadow: inset 2px 2px 2px 1px rgba(250,250,250,0.9);*/
-}
 
 .social-info{
   display:inline-block;
@@ -469,13 +426,6 @@ a.btn.fav-icon-btn{
 
 }
 
-/*a.btn.fav-icon-btn:hover{
-  color: #FF4640;
-  font-size: 26px;
-}*/
-
-
-
 /*create list pop window */
 
 .bootbox-body{
@@ -484,10 +434,7 @@ a.btn.fav-icon-btn{
   text-align: center;
 }
 
-.modal-body{
-  padding: 20px;
-  background-color: #FF4640;
-}
+
 img.popup-img{
   max-width: 220px;
   border: 6px solid black;
@@ -505,14 +452,6 @@ h3.add-list{
   word-spacing: 5px;
   letter-spacing: 2px;
 }
-
-.close{
-  opacity: 1;
-  font-size: 3rem;
-  margin-right: 10px;
-  color: #000;
-}
-
 button.btn.add-popup, .create-popup{
   font-family: "Roboto";
   font-size: 16px;
@@ -528,34 +467,8 @@ button.btn.add-popup, .create-popup{
   position: relative;
 }
 
-
-.btn-2::after {
-  height: 100%;
-  left: 0;
-  top: 0;
-  width: 0;
-}
-
-.btn-2:hover:after {
-  width: 100%;
-}
-/*discover page b8 */
-.img-circle{
-  display:block;
-}
-
 .wrapper{
     position:relative;
-}
-.tooltip {
-    transform: none;
-    display:inline;
-    opacity:1 !important;
-}
-
-.tooltip:hover > .tooltip-text, .tooltip:hover > .wrapper {
-    pointer-events: auto;
-    opacity: 1.0;
 }
 
 .tooltip > .tooltip-text, .tooltip >.wrapper {
@@ -579,35 +492,7 @@ button.btn.add-popup, .create-popup{
     transition: all 0.3s ease-out;
 }
 
-/* Arrow */
-.tooltip > .tooltip-text:before, .tooltip > .wrapper:before  {
-    display: inline;
-    top: -5px;
-    content: "";
-    position: absolute;
-    border: solid;
-    border-color: rgba(243,244,245,1) transparent;
-    border-width: 0 .5em .5em .5em;
-    z-index: 6000;
-    left: 20px;
-}
 
-/* Invisible area so you can hover over tooltip */
-.tooltip > .tooltip-text:after, .tooltip > .wrapper:after  {
-    top: -20px;
-    content: " ";
-    display: block;
-    height: 20px;
-    position: absolute;
-    width: 60px;
-    left: 20px;
-}
-
-.wrapper > .tooltip-text {
-    overflow-y: auto;
-    /*max-height: 150px;
-    display: block;*/
-}
 
 
 #scrollcircle{
@@ -761,24 +646,6 @@ a.btn.btn-primary.list-btn.addtolist{
   to {
     background-position: 0px;
   }
-}
-.gradient {
-  background: #757575;
-  /* Old browsers */
-  background: -moz-linear-gradient(left, #757575 0%, #7F7F7F 25%, #BDBDBD 50%, #7F7F7F 75%, #757575 100%);
-  /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #757575), color-stop(25%, #7F7F7F), color-stop(50%, #BDBDBD), color-stop(75%, #7F7F7F), color-stop(100%, #757575));
-  /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left, #757575 0%, #7F7F7F 25%, #BDBDBD 50%, #7F7F7F 75%, #757575 100%);
-  /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left, #757575 0%, #7F7F7F 25%, #BDBDBD 50%, #7F7F7F 75%, #757575 100%);
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(left, #757575 0%, #7F7F7F 25%, #BDBDBD 50%, #7F7F7F 75%, #757575 100%);
-  /* IE10+ */
-  background: linear-gradient(to right, #757575 0%, #7F7F7F 25%, #BDBDBD 50%, #7F7F7F 75%, #757575 100%);
-  /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#757575', endColorstr='#757575',GradientType=1 );
-  /* IE6-9 */
 }
 
 /*
@@ -984,9 +851,7 @@ a.btn.btn-primary.main-btn.next-btn{
 
 }
 
-a:focus, a:hover, .breadcrumb>.active  {
-  color: rgb(29, 40, 76);
-}
+
 
 a.second-breadcrumb{
   color: rgb(181,183,189);
@@ -1042,11 +907,12 @@ img.insta-logo, .fb-logo {
 td.campaign-tablerow, td.insta-column, td.twit-column, td.face-column{
   border-left: hidden;
   border-right: hidden;
-  padding-top: 3%;
-  padding-bottom: 3%
+  padding-top: 1.5%;
+  padding-bottom: 1.5%
 }
 tr.campaign-list-table{
   text-align: center;
+  border-bottom:1px solid #efefef;
 }
 
 th.text-center{

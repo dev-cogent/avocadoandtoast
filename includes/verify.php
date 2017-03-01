@@ -41,6 +41,7 @@ if($temporary_lockout != NULL){
     $error = 'Your account has been temporary locked out for '.$lockouttime. ' minutes';
     $login = false;
 }
+
 if($login !== false){
     $_SESSION['project_id'] = md5(session_id());
     $_SESSION['column_id'] = $columnid;
@@ -49,14 +50,14 @@ if($login !== false){
     $_SESSION['email'] = $email;
     $_SESSION['pdf_logo'] = $pdf_logo;
     $_SESSION['userid'] = $userid;
-    $_SESSION['campaigns'] = $useroptionsobj->getCampaigns($userid,$columnid);
-    $_SESSION['campaignids'] = $useroptionsobj->getCampaignsWithID($userid,$columnid);
+    //$_SESSION['campaigns'] = $useroptionsobj->getCampaigns($userid,$columnid);
+    //$_SESSION['campaignids'] = $useroptionsobj->getCampaignsWithID($userid,$columnid);
     $_SESSION['favoriteinfluencers'] = $favoriteobj->getFavorites($userid);
     $login_attempts = 0;
     $stmt->prepare('UPDATE `login_information` SET `login_attempts` = ? WHERE `email` = ?');
     $stmt->bind_param('is',$login_attempts,$email);
     $stmt->execute();
-    header('Location:/discover.php');
+    header('Location:/dashboard.php');
 }
 else{
     //If the email is right but
