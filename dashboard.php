@@ -130,7 +130,7 @@ echo '<div class="campaign-block col-xs-9" data-id="'.$campaignid.'" data-desc="
         <table class="col-xs-12">
             <tbody style="border-top:0px;">
             <tr>
-                <td class="campaign-details name" ><a class="campaign-details" href="/campaigns/'.$campaignid.'">'.$name.' </a></td>
+                <td class="campaign-details name" ><a class="campaign-details" href="/campaigns/?id='.$campaignid.'">'.$name.' </a></td>
                 <td class="campaign-details" > '.$state.' </td>
                 <td class="campaign-details date" > Created '.$datecreated.'</td>
             </tr>
@@ -181,8 +181,8 @@ $(document).on('click','.campaign-block',function(){
        '<p class="title">Campaign Schedule</p>'+
        '<p id="schedule"> <strong> Campaign Schedule </strong> '+start+' - '+end+ ''+
        '<div id="button-container">'+
-           '<a style="color:#76838f;"href="/edit/'+id+'"><button class="option-button avocado-hover avocado-focus" id="'+id+'"> Edit Campaign </button></a>'+
-           '<a style="color:#76838f;"href="/campaigns/'+id+'"><button class="option-button avocado-hover avocado-focus" name="campaign" value="'+id+'">View Campaign </button></a>'+
+           '<a style="color:#76838f;"href="/edit/?id='+id+'"><button class="option-button avocado-hover avocado-focus" id="'+id+'"> Edit Campaign </button></a>'+
+           '<a style="color:#76838f;"href="/campaigns/?id='+id+'"><button class="option-button avocado-hover avocado-focus" name="campaign" value="'+id+'">View Campaign </button></a>'+
     '</div>');
 });
 

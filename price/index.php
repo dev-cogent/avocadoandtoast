@@ -4,9 +4,9 @@ session_start();
 include '../includes/dbinfo.php';
 include '../includes/class/savecampaign.php';
 include '../includes/numberAbbreviation.php';
-$url = $_SERVER['REQUEST_URI'];
-$id = explode('/',$url);
-$id = $id[2];
+//$url = $_SERVER['REQUEST_URI'];
+//$id = explode('/',$url);
+$id = $_GET['id'];//$id[2];
 if($id == NULL){
 $campaignid = $_SESSION['temp_campaign_id'];
 }
@@ -113,7 +113,7 @@ if(isset($campaignend)){
     <label class="title">Email </label>
     <br/>
     <label>What email do you want us to contact you back at?</label>
-    <input type="text" class="form-control category avocado-focus" id="name" value="<?php echo 'bashirmurtaza@gmail.com'; ?>">
+    <input type="text" class="form-control category avocado-focus" id="name" value="<?php echo $_SESSION['email']; ?>">
 
     <label class="title">Client Brands </label>
     <br/>
