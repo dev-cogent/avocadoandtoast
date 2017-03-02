@@ -4,9 +4,9 @@ session_start();
 include '../includes/dbinfo.php';
 include '../includes/class/savecampaign.php';
 include '../includes/numberAbbreviation.php';
-$url = $_SERVER['REQUEST_URI'];
-$id = explode('/',$url);
-$id = $id[2];
+//$url = $_SERVER['REQUEST_URI'];
+//$id = explode('/',$url);
+$id = $_GET['id'];
 if($id == NULL){
 $campaignid = $_SESSION['temp_campaign_id'];
 }
@@ -101,8 +101,8 @@ width:20%;
     padding-top: 15px;
 "></i>
   <div id="li-container" style="display:none;">
-    <li class="item"><a class="side-link" href="dashboard.php"> DASHBOARD </a> </li>
-    <li class="item"><a class="side-link" href="acdiscover.php"> DISCOVER </a></li>
+    <li class="item"><a class="side-link" href="/dashboard.php"> DASHBOARD </a> </li>
+    <li class="item"><a class="side-link" href="/acdiscover.php"> DISCOVER </a></li>
     <li class="item"><a class="side-link" href="#"> ACCOUNT SETTINGS </a></li>
     <li class="item"><a class="side-link" href="#"> FAQ</a> </li>
     <li class="item"><a class="side-link" href="#"> CONTACT</a> </li>
@@ -121,9 +121,9 @@ width:20%;
 
 <div class="filter-container col-xs-12" style="border-bottom:0px; height:145px;">
     <div class="go-back-btn-div"> <a class="back-btn" href="/dashboard.php"> Go Back </a> </div>
-    <div class="go-back-btn-div"> <a class="back-btn" href="/edit/<?php echo $campaignid;?>"> Edit Campaign </a> </div>
-    <div class="go-back-btn-div"> <a class="back-btn" href="/edit/<?php echo $campaignid;?>"> Export Campaign </a> </div>
-    <div class="go-back-btn-div"> <a class="back-btn" href="/price/<?php echo $campaignid;?>"> Price Campaign </a> </div>
+    <div class="go-back-btn-div"> <a class="back-btn" href="/edit/?id=<?php echo $campaignid;?>"> Edit Campaign </a> </div>
+    <div class="go-back-btn-div"> <a class="back-btn" href="/edit/?id=<?php echo $campaignid;?>"> Export Campaign </a> </div>
+    <div class="go-back-btn-div"> <a class="back-btn" href="/price/?id=<?php echo $campaignid;?>"> Price Campaign </a> </div>
 </div>
 
 <div class="col-xs-12" style="padding-left:75px;">

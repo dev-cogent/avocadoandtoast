@@ -4,9 +4,9 @@ session_start();
 include '../includes/dbinfo.php';
 include '../includes/class/savecampaign.php';
 include '../includes/numberAbbreviation.php';
-$url = $_SERVER['REQUEST_URI'];
-$id = explode('/',$url);
-$id = $id[2];
+//$url = $_SERVER['REQUEST_URI'];
+//$id = explode('/',$url);
+$id = $_GET['id'];//$id[2];
 if($id == NULL){
 $campaignid = $_SESSION['temp_campaign_id'];
 }
