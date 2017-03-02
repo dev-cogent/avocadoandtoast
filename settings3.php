@@ -43,6 +43,8 @@ $campaignname = $save->getCampaignName($campaignid);
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 <script src="/assets/wnumb/wNumb.js"></script>
 <script src="/assets/uislider/nouislider.js"></script>
+<link rel="stylesheet" href="dist/switchery.css" />
+<script src="dist/switchery.js"></script>
 <script src="/includes/javascript/tokenfield/dist/bootstrap-tokenfield.js"></script>
 <link rel="stylesheet" href="/includes/javascript/tokenfield/dist/css/bootstrap-tokenfield.css">
 <link rel="stylesheet" href="/assets/uislider/nouislider.css">
@@ -116,6 +118,13 @@ textarea.form-control.category.avocado-focus {
   font-size: 16px;
   font-family: 'Montserrat', sans-serif;
   background-color: #73C48D;
+}
+
+.switch-div {
+  margin-bottom: 5%;
+}
+.input-container.email-setting{
+  margin-top: 5%;
 }
 
 @media(min-width:900px) and (max-width:1100px){
@@ -207,28 +216,25 @@ textarea.form-control.category.avocado-focus {
 </script>
 
 
-<div class="col-xs-9 settings-lg-col">
+<div class="col-xs-9 settings-lg-col ">
 
-<div class="input-container" style="width:35%;">
+<div class="input-container email-setting" style="width:35%;">
 
-          <form action="#">
+<div class="switch-div">
+<span class="switchery switchery-default" style="background-color: #73c48d; border-color:#73c48d; box-shadow: #73c48d 0px 0px 0px 13px inset; transition: border 0.4s, box-shadow 0.4s, background-color 1.2s;"><small style="left: 21px; transition: background-color 0.4s, left 0.2s; background-color: rgb(255, 255, 255);"></small></span>
+  Notify me when campaign begins
+</div>
 
-    <label class="title"> Old Password </label>
-    <br/>
-    <input type="text" class="form-control category avocado-focus" value=""  style="" maxlength="100">
-  </input>
+<div class="switch-div">
+<span class="switchery switchery-default" style="background-color: #73c48d; border-color:#73c48d; box-shadow: #73c48d 0px 0px 0px 13px inset; transition: border 0.4s, box-shadow 0.4s, background-color 1.2s;"><small style="left: 21px; transition: background-color 0.4s, left 0.2s; background-color: rgb(255, 255, 255);"></small></span>
+ Notify me when campaign ends </div>
 
-  <label class="title"> New Password </label>
-  <br/>
-  <input type="text" class="form-control category avocado-focus" value=""  style="" maxlength="100">
-  </input>
+<div class="switch-div">
+<span class="switchery switchery-default" style="background-color: #73c48d; border-color:#73c48d; box-shadow: #73c48d 0px 0px 0px 13px inset; transition: border 0.4s, box-shadow 0.4s, background-color 1.2s;"><small style="left: 21px; transition: background-color 0.4s, left 0.2s; background-color: rgb(255, 255, 255);"></small></span>
+Notify cash me outside how about dah
+</div>
 
-    <label class="title"> Confirm New Password  </label>
-    <br/>
-    <input type="text" class="form-control category avocado-focus" value=""  style="" maxlength="100">
-  </input>
 
-    <button class="update-profile-btn avocado-hover col-xs-12"  style="margin-top:30px;" id="submit"> Update </button>
   </div>
 </div>
   </div>
