@@ -204,7 +204,7 @@ include 'includes/numberAbbreviation.php';
                     <div  class="influencer-box col-xs-12 col-md-6 col-lg-4 col-xl-3">
                             <div class="influencer-card-discover">
                                 <img class="influencer-image-card" src="https://project.social/'.$image.'">
-                                <div class="col-xs-12" style="height:170px;">
+                                <div class="col-xs-12 influ-bottom" style="height:170px;" data-id="'.$id.'">
                                     <!-- insthandle stuff -->
                                         <div class="icons col-xs-12">
                                             <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" style="color:#73C48D" aria-hidden="true"></i>
@@ -232,9 +232,7 @@ include 'includes/numberAbbreviation.php';
                                     </div>
                                     <div class="col-xs-12">
 
-                                        <div style="display:inline;"class="col-xs-12 invite avocado-hover avocado-focus" data-id="'.$id.'" data-image="'.$image.'">
-                                              <i class="thumb-up icon fa-plus" aria-hidden="true"></i>
-                                                 INVITE</div>
+                                        <div style="display:inline;"class="col-xs-12 invite  avocado-focus" data-id="'.$id.'" data-image="'.$image.'"></div>
                                     </div>
                                 </div>
                             </div>

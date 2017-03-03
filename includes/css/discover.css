@@ -436,12 +436,12 @@ padding-right:0px;
 }
 
 .invite{
-    text-align: center;
-    border: 1px solid #515862;
     height: 35px;
-    padding-top:5px;
-    color:#515862;
-    font-family: 'montserratsemibold';
+    padding-top: 5px;
+    width: 36px;
+    margin-left: 39%;
+    border-radius: 32px;
+    background-color: #e0e0e0;
 }
 
 
@@ -568,6 +568,13 @@ color:#73C48D;
     font-family:'montserratlight';
     font-size:12px;
     padding-top: 3px;
+}
+
+.check{
+    font-size: 34px;
+    margin-left: -8px;
+    margin-top: -14px;
+    color: #73C48D;
 }
 
 

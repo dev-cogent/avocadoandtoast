@@ -128,11 +128,10 @@ function selectInfluencer(id, element) {
             $('#added-influencers').append('<img class="col-lg-4 col-xs-12 col-xl-3 images-added" data-id="' + id + '" src="http://project.social/' + image + '" style="padding-bottom:1px; padding-right:1px; z-index:-1;">');
             $('#additional-influencers').css('visibility', 'hidden');
         }
-        element.css('border', '1px solid #73C48D');
-        element.css('color', 'white');
-        element.css('background-color', '#73C48D');
+        element.css('background-color', 'white');
         element.empty();
-        element.append('<i class="thumb-up icon fa-check" aria-hidden="true"></i>INVITED');
+        element.append('<i class="icon fa-check check" aria-hidden="true"></i>');
+        $('.influ-bottom[data-id="'+id+'"]').css('box-shadow','0px -10px 0px #73C48D');
         //element.text('INVITED');
         var count = parseInt($('#count').text());
         count++;
