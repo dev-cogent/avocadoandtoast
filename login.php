@@ -173,6 +173,7 @@ border-radius:0px;
                 <button class="form-control" id="login-button"> SIGN IN </button>
                 </form>
                 <a href="/register.php" style="text-decoration:none;"><button class="form-control" id="register-button" > REGISTER </button></a>
+                <p id="pdf"> PDF TEST </p>
     </div>
 </div>
 
@@ -182,5 +183,16 @@ border-radius:0px;
 
 
 </body>
+
+
+<script>
+$(document).on('click','#pdf',function(){
+
+
+    window.location = '/includes/pdf/pdf.php';
+});
+
+
+</script>
 
 
