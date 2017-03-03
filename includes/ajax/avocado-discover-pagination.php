@@ -177,9 +177,7 @@ while($stmt->fetch()){
                                     </div>
                                     <div class="col-xs-12">
 
-                                        <div style="display:inline;"class="col-xs-12 invite avocado-hover avocado-focus" data-id="'.$id.'" data-image="'.$image.'">
-                                             <i class="thumb-up icon fa-plus" aria-hidden="true"></i>
-                                                 INVITE</div>
+                                        <div style="display:inline;"class="col-xs-12 invite avocado-hover avocado-focus" data-id="'.$id.'" data-image="'.$image.'"></div>
                                     </div>
                                 </div>
                             </div>
