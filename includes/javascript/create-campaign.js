@@ -29,7 +29,7 @@ $(document).on('click', '#createcampaign', function () {
                     message: '<div class="bootbox-body">' +
                     '<div class="icon-popup-div"> <img src="assets/images/chasing_2.gif" class="success-popup-icon"/> </div>' +
                     '<div class="row"> <div class="col-xs-12 popup-detail success">   <span class="yay"> YAY! </span> <br/> Campaign created sucessfully  </div>' +
-                    '<div class="col-xs-12 btn-col"><div class="popup-btn-div"> <a href="/campaigns/' + jqXHR + '"><button id="applyall" class="submit-btn">VIEW CAMPAIGN </button></a></div> <div class="col-xs-12"><div class="submit-btn-div"><a href="/edit/' + jqXHR + '"> <button id="applyall" class="submit-btn"> ADD  DETAILS </button></a></div>' +
+                    '<div class="col-xs-12 btn-col"><div class="popup-btn-div"> <a href="/campaigns/?id=' + jqXHR + '"><button id="applyall" class="submit-btn">VIEW CAMPAIGN </button></a></div> <div class="col-xs-12"><div class="submit-btn-div"><a href="/edit/?id=' + jqXHR + '"> <button id="applyall" class="submit-btn"> ADD  DETAILS </button></a></div>' +
                     '</div> </div>',
                     closeButton: true
                 });

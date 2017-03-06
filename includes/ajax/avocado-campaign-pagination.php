@@ -23,7 +23,7 @@ $influencerinfo = $save->getCampaign($campaignid,$position);
                 echo '
                     <div  class="influencer-box col-xs-12 col-md-6 col-lg-3 col-xl-2">
                             <div class="influencer-card-discover">
-                                <img class="influencer-image-card" src="https://project.social/'.$info['image'].'">
+                                <img class="influencer-image-card" src="http://cogenttools.com/'.$info['image'].'">
                                 <div class="col-xs-12" style="height:170px;">
                                     <!-- insthandle stuff -->
                                         <div class="icons col-xs-12">';
