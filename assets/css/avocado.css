@@ -1333,3 +1333,131 @@ img.white-logo{
       top: -218px;
     }
 }
+
+/*settings page */
+.form-control{
+    letter-spacing:0px;
+    color:#515862;
+    font-size:15px;
+}
+
+.title{
+    color:rgb(29, 40, 76);
+    font-family: 'Open Sans', sans-serif;
+    padding-top:20px;
+    font-weight:600;
+}
+
+.settings{
+  text-align: center;
+  margin-top: 5%;
+}
+.settings-box {
+  margin-top: 15%;
+}
+.input-container {
+  margin-left: 3%;
+}
+.uploaded-img-square{
+  background-color: lightgray;
+  width: 150px;
+  height: 150px;
+}
+.upload-img {
+  display: -webkit-box;
+  margin-top: 10%;
+}
+.profile-title{
+  margin-left: 10%;
+  font-family: 'Open Sans', sans-serif;
+  display: -webkit-inline-box;
+  color: rgb(29, 40, 76);
+  text-transform: uppercase;
+  font-weight:600;
+}
+.upload-img-btn {
+  border: 1px solid #30363F;
+  padding: 7px 20px;
+  background-color: transparent;
+  border-radius: 3px;
+  display: -webkit-inline-box;
+  color: rgb(29, 40, 76);
+  margin-left: 10%;
+  margin-top: 8%;
+}
+textarea.form-control.category.avocado-focus {
+  height: 40px;
+}
+
+.small-col {
+  height: 100%;
+  border-right: 1px solid rgb(210,215,220);
+}
+.update-profile-btn{
+  border-radius: 1px;
+  border: 0px;
+  color: white;
+  height: 50px;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #73C48D;
+}
+
+.switch-div {
+  margin-bottom: 5%;
+}
+.input-container.email-setting{
+  margin-top: 5%;
+}
+
+@media(min-width:900px) and (max-width:1100px){
+  .settings-box{
+    margin-left: 25%;
+  }
+}
+
+@media(min-width:600px) and (max-width:899px){
+  .settings-box{
+    margin-left: 30%;
+  }
+  .settings{
+    margin-top: 12%;
+  }
+}
+
+@media(min-width:300px) and (max-width:599px){
+  .settings-lg-col {
+    width: 55%;
+    margin-left: 5%;
+    margin-top: 3%;
+  }
+  .small-col{
+    width: 40%;
+  }
+  .settings {
+    margin-top: 25%;
+  }
+  .settings-box{
+    margin-left: 35%;
+  }
+  .uploaded-img-square{
+    display: -webkit-inline-box;
+  }
+  .profile-title{
+    font-size: 11px;
+    float: right;
+  }
+  .update-profile-btn{
+    height: 40px;
+    width: 150px;
+  }
+  .title{
+    width: 120px;
+  }
+  .sidebar-left {
+    margin-top: 66px;
+  }
+  .mininav{
+    display: none;
+  }
+}
