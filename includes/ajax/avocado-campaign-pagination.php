@@ -85,8 +85,8 @@ $influencerinfo = $save->getCampaign($campaignid,$position);
                                     </div>
                                     <div class="col-xs-12">
 
-                                        <div style="display:inline; background-color:#73C48D; color:white; border:1px solid #73C48D;"class="col-xs-12 invite avocado-hover avocado-focus" data-id="'.$influencerid.'" data-image="'.$info['image'].'">
-                                              <i class="thumb-up icon fa-check" aria-hidden="true"></i>INVITED
+                                        <div style="display:inline; background-color:white; color:#e0e0e0;"class="col-xs-12 invite  avocado-focus" data-id="'.$influencerid.'" data-image="'.$info['image'].'">
+                                              <i class="icon fa-check check" aria-hidden="true"></i>
                                                  </div>
                                     </div>
                                 </div>

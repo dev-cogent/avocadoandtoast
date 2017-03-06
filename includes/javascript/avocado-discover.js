@@ -128,11 +128,10 @@ function selectInfluencer(id, element) {
             $('#added-influencers').append('<img class="col-lg-4 col-xs-12 col-xl-3 images-added" data-id="' + id + '" src="http://project.social/' + image + '" style="padding-bottom:1px; padding-right:1px; z-index:-1;">');
             $('#additional-influencers').css('visibility', 'hidden');
         }
-        element.css('border', '1px solid #73C48D');
-        element.css('color', 'white');
-        element.css('background-color', '#73C48D');
+        element.css('background-color', 'white');
         element.empty();
-        element.append('<i class="thumb-up icon fa-check" aria-hidden="true"></i>INVITED');
+        element.append('<i class="icon fa-check check" aria-hidden="true"></i>');
+        $('.influ-bottom[data-id="'+id+'"]').css('box-shadow','0px -10px 0px #73C48D');
         //element.text('INVITED');
         var count = parseInt($('#count').text());
         count++;
@@ -152,11 +151,9 @@ function selectInfluencer(id, element) {
         var count = parseInt($('#count').text());
         count--;
         $('#count').text(count);
-        element.css('border', '1px solid #515862');
-        element.css('color', '#515862');
-        element.css('background-color', 'white');
+        element.css('background-color', '#e0e0e0');
         element.empty();
-        element.append('<i class="thumb-up icon fa-plus" aria-hidden="true"></i>INVITE');
+        $('.influ-bottom[data-id="'+id+'"]').css('box-shadow','none');
         var classList = $('.images-added[data-id=' + id + ']').attr('class').split(/\s+/);
         $.each(classList, function (index, item) {
             if (item === 'hidden-influencers') {
@@ -200,45 +197,55 @@ function selectInfluencer(id, element) {
 $('#slider-instagram').click(function () {
     filters['min'] = $('#min-instagram').attr('data-number');
     filters['max'] = $('#max-instagram').attr('data-number');
+    filters['eng-min'] = $('#min-instagram-engagement').attr('data-number');
+    filters['eng-max'] = $('#max-instagram-engagement').attr('data-number');
+    filters['platform'] = 'instagram';
+    applyFilters(filters);
+});
+
+$('#slider-instagram-engagement').click(function () {
+    filters['min'] = $('#min-instagram').attr('data-number');
+    filters['max'] = $('#max-instagram').attr('data-number');
+    filters['eng-min'] = $('#min-instagram-engagement').attr('data-number');
+    filters['eng-max'] = $('#max-instagram-engagement').attr('data-number');
     filters['platform'] = 'instagram';
     applyFilters(filters);
 });
 
 $('#slider-twitter').click(function () {
     console.log('being applied');
+    filters['eng-min'] = $('#min-twitter-engagement').attr('data-number');
+    filters['eng-max'] = $('#max-twitter-engagement').attr('data-number');
     filters['min'] = $('#min-twitter').attr('data-number');
     filters['max'] = $('#max-twitter').attr('data-number');
     filters['platform'] = 'twitter';
     applyFilters(filters);
 });
 
+$('#slider-twitter-engagement').click(function () {
+    filters['eng-min'] = $('#min-twitter-engagement').attr('data-number');
+    filters['eng-max'] = $('#max-twitter-engagement').attr('data-number');
+    filters['min'] = $('#min-twitter').attr('data-number');
+    filters['max'] = $('#max-twitter').attr('data-number');
+    filters['platform'] = 'twitter';
+    applyFilters(filters);
+});
 
 $('#slider-facebook').click(function () {
+    filters['eng-min'] = $('#min-facebook-engagement').attr('data-number');
+    filters['eng-max'] = $('#max-facebook-engagement').attr('data-number');
     filters['min'] = $('#min-facebook').attr('data-number');
     filters['max'] = $('#max-facebook').attr('data-number');
     filters['platform'] = 'facebook';
     applyFilters(filters);
 });
 
-$('#slider-instagram-engagement').click(function () {
-    filters['min'] = $('#min-instagram-engagement').attr('data-number');
-    filters['max'] = $('#max-instagram-engagement').attr('data-number');
-    filters['platform'] = 'instagram';
-    applyFilters(filters);
-});
-
-$('#slider-twitter-engagement').click(function () {
-    filters['min'] = $('#min-twitter-engagement').attr('data-number');
-    filters['max'] = $('#max-twitter-engagement').attr('data-number');
-    filters['platform'] = 'twitter';
-    applyFilters(filters);
-});
-
-
 $('#slider-facebook-engagement').click(function () {
-    filters['min'] = $('#min-facebook-engagement').attr('data-number');
-    filters['max'] = $('#max-facebook-engagement').attr('data-number');
-    filters['platform'] = 'twitter';
+    filters['eng-min'] = $('#min-facebook-engagement').attr('data-number');
+    filters['eng-max'] = $('#max-facebook-engagement').attr('data-number');
+    filters['min'] = $('#min-facebook').attr('data-number');
+    filters['max'] = $('#max-facebook').attr('data-number');
+    filters['platform'] = 'facebook';
     applyFilters(filters);
 });
 

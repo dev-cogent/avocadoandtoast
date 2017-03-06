@@ -1,6 +1,6 @@
 <?php
 session_start();
-//error_reporting(0);
+error_reporting(0);
 include 'includes/dbinfo.php';
 include 'includes/numberAbbreviation.php';
 
@@ -27,6 +27,11 @@ include 'includes/numberAbbreviation.php';
     font-size:15px;
     letter-spacing:1px;
 
+}
+.token-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #A2A8B1;
+  font-family:'Open Sans';
+      letter-spacing:1px;
 }
 </style>
 </head>
@@ -79,8 +84,8 @@ include 'includes/numberAbbreviation.php';
             <div class="col-xs-2"></div>
             <div class="col-xs-8" id="searchA">
                 <p class="filter-text col-xs-12" style="text-align: center;">Search by Influencer handles and key words</p>
-                    <input type="text" class="form-control category avocado-focus" id="influencer-search-name" placeholder="lebronjames">
-                    <input type="text" class="form-control category avocado-focus col-xs-6 col-sm-12" style="margin-top:12px;" id="tokenfield"/>
+                    <input type="text" class="form-control category avocado-focus" id="influencer-search-name" placeholder="Influencer Name or social handle">
+                    <input type="text" class="form-control category avocado-focus col-xs-6 col-sm-12" style="margin-top:12px;" id="tokenfield" placeholder="keyword"/>
                     <p class="description-text col-xs-12">Seperate tags with commas or by pressing "tab" in the above field. Use double quotes for multi-word tags (e.g. "avocado toast")</p>
                     <button class="search avocado-hover col-xs-12" id="search-keyword">SEARCH</button>
             </div>
@@ -181,9 +186,9 @@ include 'includes/numberAbbreviation.php';
         <div class="found-influencers col-xs-12">
             <?php
                 $count = 3;
-                $stmt = $conn->prepare('SELECT `id`,`image_url`,`instagram_url`,`instagram_count`,`facebook_url`,`facebook_count`,`twitter_count`,`twitter_url` FROM `Influencer_Information` ORDER BY `total` DESC LIMIT 0,32');
+                $stmt = $conn->prepare('SELECT `id`,`image_url`,`instagram_url`,`instagram_count`,`facebook_url`,`facebook_count`,`twitter_url`,`twitter_count`,`engagement`,`total` FROM `Influencer_Information` WHERE `type` NOT LIKE "%brand%" ORDER BY `total`  DESC LIMIT 0,32');
                 $stmt->execute();
-                $stmt->bind_result($id,$image,$instagramurl,$instagramcount,$facebookurl,$facebookcount,$twittercount,$twitterurl);
+                $stmt->bind_result($id,$image,$instagramurl,$instagramcount,$facebookurl,$facebookcount,$twitterurl,$twittercount,$engagement,$total);
                 while($stmt->fetch()){
                 $insthandle = explode('.com/',$instagramurl);
                 $insthandle = explode('/',$insthandle[1]);
@@ -199,12 +204,16 @@ include 'includes/numberAbbreviation.php';
                 $twitterhandle = explode('/',$twitterhandle[1]);
                 $twitterhandle = explode('?',$twitterhandle[0]);
                 $twitterhandle = $twitterhandle[0];
-
+                $engagement = json_decode($engagement,true);
+                //var_dump($engagement);
+                $twitterengagement = number_format((($engagement['twitter']['average_engagement']/$twittercount)*100),2,'.','');
+                $instagramengagement = number_format((($engagement['instagram']['average_engagement']/$instagramcount)*100),2,'.','');
+                $facebookengagement = number_format((($engagement['facebook']['average_engagement']/$facebookcount)*100),2,'.','');
                 echo '
                     <div  class="influencer-box col-xs-12 col-md-6 col-lg-4 col-xl-3">
                             <div class="influencer-card-discover">
-                                <img class="influencer-image-card" src="https://project.social/'.$image.'">
-                                <div class="col-xs-12" style="height:170px;">
+                                <img class="influencer-image-card" src="http://cogenttools.com/'.$image.'" onerror="this.src=`http://cogenttools.com/'.$image.'`">
+                                <div class="col-xs-12 influ-bottom" style="height:170px;" data-id="'.$id.'">
                                     <!-- insthandle stuff -->
                                         <div class="icons col-xs-12">
                                             <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" style="color:#73C48D" aria-hidden="true"></i>
@@ -226,15 +235,13 @@ include 'includes/numberAbbreviation.php';
                                     </div>
                                     <!-- Engagement ?-->
                                     <div class="col-xs-12">
-                                        <p class="instagram-engagement engagement-count" data-id="'.$id.'">1.5K Likes per post</p>
-                                        <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$id.'">1.5K Likes per post</p>
-                                        <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$id.'">1.5K Likes per post</p>
+                                        <p class="instagram-engagement engagement-count" data-id="'.$id.'">'.$instagramengagement.'% eng per post</p>
+                                        <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$id.'">'.$facebookengagement.'% eng per post</p>
+                                        <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$id.'">'.$twitterengagement.'% eng per post</p>
                                     </div>
                                     <div class="col-xs-12">
 
-                                        <div style="display:inline;"class="col-xs-12 invite avocado-hover avocado-focus" data-id="'.$id.'" data-image="'.$image.'">
-                                              <i class="thumb-up icon fa-plus" aria-hidden="true"></i>
-                                                 INVITE</div>
+                                        <div style="display:inline;"class="col-xs-12 invite  avocado-focus" data-id="'.$id.'" data-image="'.$image.'"></div>
                                     </div>
                                 </div>
                             </div>

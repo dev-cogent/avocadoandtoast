@@ -54,7 +54,7 @@
 
 <div class="header-container">
 <div class="background-img">
-  <img src="assets/images/main-page-banner.png" class="main-img-header img-responsive">
+  <img src="assets/images/avoc1.jpg" class="main-img-header img-responsive">
   <div class="text-container">
   <div class="main-banner-header large"> Two things that go well together:  </div>
   <div class="main-banner-det"> AVOCADO <i class="icon wb-plus list-icon avo med lg" aria-hidden="true"></i> TOAST <br>

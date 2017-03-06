@@ -16,6 +16,36 @@ include 'includes/registerinfo.php';
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color:    #C7C7CD !important;
 }
+.input-group{
+  padding-top:0px;
+}
+
+@media only screen and (max-width: 590px) {
+    .signup-header {
+        font-size:45px;
+        padding-bottom: 55px;
+    }
+
+    .input-group{
+      /*min-width:300px;*/
+      width: 300px;
+      display:inline;
+    }
+    #field{
+          height: 60px;
+    }
+    .col-xs-6.form-col{
+      width:96%;
+      margin-left:2%;
+    }
+    span{
+      display:block;
+    }
+
+    .signup-btn-row{
+      margin-top:12%;
+    }
+}
 </style>
 </head>
 
@@ -74,34 +104,34 @@ include 'includes/registerinfo.php';
   <div class="row signup-form">
           <div class="col-xs-6 form-col">
                 <div class="input-group name">
-                    <span class=""><i class="glyphicon glyphicon-user mycolor"></i></span>
+                    <span class=""><i class="glyphicon glyphicon-user mycolor"></i><p id="first-error" style="display:inline; color:#ff5151; visibility:hidden;">First name must be filled out.</p></span>
                       <input size="60" maxlength="255" class="form-control avocado-focus " style="color:#515862;" placeholder="FIRST NAME*" id="field" type="text" name="firstname">
                   </div>
 
                   <div class="input-group email">
-                    <span class=""><i class="glyphicon glyphicon-user mycolor"></i></span>
-                    <input size="60" maxlength="255" class="form-control avocado-focus " placeholder="EMAIL*"  id="field" type="text" name="email">
+                    <span class=""><i class="glyphicon glyphicon-user mycolor"></i><p id="email-error" style="display:inline; color:#ff5151; visibility:hidden;">Please enter a valid email </p></span>
+                    <input size="60" maxlength="255" class="form-control avocado-focus " placeholder="EMAIL*"  id="field" type="email" name="email">
                   </div>
 
                   <div class="input-group password">
-                      <span class=""><i class="glyphicon glyphicon-user mycolor"></i></span>
-                        <input data-toggle="tooltip" data-placement="right" data-trigger="click" data-original-title="Click to tooltip"  size="60" maxlength="255" class="form-control avocado-focus " placeholder="PASSWORD*"  id="field" type="password" name="password">
+                      <span class=""><i class="glyphicon glyphicon-user mycolor"></i><p id="password-error" style="display:inline; color:#ff5151; visibility:hidden;">Password Must be at least 6 characters long  </p></span>
+                        <input data-toggle="tooltip" data-placement="right" data-trigger="click" data-original-title="Click to tooltip"  size="60" maxlength="255" class="form-control avocado-focus password" placeholder="PASSWORD*"  id="field" type="password" name="password">
                     </div>
                 </div>
 
                 <div class="col-xs-6 form-col">
                       <div class="input-group password">
-                          <span class=""><i class="glyphicon glyphicon-user mycolor"></i></span>
+                          <span class=""><i class="glyphicon glyphicon-user mycolor"></i><p id="last-error" style="display:inline; color:#ff5151; visibility:hidden;">Last Name must be filled out </p></span>
                             <input size="60" maxlength="255" class="form-control avocado-focus " placeholder="LAST NAME*"  id="field" type="text" name="lastname">
                         </div>
 
                         <div class="input-group">
-                          <span class=""><i class="glyphicon glyphicon-user mycolor"></i></span>
+                          <span class=""><i class="glyphicon glyphicon-user mycolor"></i><p id="company" style="display:inline; color:#ff5151; visibility:hidden;">Company Must be filled out </p></span>
                           <input size="60" maxlength="255" class="form-control avocado-focus " placeholder="COMPANY*" name="company" id="field" >
                         </div>
 
                         <div class="input-group password">
-                            <span class=""><i class="glyphicon glyphicon-user mycolor"></i></span>
+                            <span class=""><i class="glyphicon glyphicon-user mycolor"></i><p id="confirm-error" style="display:inline; color:#ff5151; visibility:hidden;">Passwords do not match</p></span>
                               <input size="60" maxlength="255" class="form-control avocado-focus " placeholder="VERIFY PASSWORD*" name="confirm" id="field" type="password">
                           </div>
                       </div>
@@ -198,3 +228,5 @@ include 'includes/registerinfo.php';
 
 
     </footer>
+
+<script src="/includes/javascript/signup.js"></script>
