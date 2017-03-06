@@ -1,5 +1,6 @@
 <?php
 //TODO: CHANGE CHECKBIO TO SEARCH FOR TAGS FROM POSTS WHEN DATABASE IS UPDATED.
+error_reporting(0);
 include '../dbinfo.php';
 include '../numberAbbreviation.php';
 $c = 0;
@@ -23,7 +24,7 @@ if(isset($filters['location'])){
 $num = $_POST['page'];
 $position = $num * 32;
 $users = array();
-$where = '';
+$where = "";
 $rownum = 0;
 $arr = array();
 if(isset($bio)) $temparr = checkBio($bio, $searchoptions, $options, $where, $arr);
@@ -46,8 +47,7 @@ if($where == '')
 else
     $default = '';
 
-
-$stmt = $conn->prepare("SELECT `id`, `image_url` , `instagram_count`, `instagram_url`, `twitter_url`, `twitter_count`, `facebook_count`,`facebook_url` FROM `Influencer_Information` $where $default LIMIT $position, 32");
+$stmt = $conn->prepare("SELECT `id`, `image_url` , `instagram_count`, `instagram_url`, `twitter_url`, `twitter_count`, `facebook_count`,`facebook_url`,`engagement` FROM `Influencer_Information` $where $default LIMIT $position, 32");
 if($where != ''){
 $types = '';
 foreach($params as $param) {
@@ -67,7 +67,7 @@ call_user_func_array(array($stmt,'bind_param'),makeValuesReferenced($params));
 }
 
 $stmt->execute();
-$stmt->bind_result($id,$image,$instagramcount,$instagramurl,$twitterurl,$twittercount,$facebookcount,$facebookurl);
+$stmt->bind_result($id,$image,$instagramcount,$instagramurl,$twitterurl,$twittercount,$facebookcount,$facebookurl,$engagement);
 $count = 3;
 while($stmt->fetch()){
                 $insthandle = explode('.com/',$instagramurl);
@@ -84,9 +84,13 @@ while($stmt->fetch()){
                 $twitterhandle = explode('/',$twitterhandle[1]);
                 $twitterhandle = explode('?',$twitterhandle[0]);
                 $twitterhandle = $twitterhandle[0];
+                $engagement = json_decode($engagement,true);
+                $twitterengagement = number_format((($engagement['twitter']['average_engagement']/$twittercount)*100),2,'.','');
+                $instagramengagement = number_format((($engagement['instagram']['average_engagement']/$instagramcount)*100),2,'.','');
+                $facebookengagement = number_format((($engagement['facebook']['average_engagement']/$facebookcount)*100),2,'.','');
     echo '<div  class="influencer-box col-xs-12 col-md-6 col-lg-4 col-xl-3">
                             <div class="influencer-card-discover">
-                                <img class="influencer-image-card" src="https://project.social/'.$image.'">
+                                <img class="influencer-image-card" src="http://cogenttools.com/'.$image.'" onerror="this.src=`http://cogenttools.com/'.$image.'`">
                                 <div class="col-xs-12" style="height:170px;">
                                     <!-- insthandle stuff -->
                                         <div class="icons col-xs-12">';
@@ -171,13 +175,13 @@ while($stmt->fetch()){
                                     </div>
                                     <!-- Engagement ?-->
                                     <div class="col-xs-12">
-                                        <p class="instagram-engagement engagement-count" data-id="'.$id.'">1.5K Likes per post</p>
-                                        <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$id.'">1.5K Likes per post</p>
-                                        <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$id.'">1.5K Likes per post</p>
+                                        <p class="instagram-engagement engagement-count" data-id="'.$id.'">'.$instagramengagement.'% eng post</p>
+                                        <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$id.'">'.$facebookengagement.'% eng post</p>
+                                        <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$id.'">'.$twitterengagement.'% eng per post</p>
                                     </div>
                                     <div class="col-xs-12">
 
-                                        <div style="display:inline;"class="col-xs-12 invite avocado-hover avocado-focus" data-id="'.$id.'" data-image="'.$image.'"></div>
+                                        <div style="display:inline;"class="col-xs-12 invite avocado-focus" data-id="'.$id.'" data-image="'.$image.'"></div>
                                     </div>
                                 </div>
                             </div>
