@@ -43,7 +43,11 @@ $(window).scroll(function () {
 });
 
 
-
+/**
+ * 
+ * @param {array} filters 
+ * 
+ */
 function applyFilters(filters) {
     page = 0;
     $.ajax({
@@ -95,6 +99,11 @@ $(document).on('click', '.switch', function () {
     $('.' + platform1 + '-engagement[data-id=' + id + ']').css('display', 'none');
     $('.' + platform2 + '-engagement[data-id=' + id + ']').css('display', 'none');
 
+
+    $('.' + platform + '-total-post[data-id=' + id + ']').show();
+    $('.' + platform1 + '-total-post[data-id=' + id + ']').css('display', 'none');
+    $('.' + platform2 + '-total-post[data-id=' + id + ']').css('display', 'none');
+
 });
 
 
@@ -142,13 +151,12 @@ selectInfluencer(id, element);
 
 function selectInfluencer(id, element) {
     if(element.attr('data-type') == 'uninvited'){
-        console.log('meh');
+        element.css('background-color', 'white');
+        element.empty();
+        element.append('<i class="icon fa-check check" aria-hidden="true"></i>');
     }
     element.empty();
-    element.css('background-color','white');
-    element.css('color','#515862');
-    element.css('border','1px solid #515862');
-    element.append('<i class="thumb-up icon fa-plus" aria-hidden="true"></i> INVITE');
+    element.css('background-color','#e0e0e0');
     element.attr('data-type','uninvited');
     //Ajax goes here to remove user from the campaign. 
 

@@ -1,12 +1,12 @@
 <?php
 session_start(); 
-//error_reporting(0);
+error_reporting(0);
 include '../includes/dbinfo.php';
 include '../includes/class/savecampaign.php';
 include '../includes/numberAbbreviation.php';
-$url = $_SERVER['REQUEST_URI'];
-$id = explode('/',$url);
-$id = $id[2];
+//$url = $_SERVER['REQUEST_URI'];
+//$id = explode('/',$url);
+$id = $_GET['id'];
 if($id == NULL){
 $campaignid = $_SESSION['temp_campaign_id'];
 }
@@ -42,6 +42,7 @@ $description = $campaigninfo['description'];
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
 <link rel="stylesheet" href="/includes/css/discover.css">
+<link rel="stylesheet" href="/assets/css/sidebar.css">
 <style>
 .stats{
     color: #73C48D;
@@ -69,8 +70,13 @@ padding-top: 30px;
 width:20%;
 }
 
-.influencer-box{
+.engagement-count{
+    padding-bottom:0px;
+    margin-bottom:0px;
+}
 
+.invite{
+    margin-left:0%;
 }
 
 
@@ -99,7 +105,17 @@ width:20%;
     height: 20px;
     padding-top: 15px;
 "></i>
+  <div id="li-container" style="display:none;">
+    <li class="item"><a class="side-link" href="/dashboard.php"> DASHBOARD </a> </li>
+    <li class="item"><a class="side-link" href="/acdiscover.php"> DISCOVER </a></li>
+    <li class="item"><a class="side-link" href="#"> ACCOUNT SETTINGS </a></li>
+    <li class="item"><a class="side-link" href="#"> FAQ</a> </li>
+    <li class="item"><a class="side-link" href="#"> CONTACT</a> </li>
+    <li class="item"><a class="side-link" href="#"> LATEST UPDATES</a></li>
+    <li class="item"><a class="side-link" href="#"> LOGOUT</a></li>
+  </div>
 </div>
+
 <div id="stuff"></div>
 
 
@@ -110,9 +126,9 @@ width:20%;
 
 <div class="filter-container col-xs-12" style="border-bottom:0px; height:145px;">
     <div class="go-back-btn-div"> <a class="back-btn" href="/dashboard.php"> Go Back </a> </div>
-    <div class="go-back-btn-div"> <a class="back-btn" href="/edit/<?php echo $campaignid;?>"> Edit Campaign </a> </div>
-    <div class="go-back-btn-div"> <a class="back-btn" href="/edit/<?php echo $campaignid;?>"> Export Campaign </a> </div>
-    <div class="go-back-btn-div"> <a class="back-btn" href="/edit/<?php echo $campaignid;?>"> Price Campaign </a> </div>
+    <div class="go-back-btn-div"> <a class="back-btn" href="/edit/?id=<?php echo $campaignid;?>"> Edit Campaign </a> </div>
+    <div class="go-back-btn-div"> <a class="back-btn" href="/edit/?id=<?php echo $campaignid;?>"> Export Campaign </a> </div>
+    <div class="go-back-btn-div"> <a class="back-btn" href="/price/?id=<?php echo $campaignid;?>"> Price Campaign </a> </div>
 </div>
 
 <div class="col-xs-12" style="padding-left:75px;">
@@ -181,6 +197,9 @@ width:20%;
                 $instagrampost = $info['instagram_post'];
                 $facebookpost = $info['facebook_post'];
                 $twitterpost = $info['twitter_post'];
+                $instagrameng = $info['instagram_engagement'];
+                $twittereng = $info['twitter_engagement'];
+                $facebookeng = $info['facebook_engagement'];
 
 
                 echo '
@@ -242,18 +261,49 @@ width:20%;
                                     echo '
                                     </div>
                                     <!-- Engagement ?-->
-                                    <div class="col-xs-12">
-                                        <p class="instagram-engagement engagement-count" data-id="'.$influencerid.'">1.5K Avg Engagement</p>
-                                        <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$influencerid.'">1.5K Avg Engagaement</p>
-                                        <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$influencerid.'">1.5K Avg Engagement</p>
+                                    <div class="col-xs-12">';
+                                    if($instagramurl != NULL){
+                                        echo '
+                                        <p class="instagram-engagement engagement-count" data-id="'.$influencerid.'">'.$instagrameng.'% Engagaement </p>
+                                        <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$influencerid.'">'.$facebookeng.'% Engagaement</p>
+                                        <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$influencerid.'">'.$twittereng.'% Engagement</p>';
+                                    }
+                                    elseif ($facebookurl != NULL && $instagramurl == NULL){
+                                        echo '<p class="instagram-engagement engagement-count" style="display:none" data-id="'.$influencerid.'">'.$instagrameng.'% Engagaement </p>
+                                        <p class="facebook-engagement engagement-count" data-id="'.$influencerid.'">'.$facebookeng.'% Engagaement</p>
+                                        <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$influencerid.'">'.$twittereng.'% Engagement</p>';
+                                    }
+                                    elseif ($twitterurl != NULL && $facebookurl == NULL && $instagramurl == NULL){
+                                    echo '<p class="instagram-engagement engagement-count" style="display:none" data-id="'.$influencerid.'">'.$instagrameng.'% Engagaement </p>
+                                        <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$influencerid.'">'.$facebookeng.'% Engagaement</p>
+                                        <p class="twitter-engagement engagement-count" data-id="'.$influencerid.'">'.$twittereng.'% Engagement</p>';
+                                    }
+                                    echo '
                                     </div>
                                     
                                     <div class="col-xs-12">
-
-                                        <div style="display:inline; background-color:#73C48D; color:white; border:1px solid #73C48D; margin-top:-10px; margin-bottom:4px; height:28px padding-top:0px;"class="col-xs-12 invite avocado-hover avocado-focus" data-id="'.$influencerid.'" data-image="'.$info['image'].'">
-                                              <i class="thumb-up icon fa-check" aria-hidden="true"></i>INVITED
-                                        </div>
-                                        <p style="text-align:center;padding-top: 3px; color:#73C48D;"> 1 total post </p>
+                                    <div style="display:inline; background-color:white; margin-top:1px; margin-bottom:4px; height:28px; padding-top:0px; width:100%;"class="col-xs-12 invite  avocado-focus" data-id="'.$influencerid.'" data-image="'.$info['image'].'">
+                                    ';
+                                    if($instagramurl != NULL){
+                                      echo '   <p  class="instagram-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D;"> '.$instagrampost.' total post </p>
+                                               <p  class="facebook-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;"> '.$facebookpost.' total post </p>
+                                               <p  class="twitter-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;"> '.$twitterpost.' total post </p>';
+                                    }
+                                    elseif($facebookurl != NULL && $instagramurl == NULL){
+                                      echo '   <p  class="instagram-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;"> '.$instagrampost.' total post </p>
+                                               <p  class="facebook-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; "> '.$facebookpost.' total post </p>
+                                               <p  class="twitter-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;"> '.$twitterpost.' total post </p>';
+                                    }
+                                    elseif($twitterurl != NULL && $facebookurl == NULL && $instagramurl == NULL){
+                                      echo '   <p  class="instagram-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;"> '.$instagrampost.' total post </p>
+                                               <p  class="facebook-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;"> '.$facebookpost.' total post </p>
+                                               <p  class="twitter-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; "> '.$twitterpost.' total post </p>';
+                                    }
+                                    echo '
+                                              <i class="icon fa-check check" aria-hidden="true" style="text-align:center; width:100%; margin-left:0px;"></i>
+                                        </div> 
+                                
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -319,46 +369,32 @@ var page = 0;
 var selectedusers = [];
 var filters = {};
 var target2 = $('#stuff').offset().top;
+var sidebar = false;
 console.log(target2);
-function abbrNum(number, decPlaces = 2) {
-    var orig = number;
-    var dec = decPlaces;
-    // 2 decimal places => 100, 3 => 1000, etc
-    decPlaces = Math.pow(10, decPlaces);
 
-    // Enumerate number abbreviations
-    var abbrev = ["k", "m", "b", "t"];
+$(document).on('click','.sidebar-left',function(){
 
-    // Go through the array backwards, so we do the largest first
-    for (var i = abbrev.length - 1; i >= 0; i--) {
-
-        // Convert array index to "1000", "1000000", etc
-        var size = Math.pow(10, (i + 1) * 3);
-
-        // If the number is bigger or equal do the abbreviation
-        if (size <= number) {
-            // Here, we multiply by decPlaces, round, and then divide by decPlaces.
-            // This gives us nice rounding to a particular decimal place.
-            var number = Math.round(number * decPlaces / size) / decPlaces;
-
-            // instHandle special case where we round up to the next abbreviation
-            if((number == 1000) && (i < abbrev.length - 1)) {
-                number = 1;
-                i++;
-            }
-
-            // console.log(number);
-            // Add the letter for the abbreviation
-            number += abbrev[i];
-
-            // We are done... stop
-            break;
-        }
-    }
-
-    return number;
+if(sidebar == false){
+$(this).animate({
+'max-width':'300px',
+ 'width':'300px'
+}, 'slow');
+$('#li-container').fadeIn();
+sidebar = true;
 }
 
+else{
+    $(this).animate({
+    'width':'55px',
+    'max-width':'55px'
+},'slow');
+$('#li-container').fadeOut();
+sidebar = false;
+}
+
+
+
+});
 $('#tokenfield').tokenfield();
 </script>
 <script src="/acslider.js"></script>

@@ -24,6 +24,7 @@ $campaigninfo = $save->getSavedCampaigns($_SESSION['column_id']);
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
 <link rel="stylesheet" href="/includes/css/discover.css">
 <link rel="stylesheet" href="/assets/css/dashboard.css">
+<link rel="stylesheet" href="/assets/css/sidebar.css">
 <style>
 .campaign-block{
     background-color:#fcfcfc;
@@ -44,6 +45,16 @@ $campaigninfo = $save->getSavedCampaigns($_SESSION['column_id']);
     height: 20px;
     padding-top: 15px;
 "></i>
+  <div id="li-container" style="display:none;">
+    <li class="item"><a class="side-link" href="dashboard.php"> DASHBOARD </a> </li>
+    <li class="item"><a class="side-link" href="acdiscover.php"> DISCOVER </a></li>
+    <li class="item"><a class="side-link" href="#"> ACCOUNT SETTINGS </a></li>
+    <li class="item"><a class="side-link" href="#"> FAQ</a> </li>
+    <li class="item"><a class="side-link" href="#"> CONTACT</a> </li>
+    <li class="item"><a class="side-link" href="#"> LATEST UPDATES</a></li>
+    <li class="item"><a class="side-link" href="#"> LOGOUT</a></li>
+  </div>
+</div>
 </div>
 <div id="stuff"></div>
 <script src="/includes/javascript/sidebar-left.js"></script>
@@ -119,7 +130,7 @@ echo '<div class="campaign-block col-xs-9" data-id="'.$campaignid.'" data-desc="
         <table class="col-xs-12">
             <tbody style="border-top:0px;">
             <tr>
-                <td class="campaign-details name" ><a class="campaign-details" href="/campaigns/'.$campaignid.'">'.$name.' </a></td>
+                <td class="campaign-details name" ><a class="campaign-details" href="/campaigns/?id='.$campaignid.'">'.$name.' </a></td>
                 <td class="campaign-details" > '.$state.' </td>
                 <td class="campaign-details date" > Created '.$datecreated.'</td>
             </tr>
@@ -170,38 +181,12 @@ $(document).on('click','.campaign-block',function(){
        '<p class="title">Campaign Schedule</p>'+
        '<p id="schedule"> <strong> Campaign Schedule </strong> '+start+' - '+end+ ''+
        '<div id="button-container">'+
-           '<a style="color:#76838f;"href="/edit/'+id+'"><button class="option-button avocado-hover avocado-focus" id="'+id+'"> Edit Campaign </button></a>'+
-           '<a style="color:#76838f;"href="/campaigns/'+id+'"><button class="option-button avocado-hover avocado-focus" name="campaign" value="'+id+'">View Campaign </button></a>'+
+           '<a style="color:#76838f;"href="/edit/?id='+id+'"><button class="option-button avocado-hover avocado-focus" id="'+id+'"> Edit Campaign </button></a>'+
+           '<a style="color:#76838f;"href="/campaigns/?id='+id+'"><button class="option-button avocado-hover avocado-focus" name="campaign" value="'+id+'">View Campaign </button></a>'+
     '</div>');
 });
 
 
-$(document).on('click','.delete',function(){
-alert("You're about to delete the campaign!... Rest of pop up goes here");
-console.log($(this).attr('id'));
-//Ajac will go here 
-
-});
-
-$(document).on('click','.sidebar-left',function(){
-
-if(sidebar == false){
-$(this).animate({
-'max-width':'300px',
- 'width':'300px'
-}, 'slow');
-sidebar = true;
-}
-
-else{
-    $(this).animate({
-    'width':'55px',
-    'max-width':'55px'
-},'slow');
-sidebar = false;
-}
 
 
-
-});
 </script>

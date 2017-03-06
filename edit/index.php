@@ -4,9 +4,9 @@ session_start();
 include '../includes/dbinfo.php';
 include '../includes/class/savecampaign.php';
 include '../includes/numberAbbreviation.php';
-$url = $_SERVER['REQUEST_URI'];
-$id = explode('/',$url);
-$id = $id[2];
+//$url = $_SERVER['REQUEST_URI'];
+//$id = explode('/',$url);
+$id = $_GET['id'];//$id[2];
 if($id == NULL){
 $campaignid = $_SESSION['temp_campaign_id'];
 }
@@ -56,6 +56,7 @@ if(isset($campaignend)){
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
 <link rel="stylesheet" href="/includes/css/discover.css">
+<link rel="stylesheet" href="/assets/css/sidebar.css">
 <style>
 .form-control{
     letter-spacing:0px;
@@ -88,6 +89,15 @@ if(isset($campaignend)){
     height: 20px;
     padding-top: 15px;
 "></i>
+  <div id="li-container" style="display:none;">
+    <li class="item"><a class="side-link" href="/dashboard.php"> DASHBOARD </a> </li>
+    <li class="item"><a class="side-link" href="/acdiscover.php"> DISCOVER </a></li>
+    <li class="item"><a class="side-link" href="#"> ACCOUNT SETTINGS </a></li>
+    <li class="item"><a class="side-link" href="#"> FAQ</a> </li>
+    <li class="item"><a class="side-link" href="#"> CONTACT</a> </li>
+    <li class="item"><a class="side-link" href="#"> LATEST UPDATES</a></li>
+    <li class="item"><a class="side-link" href="#"> LOGOUT</a></li>
+  </div>
 </div>
 <div id="stuff"></div>
 <script src="/includes/javascript/sidebar-left.js"></script>
@@ -129,7 +139,7 @@ if(isset($campaignend)){
 </div>
 
 <script>
-
+var sidebar = false;
 const campaignid = '<?php echo $campaignid; ?>';
 
 $(document).on('click','.submit',function(){

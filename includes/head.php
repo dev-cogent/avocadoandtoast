@@ -46,6 +46,7 @@
     <![endif]-->
   <!-- Scripts -->
   <script src="/global/vendor/modernizr/modernizr.min.js"></script>
+  <script src="/global/js/plugin/switchery.js"></script> 
   <script src="/global/vendor/breakpoints/breakpoints.js"></script>
   <script type="text/javascript" src="/jquery-3.0.0.min.js"></script>
   <script src="/includes/javascript/account.js"></script>

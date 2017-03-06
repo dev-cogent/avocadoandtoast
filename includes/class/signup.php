@@ -120,13 +120,15 @@ return false;
 protected function checkPassword($password){
 if(strlen($password) < 6)
 return false;
+else
+return true;
+/*
 if(1 !== preg_match('~[0-9]~', $password)){
 return false;
 }
 if(!preg_match('/[^a-zA-Z\d]/', $password))
-return false;
-else
-return true;
+return false;*/
+
 }
 
 private function createUserID(){
@@ -150,6 +152,28 @@ return $arr;
 
 public function createConfirmationKey(){
 return md5($this->randomString(10));
+}
+
+
+public function forgotPasswordKey(){
+return hash_pbkdf2("sha256", $this->randomString(20), $salt, 1000, 20);
+} 
+
+
+public function forgotPassword($email){
+	$passwordkey = $this->forgotPasswordKey();
+	$conn = $this->dbinfo();
+	$stmt = $conn->prepare("UPDATE `login_information` SET `forgot_password_key` = ? WHERE `email` = ?");
+	$stmt->bind_param('ss',$passwordkey,$email);
+	if(!$stmt->execute()){
+		return false;
+	}
+	$headers = "From: support@avocadoandtoast \r\n";
+	$headers .= "MIME-Version: 1.0\r\n";
+	$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+	$message = 'Youve forgot your password. <a href="passwordreset.php?id='.$passwordkey.'">Click here to reset it</a>';
+	$mail = mail($email, 'Please Confirm avocado and  toast Account', $message, $headers);
+
 }
 
 
