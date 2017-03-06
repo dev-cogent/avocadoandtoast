@@ -260,10 +260,7 @@ float:right;
     border:0px;
 }
 
-.campaign-info{
-    margin-top:59px;
-    margin-left: 5%;
-}
+
 
 .noUi-base {
     width: 100%;
@@ -275,7 +272,6 @@ float:right;
 
 .influencer-card-discover{
     height: 65%;
-    /*margin-right: 8%;*/
     border: 1px solid rgb(210,215,220);
     float:left;
     width:88%;
@@ -569,35 +565,69 @@ color:#73C48D;
     font-size:12px;
     padding-top: 3px;
 }
-
-
 .button-icon{
     padding-right:25px;
 }
-
 
 .engagement-slider{
     margin-top:13px;
 }
 .info-container{
 border-bottom: 1px solid rgb(210,215,220);
-height:150px;
+height:200px;
+}
 
+/*styling for avocado-get-influencers.php */
+.campaign-info{
+    margin-top:20px;
+    /*margin-left: 5%;*/
+}
+.campaign-info-index {
+  margin-top: -81px;
 }
 .info-button{
     float: right;
-    height: 30px;
     font-family: 'Montserrat', sans-serif;
-    margin-top: 52px;
+    margin-top: 20px;
     height: 50px;
     margin-left: 20px;
     width: 200px;
-
 }
 .info-button:focus{
-
 outline: none;
 }
+.index-name{
+  font-size: 16px;
+}
+.posts-green {
+  color: #73c48d;
+}
+.impression-blue{
+  color: rgb(50, 157, 223);
+}
+.engagement-orange{
+  color: rgb(255, 139, 104);
+}
+.social-following-red {
+  color: rgb(231, 72, 69);
+}
+.campaign-desc-label {
+  float: left;
+  margin-left: 10%;
+  margin-top: 3%;
+  color: #30363F;
+}
+.campaign-desc-textarea{
+  height: 50px;
+  width: 70%;
+  margin-left: 10%;
+  float: left;
+}
+.campaign-label {
+  min-width: 150px;
+  margin-left: -5%;
+}
+
 
 .secondary-button{
 border:1px solid #30363F;
@@ -697,8 +727,6 @@ padding-right:3%;
     outline: none;
 }
 
-
-
 .number-posts-text{
     color:#30363F;
     font-size:12px;
@@ -713,8 +741,6 @@ padding-right:3%;
     height: 100%;
     float:left;
 }
-
-
 .influencer-handle-text{
     font-size:15px;
     color:#30363F;
@@ -790,9 +816,14 @@ padding-right:10px;
     outline:none;
 }
 
+
+/*create campaign popups*/
+
 .modal-body {
   padding: 0;
-  min-height: 460px;
+}
+.modal-content{
+  min-height: 520px;
 }
 .popup-detail {
   text-transform: uppercase;
@@ -823,8 +854,6 @@ padding-right:10px;
 }
 .icon-popup-div {
   text-align: center;
-  padding-top: 3%;
-  padding-bottom: 3%;
 }
 .submit-btn {
   font-size: 16px;
@@ -842,7 +871,7 @@ padding-right:10px;
   max-width: 255px;
 }
 .fb-logo-popup, .insta-logo-popup, .twitter-icon-popup{
-  max-width: 30px;
+  max-width: 25px;
   max-height: 50px;
   display:block;
   text-align: center;
@@ -862,6 +891,18 @@ padding-right:10px;
 .popup-btn-div{
   padding-top: 3%;
 }
+
+
+@media (max-width:500px){
+.popup-detail{
+  font-size: 18px;
+}
+.input-popup{
+  text-align: center;
+}
+
+}
+
 input[type="number"].input-popup:focus{
   border: 1px solid #73C4A0;
   outline: none;
@@ -873,7 +914,7 @@ input[type=number]::-webkit-outer-spin-button
   /*margin: 0;*/
 }
 .success-popup-icon{
-  max-width: 160px;
+  max-width: 375px;
 }
 .yay {
 font-size: 28px;

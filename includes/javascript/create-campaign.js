@@ -27,7 +27,7 @@ $(document).on('click', '#createcampaign', function () {
             if (jqXHR != 0 || jqXHR != '0') {
                 dialog = bootbox.dialog({
                     message: '<div class="bootbox-body">' +
-                    '<div class="icon-popup-div"> <img src="https://68.media.tumblr.com/0abd1f3bfd0a2594ea81787691cb6af2/tumblr_o33ti7IZMI1t4twpao1_500.gif" class="success-popup-icon"/> </div>' +
+                    '<div class="icon-popup-div"> <img src="assets/images/chasing_2.gif" class="success-popup-icon"/> </div>' +
                     '<div class="row"> <div class="col-xs-12 popup-detail success">   <span class="yay"> YAY! </span> <br/> Campaign created sucessfully  </div>' +
                     '<div class="col-xs-12 btn-col"><div class="popup-btn-div"> <a href="/campaigns/' + jqXHR + '"><button id="applyall" class="submit-btn">VIEW CAMPAIGN </button></a></div> <div class="col-xs-12"><div class="submit-btn-div"><a href="/edit/' + jqXHR + '"> <button id="applyall" class="submit-btn"> ADD  DETAILS </button></a></div>' +
                     '</div> </div>',
