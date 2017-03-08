@@ -186,19 +186,21 @@ include 'includes/numberAbbreviation.php';
         <div class="found-influencers col-xs-12">
             <?php
                 $count = 3;
-                $stmt = $conn->prepare('SELECT `id`,`image_url`,`instagram_url`,`instagram_count`,`facebook_url`,`facebook_count`,`twitter_url`,`twitter_count`,`engagement`,`total` FROM `Influencer_Information` WHERE `type` NOT LIKE "%brand%" ORDER BY `total`  DESC LIMIT 0,32');
+                $stmt = $conn->prepare('SELECT `id`,`image_url`,`instagram_url`,`instagram_count`,`facebook_url`,`facebook_handle`,`facebook_count`,`twitter_url`,`twitter_count`,`engagement`,`total` FROM `Influencer_Information` ORDER BY `total`  DESC LIMIT 0,32');
                 $stmt->execute();
-                $stmt->bind_result($id,$image,$instagramurl,$instagramcount,$facebookurl,$facebookcount,$twitterurl,$twittercount,$engagement,$total);
+                $stmt->bind_result($id,$image,$instagramurl,$instagramcount,$facebookurl,$facebookhandle,$facebookcount,$twitterurl,$twittercount,$engagement,$total);
                 while($stmt->fetch()){
                 $insthandle = explode('.com/',$instagramurl);
                 $insthandle = explode('/',$insthandle[1]);
                 $insthandle = explode('?',$insthandle[0]);
                 $insthandle = $insthandle[0];
                 //Facebook handle
+                if($facebookhandle == NULL){
                 $facebookhandle = explode('.com/',$facebookurl);
                 $facebookhandle = explode('/',$facebookhandle[1]);
                 $facebookhandle = explode('?',$facebookhandle[0]);
                 $facebookhandle = $facebookhandle[0];
+                }
                 //twitter handle
                 $twitterhandle = explode('.com/',$twitterurl);
                 $twitterhandle = explode('/',$twitterhandle[1]);

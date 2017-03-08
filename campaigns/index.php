@@ -149,11 +149,11 @@ width:20%;
                 <td class="campaign-details date" > Created 02/17/2017</td>
             </tr>
             <tr>
-                <td class="stats">'.$influencerinfo['campaign_count'].'</td>
-                <td class="stats">'.$campaigninfo['totalposts'].'</td>
-                <td class="stats">'.numberAbbreviation($campaigninfo['totalimpressions']/$influencerinfo['campaign_count']).'</td>
-                <td class="stats">1,000</td>
-                <td class="stats">'.numberAbbreviation($campaigninfo['totalimpressions']).'</td>
+                <td class="stats" id="influnum">'.$influencerinfo['campaign_count'].'</td>
+                <td class="stats" id="posts">'.$campaigninfo['totalposts'].'</td>
+                <td class="stats" id="avgimp">'.numberAbbreviation($campaigninfo['totalimpressions']/$influencerinfo['campaign_count']).'</td>
+                <td class="stats" id="avgeng">1,000</td>
+                <td class="stats"id="reach" data-num="'.$campaigninfo['totalimpressions'].'">'.numberAbbreviation($campaigninfo['totalimpressions']).'</td>
             </tr>
             <tr>
                 <td class="label-info">Influencers</td>
@@ -191,22 +191,27 @@ width:20%;
                 $facebookhandle = $info['facebook_handle'];
                 $twitterhandle = $info['twitter_handle'];
                 $insthandle = $info['instagram_handle'];
-                $instagramcount = $info['instagram_count'];
-                $facebookcount = $info['facebook_count'];
-                $twittercount = $info['twitter_count'];
+
                 $instagrampost = $info['instagram_post'];
-                $facebookpost = $info['facebook_post'];
                 $twitterpost = $info['twitter_post'];
+                $facebookpost = $info['facebook_post'];
+
+                $instagramimpressions = $info['instagram_impressions'];
+                $twitterimpressions = $info['twitter_impressions'];
+                $facebookimpressions = $info['facebook_impressions'];
+
+
                 $instagrameng = $info['instagram_engagement'];
                 $twittereng = $info['twitter_engagement'];
                 $facebookeng = $info['facebook_engagement'];
 
 
                 echo '
-                    <div  class="influencer-box col-xs-12 col-md-6 col-lg-3 col-xl-2">
+                    <div  class="influencer-box col-xs-12 col-md-6 col-lg-3 col-xl-2" data-id="'.$id.'" data-t-post="'.$twitterpost.'" data-f-post="'.$facebookpost.'"
+                    data-i-post="'.$instagrampost.'" data-t-impressions="'.$twitterimpressions.'" data-f-impressions="'.$facebookimpressions.'" data-i-impressions="'.$instagramimpressions.'">
                             <div class="influencer-card-discover">
                                 <img class="influencer-image-card" src="https://project.social/'.$info['image'].'">
-                                <div class="col-xs-12" style="height:170px;">
+                                <div class="col-xs-12" style="height:170px; box-shadow: rgb(115, 196, 141) 0px -10px 0px;">
                                     <!-- insthandle stuff -->
                                         <div class="icons col-xs-12">';
 
@@ -239,23 +244,23 @@ width:20%;
                                         if($instagramurl != NULL){
                                             echo '
                                         
-                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'">'.numberAbbreviation($instagramcount * $instagrampost).' Impressions</p>
-                                        <p class="facebook-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($facebookcount * $facebookpost).' Impressions</p>
-                                        <p class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($twittercount * $twitterpost).' Impressions</p>
+                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'">'.numberAbbreviation($instagramimpressions).' Impressions</p>
+                                        <p class="facebook-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($facebookimpressions).' Impressions</p>
+                                        <p class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($twitterimpressions).' Impressions</p>
                                         ';
                                         }
                                         elseif($facebookurl != NULL && $instagramurl == NULL){
                                             echo '
-                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'" style="display:none">'.numberAbbreviation($instagramcount * $instagrampost).' Impressions</p>
-                                        <p class="facebook-follower-count follower-count"  data-id="'.$id.'">'.numberAbbreviation($facebookcount * $facebookpost).' Impressions</p>
-                                        <p class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($twittercount * $twitterpost).' Impressions</p>
+                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'" style="display:none">'.numberAbbreviation($instagramimpressions).' Impressions</p>
+                                        <p class="facebook-follower-count follower-count"  data-id="'.$id.'">'.numberAbbreviation($facebookimpressions).' Impressions</p>
+                                        <p class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($twitterimpressions).' Impressions</p>
                                         ';
                                         }
                                         elseif($twitterurl != NULL && $facebookurl == NULL && $instagramurl == NULL){
                                             echo '
-                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'" style="display:none">'.numberAbbreviation($instagramcount * $instagrampost).' Impressions</p>
-                                        <p class="facebook-follower-count follower-count"  data-id="'.$id.'" style="display:none">'.numberAbbreviation($facebookcount * $facebookpost).' Impressions</p>
-                                        <p class="twitter-follower-count follower-count"  data-id="'.$id.'">'.numberAbbreviation($twittercount * $twitterpost).' Impressions</p>
+                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'" style="display:none">'.numberAbbreviation($instagramimpressions).' Impressions</p>
+                                        <p class="facebook-follower-count follower-count"  data-id="'.$id.'" style="display:none">'.numberAbbreviation($facebookimpressions).' Impressions</p>
+                                        <p class="twitter-follower-count follower-count"  data-id="'.$id.'">'.numberAbbreviation($twitterimpressions).' Impressions</p>
                                         ';
                                         }
                                     echo '
@@ -367,6 +372,7 @@ var campaignid = '<?php echo $campaignid; ?>';
 var calculate = false;
 var page = 0;
 var selectedusers = [];
+var deletedusers = [];
 var filters = {};
 var target2 = $('#stuff').offset().top;
 var sidebar = false;
