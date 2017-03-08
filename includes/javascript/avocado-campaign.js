@@ -1,3 +1,41 @@
+function abbrNum(number, decPlaces = 2) {
+    var orig = number;
+    var dec = decPlaces;
+    // 2 decimal places => 100, 3 => 1000, etc
+    decPlaces = Math.pow(10, decPlaces);
+
+    // Enumerate number abbreviations
+    var abbrev = ["k", "m", "b", "t"];
+
+    // Go through the array backwards, so we do the largest first
+    for (var i = abbrev.length - 1; i >= 0; i--) {
+
+        // Convert array index to "1000", "1000000", etc
+        var size = Math.pow(10, (i + 1) * 3);
+
+        // If the number is bigger or equal do the abbreviation
+        if (size <= number) {
+            // Here, we multiply by decPlaces, round, and then divide by decPlaces.
+            // This gives us nice rounding to a particular decimal place.
+            var number = Math.round(number * decPlaces / size) / decPlaces;
+
+            // instHandle special case where we round up to the next abbreviation
+            if((number == 1000) && (i < abbrev.length - 1)) {
+                number = 1;
+                i++;
+            }
+
+            // console.log(number);
+            // Add the letter for the abbreviation
+            number += abbrev[i];
+
+            // We are done... stop
+            break;
+        }
+    }
+
+    return number;
+}
 // same ajax call but calling a different php file that contains different bootstrap styling
 // for the view campaigns onscroll pagination
 
@@ -43,26 +81,7 @@ $(window).scroll(function () {
 });
 
 
-/**
- * 
- * @param {array} filters 
- * 
- */
-function applyFilters(filters) {
-    page = 0;
-    $.ajax({
-        type: 'POST',
-        url: '/includes/ajax/avocado-campaign-pagination.php',
-        data: {
-            filters: filters,
-            page: page
-        },
-        success: function (jqXHR, textStatus, errorThrown) {
-            $('.found-influencers').empty();
-            $('.found-influencers').append(jqXHR);
-        }
-    });
-}
+
 
 
 
@@ -139,16 +158,36 @@ $(document).on('click','.filter-option',function(){
 $(document).on('click','.invite',function(){
 var id = $(this).attr('data-id');
 var element = $(this);
-selectInfluencer(id, element);
-
-
-
-
+var item = $('.influencer-box[data-id='+id+']');
+item.fadeOut();
+var totalimpressions = parseInt(item.attr('data-t-impressions')) + parseInt(item.attr('data-f-impressions')) + parseInt(item.attr('data-i-impressions'));
+//var totalFollowers = getFollowers(item.attr('data-t-impressions'),item.attr('data-t-post')) + getFollowers(item.attr('data-i-impressions'),item.attr('data-i-post')) + getFollowers(item.attr('data-f-impressions'),item.attr('data-f-post'));
+var minustotal = parseInt(item.attr('data-t-post')) + parseInt(item.attr('data-i-post')) + parseInt(item.attr('data-f-post'));
+var influencerNum = parseInt($('#influnum').text());
+//Changing the influencer number 
+$('#influnum').text(influencerNum - 1);
+//changing the totalpost number 
+var totalPost = parseInt($('#posts').text());
+$('#posts').text(totalPost - minustotal);
+//Changing the reach number 
+var reach = parseInt($('#reach').attr('data-num'));
+console.log(reach);
+console.log(totalimpressions);
+var newreach = reach - totalimpressions;
+$('#reach').attr('data-num',newreach); 
+$('#reach').text(abbrNum(newreach));
+deletedusers.push(id);
 
 }); 
 
 
 
+
+function getReach(impressions,post){
+//var followers = parseInt(impressions)parseInt(post);
+return followers;
+
+}
 function selectInfluencer(id, element) {
     if(element.attr('data-type') == 'uninvited'){
         element.css('background-color', 'white');

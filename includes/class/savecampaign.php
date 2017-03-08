@@ -18,7 +18,7 @@ if($genconn === NULL)
     $genconn = $this->dbinfo();
 if($saveconn === NULL)
     $saveconn = $this->savedDB();
-if($campaignname == NULL || $campaignname == "")
+if($campaignname == NULL || $campaignname == "") 
     $campaignname = 'Campaign Calculator '.time();
 
 #Get the column id
@@ -211,23 +211,16 @@ public function getSavedCampaigns($columnid){
     $infoarr = array();
     $conn = $this->dbinfo();
     $saved = $this->savedDB();
-    $stmt = $saved->prepare("SELECT `influencer_id`,`facebook_post`,`instagram_post`,`twitter_post` FROM `$campaignid`");
+    $stmt = $saved->prepare("SELECT l5o0c8t4_save_campaign.$campaignid.influencer_id, l5o0c8t4_save_campaign.$campaignid.facebook_post,l5o0c8t4_save_campaign.$campaignid.instagram_post,l5o0c8t4_save_campaign.$campaignid.twitter_post,
+                                    l5o0c8t4_save_campaign.$campaignid.instagram_impressions,l5o0c8t4_save_campaign.$campaignid.facebook_impressions,l5o0c8t4_save_campaign.$campaignid.twitter_impressions,
+                                    l5o0c8t4_General_Information.Influencer_Information.image_url, l5o0c8t4_General_Information.Influencer_Information.instagram_count, l5o0c8t4_General_Information.Influencer_Information.instagram_url,
+                                    l5o0c8t4_General_Information.Influencer_Information.twitter_url,l5o0c8t4_General_Information.Influencer_Information.twitter_count, l5o0c8t4_General_Information.Influencer_Information.facebook_count,l5o0c8t4_General_Information.Influencer_Information.facebook_url,
+                                    l5o0c8t4_General_Information.Influencer_Information.engagement FROM l5o0c8t4_save_campaign.$campaignid INNER JOIN l5o0c8t4_General_Information.Influencer_Information
+                                    ON l5o0c8t4_save_campaign.$campaignid.influencer_id = l5o0c8t4_General_Information.Influencer_Information.id
+                                    ORDER BY  l5o0c8t4_General_Information.Influencer_Information.total DESC LIMIT $position, $influencernumber");
     $stmt->execute();
-    $stmt->bind_result($influencerid,$facebookpost,$instagrampost,$twitterpost);
+    $stmt->bind_result($id,$facebookpost,$instagrampost,$twitterpost,$instagramimpressions,$facebookimpressions,$twitterimpressions,$image,$instagramcount,$instagramurl,$twitterurl,$twittercount,$facebookcount,$facebookurl,$engagement);
     while($stmt->fetch()){
-        $influencertemp[$influencerid]['facebook_post'] = $facebookpost;
-        $influencertemp[$influencerid]['instagram_post'] = $instagrampost;
-        $influencertemp[$influencerid]['twitter_post'] = $twitterpost;
-        array_push($influencerarr,$influencerid);
-
-    }
-    unset($stmt);
-    $influencerid = implode("','",$influencerarr);
-    $stmt = $conn->prepare("SELECT `id`,`image_url` ,`instagram_count`, `instagram_url`, `twitter_url`, `twitter_count`, `facebook_count`,`facebook_url`,`engagement` FROM `Influencer_Information` WHERE `id` IN ('$influencerid') ORDER BY `total` DESC LIMIT $position, $influencernumber");
-    $stmt->execute();
-    $stmt->bind_result($id,$image,$instagramcount,$instagramurl,$twitterurl,$twittercount,$facebookcount,$facebookurl,$engagement);
-    while($stmt->fetch()){
-
         $insthandle = explode('.com/',$instagramurl);
         $insthandle = explode('/',$insthandle[1]);
         $insthandle = explode('?',$insthandle[0]);
@@ -247,17 +240,20 @@ public function getSavedCampaigns($columnid){
         $infoarr['influencer'][$id]['instagram_count'] = $instagramcount;
         $infoarr['influencer'][$id]['instagram_url'] = $instagramurl;
         $infoarr['influencer'][$id]['instagram_handle'] = $insthandle;
-        $infoarr['influencer'][$id]['instagram_post'] = $influencertemp[$id]['instagram_post'];
+        $infoarr['influencer'][$id]['instagram_post'] = $instagrampost;
+        $infoarr['influencer'][$id]['instagram_impressions'] = $instagramimpressions;
         $infoarr['influencer'][$id]['instagram_engagement'] = number_format((($engagement['instagram']['average_engagement']/$instagramcount)*100),2,'.','');
         $infoarr['influencer'][$id]['facebook_count'] = $facebookcount;
         $infoarr['influencer'][$id]['facebook_url'] = $facebookurl;
         $infoarr['influencer'][$id]['facebook_handle'] = $facebookhandle;
-        $infoarr['influencer'][$id]['facebook_post'] = $influencertemp[$id]['facebook_post'];
+        $infoarr['influencer'][$id]['facebook_post'] = $facebookpost;
+        $infoarr['influencer'][$id]['facebook_impressions'] = $facebookimpressions;
         $infoarr['influencer'][$id]['facebook_engagement'] = number_format((($engagement['facebook']['average_engagement']/$facebookcount)*100),2,'.','');
         $infoarr['influencer'][$id]['twitter_count'] = $twittercount;
         $infoarr['influencer'][$id]['twitter_url'] = $twitterurl;
         $infoarr['influencer'][$id]['twitter_handle'] = $twitterhandle;
-        $infoarr['influencer'][$id]['twitter_post'] = $influencertemp[$id]['twitter_post'];
+        $infoarr['influencer'][$id]['twitter_post'] = $twitterpost;
+        $infoarr['influencer'][$id]['twitter_impressions'] = $twitterimpressions;
         $infoarr['influencer'][$id]['twitter_engagement'] = number_format((($engagement['twitter']['average_engagement']/$twittercount)*100),2,'.','');
     }
 

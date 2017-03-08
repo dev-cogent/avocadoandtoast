@@ -30,6 +30,10 @@ $campaigninfo = $save->getSavedCampaigns($_SESSION['column_id']);
     background-color:#fcfcfc;
 
 }
+
+button:focus{
+    outline:none;
+}
 </style>
 </head>
 
@@ -52,7 +56,7 @@ $campaigninfo = $save->getSavedCampaigns($_SESSION['column_id']);
     <li class="item"><a class="side-link" href="#"> FAQ</a> </li>
     <li class="item"><a class="side-link" href="#"> CONTACT</a> </li>
     <li class="item"><a class="side-link" href="#"> LATEST UPDATES</a></li>
-    <li class="item"><a class="side-link" href="#"> LOGOUT</a></li>
+    <li class="item"><a class="side-link" href="/logout.php"> LOGOUT</a></li>
   </div>
 </div>
 </div>

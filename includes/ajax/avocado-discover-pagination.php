@@ -47,7 +47,7 @@ if($where == '')
 else
     $default = '';
 
-$stmt = $conn->prepare("SELECT `id`, `image_url` , `instagram_count`, `instagram_url`, `twitter_url`, `twitter_count`, `facebook_count`,`facebook_url`,`engagement` FROM `Influencer_Information` $where $default LIMIT $position, 32");
+$stmt = $conn->prepare("SELECT `id`, `image_url` , `instagram_count`, `instagram_url`, `twitter_url`, `twitter_count`, `facebook_count`,`facebook_url`,`facebook_handle`,`engagement` FROM `Influencer_Information` $where $default LIMIT $position, 32");
 if($where != ''){
 $types = '';
 foreach($params as $param) {
@@ -67,7 +67,7 @@ call_user_func_array(array($stmt,'bind_param'),makeValuesReferenced($params));
 }
 
 $stmt->execute();
-$stmt->bind_result($id,$image,$instagramcount,$instagramurl,$twitterurl,$twittercount,$facebookcount,$facebookurl,$engagement);
+$stmt->bind_result($id,$image,$instagramcount,$instagramurl,$twitterurl,$twittercount,$facebookcount,$facebookurl, $facebookhandle,$engagement);
 $count = 3;
 while($stmt->fetch()){
                 $insthandle = explode('.com/',$instagramurl);
@@ -75,10 +75,12 @@ while($stmt->fetch()){
                 $insthandle = explode('?',$insthandle[0]);
                 $insthandle = $insthandle[0];
                 //Facebook handle
+                if($facebookhandle == NULL){
                 $facebookhandle = explode('.com/',$facebookurl);
                 $facebookhandle = explode('/',$facebookhandle[1]);
                 $facebookhandle = explode('?',$facebookhandle[0]);
                 $facebookhandle = $facebookhandle[0];
+                }
                 //twitter handle
                 $twitterhandle = explode('.com/',$twitterurl);
                 $twitterhandle = explode('/',$twitterhandle[1]);
