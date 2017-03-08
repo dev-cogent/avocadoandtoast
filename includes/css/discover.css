@@ -260,10 +260,7 @@ float:right;
     border:0px;
 }
 
-.campaign-info{
-    margin-top:59px;
-    margin-left: 5%;
-}
+
 
 .noUi-base {
     width: 100%;
@@ -275,7 +272,6 @@ float:right;
 
 .influencer-card-discover{
     height: 65%;
-    /*margin-right: 8%;*/
     border: 1px solid rgb(210,215,220);
     float:left;
     width:88%;
@@ -570,6 +566,7 @@ color:#73C48D;
     padding-top: 3px;
 }
 
+
 .check{
     font-size: 34px;
     margin-left: -8px;
@@ -577,39 +574,230 @@ color:#73C48D;
     color: #73C48D;
 }
 
-
 .button-icon{
     padding-right:25px;
 }
 
-
 .engagement-slider{
     margin-top:13px;
 }
-.info-container{
-border-bottom: 1px solid rgb(210,215,220);
-height:150px;
 
+
+/*styling for avocado-get-influencers.php */
+.info-container{
+height:220px;
 }
+
+.campaign-info{
+    margin-top:20px;
+    /*margin-left: 5%;*/
+}
+.campaign-info-index {
+  margin-top: -85px;
+  text-align: justify;
+  direction: rtl;
+  padding-right: 5%;
+}
+.campaign-label-div {
+  width: 81%;
+}
+
 .info-button{
     float: right;
-    height: 30px;
     font-family: 'Montserrat', sans-serif;
-    margin-top: 52px;
+    margin-top: 20px;
     height: 50px;
     margin-left: 20px;
     width: 200px;
-
 }
 .info-button:focus{
-
 outline: none;
 }
+.index-name{
+  font-size: 16px;
+}
+.posts-green {
+  color: #73c48d;
+}
+.impression-blue{
+  color: rgb(50, 157, 223);
+}
+.engagement-orange{
+  color: rgb(255, 139, 104);
+}
+.social-following-red {
+  color: rgb(231, 72, 69);
+}
+.campaign-desc-label {
+  float: left;
+  margin-left: 12.5%;
+  margin-top: 3%;
+  color: #30363F;
+}
+.campaign-desc-textarea{
+  height: 50px;
+  width: 70%;
+  margin-left: 12.5%;
+  margin-top: 1%;
+  float: left;
+}
+.campaign-label {
+  min-width: 150px;
+  margin-left: -6.8%;
+}
 
+#apply{
+    height: 40px;
+    width: 180px;
+    font-size:15px;
+    font-family: 'Montserrat', sans-serif;
+    margin-right: 46%;
+}
+#apply:focus{
+    outline: none;
+}
+
+.table-bordered{
+  border: 1px solid rgba(243, 246, 246, 1);
+}
+.table-responsive{
+  overflow-x: hidden;
+  margin-top: -5%;
+}
+td.campaign-tablerow, td.insta-column, td.twit-column, td.face-column{
+  border-left: hidden;
+  border-right: hidden;
+  padding-top: 1.5%;
+  padding-bottom: 1.5%;
+  position: relative;
+}
+.post-results{
+  color: #1f232a;
+  margin-top: -7%;
+  font-size: 12px;
+  margin-left: -7%;
+  font-family: 'Montserrat', sans-serif;
+}
+.results-mini-col{
+  text-align: -webkit-right;
+  margin-top: -30%;
+  margin-right: 15%;
+  font-size: 16px;
+  font-family: 'montserratsemibold';
+}
+
+tr.campaign-list-table{
+  text-align: center;
+  border-bottom:1px solid #efefef;
+}
+th.text-center{
+  text-transform: uppercase;
+  font-size: 18px;
+  font-family: 'montserratsemibold';
+  color: rgba(29, 44, 76, 1);
+  padding-top: 2%;
+  padding-bottom: 2%;
+  letter-spacing: 0.5px;
+  border-left: hidden;
+  border-right: hidden;
+  border-top: 1px solid rgb(210,215,220);
+}
+
+
+@media (min-width:800px) and (max-width:1000px) {
+  .results-mini-col{
+    margin-top: -33%;
+  }
+}
+
+@media (min-width:1001px) and (max-width:1200px) {
+  .results-mini-col{
+    margin-top: -29%;
+  }
+  input#campaign-name {
+    width:250px;
+    font-size: 24px;
+  }
+  .campaign-label{
+    margin-left: 7%;
+  }
+  .info-button.secondary-button {
+  margin-right: 35px;
+  }
+  .index-name{
+    font-size: 14px;
+  }
+  .campaign-info-index{
+    margin-top: -60px;
+  }
+
+}
+@media (min-width:1201px) and (max-width:1399px){
+  .campaign-label-div{
+    width: 121%;
+  }
+  .campaign-info-index{
+    margin-top: -70px;
+  }
+  .index-name{
+    font-size: 14px;
+  }
+
+}
+
+@media (min-width:1400px) and (max-width:1650px) {
+  .results-mini-col{
+    margin-top: -24%;
+  }
+  .post-results{
+    margin-top: -5%;
+    margin-left: -6%;
+  }
+  .campaign-label-div{
+    width: 103%;
+  }
+}
+
+@media (min-width:1651px) and (max-width:1850px) {
+  .results-mini-col{
+    margin-top: -22%;
+    margin-right: 18%;
+  }
+  .post-results{
+    margin-top: -5%;
+    margin-left: -5%;
+  }
+  .campaign-label-div {
+    width: 92%;
+  }
+}
+
+@media (min-width:1851px) and (max-width:2100px) {
+  div.results-mini-col{
+    margin-top: -19%;
+    margin-right: 23%
+  }
+  div.post-results{
+    margin-top: -5%;
+    margin-left: -5%;
+  }
+}
+
+@media (min-width:2101px) and (max-width:3100px) {
+  .results-mini-col{
+    margin-top: -17%;
+    margin-right: 22%
+  }
+  .post-results{
+    margin-top: -4%;
+    margin-left: -18px;
+  }
+}
 .secondary-button{
 border:1px solid #30363F;
 color:#30363F;
 background-color:white;
+margin-right: 100px;
 }
 .main-button{
 color:white;
@@ -693,18 +881,6 @@ padding-left:6%;
 padding-right:3%;
 }
 
-#apply{
-    height: 40px;
-    width: 180px;
-    font-size:15px;
-    font-family: 'Montserrat', sans-serif;
-    float:left;
-}
-#apply:focus{
-    outline: none;
-}
-
-
 
 .number-posts-text{
     color:#30363F;
@@ -720,8 +896,6 @@ padding-right:3%;
     height: 100%;
     float:left;
 }
-
-
 .influencer-handle-text{
     font-size:15px;
     color:#30363F;
@@ -741,8 +915,8 @@ background-color:transparent;
 border:none;
 text-align:center;
 font-size:3em;
-width:200px;
-color: #30363F;
+width:110px;
+color: #73c48d;
 font-family: 'Montserrat', sans-serif;
     }
 
@@ -797,9 +971,14 @@ padding-right:10px;
     outline:none;
 }
 
+
+/*create campaign popups*/
+
 .modal-body {
   padding: 0;
-  min-height: 460px;
+}
+.modal-content{
+  min-height: 520px;
 }
 .popup-detail {
   text-transform: uppercase;
@@ -830,8 +1009,6 @@ padding-right:10px;
 }
 .icon-popup-div {
   text-align: center;
-  padding-top: 3%;
-  padding-bottom: 3%;
 }
 .submit-btn {
   font-size: 16px;
@@ -849,7 +1026,7 @@ padding-right:10px;
   max-width: 255px;
 }
 .fb-logo-popup, .insta-logo-popup, .twitter-icon-popup{
-  max-width: 30px;
+  max-width: 25px;
   max-height: 50px;
   display:block;
   text-align: center;
@@ -869,6 +1046,18 @@ padding-right:10px;
 .popup-btn-div{
   padding-top: 3%;
 }
+
+
+@media (max-width:500px){
+.popup-detail{
+  font-size: 18px;
+}
+.input-popup{
+  text-align: center;
+}
+
+}
+
 input[type="number"].input-popup:focus{
   border: 1px solid #73C4A0;
   outline: none;
@@ -880,7 +1069,7 @@ input[type=number]::-webkit-outer-spin-button
   /*margin: 0;*/
 }
 .success-popup-icon{
-  max-width: 160px;
+  max-width: 375px;
 }
 .yay {
 font-size: 28px;

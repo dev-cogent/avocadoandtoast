@@ -210,6 +210,7 @@ width:20%;
                     <div  class="influencer-box col-xs-12 col-md-6 col-lg-3 col-xl-2" data-id="'.$id.'" data-t-post="'.$twitterpost.'" data-f-post="'.$facebookpost.'"
                     data-i-post="'.$instagrampost.'" data-t-impressions="'.$twitterimpressions.'" data-f-impressions="'.$facebookimpressions.'" data-i-impressions="'.$instagramimpressions.'">
                             <div class="influencer-card-discover">
+
                                 <img class="influencer-image-card" src="https://project.social/'.$info['image'].'">
                                 <div class="col-xs-12" style="height:170px; box-shadow: rgb(115, 196, 141) 0px -10px 0px;">
                                     <!-- insthandle stuff -->
@@ -290,19 +291,19 @@ width:20%;
                                     <div style="display:inline; background-color:white; margin-top:1px; margin-bottom:4px; height:28px; padding-top:0px; width:100%;"class="col-xs-12 invite  avocado-focus" data-id="'.$influencerid.'" data-image="'.$info['image'].'">
                                     ';
                                     if($instagramurl != NULL){
-                                      echo '   <p  class="instagram-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D;"> '.$instagrampost.' total post </p>
-                                               <p  class="facebook-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;"> '.$facebookpost.' total post </p>
-                                               <p  class="twitter-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;"> '.$twitterpost.' total post </p>';
+                                      echo '   <p  class="instagram-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D;"> '.$instagrampost.' total post(s) </p>
+                                               <p  class="facebook-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;"> '.$facebookpost.' total post(s) </p>
+                                               <p  class="twitter-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;"> '.$twitterpost.' total post(s) </p>';
                                     }
                                     elseif($facebookurl != NULL && $instagramurl == NULL){
-                                      echo '   <p  class="instagram-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;"> '.$instagrampost.' total post </p>
-                                               <p  class="facebook-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; "> '.$facebookpost.' total post </p>
-                                               <p  class="twitter-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;"> '.$twitterpost.' total post </p>';
+                                      echo '   <p  class="instagram-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;"> '.$instagrampost.' total post(s) </p>
+                                               <p  class="facebook-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; "> '.$facebookpost.' total post(s) </p>
+                                               <p  class="twitter-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;"> '.$twitterpost.' total post(s) </p>';
                                     }
                                     elseif($twitterurl != NULL && $facebookurl == NULL && $instagramurl == NULL){
-                                      echo '   <p  class="instagram-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;"> '.$instagrampost.' total post </p>
-                                               <p  class="facebook-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;"> '.$facebookpost.' total post </p>
-                                               <p  class="twitter-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; "> '.$twitterpost.' total post </p>';
+                                      echo '   <p  class="instagram-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;"> '.$instagrampost.' total post(s) </p>
+                                               <p  class="facebook-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;"> '.$facebookpost.' total post(s) </p>
+                                               <p  class="twitter-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; "> '.$twitterpost.' total post(s) </p>';
                                     }
                                     echo '
                                               <i class="icon fa-check check" aria-hidden="true" style="text-align:center; width:100%; margin-left:0px;"></i>
