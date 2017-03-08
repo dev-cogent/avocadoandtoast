@@ -18,14 +18,18 @@ echo '
 
         <div class="row">
     <div class="col-sm-12 col-lg-6 campaign-info">
-    <label id="campaign-label">CAMPAIGN NAME:</label><input id="campaign-name" type="text" placeholder="Untitled Campaign"> <br>
-    <label class="campaign-desc-label"> CAMPAIGN DESCRIPTION: </label>
+    <div class="camapaign-label-container">
+    <div class="campaign-label-div">
+    <label id="campaign-label" class="campaign-label">CAMPAIGN NAME:</label><input id="campaign-name" type="text" placeholder="Untitled Campaign"> </div>
+
+    <div class="campaign-desc-div"> <div class="campaign-desc-container"><div class="campaign-desc-label" class="campaign-label"> CAMPAIGN DESCRIPTION: </div> </div>
     <textarea type="text" class="form-control category avocado-focus campaign-desc-textarea" id="campaign-summary"   style="height:50px;"></textarea>
+    </div></div>
     </div>
 
 
-    <button class="col-md-6 col-lg-3 col-xs-12 info-button secondary-button" style="margin-right: 100px;">SUBMIT FOR PRICING</button>
-    <button class="col-md-6 col-lg-3 col-xs-12 info-button main-button" id="createcampaign">CREATE CAMPAIGN </button>
+    <button class="col-md-6 col-lg-2 col-xs-12 info-button secondary-button" style="">SUBMIT FOR PRICING</button>
+    <button class="col-md-6 col-lg-2 col-xs-12 info-button main-button" id="createcampaign">CREATE CAMPAIGN </button>
 
     </div>
 
@@ -56,9 +60,10 @@ echo '
                   <tr class="cat-in-campaign-list-table">
                       <th class="text-center"><button class="secondary-button" id="apply">Apply Posts to All</button></th>
                       <th class="text-center"> <img src="assets/images/ig_black.png" class="insta-logo" />
-                    <p class="number-posts-text"></p>  </th>
+                   </th>
                       <th class="text-center"> <img src="assets/images/fb_black.png" class="fb-logo" /> <p class="number-posts-text"> </p> </th>
-                      <th class="text-center"> <img src="assets/images/twitter_black.png" class="twitter-logo2" /> <p class="number-posts-text"> </p> </th>
+                      <th class="text-center"> <img src="assets/images/twitter_black.png" class="twitter-logo2" />  </th>
+                        <th class="text-center total-heading">  TOTAL  </th>
                     </tr>
                   </thead>
                   <tbody>';
@@ -81,9 +86,10 @@ echo '
                             <h4 class="influencer-handle-text location-text">'.$location.'</h4>
                       </div></td>
 
-                      <td data-id="'.$id.'" class="insta-column" style="width:15%;"><input data-id="'.$id.'" data-platform="instagram" class="instagraminput campaignfocus" type="number" value="0" max="100"> </td>
-                      <td data-id="'.$id.'" class="twit-column" style="width:15%;"> <input data-id="'.$id.'" data-platform="facebook" class="facebookinput campaignfocus" type="number" value="0" max="100"> </td>
-                      <td data-id="'.$id.'" class="face-column" style="width:15%;"> <input data-id="'.$id.'" data-platform="twitter" class="twitterinput campaignfocus" type="number" value="0" max="100"> </td>
+                      <td data-id="'.$id.'" class="insta-column" style="width:15%;"> <div class="posts-res-div"> <input data-id="'.$id.'" data-platform="instagram" class="instagraminput campaignfocus" type="number" value="0" max="100">  <div class="post-results"> posts</div> </div> <div class="results-mini-col"><div class="impression-res impression-blue"> 173 </div> <div class="engagement-res engagement-orange"> 341 </div> <div class="social-following-res social-following-red"> 432 </div> </div> </td>
+                      <td data-id="'.$id.'" class="twit-column" style="width:15%;"> <input data-id="'.$id.'" data-platform="facebook" class="facebookinput campaignfocus" type="number" value="0" max="100"> <div class="post-results"> posts</div> <div class="results-mini-col"><div class="impression-res impression-blue"> 173 </div> <div class="engagement-res engagement-orange"> 341 </div> <div class="social-following-res social-following-red"> 432 </div>  </div>  </td>
+                      <td data-id="'.$id.'" class="face-column" style="width:15%;"> <input data-id="'.$id.'" data-platform="twitter" class="twitterinput campaignfocus" type="number" value="0" max="100"> <div class="post-results"> posts</div> <div class="results-mini-col"><div class="impression-res impression-blue"> 173 </div> <div class="engagement-res engagement-orange"> 341 </div> <div class="social-following-res social-following-red"> 432 </div> </div>  </td>
+                      <td data-id="'.$id.'" class="overall-inf-total-column" style="width:15%;"> <input data-id="'.$id.'" data-platform="twitter" class="twitterinput campaignfocus" type="number" value="0" max="100"> <div class="post-results"> posts</div> <div class="results-mini-col"><div class="impression-res impression-blue"> 173 </div> <div class="engagement-res engagement-orange"> 341 </div> <div class="social-following-res social-following-red"> 432 </div> </div>  </td>
                     </tr>';
                     unset($stmt);
                   }
@@ -93,10 +99,11 @@ echo '
                         <tr class="result-row campaign-list-table">
                         <td class="campaign-tablerow" style="width:15%;">
                             <div class="information">
-                                <p class="result-name">TOTAL ENGAGEMENT</p>
+                                <p class="result-name">  CAMPAIGN ENGAGEMENT</p>
                             </div>
-                      <td  class="insta-column" style="width:15%;"><p class="instagram-posts results-text"> 0 </p> </td>
+                      <td  class="insta-column" style="width:15%;"> <p class="instagram-posts results-text"> 0 </p> </td>
                       <td  class="twit-column" style="width:15%;"> <p class="facebook-posts results-text"> 0 </p> </td>
+                      <td  class="face-column" style="width:15%;"> <p class="twitter-posts results-text"> 0 </p></td>
                       <td  class="face-column" style="width:15%;"> <p class="twitter-posts results-text"> 0 </p></td>
                     </tr>
 
@@ -104,11 +111,13 @@ echo '
                         <tr class="result-row campaign-list-table">
                         <td class="campaign-tablerow" style="width:15%;">
                             <div class="information">
-                            <p class="result-name">TOTAL IMPRESSIONS</p>
+                            <p class="result-name"> CAMPAIGN IMPRESSIONS</p>
                             </div>
                       <td  class="insta-column" style="width:15%;"><p class="instagram-posts results-text"> 0 </p> </td>
                       <td  class="twit-column" style="width:15%;"> <p class="facebook-posts results-text"> 0 </p> </td>
                       <td  class="face-column" style="width:15%;"> <p class="twitter-posts results-text"> 0 </p></td>
+                      <td  class="face-column" style="width:15%;"> <p class="twitter-posts results-text"> 0 </p></td>
+
                     </tr>
 
 

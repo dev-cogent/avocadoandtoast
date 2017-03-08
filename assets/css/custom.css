@@ -721,10 +721,6 @@ img.influencerphoto{
 
 }
 
-.list-name-buttons-pad {
-
-}
-
 .table-bordered td, .table-bordered th{
   border: 1px solid rgba(243, 246, 246, 1);
 }
@@ -743,20 +739,9 @@ tr.influencer-list-table{
 td.influencer-tablerow{
   border-right: 1px solid rgba(243, 246, 246, 1);
 }
- th.text-center{
-  border-left: hidden;
-  border-right: hidden;
-}
 
 tr.cat-in-campaign-list-table, td.remove-button-column{
   border-right: hidden;
-}
-
-th.text-center{
-  text-transform: uppercase;
-  font-size: 11px;
-  font-weight: bolder;
-  color: rgba(29, 44, 76, 1);
 }
 
 .list-name-buttons-pad{
@@ -887,14 +872,7 @@ a.btn.btn-primary.main-btn.price-btn{
   padding-left:calc(38% - 400px + 40px)
 }
 
-.table-bordered{
-  border: 1px solid rgba(243, 246, 246, 1);
-}
 
-.table-responsive{
-  overflow-x: hidden;
-  margin-top: -5%;
-}
 img.insta-logo, .fb-logo {
   max-width: 30px;
   max-height: 30px;
@@ -904,21 +882,7 @@ img.insta-logo, .fb-logo {
   max-height: 25px;
 }
 
-td.campaign-tablerow, td.insta-column, td.twit-column, td.face-column{
-  border-left: hidden;
-  border-right: hidden;
-  padding-top: 1.5%;
-  padding-bottom: 1.5%
-}
-tr.campaign-list-table{
-  text-align: center;
-  border-bottom:1px solid #efefef;
-}
 
-th.text-center{
-  padding-top: 2%;
-  padding-bottom: 2%;
-}
 .table thead th {
   border-bottom: 1px solid rgba(243, 246, 246, 1);
 }
