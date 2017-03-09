@@ -27,6 +27,12 @@ padding-top: 0;
 img.avocado-img-header {
   background-size: cover;
 }
+
+.discover-screen{
+  width: 80%;
+  float: right;
+  margin-top: 5%;
+}
 @media (min-width:1250px){
   img.avocado-img-header {
     width: 100%;
