@@ -289,7 +289,9 @@ float:right;
     max-width: 100%;
     width:100%;
     object-fit: cover;
-    object-position: 0 33%
+    object-position: 0 33%;
+    height: 262px;
+    /*Height will be changed when we figure out different solution */
 
 }
 
@@ -593,7 +595,7 @@ height:220px;
     /*margin-left: 5%;*/
 }
 .campaign-info-index {
-  margin-top: -85px;
+  margin-top: 30px;
   text-align: justify;
   direction: rtl;
   padding-right: 5%;
@@ -878,7 +880,7 @@ border:0px;
 
 .post-container{
 padding-left:6%;
-padding-right:3%;
+padding-right:5%;
 }
 
 

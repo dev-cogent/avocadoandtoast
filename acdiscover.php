@@ -79,11 +79,11 @@ include 'includes/numberAbbreviation.php';
 <!--Filter content -->
 
 <div class="filter-container col-xs-9">
-            <p class="desc-header col-xs-12" style="padding-left:0px; padding-top:10px;text-align:center; font-family:'montserratsemibold'; letter-spacing: 2px; font-size:32px;">DISCOVER</p>
+            <p class="desc-header col-xs-12" style="padding-left:0px; padding-top:10px;text-align:center; font-family:'montserratsemibold'; letter-spacing: 2px; font-size:40px;">DISCOVER</p>
 
             <div class="col-xs-2"></div>
             <div class="col-xs-8" id="searchA">
-                <p class="filter-text col-xs-12" style="text-align: center;">Search by Influencer handles and key words</p>
+                <p class="filter-text col-xs-12" style="text-align: center;">Search by Influencer handles and keywords</p>
                     <input type="text" class="form-control category avocado-focus" id="influencer-search-name" placeholder="Influencer Name or social handle">
                     <input type="text" class="form-control category avocado-focus col-xs-6 col-sm-12" style="margin-top:12px;" id="tokenfield" placeholder="keyword"/>
                     <p class="description-text col-xs-12">Seperate tags with commas or by pressing "tab" in the above field. Use double quotes for multi-word tags (e.g. "avocado toast")</p>
@@ -214,7 +214,7 @@ include 'includes/numberAbbreviation.php';
                 echo '
                     <div  class="influencer-box col-xs-12 col-md-6 col-lg-4 col-xl-3">
                             <div class="influencer-card-discover">
-                                <img class="influencer-image-card" src="http://cogenttools.com/'.$image.'" onerror="this.src=`http://cogenttools.com/'.$image.'`">
+                                <img class="influencer-image-card" src="http://cogenttools.com/'.$image.'" onerror="this.src=`/assets/images/default-photo.png`">
                                 <div class="col-xs-12 influ-bottom" style="height:170px;" data-id="'.$id.'">
                                     <!-- insthandle stuff -->
                                         <div class="icons col-xs-12">

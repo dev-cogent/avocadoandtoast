@@ -54,7 +54,7 @@
 
 <div class="header-container">
 <div class="background-img">
-  <img src="assets/images/Toast-Banner.png" class="avocado-img-header">
+  <img src="assets/images/toast-banner.png" class="avocado-img-header">
 
   <div class="agency-header"> Agencies </div>
   <div class="agency-header-det"> We get it. Managing influencer campaigns for your clients is not easy. We help make it simple. </div>

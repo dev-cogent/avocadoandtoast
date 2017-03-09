@@ -163,7 +163,7 @@ $(document).on('click','.submit',function(){
             dialog = bootbox.dialog({
                 message: '<div class="bootbox-body">'+
             '<div class="icon-popup-div"> <img src="https://68.media.tumblr.com/0abd1f3bfd0a2594ea81787691cb6af2/tumblr_o33ti7IZMI1t4twpao1_500.gif" class="success-popup-icon"/> </div>'+
-            '<div class="row"> <div class="col-xs-12 popup-detail success">   <span class="yay"> YAY! </span> <br/> Your campaign has been edited.  </div>'+
+            '<div class="row"> <div class="col-xs-12 popup-detail success"> <br/> Your campaign has been edited. </div><div class="popup-btn-div"> <a href="/campaigns/?id='+campaignid+'"><button id="applyall" class="submit-btn" style="margin-bottom: 50px;">VIEW CAMPAIGN </button></a></div>'+
             '</div> </div>',
                 closeButton: true
             });
@@ -184,7 +184,14 @@ $(document).on('click','.delete',function(){
             campaignid : campaignid,
         },
         success: function (jqXHR, textStatus, errorThrown) {
-            console.log('success');
+            dialog = bootbox.dialog({
+                message: '<div class="bootbox-body">'+
+            '<div class="icon-popup-div"> <img src="https://68.media.tumblr.com/0abd1f3bfd0a2594ea81787691cb6af2/tumblr_o33ti7IZMI1t4twpao1_500.gif" class="success-popup-icon"/> </div>'+
+            '<div class="row"> <div class="col-xs-12 popup-detail success"> <br/> Your campaign has been deleted. </div><div class="popup-btn-div"> <a href="/dashboard.php"><button id="applyall" class="submit-btn" style="margin-bottom: 50px;">VIEW CAMPAIGNS </button></a></div>'+
+            '</div> </div>',
+                closeButton: true
+            });
+            dialog.modal();
 
         }
 

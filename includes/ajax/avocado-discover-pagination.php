@@ -92,8 +92,8 @@ while($stmt->fetch()){
                 $facebookengagement = number_format((($engagement['facebook']['average_engagement']/$facebookcount)*100),2,'.','');
     echo '<div  class="influencer-box col-xs-12 col-md-6 col-lg-4 col-xl-3">
                             <div class="influencer-card-discover">
-                                <img class="influencer-image-card" src="http://cogenttools.com/'.$image.'" onerror="this.src=`http://cogenttools.com/'.$image.'`">
-                                <div class="col-xs-12" style="height:170px;">
+                                <img class="influencer-image-card" src="http://cogenttools.com/'.$image.'" onerror="this.src=`/assets/images/default-photo.png/`">
+                                <div class="col-xs-12 influ-bottom" style="height:170px; " data-id="'.$id.'">
                                     <!-- insthandle stuff -->
                                         <div class="icons col-xs-12">';
 
@@ -201,10 +201,11 @@ function checkBio($bio, $searchoptions, $options, &$where, &$arr){
 
     foreach($bio as $keyword){
 
-         $tags = '`bio` LIKE ? OR `tags` LIKE ?';
+         $tags = '`bio` LIKE ? OR `tags` LIKE ? OR `category` LIKE ? OR `sub_category` LIKE ?';
          $arr['term'][] = '%'.$keyword.'%';
          $arr['term'][] = '%'.$keyword.'%';
-
+         $arr['term'][] = ''.$keyword.'';
+         $arr['term'][] = ''.$keyword.'';
 
     /*if(in_array('names',$searchoptions)){
         if(isset($tags))

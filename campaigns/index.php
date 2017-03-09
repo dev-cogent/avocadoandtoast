@@ -25,6 +25,9 @@ $influencerinfo = $save->getCampaign($campaignid);
 $campaigninfo = $save->getCampaignInfo($campaignid);
 
 $description = $campaigninfo['description'];
+if($description == NULL){
+    $description = 'Looks like nothing is here! Click on edit campaign to give your campaign a summary';
+}
 
 ?>
 <!DOCTYPE html>
@@ -134,25 +137,21 @@ width:20%;
 <div class="col-xs-12" style="padding-left:75px;">
     <div class="user-campaign-name col-xs-2" style="padding-left:13px; padding-bottom:20px; margin-left:0px; margin-top: -12px; color:#73C48D;"> <?php echo $influencerinfo['campaign_name'];?> 
     
-    <p style="font-size:13px; color:rgb(29, 40, 76);"> <?php echo $description; ?></p>
+    <p style="font-size:13px; color:rgb(29, 40, 76);"> <?php echo'<span><strong>Campaign Summary: </strong></span>'. $description; ?></p>
     
     </div>
   <!--  <div class="user-campaign-inf-count"> <span class="campaign-inf-count"><?php// echo $influencerinfo['campaign_count'];?> </span> Influencers Invited to this Campaign </div> -->
   <?php echo '
     <div class="col-xs-9" id="campaign-breakdown" style="height:240px; padding-bottom:30px; border-radius: 4px;">
-        <div class="col-xs-12" style="border:1px solid black;">
+        <div class="col-xs-12" style="border:1px solid rgb(210,215,220);">
         <div class="campaign-block col-xs-12"  style="padding-left:75px;" >
         <table class="col-xs-12">
             <tbody style="border-top:0px;">
             <tr>
-                <td class="campaign-details" > Campaign not in progress </td>
-                <td class="campaign-details date" > Created 02/17/2017</td>
-            </tr>
-            <tr>
                 <td class="stats" id="influnum">'.$influencerinfo['campaign_count'].'</td>
                 <td class="stats" id="posts">'.$campaigninfo['totalposts'].'</td>
                 <td class="stats" id="avgimp">'.numberAbbreviation($campaigninfo['totalimpressions']/$influencerinfo['campaign_count']).'</td>
-                <td class="stats" id="avgeng">1,000</td>
+                <td class="stats" id="avgeng">'.numberAbbreviation($campaigninfo['totalengagement']/$influencerinfo['campaign_count']).'</td>
                 <td class="stats"id="reach" data-num="'.$campaigninfo['totalimpressions'].'">'.numberAbbreviation($campaigninfo['totalimpressions']).'</td>
             </tr>
             <tr>
@@ -270,19 +269,19 @@ width:20%;
                                     <div class="col-xs-12">';
                                     if($instagramurl != NULL){
                                         echo '
-                                        <p class="instagram-engagement engagement-count" data-id="'.$influencerid.'">'.$instagrameng.'% Engagaement </p>
-                                        <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$influencerid.'">'.$facebookeng.'% Engagaement</p>
-                                        <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$influencerid.'">'.$twittereng.'% Engagement</p>';
+                                        <p class="instagram-engagement engagement-count" data-id="'.$influencerid.'">'.numberAbbreviation($instagrameng).' Engagaement </p>
+                                        <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$influencerid.'">'.numberAbbreviation($facebookeng).' Engagaement</p>
+                                        <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$influencerid.'">'.numberAbbreviation($twittereng).' Engagement</p>';
                                     }
                                     elseif ($facebookurl != NULL && $instagramurl == NULL){
-                                        echo '<p class="instagram-engagement engagement-count" style="display:none" data-id="'.$influencerid.'">'.$instagrameng.'% Engagaement </p>
-                                        <p class="facebook-engagement engagement-count" data-id="'.$influencerid.'">'.$facebookeng.'% Engagaement</p>
-                                        <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$influencerid.'">'.$twittereng.'% Engagement</p>';
+                                        echo '<p class="instagram-engagement engagement-count" style="display:none" data-id="'.$influencerid.'">'.numberAbbreviation($instagrameng).' Engagaement </p>
+                                        <p class="facebook-engagement engagement-count" data-id="'.$influencerid.'">'.numberAbbreviation($facebookeng).' Engagaement</p>
+                                        <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$influencerid.'">'.numberAbbreviation($twittereng).' Engagement</p>';
                                     }
                                     elseif ($twitterurl != NULL && $facebookurl == NULL && $instagramurl == NULL){
-                                    echo '<p class="instagram-engagement engagement-count" style="display:none" data-id="'.$influencerid.'">'.$instagrameng.'% Engagaement </p>
-                                        <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$influencerid.'">'.$facebookeng.'% Engagaement</p>
-                                        <p class="twitter-engagement engagement-count" data-id="'.$influencerid.'">'.$twittereng.'% Engagement</p>';
+                                    echo '<p class="instagram-engagement engagement-count" style="display:none" data-id="'.$influencerid.'">'.numberAbbreviation($instagrameng).' Engagaement </p>
+                                        <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$influencerid.'">'.numberAbbreviation($facebookeng).' Engagaement</p>
+                                        <p class="twitter-engagement engagement-count" data-id="'.$influencerid.'">'.numberAbbreviation($twittereng).' Engagement</p>';
                                     }
                                     echo '
                                     </div>
