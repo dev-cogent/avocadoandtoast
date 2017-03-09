@@ -210,7 +210,7 @@ width:20%;
                     data-i-post="'.$instagrampost.'" data-t-impressions="'.$twitterimpressions.'" data-f-impressions="'.$facebookimpressions.'" data-i-impressions="'.$instagramimpressions.'">
                             <div class="influencer-card-discover">
 
-                                <img class="influencer-image-card" src="https://project.social/'.$info['image'].'">
+                                <img class="influencer-image-card" src="http://cogenttools.com/'.$info['image'].'" onerror="this.src=`/assets/images/default-photo.png`">
                                 <div class="col-xs-12" style="height:170px; box-shadow: rgb(115, 196, 141) 0px -10px 0px;">
                                     <!-- insthandle stuff -->
                                         <div class="icons col-xs-12">';
