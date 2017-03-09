@@ -3,7 +3,7 @@ session_start();
 //error_reporting(0);
 include 'includes/dbinfo.php';
 include 'includes/numberAbbreviation.php';
-include 'includes/TwitterAPIexchange.php';   
+include 'includes/TwitterAPIexchange.php';
 $id = '5AUgZ0C';
 
 ?>
@@ -77,7 +77,7 @@ $id = '5AUgZ0C';
 </div>
 
 <div class="col-md-3 influencer-card-container">
-    <?php 
+    <?php
     $stmt = $conn->prepare('SELECT `id`,`image_url`,`instagram_url`,`instagram_count`,`facebook_url`,`facebook_count`,`twitter_count`,`twitter_url` FROM `Influencer_Information` WHERE `id` = ?' );
     $stmt->bind_param('s',$id);
     $stmt->execute();
@@ -92,7 +92,7 @@ $id = '5AUgZ0C';
     $facebookhandle = explode('/',$facebookhandle[1]);
     $facebookhandle = explode('?',$facebookhandle[0]);
     $facebookhandle = $facebookhandle[0];
-    //twitter handle 
+    //twitter handle
     $twitterhandle = explode('.com/',$twitterurl);
     $twitterhandle = explode('/',$twitterhandle[1]);
     $twitterhandle = explode('?',$twitterhandle[0]);
@@ -110,7 +110,7 @@ $id = '5AUgZ0C';
                                         </div>
                                         <div class="col-xs-12 insthandle-info">
                                             <!--icon here -->
-                                            
+
                                             <p class="instagram-handle insthandle-text" data-id="'.$id.'">'.$insthandle.'</p>
                                             <p class="facebook-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</p>
                                             <p class="twitter-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</p>
@@ -128,7 +128,7 @@ $id = '5AUgZ0C';
                                         <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$id.'">1.5K Likes per post</p>
                                     </div>
                                     <div class="col-xs-12">
-                                        
+
                                         <div style="display:inline;"class="col-xs-12 invite avocado-hover avocado-focus" data-id="'.$id.'" data-image="'.$image.'">
                                               <i class="thumb-up icon fa-plus" aria-hidden="true"></i>
                                                  INVITE</div>
@@ -138,14 +138,14 @@ $id = '5AUgZ0C';
                     </div>';
                     ?>
                     <!-- Influencer box has ended -->
-</div>    
+</div>
 
 
 <div class="col-lg-7 col-xl-5" style="margin-left: 3%;">
 <!-- social buttons and stats -->
 <?php echo '<p  class="col-xs-12"style="padding-top:49px;"> Viewing @'.$insthandle.' latest instagram posts</p>
     <div class="col-xs-12 social-buttons">';
-    //Start looking for instagram 
+    //Start looking for instagram
          if($instagramurl == NULL || $instagramurl == ''){
              echo '
             <div class="col-xs-4 button-container" style="display:none;">
@@ -156,9 +156,9 @@ $id = '5AUgZ0C';
              echo '
              <div class="col-xs-4 button-container">
                 <button class="col-xs-12 social-button instagram-platform" data-platform="instagram" data-handle="'.$insthandle.'" style="background-color: rgb(115, 196, 141);"><div class="button-option-text"> <i class="button-icon icon bd-instagram"  data-platform="instagram" aria-hidden="true"></i> INSTAGRAM</div></button>
-            </div>';    
+            </div>';
          }
-         //Start facebook 
+         //Start facebook
          if($facebookurl == NULL || $facebookurl == ''){
           echo '<div class="col-xs-4 button-container" style="display:none;">
                 <button class="col-xs-12 social-button facebook-platform" data-platform="facebook" data-handle="'.$facebookhandle.'"><div class="button-option-text"> <i class="button-icon icon bd-facebook"  data-platform="facebook" aria-hidden="true"></i> FACEBOOK</div>
@@ -178,7 +178,7 @@ $id = '5AUgZ0C';
             </div>';
 
         }
-        //Start Twitter 
+        //Start Twitter
         if($twitterurl == NULL || $twitterurl == ''){
         echo '
            <div class="col-xs-4 button-container twitter-platform" style="display:none;">
@@ -195,7 +195,7 @@ $id = '5AUgZ0C';
                 <button class="col-xs-12 social-button" data-platform="twitter" data-handle="'.$twitterhandle.'"><div class="button-option-text"> <i class="button-icon icon bd-twitter"  data-platform="twitter" aria-hidden="true"></i> TWITTER</div></button>
             </div>';
         }
-      echo '  
+      echo '
     </div>';
 ?>
 <!-- content  -->
@@ -208,51 +208,56 @@ $id = '5AUgZ0C';
 
 </div>
 
+<style>
 
-<div id="facebook" style="display:none" class="col-xs-12">
+div._4i-s{
+  height: 58px !important;
+}
+
+.facebook-feed-container {
+  width: 135%;
+}
+
+</style>
+
+<div id="facebook" style="display:none" class="col-xs-12 facebook-feed-container">
     <?php
-    //We start getting the facebook information from now since for some reason calling through ajax doesn't work. It will be put on a display none. 
+    //We start getting the facebook information from now since for some reason calling through ajax doesn't work. It will be put on a display none.
     if($facebookurl != NULL || $facebookurl != ''){
     $facebooktoken = '1075628395822185|Y0CgNIZP8EiF2esClPtNaki4hiE';
-    $info = curl('https://graph.facebook.com/v2.7/'.$facebookhandle.'?fields=posts.limit(10){permalink_url}&access_token='.$facebooktoken);
-    $facebookpost = array();  
+    $info = curl('https://graph.facebook.com/v2.7/'.$facebookhandle.'?fields=posts.limit(12){permalink_url}&access_token='.$facebooktoken);
+    $facebookpost = array();
     foreach($info['posts']['data'] as $id ){
         array_push($facebookpost,$id['permalink_url']);
     }
     foreach($facebookpost as $id){
-        echo '<div class="fb-post" data-href="'.$id.'" data-width="50" data-height="100"></div>';
+        echo '<div class="col-xs-6 img-responsive facebook-feed"><div class="fb-post" data-href="'.$id.'" data-width="500" data-height="500" style="max-width:500px; max-height:610px;"></div></div>';
     }
 }
     ?>
 </div>
 <!-- End facebook -->
-<div id="twitter" style="display:none;" class="col-xs-12">
+<div id="twitter" style="display:none;" class="col-xs-6">
 
 
 </div>
 
 
-</div>    
+</div>
 
 
 
 
 </div>
-<?php 
+<?php
 function curl($url) {
     $curl_connection = curl_init($url);
     curl_setopt($curl_connection, CURLOPT_CONNECTTIMEOUT, 30);
     curl_setopt($curl_connection, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($curl_connection, CURLOPT_SSL_VERIFYPEER, false);
-    $json = json_decode(curl_exec($curl_connection), true); 
+    $json = json_decode(curl_exec($curl_connection), true);
     curl_close($curl_connection);
-    return $json;     
-    
+    return $json;
+
 } // end curl
 ?>
-
-
-
-
-
-

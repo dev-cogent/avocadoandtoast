@@ -61,7 +61,7 @@
   INFLUENCER <i class="icon wb-plus list-icon avo med lg" aria-hidden="true"></i> BRANDS</div>
   <div class="start-button-div"> <a href="/signup.php" class="start-btn"> Get Started </a> <a href="#" class="learn-more shadow"> Learn More </a> </div>
   <div class="dashboard-img-div">
-    <img src="assets/images/dashboard-main.png" class="dashboard-img img-responsive shadow-grey">
+    <!-- <img src="assets/images/dashboard-main.png" class="dashboard-img img-responsive shadow-grey"> -->
   </div>
       </div>
 
@@ -72,11 +72,7 @@
 
   <div class="container-fluid main-page">
     <div class="row first-sect-header">
-      <div class="col-xs-12">
-        <div class="software-head lg">
-         Our <span class="software"> software </span>  equips influencers, brands and agencies with the tools to successfully and efficiently work together.
-       </div>
-      </div>
+
   </div>
 
 
@@ -129,7 +125,13 @@
 
 
         <div class="row third-sect">
+          <div class="col-xs-12">
+        
+          </div>
           <div class="button-protect">
+            <div class="software-head lg">
+             Our <span class="software"> software </span>  equips influencers, brands and agencies with the tools to successfully and efficiently work together.
+           </div>
             <a href="/signup.php" class="signup-btn"> Sign up it's free </a>
           </div>
       </div>

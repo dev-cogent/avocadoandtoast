@@ -34,9 +34,9 @@
 
  <div class="collapse navbar-collapse" id="myNavBar">
    <ul class="nav navbar-nav avocado-ul center-ul">
-       <li class="nav-href"><a href="#" class="main-nav-dark"> Influencers </li>
-       <li class="nav-href"><a href="/agency.php" class="main-nav-dark"> Agencies </li>
-       <li class="nav-href"><a href="#" class="about-us main-nav-dark"> About Us </li>
+       <li class="nav-href"><a href="#" class=""> Influencers </li>
+       <li class="nav-href"><a href="/agency.php" class=""> Agencies </li>
+       <li class="nav-href"><a href="#" class="about-us"> About Us </li>
        </ul>
 
     <ul class="nav navbar-nav navbar-right login-sect">
