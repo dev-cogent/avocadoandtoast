@@ -108,7 +108,9 @@ foreach($campaigninfo as $campaignid => $info){
 $numberOfInfluencers = count($info['influencer']);
 $name = $info['campaignname'];
 $totalimpressions = $info['totalimpressions'];
+$totalengagement = $info['totalengagement'];
 $avgimpressions = $totalimpressions/$numberOfInfluencers;
+$avgengagement = $totalengagement/$numberOfInfluencers;
 $totalpost = $info['totalposts'];
 $datecreated = $info['created'];
 $description = $info['description'];
@@ -142,7 +144,7 @@ echo '<div class="campaign-block col-xs-9" data-id="'.$campaignid.'" data-desc="
                 <td class="stats">'.$numberOfInfluencers.'</td>
                 <td class="stats">'.$totalpost.'</td>
                 <td class="stats">'.numberAbbreviation($avgimpressions).'</td>
-                <td class="stats">1,000</td>
+                <td class="stats">'.numberAbbreviation($avgengagement).'</td>
                 <td class="stats">'.numberAbbreviation($totalimpressions).'</td>
             </tr>
             <tr>
@@ -183,7 +185,7 @@ $(document).on('click','.campaign-block',function(){
       ' <p class="title"> Campaign Summary</p>'+
        '<p id="summary">'+desc+'</p>'+
        '<p class="title">Campaign Schedule</p>'+
-       '<p id="schedule"> <strong> Campaign Schedule </strong> '+start+' - '+end+ ''+
+       '<p id="schedule"> '+start+' - '+end+ ''+
        '<div id="button-container">'+
            '<a style="color:#76838f;"href="/edit/?id='+id+'"><button class="option-button avocado-hover avocado-focus" id="'+id+'"> Edit Campaign </button></a>'+
            '<a style="color:#76838f;"href="/campaigns/?id='+id+'"><button class="option-button avocado-hover avocado-focus" name="campaign" value="'+id+'">View Campaign </button></a>'+

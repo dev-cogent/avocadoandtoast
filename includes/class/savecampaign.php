@@ -29,7 +29,7 @@ $campaignid = $this->randomString(20);
 //Inserting comments into mysql 
 $genstmt = $genconn->prepare("INSERT INTO `campaign_save_link` (`campaign_name`,`column_id`,`campaign_id`,`created_date`,`total_instagram_impressions`,`total_twitter_impressions`
 ,`total_facebook_impressions`,`total_impressions`,`total_instagram_engagement`,`total_twitter_engagement`,`total_facebook_engagement`,`total_engagement`,`total_post`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?) ");
-$genstmt->bind_param('ssssiiiiiiiii',$campaignname,$columnid,$campaignid,$stats['created'],$stats['totalinstagramimpressions'],$stats['totaltwitterimpressions'],
+$genstmt->bind_param('sssssssssssss',$campaignname,$columnid,$campaignid,$stats['created'],$stats['totalinstagramimpressions'],$stats['totaltwitterimpressions'],
 $stats['totalfacebookimpressions'],$stats['totalimpressions'],$stats['totalinstagramengagement'],$stats['totaltwitterengagement'],$stats['totalfacebookengagement'],$stats['totalengagement'],$stats['totalposts']);
 
 if($genstmt->execute() === FALSE) return $genstmt->error;
@@ -41,18 +41,21 @@ $camstmt = $saveconn->prepare("
   `influencer_id` varchar(100) COLLATE utf8_unicode_ci NOT NULL PRIMARY KEY,
   `image_url` varchar(100) COLLATE utf8_unicode_ci  NULL,
   `instagram_post` varchar(10) COLLATE utf8_unicode_ci  NULL,
-  `instagram_impressions` varchar(10) COLLATE utf8_unicode_ci  NULL,
+  `instagram_impressions` varchar(100) COLLATE utf8_unicode_ci  NULL,
+  `instagram_engagement` varchar(100) COLLATE utf8_unicode_ci  NULL,
   `twitter_post` varchar(10) COLLATE utf8_unicode_ci  NULL,
-  `twitter_impressions` varchar(10) COLLATE utf8_unicode_ci  NULL,
+  `twitter_impressions` varchar(100) COLLATE utf8_unicode_ci  NULL,
+  `twitter_engagement` varchar(100) COLLATE utf8_unicode_ci  NULL,
   `facebook_post` varchar(10) COLLATE utf8_unicode_ci  NULL,
-  `facebook_impressions` varchar(10) COLLATE utf8_unicode_ci  NULL
+  `facebook_impressions` varchar(100) COLLATE utf8_unicode_ci  NULL,
+  `facebook_engagement` varchar(100) COLLATE utf8_unicode_ci  NULL
    ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;");
 
 if($camstmt->execute() === false) return false;
 
 foreach($arr as $influencerid => $info){
-    $camstmt->prepare("INSERT INTO `$campaignid` (`influencer_id`,`instagram_post`,`instagram_impressions`,`twitter_post`,`twitter_impressions`,`facebook_post`,`facebook_impressions`) VALUES (?,?,?,?,?,?,?)");
-    $camstmt->bind_param('sssssss',$influencerid,$info['instagrampost'],$info['instagramimpressions'],$info['twitterpost'],$info['twitterimpressions'],$info['facebookpost'],$info['facebookimpressions']);
+    $camstmt->prepare("INSERT INTO `$campaignid` (`influencer_id`,`instagram_post`,`instagram_impressions`,`instagram_engagement`,`twitter_post`,`twitter_impressions`,`twitter_engagement`,`facebook_post`,`facebook_impressions`,`facebook_engagement`) VALUES (?,?,?,?,?,?,?,?,?,?)");
+    $camstmt->bind_param('ssssssssss',$influencerid,$info['instagrampost'],$info['instagramimpressions'],$info['instagramengagement'],$info['twitterpost'],$info['twitterimpressions'],$info['twitterengagement'],$info['facebookpost'],$info['facebookimpressions'],$info['facebookengagement']);
         if($camstmt->execute() === false)
             $check = false;
 }
@@ -213,13 +216,14 @@ public function getSavedCampaigns($columnid){
     $saved = $this->savedDB();
     $stmt = $saved->prepare("SELECT l5o0c8t4_save_campaign.$campaignid.influencer_id, l5o0c8t4_save_campaign.$campaignid.facebook_post,l5o0c8t4_save_campaign.$campaignid.instagram_post,l5o0c8t4_save_campaign.$campaignid.twitter_post,
                                     l5o0c8t4_save_campaign.$campaignid.instagram_impressions,l5o0c8t4_save_campaign.$campaignid.facebook_impressions,l5o0c8t4_save_campaign.$campaignid.twitter_impressions,
+                                    l5o0c8t4_save_campaign.$campaignid.instagram_engagement,l5o0c8t4_save_campaign.$campaignid.facebook_engagement,l5o0c8t4_save_campaign.$campaignid.twitter_engagement,
                                     l5o0c8t4_General_Information.Influencer_Information.image_url, l5o0c8t4_General_Information.Influencer_Information.instagram_count, l5o0c8t4_General_Information.Influencer_Information.instagram_url,
                                     l5o0c8t4_General_Information.Influencer_Information.twitter_url,l5o0c8t4_General_Information.Influencer_Information.twitter_count, l5o0c8t4_General_Information.Influencer_Information.facebook_count,l5o0c8t4_General_Information.Influencer_Information.facebook_url,
                                     l5o0c8t4_General_Information.Influencer_Information.engagement FROM l5o0c8t4_save_campaign.$campaignid INNER JOIN l5o0c8t4_General_Information.Influencer_Information
                                     ON l5o0c8t4_save_campaign.$campaignid.influencer_id = l5o0c8t4_General_Information.Influencer_Information.id
                                     ORDER BY  l5o0c8t4_General_Information.Influencer_Information.total DESC LIMIT $position, $influencernumber");
     $stmt->execute();
-    $stmt->bind_result($id,$facebookpost,$instagrampost,$twitterpost,$instagramimpressions,$facebookimpressions,$twitterimpressions,$image,$instagramcount,$instagramurl,$twitterurl,$twittercount,$facebookcount,$facebookurl,$engagement);
+    $stmt->bind_result($id,$facebookpost,$instagrampost,$twitterpost,$instagramimpressions,$facebookimpressions,$twitterimpressions,$instagramengagement,$facebookengagement,$twitterengagement,$image,$instagramcount,$instagramurl,$twitterurl,$twittercount,$facebookcount,$facebookurl,$engagement);
     while($stmt->fetch()){
         $insthandle = explode('.com/',$instagramurl);
         $insthandle = explode('/',$insthandle[1]);
@@ -242,19 +246,19 @@ public function getSavedCampaigns($columnid){
         $infoarr['influencer'][$id]['instagram_handle'] = $insthandle;
         $infoarr['influencer'][$id]['instagram_post'] = $instagrampost;
         $infoarr['influencer'][$id]['instagram_impressions'] = $instagramimpressions;
-        $infoarr['influencer'][$id]['instagram_engagement'] = number_format((($engagement['instagram']['average_engagement']/$instagramcount)*100),2,'.','');
+        $infoarr['influencer'][$id]['instagram_engagement'] = $instagramengagement;
         $infoarr['influencer'][$id]['facebook_count'] = $facebookcount;
         $infoarr['influencer'][$id]['facebook_url'] = $facebookurl;
         $infoarr['influencer'][$id]['facebook_handle'] = $facebookhandle;
         $infoarr['influencer'][$id]['facebook_post'] = $facebookpost;
         $infoarr['influencer'][$id]['facebook_impressions'] = $facebookimpressions;
-        $infoarr['influencer'][$id]['facebook_engagement'] = number_format((($engagement['facebook']['average_engagement']/$facebookcount)*100),2,'.','');
+        $infoarr['influencer'][$id]['facebook_engagement'] = $facebookengagement;
         $infoarr['influencer'][$id]['twitter_count'] = $twittercount;
         $infoarr['influencer'][$id]['twitter_url'] = $twitterurl;
         $infoarr['influencer'][$id]['twitter_handle'] = $twitterhandle;
         $infoarr['influencer'][$id]['twitter_post'] = $twitterpost;
         $infoarr['influencer'][$id]['twitter_impressions'] = $twitterimpressions;
-        $infoarr['influencer'][$id]['twitter_engagement'] = number_format((($engagement['twitter']['average_engagement']/$twittercount)*100),2,'.','');
+        $infoarr['influencer'][$id]['twitter_engagement'] = $twitterengagement;
     }
 
     unset($stmt);
