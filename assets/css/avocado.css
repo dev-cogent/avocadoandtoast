@@ -543,7 +543,7 @@ span.software{
   padding-bottom: 4%;
 }
 .analytics-mockup {
-  margin-top: -55px;
+  margin-top: -25px;
   min-width: 830px;
   margin-left: 7%;
 }
@@ -558,7 +558,7 @@ span.software{
   z-index: 1;
   padding-left: 5%;
   position: relative;
-  top: -75px;
+  top: -15px;
 }
 .second-index-col{
   z-index: 2;
@@ -700,6 +700,7 @@ span.software{
     font-size: 20px;
     top: -510px;
     padding: 19px 37px;
+    display: none;
   }
   .container.agency-section{
     margin-top: -300px;
@@ -756,10 +757,11 @@ span.software{
   .software-head.lg{
     font-size: 32px;
     max-width: none;
+    margin-top: 0;
   }
   div.number-02{
-    font-size: 220px;
-    margin-left: -4%;
+    font-size: 225px;
+    margin-left: -12%;
     letter-spacing: 6px;
   }
   .second-sect-word {
@@ -772,7 +774,7 @@ span.software{
     padding-left: 6%;
     font-size: 20px;
     line-height: 30px;
-    max-width: 500px;
+    max-width: 460px;
     margin-top: -2%;
   }
   .icons-title{
