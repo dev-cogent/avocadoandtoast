@@ -12,6 +12,7 @@ $campaigninfo = $save->getSavedCampaigns($_SESSION['column_id']);
 <head>
   <?php include 'includes/head.php' ?>
     <title>Dashboard</title>
+
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700" rel="stylesheet">
@@ -34,6 +35,7 @@ $campaigninfo = $save->getSavedCampaigns($_SESSION['column_id']);
 button:focus{
     outline:none;
 }
+
 </style>
 </head>
 
