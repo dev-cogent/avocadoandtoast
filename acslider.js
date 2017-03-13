@@ -5,12 +5,12 @@
 */
 var facebookslider = document.getElementById('slider-facebook');
 noUiSlider.create(facebookslider, {
-    start: [0, 110000000],
+    start: [0, 130000000],
     connect: true,
     range: {
         'min': 0,
         '50%':[1000000],
-        'max': 110000000
+        'max': 130000000
     },
     format: wNumb({
         decimals: 0
@@ -20,15 +20,15 @@ noUiSlider.create(facebookslider, {
 
 var facebookEngagementslider = document.getElementById('slider-facebook-engagement');
 noUiSlider.create(facebookEngagementslider, {
-    start: [0, 110000000],
+    start: [0.00, 10.0],
+    step:0.1,
     connect: true,
     range: {
-        'min': 0,
-        '50%':[1000000],
-        'max': 110000000
+        'min': 0.00,
+        'max': 10.0
     },
     format: wNumb({
-        decimals: 0
+        decimals: 2
     })
 });
 
@@ -55,16 +55,15 @@ noUiSlider.create(instagramslider, {
 
 var instagramEngagementslider = document.getElementById('slider-instagram-engagement');
 noUiSlider.create(instagramEngagementslider, {
-    start: [0, 110000000],
-    step:1000,
+    start: [0.00, 10.0],
+    step:0.1,
     connect: true,
     range: {
-        'min': 0,
-        '50%':[1000000],
-        'max': 110000000
+        'min': 0.00,
+        'max': 10.0
     },
     format: wNumb({
-        decimals: 0
+        decimals: 2
     })
 });
 
@@ -90,15 +89,15 @@ noUiSlider.create(twitterslider, {
 
 var twitterengagementslider = document.getElementById('slider-twitter-engagement');
 noUiSlider.create(twitterengagementslider, {
-    start: [0, 110000000],
+    start: [0.00, 10.0],
+    step:0.1,
     connect: true,
     range: {
-        'min': 0,
-        '50%':[1000000],
-        'max': 110000000
+        'min': 0.00,
+        'max': 10.0
     },
     format: wNumb({
-        decimals: 0
+        decimals: 2
     })
 });
 
@@ -151,55 +150,27 @@ facebookslider.noUiSlider.on('update', function (values, handle) {
     if (checkMax != 'string') {
         $('#min-facebook').val(displayMin);
         $('#min-facebook').attr('data-number',min);
-        /*filters['max'] = $('#max-facebook').attr('data-number');
-        filters['min'] =  min;
-        filters['platform'] = 'facebook';*/
     }
     if (checkMin != 'string') {
         $('#max-facebook').val(displayMax);
         $('#max-facebook').attr('data-number',max);
-        /*filters['max'] = max;
-        filters['min'] =  $('#min-facebook').attr('data-number');
-        filters['platform'] = 'facebook';*/
     }
-    //console.log(filters);
 
 });
 
 facebookEngagementslider.noUiSlider.on('update', function (values, handle) {
     inputsfacebookEngagement[handle].value = values[handle];
 
-    var max = Math.floor($('#max-facebook-engagement').val());
+    var max = $('#max-facebook-engagement').val();
     var displayMax = abbrNum(max);
-    var min = Math.floor($('#min-facebook-engagement').val());
+    var min = $('#min-facebook-engagement').val();
     var displayMin = abbrNum(min);
-    var checkMax = typeof (displayMax);
-    var checkMin = typeof (displayMin);
-    if (checkMax != 'string') {
-        $('#min-facebook-engagement').val(displayMin);
-        $('#min-facebook-engagement').attr('data-number',min);
-        /*filters['max'] = $('#max-facebook-engagement').attr('data-number');
-        filters['min'] =  min;
-        filters['platform'] = 'facebook';*/
-    }
-    if (checkMin != 'string') {
-        $('#max-facebook-engagement').val(displayMax);
-        $('#max-facebook-engagement').attr('data-number',max);
-        /*filters['max'] = max;
-        filters['min'] =  $('#min-facebook-engagement').attr('data-number');
-        filters['platform'] = 'facebook';*/
-    }
-    //console.log(filters);
+    $('#min-facebook-engagement').val(min);
+    $('#min-facebook-engagement').attr('data-number',min);
+    $('#max-facebook-engagement').val(max);
+    $('#max-facebook-engagement').attr('data-number',max);
 
 });
-
-
-
-
-
-
-
-
 
 
 //Instagram 
@@ -214,46 +185,23 @@ instagramslider.noUiSlider.on('update', function (values, handle) {
     if (checkMax != 'string') {
         $('#min-instagram').val(displayMin);
         $('#min-instagram').attr('data-number',min);
-        /*filters['max'] = $('#max-instagram').attr('data-number');
-        filters['min'] =  min;
-        filters['platform'] = 'instagram';*/
     }
     if (checkMin != 'string') {
         $('#max-instagram').val(displayMax);
         $('#max-instagram').attr('data-number',max);
-        /*filters['max'] = max;
-        filters['min'] =  $('#min-instagram').attr('data-number');
-        filters['platform'] = 'instagram';*/
     }
-    //console.log(filters);
-
 
 });
 
 
 instagramEngagementslider.noUiSlider.on('update', function (values, handle) {
     inputsinstagramEngagement[handle].value = values[handle];
-    var max = Math.floor($('#max-instagram-engagement').val());
-    var displayMax = abbrNum(max);
-    var min = Math.floor($('#min-instagram-engagement').val());
-    var displayMin = abbrNum(min);
-    var checkMax = typeof (displayMax);
-    var checkMin = typeof (displayMin);
-    if (checkMax != 'string') {
-        $('#min-instagram-engagement').val(displayMin);
-        $('#min-instagram-engagement').attr('data-number',min);
-        /*filters['max'] = $('#max-instagram-engagement').attr('data-number');
-        filters['min'] =  min;
-        filters['platform'] = 'instagram';*/
-    }
-    if (checkMin != 'string') {
-        $('#max-instagram-engagement').val(displayMax);
-        $('#max-instagram-engagement').attr('data-number',max);
-        /*filters['max'] = max;
-        filters['min'] =  $('#min-instagram-engagement').attr('data-number');
-        filters['platform'] = 'instagram';*/
-    }
-
+    var max = $('#max-instagram-engagement').val();
+    var min = $('#min-instagram-engagement').val();
+    $('#min-instagram-engagement').val(min);
+    $('#min-instagram-engagement').attr('data-number',min);
+    $('#max-instagram-engagement').val(max);
+    $('#max-instagram-engagement').attr('data-number',max);
 });
 
 
@@ -269,46 +217,29 @@ twitterslider.noUiSlider.on('update', function (values, handle) {
     if (checkMax != 'string') {
         $('#min-twitter').val(displayMin);
         $('#min-twitter').attr('data-number',min);
-        /*filters['max'] = $('#max-twitter').attr('data-number');
-        filters['min'] =  min;
-        filters['platform'] = 'twitter';*/
     }
     if (checkMin != 'string') {
         $('#max-twitter').val(displayMax);
         $('#max-twitter').attr('data-number',max);
-        /*filters['max'] = max;
-        filters['min'] =  $('#min-twitter').attr('data-number');
-        filters['platform'] = 'twitter';*/
     }
-    console.log(filters);
 
 });
 
 
 twitterengagementslider.noUiSlider.on('update', function (values, handle) {
     inputstwitterEngagement[handle].value = values[handle];
-    var max = Math.floor($('#max-twitter-engagement').val());
+    var max = $('#max-twitter-engagement').val();
     var displayMax = abbrNum(max);
-    var min = Math.floor($('#min-twitter-engagement').val());
+    var min = $('#min-twitter-engagement').val();
     var displayMin = abbrNum(min);
-    var checkMax = typeof (displayMax);
-    var checkMin = typeof (displayMin);
-    if (checkMax != 'string') {
-        $('#min-twitter-engagement').val(displayMin);
-        $('#min-twitter-engagement').attr('data-number',min);
-        /*filters['max'] = $('#max-twitter-engagement').attr('data-number');
-        filters['min'] =  min;
-        filters['platform'] = 'twitter';*/
-    }
-    if (checkMin != 'string') {
-        $('#max-twitter-engagement').val(displayMax);
-        $('#max-twitter-engagement').attr('data-number',max);
-        /*filters['max'] = max;
-        filters['min'] =  $('#min-twitter-engagement').attr('data-number');
-        filters['platform'] = 'twitter';*/
-    }
-
+    $('#min-twitter-engagement').val(min);
+    $('#min-twitter-engagement').attr('data-number',min);
+    $('#max-twitter-engagement').val(max);
+    $('#max-twitter-engagement').attr('data-number',max);
 });
+
+
+
 
 /*
 *
