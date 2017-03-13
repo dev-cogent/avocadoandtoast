@@ -1,5 +1,5 @@
 $(document).on('click', '#createcampaign', function () {
-
+    setLoading();
     var name = $('#campaign-name').val();
     var arr = {};
     for (i = 0; i < selectedusers.length; i++) {
@@ -24,6 +24,7 @@ $(document).on('click', '#createcampaign', function () {
             info: JSON.stringify(arr)
         },
         success: function (jqXHR, textStatus, errorThrown) {
+            unsetLoading();
             if (jqXHR != 0 || jqXHR != '0') {
                 dialog = bootbox.dialog({
                     message: '<div class="bootbox-body">' +

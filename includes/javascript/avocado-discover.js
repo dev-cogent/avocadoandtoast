@@ -1,4 +1,6 @@
 $(document).on('click','#calculate',function(){
+    var appendstatus = 0;
+    setLoading();
     if(selectedusers.length == 0) return 0;
     calculate = true;
     $.ajax({
@@ -11,6 +13,7 @@ $(document).on('click','#calculate',function(){
         calculate = true;
         $('#stuff').empty();
         $('#stuff').append(jqXHR);
+        unsetLoading();
         $('.sidebar-left').css('position','absolute');
         $('.sidebar-left').css('margin-top','0px');
     }
@@ -132,7 +135,7 @@ function selectInfluencer(id, element) {
         }
         element.css('background-color', 'white');
         element.empty();
-        element.append('<i class="icon fa-check check" aria-hidden="true"></i>');
+        element.append('<img src="assets/images/check_v3.gif" style="margin-left:-12px; margin-top: -15px; height:50px;"/>');
         $('.influ-bottom[data-id="'+id+'"]').css('box-shadow','0px -10px 0px #73C48D');
         //element.text('INVITED');
         var count = parseInt($('#count').text());

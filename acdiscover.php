@@ -16,6 +16,7 @@ include 'includes/numberAbbreviation.php';
 <script src="/assets/wnumb/wNumb.js"></script>
 <script src="/assets/uislider/nouislider.js"></script>
 <script src="/includes/javascript/tokenfield/dist/bootstrap-tokenfield.js"></script>
+<script src="/includes/javascript/loading.js"></script>
 <link rel="stylesheet" href="/includes/javascript/tokenfield/dist/css/bootstrap-tokenfield.css">
 <link rel="stylesheet" href="/assets/uislider/nouislider.css">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
@@ -47,7 +48,7 @@ include 'includes/numberAbbreviation.php';
 
 
 <!-- Add side bar here -->
-
+<div id="loading" style="display:none; top:31%; left:44%; position:fixed; z-index:10;"><img style="height:150px; width:150px;"src="/assets/images/loading.gif"/></div>
 <div class="col-xs-1 sidebar-left">
 <i class="icon fa-bars" aria-hidden="true" style="
     color: white;
