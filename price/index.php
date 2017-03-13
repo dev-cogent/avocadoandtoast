@@ -43,7 +43,6 @@ $company = $_SESSION['company'];
 
 
 
-
 ?>
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
@@ -78,6 +77,22 @@ $company = $_SESSION['company'];
 .search{
     min-width:231.5px;
 }
+
+li{
+    list-style:none;
+    padding-top:3px;
+}
+
+.social{
+    margin-right:10px;
+}
+.social-text{
+    display:inline;
+    font-size:14px;
+    color: #515862;
+    font-family:'Open Sans', sans-serif;
+}
+
 </style>
 </head>
 
@@ -113,51 +128,6 @@ $company = $_SESSION['company'];
 
 <p class="desc-header" style="padding-top:30px;"> Price <?php echo $campaignname; ?></p>
 <div class="input-container" style="width:45%;">
-
-    <h3>Campaign Information</h3>
-
-    <label class="title">Brand</label>
-    <br/>
-    <input type="text" class="form-control category avocado-focus" id="brand" value="" placeholder="required*">
-
-    <label class="title">Agency</label>
-    <br/>
-    <input type="text" class="form-control category avocado-focus" id="brand" value="" placeholder="Optional">
-
-
-    <label class="title">Budget</label>
-    <br/>
-    <select class="form-control category avocado-focus">
-    <option value="< 1K"> Less than 1K </option>
-    <option value="1K-10K">1K-10K </option>
-    <option value="10K - 50K">10K - 50K </option>
-    <option value="50K - 100K">50K - 100K </option>
-    <option value=" 100K + "> 100K + </option>
-    </select>
-
-    <label class="title">Payout Terms</label>
-    <br/>
-    <input type="text" class="form-control category avocado-focus" id="payout" value="" placeholder="Optional">
-
-
-    <label class="title">Offer Expiration Date</label>
-    <br/>
-    <textarea type= "text" class="form-control category avocado-focus" id="campaign-request" style="height:150px;"></textarea>
-
-    <label class="title">Campaign Details </label>
-    <br/>
-    <textarea type="text" class="form-control category avocado-focus" id="campaign-details" ><?php echo $campaignsummary; ?></textarea> 
-
-    <label class="title">Launch Date</label>
-    <br/>
-    <input class="form-control category avocado-focus"type="date" value="<?php echo $campaignstart;?>">
-
-
-    <label class="title">Target Demographic</label>
-    <br/>
-    <input type="text" class="form-control category avocado-focus" id="payout" value="" placeholder="Required">
-    <br/>
-    <hr>
     <h3>Contact Information </h3>
         <label class="title">Email</label>
     <br/>
@@ -180,9 +150,52 @@ $company = $_SESSION['company'];
     <label class="title">Phone Number</label>
     <br/>
     <input type="text" class="form-control category avocado-focus" id="brand" value="" placeholder="required*">
+
+    <br/>
+    <hr>
+    <h3>Campaign Information</h3>
+
+    <label class="title">Brand</label>
+    <br/>
+    <input type="text" class="form-control category avocado-focus" id="brand" value="" placeholder="required*">
+
+    <label class="title">Budget</label>
+    <br/>
+    <input type="text" class="form-control category avocado-focus" id="brand" value="" placeholder="Required*">
+
+
+
+    <label class="title">Offer Expiration Date</label>
+    <br/>
+    <input type= "text" class="form-control category avocado-focus" id="campaign-request">
+
+    <label class="title">Campaign Details </label>
+    <br/>
+    <label>Overview, Launch Date, Duration etc </label>
+    <textarea type="text" class="form-control category avocado-focus" id="campaign-details" style="height:150px;" ><?php echo $campaignsummary; ?></textarea> 
+
+    <!--<label class="title">Launch Date</label>
+    <br/>
+    <input class="form-control category avocado-focus"type="date" value="<?php //echo $campaignstart;?>">-->
+
+
+    <label class="title">Target Demographic</label>
+    <br/>
+    <input type="text" class="form-control category avocado-focus" id="payout" value="" placeholder="Required">
+    <br/>
+
+    <label class="title">Influencer Services</label>
+    <br/>
+    <li><input class="social" type="checkbox"><p class="social-text">Instagram</p></li>
+    <li><input class="social" type="checkbox"><p class="social-text">Facebook</p></li>
+    <li><input class="social" type="checkbox"><p class="social-text">Twitter</p></li>
+    <li><input class="social" type="checkbox"><p class="social-text">Youtube</p></li>
+    <br/>
+
     <div style="margin-top:50px;">
         <button class="search avocado-hover col-xs-4 submit" id="price-campaign" style="float:left;  width:40%;">SUBMIT FOR PRICING</button>
     </div>
+
 
 
 </div>

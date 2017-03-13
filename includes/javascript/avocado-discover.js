@@ -21,7 +21,7 @@ $(document).on('click','#calculate',function(){
 }); // end ajax request*/
 
 });
-
+ 
 
 $(document).on('click','#apply',function(){
 
@@ -135,7 +135,9 @@ function selectInfluencer(id, element) {
         }
         element.css('background-color', 'white');
         element.empty();
-        element.append('<img src="assets/images/check_v3.gif" style="margin-left:-12px; margin-top: -15px; height:50px;"/>');
+        element.append('<div class="checkmark-circle"><div class="background"></div><div class="checkmark draw"></div></div>');
+        //element.append('<i class="icon fa-check check" aria-hidden="true"></i>');
+
         $('.influ-bottom[data-id="'+id+'"]').css('box-shadow','0px -10px 0px #73C48D');
         //element.text('INVITED');
         var count = parseInt($('#count').text());
@@ -214,6 +216,7 @@ $('#slider-instagram-engagement').click(function () {
     filters['eng-min'] = $('#min-instagram-engagement').attr('data-number');
     filters['eng-max'] = $('#max-instagram-engagement').attr('data-number');
     filters['platform'] = 'instagram';
+    console.log(filters);
     applyFilters(filters);
 });
 
@@ -233,6 +236,7 @@ $('#slider-twitter-engagement').click(function () {
     filters['min'] = $('#min-twitter').attr('data-number');
     filters['max'] = $('#max-twitter').attr('data-number');
     filters['platform'] = 'twitter';
+
     applyFilters(filters);
 });
 

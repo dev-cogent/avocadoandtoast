@@ -1,31 +1,8 @@
 <?php
-session_start();
-error_reporting(0);
-include 'includes/dbinfo.php';
 include 'includes/numberAbbreviation.php';
-
+include 'includes/dbinfo.php';
 ?>
-<!DOCTYPE html>
-<html class="no-js css-menubar" lang="en">
-<head>
-  <?php include 'includes/head.php' ?>
-    <title>Discover | Avocado & Toast</title>
-<script src="/bootbox/bootbox.js"></script>
-<script src="/global/vendor/bootstrap/bootstrap.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700" rel="stylesheet">
-<script src="/assets/wnumb/wNumb.js"></script>
-<script src="/assets/uislider/nouislider.js"></script>
-<script src="/includes/javascript/tokenfield/dist/bootstrap-tokenfield.js"></script>
-<script src="/includes/javascript/loading.js"></script>
-<link rel="stylesheet" href="/includes/javascript/tokenfield/dist/css/bootstrap-tokenfield.css">
-<link rel="stylesheet" href="/assets/uislider/nouislider.css">
-<link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
-<link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
-<link rel="stylesheet" href="/includes/css/discover.css">
-<link rel="stylesheet" href="/assets/css/sidebar.css">
-<link rel="stylesheet" href="/check.css">
 <style>
-
 .form-control{
     font-size:15px;
     letter-spacing:1px;
@@ -36,104 +13,7 @@ include 'includes/numberAbbreviation.php';
   font-family:'Open Sans';
       letter-spacing:1px;
 }
-body {
-    margin: 0;
-    font-family: 'Lato', sans-serif;
-}
-
-.overlay {
-    height: 0%;
-    width: 100%;
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0, 0.5);
-    overflow-y: hidden;
-}
-
-.overlay-content {
-    position: relative;
-    top: 25%;
-    width: 100%;
-    text-align: center;
-    margin-top: 30px;
-}
-
-.overlay a {
-    padding: 8px;
-    text-decoration: none;
-    font-size: 36px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-.overlay a:hover, .overlay a:focus {
-    color: #f1f1f1;
-}
-
-.overlay .closebtn {
-    position: absolute;
-    top: 20px;
-    right: 45px;
-    font-size: 60px;
-}
-
-@media screen and (max-height: 450px) {
-  .overlay {overflow-y: auto;}
-  .overlay a {font-size: 20px}
-  .overlay .closebtn {
-    font-size: 40px;
-    top: 15px;
-    right: 35px;
-  }
-}
 </style>
-</head>
-
-<body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
-<?php include 'acnav.php';?>
-
-
-
-
-
-
-
-
-<!-- Add side bar here -->
-<div id="loading" style="display:none; top:31%; left:44%; position:fixed; z-index:1001;"><img style="height:150px; width:150px;"src="/assets/images/loading.gif"/></div>
-<div class="col-xs-1 sidebar-left">
-<i class="icon fa-bars" aria-hidden="true" style="
-    color: white;
-    text-align: center;
-    font-size: 21px;
-    margin-left: 5px;
-    height: 20px;
-    padding-top: 15px;
-"></i>
-  <div id="li-container" style="display:none;">
-    <li class="item"><a class="side-link" href="/dashboard.php"> DASHBOARD </a> </li>
-    <li class="item"><a class="side-link" href="/acdiscover.php"> DISCOVER </a></li>
-    <li class="item"><a class="side-link" href="/settings.php"> ACCOUNT SETTINGS </a></li>
-    <li class="item"><a class="side-link" href="#"> FAQ</a> </li>
-    <li class="item"><a class="side-link" href="#"> CONTACT</a> </li>
-    <li class="item"><a class="side-link" href="#"> LATEST UPDATES</a></li>
-    <li class="item"><a class="side-link" href="/logout.php"> LOGOUT</a></li>
-  </div>
-</div>
-
-
-<!-- The third nav bar , we might be able to take this out. In the mean time, we'll keep it here -->
-
-<div class="mininav col-xs-12" style="height:50px;">
-    <p class="nav3">INFLUENCERS</p>
-</div>
-<div id="myNav" class="overlay"></div>
-<div id="stuff">
-
 <!--Filter content -->
 
 <div class="filter-container col-xs-9">
@@ -240,6 +120,7 @@ body {
 
 
 
+
         <div class="found-influencers col-xs-12">
             <?php
                 $count = 3;
@@ -310,13 +191,11 @@ body {
                 }
                     ?>
         </div>
-</div>
-
-</div>
+        </div>
 
 
-</body>
-</html>
+
+
 <script>
 var calculate = false;
 var page = 0;
