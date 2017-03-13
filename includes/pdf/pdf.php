@@ -1,17 +1,133 @@
 <?php
 session_start();
 require  "autoload.php";
+include '../dbinfo.php';
+include '../class/savecampaign.php';
+include '../numberAbbreviation.php';
+$obj = new saveCampaign;
+$columnid = $_SESSION['column_id'];
+$campaignid = $_GET['id'];
+$stmt = $conn->prepare('SELECT `campaign_name`,`campaign_desc`,`campaign_request`,`created_date`,`total_instagram_impressions`,`total_facebook_impressions`,`total_twitter_impressions`,`total_impressions`,`total_instagram_engagement`,`total_twitter_engagement`,`total_facebook_engagement`,`total_engagement`
+                FROM `campaign_save_link` WHERE `campaign_id` = ? AND `column_id` = ? ');
+$stmt->bind_param('ss',$campaignid,$columnid);
+$stmt->execute();
+$stmt->bind_result($name,$desc,$request,$createdate,$instimpressions,$faceimpressions,$twitterimpressions,$totalimpressions,$instengagement,$twitterengagement,$facebookengagement,$totalengagement);
+$stmt->fetch();
+$html = '';
+        $influencerinfo = $obj->getCampaign($campaignid);
+        foreach($influencerinfo['influencer'] as $influencerid => $info){
+        $id = $influencerid;
+        $instagramurl = $info['instagram_url'];
+        $facebookurl = $info['facebook_url'];
+        $twitterurl = $info['twitter_url'];
+        $insthandle = $info['instagram_handle'];
+        $facebookhandle = $info['facebook_handle'];
+        $twitterhandle = $info['twitter_handle'];
+        $insthandle = $info['instagram_handle'];
 
+        $instagrampost = $info['instagram_post'];
+        $twitterpost = $info['twitter_post'];
+        $facebookpost = $info['facebook_post'];
+
+        $instagramimpressions = $info['instagram_impressions'];
+        $twitterimpressions = $info['twitter_impressions'];
+        $facebookimpressions = $info['facebook_impressions'];
+
+
+        $instagrameng = $info['instagram_engagement'];
+        $twittereng = $info['twitter_engagement'];
+        $facebookeng = $info['facebook_engagement'];
+        $handle = $insthandle;
+        if($insthandle == NULL){
+          $handle = $facebookhandle;
+        }
+        if($facebookhandle == NULL && $insthandle == NULL){
+          $handle = $twitterhandle;
+        }
+      $html.='
+        <tr class="influencer-row" style="">
+       <td class="campaign-sect">
+          <div class="influencer-info" style="">
+             <img src="http://cogenttools.com/images/'.$id.'.jpg"  class="influencer-campaign-image">
+                <div class="influencer-name">
+                  <h4 class="influencer-handle"> @'.$handle.' </h4>
+                  <h4 class="influencer-loc"> Brooklyn, NY </h4> 
+                </div>
+           </div>
+       </td>
+
+       <td class="instagram-col" style="">
+      <div class="post-res-div">
+    <div class="post-res">
+    <div class="post-num">'.$instagrampost.'</div>
+    <div class="post-name"> posts </div>
+    </div>
+    <div class="res-mini-col">
+        <div class="impression-res">'.numberAbbreviation($instagramimpressions).'</div>
+        <div class="engagement-res">'.numberAbbreviation($instagrameng).'</div>
+        <div class="social-following">'.numberAbbreviation($info['instagram_count']).'</div>
+    </div>
+    </div>
+
+       </td>
+
+           <td class="facebook-col" style="">
+      <div class="post-res-div">
+    <div class="post-res">
+    <div class="post-num"> '.$facebookpost.' </div>
+    <div class="post-name"> posts </div>
+    </div>
+    <div class="res-mini-col">
+        <div class="impression-res">'.numberAbbreviation($facebookimpressions).'</div>
+        <div class="engagement-res"> '.numberAbbreviation($facebookengagement).'</div>
+        <div class="social-following"> '.numberAbbreviation($info['facebook_count']).'</div>
+    </div>
+    </div>
+
+       </td>
+
+
+         <td class="twitter-col" style="">
+      <div class="post-res-div">
+    <div class="post-res">
+    <div class="post-num"> '.$twitterpost.' </div>
+    <div class="post-name"> posts </div>
+    </div>
+    <div class="res-mini-col">
+        <div class="impression-res">'.numberAbbreviation($twitterimpressions).'</div>
+        <div class="engagement-res"> '.numberAbbreviation($twitterengagement).' </div>
+        <div class="social-following">'.numberAbbreviation($info['twitter_count']).' </div>
+    </div>
+    </div>
+
+       </td>
+
+
+         <td class="total-influencer-col" style="">
+      <div class="post-res-div total-col">
+    <div class="post-res">
+    <div class="post-num"> '.($instagrampost + $facebookpost + $twitterpost).' </div>
+    <div class="post-name"> posts </div>
+    </div>
+    <div class="res-mini-col" style="position:relative; left:15px;">
+        <div class="impression-res">'.numberAbbreviation($instagramimpressions+$facebookimpressions+$twitterimpressions).'</div>
+        <div class="engagement-res"> '.numberAbbreviation($instagrameng+$facebookeng+$twittereng).'</div>
+        <div class="social-following">'.numberAbbreviation($info['instagram_count']+$info['twitter_count']+$info['facebook_count']).'</div>
+    </div>
+    </div>
+
+       </td>
+    </tr>
+<!-- end -->';
+        }
 $configuration = DocRaptor\Configuration::getDefaultConfiguration();
 $configuration->setUsername("iLYpGOvi5Y02WmSLsI"); # this key works for test documents
 $configuration->setSSLVerification(false);
 //$configuration->setDebug(true);
 $docraptor = new DocRaptor\DocApi();
-
   $doc = new DocRaptor\Doc();
   $doc->setTest(true);
   $count = 0;
-  $html = '<p> hello </p>';
                                             # test documents are free but watermarked
   $doc->setDocumentContent('
   <html>
@@ -156,6 +272,8 @@ table  {
 .influencer-info {
   margin-top: 40px;
   padding-right: 10px;
+  max-width:115px;
+  vertical-align:middle;
 }
 .total-influencer-col{
 }
@@ -251,12 +369,12 @@ table  {
 
 <div id="brand-name" style="margin-top:-30px;">
   <h2 id="brand">BRAND NAME </h2>
-  <h1 id="title">Campaign Title</h1>
+  <h1 id="title">'.$name.'</h1>
 
 </div>
 <div class="campaign-descrip-container">
 <div id="summary">
-   <p id="summary-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget justoMorbi vehifgfdgfdgfdgfdgor infgfdgfdgfdgfdgdfgsfdsfdsfsdfsdfds mi ullamcorper, sit amet </p>
+   <p id="summary-text">'.$desc.'</p>
 </div>
 
 
@@ -289,227 +407,8 @@ table  {
 
   <tbody style="border:1px solid grey;">
 
-        <tr class="influencer-row" style="">
-       <td class="campaign-sect">
-          <div class="influencer-info" style="">
-             <img src="https://scontent.cdninstagram.com/t51.2885-15/e35/17076420_1907763599457560_8742835286003679232_n.jpg"  class="influencer-campaign-image">
-      <div class="influencer-name">
-                <h4 class="influencer-handle"> @gabyhernan </h4>
-    <h4 class="influencer-loc"> Brooklyn, NY </h4> </div>
-           </div>
-       </td>
+  '.$html.'
 
-       <td class="instagram-col" style="">
-      <div class="post-res-div">
-    <div class="post-res">
-    <div class="post-num"> 4 </div>
-    <div class="post-name"> posts </div>
-    </div>
-    <div class="res-mini-col">
-        <div class="impression-res"> 324k </div>
-        <div class="engagement-res"> 342k </div>
-        <div class="social-following"> 425k </div>
-    </div>
-    </div>
-
-       </td>
-
-           <td class="facebook-col" style="">
-      <div class="post-res-div">
-    <div class="post-res">
-    <div class="post-num"> 4 </div>
-    <div class="post-name"> posts </div>
-    </div>
-    <div class="res-mini-col">
-        <div class="impression-res"> 324k </div>
-        <div class="engagement-res"> 342k </div>
-        <div class="social-following"> 425k </div>
-    </div>
-    </div>
-
-       </td>
-
-
-         <td class="twitter-col" style="">
-      <div class="post-res-div">
-    <div class="post-res">
-    <div class="post-num"> 4 </div>
-    <div class="post-name"> posts </div>
-    </div>
-    <div class="res-mini-col">
-        <div class="impression-res"> 324k </div>
-        <div class="engagement-res"> 342k </div>
-        <div class="social-following"> 425k </div>
-    </div>
-    </div>
-
-       </td>
-
-
-         <td class="total-influencer-col" style="">
-      <div class="post-res-div total-col">
-    <div class="post-res">
-    <div class="post-num"> 4 </div>
-    <div class="post-name"> posts </div>
-    </div>
-    <div class="res-mini-col" style="position:relative; left:15px;">
-        <div class="impression-res"> 324k </div>
-        <div class="engagement-res"> 342k </div>
-        <div class="social-following"> 425k </div>
-    </div>
-    </div>
-
-       </td>
-    </tr>
-
-
-
-       <tr class="influencer-row" style="">
-       <td class="campaign-sect">
-          <div class="influencer-info" style="">
-             <img src="https://scontent.cdninstagram.com/t51.2885-15/e35/17076420_1907763599457560_8742835286003679232_n.jpg"  class="influencer-campaign-image">
-      <div class="influencer-name">
-                <h4 class="influencer-handle"> @gabyhernan </h4>
-    <h4 class="influencer-loc"> Brooklyn, NY </h4> </div>
-           </div>
-       </td>
-
-       <td class="instagram-col" style="">
-      <div class="post-res-div">
-    <div class="post-res">
-    <div class="post-num"> 4 </div>
-    <div class="post-name"> posts </div>
-    </div>
-    <div class="res-mini-col" style="">
-        <div class="impression-res"> 324k </div>
-        <div class="engagement-res"> 342k </div>
-        <div class="social-following"> 425k </div>
-    </div>
-    </div>
-
-       </td>
-
-           <td class="facebook-col" style="">
-      <div class="post-res-div">
-    <div class="post-res">
-    <div class="post-num"> 4 </div>
-    <div class="post-name"> posts </div>
-    </div>
-    <div class="res-mini-col">
-        <div class="impression-res"> 324k </div>
-        <div class="engagement-res"> 342k </div>
-        <div class="social-following"> 425k </div>
-    </div>
-    </div>
-
-       </td>
-
-
-         <td class="twitter-col" style="">
-      <div class="post-res-div">
-    <div class="post-res">
-    <div class="post-num"> 4 </div>
-    <div class="post-name"> posts </div>
-    </div>
-    <div class="res-mini-col">
-        <div class="impression-res"> 324k </div>
-        <div class="engagement-res"> 342k </div>
-        <div class="social-following"> 425k </div>
-    </div>
-    </div>
-
-       </td>
-
-
-         <td class="total-influencer-col" style="">
-      <div class="post-res-div total-col" style="">
-    <div class="post-res">
-    <div class="post-num"> 4 </div>
-    <div class="post-name"> posts </div>
-    </div>
-    <div class="res-mini-col" style="position:relative; left:15px;">
-        <div class="impression-res"> 324k </div>
-        <div class="engagement-res"> 342k </div>
-        <div class="social-following"> 425k </div>
-    </div>
-    </div>
-
-       </td>
-    </tr>
-
-
-        <tr class="influencer-row" style="">
-       <td class="campaign-sect">
-          <div class="influencer-info" style="">
-             <img src="https://scontent.cdninstagram.com/t51.2885-15/e35/17076420_1907763599457560_8742835286003679232_n.jpg"  class="influencer-campaign-image">
-      <div class="influencer-name">
-                <h4 class="influencer-handle"> @gabyhernan </h4>
-    <h4 class="influencer-loc"> Brooklyn, NY </h4> </div>
-           </div>
-       </td>
-
-       <td class="instagram-col" style="">
-      <div class="post-res-div">
-    <div class="post-res">
-    <div class="post-num"> 4 </div>
-    <div class="post-name"> posts </div>
-    </div>
-    <div class="res-mini-col">
-        <div class="impression-res"> 324k </div>
-        <div class="engagement-res"> 342k </div>
-        <div class="social-following"> 425k </div>
-    </div>
-    </div>
-
-       </td>
-
-           <td class="facebook-col" style="">
-      <div class="post-res-div">
-    <div class="post-res">
-    <div class="post-num"> 4 </div>
-    <div class="post-name"> posts </div>
-    </div>
-    <div class="res-mini-col" style="">
-        <div class="impression-res"> 324k </div>
-        <div class="engagement-res"> 342k </div>
-        <div class="social-following"> 425k </div>
-    </div>
-    </div>
-
-       </td>
-
-
-         <td class="twitter-col" style="">
-      <div class="post-res-div">
-    <div class="post-res">
-    <div class="post-num"> 4 </div>
-    <div class="post-name"> posts </div>
-    </div>
-    <div class="res-mini-col">
-        <div class="impression-res"> 324k </div>
-        <div class="engagement-res"> 342k </div>
-        <div class="social-following"> 425k </div>
-    </div>
-    </div>
-
-       </td>
-
-
-         <td class="total-influencer-col" style="">
-      <div class="post-res-div total-col">
-    <div class="post-res">
-    <div class="post-num"> 4 </div>
-    <div class="post-name"> posts </div>
-    </div>
-    <div class="res-mini-col" style="position:relative; left:15px;">
-        <div class="impression-res"> 324k </div>
-        <div class="engagement-res"> 342k </div>
-        <div class="social-following"> 425k </div>
-    </div>
-    </div>
-
-       </td>
-    </tr>
 
        <tr class="influencer-row" style="">
        <td class="campaign-sect" style="border-bottom:none;">
@@ -520,13 +419,13 @@ table  {
 
        <td class="instagram-col" style="background-color:transparent;">
       <div class="instagram-overall-res" style="position:relative; left:30px;">
-        7.5m
+        '.numberAbbreviation($instengagement).'
     </div>
        </td>
 
            <td class="facebook-col" style="background-color:transparent;">
       <div class="facebook-overall-res" style="position:relative; left:30px;">
-              6.4m
+              '.numberAbbreviation($facebookengagement).'
     </div>
 
        </td>
@@ -534,14 +433,14 @@ table  {
 
          <td class="twitter-col" style="background-color:transparent;">
       <div class="twitter-overall-res" style="position:relative; left:30px;">
-            5.4m
+            '.numberAbbreviation($twitterengagement).'
     </div>
        </td>
 
 
          <td class="total-influencer-col" style="background-color:transparent;">
       <div class="overall-grand-total" style="position:relative;left:30px;">
-      20.2m
+      '.numberAbbreviation($totalengagement).'
     </div>
        </td>
     </tr>
@@ -550,18 +449,17 @@ table  {
        <td class="campaign-sect" style="border-bottom:hidden;">
          <div class="total-engagement" style="width:135px;"> CAMPAIGN IMPRESSIONS </div>
 
-
        </td>
 
        <td class="instagram-col" style="background-color:transparent;border-bottom:hidden;">
       <div class="instagram-overall-res" style="position:relative;left:30px;">
-        7.5m
+       '.numberAbbreviation($instimpressions).'
     </div>
        </td>
 
            <td class="facebook-col" style="background-color:transparent;border-bottom:hidden;">
       <div class="facebook-overall-res" style="position:relative;left:30px;">
-              6.4m
+              '.numberAbbreviation($faceimpressions).'
     </div>
 
        </td>
@@ -569,14 +467,14 @@ table  {
 
          <td class="twitter-col" style="background-color:transparent;border-bottom:hidden;">
       <div class="twitter-overall-res" style="position:relative;left:30px;">
-            5.4m
+            '.numberAbbreviation($twitterimpressions).'
     </div>
        </td>
 
 
          <td class="total-influencer-col" style="background-color:transparent;border-bottom:hidden;">
       <div class="overall-grand-total" style="position:relative;left:30px;">
-      20.2m
+      '.numberAbbreviation($totalimpressions).'
     </div>
        </td>
     </tr>
@@ -587,7 +485,7 @@ table  {
 
 <div class="summary-container" style="width:750px;border:1px solid lightgrey;margin-left:20px;margin-right:20px;margin-top:50px;">
   <div class="summary-container"><div class="campaign-status"> Campaign not in progress </div>
-  <div class="campaign-date">  CREATED 03.13.2017 </div>
+  <div class="campaign-date">  CREATED '.$createdate.' </div>
   </div>
 
   <div class="summary-influencers"> 7 <br>  <span class="total-influencer-copy"> Influencers </span> </div>
@@ -628,7 +526,6 @@ header('Content-Length: ' . strlen($create_response));
 ob_clean();
 flush();
 echo($create_response);
-session_destroy();
 function generateRandomString($length = 5) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);

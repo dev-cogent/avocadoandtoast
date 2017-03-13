@@ -130,7 +130,7 @@ width:20%;
 <div class="filter-container col-xs-12" style="border-bottom:0px; height:145px;">
     <div class="go-back-btn-div"> <a class="back-btn" href="/dashboard.php"> Go Back </a> </div>
     <div class="go-back-btn-div"> <a class="back-btn" href="/edit/?id=<?php echo $campaignid;?>"> Edit Campaign </a> </div>
-    <div class="go-back-btn-div"> <a class="back-btn" href="/edit/?id=<?php echo $campaignid;?>"> Export Campaign </a> </div>
+    <div class="go-back-btn-div"> <a class="back-btn pdf" data-id="<?php echo $campaignid;?>"> Export Campaign </a> </div>
     <div class="go-back-btn-div"> <a class="back-btn" href="/price/?id=<?php echo $campaignid;?>"> Price Campaign </a> </div>
 </div>
 
@@ -398,6 +398,13 @@ $('#li-container').fadeOut();
 sidebar = false;
 }
 
+
+
+});
+
+$(document).on('click','.pdf',function(){
+var id = $(this).attr('data-id');
+window.location='/includes/pdf/pdf.php?id='+id;
 
 
 });

@@ -104,7 +104,7 @@ body {
 
 
 <!-- Add side bar here -->
-<div id="loading" style="display:none; top:31%; left:44%; position:fixed; z-index:1001;"><img style="height:150px; width:150px;"src="/assets/images/loading.gif"/></div>
+<div id="loading" style="display:none; top:31%; left:38%; position:fixed; z-index:1001;"><img style="height:350px; width:350px;"src="/assets/images/loading.gif"/></div>
 <div class="col-xs-1 sidebar-left">
 <i class="icon fa-bars" aria-hidden="true" style="
     color: white;
