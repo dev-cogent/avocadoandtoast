@@ -1,0 +1,142 @@
+.influencer-card-container{
+padding-top: 55px;
+margin-left: 55px;
+}
+
+.button-container{
+    padding-left:0px;
+}
+.platform-container {
+  text-align: center;
+}
+.social-container {
+  margin-top: 40%;
+  margin-bottom: 15%;
+}
+.instagram-logo-green, .twitter-logo-green {
+  width: 40px;
+}
+.facebook-logo-green{
+  width: 33px;
+}
+.youtube-logo-green {
+  width: 60px;
+}
+.followers-text {
+  font-size: 13px;
+  text-transform: uppercase;
+  font-family: 'montserratlight';
+  letter-spacing: 0.5px;
+  color: #A2A6b1;
+}
+.inf-number {
+  font-size: 26px;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 18px;
+  color: #1F232A;
+  letter-spacing: 1px;
+  margin-bottom: 10%;
+}
+.inf-number.youtube{
+  margin-bottom: 4%;
+}
+.inf-number.facebook{
+  margin-bottom: 13%;
+
+}
+
+.social-button{
+    font-size: 13px;
+    font-family: 'Montserrat', sans-serif;
+    color: #30363F;
+    padding-left: 11px;
+    background-color: #A2A8B1;
+    border: 1px;
+    float: left;
+    margin-bottom: 8px;
+    padding-top: 5px;
+    padding-bottom: 31px;
+    max-width: 207px;
+}
+
+
+
+.card-discover{
+    border: 1px solid rgb(210,215,220);
+    float:left;
+    max-width: 350px;
+    width:100%;
+}
+
+.influencer-card-discover:hover{
+      border: 1px solid #73C48D;
+}
+
+@media (max-width:991px) {
+  .influencer-card-discover{
+    width: 260px;
+  }
+}
+
+@media (min-width:1200px) and (max-width:1350px){
+.col-xl-5.social-collage {
+    width:54.666667%;
+}
+}
+@media (min-width:1351px) and (max-width:1500px){
+.col-xl-5.social-collage {
+    width:49.666667%;
+}
+}
+@media (min-width:1501px) and (max-width:1700px){
+.col-xl-5.social-collage {
+  width:44.666667%;
+}
+}
+@media (min-width:1800px){
+.col-xl-5.social-collage {
+  width:39.666667%
+}
+}
+
+.influencer-image-card{
+    max-width: 100%;
+    width:100%;
+    object-fit: cover;
+    object-position: 0 33%;
+    height: 262px;
+    /*Height will be changed when we figure out different solution */
+
+}
+
+
+.button-option-text{
+    position: absolute;
+    padding-left: 13%;
+    color: white;
+    font-family: 'montserratlight';
+    font-size: 13px;
+    padding-top: 2px;
+}
+
+
+.image-container{
+    padding-left:0px;
+    max-height:207px;
+    margin-bottom:10px;
+}
+
+.image-size{
+    padding-left: 0px;
+    padding-right: 0px;
+    max-width: 207px;
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+    object-position: 0 12%;
+
+}
+
+.social-buttons{
+    padding-bottom:20px;
+}

@@ -274,6 +274,7 @@ float:right;
     border-radius:10px;
 }
 
+
 .influencer-card-discover{
     height: 65%;
     border: 1px solid rgb(210,215,220);
@@ -580,8 +581,34 @@ color:#73C48D;
     color: #73C48D;
 }
 
+.influencer-card-discover{
+    height: 65%;
+    border: 1px solid rgb(210,215,220);
+    float:left;
+    width:88%;
+    margin-bottom:30px;
+    padding-right:0px;
+    padding-left:0px;
+}
+
+.influencer-image-card{
+    max-width: 100%;
+    width:100%;
+    object-fit: cover;
+    object-position: 0 33%;
+    /*height: 262px;*/
+    /*Height will be changed when we figure out different solution */
+
+}
+
+
 .button-icon{
     padding-right:25px;
+}
+@media (max-width:1350px){
+  .button-icon{
+    padding-right: 10px;
+  }
 }
 
 .engagement-slider{

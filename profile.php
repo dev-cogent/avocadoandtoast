@@ -19,12 +19,13 @@ $id = '5AUgZ0C';
 <script src="/assets/uislider/nouislider.js"></script>
 <script src="/includes/javascript/tokenfield/dist/bootstrap-tokenfield.js"></script>
 <script src="/includes/javascript/profile.js"></script>
+<script src="/includes/javascript/avocado-discover.js"></script>
 <link rel="stylesheet" href="/includes/javascript/tokenfield/dist/css/bootstrap-tokenfield.css">
 <link rel="stylesheet" href="/assets/uislider/nouislider.css">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
 <link rel="stylesheet" href="/includes/css/discover.css">
-<link rel="stylesheet" href="/includes/css/profile.css">
+
 
 </head>
 
@@ -47,6 +48,8 @@ $id = '5AUgZ0C';
      js.src = "//connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
+
+   var selectedusers = [];
 </script>
 <div id="fb-root"></div>
 
@@ -99,7 +102,7 @@ $id = '5AUgZ0C';
     $twitterhandle = $twitterhandle[0];
     echo '
                     <div  class="influencer-box col-xs-12 ">
-                            <div class="influencer-card-discover">
+                            <div class="card-discover">
                                 <img class="influencer-image-card" src="https://project.social/'.$image.'">
                                 <div class="col-xs-12" style="height:170px;">
                                     <!-- insthandle stuff -->
@@ -128,10 +131,7 @@ $id = '5AUgZ0C';
                                         <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$id.'">1.5K Likes per post</p>
                                     </div>
                                     <div class="col-xs-12">
-
-                                        <div style="display:inline;"class="col-xs-12 invite avocado-hover avocado-focus" data-id="'.$id.'" data-image="'.$image.'">
-                                              <i class="thumb-up icon fa-plus" aria-hidden="true"></i>
-                                                 INVITE</div>
+                                    <div style="display:inline;" class="col-xs-12 invite  avocado-focus" data-id="kixN6FS" data-image="images/kixN6FS.jpg"></div>
                                     </div>
                                 </div>
                             </div>
@@ -141,9 +141,30 @@ $id = '5AUgZ0C';
 </div>
 
 
-<div class="col-lg-7 col-xl-5" style="margin-left: 3%;">
+<div class="col-lg-7 col-xl-5 social-collage" style="margin-left:0;">
 <!-- social buttons and stats -->
-<?php echo '<p  class="col-xs-12"style="padding-top:49px;"> Viewing @'.$insthandle.' latest instagram posts</p>
+<?php echo ' <div class="container-fluid"> <div class="row">
+  <div class="col-lg-3 col-sm-4 col-md-3 col-xs-12 platform-container">
+ <div class="social-container">
+ <div class="inf-number"> 93.3m <br> <span class="followers-text"> followers </span> </div>
+   <img src="/assets/images/instagram-logo-green.png" class="instagram-logo-green"> </div> </div>
+
+ <div class="col-lg-3 col-sm-4 col-md-3 col-xs-12 platform-container">
+  <div class="social-container">
+  <div class="inf-number"> 51.3m <br><span class="followers-text"> followers </span> </div>
+    <img src="/assets/images/twitter-logo-green.png" class="twitter-logo-green"> </div> </div>
+
+  <div class="col-lg-3 col-sm-4 col-md-3 col-xs-12 platform-container">
+   <div class="social-container">
+   <div class="inf-number facebook"> 93.3m <br> <span class="followers-text"> followers </span> </div>
+     <img src="assets/images/facebook-green.png" class="facebook-logo-green"> </div> </div>
+
+   <div class="col-lg-3 col-sm-4 col-md-3 col-xs-12 platform-container">
+    <div class="social-container">
+    <div class="inf-number youtube"> 200k <br> <span class="followers-text"> followers </span> </div>
+      <img src="/assets/images/youtube-icon-green.png" class="youtube-logo-green"> </div> </div>
+
+</div> </div>
     <div class="col-xs-12 social-buttons">';
     //Start looking for instagram
          if($instagramurl == NULL || $instagramurl == ''){
