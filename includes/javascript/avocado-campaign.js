@@ -156,50 +156,41 @@ $(document).on('click','.filter-option',function(){
 
 // function that uninvited or invites user to campaign 
 $(document).on('click','.invite',function(){
-var id = $(this).attr('data-id');
-var element = $(this);
-var item = $('.influencer-box[data-id='+id+']');
-item.fadeOut();
-var totalimpressions = parseInt(item.attr('data-t-impressions')) + parseInt(item.attr('data-f-impressions')) + parseInt(item.attr('data-i-impressions'));
-//var totalFollowers = getFollowers(item.attr('data-t-impressions'),item.attr('data-t-post')) + getFollowers(item.attr('data-i-impressions'),item.attr('data-i-post')) + getFollowers(item.attr('data-f-impressions'),item.attr('data-f-post'));
-var minustotal = parseInt(item.attr('data-t-post')) + parseInt(item.attr('data-i-post')) + parseInt(item.attr('data-f-post'));
-var influencerNum = parseInt($('#influnum').text());
-//Changing the influencer number 
-$('#influnum').text(influencerNum - 1);
-//changing the totalpost number 
-var totalPost = parseInt($('#posts').text());
-$('#posts').text(totalPost - minustotal);
-//Changing the reach number 
-var reach = parseInt($('#reach').attr('data-num'));
-console.log(reach);
-console.log(totalimpressions);
-var newreach = reach - totalimpressions;
-$('#reach').attr('data-num',newreach); 
-$('#reach').text(abbrNum(newreach));
-deletedusers.push(id);
-
+    var id = $(this).attr('data-id');
+    var element = $(this);
+    var card = $('.influencer-box[data-id='+id+']');
+    removeInfluencerFromCampaign(id,element,card);
 }); 
 
 
 
+function removeInfluencerFromCampaign(id, element, card){
+    card.fadeOut(); //Taking the influencer card and making it fadeOut/Disappear... like magic :) 
+ 
+    var reach = parseInt($('#reach').attr('data-num')); //reach is also the totalImpressions. 
+    var numberOfInfluencers = parseInt($('#influnum').text());
+    var totalPost = parseInt($('#posts').text());
+    var totalInfluencerImpressions = parseInt(card.attr('data-t-impressions')) + parseInt(card.attr('data-f-impressions')) + parseInt(card.attr('data-i-impressions'));
+    var totalEngagement = $('#engagement').attr('data-number');
+    var totalInfluencerEngagement = parseInt(card.attr('data-t-engagement')) + parseInt(card.attr('data-f-engagement')) + parseInt(card.attr('data-i-engagement'));
+    var totalInfluencerPost = parseInt(card.attr('data-t-post')) + parseInt(card.attr('data-i-post')) + parseInt(card.attr('data-f-post'));
+    var newEngagement = totalEngagement - totalInfluencerEngagement;
+    var newAvgEngagement = newEngagement/(numberOfInfluencers - 1);
+    var newreach = reach - totalInfluencerImpressions;
+    var newAvgImpressions = newreach /(numberOfInfluencers-1); 
 
-function getReach(impressions,post){
-//var followers = parseInt(impressions)parseInt(post);
-return followers;
+    $('#influnum').text(numberOfInfluencers - 1);     //Changing the influencer number
+    $('#posts').text(totalPost - totalInfluencerPost);     //changing the totalpost number 
+    $('#reach').attr('data-num',newreach); //changing reach 
+    $('#reach').text(abbrNum(newreach));
+    $('#engagement').text(abbrNum(newEngagement)); // changing engagement 
+    $('#engagement').attr('data-number',newEngagement); 
+    $('#avgimp').text(abbrNum(newAvgImpressions)); // chaning avg impresions
+    $('#avgeng').text(abbrNum(newAvgEngagement)); // changing avg engagement
+    deletedusers.push(id); //adding influcner to removed users array 
 
 }
-function selectInfluencer(id, element) {
-    if(element.attr('data-type') == 'uninvited'){
-        element.css('background-color', 'white');
-        element.empty();
-        element.append('<i class="icon fa-check check" aria-hidden="true"></i>');
-    }
-    element.empty();
-    element.css('background-color','#e0e0e0');
-    element.attr('data-type','uninvited');
-    //Ajax goes here to remove user from the campaign. 
 
-}
 
 
 

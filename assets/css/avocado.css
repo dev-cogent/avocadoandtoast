@@ -13,6 +13,7 @@ a:hover{
 }
 .avocado-focus:focus{
     border:1px solid #73C48D;
+    outline:none;
 }
 body {
 padding-top: 0;

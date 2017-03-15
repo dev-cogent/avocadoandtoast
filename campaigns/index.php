@@ -44,7 +44,7 @@ if($description == NULL){
 <link rel="stylesheet" href="/assets/uislider/nouislider.css">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
-<link rel="stylesheet" href="/includes/css/discover.css">
+<link rel="stylesheet" href="/assets/css/discover.css">
 <link rel="stylesheet" href="/assets/css/sidebar.css">
 <style>
 .stats{
@@ -83,6 +83,16 @@ width:20%;
 }
 
 
+.btn-campaign-options{
+    width: 150px;
+    height: 35px;
+    background-color: white;
+    border: 1px solid black;
+    font-size:12px;
+    margin-right:5px;
+    font-family:'montserratlight';
+
+}
 
 </style>
 </head>
@@ -128,10 +138,11 @@ width:20%;
 
 
 <div class="filter-container col-xs-12" style="border-bottom:0px; height:145px;">
-    <div class="go-back-btn-div"> <a class="back-btn" href="/dashboard.php"> Go Back </a> </div>
-    <div class="go-back-btn-div"> <a class="back-btn" href="/edit/?id=<?php echo $campaignid;?>"> Edit Campaign </a> </div>
-    <div class="go-back-btn-div"> <a class="back-btn pdf" data-id="<?php echo $campaignid;?>"> Export Campaign </a> </div>
-    <div class="go-back-btn-div"> <a class="back-btn" href="/price/?id=<?php echo $campaignid;?>"> Price Campaign </a> </div>
+  <a  href="/dashboard.php" style="color:black;">  <button class="btn-campaign-options avocado-hover avocado-focus">  GO BACK  </button></a>
+  <a href="/edit/?id=<?php echo $campaignid;?>" style="color:black;">  <button class="btn-campaign-options avocado-hover avocado-focus">  EDIT CAMPAIGN  </button></a>
+  <a href="#" style="color:black;" class="pdf">  <button class="btn-campaign-options avocado-hover avocado-focus">  EXPORT CAMPAIGN  </button></a>
+  <a href="/price/?id=<?php echo $campaignid;?>" style="color:black;">  <button class="btn-campaign-options avocado-hover avocado-focus">  PRICE CAMPAIGN  </button></a>
+  <a href="/price/?id=<?php echo $campaignid;?>" style="display:none;" id="undo-button" >  <button class="btn-campaign-options avocado-hover avocado-focus" style="background-color:#73C48D; color:white; border:0px;">UNDO</button></a>
 </div>
 
 <div class="col-xs-12" style="padding-left:75px;">
@@ -150,9 +161,10 @@ width:20%;
             <tr>
                 <td class="stats" id="influnum">'.$influencerinfo['campaign_count'].'</td>
                 <td class="stats" id="posts">'.$campaigninfo['totalposts'].'</td>
-                <td class="stats" id="avgimp">'.numberAbbreviation($campaigninfo['totalimpressions']/$influencerinfo['campaign_count']).'</td>
-                <td class="stats" id="avgeng">'.numberAbbreviation($campaigninfo['totalengagement']/$influencerinfo['campaign_count']).'</td>
+                <td class="stats" id="avgimp" data-number="'.$campaigninfo['totalimpressions']/$influencerinfo['campaign_count'].'">'.numberAbbreviation($campaigninfo['totalimpressions']/$influencerinfo['campaign_count']).'</td>
+                <td class="stats" id="avgeng" data-number="'.$campaigninfo['totalengagement']/$influencerinfo['campaign_count'].'">'.numberAbbreviation($campaigninfo['totalengagement']/$influencerinfo['campaign_count']).'</td>
                 <td class="stats"id="reach" data-num="'.$campaigninfo['totalimpressions'].'">'.numberAbbreviation($campaigninfo['totalimpressions']).'</td>
+                <td class="stats"id="engagement" data-number="'.$campaigninfo['totalengagement'].'">'.numberAbbreviation($campaigninfo['totalengagement']).'</td>
             </tr>
             <tr>
                 <td class="label-info">Influencers</td>
@@ -160,6 +172,7 @@ width:20%;
                 <td class="label-info">Avg Impressions</td>
                 <td class="label-info"> Avg Engagement</td>
                 <td class="label-info"> Total Reach</td>
+                <td class="label-info"> Total Engagement</td>
             </tr>
             </tbody>
         </table>
@@ -207,7 +220,8 @@ width:20%;
 
                 echo '
                     <div  class="influencer-box col-xs-12 col-md-6 col-lg-3 col-xl-2" data-id="'.$id.'" data-t-post="'.$twitterpost.'" data-f-post="'.$facebookpost.'"
-                    data-i-post="'.$instagrampost.'" data-t-impressions="'.$twitterimpressions.'" data-f-impressions="'.$facebookimpressions.'" data-i-impressions="'.$instagramimpressions.'">
+                    data-i-post="'.$instagrampost.'" data-t-impressions="'.$twitterimpressions.'" data-f-impressions="'.$facebookimpressions.'" data-i-impressions="'.$instagramimpressions.'" 
+                    data-t-engagement="'.$twittereng.'" data-i-engagement="'.$instagrameng.'" data-f-engagement="'.$facebookeng.'">
                             <div class="influencer-card-discover">
 
                                 <img class="influencer-image-card" src="http://cogenttools.com/'.$info['image'].'" onerror="this.src=`/assets/images/default-photo.png`">
