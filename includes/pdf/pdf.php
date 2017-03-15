@@ -4,6 +4,7 @@ require  "autoload.php";
 include '../dbinfo.php';
 include '../class/savecampaign.php';
 include '../numberAbbreviation.php';
+$today = date('m.d.Y');
 $obj = new saveCampaign;
 $columnid = $_SESSION['column_id'];
 $campaignid = $_GET['id'];
@@ -11,10 +12,11 @@ $stmt = $conn->prepare('SELECT `campaign_name`,`campaign_desc`,`campaign_request
                 FROM `campaign_save_link` WHERE `campaign_id` = ? AND `column_id` = ? ');
 $stmt->bind_param('ss',$campaignid,$columnid);
 $stmt->execute();
-$stmt->bind_result($name,$desc,$request,$createdate,$instimpressions,$faceimpressions,$twitterimpressions,$totalimpressions,$instengagement,$twitterengagement,$facebookengagement,$totalengagement);
+$stmt->bind_result($name,$desc,$request,$createdate,$instimpressions,$faceimpressions,$twitimpressions,$totalimpressions,$instengagement,$twitterengagement,$facebookengagement,$totalengagement);
 $stmt->fetch();
 $html = '';
         $influencerinfo = $obj->getCampaign($campaignid);
+        $campaigninfo = $obj->getCampaignInfo($campaignid);
         foreach($influencerinfo['influencer'] as $influencerid => $info){
         $id = $influencerid;
         $instagramurl = $info['instagram_url'];
@@ -50,8 +52,8 @@ $html = '';
           <div class="influencer-info" style="">
              <img src="http://cogenttools.com/images/'.$id.'.jpg"  class="influencer-campaign-image">
                 <div class="influencer-name">
-                  <h4 class="influencer-handle"> @'.$handle.' </h4>
-                  <h4 class="influencer-loc"> Brooklyn, NY </h4> 
+                  <p class="influencer-handle"> @'.$handle.' </p>
+                  <p class="influencer-loc"> Brooklyn, NY </p> 
                 </div>
            </div>
        </td>
@@ -79,7 +81,7 @@ $html = '';
     </div>
     <div class="res-mini-col">
         <div class="impression-res">'.numberAbbreviation($facebookimpressions).'</div>
-        <div class="engagement-res"> '.numberAbbreviation($facebookengagement).'</div>
+        <div class="engagement-res"> '.numberAbbreviation($facebookeng).'</div>
         <div class="social-following"> '.numberAbbreviation($info['facebook_count']).'</div>
     </div>
     </div>
@@ -95,7 +97,7 @@ $html = '';
     </div>
     <div class="res-mini-col">
         <div class="impression-res">'.numberAbbreviation($twitterimpressions).'</div>
-        <div class="engagement-res"> '.numberAbbreviation($twitterengagement).' </div>
+        <div class="engagement-res"> '.numberAbbreviation($twittereng).' </div>
         <div class="social-following">'.numberAbbreviation($info['twitter_count']).' </div>
     </div>
     </div>
@@ -134,6 +136,7 @@ $docraptor = new DocRaptor\DocApi();
   <head>
     <title>Cogent Influencer Deck</title>
     <link rel="shortcut icon" href="http://cogenttools.com/cogent-favicon.png">
+    <link rel="stylesheet" href="http://avocadoandtoast.com/global/fonts/MontserrantFonts/stylesheet.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700|Nothing+You+Could+Do|" rel="stylesheet">
 
 <style type="text/css">
@@ -150,16 +153,23 @@ margin-left:20px;
 margin-right:20px;
 }
 body{
-  font-family: "Montserrat", sans-serif;
+  font-family: "montserratlight";
 
 }
 img{
   margin-left:-20px;
 }
 
+#summary-text{
+font-size:11px;
+
+  }
 #title{
-  font-size:50px;
+  font-size:30px;
     margin-top:0px;
+    color:#30363F;
+    font-family: "montserratlight";
+    letter-spacing:0px;
 }
 
 table {
@@ -167,8 +177,12 @@ table {
 }
 
 #brand{
-  font-size:28px;
+  padding-top:30px;
+  font-size:18px;
   margin-bottom:0px;
+  color:#30363F;
+  font-family: "montserratlight";
+  letter-spacing:1px;
 }
 
 #summary{
@@ -189,7 +203,7 @@ table {
   margin-right: 14px;
 }
 .index-color{
-  font-size: 14px;
+  font-size: 11px;
 }
 .social-col{
   margin-top: 15px;
@@ -197,10 +211,10 @@ table {
   padding: 0;
 }
 .twitter-logo-pdf{
-  width: 26px;
+  width: 20px;
 }
 .ig-logo-pdf, .fb-logo-pdf{
-  width: 22px;
+  width: 16px;
 }
  thead {
  padding-top: 10px;
@@ -216,9 +230,11 @@ table {
 }
 .post-res-div.total-col {
  padding-right: -80px;
- padding-left: 10px;
+ padding-left: 25px;
 }
-
+.post-res{
+margin-left:-10px;
+}
 
 .ig-logo-pdf{
   padding-left: 0px;
@@ -252,7 +268,7 @@ table  {
 }
 .influencer-row {
   border-bottom: 1px solid lightgrey;
-  height: 150px;
+  height: 100px;
 }
 .post-res-div{
 
@@ -260,17 +276,24 @@ table  {
 
 .influencer-handle, .influencer-loc, .influencer-name {
   margin-top: -20px;
+  font-family: "montserratlight";
+  font-size:14px;
+  display:inline;
+  max-width:20px;
+  width:20px;
+  text-overlflow:ellipsis;
 }
 
 .influencer-name {
-  font-size:16px;
+  font-size:13px;
   position: relative;
   left: 48px;
   top: -50px;
   padding-left: 10px;
+  font-family: "montserratlight";
 }
 .influencer-info {
-  margin-top: 40px;
+  margin-top: 20px;
   padding-right: 10px;
   max-width:115px;
   vertical-align:middle;
@@ -279,7 +302,7 @@ table  {
 }
 
 .post-num{
-  font-size: 40px;
+  font-size: 35px;
   color: #73c48d;
 }
 .post-name{
@@ -291,7 +314,8 @@ table  {
 .res-mini-col {
  float: right;
  margin-top: -53px;
- margin-right: -30px;
+ margin-right: -50px;
+ font-size:13px;
 }
 
 .impression-res, .engagement-res, .social-following {
@@ -308,7 +332,7 @@ table  {
 }
 
 .influencer-loc {
-  font-size: 14px;
+  font-size: 12px;
 }
 .instagram-overall-res, .facebook-overall-res, .twitter-overall-res, .overall-grand-total {
   font-size: 30px;
@@ -328,7 +352,7 @@ table  {
   text-transform: uppercase;
   display: inline-block;
   padding-top: 10px;
-  font-size: 13px;
+  font-size: 11px;
   font-weight:600;
   margin-left: 40px;
 }
@@ -362,13 +386,13 @@ table  {
 <!-- Starts here -->
 
 <div class="header"><img src="http://avocadoandtoast.com/assets/images/at-logo-black.png">
-<p style="float:right; margin-top:-60px;">03.01.2017 </p>
+<p style="float:right; margin-top:-60px; font-size:11px;">'.$today.'</p>
 </div>
 
 
 
 <div id="brand-name" style="margin-top:-30px;">
-  <h2 id="brand">BRAND NAME </h2>
+  <h2 id="brand">'.$campaigninfo['brandname'].'</h2>
   <h1 id="title">'.$name.'</h1>
 
 </div>
@@ -412,7 +436,7 @@ table  {
 
        <tr class="influencer-row" style="">
        <td class="campaign-sect" style="border-bottom:none;">
-         <div class="total-engagement" style="width:135px;"> CAMPAIGN ENGAGEMENT </div>
+         <div class="total-engagement" style="width:135px; font-size:13px;"> CAMPAIGN ENGAGEMENT </div>
 
 
        </td>
@@ -447,7 +471,7 @@ table  {
 
        <tr class="influencer-row" style="">
        <td class="campaign-sect" style="border-bottom:hidden;">
-         <div class="total-engagement" style="width:135px;"> CAMPAIGN IMPRESSIONS </div>
+         <div class="total-engagement" style="width:135px; font-size:13px;"> CAMPAIGN IMPRESSIONS </div>
 
        </td>
 
@@ -467,7 +491,7 @@ table  {
 
          <td class="twitter-col" style="background-color:transparent;border-bottom:hidden;">
       <div class="twitter-overall-res" style="position:relative;left:30px;">
-            '.numberAbbreviation($twitterimpressions).'
+            '.numberAbbreviation($twitimpressions).'
     </div>
        </td>
 
@@ -484,17 +508,17 @@ table  {
 </table>
 
 <div class="summary-container" style="width:750px;border:1px solid lightgrey;margin-left:20px;margin-right:20px;margin-top:50px;">
-  <div class="summary-container"><div class="campaign-status"> Campaign not in progress </div>
+  <div class="summary-container"><div class="campaign-status" > Campaign not in progress </div>
   <div class="campaign-date">  CREATED '.$createdate.' </div>
   </div>
 
-  <div class="summary-influencers"> 7 <br>  <span class="total-influencer-copy"> Influencers </span> </div>
+  <div class="summary-influencers">'.$influencerinfo['campaign_count'].'<br>  <span class="total-influencer-copy" style="font-size:11px;"> Influencers </span> </div>
 
-    <div class="summary-post"> 23 <br> <span class="total-post-copy"> Total Post </span> </div>
+    <div class="summary-post">'.$campaigninfo['totalposts'].'<br> <span class="total-post-copy total-bottom" style="font-size:11px;" > Total Post </span> </div>
 
-      <div class="summary-impressions"> 23m <br> <span class="total-impressions-copy"> Avg Impressions </span> </div>
+      <div class="summary-impressions">'.numberAbbreviation($campaigninfo['totalimpressions']/$influencerinfo['campaign_count']).'<br> <span class="total-impressions-copy" style="font-size:11px;"> Avg Impressions </span> </div>
 
-      <div class="summary-engagement"> 643 <br> <span class="total-engagement-copy"> Avg Engagement </span> </div>
+      <div class="summary-engagement">'.numberAbbreviation($campaigninfo['totalengagement']/$influencerinfo['campaign_count']).'<br> <span class="total-engagement-copy" style="font-size:11px;"> Avg Engagement </span> </div>
 
 
 </div>

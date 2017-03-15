@@ -27,11 +27,11 @@ foreach($selectedusers as $user => $postnumber){
     $arr[$user]['facebookengagement'] = ($postnumber['facebookposts'] * $facebookcount) * ($engagement['facebook']['average_engagement']/$facebookcount); 
     $totalfacebookimpressions += $facebookcount * $postnumber['facebookposts'];
     $totalfacebookengagement += $arr[$user]['facebookengagement'];
-
     $arr[$user]['twitterpost'] = $postnumber['twitterposts']; 
     $arr[$user]['twitterimpressions'] = $twittercount * $postnumber['twitterposts'];
     $arr[$user]['twitterengagement'] = ($postnumber['twitterposts'] * $twittercount) * ($engagement['twitter']['average_engagement']/$twittercount); 
     $totaltwitterimpressions += $twittercount * $postnumber['twitterposts'];
+    
     $totaltwitterengagement += $arr[$user]['twitterengagement'];
     $totalpost += $postnumber['twitterposts'] + $postnumber['facebookposts'] + $postnumber['instagramposts'];
 
