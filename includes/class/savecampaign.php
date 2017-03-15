@@ -137,13 +137,13 @@ public function updateCampaignDescription($campaignid,$columnid,$description = N
 *@param {string} - campaignend default NULL
 *@return {bool}
 */
-public function updateCampaign($campaignid,$campaignname,$campaigndesc = NULL, $campaignrequest = NULL, $campaignstart = NULL, $campaignend = NULL){
+public function updateCampaign($campaignid,$campaignname,$brandname,$campaigndesc = NULL, $campaignrequest = NULL, $campaignstart = NULL, $campaignend = NULL){
     $conn = $this->dbinfo();
     $saveconn = $this->savedDB();
     //First we will change the name for the campaign name 
     $campaignname = trim($campaignname);
-    $stmt = $conn->prepare("UPDATE `campaign_save_link` SET `campaign_name` = ?, `campaign_desc` = ?, `campaign_request` = ?, `start_date` = ?, `end_date` = ?  WHERE `campaign_id` = ?");
-    $stmt->bind_param('ssssss',$campaignname,$campaigndesc,$campaignrequest,$campaignstart,$campaignend,$campaignid);
+    $stmt = $conn->prepare("UPDATE `campaign_save_link` SET `campaign_name` = ?, `brand_name` = ?, `campaign_desc` = ?, `campaign_request` = ?, `start_date` = ?, `end_date` = ?  WHERE `campaign_id` = ?");
+    $stmt->bind_param('sssssss',$campaignname,$brandname,$campaigndesc,$campaignrequest,$campaignstart,$campaignend,$campaignid);
     if($stmt->execute()){
         return true;
     }
@@ -300,14 +300,15 @@ else
 
 public function getCampaignInfo($campaignid){
     $conn = $this->dbinfo();
-    $stmt = $conn->prepare('SELECT `campaign_desc`,`campaign_request`,`created_date`,`start_date`,`end_date`,`total_impressions`,`total_engagement`,`total_post` FROM `campaign_save_link` WHERE `campaign_id` = ?');
+    $stmt = $conn->prepare('SELECT `campaign_name`,`campaign_desc`,`campaign_request`,`brand_name`,`created_date`,`start_date`,`end_date`,`total_impressions`,`total_engagement`,`total_post` FROM `campaign_save_link` WHERE `campaign_id` = ?');
     $stmt->bind_param('s',$campaignid);
     $stmt->execute();
-    $stmt->bind_result($campaigndesc,$campaignrequest,$created,$start,$end,$totalimpressions,$totalengagement,$totalpost);
+    $stmt->bind_result($campaignname,$campaigndesc,$campaignrequest,$brandname,$created,$start,$end,$totalimpressions,$totalengagement,$totalpost);
     while($stmt->fetch()){
         $arr['campaignname'] = $campaignname;
         $arr['campaignid'] = $campaignid;
         $arr['description'] = $campaigndesc;
+        $arr['brandname'] = $brandname;
         $arr['created'] = $created;
         $arr['totalposts'] = $totalpost;
         $arr['totalimpressions'] = $totalimpressions;

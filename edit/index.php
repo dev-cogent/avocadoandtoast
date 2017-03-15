@@ -29,7 +29,8 @@ $campaignrequest = $campaigninfo['request'];
 $campaignstart = $campaigninfo['campaignstart'];
 $campaignend = $campaigninfo['campaignend'];
 $campaignrequest = $campaigninfo['campaignrequest'];
-$campaignname = $save->getCampaignName($campaignid);
+$campaignname = $campaigninfo['campaignname'];
+$brandname = $campaigninfo['brandname'];
 if(isset($campaignstart)){
     $today = $campaignstart;
 }
@@ -55,7 +56,7 @@ if(isset($campaignend)){
 <link rel="stylesheet" href="/assets/uislider/nouislider.css">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
-<link rel="stylesheet" href="/includes/css/discover.css">
+<link rel="stylesheet" href="/assets/css/discover.css">
 <link rel="stylesheet" href="/assets/css/sidebar.css">
 <style>
 .form-control{
@@ -113,6 +114,10 @@ if(isset($campaignend)){
     <label class="title">Campaign Name </label>
     <input type="text" class="form-control category avocado-focus" id="name" value="<?php echo $campaignname; ?>">
 
+
+    <label class="title">Brand Name </label>
+    <input type="text" class="form-control category avocado-focus" id="brandname" value="<?php echo $brandname; ?>">
+
     <label class="title">Campaign Summary </label>
     <br/>
     <label>What is it you are trying to do? </label>
@@ -148,6 +153,7 @@ $(document).on('click','.submit',function(){
     const campaignrequest = $('#campaign-request').val();
     const campaignstart = $('#campaign-start').val();
     const campaignend = $('#campaign-end').val();
+    const brandname = $('#brandname').val();
     $.ajax({
         type: 'POST',
         url: '/includes/ajax/updatecampaign.php',
@@ -157,7 +163,8 @@ $(document).on('click','.submit',function(){
             campaignsummary: campaignsummary,
             campaignrequest:campaignrequest,
             campaignstart:campaignstart,
-            campaignend:campaignend
+            campaignend:campaignend,
+            brandname:brandname
         },
         success: function (jqXHR, textStatus, errorThrown) {
             dialog = bootbox.dialog({

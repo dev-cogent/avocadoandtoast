@@ -78,8 +78,8 @@
 height:360px;
 /*width:75%;*/
 border: 1px solid rgb(210,215,220);
-padding-left:75px;
-padding-top:15px;
+padding-left:90px;
+padding-top:40px;
 float:left;
 }
 
@@ -272,6 +272,32 @@ float:right;
     position: relative;
     z-index: 1;
     border-radius:10px;
+}
+
+
+.influencer-card-discover{
+    height: 65%;
+    border: 1px solid rgb(210,215,220);
+    float:left;
+    width:88%;
+    margin-bottom:30px;
+    padding-right:0px;
+    padding-left:0px;
+}
+
+.influencer-card-discover:hover{
+      border: 1px solid #73C48D;
+
+}
+
+.influencer-image-card{
+    max-width: 100%;
+    width:100%;
+    object-fit: cover;
+    object-position: 0 33%;
+    /*height: 262px;*/
+    /*Height will be changed when we figure out different solution */
+
 }
 
 
