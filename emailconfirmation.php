@@ -1,66 +1,62 @@
-
 <!DOCTYPE html>
-<html class="no-js css-menubar" lang="en">
 <head>
   <?php include 'includes/head.php' ?>
-  <style>
-  @media (max-width:960px){
-  #centercontent{
-    padding-right: 0% !important; 
-    padding-left: 0% !important;
-  }
-}
-  #centercontent{
-    padding-right:27%; 
-    padding-left:27%;
-  }
-  #footer {
-   position:absolute;
-   bottom:0;
-   width:100%;
-   height:60px;   /* Height of the footer */
-   background:#6cf;
-}
-#agency{
-    display: inline;
-    border-right: 1px solid rgb(226,225,229);
-    border-left: 1px solid rgb(226,225,229);
-    border-top: 1px solid rgb(226,225,229);
-    border-radius:2px;
-    padding-right: 9.5%;
-    padding-left: 9.5%;
-    padding-top: 1.7%;
-    padding-bottom:1.7%;
-  
-}
-#influencer{
-    display: inline;
-    border-right: 1px solid rgb(226,225,229);
-    border-top: 1px solid rgb(226,225,229);
-    border-left:1px solid rgb(226,225,229);
-    border-radius:2px;
-    padding-right: 9.5%;
-    padding-left: 9.5%;
-    padding-top: 1.7%; 
-    padding-bottom:1.7%;
-}
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: #c4c4c4 !important;
-}
-</style>
-    <title>Confirmation | Project Social</title>
+    <title>Avocado & Toast</title>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/includes/javascript/savecampaign.js"></script>
 <script src="/includes/javascript/addtolist.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 </head>
+
+
+  <header class="header avocado-header">
+
+
+    <!--test -->
+      <!-- <div class="container-fluid avocado-container"> -->
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="row avocado-row">
+
+        <nav class="navbar">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                   <a class="navbar-brand" href="/"><img src="assets/images/at-logo-black.png" class="logo-nav-index"> </a>
+             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+               <span class="sr-only"> Toggle Navigation </span>
+                      <span class="icon-bar"> </span>
+                        <span class="icon-bar"> </span>
+                      <i class="icon wb-menu" style=""></i>
+                          <span class="icon-bar"> </span>
+             </button>
+           </div>
+
+
+
+   <div class="collapse navbar-collapse" id="myNavBar">
+      <ul class="nav navbar-nav avocado-ul center-ul">
+          <li class="nav-href"><a href="#" class="main-nav-dark"> Influencers </li>
+          <li class="nav-href"><a href="/agency.php" class="main-nav-dark"> Agencies </li>
+          <li class="nav-href"><a href="#" class="about-us main-nav-dark"> About Us </li>
+          </ul>
+
+      <ul class="nav navbar-nav navbar-right login-sect">
+          <li class="login border-dark"> <a href="/login.php" class="login-nav main-nav-dark"> LOGIN </a> </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+
+</div>
+</div>
+</header>
 <body class=" ">
   <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-   <?php include 'includes/nav.php' ?>
    <div class="p-b-50"></div>
-   <div class="container"> 
+   <div class="container" style="padding-top:100px;"> 
 
    <h1 style="text-align:center;"> Confirmation </h1>
     <div id="centercontent" style="text-align:center;">

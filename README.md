@@ -1,7 +1,11 @@
-# Remark - Responsive Bootstrap Admin Template
+# Avocado & Toast - The Future Of Influencer Marketing
 
-THANK YOU FOR PURCHASING!
+![alt tag](http://avocadoandtoast.com/assets/images/at-logo.png)
 
-You can access the documentation: http://remark-docs.readthedocs.org/en/latest/
+Discover Influencers
 
-Fell free email us (support@amazingsurge.com) for support issues.
+Create A Campaign
+
+Export and Price your Campaign
+
+
