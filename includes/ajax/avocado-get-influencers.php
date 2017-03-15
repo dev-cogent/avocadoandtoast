@@ -103,46 +103,46 @@ echo '
                             <h4 class="influencer-handle-text location-text">'.$location.'</h4>
                       </div></td>
 
-                      <td data-id="'.$id.'" class="insta-column" style="width:15%;"> 
-                          <div class="posts-res-div"> 
-                            <input data-id="'.$id.'" data-platform="instagram" class="instagraminput campaignfocus" type="number" value="0" max="100" min="0">  
-                            <div class="post-results">posts</div> 
-                          </div> 
+                      <td data-id="'.$id.'" class="insta-column" style="width:15%;">
+                          <div class="posts-res-div">
+                            <input data-id="'.$id.'" data-platform="instagram" class="instagraminput campaignfocus" type="number" value="0" max="100" min="0">
+                            <div class="post-results">posts</div>
+                          </div>
                           <div class="results-mini-col">
-                            <div class="impression-res impression-blue impression-instagram-blue" data-id="'.$id.'" data-number="0">0</div> 
-                            <div class="engagement-res engagement-orange engagement-orange-instagram" data-id="'.$id.'" data-number="0" >0</div> 
-                            <div class="social-following-res social-following-red">'.numberAbbreviation($instagramcount).'</div> 
-                          </div> 
+                            <div class="impression-res impression-blue impression-instagram-blue" data-id="'.$id.'" data-number="0">0</div>
+                            <div class="engagement-res engagement-orange engagement-orange-instagram" data-id="'.$id.'" data-number="0" >0</div>
+                            <div class="social-following-res social-following-red">'.numberAbbreviation($instagramcount).'</div>
+                          </div>
                       </td>
 
-                      <td data-id="'.$id.'" class="twit-column" style="width:15%;"> 
-                        <input data-id="'.$id.'" data-platform="facebook" class="facebookinput campaignfocus" type="number" value="0" max="100" min="0"> 
-                        <div class="post-results"> posts</div> 
+                      <td data-id="'.$id.'" class="twit-column" style="width:15%;">
+                        <input data-id="'.$id.'" data-platform="facebook" class="facebookinput campaignfocus" type="number" value="0" max="100" min="0">
+                        <div class="post-results"> posts</div>
                         <div class="results-mini-col">
-                          <div class="impression-res impression-blue impression-facebook-blue" data-id="'.$id.'" data-number="0">0</div> 
-                          <div class="engagement-res engagement-orange engagement-orange-facebook"  data-id="'.$id.'" data-number="0" >0</div> 
-                          <div class="social-following-res social-following-red">'.numberAbbreviation($facebookcount).'</div>  
-                        </div>  
+                          <div class="impression-res impression-blue impression-facebook-blue" data-id="'.$id.'" data-number="0">0</div>
+                          <div class="engagement-res engagement-orange engagement-orange-facebook"  data-id="'.$id.'" data-number="0" >0</div>
+                          <div class="social-following-res social-following-red">'.numberAbbreviation($facebookcount).'</div>
+                        </div>
                       </td>
 
-                      <td data-id="'.$id.'" class="face-column" style="width:15%;"> 
-                        <input data-id="'.$id.'" data-platform="twitter" class="twitterinput campaignfocus" type="number" value="0" max="100" min="0"> 
-                        <div class="post-results"> posts</div> 
+                      <td data-id="'.$id.'" class="face-column" style="width:15%;">
+                        <input data-id="'.$id.'" data-platform="twitter" class="twitterinput campaignfocus" type="number" value="0" max="100" min="0">
+                        <div class="post-results"> posts</div>
                         <div class="results-mini-col">
-                          <div class="impression-res impression-blue impression-twitter-blue" data-id="'.$id.'" data-number="0">0</div> 
-                          <div class="engagement-res engagement-orange engagement-orange-twitter" data-id="'.$id.'" data-number="0">0</div> 
-                          <div class="social-following-res social-following-red">'.numberAbbreviation($twittercount).'</div> 
-                        </div>  
+                          <div class="impression-res impression-blue impression-twitter-blue" data-id="'.$id.'" data-number="0">0</div>
+                          <div class="engagement-res engagement-orange engagement-orange-twitter" data-id="'.$id.'" data-number="0">0</div>
+                          <div class="social-following-res social-following-red">'.numberAbbreviation($twittercount).'</div>
+                        </div>
                       </td>
 
-                      <td data-id="'.$id.'" class="overall-inf-total-column" style="width:15%;"> 
-                          <input data-id="'.$id.'" data-platform="total" class="totalinput campaignfocus" type="number" value="0" max="100" disabled> 
-                          <div class="post-results"> posts</div> 
+                      <td data-id="'.$id.'" class="overall-inf-total-column" style="width:15%;">
+                          <input data-id="'.$id.'" data-platform="total" class="totalinput campaignfocus" type="number" value="0" max="100" disabled>
+                          <div class="post-results"> posts</div>
                           <div class="results-mini-col">
-                            <div class="impression-res impression-blue impression-total-blue" data-id="'.$id.'" data-number="0" >0</div> 
-                            <div class="engagement-res engagement-orange engagement-orange-total"  data-id="'.$id.'" data-number="0" >0</div> 
-                            <div class="social-following-res social-following-red"> '.numberAbbreviation($total).' </div> 
-                          </div>  
+                            <div class="impression-res impression-blue impression-total-blue" data-id="'.$id.'" data-number="0" >0</div>
+                            <div class="engagement-res engagement-orange engagement-orange-total"  data-id="'.$id.'" data-number="0" >0</div>
+                            <div class="social-following-res social-following-red"> '.numberAbbreviation($total).' </div>
+                          </div>
                       </td>
                     </tr>';
                     unset($stmt);

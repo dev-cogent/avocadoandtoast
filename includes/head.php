@@ -10,7 +10,9 @@
   <link rel="stylesheet" href="/global/css/bootstrap-extend.min.css">
 
   <link rel="stylesheet" href="/assets/css/custom.css">
-      <link rel="stylesheet" href="/assets/css/avocado.css">
+  <link rel="stylesheet" href="/assets/css/avocado.css">
+    <link rel="stylesheet" href="/assets/css/checkmark-animation.css">
+      <link rel="stylesheet" href="/assets/css/profile.css">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="/assets/css/site.min.css">
   <link rel="stylesheet" href="/global/vendor/magnific-popup/magnific-popup.min.css">
@@ -47,7 +49,7 @@
     <![endif]-->
   <!-- Scripts -->
   <script src="/global/vendor/modernizr/modernizr.min.js"></script>
-  <script src="/global/js/plugin/switchery.js"></script> 
+  <script src="/global/js/plugin/switchery.js"></script>
   <script src="/global/vendor/breakpoints/breakpoints.js"></script>
   <script type="text/javascript" src="/jquery-3.0.0.min.js"></script>
   <script src="/includes/javascript/account.js"></script>

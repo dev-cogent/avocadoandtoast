@@ -23,7 +23,7 @@ include 'includes/numberAbbreviation.php';
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
 <link rel="stylesheet" href="/includes/css/discover.css">
 <link rel="stylesheet" href="/assets/css/sidebar.css">
-<link rel="stylesheet" href="/check.css">
+
 <style>
 
 .form-control{

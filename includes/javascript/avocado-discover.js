@@ -21,7 +21,7 @@ $(document).on('click','#calculate',function(){
 }); // end ajax request*/
 
 });
- 
+
 
 $(document).on('click','#apply',function(){
 
@@ -98,12 +98,6 @@ $(document).on('click', '#search-keyword', function () {
 });
 
 
-$(document).on('click', '.invite', function () {
-    var id = $(this).attr('data-id');
-    var element = $(this);
-    selectInfluencer(id, element);
-
-});
 
 $(document).on('click', '.show-hidden', function () {
     $('.hidden-influencers').css('display', 'unset');
@@ -115,6 +109,13 @@ $(document).on('click', '.hide-influencers', function () {
     $('.hide-influencers').attr('class', 'show-hidden');
 });
 
+
+$(document).on('click', '.invite', function () {
+    var id = $(this).attr('data-id');
+    var element = $(this);
+    selectInfluencer(id, element);
+
+});
 
 
 function selectInfluencer(id, element) {
@@ -144,9 +145,9 @@ function selectInfluencer(id, element) {
         count++;
         $('#count').text(count);
 
-        //After we put in array we will now highlight the border.
+
     }
-    else {
+    else { // removes user from the sidebar
         var temp = false;
         var index = selectedusers.indexOf(id);
         if (index > -1) {
@@ -509,7 +510,7 @@ $(document).on('change', '.campaignfocus', function () {
 
 
 
- 
+
 });
 
 function getCalculation(type, posts, selectedusers) {
@@ -535,7 +536,7 @@ function getCalculation(type, posts, selectedusers) {
                     $('.engagement-orange-instagram[data-id='+id+']').attr('data-number',arr.influencer[id].engagement);
                     $('.impression-instagram-blue[data-id='+id+']').text(impressionUser);
                     $('.impression-instagram-blue[data-id='+id+']').attr('data-number',arr.influencer[id].impressions);
-                    
+
                 }
                 $('#instagram-engagement').text(abbrNum(arr.engagement));
                 $('#instagram-engagement').attr('data-number',arr.engagement);
@@ -554,7 +555,7 @@ function getCalculation(type, posts, selectedusers) {
                     $('.engagement-orange-twitter[data-id='+id+']').attr('data-number',arr.influencer[id].engagement);
                     $('.impression-twitter-blue[data-id='+id+']').text(impressionUser);
                     $('.impression-twitter-blue[data-id='+id+']').attr('data-number',arr.influencer[id].impressions);
-                    
+
                 }
                 $('#twitter-engagement').text(abbrNum(arr.engagement));
                 $('#twitter-engagement').attr('data-number',arr.engagement);
@@ -562,7 +563,7 @@ function getCalculation(type, posts, selectedusers) {
                 $('#twitter-impressions').attr('data-number',arr.engagement);
             }
 
-            
+
             if (type == 'facebook') {
                 $('.facebook-posts').empty();
                 var arr = JSON.parse(jqXHR);
@@ -575,7 +576,7 @@ function getCalculation(type, posts, selectedusers) {
                     $('.engagement-orange-facebook[data-id='+id+']').attr('data-number',arr.influencer[id].engagement);
                     $('.impression-facebook-blue[data-id='+id+']').text(impressionUser);
                     $('.impression-facebook-blue[data-id='+id+']').attr('data-number',arr.influencer[id].impressions);
-                    
+
                 }
                 $('#facebook-engagement').text(abbrNum(arr.engagement));
                 $('#facebook-engagement').attr('data-number',arr.engagement);
@@ -583,7 +584,7 @@ function getCalculation(type, posts, selectedusers) {
                 $('#facebook-impressions').attr('data-number',arr.engagement);
             }
 
-            
+
             getTotal(selectedusers);
 
         }
@@ -613,7 +614,7 @@ function getTotal(selectedusers){
     $('#total-engagement').text(abbrNum(campaignEngagementTotal));
     $('#total-impressions').text(abbrNum(campaignImpressionsTotal))
 
-    
+
 
 }
 

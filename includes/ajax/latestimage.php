@@ -1,4 +1,4 @@
-<?php 
+<?php
 $instuser = $_POST['inst_user'];
 $html = instcurl('https://www.instagram.com/'.$instuser.'/');
 $code = explode('"code":',$html);
@@ -11,7 +11,7 @@ $image = $image[1];
 
 if($image == NULL)
 continue;
-echo '<div class="col-xs-4 image-container">
+echo '<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 image-container">
                <a href="https://instagram.com/p/'.$link.'" target="_blank"><img class="col-xs-12 image-size" src="'.$image.'"></a>
       </div>';
 }
@@ -35,5 +35,5 @@ echo '<div class="col-xs-4 image-container">
         $data = curl_exec($ch); // Executing the cURL request and assigning the returned data to the $data variable
         curl_close($ch);    // Closing cURL
         return $data;   // Returning the data from the function
-  
- } // end instcurl 
+
+ } // end instcurl
