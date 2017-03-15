@@ -6,6 +6,6 @@ if(!isset($_SESSION['project_id'])){
 }
 
 $update = new saveCampaign;
-$info = $update->updateCampaign($_POST['campaignid'],$_POST['campaignname'],$_POST['campaignsummary'],$_POST['campaignrequest'],$_POST['campaignstart'],$_POST['campaignend']);
+$info = $update->updateCampaign($_POST['campaignid'],$_POST['campaignname'],$_POST['brandname'],$_POST['campaignsummary'],$_POST['campaignrequest'],$_POST['campaignstart'],$_POST['campaignend']);
 var_dump($info);
 
