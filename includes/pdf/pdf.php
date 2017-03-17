@@ -541,7 +541,7 @@ $create_response = $docraptor->createDoc($doc);
 //var_dump($create_response);
 header('Content-Description: File Transfer');
 header('Content-Type: application/pdf');
-header('Content-Disposition: attachment; filename=test.pdf');
+header('Content-Disposition: attachment; filename='.$name.'.pdf');
 header('Content-Transfer-Encoding: binary');
 header('Expires: 0');
 header('Cache-Control: must-revalidate, post-check=0, pre-check=0');

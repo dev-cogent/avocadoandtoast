@@ -1,21 +1,20 @@
 <?php
+session_start();
 include '../dbinfo.php';
 include '../numberAbbreviation.php';
+$stmt = $conn->prepare("SELECT `campaign_name`,`campaign_id` FROM `campaign_save_link` WHERE `column_id` = ?");
+$stmt->bind_param('s',$_SESSION['column_id']);
+$stmt->execute();
+$stmt->bind_result($campaignname,$campaignid);
+while($stmt->fetch()){
+  $options .= '<option class="option" value="'.$campaignid.'">'.$campaignname.'</option>';
+}
+unset($stmt);
 
 echo '
 <div class="col-xs-12 info-container">
 
-   <!-- <div class="col-xs-12 campaign-select">
-        <p  id="campaign-select-text" class="col-xs-12 col-md-1">Select Campaign:</p>
-            <select class="form-control category avocado-focus  campaign-dropdown col-xs-12">
-                <option class="option" value="fitness">Campaign Name</option>
-                <option class="option" value="music">Music</option>
-                <option class="option" value="movie">Film/Movies</option>
-                <option class="option" value="fashion">Fashion</option>
-                <option class="option" value="beauty">Beauty</option>
-                <option class="option" value=""> None</option>
-            </select>
-        -->
+
 
         <div class="row">
     <div class="col-sm-12 col-lg-6 campaign-info" style="margin-left:20px;">
@@ -30,9 +29,16 @@ echo '
 
     <button class="col-md-6 col-lg-2 col-xs-12 info-button secondary-button" style="">SUBMIT FOR PRICING</button>
     <button class="col-md-6 col-lg-2 col-xs-12 info-button main-button" id="createcampaign">CREATE CAMPAIGN </button>
+    <button class="col-md-6 col-lg-2 col-xs-12 info-button secondary-button" id="add-existing">ADD TO EXISTING CAMPAIGN </button>
 
     </div>
-
+<div class="col-xs-12 campaign-select">
+        <p  id="campaign-select-text" class="col-xs-12 col-md-1" style="font-family:Montserrat, sans-serif; width:175px;">SELECT CAMPAIGN:</p>
+            <select class="form-control category avocado-focus  campaign-dropdown col-xs-12">
+                <option class="option" value=""> None</option>
+                '.$options.'    
+            </select>
+            </div>
 
     <div class="row name-index-row">
     <div class="col-lg-8 col-md-6 col-xs-12">

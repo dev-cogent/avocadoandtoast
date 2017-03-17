@@ -33,6 +33,7 @@ function abbrNum(number, decPlaces = 2) {
             break;
         }
     }
+    if(typeof number == 'number') number = 0;
 
     return number;
 }
@@ -64,9 +65,6 @@ function abbrNum(number, decPlaces = 2) {
 
 
 
-
-
-
 $(window).scroll(function () {
 
     if (document.body.scrollTop > target2) {
@@ -82,24 +80,13 @@ $(window).scroll(function () {
 
 
 
-
-
-
 $(document).on('click', '.switch', function () {
     var platform = $(this).attr('data-platform');
     var id = $(this).attr('data-id');
-    if (platform == 'facebook') {
-        platform1 = 'instagram';
-        platform2 = 'twitter';
-    }
-    if (platform == 'twitter') {
-        platform1 = 'instagram';
-        platform2 = 'facebook';
-    }
-    if (platform == 'instagram') {
-        platform1 = 'twitter';
-        platform2 = 'facebook';
-    }
+    var platformarr = findPlatform(platform);
+    platform = platformarr[0];
+    platform1 = platformarr[1];
+    platform2 = platformarr[2];
 
     $(this).css('color', '#73C48D');
     //setting all the other colors to grey
@@ -124,6 +111,29 @@ $(document).on('click', '.switch', function () {
     $('.' + platform2 + '-total-post[data-id=' + id + ']').css('display', 'none');
 
 });
+
+/**
+ * @about identfies the platform 
+ * @param {string} platform 
+ * @returns{array} and array of all the platforms 
+ */
+function findPlatform(platform){
+    if (platform == 'facebook') {
+        platform1 = 'instagram';
+        platform2 = 'twitter';
+    }
+    if (platform == 'twitter') {
+        platform1 = 'instagram';
+        platform2 = 'facebook';
+    }
+    if (platform == 'instagram') {
+        platform1 = 'twitter';
+        platform2 = 'facebook';
+    }
+    var platformarr = [platform,platform1,platform2];
+    return platformarr;
+}
+
 
 
 $(document).on('click','.filter-option',function(){
@@ -159,12 +169,52 @@ $(document).on('click','.invite',function(){
     var id = $(this).attr('data-id');
     var element = $(this);
     var card = $('.influencer-box[data-id='+id+']');
-    removeInfluencerFromCampaign(id,element,card);
+    removeInfluencerFromCampaign(id,card);
+    UndoButton();
+    saveButton();
 }); 
 
 
 
-function removeInfluencerFromCampaign(id, element, card){
+$(document).on('click','#save-button',function(){
+    var urlParams = new URLSearchParams(window.location.search);
+    var campaignid = urlParams.getAll('id');
+        $.ajax({
+            type: 'POST',
+            url: '/includes/ajax/editcampaign.php',  
+            data: {
+            deletedInfluencers:deletedusers,
+            campaignid:campaignid
+            },
+            success: function (jqXHR, textStatus, errorThrown) {
+                dialog = bootbox.dialog({
+                    message: '<div class="bootbox-body">' +
+                    '<div class="icon-popup-div"> <img src="/assets/images/chasing_2.gif" class="success-popup-icon"/> </div>' +
+                    '<div class="row"> <div class="col-xs-12 popup-detail success">   <span class="yay"> YAY! </span> <br/> Your Campaign has been updated </div>' +
+                    '</div> </div>',
+                    closeButton: true
+                });
+                dialog.modal();
+            } // end success  
+        }); // end ajax request*/
+
+});
+
+
+$(document).on('click','#undo-button',function(){
+undoInfluencer();
+
+});
+
+
+
+
+/**
+ * @about removes the influencer from the campaign. 
+ * @param {string} id 
+ * @param {string} card 
+ */
+function removeInfluencerFromCampaign(id,card){
     card.fadeOut(); //Taking the influencer card and making it fadeOut/Disappear... like magic :) 
  
     var reach = parseInt($('#reach').attr('data-num')); //reach is also the totalImpressions. 
@@ -192,9 +242,68 @@ function removeInfluencerFromCampaign(id, element, card){
 }
 
 
+function saveButton(){
+    if (deletedusers.length == 0)
+    $('#save-button').css('display','none');
+    else
+    $('#save-button').css('display','unset');
+}
+
+
+function UndoButton(){
+    if (deletedusers.length == 0)
+    $('#undo-button').css('display','none');
+    else
+    $('#undo-button').css('display','unset');
+}
+
+
+
+/**
+ * Function to undoInflunecer - conisides with addInfluencerToCampaign
+ */
+function undoInfluencer(){
+    var lastelement = deletedusers.length - 1;
+    var id = deletedusers[lastelement]; 
+    deletedusers.splice(lastelement,1);
+    var card = $('.influencer-box[data-id='+id+']');
+    addInfluencerToCampaign(id,card);
+    if(deletedusers.length == 0){
+        UndoButton();
+        saveButton();
+    }
+}
 
 
 
 
+/**
+ * @about adds the influencer back to campain.
+ * @param {string} id 
+ * @param {string} card 
+ * 
+ */
+function addInfluencerToCampaign(id,card){
+    card.fadeIn();
+    var reach = parseInt($('#reach').attr('data-num')); //reach is also the totalImpressions. 
+    var numberOfInfluencers = parseInt($('#influnum').text());
+    var totalPost = parseInt($('#posts').text());
+    var totalInfluencerImpressions = parseInt(card.attr('data-t-impressions')) + parseInt(card.attr('data-f-impressions')) + parseInt(card.attr('data-i-impressions'));
+    var totalEngagement = parseInt($('#engagement').attr('data-number'));
+    var totalInfluencerEngagement = parseInt(card.attr('data-t-engagement')) + parseInt(card.attr('data-f-engagement')) + parseInt(card.attr('data-i-engagement'));
+    var totalInfluencerPost = parseInt(card.attr('data-t-post')) + parseInt(card.attr('data-i-post')) + parseInt(card.attr('data-f-post'));
+    var newEngagement = totalEngagement + totalInfluencerEngagement;
+    var newAvgEngagement = newEngagement/(numberOfInfluencers + 1);
+    var newreach = reach + totalInfluencerImpressions;
+    var newAvgImpressions = newreach /(numberOfInfluencers + 1);
+    $('#influnum').text(numberOfInfluencers + 1);     //Changing the influencer number
+    $('#posts').text(totalPost + totalInfluencerPost);     //changing the totalpost number 
+    $('#reach').attr('data-num',newreach); //changing reach 
+    $('#reach').text(abbrNum(newreach));
+    $('#engagement').text(abbrNum(newEngagement)); // changing engagement 
+    $('#engagement').attr('data-number',newEngagement); 
+    $('#avgimp').text(abbrNum(newAvgImpressions)); // chaning avg impresions
+    $('#avgeng').text(abbrNum(newAvgEngagement)); // changing avg engagement
 
+}
 

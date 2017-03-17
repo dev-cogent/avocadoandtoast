@@ -93,6 +93,12 @@ width:20%;
     font-family:'montserratlight';
 
 }
+.button-container{
+padding-left: 90px;
+border-bottom: 0px;
+height: 145px;
+padding-top: 45px;
+}
 
 </style>
 </head>
@@ -137,12 +143,13 @@ width:20%;
 <!--Filter content -->
 
 
-<div class="filter-container col-xs-12" style="border-bottom:0px; height:145px;">
-  <a  href="/dashboard.php" style="color:black;">  <button class="btn-campaign-options avocado-hover avocado-focus">  GO BACK  </button></a>
+<div class="button-container col-xs-12" style="border-bottom:0px; height:145px; padding-top:45px;">
+  <a href="/dashboard.php" style="color:black;">  <button class="btn-campaign-options avocado-hover avocado-focus">  GO BACK  </button></a>
   <a href="/edit/?id=<?php echo $campaignid;?>" style="color:black;">  <button class="btn-campaign-options avocado-hover avocado-focus">  EDIT CAMPAIGN  </button></a>
-  <a href="#" style="color:black;" class="pdf">  <button class="btn-campaign-options avocado-hover avocado-focus">  EXPORT CAMPAIGN  </button></a>
+  <a href="#"style="color:black;" class="pdf" data-id="<?php echo $campaignid; ?>">  <button class="btn-campaign-options avocado-hover avocado-focus">  EXPORT CAMPAIGN  </button></a>
   <a href="/price/?id=<?php echo $campaignid;?>" style="color:black;">  <button class="btn-campaign-options avocado-hover avocado-focus">  PRICE CAMPAIGN  </button></a>
-  <a href="/price/?id=<?php echo $campaignid;?>" style="display:none;" id="undo-button" >  <button class="btn-campaign-options avocado-hover avocado-focus" style="background-color:#73C48D; color:white; border:0px;">UNDO</button></a>
+  <a style="display:none;" id="undo-button" >  <button class="btn-campaign-options avocado-hover avocado-focus" style="background-color:#73C48D; color:white; border:0px;">UNDO</button></a>
+  <a style="display:none;" id="save-button" >  <button class="btn-campaign-options avocado-hover avocado-focus" style="background-color:#73C48D; color:white; border:0px;">SAVE</button></a>
 </div>
 
 <div class="col-xs-12" style="padding-left:75px;">
