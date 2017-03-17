@@ -75,6 +75,22 @@ if(isset($campaignend)){
 .search{
     min-width:143.5px;
 }
+.delete{
+float:left; 
+margin-left: 4.2%; 
+width:40%; 
+background-color:white;
+border:1px solid #30363C; 
+color:#30363C;
+height: 50px;
+font-size: 16px;
+font-family: 'Montserrat', sans-serif;
+min-width:143.5px;
+}
+
+.delete:hover{
+    box-shadow: 0 0 1px #30363C;
+}
 </style>
 </head>
 
@@ -134,7 +150,7 @@ if(isset($campaignend)){
         <input type="date" class="form-control category avocado-focus"  id="campaign-end" style="float:left; width:45%;" value="<?php echo $tomorrow;?>">
     </div>
     <div style="margin-top:50px;">
-        <button class="search avocado-hover col-xs-4 delete" id="search-keyword" style="float:left; margin-left: 4.2%; width:40%;">DELETE</button>
+        <button class="col-xs-4 delete" id="search-keyword" style="float:left; margin-left: 4.2%; width:40%; background-color:white; border:1px solid #30363C; color:#30363C;">DELETE</button>
         <button class="search avocado-hover col-xs-4 submit" id="search-keyword" style="float:left; margin-left:10%; width:40%;">SUBMIT</button>
     </div>
 

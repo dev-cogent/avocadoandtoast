@@ -19,7 +19,7 @@ if($genconn === NULL)
 if($saveconn === NULL)
     $saveconn = $this->savedDB();
 if($campaignname == NULL || $campaignname == "") 
-    $campaignname = 'Campaign Calculator '.time();
+    return 0;
 
 #Get the column id
 $columnid = $this->getUserColumnID($userid);
