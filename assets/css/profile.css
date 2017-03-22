@@ -11,13 +11,12 @@ margin-left: 55px;
 }
 .social-container {
   margin-top: 40%;
-  margin-bottom: 15%;
 }
 .instagram-logo-green, .twitter-logo-green {
   width: 40px;
 }
 .facebook-logo-green{
-  width: 33px;
+  width: 38px;
 }
 .youtube-logo-green {
   width: 60px;
@@ -64,12 +63,169 @@ margin-left: 55px;
 .card-discover{
     border: 1px solid rgb(210,215,220);
     float:left;
-    max-width: 350px;
+    /*max-width: 350px;*/
     width:100%;
+}
+.profile-tag-margin{
+  margin-bottom: 5%;
 }
 
 .influencer-card-discover:hover{
       border: 1px solid #73C48D;
+}
+.checkmark-profile {
+  margin-left: 44%;
+}
+.profile-card {
+  height: 180px;
+}
+
+.tag-container{
+  margin-top: 20px;
+  text-align: -webkit-center;
+}
+.tag {
+  text-align: center;
+  text-transform: uppercase;
+  width: 95px;
+  height: 27px;
+  font-size: 13px;
+  background-color: lightgrey;
+  border-radius: 95px;
+  line-height: 19px;
+  margin-top: 7px;
+  margin-right: 3px;
+}
+.fb-feed-card{
+  width: 207px;
+  margin-top: 15px;
+  height: 292px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  color: #1F232A;
+}
+.fb-feed-card:hover{
+      border: 1px solid #73C48D;
+}
+.fb-card{
+  height: 375px;
+  width: 425px;
+  max-width: 207px;
+  max-height: 200px;
+  background-color: black;
+}
+
+#facebook, .fb-feed-div {
+  padding:0;
+}
+
+.interaction-info {
+  text-align: left;
+  border-top: 1px solid lightgrey;
+  height: 50px;
+  font-size: 12px;
+  padding: 5px 10px;
+}
+.thumb-green{
+  width: 18px;
+}
+img.share-green {
+  width: 24px;
+}
+.comment-icon {
+  width: 20px;
+}
+ .likes, .comments , .shares {
+  display: inline-block;
+   margin-right: 5%;
+}
+
+.comment-icon,.thumb-green,.share-green{
+  margin-right: 2px;
+}
+
+.fb-caption {
+ padding: 5px 10px;
+ line-height: 22px;
+  height: 55px;
+  font-size: 12px;
+  text-align: -webkit-left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-family: 'montserratlight';
+}
+
+
+@media(min-width:600px) and)(max-width:770px){
+.col-sm-9.social-content, .col-sm-9.social-buttons {
+  float: right;
+  }
+}
+
+
+@media(min-width:768px) and (max-width:831px){
+  .profile-card {
+    height: 220px;
+  }
+  .checkmark-profile{
+    margin-left: 38%;
+  }
+}
+
+@media(min-width:768px) and (max-width:991px){
+
+
+}
+
+@media(min-width:992px) and (max-width:1100px){
+ .social-buttons, #instagram, #facebook {
+    width: 120%;
+  }
+  #facebook, .fb-feed-div{
+    padding:0;
+  }
+  .influencer-card-container{
+    margin-left: 12px;
+  }
+}
+
+@media(min-width:1101px) and (max-width:1200px){
+ .social-buttons, #instagram, #facebook {
+    width: 112%;
+  }
+  #facebook, .fb-feed-div{
+    padding:0;
+  }
+  .influencer-card-container{
+    margin-left: 12px;
+  }
+}
+
+@media(min-width:1201px) and (max-width:1400px){
+ .social-buttons, #instagram, #facebook {
+    width: 110%;
+  }
+  #facebook, .fb-feed-div{
+    padding:0;
+  }
+}
+
+@media(min-width:1401px) and (max-width:1450px){
+ .social-buttons, #instagram, #facebook {
+    width: 106%;
+  }
+  #facebook, .fb-feed-div{
+    padding:0;
+  }
+}
+
+@media(min-width:1501px) and (max-width:1600px){
+ .social-buttons, #instagram, #facebook {
+    width: 108%;
+  }
+  #facebook, .fb-feed-div{
+    padding:0;
+  }
 }
 
 @media (max-width:991px) {
@@ -103,8 +259,8 @@ margin-left: 55px;
     max-width: 100%;
     width:100%;
     object-fit: cover;
-    object-position: 0 33%;
-    height: 262px;
+    object-position: 30%;
+    /*height: 262px;*/
     /*Height will be changed when we figure out different solution */
 
 }
@@ -138,5 +294,6 @@ margin-left: 55px;
 }
 
 .social-buttons{
+  padding-top: 20px;
     padding-bottom:20px;
 }

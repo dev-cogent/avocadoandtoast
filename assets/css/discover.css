@@ -598,7 +598,10 @@ color:#73C48D;
     object-position: 0 33%;
     /*height: 262px;*/
     /*Height will be changed when we figure out different solution */
+}
 
+.influ-bottom {
+  height: 170px;
 }
 
 

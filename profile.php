@@ -4,7 +4,9 @@ session_start();
 include 'includes/dbinfo.php';
 include 'includes/numberAbbreviation.php';
 include 'includes/TwitterAPIexchange.php';
-$id = '5AUgZ0C';
+
+$id = $_GET['id'];
+
 
 ?>
 <!DOCTYPE html>
@@ -24,7 +26,7 @@ $id = '5AUgZ0C';
 <link rel="stylesheet" href="/assets/uislider/nouislider.css">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
-<link rel="stylesheet" href="/includes/css/discover.css">
+
 
 
 </head>
@@ -102,9 +104,9 @@ $id = '5AUgZ0C';
     $twitterhandle = $twitterhandle[0];
     echo '
                     <div  class="influencer-box col-xs-12 ">
-                            <div class="card-discover">
-                                <img class="influencer-image-card" src="https://project.social/'.$image.'">
-                                <div class="col-xs-12" style="height:170px;">
+                            <div class="card-discover profile-tag-margin">
+                                <img class="influencer-image-card" src="http://cogenttools.com/'.$image.'">
+                                <div class="col-xs-12 profile-card" style="">
                                     <!-- insthandle stuff -->
                                         <div class="icons col-xs-12">
                                             <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" style="color:#73C48D" aria-hidden="true"></i>
@@ -120,7 +122,7 @@ $id = '5AUgZ0C';
                                         </div>
                                     <!-- followers -->
                                     <div class="col-xs-12">
-                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'">'.numberAbbreviation($instagramcount).'5M Followers</p>
+                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'">'.numberAbbreviation($instagramcount).' Followers</p>
                                         <p class="facebook-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($facebookcount).' Likes</p>
                                         <p class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($twittercount).' Followers</p>
                                     </div>
@@ -131,69 +133,83 @@ $id = '5AUgZ0C';
                                         <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$id.'">1.5K Likes per post</p>
                                     </div>
                                     <div class="col-xs-12">
-                                    <div style="display:inline;" class="col-xs-12 invite  avocado-focus" data-id="kixN6FS" data-image="images/kixN6FS.jpg"></div>
+                                    <div style="display:inline;" class="col-xs-12 invite checkmark-profile  avocado-focus" data-id="kixN6FS" data-image="images/kixN6FS.jpg"></div>
                                     </div>
                                 </div>
                             </div>
                     </div>';
                     ?>
                     <!-- Influencer box has ended -->
+
+                    <div class="tag-container">
+
+                        <div class="tag-1 tag col-lg-4 col-xs-6"> <a href="#" class="tag-btn"> #soccer </a> </div>
+                        <div class="tag-2 tag col-lg-4 col-xs-6"> <a href="#" class="tag-btn"> #athlete </a> </div>
+                        <div class="tag-1 tag col-lg-4 col-xs-6"> <a href="#" class="tag-btn"> #soccer </a> </div>
+
+
+                        <div class="tag-1 tag col-lg-4 col-xs-6"> <a href="#" class="tag-btn"> #soccer </a> </div>
+                        <div class="tag-1 tag col-lg-4 col-xs-6"> <a href="#" class="tag-btn"> #soccer </a> </div>
+                        <div class="tag-1 tag col-lg-4 col-xs-6"> <a href="#" class="tag-btn"> #soccer </a> </div>
+
+                    </div>
+
 </div>
 
 
 <div class="col-lg-7 col-xl-5 social-collage" style="margin-left:0;">
 <!-- social buttons and stats -->
-<?php echo ' <div class="container-fluid"> <div class="row">
-  <div class="col-lg-3 col-sm-4 col-md-3 col-xs-12 platform-container">
+<?php echo ' <div class="container-fluid">
+  <div class="col-lg-3 col-sm-4 col-md-3 col-xs-6 platform-container">
  <div class="social-container">
  <div class="inf-number"> 93.3m <br> <span class="followers-text"> followers </span> </div>
    <img src="/assets/images/instagram-logo-green.png" class="instagram-logo-green"> </div> </div>
 
- <div class="col-lg-3 col-sm-4 col-md-3 col-xs-12 platform-container">
+ <div class="col-lg-3 col-sm-4 col-md-3 col-xs-6 platform-container">
   <div class="social-container">
   <div class="inf-number"> 51.3m <br><span class="followers-text"> followers </span> </div>
     <img src="/assets/images/twitter-logo-green.png" class="twitter-logo-green"> </div> </div>
 
-  <div class="col-lg-3 col-sm-4 col-md-3 col-xs-12 platform-container">
+  <div class="col-lg-3 col-sm-4 col-md-3 col-xs-6 platform-container">
    <div class="social-container">
    <div class="inf-number facebook"> 93.3m <br> <span class="followers-text"> followers </span> </div>
-     <img src="assets/images/facebook-green.png" class="facebook-logo-green"> </div> </div>
+     <img src="/assets/images/fb-logo-green.png" class="facebook-logo-green"> </div> </div>
 
-   <div class="col-lg-3 col-sm-4 col-md-3 col-xs-12 platform-container">
+   <div class="col-lg-3 col-sm-4 col-md-3 col-xs-6 platform-container">
     <div class="social-container">
     <div class="inf-number youtube"> 200k <br> <span class="followers-text"> followers </span> </div>
       <img src="/assets/images/youtube-icon-green.png" class="youtube-logo-green"> </div> </div>
 
-</div> </div>
-    <div class="col-xs-12 social-buttons">';
+</div>
+    <div class="col-xs-12 col-sm-9 col-lg-12 social-buttons">';
     //Start looking for instagram
          if($instagramurl == NULL || $instagramurl == ''){
              echo '
-            <div class="col-xs-4 button-container" style="display:none;">
+            <div class="col-md-4 col-xs-12 button-container" style="display:none;">
                 <button class="col-xs-12 social-button instagram-platform" data-platform="instagram" data-handle="'.$insthandle.'" style="background-color: rgb(115, 196, 141);"><div class="button-option-text"> <i class="button-icon icon bd-instagram"  data-platform="instagram" aria-hidden="true"></i> INSTAGRAM</div></button>
             </div>';
          }
          else{
              echo '
-             <div class="col-xs-4 button-container">
+             <div class="col-md-4 col-xs-12 button-container">
                 <button class="col-xs-12 social-button instagram-platform" data-platform="instagram" data-handle="'.$insthandle.'" style="background-color: rgb(115, 196, 141);"><div class="button-option-text"> <i class="button-icon icon bd-instagram"  data-platform="instagram" aria-hidden="true"></i> INSTAGRAM</div></button>
             </div>';
          }
          //Start facebook
          if($facebookurl == NULL || $facebookurl == ''){
-          echo '<div class="col-xs-4 button-container" style="display:none;">
+          echo '<div class="col-md-4 col-xs-12 button-container" style="display:none;">
                 <button class="col-xs-12 social-button facebook-platform" data-platform="facebook" data-handle="'.$facebookhandle.'"><div class="button-option-text"> <i class="button-icon icon bd-facebook"  data-platform="facebook" aria-hidden="true"></i> FACEBOOK</div>
                 </button>
             </div>';
          }
         elseif(($instagramurl == NULL || $instagramurl == '') && ($facebookurl != NULL)){
-          echo '<div class="col-xs-4 button-container" style="background-color:rgb(115, 196, 141);">
+          echo '<div class="col-md-4 col-xs-12 button-container" style="background-color:rgb(115, 196, 141);">
                 <button class="col-xs-12 social-button facebook-platform" data-platform="facebook" data-handle="'.$facebookhandle.'"><div class="button-option-text"> <i class="button-icon icon bd-facebook"  data-platform="facebook" aria-hidden="true"></i> FACEBOOK</div>
                 </button>
             </div>';
         }
         else{
-            echo '<div class="col-xs-4 button-container">
+            echo '<div class="col-md-4 col-xs-12 button-container">
                 <button class="col-xs-12 social-button facebook-platform" data-platform="facebook" data-handle="'.$facebookhandle.'"><div class="button-option-text"> <i class="button-icon icon bd-facebook"  data-platform="facebook" aria-hidden="true"></i> FACEBOOK</div>
                 </button>
             </div>';
@@ -202,17 +218,17 @@ $id = '5AUgZ0C';
         //Start Twitter
         if($twitterurl == NULL || $twitterurl == ''){
         echo '
-           <div class="col-xs-4 button-container twitter-platform" style="display:none;">
+           <div class="col-md-4 col-xs-12 button-container twitter-platform" style="display:none;">
                 <button class="col-xs-12 social-button" data-platform="twitter" data-handle="'.$twitterhandle.'"><div class="button-option-text"> <i class="button-icon icon bd-twitter"  data-platform="twitter" aria-hidden="true"></i> TWITTER</div></button>
             </div>';
         }
         elseif(($instagramurl == NULL || $instagramurl == '') && ($facebookurl == NULL || $facebookurl == '') && ($twitterurl != '' || $twitterurl != NULL)){
-        echo '   <div class="col-xs-4 button-container twitter-platform" style="background-color:rgb(115, 196, 141);">
+        echo '   <div class="col-md-4 col-xs-12 button-container twitter-platform" style="background-color:rgb(115, 196, 141);">
                 <button class="col-xs-12 social-button" data-platform="twitter" data-handle="'.$twitterhandle.'"><div class="button-option-text"> <i class="button-icon icon bd-twitter"  data-platform="twitter" aria-hidden="true"></i> TWITTER</div></button>
             </div>';
         }
         else{
-        echo '   <div class="col-xs-4 button-container twitter-platform">
+        echo '   <div class="col-md-4 col-xs-12 button-container twitter-platform">
                 <button class="col-xs-12 social-button" data-platform="twitter" data-handle="'.$twitterhandle.'"><div class="button-option-text"> <i class="button-icon icon bd-twitter"  data-platform="twitter" aria-hidden="true"></i> TWITTER</div></button>
             </div>';
         }
@@ -220,7 +236,7 @@ $id = '5AUgZ0C';
     </div>';
 ?>
 <!-- content  -->
-<div class="col-xs-12 social-content" >
+<div class="col-xs-12 col-sm-9 col-lg-12 social-content" >
 
 <div id="instagram" >
 
@@ -231,13 +247,6 @@ $id = '5AUgZ0C';
 
 <style>
 
-div._4i-s{
-  height: 58px !important;
-}
-
-.facebook-feed-container {
-  width: 135%;
-}
 
 </style>
 
@@ -246,23 +255,56 @@ div._4i-s{
     //We start getting the facebook information from now since for some reason calling through ajax doesn't work. It will be put on a display none.
     if($facebookurl != NULL || $facebookurl != ''){
     $facebooktoken = '1075628395822185|Y0CgNIZP8EiF2esClPtNaki4hiE';
-    $info = curl('https://graph.facebook.com/v2.7/'.$facebookhandle.'?fields=posts.limit(12){permalink_url}&access_token='.$facebooktoken);
-    $facebookpost = array();
-    foreach($info['posts']['data'] as $id ){
-        array_push($facebookpost,$id['permalink_url']);
+    $count = 0;
+    $info = curl("https://graph.facebook.com/v2.7/$facebookurl?fields=posts.limit(50){reactions.limit(0).summary(true),created_time,comments.limit(0).summary(true),shares,attachments}&access_token=$facebooktoken");
+    //print_r($info);
+
+    foreach($info['posts']['data'] as $post) {
+      if ($count >= 12)
+        break;
+        $count++;
+
+        $reactions = $post['reactions']['summary']['total_count'];
+        $comments = $post['comments']['summary']['total_count'];
+        $shares = $post['shares']['count'];
+        $commentdescription = $post['attachments']['data'][0]['description'];
+        $postimage = $post['attachments']['data'][0]['media']['image']['src'];
+        $posturl = $post['attachments']['data'][0]['url'];
+          echo ' <div class="col-xs-12 col-lg-4 col-md-4 fb-feed-div">
+        <div class="fb-feed-card">
+          <div class="img-fb-div">  <a href="'.$posturl.'"> <img src="'.$postimage.'" class="fb-card"> </a> </div>
+
+          <div class="fb-caption"> '.$commentdescription.' </div>
+
+    <div class="interaction-info">
+          <div class="likes"> <img src="assets/images/like-green.png" class="thumb-green"> '.numberAbbreviation($reactions).' </div>
+                    <div class="comments"> <img src="assets/images/comment-bubble.png" class="comment-icon"> '.numberAbbreviation($comments).' </div>
+          <div class="shares"> <img src="assets/images/share-option3.png" class="share-green"> '.numberAbbreviation($shares).' </div>
+          </div>
+
+          </div>
+  </div> ';
+        // var_dump($reactions);
     }
-    foreach($facebookpost as $id){
-        echo '<div class="col-xs-6 img-responsive facebook-feed"><div class="fb-post" data-href="'.$id.'" data-width="500" data-height="500" style="max-width:500px; max-height:610px;"></div></div>';
-    }
+
+
+
+    // $facebookpost = array();
+    // foreach($info['posts']['data'] as $id ){
+    //     array_push($facebookpost,$id['permalink_url']);
+    // }
+    // foreach($facebookpost as $id){
+    //     echo '<div class="col-xs-6 img-responsive facebook-feed"><div class="fb-post" data-href="'.$id.'" data-width="500" data-height="500" style="max-width:500px; max-height:610px;"></div></div>';
+    // }
 }
     ?>
 </div>
 <!-- End facebook -->
-<div id="twitter" style="display:none;" class="col-xs-6">
+<div id="twitter" style="display:none;margin-bottom:50px;" class="col-xs-12 col-lg-12">
 
 
 </div>
-
+<!-- <div class="arrow-btn-container"> <div class="arrow-1"> <i class="icon fa-caret-left" aria-hidden="true"></i> <a href="#" class""> </a>  </div> <div class="arrow-2"> <a href="#" class""> <i class="icon fa-caret-right" aria-hidden="true"></i>  </a>  </div>  </div>  -->
 
 </div>
 

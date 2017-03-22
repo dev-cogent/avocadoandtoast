@@ -1464,7 +1464,7 @@ textarea.form-control.category.avocado-focus {
     width: 120px;
   }
   .sidebar-left {
-    margin-top: 66px;
+    /*margin-top: 66px;*/
   }
   .mininav{
     display: none;

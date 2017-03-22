@@ -9339,8 +9339,8 @@ ul.panel-actions>li:first-child {
 }
 
 .comments {
-    padding: 0;
-    margin: 0
+    /*padding: 0;
+    margin: 0*/
 }
 
 .comments .comment {
