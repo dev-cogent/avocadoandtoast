@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 $instuser = $_POST['inst_user'];
 $html = instcurl('https://www.instagram.com/'.$instuser.'/');
 $code = explode('"code":',$html);

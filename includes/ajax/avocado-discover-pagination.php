@@ -94,7 +94,7 @@ while($stmt->fetch()){
                 $facebookengagement = number_format((($engagement['facebook']['average_engagement']/$facebookcount)*100),2,'.','');
     echo '<div  class="influencer-box col-xs-12 col-md-6 col-lg-4 col-xl-3">
                             <div class="influencer-card-discover">
-                                <img class="influencer-image-card" src="http://cogenttools.com/'.$image.'" onerror="this.src=`/assets/images/default-photo.png/`">
+                                <a href="/profile.php?id='.$id.'"><img class="influencer-image-card" src="http://cogenttools.com/'.$image.'" onerror="this.src=`/assets/images/default-photo.png/`"></a>
                                 <div class="col-xs-12 influ-bottom" style="height:170px; " data-id="'.$id.'">
                                     <!-- insthandle stuff -->
                                         <div class="icons col-xs-12">';
