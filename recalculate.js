@@ -296,7 +296,7 @@ $(document).ready(function () {
 
 
     $(window).scroll(function () {
-        if(calculate == false){
+
         if ($(window).scrollTop() == $(document).height() - $(window).height()) {
             page = page + 1;
             console.log(page);
@@ -314,7 +314,6 @@ $(document).ready(function () {
                 }
 
             }); // end ajax request*/
-        }
         }
     });
 
@@ -336,7 +335,7 @@ $(document).ready(function () {
 
 
     $(window).scroll(function () {
-        if(calculate == false){
+
         if ($(window).scrollTop() == $(document).height() - $(window).height()) {
             page = page + 1;
             console.log(page);
@@ -354,7 +353,7 @@ $(document).ready(function () {
                 }
 
             }); // end ajax request*/
-        }
+
         }
     });
 

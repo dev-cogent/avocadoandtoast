@@ -37,11 +37,8 @@ if($description == NULL){
     <title><?php echo $influencerinfo['campaign_name'];?> | Avocado & Toast</title>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
-<script src="/assets/wnumb/wNumb.js"></script>
-<script src="/assets/uislider/nouislider.js"></script>
 <script src="/includes/javascript/tokenfield/dist/bootstrap-tokenfield.js"></script>
 <link rel="stylesheet" href="/includes/javascript/tokenfield/dist/css/bootstrap-tokenfield.css">
-<link rel="stylesheet" href="/assets/uislider/nouislider.css">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
 <link rel="stylesheet" href="/assets/css/discover.css">
@@ -84,7 +81,7 @@ width:20%;
 
 
 .btn-campaign-options{
-    width: 150px;
+    width: 160px;
     height: 35px;
     background-color: white;
     border: 1px solid black;
@@ -144,10 +141,10 @@ padding-top: 45px;
 
 
 <div class="button-container col-xs-12" style="border-bottom:0px; height:145px; padding-top:45px;">
-  <a href="/dashboard.php" style="color:black;">  <button class="btn-campaign-options avocado-hover avocado-focus">  GO BACK  </button></a>
   <a href="/edit/?id=<?php echo $campaignid;?>" style="color:black;">  <button class="btn-campaign-options avocado-hover avocado-focus">  EDIT CAMPAIGN  </button></a>
   <a href="#"style="color:black;" class="pdf" data-id="<?php echo $campaignid; ?>">  <button class="btn-campaign-options avocado-hover avocado-focus">  EXPORT CAMPAIGN  </button></a>
   <a href="/price/?id=<?php echo $campaignid;?>" style="color:black;">  <button class="btn-campaign-options avocado-hover avocado-focus">  PRICE CAMPAIGN  </button></a>
+  <a href="/recalculate.php?id=<?php echo $campaignid;?>" style="color:black;">  <button class="btn-campaign-options avocado-hover avocado-focus">  CALCULATE CAMPAIGN  </button></a>
   <a style="display:none;" id="undo-button" >  <button class="btn-campaign-options avocado-hover avocado-focus" style="background-color:#73C48D; color:white; border:0px;">UNDO</button></a>
   <a style="display:none;" id="save-button" >  <button class="btn-campaign-options avocado-hover avocado-focus" style="background-color:#73C48D; color:white; border:0px;">SAVE</button></a>
 </div>
@@ -431,6 +428,4 @@ window.location='/includes/pdf/pdf.php?id='+id;
 });
 $('#tokenfield').tokenfield();
 </script>
-<script src="/acslider.js"></script>
 <script src="/includes/javascript/avocado-campaign.js"></script>
-<script src="/includes/javascript/create-campaign.js"></script>
