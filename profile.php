@@ -277,9 +277,9 @@ $id = $_GET['id'];
           <div class="fb-caption"> '.$commentdescription.' </div>
 
     <div class="interaction-info">
-          <div class="likes"> <img src="assets/images/like-green.png" class="thumb-green"> '.numberAbbreviation($reactions).' </div>
-                    <div class="comments"> <img src="assets/images/comment-bubble.png" class="comment-icon"> '.numberAbbreviation($comments).' </div>
-          <div class="shares"> <img src="assets/images/share-option3.png" class="share-green"> '.numberAbbreviation($shares).' </div>
+          <div class="likes"> <img src="/assets/images/like-green.png" class="thumb-green"> '.numberAbbreviation($reactions).' </div>
+                    <div class="comments"> <img src="/assets/images/comment-bubble.png" class="comment-icon"> '.numberAbbreviation($comments).' </div>
+          <div class="shares"> <img src="/assets/images/share-option3.png" class="share-green"> '.numberAbbreviation($shares).' </div>
           </div>
 
           </div>

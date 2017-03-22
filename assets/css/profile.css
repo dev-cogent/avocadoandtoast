@@ -137,7 +137,7 @@ img.share-green {
 }
  .likes, .comments , .shares {
   display: inline-block;
-   margin-right: 5%;
+   margin-right: 3%;
 }
 
 .comment-icon,.thumb-green,.share-green{
