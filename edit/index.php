@@ -25,7 +25,6 @@ $tomorrow = date("Y-m-d", strtotime('tomorrow'));
 
 $campaigninfo = $save->getCampaignInfo($campaignid);
 $campaignsummary = $campaigninfo['description'];
-$campaignrequest = $campaigninfo['request'];
 $campaignstart = $campaigninfo['campaignstart'];
 $campaignend = $campaigninfo['campaignend'];
 $campaignrequest = $campaigninfo['campaignrequest'];

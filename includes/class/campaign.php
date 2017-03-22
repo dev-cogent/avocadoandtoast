@@ -66,10 +66,13 @@ public function twitterCalculate($selectedusers,$posts){
     while($stmt->fetch()){
         $engagement = json_decode($engagement,true);
         $total +=  $posts[$i] * $count;
-        $totalengagement += ($posts[$i] * $count) * ($engagement['twitter']['average_engagement']/$count);
+        $engagement = ($posts[$i] * $count) * ($engagement['twitter']['average_engagement']/$count);
+        if(is_nan($engagement)) $engagement = 0;
+        $totalengagement += $engagement;
         $arr['influencer'][$id]['impressions'] = $posts[$i] * $count;
-        $arr['influencer'][$id]['engagement'] = ($posts[$i] * $count) * ($engagement['twitter']['average_engagement']/$count); 
+        $arr['influencer'][$id]['engagement'] = $engagement;
         $i++;
+
     }
     $arr['total'] = $total;
     $arr['engagement'] = $totalengagement;

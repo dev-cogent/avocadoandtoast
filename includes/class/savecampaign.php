@@ -66,36 +66,58 @@ return $campaignid;
 }
 
 
-
-public function updateCampaignCalculations($arr,$userid,$stats,$campaignname,$description,$campaignid,$columnid){
-if($genconn === NULL)
-    $genconn = $this->dbinfo();
-if($saveconn === NULL)
-    $saveconn = $this->savedDB();
-if($campaignname == NULL || $campaignname == "")
-    $campaignname = 'Campaign Calculator '.time();
-
-$check = updateCampaignName($campaignid,$columnid,$campaignname);
-if (!$check) return false;
-
+/**
+*@param {array} - influencers ids
+*@param {string} - userid
+*@param {string} - campaign name
+*@param {String} - general information database connection
+*@param {string} - campaign database connection.
+*@return {bool}
+*/
+public function updateCampaignCalculation($arr,$stats,$campaignid){
+error_reporting(-1);
+$genconn = $this->dbinfo();
+$saveconn = $this->savedDB();
+#Get the column id
 foreach($arr as $influencerid => $info){
-    $camstmt->prepare("INSERT INTO `$campaignid` (`influencer_id`,`instagram_post`,`instagram_impressions`,`twitter_post`,`twitter_impressions`,`facebook_post`,`facebook_impressions`) VALUES (?,?,?,?,?,?,?)
-    ON DUPLICATE KEY UPDATE
-       instagram_id =  VALUES(instagram_post),
-       instagram_impressions = VALUES(instagram_impressions),
-       twitter_post = VALUES(twitter_post),
-       twitter_impressions = VALUES(twitter_impressions),
-       facebook_post = VALUES(facebook_post),
-       facebook_impressions = VALUES(facebook_impressions)");
-    $camstmt->bind_param('sssssss',$influencerid,$info['instagrampost'],$info['instagramimpressions'],$info['twitterpost'],$info['twitterimpressions'],$info['facebookpost'],$info['facebookimpressions']);
+    $camstmt = $saveconn->prepare("UPDATE `$campaignid` SET
+    `instagram_post` = ?,
+    `instagram_impressions` = ?,
+    `instagram_engagement` = ?,
+    `twitter_post` = ?,
+    `twitter_impressions` = ?,
+    `twitter_engagement` = ?,
+    `facebook_post` = ?,
+    `facebook_impressions` = ?,
+    `facebook_engagement` = ? 
+     WHERE `influencer_id` = ?");
+     $camstmt->bind_param('ssssssssss',$info['instagrampost'],$info['instagramimpressions'],$info['instagramengagement'],$info['twitterpost'],$info['twitterimpressions'],$info['twitterengagement'],$info['facebookpost'],$info['facebookimpressions'],$info['facebookengagement'],$influencerid);
         if($camstmt->execute() === false)
-            $check = false;
+              $check = false;
+    unset($camstmt);
 }
-$camstmt->prepare("ALTER TABLE `$campaignid` COMMENT = '$stats'");
-if(!$camstmt->execute()) return false;
 
 
+$stmt = $genconn->prepare("UPDATE `campaign_save_link` SET
+                           `total_instagram_impressions` = ?, 
+                           `total_twitter_impressions` = ?,
+                           `total_facebook_impressions` = ?,
+                           `total_impressions` = ?,
+                           `total_instagram_engagement` = ?,
+                           `total_twitter_engagement` = ?,
+                           `total_facebook_engagement` = ?,
+                           `total_engagement` = ?,
+                           `total_post` = ?
+                            WHERE `campaign_id` = ?");
+$stmt->bind_param('ssssssssis', $stats['totalinstagramimpressions'],$stats['totaltwitterimpressions'],$stats['totalfacebookimpressions'],$stats['totalimpressions'],$stats['totalinstagramengagement'],$stats['totaltwitterengagement'],$stats['totalfacebookengagement'],$stats['totalengagement'],$stats['totalposts'],$campaignid);
+$stmt->execute();
+return true;
+
 }
+
+
+
+
 
 
 
@@ -299,19 +321,27 @@ else
  
 
 public function getCampaignInfo($campaignid){
+    error_reporting(-1);
     $conn = $this->dbinfo();
-    $stmt = $conn->prepare('SELECT `campaign_name`,`campaign_desc`,`campaign_request`,`brand_name`,`created_date`,`start_date`,`end_date`,`total_impressions`,`total_engagement`,`total_post` FROM `campaign_save_link` WHERE `campaign_id` = ?');
+    $stmt = $conn->prepare('SELECT `campaign_name`,`campaign_desc`,`campaign_request`,`created_date`,`start_date`,`end_date`,`brand_name`,`total_instagram_impressions`,`total_twitter_impressions`,`total_facebook_impressions`,`total_impressions`,`total_instagram_engagement`,`total_twitter_engagement`,`total_facebook_engagement`,`total_engagement`,`total_post` FROM `campaign_save_link` WHERE `campaign_id` = ?');
     $stmt->bind_param('s',$campaignid);
     $stmt->execute();
-    $stmt->bind_result($campaignname,$campaigndesc,$campaignrequest,$brandname,$created,$start,$end,$totalimpressions,$totalengagement,$totalpost);
+    $stmt->bind_result($campaignname,$campaigndesc,$campaignrequest,$created,$start,$end,$brandname, $instimp,$twitimp,$faceimp,$totalimpressions,$insteng,$twiteng,$faceeng,$totalengagement,$totalpost);
     while($stmt->fetch()){
         $arr['campaignname'] = $campaignname;
+        $arr['campaignrequest'] = $campaignrequest;
         $arr['campaignid'] = $campaignid;
         $arr['description'] = $campaigndesc;
-        $arr['brandname'] = $brandname;
         $arr['created'] = $created;
+        $arr['brandname'] = $brandname;
         $arr['totalposts'] = $totalpost;
+        $arr['total_instagram_impressions'] = $instimp;
+        $arr['total_facebook_impressions'] = $faceimp;
+        $arr['total_twitter_impressions'] = $twitimp;
         $arr['totalimpressions'] = $totalimpressions;
+        $arr['total_instagram_engagement'] = $insteng;
+        $arr['total_facebook_engagement'] = $faceeng;
+        $arr['total_twitter_engagement'] = $twiteng;
         $arr['totalengagement'] = $totalengagement;
         $arr['campaignstart'] = $start;
         $arr['campaignend'] = $end;

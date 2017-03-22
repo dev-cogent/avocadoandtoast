@@ -12,6 +12,7 @@ $(document).on('click', '#createcampaign', function () {
 
 
     if (name == '' || name == null) {
+        unsetLoading();
         throw new Error('Campaign name not entered');
         return 0; // We will give actual error message later.
     }
@@ -54,6 +55,7 @@ $(document).on('click', '#add-existing', function () {
         arr[id]['twitterposts'] = $('.twitterinput[data-id=' + id + ']').val();
     }
     if (name == '' || name == null) {
+        unsetLoading();
         throw new Error('Campaign name not entered');
         return 0; // We will give actual error message later.
     }
