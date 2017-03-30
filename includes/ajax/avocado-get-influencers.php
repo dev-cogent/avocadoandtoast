@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(0);
 include '../dbinfo.php';
 include '../numberAbbreviation.php';
 $stmt = $conn->prepare("SELECT `campaign_name`,`campaign_id` FROM `campaign_save_link` WHERE `column_id` = ?");

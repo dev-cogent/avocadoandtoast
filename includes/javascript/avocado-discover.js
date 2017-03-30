@@ -297,7 +297,7 @@ $(document).ready(function () {
 
     $(window).scroll(function () {
         if(calculate == false){
-        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 30) {
             page = page + 1;
             console.log(page);
             console.log(filters);
