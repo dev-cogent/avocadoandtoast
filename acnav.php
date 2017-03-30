@@ -1,4 +1,4 @@
-<?php echo '<div class="col-xs-12" style="border-top: 1px solid rgb(210,215,220); border-bottom:1px solid rgb(210,215,220); height:66px;">
+<div class="col-xs-12" style="border-top: 1px solid rgb(210,215,220); border-bottom:1px solid rgb(210,215,220); height:66px;">
        <a href="/acdiscover.php"><img src="/assets/images/at-logo-black.png" style="margin-top:-8px;"></a>
 
     </div>
@@ -8,9 +8,7 @@
       <p class="nav2"> <a href="/dashboard.php" class="other-nav discover-nav"> YOUR CAMPAIGNS </a> </p>
         <p class="nav2"> <a href="" class="other-nav discover-nav">  PRICE CAMPAIGN </a></p>
           <p class="nav2"> <a href="/logout.php" class="other-nav discover-nav"> LOGOUT </a>  </p>
-</div>';
-
-?>
+</div>
 
 <script src="/includes/javascript/nav.js"></script>
 <style>

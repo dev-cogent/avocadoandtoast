@@ -23,82 +23,10 @@ include 'includes/numberAbbreviation.php';
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
 <link rel="stylesheet" href="/assets/css/discover.css">
 <link rel="stylesheet" href="/assets/css/sidebar.css">
-
-<style>
-
-.form-control{
-    font-size:15px;
-    letter-spacing:1px;
-
-}
-.token-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: #A2A8B1;
-  font-family:'Open Sans';
-      letter-spacing:1px;
-}
-body {
-    margin: 0;
-    font-family: 'Lato', sans-serif;
-}
-
-.overlay {
-    height: 0%;
-    width: 100%;
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0, 0.5);
-    overflow-y: hidden;
-}
-
-.overlay-content {
-    position: relative;
-    top: 25%;
-    width: 100%;
-    text-align: center;
-    margin-top: 30px;
-}
-
-.overlay a {
-    padding: 8px;
-    text-decoration: none;
-    font-size: 36px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-.overlay a:hover, .overlay a:focus {
-    color: #f1f1f1;
-}
-
-.overlay .closebtn {
-    position: absolute;
-    top: 20px;
-    right: 45px;
-    font-size: 60px;
-}
-
-@media screen and (max-height: 450px) {
-  .overlay {overflow-y: auto;}
-  .overlay a {font-size: 20px}
-  .overlay .closebtn {
-    font-size: 40px;
-    top: 15px;
-    right: 35px;
-  }
-}
-</style>
 </head>
 
 <body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
 <?php include 'acnav.php';?>
-
-
-
-
 
 
 
