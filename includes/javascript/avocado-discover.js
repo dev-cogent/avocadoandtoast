@@ -394,6 +394,7 @@ $(window).scroll(function () {
 
 
 function applyFilters(filters) {
+    setLoading();
     page = 0;
     $.ajax({
         type: 'POST',
@@ -403,6 +404,7 @@ function applyFilters(filters) {
             page: page
         },
         success: function (jqXHR, textStatus, errorThrown) {
+            unsetLoading();
             $('.found-influencers').empty();
             $('.found-influencers').append(jqXHR);
         }

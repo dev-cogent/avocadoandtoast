@@ -264,3 +264,10 @@ class twitterScraper
     }
 }
 
+
+
+
+$obj = new twitterScraper;
+
+$info = $obj->getMainInfo('https://twitter.com/nasa');
+var_dump($info);
