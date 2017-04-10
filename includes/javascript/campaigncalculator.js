@@ -116,6 +116,7 @@ $(document).on('keyup', '.campaignfocus', function () {
 });
 
 function getCalculation(type, posts, selectedusers) {
+    console.log('heelo');
     $.ajax({
         type: 'POST',
         url: '/includes/ajax/calculate.php',

@@ -16,24 +16,13 @@ include 'includes/numberAbbreviation.php';
 <script src="/assets/wnumb/wNumb.js"></script>
 <script src="/assets/uislider/nouislider.js"></script>
 <script src="/includes/javascript/tokenfield/dist/bootstrap-tokenfield.js"></script>
+<script src="/includes/javascript/loading.js"></script>
 <link rel="stylesheet" href="/includes/javascript/tokenfield/dist/css/bootstrap-tokenfield.css">
 <link rel="stylesheet" href="/assets/uislider/nouislider.css">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
-<link rel="stylesheet" href="/includes/css/discover.css">
+<link rel="stylesheet" href="/assets/css/discover.css">
 <link rel="stylesheet" href="/assets/css/sidebar.css">
-<style>
-.form-control{
-    font-size:15px;
-    letter-spacing:1px;
-
-}
-.token-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: #A2A8B1;
-  font-family:'Open Sans';
-      letter-spacing:1px;
-}
-</style>
 </head>
 
 <body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
@@ -42,12 +31,8 @@ include 'includes/numberAbbreviation.php';
 
 
 
-
-
-
-
 <!-- Add side bar here -->
-
+<div id="loading" style="display:none; top:31%; left:40%; position:fixed; z-index:1001;"><img style="height:250px; width:250px;"src="/assets/images/loading.gif"/></div>
 <div class="col-xs-1 sidebar-left">
 <i class="icon fa-bars" aria-hidden="true" style="
     color: white;
@@ -58,13 +43,13 @@ include 'includes/numberAbbreviation.php';
     padding-top: 15px;
 "></i>
   <div id="li-container" style="display:none;">
-    <li class="item"><a class="side-link" href="dashboard.php"> DASHBOARD </a> </li>
-    <li class="item"><a class="side-link" href="acdiscover.php"> DISCOVER </a></li>
-    <li class="item"><a class="side-link" href="#"> ACCOUNT SETTINGS </a></li>
+    <li class="item"><a class="side-link" href="/dashboard.php"> DASHBOARD </a> </li>
+    <li class="item"><a class="side-link" href="/acdiscover.php"> DISCOVER </a></li>
+    <li class="item"><a class="side-link" href="/settings.php"> ACCOUNT SETTINGS </a></li>
     <li class="item"><a class="side-link" href="#"> FAQ</a> </li>
     <li class="item"><a class="side-link" href="#"> CONTACT</a> </li>
     <li class="item"><a class="side-link" href="#"> LATEST UPDATES</a></li>
-    <li class="item"><a class="side-link" href="#"> LOGOUT</a></li>
+    <li class="item"><a class="side-link" href="/logout.php"> LOGOUT</a></li>
   </div>
 </div>
 
@@ -74,16 +59,17 @@ include 'includes/numberAbbreviation.php';
 <div class="mininav col-xs-12" style="height:50px;">
     <p class="nav3">INFLUENCERS</p>
 </div>
+<div id="myNav" class="overlay"></div>
 <div id="stuff">
 
 <!--Filter content -->
 
 <div class="filter-container col-xs-9">
-            <p class="desc-header col-xs-12" style="padding-left:0px; padding-top:10px;text-align:center; font-family:'montserratsemibold'; letter-spacing: 2px; font-size:32px;">DISCOVER</p>
+            <p class="desc-header col-xs-12" style="padding-left:0px; padding-top:10px;text-align:center; font-family:'montserratsemibold'; letter-spacing: 2px; font-size:40px;">DISCOVER</p>
 
             <div class="col-xs-2"></div>
             <div class="col-xs-8" id="searchA">
-                <p class="filter-text col-xs-12" style="text-align: center;">Search by Influencer handles and key words</p>
+                <p class="filter-text col-xs-12" style="text-align: center;">Search by Influencer handles and keywords</p>
                     <input type="text" class="form-control category avocado-focus" id="influencer-search-name" placeholder="Influencer Name or social handle">
                     <input type="text" class="form-control category avocado-focus col-xs-6 col-sm-12" style="margin-top:12px;" id="tokenfield" placeholder="keyword"/>
                     <p class="description-text col-xs-12">Seperate tags with commas or by pressing "tab" in the above field. Use double quotes for multi-word tags (e.g. "avocado toast")</p>
@@ -131,7 +117,7 @@ include 'includes/numberAbbreviation.php';
         <div class="col-xs-12 col-md-4 col-lg-3 col-xl-2" id="text-container" style="padding-bottom:25px;">
                 <p class="filter-text">Filter Results</p>
                 <p class="measure-text">FOLLOWERS</p>
-                <p class="measure-text">LIKES PER POST </p>
+                <p class="measure-text">ENGAGEMENT %</p>
         </div>
         <div class="col-xs-12 col-md-8 col-lg-6 col-xl-8" id="slider-container">
             <p id="influ-result"> Use the filters below to fine-tune your influencer results. </p>
@@ -182,23 +168,24 @@ include 'includes/numberAbbreviation.php';
 
 
 
-
         <div class="found-influencers col-xs-12">
             <?php
                 $count = 3;
-                $stmt = $conn->prepare('SELECT `id`,`image_url`,`instagram_url`,`instagram_count`,`facebook_url`,`facebook_count`,`twitter_url`,`twitter_count`,`engagement`,`total` FROM `Influencer_Information` WHERE `type` NOT LIKE "%brand%" ORDER BY `total`  DESC LIMIT 0,32');
+                $stmt = $conn->prepare('SELECT `id`,`image_url`,`instagram_url`,`instagram_count`,`facebook_url`,`facebook_handle`,`facebook_count`,`twitter_url`,`twitter_count`,`engagement`,`total` FROM `Influencer_Information` ORDER BY `total`  DESC LIMIT 0,32');
                 $stmt->execute();
-                $stmt->bind_result($id,$image,$instagramurl,$instagramcount,$facebookurl,$facebookcount,$twitterurl,$twittercount,$engagement,$total);
+                $stmt->bind_result($id,$image,$instagramurl,$instagramcount,$facebookurl,$facebookhandle,$facebookcount,$twitterurl,$twittercount,$engagement,$total);
                 while($stmt->fetch()){
                 $insthandle = explode('.com/',$instagramurl);
                 $insthandle = explode('/',$insthandle[1]);
                 $insthandle = explode('?',$insthandle[0]);
                 $insthandle = $insthandle[0];
                 //Facebook handle
+                if($facebookhandle == NULL){
                 $facebookhandle = explode('.com/',$facebookurl);
                 $facebookhandle = explode('/',$facebookhandle[1]);
                 $facebookhandle = explode('?',$facebookhandle[0]);
                 $facebookhandle = $facebookhandle[0];
+                }
                 //twitter handle
                 $twitterhandle = explode('.com/',$twitterurl);
                 $twitterhandle = explode('/',$twitterhandle[1]);
@@ -212,8 +199,8 @@ include 'includes/numberAbbreviation.php';
                 echo '
                     <div  class="influencer-box col-xs-12 col-md-6 col-lg-4 col-xl-3">
                             <div class="influencer-card-discover">
-                                <img class="influencer-image-card" src="http://cogenttools.com/'.$image.'" onerror="this.src=`http://cogenttools.com/'.$image.'`">
-                                <div class="col-xs-12 influ-bottom" style="height:170px;" data-id="'.$id.'">
+                                <a href="/profile.php/?id='.$id.'"><img class="influencer-image-card" src="http://cogenttools.com/'.$image.'" onerror="this.src=`/assets/images/default-photo.png`"> </a>
+                                <div class="col-xs-12 influ-bottom" style="" data-id="'.$id.'">
                                     <!-- insthandle stuff -->
                                         <div class="icons col-xs-12">
                                             <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" style="color:#73C48D" aria-hidden="true"></i>

@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 include 'useroptions.php';
 class campaignCalculator extends userOptions{
 
@@ -10,15 +10,24 @@ public function instagramCalculate($selectedusers,$posts){
     $i = 0;
     $total;
     $influencersarr = implode("','",$selectedusers);
-    $stmt = $conn->prepare("SELECT `instagram_count` FROM `Influencer_Information` WHERE `id` IN ('$influencersarr') ");
+    $stmt = $conn->prepare("SELECT `id`,`instagram_count`,`engagement` FROM `Influencer_Information` WHERE `id` IN ('$influencersarr') ORDER BY FIELD(`id`, '$influencersarr') ");
     $stmt->execute();
-    $stmt->bind_result($count);
+    $stmt->bind_result($id,$count,$engagement);
     while($stmt->fetch()){
+        $engagement = json_decode($engagement,true);
         $total +=  $posts[$i] * $count;
+        $engagement = ($posts[$i] * $count) * ($engagement['instagram']['average_engagement']/$count);
+        if(is_nan($engagement)) $engagement = 0;
+        $totalengagement += $engagement;
+        $arr['influencer'][$id]['impressions'] = $posts[$i] * $count;
+        $arr['influencer'][$id]['engagement'] = $engagement;
         $i++;
     }
+    $arr['total'] = $total;
+    $arr['engagement'] = $totalengagement;
+    $arr = json_encode($arr);
     unset($conn);
-    return $total;
+    return $arr;
 }
 
 
@@ -29,15 +38,24 @@ public function facebookCalculate($selectedusers,$posts){
     $i = 0;
     $total;
     $influencersarr = implode("','",$selectedusers);
-    $stmt = $conn->prepare("SELECT `facebook_count` FROM `Influencer_Information` WHERE `id` IN ('$influencersarr') ");
+    $stmt = $conn->prepare("SELECT `id`,`facebook_count`,`engagement` FROM `Influencer_Information` WHERE `id` IN ('$influencersarr') ORDER BY FIELD(`id`, '$influencersarr') ");
     $stmt->execute();
-    $stmt->bind_result($count);
+    $stmt->bind_result($id,$count,$engagement);
     while($stmt->fetch()){
+        $engagement = json_decode($engagement,true);
         $total +=  $posts[$i] * $count;
+        $engagement = ($posts[$i] * $count) * ($engagement['facebook']['average_engagement']/$count);
+        if(is_nan($engagement)) $engagement = 0;
+        $totalengagement += $engagement;
+        $arr['influencer'][$id]['impressions'] = $posts[$i] * $count;
+        $arr['influencer'][$id]['engagement'] = $engagement;
         $i++;
     }
+    $arr['total'] = $total;
+    $arr['engagement'] = $totalengagement;
+    $arr = json_encode($arr);
     unset($conn);
-    return $total;
+    return $arr;
 }
 
 
@@ -46,15 +64,25 @@ public function twitterCalculate($selectedusers,$posts){
     $i = 0;
     $total;
     $influencersarr = implode("','",$selectedusers);
-    $stmt = $conn->prepare("SELECT `twitter_count` FROM `Influencer_Information` WHERE `id` IN ('$influencersarr') ");
+    $stmt = $conn->prepare("SELECT `id`,`twitter_count`,`engagement` FROM `Influencer_Information` WHERE `id` IN ('$influencersarr') ORDER BY FIELD(`id`, '$influencersarr')");
     $stmt->execute();
-    $stmt->bind_result($count);
+    $stmt->bind_result($id,$count,$engagement);
     while($stmt->fetch()){
+        $engagement = json_decode($engagement,true);
         $total +=  $posts[$i] * $count;
+        $engagement = ($posts[$i] * $count) * ($engagement['twitter']['average_engagement']/$count);
+        if(is_nan($engagement)) $engagement = 0;
+        $totalengagement += $engagement;
+        $arr['influencer'][$id]['impressions'] = $posts[$i] * $count;
+        $arr['influencer'][$id]['engagement'] = $engagement;
         $i++;
+
     }
+    $arr['total'] = $total;
+    $arr['engagement'] = $totalengagement;
+    $arr = json_encode($arr);
     unset($conn);
-    return $total;
+    return $arr;
 }
 
 

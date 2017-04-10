@@ -36,7 +36,10 @@ if(isset($campaignstart)){
 if(isset($campaignend)){
     $tomorrow = $campaignend;
 }
-
+$firstname = $_SESSION['firstname'];
+$lastname = $_SESSION['lastname'];
+$email = $_SESSION['email'];
+$company = $_SESSION['company'];
 
 
 
@@ -55,7 +58,7 @@ if(isset($campaignend)){
 <link rel="stylesheet" href="/assets/uislider/nouislider.css">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
-<link rel="stylesheet" href="/includes/css/discover.css">
+<link rel="stylesheet" href="/assets/css/discover.css">
 <link rel="stylesheet" href="/assets/css/sidebar.css">
 <style>
 .form-control{
@@ -74,6 +77,22 @@ if(isset($campaignend)){
 .search{
     min-width:231.5px;
 }
+
+li{
+    list-style:none;
+    padding-top:3px;
+}
+
+.social{
+    margin-right:10px;
+}
+.social-text{
+    display:inline;
+    font-size:14px;
+    color: #515862;
+    font-family:'Open Sans', sans-serif;
+}
+
 </style>
 </head>
 
@@ -109,40 +128,74 @@ if(isset($campaignend)){
 
 <p class="desc-header" style="padding-top:30px;"> Price <?php echo $campaignname; ?></p>
 <div class="input-container" style="width:45%;">
+    <h3>Contact Information </h3>
+        <label class="title">Email</label>
+    <br/>
+    <input type="text" class="form-control category avocado-focus" id="brand" value="<?php echo $_SESSION['email'] ?> " placeholder="required*">
 
-    <label class="title">Email </label>
+    <label class="title">Name</label>
     <br/>
-    <label>What email do you want us to contact you back at?</label>
-    <input type="text" class="form-control category avocado-focus" id="name" value="<?php echo $_SESSION['email']; ?>">
+    <input type="text" class="form-control category avocado-focus" id="brand" value="<?php echo $firstname.' '.$lastname ; ?>" placeholder="required*">
 
-    <label class="title">Client Brands </label>
+    <label class="title">Company</label>
     <br/>
-    <label>What is it you are trying to do? </label>
-    <textarea type="text" class="form-control category avocado-focus" id="campaign-summary"   style="height:150px;"><?php echo $campaignsummary;?></textarea>
-    <label class="title">Program Overview </label>
-    <br/>
-    <label>What type of content do you want? Be specific about what the influencer should be posting about.</label>
-    <textarea type="text" class="form-control category avocado-focus" id="campaign-request" style="height:150px;"><?php echo $campaignrequest; ?></textarea>
-
-    <label class="title">Target Demographic </label>
-    <br/>
-    <label>What type of content do you want? Be specific about what the influencer should be posting about.</label>
-    <textarea type="text" class="form-control category avocado-focus" id="campaign-request" style="height:150px;"><?php echo $campaignrequest; ?></textarea>
+    <input type="text" class="form-control category avocado-focus" id="brand" value="<?php echo $company ; ?>" placeholder="required*">
 
 
-    <label class="title">Talent Services </label>
+    <label class="title">Title</label>
     <br/>
-    <label>What type of content do you want? Be specific about what the influencer should be posting about.</label>
-    <textarea type="text" class="form-control category avocado-focus" id="campaign-request" style="height:150px;"><?php echo $campaignrequest; ?></textarea>
+    <input type="text" class="form-control category avocado-focus" id="brand" value="" placeholder="required*">
 
-    <label class="title">Budget </label>
+
+    <label class="title">Phone Number</label>
     <br/>
-    <label>What email do you want us to contact you back at?</label>
-    <input type="text" class="form-control category avocado-focus" id="name" value="<?php echo '100K'; ?>">
+    <input type="text" class="form-control category avocado-focus" id="brand" value="" placeholder="required*">
+
+    <br/>
+    <hr>
+    <h3>Campaign Information</h3>
+
+    <label class="title">Brand</label>
+    <br/>
+    <input type="text" class="form-control category avocado-focus" id="brand" value="" placeholder="required*">
+
+    <label class="title">Budget</label>
+    <br/>
+    <input type="text" class="form-control category avocado-focus" id="brand" value="" placeholder="Required*">
+
+
+
+    <label class="title">Offer Expiration Date</label>
+    <br/>
+    <input type= "text" class="form-control category avocado-focus" id="campaign-request">
+
+    <label class="title">Campaign Details </label>
+    <br/>
+    <label>Overview, Launch Date, Duration etc </label>
+    <textarea type="text" class="form-control category avocado-focus" id="campaign-details" style="height:150px;" ><?php echo $campaignsummary; ?></textarea> 
+
+    <!--<label class="title">Launch Date</label>
+    <br/>
+    <input class="form-control category avocado-focus"type="date" value="<?php //echo $campaignstart;?>">-->
+
+
+    <label class="title">Target Demographic</label>
+    <br/>
+    <input type="text" class="form-control category avocado-focus" id="payout" value="" placeholder="Required">
+    <br/>
+
+    <label class="title">Influencer Services</label>
+    <br/>
+    <li><input class="social" type="checkbox"><p class="social-text">Instagram</p></li>
+    <li><input class="social" type="checkbox"><p class="social-text">Facebook</p></li>
+    <li><input class="social" type="checkbox"><p class="social-text">Twitter</p></li>
+    <li><input class="social" type="checkbox"><p class="social-text">Youtube</p></li>
+    <br/>
 
     <div style="margin-top:50px;">
         <button class="search avocado-hover col-xs-4 submit" id="price-campaign" style="float:left;  width:40%;">SUBMIT FOR PRICING</button>
     </div>
+
 
 
 </div>
@@ -203,3 +256,17 @@ $(document).on('click','.delete',function(){
 
 });
 </script>
+
+<!--
+1) Client: (Agency, Brand, Publisher) 
+2) Contact: (Person running point)
+4) What kind of campaign? ( would just make this click as many as they need) 
+Social Only
+Social, Personal Appearance
+Social, Personal Appearance,PR
+360 deal, social, PR, Personal Appearance,  production days 
+7) What are your KPI’s?
+Reach new audiences
+Engament
+Click throughs
+-->

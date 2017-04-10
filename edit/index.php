@@ -25,11 +25,11 @@ $tomorrow = date("Y-m-d", strtotime('tomorrow'));
 
 $campaigninfo = $save->getCampaignInfo($campaignid);
 $campaignsummary = $campaigninfo['description'];
-$campaignrequest = $campaigninfo['request'];
 $campaignstart = $campaigninfo['campaignstart'];
 $campaignend = $campaigninfo['campaignend'];
 $campaignrequest = $campaigninfo['campaignrequest'];
-$campaignname = $save->getCampaignName($campaignid);
+$campaignname = $campaigninfo['campaignname'];
+$brandname = $campaigninfo['brandname'];
 if(isset($campaignstart)){
     $today = $campaignstart;
 }
@@ -55,7 +55,7 @@ if(isset($campaignend)){
 <link rel="stylesheet" href="/assets/uislider/nouislider.css">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
-<link rel="stylesheet" href="/includes/css/discover.css">
+<link rel="stylesheet" href="/assets/css/discover.css">
 <link rel="stylesheet" href="/assets/css/sidebar.css">
 <style>
 .form-control{
@@ -73,6 +73,22 @@ if(isset($campaignend)){
 
 .search{
     min-width:143.5px;
+}
+.delete{
+float:left; 
+margin-left: 4.2%; 
+width:40%; 
+background-color:white;
+border:1px solid #30363C; 
+color:#30363C;
+height: 50px;
+font-size: 16px;
+font-family: 'Montserrat', sans-serif;
+min-width:143.5px;
+}
+
+.delete:hover{
+    box-shadow: 0 0 1px #30363C;
 }
 </style>
 </head>
@@ -92,11 +108,11 @@ if(isset($campaignend)){
   <div id="li-container" style="display:none;">
     <li class="item"><a class="side-link" href="/dashboard.php"> DASHBOARD </a> </li>
     <li class="item"><a class="side-link" href="/acdiscover.php"> DISCOVER </a></li>
-    <li class="item"><a class="side-link" href="#"> ACCOUNT SETTINGS </a></li>
+    <li class="item"><a class="side-link" href="/settings.php"> ACCOUNT SETTINGS </a></li>
     <li class="item"><a class="side-link" href="#"> FAQ</a> </li>
     <li class="item"><a class="side-link" href="#"> CONTACT</a> </li>
     <li class="item"><a class="side-link" href="#"> LATEST UPDATES</a></li>
-    <li class="item"><a class="side-link" href="#"> LOGOUT</a></li>
+    <li class="item"><a class="side-link" href="/logout.php"> LOGOUT</a></li>
   </div>
 </div>
 <div id="stuff"></div>
@@ -112,6 +128,10 @@ if(isset($campaignend)){
 
     <label class="title">Campaign Name </label>
     <input type="text" class="form-control category avocado-focus" id="name" value="<?php echo $campaignname; ?>">
+
+
+    <label class="title">Brand Name </label>
+    <input type="text" class="form-control category avocado-focus" id="brandname" value="<?php echo $brandname; ?>">
 
     <label class="title">Campaign Summary </label>
     <br/>
@@ -129,7 +149,7 @@ if(isset($campaignend)){
         <input type="date" class="form-control category avocado-focus"  id="campaign-end" style="float:left; width:45%;" value="<?php echo $tomorrow;?>">
     </div>
     <div style="margin-top:50px;">
-        <button class="search avocado-hover col-xs-4 delete" id="search-keyword" style="float:left; margin-left: 4.2%; width:40%;">DELETE</button>
+        <button class="col-xs-4 delete" id="search-keyword" style="float:left; margin-left: 4.2%; width:40%; background-color:white; border:1px solid #30363C; color:#30363C;">DELETE</button>
         <button class="search avocado-hover col-xs-4 submit" id="search-keyword" style="float:left; margin-left:10%; width:40%;">SUBMIT</button>
     </div>
 
@@ -148,6 +168,7 @@ $(document).on('click','.submit',function(){
     const campaignrequest = $('#campaign-request').val();
     const campaignstart = $('#campaign-start').val();
     const campaignend = $('#campaign-end').val();
+    const brandname = $('#brandname').val();
     $.ajax({
         type: 'POST',
         url: '/includes/ajax/updatecampaign.php',
@@ -157,13 +178,14 @@ $(document).on('click','.submit',function(){
             campaignsummary: campaignsummary,
             campaignrequest:campaignrequest,
             campaignstart:campaignstart,
-            campaignend:campaignend
+            campaignend:campaignend,
+            brandname:brandname
         },
         success: function (jqXHR, textStatus, errorThrown) {
             dialog = bootbox.dialog({
                 message: '<div class="bootbox-body">'+
             '<div class="icon-popup-div"> <img src="https://68.media.tumblr.com/0abd1f3bfd0a2594ea81787691cb6af2/tumblr_o33ti7IZMI1t4twpao1_500.gif" class="success-popup-icon"/> </div>'+
-            '<div class="row"> <div class="col-xs-12 popup-detail success">   <span class="yay"> YAY! </span> <br/> Your campaign has been edited.  </div>'+
+            '<div class="row"> <div class="col-xs-12 popup-detail success"> <br/> Your campaign has been edited. </div><div class="popup-btn-div"> <a href="/campaigns/?id='+campaignid+'"><button id="applyall" class="submit-btn" style="margin-bottom: 50px;">VIEW CAMPAIGN </button></a></div>'+
             '</div> </div>',
                 closeButton: true
             });
@@ -184,7 +206,14 @@ $(document).on('click','.delete',function(){
             campaignid : campaignid,
         },
         success: function (jqXHR, textStatus, errorThrown) {
-            console.log('success');
+            dialog = bootbox.dialog({
+                message: '<div class="bootbox-body">'+
+            '<div class="icon-popup-div"> <img src="https://68.media.tumblr.com/0abd1f3bfd0a2594ea81787691cb6af2/tumblr_o33ti7IZMI1t4twpao1_500.gif" class="success-popup-icon"/> </div>'+
+            '<div class="row"> <div class="col-xs-12 popup-detail success"> <br/> Your campaign has been deleted. </div><div class="popup-btn-div"> <a href="/dashboard.php"><button id="applyall" class="submit-btn" style="margin-bottom: 50px;">VIEW CAMPAIGNS </button></a></div>'+
+            '</div> </div>',
+                closeButton: true
+            });
+            dialog.modal();
 
         }
 

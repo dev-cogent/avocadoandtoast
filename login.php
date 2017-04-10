@@ -146,7 +146,7 @@ border-radius:0px;
 <link rel="stylesheet" href="/assets/uislider/nouislider.css">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
-<link rel="stylesheet" href="/includes/css/discover.css">
+<link rel="stylesheet" href="/assets/css/discover.css">
 
 </head>
 
@@ -173,7 +173,6 @@ border-radius:0px;
                 <button class="form-control" id="login-button"> SIGN IN </button>
                 </form>
                 <a href="/register.php" style="text-decoration:none;"><button class="form-control" id="register-button" > REGISTER </button></a>
-                <p id="pdf"> PDF TEST </p>
     </div>
 </div>
 
@@ -183,16 +182,4 @@ border-radius:0px;
 
 
 </body>
-
-
-<script>
-$(document).on('click','#pdf',function(){
-
-
-    window.location = '/includes/pdf/pdf.php';
-});
-
-
-</script>
-
-
+</html>

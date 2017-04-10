@@ -1,0 +1,33 @@
+.submit-create-group {
+  text-align: right;
+}
+
+@media (max-width: 767px) {
+  .submit-create-group {
+    text-align: center;
+    margin: 5px 0 12px 0;
+  }
+}
+
+.av-btn {
+  font-family: 'Montserrat', sans-serif;
+  margin-right: 5px;
+}
+
+.av-btn-secondary {
+  border:1px solid #30363F;
+  color:#30363F;
+  background-color:white;
+} .av-btn-secondary:hover {
+  border: 1px solid #73C48D;
+  color: #73C48D;
+  box-shadow: 0 0 10px #73C48D;
+}
+
+.av-btn-primary{
+  color: white;
+  background-color:#73C48D;
+} .av-btn-primary:hover {
+  border: 1px solid #73C48D;
+  box-shadow: 0 0 10px #73C48D;
+}

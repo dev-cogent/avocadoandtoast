@@ -17,14 +17,26 @@ $influencerinfo = $save->getCampaign($campaignid,$position);
                 $facebookhandle = $info['facebook_handle'];
                 $twitterhandle = $info['twitter_handle'];
                 $insthandle = $info['instagram_handle'];
-                $instagramcount = $info['instagram_count'];
-                $facebookcount = $info['facebook_count'];
-                $twittercount = $info['twitter_count'];
+
+                $instagrampost = $info['instagram_post'];
+                $twitterpost = $info['twitter_post'];
+                $facebookpost = $info['facebook_post'];
+
+                $instagramimpressions = $info['instagram_impressions'];
+                $twitterimpressions = $info['twitter_impressions'];
+                $facebookimpressions = $info['facebook_impressions'];
+
+
+                $instagrameng = $info['instagram_engagement'];
+                $twittereng = $info['twitter_engagement'];
+                $facebookeng = $info['facebook_engagement'];
                 echo '
-                    <div  class="influencer-box col-xs-12 col-md-6 col-lg-3 col-xl-2">
+                    <div  class="influencer-box col-xs-12 col-md-6 col-lg-3 col-xl-2" data-id="'.$id.'" data-t-post="'.$twitterpost.'" data-f-post="'.$facebookpost.'"
+                    data-i-post="'.$instagrampost.'" data-t-impressions="'.$twitterimpressions.'" data-f-impressions="'.$facebookimpressions.'" data-i-impressions="'.$instagramimpressions.'">
                             <div class="influencer-card-discover">
-                                <img class="influencer-image-card" src="https://project.social/'.$info['image'].'">
-                                <div class="col-xs-12" style="height:170px;">
+
+                                <img class="influencer-image-card" src="http://cogenttools.com/'.$info['image'].'" onerror="this.src=`/assets/images/default-photo.png`">
+                                <div class="col-xs-12" style="height:170px; box-shadow: rgb(115, 196, 141) 0px -10px 0px;">
                                     <!-- insthandle stuff -->
                                         <div class="icons col-xs-12">';
 
@@ -56,38 +68,72 @@ $influencerinfo = $save->getCampaign($campaignid,$position);
                                     
                                         if($instagramurl != NULL){
                                             echo '
-                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'">'.numberAbbreviation($instagramcount).' Followers</p>
-                                        <p class="facebook-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($facebookcount).' Likes</p>
-                                        <p class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($twittercount).' Followers</p>
+                                        
+                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'">'.numberAbbreviation($instagramimpressions).' Impressions</p>
+                                        <p class="facebook-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($facebookimpressions).' Impressions</p>
+                                        <p class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($twitterimpressions).' Impressions</p>
                                         ';
                                         }
                                         elseif($facebookurl != NULL && $instagramurl == NULL){
                                             echo '
-                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'" style="display:none">'.numberAbbreviation($instagramcount).' Followers</p>
-                                        <p class="facebook-follower-count follower-count"  data-id="'.$id.'">'.numberAbbreviation($facebookcount).' Likes</p>
-                                        <p class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($twittercount).' Followers</p>
+                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'" style="display:none">'.numberAbbreviation($instagramimpressions).' Impressions</p>
+                                        <p class="facebook-follower-count follower-count"  data-id="'.$id.'">'.numberAbbreviation($facebookimpressions).' Impressions</p>
+                                        <p class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($twitterimpressions).' Impressions</p>
                                         ';
                                         }
                                         elseif($twitterurl != NULL && $facebookurl == NULL && $instagramurl == NULL){
                                             echo '
-                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'" style="display:none">'.numberAbbreviation($instagramcount).' Followers</p>
-                                        <p class="facebook-follower-count follower-count"  data-id="'.$id.'" style="display:none">'.numberAbbreviation($facebookcount).' Likes</p>
-                                        <p class="twitter-follower-count follower-count"  data-id="'.$id.'">'.numberAbbreviation($twittercount).' Followers</p>
+                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'" style="display:none">'.numberAbbreviation($instagramimpressions).' Impressions</p>
+                                        <p class="facebook-follower-count follower-count"  data-id="'.$id.'" style="display:none">'.numberAbbreviation($facebookimpressions).' Impressions</p>
+                                        <p class="twitter-follower-count follower-count"  data-id="'.$id.'">'.numberAbbreviation($twitterimpressions).' Impressions</p>
                                         ';
                                         }
                                     echo '
                                     </div>
                                     <!-- Engagement ?-->
-                                    <div class="col-xs-12">
-                                        <p class="instagram-engagement engagement-count" data-id="'.$influencerid.'">1.5K Likes per post</p>
-                                        <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$influencerid.'">1.5K Likes per post</p>
-                                        <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$influencerid.'">1.5K Likes per post</p>
+                                    <div class="col-xs-12">';
+                                    if($instagramurl != NULL){
+                                        echo '
+                                        <p class="instagram-engagement engagement-count" data-id="'.$influencerid.'">'.numberAbbreviation($instagrameng).' Engagaement </p>
+                                        <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$influencerid.'">'.numberAbbreviation($facebookeng).' Engagaement</p>
+                                        <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$influencerid.'">'.numberAbbreviation($twittereng).' Engagement</p>';
+                                    }
+                                    elseif ($facebookurl != NULL && $instagramurl == NULL){
+                                        echo '<p class="instagram-engagement engagement-count" style="display:none" data-id="'.$influencerid.'">'.numberAbbreviation($instagrameng).' Engagaement </p>
+                                        <p class="facebook-engagement engagement-count" data-id="'.$influencerid.'">'.numberAbbreviation($facebookeng).' Engagaement</p>
+                                        <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$influencerid.'">'.numberAbbreviation($twittereng).' Engagement</p>';
+                                    }
+                                    elseif ($twitterurl != NULL && $facebookurl == NULL && $instagramurl == NULL){
+                                    echo '<p class="instagram-engagement engagement-count" style="display:none" data-id="'.$influencerid.'">'.numberAbbreviation($instagrameng).' Engagaement </p>
+                                        <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$influencerid.'">'.numberAbbreviation($facebookeng).' Engagaement</p>
+                                        <p class="twitter-engagement engagement-count" data-id="'.$influencerid.'">'.numberAbbreviation($twittereng).' Engagement</p>';
+                                    }
+                                    echo '
                                     </div>
+                                    
                                     <div class="col-xs-12">
-
-                                        <div style="display:inline; background-color:white; color:#e0e0e0;"class="col-xs-12 invite  avocado-focus" data-id="'.$influencerid.'" data-image="'.$info['image'].'">
-                                              <i class="icon fa-check check" aria-hidden="true"></i>
-                                                 </div>
+                                    <div style="display:inline; background-color:white; margin-top:1px; margin-bottom:4px; height:28px; padding-top:0px; width:100%;"class="col-xs-12 invite  avocado-focus" data-id="'.$influencerid.'" data-image="'.$info['image'].'">
+                                    ';
+                                    if($instagramurl != NULL){
+                                      echo '   <p  class="instagram-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D;"> '.$instagrampost.' total post(s) </p>
+                                               <p  class="facebook-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;"> '.$facebookpost.' total post(s) </p>
+                                               <p  class="twitter-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;"> '.$twitterpost.' total post(s) </p>';
+                                    }
+                                    elseif($facebookurl != NULL && $instagramurl == NULL){
+                                      echo '   <p  class="instagram-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;"> '.$instagrampost.' total post(s) </p>
+                                               <p  class="facebook-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; "> '.$facebookpost.' total post(s) </p>
+                                               <p  class="twitter-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;"> '.$twitterpost.' total post(s) </p>';
+                                    }
+                                    elseif($twitterurl != NULL && $facebookurl == NULL && $instagramurl == NULL){
+                                      echo '   <p  class="instagram-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;"> '.$instagrampost.' total post(s) </p>
+                                               <p  class="facebook-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;"> '.$facebookpost.' total post(s) </p>
+                                               <p  class="twitter-total-post total-post" data-id="'.$id.'" style="text-align:center;padding-top: 3px; color:#73C48D; "> '.$twitterpost.' total post(s) </p>';
+                                    }
+                                    echo '
+                                              <i class="icon fa-check check" aria-hidden="true" style="text-align:center; width:100%; margin-left:0px;"></i>
+                                        </div> 
+                                
+                                       
                                     </div>
                                 </div>
                             </div>
