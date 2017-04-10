@@ -13,7 +13,7 @@ class twitterScraper
     public function getMainInfo($url)
     {
         $arrInfo = array();
-        $html = $this->getHtml($url);
+        $html = $this->getTwitterHtml($url);
 
         $information = explode('json-data', $html);
         $jsonInformation = $information[1];
@@ -28,14 +28,25 @@ class twitterScraper
         return $arrInfo;
     }
 
+
+
+    public function getTwitterEngagement($url){
+        $html = $this->getTwitterHtml($url);
+        $information = explode('json-data', $html);
+        $jsonInformation = $information[1];
+        $engagementInfo = $this->getEngagement($url);
+        $engagementJson = json_encode($engagement);
+        return $engagementJson;
+
+    }
+
     /**
      * Getting the twitter followers
      *
      * @param string $jsonInformation
      * @return string followers
      */
-    public function getFollowers($jsonInformation)
-    {
+    public function getFollowers($jsonInformation){
         $followers = explode('followers_count', $jsonInformation);
         $followers = explode(':', $followers[1]);
         $followers = explode(',', $followers[1]);
@@ -164,7 +175,7 @@ class twitterScraper
  * @param string  $url
  * @return string text
  */
-    public function getHtml($url)
+    public function getTwitterHtml($url)
     {
         $ch = curl_init();  // Initialising cURL
         curl_setopt($ch, CURLOPT_URL, $url);    // Setting cURL's URL option with the $url variable passed into the function
@@ -267,7 +278,3 @@ class twitterScraper
 
 
 
-$obj = new twitterScraper;
-
-$info = $obj->getMainInfo('https://twitter.com/nasa');
-var_dump($info);
