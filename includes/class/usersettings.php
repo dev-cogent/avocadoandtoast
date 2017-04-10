@@ -2,31 +2,7 @@
 error_reporting(0);
 class userSettings extends userOptions{
 
-/**
-*@param {int} $instagram_id - the instagram user id 
-*@param {string} $userid - the users id 
-*@return {bool}
-*/
-public function removeInstagram($instagram_id,$user_id,$conn = NULL){
-if($conn === NULL)
-$conn = $this->dbinfo();
-$instagram_accounts = $this->getInstagramAccounts($user_id,$conn);
-foreach($instagram_accounts as $key=>$account){
-    if($account === $instagram_id){
-        unset($instagram_accounts[$key]);
-        $instagram_accounts = array_values($instagram_accounts);
-        break;
-    }
-} 
-$_SESSION['instagram_accounts'] = $instagram_accounts;
-$instagram_accounts = serialize($instagram_accounts);
-$stmt = $conn->prepare("UPDATE `login_information` SET `instagram_accounts` = ? WHERE `userid` = ?");
-$stmt->bind_param("ss",$instagram_accounts,$user_id);
-if($stmt->execute())
-    return true;
-else
-    return false; 
-}
+
 
 
 /**
