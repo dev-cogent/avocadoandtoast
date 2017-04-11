@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-  <?php include 'php/head.php' ?>
+  <?php include 'html/head.html' ?>
     <title>Avocado & Toast</title>
 </head>
 
@@ -138,4 +138,4 @@
     </div>
 
 
-    <?php include 'main-footer.php'; ?>
+    <?php include 'html/main-footer.html'; ?>

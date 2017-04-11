@@ -2,7 +2,7 @@
 session_start();
 //error_reporting(0);
 include 'php/dbinfo.php';
-include 'php/ajax/savecampaign.php';
+include 'php/class/savecampaign.php';
 include 'php/numberAbbreviation.php';
 $url = $_SERVER['REQUEST_URI'];
 $id = explode('/',$url);
@@ -37,7 +37,7 @@ $campaignname = $save->getCampaignName($campaignid);
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
 <head>
-  <?php include 'php/head.php' ?>
+  <?php include 'html/head.html' ?>
     <title><?php echo $influencerinfo['campaign_name'];?> | Avocado & Toast</title>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>

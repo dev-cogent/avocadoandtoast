@@ -6,7 +6,7 @@ include 'php/registerinfo.php';
 ?>
 <!DOCTYPE html>
 <head>
-  <?php include 'php/head.php' ?>
+  <?php include 'html/head.html' ?>
     <title>Sign Up | Avocado & Toast</title>
 <style>
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */

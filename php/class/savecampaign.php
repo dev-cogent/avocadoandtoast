@@ -215,14 +215,26 @@ public function getSavedCampaigns($columnid){
         $arr[$campaignid]['totalposts'] = $totalpost;
         $arr[$campaignid]['totalimpressions'] = $totalimpressions;
         $arr[$campaignid]['totalengagement'] = $totalengagement;
-        $arr[$campaignid]['campaignstart'] = $start;
-        $arr[$campaignid]['campaignend'] = $end;
+        $arr[$campaignid]['campaignstart'] = date('m/d/Y',strtotime($start));
+        $arr[$campaignid]['campaignend'] = date('m/d/Y',strtotime($end));
+        
         $stmt2 = $listconn->prepare("SELECT `influencer_id` FROM $campaignid");
         $stmt2->execute();
         $stmt2->bind_result($influencerid);
         while($stmt2->fetch()){
             $arr[$campaignid]['influencer'][$influencerid] = $influencerid;
         }
+        $totalInfluencers = count($arr[$campaignid]['influencer']);
+        $arr[$campaignid]['totalinfluencers'] = $totalInfluencers;
+        $arr[$campaignid]['average_impressions'] = $totalimpressions/$totalInfluencers;
+        $arr[$campaignid]['average_engagement'] = $totalengagement/$totalInfluencers; 
+        $state = $this->check_in_range($arr[$campaignid]['campaignstart'],$arr[$campaignid]['campaignend']);
+        if($state) $state = 'Campaign in progress';
+        else $state = 'Campaign not in progress';
+        $arr[$campaignid]['state'] = $state;
+
+
+
     }
     unset($listconn);
     return $arr;
