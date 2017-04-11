@@ -1,9 +1,9 @@
 <?php
 session_start();
 //error_reporting(0);
-include '../includes/dbinfo.php';
-include '../includes/class/savecampaign.php';
-include '../includes/numberAbbreviation.php';
+include '../php/dbinfo.php';
+include '../php/class/savecampaign.php';
+include '../php/numberAbbreviation.php';
 //$url = $_SERVER['REQUEST_URI'];
 //$id = explode('/',$url);
 $id = $_GET['id'];//$id[2];
@@ -47,14 +47,12 @@ $company = $_SESSION['company'];
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
 <head> 
-  <?php include '../includes/head.php' ?>
+  <?php include '../php/head.php' ?>
     <title><?php echo $campaignname;?> | Avocado & Toast</title>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 <script src="/assets/wnumb/wNumb.js"></script>
 <script src="/assets/uislider/nouislider.js"></script>
-<script src="/includes/javascript/tokenfield/dist/bootstrap-tokenfield.js"></script>
-<link rel="stylesheet" href="/includes/javascript/tokenfield/dist/css/bootstrap-tokenfield.css">
 <link rel="stylesheet" href="/assets/uislider/nouislider.css">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
@@ -110,7 +108,7 @@ li{
 "></i>
   <div id="li-container" style="display:none;">
     <li class="item"><a class="side-link" href="dashboard.php"> DASHBOARD </a> </li>
-    <li class="item"><a class="side-link" href="acdiscover.php"> DISCOVER </a></li>
+    <li class="item"><a class="side-link" href="discover.php"> DISCOVER </a></li>
     <li class="item"><a class="side-link" href="#"> ACCOUNT SETTINGS </a></li>
     <li class="item"><a class="side-link" href="#"> FAQ</a> </li>
     <li class="item"><a class="side-link" href="#"> CONTACT</a> </li>
@@ -119,7 +117,7 @@ li{
   </div>
 </div>
 <div id="stuff"></div>
-<script src="/includes/javascript/sidebar-left.js"></script>
+<script src="/assets/js/sidebar-left.js"></script>
 <script>
     var target2 = $('#stuff').offset().top;
 </script>
@@ -214,7 +212,7 @@ $(document).on('click','.submit',function(){
     const campaignend = $('#campaign-end').val();
     $.ajax({
         type: 'POST',
-        url: '/includes/ajax/updatecampaign.php',
+        url: '/php/ajax/updatecampaign.php',
         data: {
             campaignid : campaignid,
             campaignname: campaignname,
@@ -243,7 +241,7 @@ $(document).on('click','.submit',function(){
 $(document).on('click','.delete',function(){
         $.ajax({
         type: 'POST',
-        url: '/includes/ajax/deletecampaign.php',
+        url: '/php/ajax/deletecampaign.php',
         data: {
             campaignid : campaignid,
         },

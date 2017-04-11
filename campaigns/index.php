@@ -1,9 +1,9 @@
 <?php
 session_start(); 
 error_reporting(0);
-include '../includes/dbinfo.php';
-include '../includes/class/savecampaign.php';
-include '../includes/numberAbbreviation.php';
+include '../php/dbinfo.php';
+include '../php/class/savecampaign.php';
+include '../php/numberAbbreviation.php';
 //$url = $_SERVER['REQUEST_URI'];
 //$id = explode('/',$url);
 $id = $_GET['id'];
@@ -33,12 +33,12 @@ if($description == NULL){
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
 <head>
-  <?php include '../includes/head.php' ?>
+  <?php include '../php/head.php' ?>
     <title><?php echo $influencerinfo['campaign_name'];?> | Avocado & Toast</title>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
-<script src="/includes/javascript/tokenfield/dist/bootstrap-tokenfield.js"></script>
-<link rel="stylesheet" href="/includes/javascript/tokenfield/dist/css/bootstrap-tokenfield.css">
+<script src="/assets/js/tokenfield/dist/bootstrap-tokenfield.js"></script>
+<link rel="stylesheet" href="/assets/js/tokenfield/dist/css/bootstrap-tokenfield.css">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
 <link rel="stylesheet" href="/assets/css/discover.css">
@@ -123,7 +123,7 @@ padding-top: 45px;
 "></i>
   <div id="li-container" style="display:none;">
     <li class="item"><a class="side-link" href="/dashboard.php"> DASHBOARD </a> </li>
-    <li class="item"><a class="side-link" href="/acdiscover.php"> DISCOVER </a></li>
+    <li class="item"><a class="side-link" href="/discover.php"> DISCOVER </a></li>
     <li class="item"><a class="side-link" href="/settings.php"> ACCOUNT SETTINGS </a></li>
     <li class="item"><a class="side-link" href="#"> FAQ</a> </li>
     <li class="item"><a class="side-link" href="#"> CONTACT</a> </li>
@@ -422,10 +422,10 @@ sidebar = false;
 
 $(document).on('click','.pdf',function(){
 var id = $(this).attr('data-id');
-window.location='/includes/pdf/pdf.php?id='+id;
+window.location='/assets/pdf/pdf.php?id='+id;
 
 
 });
 $('#tokenfield').tokenfield();
 </script>
-<script src="/includes/javascript/avocado-campaign.js"></script>
+<script src="/assets/js/avocado-campaign.js"></script>

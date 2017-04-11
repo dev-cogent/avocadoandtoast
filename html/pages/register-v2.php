@@ -1,7 +1,7 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-include 'includes/registerinfo.php';
+include 'php/registerinfo.php';
 }
 
 
@@ -9,7 +9,7 @@ include 'includes/registerinfo.php';
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
 <head>
-    <?php include 'includes/head.php' ?>
+    <?php include 'php/head.php' ?>
   <title>Register V2 | Remark Admin Template</title>
   
 </head>
@@ -83,6 +83,6 @@ include 'includes/registerinfo.php';
     </div>
   </div>
   <!-- End Page -->
-   <?php include 'includes/footer2.php' ?>
+   <?php include 'php/footer2.php' ?>
 </body>
 </html>

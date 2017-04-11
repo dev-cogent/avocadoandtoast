@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
 <head>
-  <?php include 'includes/head.php' ?>
-    <title>Blank Page | Project Social</title>
-<script src="/bootbox/bootbox.js"></script>
-<script src="/includes/javascript/savecampaign.js"></script>
-<script src="/includes/javascript/addtolist.js"></script>
-<script src="/global/vendor/bootstrap/bootstrap.js"></script>
+  <?php include 'php/head.php' ?>
+    <title>Agency | Avocado & Toast</title>
+
 </head>
 
 
