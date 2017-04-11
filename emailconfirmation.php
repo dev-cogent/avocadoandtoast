@@ -76,7 +76,7 @@
    <div style="padding-bottom:100px;"></div>
 
 
-     <?php include 'php/footer.php' ?>
+     <?php include 'php/dashboard-footer.php' ?>
 
 
 
