@@ -56,7 +56,7 @@ include 'php/numberAbbreviation.php';
 
 <!-- The third nav bar , we might be able to take this out. In the mean time, we'll keep it here -->
 
-<div class="mininav col-xs-12" style="height:50px;">
+<div class="avo-nav col-xs-12" style="height:50px;">
     <p class="nav3">INFLUENCERS</p>
 </div>
 <div id="myNav" class="overlay"></div>
