@@ -33,32 +33,12 @@ include 'php/numberAbbreviation.php';
 
 <!-- Add side bar here -->
 <div id="loading" style="display:none; top:31%; left:40%; position:fixed; z-index:1001;"><img style="height:250px; width:250px;"src="/assets/images/loading.gif"/></div>
-<div class="col-xs-1 sidebar-left">
-<i class="icon fa-bars" aria-hidden="true" style="
-    color: white;
-    text-align: center;
-    font-size: 21px;
-    margin-left: 5px;
-    height: 20px;
-    padding-top: 15px;
-"></i>
-  <div id="li-container" style="display:none;">
-    <li class="item"><a class="side-link" href="/dashboard.php"> DASHBOARD </a> </li>
-    <li class="item"><a class="side-link" href="/discover.php"> DISCOVER </a></li>
-    <li class="item"><a class="side-link" href="/settings.php"> ACCOUNT SETTINGS </a></li>
-    <li class="item"><a class="side-link" href="#"> FAQ</a> </li>
-    <li class="item"><a class="side-link" href="#"> CONTACT</a> </li>
-    <li class="item"><a class="side-link" href="#"> LATEST UPDATES</a></li>
-    <li class="item"><a class="side-link" href="/logout.php"> LOGOUT</a></li>
-  </div>
-</div>
+
 
 
 <!-- The third nav bar , we might be able to take this out. In the mean time, we'll keep it here -->
 
-<div class="mininav col-xs-12" style="height:50px;">
-    <p class="nav3">INFLUENCERS</p>
-</div>
+
 <div id="myNav" class="overlay"></div>
 <div id="stuff">
 

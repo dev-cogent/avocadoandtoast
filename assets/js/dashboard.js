@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $.ajax({
-        type: 'POST', 
+        type: 'GET', 
         url: '/php/ajax/yourcampaigns-info.php',
         success: function (jqXHR, textStatus, errorThrown) {
             campaignJSON = JSON.parse(jqXHR);
@@ -19,7 +19,7 @@ $(document).ready(function(){
                             '<td class="stats">'+abbrNum(obj.average_impressions)+'</td>'+
                             '<td class="stats">'+abbrNum(obj.average_engagement)+'</td>'+
                             '<td class="stats">'+abbrNum(obj.totalimpressions)+'</td>'+
-                        '</tr>'+
+                        '</tr>'+ 
                         '<tr>'+
                             '<td class="label-info"># of Influencers</td>'+
                             '<td class="label-info">Total Post</td>'+
@@ -30,14 +30,6 @@ $(document).ready(function(){
                         '</tbody>'+
                     '</table>'+
                 '</div>');
-
-
-
-
-
-
-
-
             });
         }
     }); // end ajax request*/
