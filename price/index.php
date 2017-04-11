@@ -47,7 +47,7 @@ $company = $_SESSION['company'];
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
 <head> 
-  <?php include '../php/head.php' ?>
+  <?php include '../html/head.html' ?>
     <title><?php echo $campaignname;?> | Avocado & Toast</title>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>

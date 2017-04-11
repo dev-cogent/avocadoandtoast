@@ -20,7 +20,7 @@ $campaigninfo = $save->getCampaignInfo($campaignid);
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
 <head>
-  <?php include 'php/head.php' ?>
+  <?php include 'html/head.html' ?>
     <title><?php echo $influencerinfo['campaign_name'];?> | Avocado & Toast</title>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>

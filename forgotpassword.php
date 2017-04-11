@@ -134,7 +134,7 @@ border-radius:0px;
 }
 
 </style>
-  <?php include 'php/head.php' ?>
+  <?php include 'html/head.html' ?>
     <title>Login | Avocado & Toast</title>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>

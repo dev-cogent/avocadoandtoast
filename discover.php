@@ -8,7 +8,7 @@ include 'php/numberAbbreviation.php';
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
 <head>
-  <?php include 'php/head.php' ?>
+  <?php include 'html/head.html' ?>
     <title>Discover | Avocado & Toast</title>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>

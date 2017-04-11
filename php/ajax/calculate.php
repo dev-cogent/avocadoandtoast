@@ -1,4 +1,5 @@
 <?php 
+//All results return in a JSON format. 
 error_reporting(0);
 include '../class/campaign.php';
 include '../numberAbbreviation.php';
