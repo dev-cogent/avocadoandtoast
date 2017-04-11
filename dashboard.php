@@ -1,16 +1,16 @@
 <?php
 session_start();
 //error_reporting(-1);
-include 'includes/dbinfo.php';
- include 'includes/numberAbbreviation.php';
-include 'includes/class/savecampaign.php';
+include 'php/dbinfo.php';
+ include 'php/numberAbbreviation.php';
+include 'php/class/savecampaign.php';
 $save = new saveCampaign;
 $campaigninfo = $save->getSavedCampaigns($_SESSION['column_id']);
 ?>
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
 <head>
-  <?php include 'includes/head.php' ?>
+  <?php include 'php/head.php' ?>
     <title>Dashboard</title>
 
 <script src="/bootbox/bootbox.js"></script>
@@ -18,8 +18,8 @@ $campaigninfo = $save->getSavedCampaigns($_SESSION['column_id']);
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700" rel="stylesheet">
 <script src="/assets/wnumb/wNumb.js"></script>
 <script src="/assets/uislider/nouislider.js"></script>
-<script src="/includes/javascript/tokenfield/dist/bootstrap-tokenfield.js"></script>
-<link rel="stylesheet" href="/includes/javascript/tokenfield/dist/css/bootstrap-tokenfield.css">
+<script src="/assets/js/tokenfield/dist/bootstrap-tokenfield.js"></script>
+<link rel="stylesheet" href="/assets/js/tokenfield/dist/css/bootstrap-tokenfield.css">
 <link rel="stylesheet" href="/assets/uislider/nouislider.css">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
@@ -53,7 +53,7 @@ button:focus{
 "></i>
   <div id="li-container" style="display:none;">
     <li class="item"><a class="side-link" href="dashboard.php"> DASHBOARD </a> </li>
-    <li class="item"><a class="side-link" href="acdiscover.php"> DISCOVER </a></li>
+    <li class="item"><a class="side-link" href="discover.php"> DISCOVER </a></li>
     <li class="item"><a class="side-link" href="#"> ACCOUNT SETTINGS </a></li>
     <li class="item"><a class="side-link" href="#"> FAQ</a> </li>
     <li class="item"><a class="side-link" href="#"> CONTACT</a> </li>
@@ -63,7 +63,7 @@ button:focus{
 </div>
 </div>
 <div id="stuff"></div>
-<script src="/includes/javascript/sidebar-left.js"></script>
+<script src="/assets/js/sidebar-left.js"></script>
 
 
 

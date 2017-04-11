@@ -1,5 +1,5 @@
 <?php 
-include 'includes/dbinfo.php';
+include 'php/dbinfo.php';
 $code = $_GET['q'];
 $stmt = $conn->prepare('SELECT `userid` FROM `login_information` WHERE `confirmation_key` = ?');
 $stmt->bind_param('s',$code);

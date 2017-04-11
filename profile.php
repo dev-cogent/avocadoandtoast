@@ -1,9 +1,9 @@
 <?php
 session_start();
 error_reporting(0);
-include 'includes/dbinfo.php';
-include 'includes/numberAbbreviation.php';
-include 'includes/TwitterAPIexchange.php';
+include 'php/dbinfo.php';
+include 'php/numberAbbreviation.php';
+include 'php/TwitterAPIexchange.php';
 
 $id = $_GET['id'];
 
@@ -12,17 +12,14 @@ $id = $_GET['id'];
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
 <head>
-  <?php include 'includes/head.php' ?>
+  <?php include 'php/head.php' ?>
     <title>Blank Page | Project Social</title>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700" rel="stylesheet">
 <script src="/assets/wnumb/wNumb.js"></script>
-<script src="/assets/uislider/nouislider.js"></script>
-<script src="/includes/javascript/tokenfield/dist/bootstrap-tokenfield.js"></script>
-<script src="/includes/javascript/profile.js"></script>
-<script src="/includes/javascript/avocado-discover.js"></script>
-<link rel="stylesheet" href="/includes/javascript/tokenfield/dist/css/bootstrap-tokenfield.css">
+<script src="/assets/js/profile.js"></script>
+<script src="/assets/js/avocado-discover.js"></script>
 <link rel="stylesheet" href="/assets/uislider/nouislider.css">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">

@@ -1,9 +1,9 @@
 <?php
 session_start();
 //error_reporting(0);
-include 'includes/dbinfo.php';
-include 'includes/class/savecampaign.php';
-include 'includes/numberAbbreviation.php';
+include 'php/dbinfo.php';
+include 'php/ajax/savecampaign.php';
+include 'php/numberAbbreviation.php';
 $url = $_SERVER['REQUEST_URI'];
 $id = explode('/',$url);
 $id = $id[2];
@@ -37,7 +37,7 @@ $campaignname = $save->getCampaignName($campaignid);
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
 <head>
-  <?php include 'includes/head.php' ?>
+  <?php include 'php/head.php' ?>
     <title><?php echo $influencerinfo['campaign_name'];?> | Avocado & Toast</title>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
@@ -45,12 +45,10 @@ $campaignname = $save->getCampaignName($campaignid);
 <script src="/assets/uislider/nouislider.js"></script>
 <link rel="stylesheet" href="dist/switchery.css" />
 <script src="dist/switchery.js"></script>
-<script src="/includes/javascript/tokenfield/dist/bootstrap-tokenfield.js"></script>
-<link rel="stylesheet" href="/includes/javascript/tokenfield/dist/css/bootstrap-tokenfield.css">
 <link rel="stylesheet" href="/assets/uislider/nouislider.css">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
-<link rel="stylesheet" href="/includes/css/discover.css">
+<link rel="stylesheet" href="/assets/css/discover.css">
 <style>
 
 
@@ -85,7 +83,7 @@ $campaignname = $save->getCampaignName($campaignid);
   <div class="contact-sect settings">  <i class="icon fa-phone" aria-hidden="true"></i> <span class="setting-title"> Contact </span> </div> -->
 </div>
 </div>
-<script src="/includes/javascript/sidebar-left.js"></script>
+<script src="/assets/js/sidebar-left.js"></script>
 <script>
     var target2 = $('#stuff').offset().top;
 </script>

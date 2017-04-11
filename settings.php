@@ -1,17 +1,17 @@
 <?php
 error_reporting(0);
 session_start();
-include 'includes/dbinfo.php';
-include 'includes/class/savecampaign.php';
-include 'includes/numberAbbreviation.php';
+include 'php/dbinfo.php';
+include 'php/ajax/savecampaign.php';
+include 'php/numberAbbreviation.php';
 if(!isset($_SESSION['project_id'])){
     header('Location: /login.php');
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['profile'])) {
-   include 'includes/updateprofile.php';
+   include 'php/updateprofile.php';
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['password'])) {
-   include 'includes/changepassword.php';
+   include 'php/changepassword.php';
 }
 $stmt = $conn->prepare("SELECT `email`,`firstname`,`lastname`,`company` FROM `login_information` WHERE `userid` = ?");
 $stmt->bind_param('s',$_SESSION['userid']);
@@ -26,14 +26,12 @@ $userid = $_SESSION['userid'];
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
 <head>
-  <?php include 'includes/head.php' ?>
+  <?php include 'php/head.php' ?>
     <title> Settings | Avocado & Toast</title>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 <script src="/assets/wnumb/wNumb.js"></script>
 <script src="/assets/uislider/nouislider.js"></script>
-<script src="/includes/javascript/tokenfield/dist/bootstrap-tokenfield.js"></script>
-<link rel="stylesheet" href="/includes/javascript/tokenfield/dist/css/bootstrap-tokenfield.css">
 <link rel="stylesheet" href="/assets/uislider/nouislider.css">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
@@ -75,7 +73,7 @@ a:focus{
   <!-- <div class="contact-sect settings">  <i class="icon fa-phone" aria-hidden="true"></i> <span class="setting-title"> Contact </span> </div> -->
 </div>
 </div>
-<script src="/includes/javascript/sidebar-left.js"></script>
+<script src="/assets/js/sidebar-left.js"></script>
 <script>
     var target2 = $('#stuff').offset().top;
 </script>
@@ -128,7 +126,7 @@ a:focus{
   $(document).on('click','#getPassword',function(){
     $.ajax({
         type: 'POST',
-        url: '/includes/ajax/getPassword.html',
+        url: '/php/ajax/getPassword.html',
         data: {
             page: '0'
         },
@@ -141,7 +139,7 @@ a:focus{
   $(document).on('click','#getProfile',function(){
     $.ajax({
         type: 'POST',
-        url: '/includes/ajax/getProfile.php',
+        url: '/php/ajax/getProfile.php',
         data: {
             page: '0'
         },
