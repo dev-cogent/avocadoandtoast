@@ -27,10 +27,11 @@ $columnid = $this->getUserColumnID($userid);
 $campaignid = $this->randomString(20);
 
 //Inserting comments into mysql 
+$influencerCount = count($arr);
 $genstmt = $genconn->prepare("INSERT INTO `campaign_save_link` (`campaign_name`,`column_id`,`campaign_id`,`created_date`,`total_instagram_impressions`,`total_twitter_impressions`
-,`total_facebook_impressions`,`total_impressions`,`total_instagram_engagement`,`total_twitter_engagement`,`total_facebook_engagement`,`total_engagement`,`total_post`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?) ");
-$genstmt->bind_param('sssssssssssss',$campaignname,$columnid,$campaignid,$stats['created'],$stats['totalinstagramimpressions'],$stats['totaltwitterimpressions'],
-$stats['totalfacebookimpressions'],$stats['totalimpressions'],$stats['totalinstagramengagement'],$stats['totaltwitterengagement'],$stats['totalfacebookengagement'],$stats['totalengagement'],$stats['totalposts']);
+,`total_facebook_impressions`,`total_impressions`,`total_instagram_engagement`,`total_twitter_engagement`,`total_facebook_engagement`,`total_engagement`,`total_post`,`total_influencers`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?) ");
+$genstmt->bind_param('sssssssssssssi',$campaignname,$columnid,$campaignid,$stats['created'],$stats['totalinstagramimpressions'],$stats['totaltwitterimpressions'],
+$stats['totalfacebookimpressions'],$stats['totalimpressions'],$stats['totalinstagramengagement'],$stats['totaltwitterengagement'],$stats['totalfacebookengagement'],$stats['totalengagement'],$stats['totalposts'],$influencerCount);
 
 if($genstmt->execute() === FALSE) return $genstmt->error;
 
@@ -177,7 +178,7 @@ public function updateCampaign($campaignid,$campaignname,$brandname,$campaigndes
 
 
 
-
+ 
 /**
 *
 *@return {array} - database connection.
@@ -200,29 +201,33 @@ return $conn;
 
 
 public function getSavedCampaigns($columnid){
-    $arr = array();
+    $arr = new stdClass;
     $generalconn = $this->dbinfo();
-    $listconn = $this->savedDB();
-    $stmt = $generalconn->prepare('SELECT `campaign_name`,`campaign_id`,`campaign_desc`,`campaign_request`,`created_date`,`start_date`,`end_date`,`total_impressions`,`total_engagement`,`total_post` FROM `campaign_save_link` WHERE `column_id` = ?');
+    $stmt = $generalconn->prepare('SELECT `campaign_name`,`campaign_id`,`campaign_desc`,`created_date`,`start_date`,`end_date`,`total_impressions`,`total_engagement`,`total_post`,`total_influencers` FROM `campaign_save_link` WHERE `column_id` = ?');
     $stmt->bind_param('s',$columnid);
     $stmt->execute();
-    $stmt->bind_result($campaignname,$campaignid,$campaigndesc,$campaignrequest,$created,$start,$end,$totalimpressions,$totalengagement,$totalpost);
+    $stmt->bind_result($campaignname,$campaignid,$campaigndesc,$created,$start,$end,$totalimpressions,$totalengagement,$totalpost,$totalInfluencers);
     while($stmt->fetch()){
-        $arr[$campaignid]['campaignname'] = $campaignname;
-        $arr[$campaignid]['campaignid'] = $campaignid;
-        $arr[$campaignid]['description'] = $campaigndesc;
-        $arr[$campaignid]['created'] = $created;
-        $arr[$campaignid]['totalposts'] = $totalpost;
-        $arr[$campaignid]['totalimpressions'] = $totalimpressions;
-        $arr[$campaignid]['totalengagement'] = $totalengagement;
-        $arr[$campaignid]['campaignstart'] = $start;
-        $arr[$campaignid]['campaignend'] = $end;
-        $stmt2 = $listconn->prepare("SELECT `influencer_id` FROM $campaignid");
-        $stmt2->execute();
-        $stmt2->bind_result($influencerid);
-        while($stmt2->fetch()){
-            $arr[$campaignid]['influencer'][$influencerid] = $influencerid;
-        }
+        $arr->$campaignid = new stdClass;
+        $arr->$campaignid->campaignname = $campaignname;
+        $arr->$campaignid->campaignid = $campaignid;
+        $arr->$campaignid->description = $campaigndesc;
+        $arr->$campaignid->created = $created;
+        $arr->$campaignid->totalposts = $totalpost;
+        $arr->$campaignid->totalimpressions = $totalimpressions;
+        $arr->$campaignid->totalengagement = $totalengagement;
+        $arr->$campaignid->campaignstart = date('m/d/Y',strtotime($start));
+        $arr->$campaignid->campaignend = date('m/d/Y',strtotime($end));
+        $arr->$campaignid->totalinfluencers = $totalInfluencers;
+        $arr->$campaignid->average_impressions = $totalimpressions/$totalInfluencers;
+        $arr->$campaignid->average_engagement = $totalengagement/$totalInfluencers; 
+        $state = $this->check_in_range($arr->$campaignid->campaignstart,$arr->$campaignid->campaignend);
+        if($state) $state = 'Campaign in progress';
+        else $state = 'Campaign not in progress';
+        $arr->$campaignid->state = $state;
+
+
+
     }
     unset($listconn);
     return $arr;

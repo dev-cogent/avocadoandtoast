@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-  <?php include 'php/head.php' ?>
+  <?php include 'html/head.html' ?>
     <title>Avocado & Toast</title>
 </head>
 
@@ -76,7 +76,7 @@
    <div style="padding-bottom:100px;"></div>
 
 
-     <?php include 'php/footer.php' ?>
+     <?php include 'html/dashboard-footer.html' ?>
 
 
 

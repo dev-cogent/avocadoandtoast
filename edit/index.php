@@ -2,7 +2,7 @@
 session_start();
 //error_reporting(0);
 include '../php/dbinfo.php';
-include '../php/ajax/savecampaign.php';
+include '../php/class/savecampaign.php';
 include '../php/numberAbbreviation.php';
 //$url = $_SERVER['REQUEST_URI'];
 //$id = explode('/',$url);
@@ -44,7 +44,7 @@ if(isset($campaignend)){
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
 <head> 
-  <?php include '../php/head.php' ?>
+  <?php include '../html/head.html' ?>
     <title><?php echo $campaignname;?> | Avocado & Toast</title>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
@@ -96,25 +96,9 @@ min-width:143.5px;
 <body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
 <?php include '../acnav.php';?>
 
-<div class="col-xs-1 sidebar-left" style="position:absolute;">
-<i class="icon fa-bars" aria-hidden="true" style="
-    color: white;
-    text-align: center;
-    font-size: 21px;
-    margin-left: 5px;
-    height: 20px;
-    padding-top: 15px;
-"></i>
-  <div id="li-container" style="display:none;">
-    <li class="item"><a class="side-link" href="/dashboard.php"> DASHBOARD </a> </li>
-    <li class="item"><a class="side-link" href="/discover.php"> DISCOVER </a></li>
-    <li class="item"><a class="side-link" href="/settings.php"> ACCOUNT SETTINGS </a></li>
-    <li class="item"><a class="side-link" href="#"> FAQ</a> </li>
-    <li class="item"><a class="side-link" href="#"> CONTACT</a> </li>
-    <li class="item"><a class="side-link" href="#"> LATEST UPDATES</a></li>
-    <li class="item"><a class="side-link" href="/logout.php"> LOGOUT</a></li>
-  </div>
-</div>
+
+
+
 <div id="stuff"></div>
 <script src="/assets/js/sidebar-left.js"></script>
 <script>

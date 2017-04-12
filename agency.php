@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
 <head>
-  <?php include 'php/head.php' ?>
+  <?php include 'html/head.html' ?>
     <title>Agency | Avocado & Toast</title>
 
 </head>
@@ -106,7 +106,7 @@
 </div>
 
 
-<?php include 'acfooter.php'; ?>
+<?php include 'html/main-footer.html'; ?>
 
 
 </html>
