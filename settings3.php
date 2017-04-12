@@ -53,7 +53,7 @@ $campaignname = $save->getCampaignName($campaignid);
 
 
 @media(min-width:560px) and (max-width: 750px) and (orientation: landscape){
-  .mininav {display: none;}
+  .avo-nav {display: none;}
   .col-xs-1.sidebar-left{ margin-top: 65px;}
 }
 </style>

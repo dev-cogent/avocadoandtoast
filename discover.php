@@ -38,7 +38,6 @@ include 'php/numberAbbreviation.php';
 
 <!-- The third nav bar , we might be able to take this out. In the mean time, we'll keep it here -->
 
-
 <div id="myNav" class="overlay"></div>
 <div id="stuff">
 

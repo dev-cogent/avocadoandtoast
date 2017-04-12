@@ -1,4 +1,4 @@
-/*hello world*/
+/* nav bars css*/
 .nav2{
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
@@ -7,7 +7,7 @@
     letter-spacing: 1px;
     font-weight: 400;
     line-height: 65px;
-    padding-right: 18%;
+    padding-right: 13%;
 }
 
 
@@ -29,20 +29,38 @@
 
 @media(min-width:901px) and (max-width:1300px){
   .nav2 {
-    padding-right: 10%;
+    padding-right: 13%;
   }
 }
 
 @media(min-width:300px) and (max-width:649px){
   .nav2 {
-    padding-right: 10%;
+    padding-right: 13%;
     line-height: 42px;
   }
-  div.mininav{
-    padding-left: 10px;
-    text-align: center;
-    height: 90px;
+  
+}
+@media screen and (min-width: 650px) {
+  .avo-nav li {  
+    height: 50px;
+    line-height: 50px;
+    font-size: 15px;
+    display: inline-block;
+    margin-right: -4px;
   }
+
+  /* Sub Menus */
+  .avo-nav li ul {
+    position: absolute;
+    display: none;
+    width: inherit;
+  }
+
+  .avo-nav li:hover ul {
+    display: block;
+  }
+
+  
 }
 
 .nav3{
@@ -54,12 +72,19 @@
     line-height: 45px;
 }
 
-.mininav{
-        height:66px;
-        padding-left:125px;
-        border-bottom: 1px solid rgb(210,215,220);
-
+.nav2 li a {
+    color: rgb(29, 40, 76)
 }
+
+.avo-nav{
+        margin-top: -65px;
+        height:66px;
+        padding-left: 25%;
+        border-bottom: 1px solid rgb(210,215,220);
+        background-color:rgb(0,0,0))
+}
+
+
 
 .sidebar-left{
     float:left;

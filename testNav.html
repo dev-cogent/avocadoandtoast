@@ -24,18 +24,26 @@ include 'includes/numberAbbreviation.php';
 <link rel="stylesheet" href="/assets/css/discover.css">
 <link rel="stylesheet" href="/assets/css/sidebar.css">
 </head>
-
+>
+</div>
+</header>
 <body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
 <div class="col-xs-12" style="border-top: 1px solid rgb(210,215,220); border-bottom:1px solid rgb(210,215,220); height:66px;">
        <a href="/acdiscover.php"><img src="/assets/images/at-logo-black.png" style="margin-top:-8px;"></a>
 
     </div>
 <!-- Content where the discover, communicatie, order management would be -->
-<div class="mininav" style="margin-top:65px" >
-    <p class="nav2"> <a href="/acdiscover.php" class="other-nav discover-nav"> DISCOVER </a> </p>
-      <p class="nav2"> <a href="/dashboard.php" class="other-nav discover-nav"> YOUR CAMPAIGNS </a> </p>
-        <p class="nav2"> <a href="" class="other-nav discover-nav">  PRICE CAMPAIGN </a></p>
-          <p class="nav2"> <a href="/logout.php" class="other-nav discover-nav"> LOGOUT </a>  </p>
+<div class="avo-nav" >
+    <li class="nav2"> <a href="/acdiscover.php" class="other-nav discover-nav"> DISCOVER </a> </li>
+      <li class="nav2"> <a href="/dashboard.php" class="other-nav discover-nav"> YOUR CAMPAIGNS </a> </li>
+        <li class="nav2"> <a href="" class="other-nav discover-nav">  PRICE CAMPAIGN </a></li>
+          <li class="nav2"> <a href="/logout.php" class="other-nav discover-nav"> ACCOUNT </a> 
+             <ul>
+                <li><a href="#">SETTINGS</a></li>
+                    <li><a href="#">YOUR CAMPAIGNS</a></li>
+                        <li><a href="#">LOG OUT</a></li>
+                             </ul>
+                    </li>
 </div>
 
 <script src="/includes/javascript/nav.js"></script>
@@ -49,36 +57,7 @@ a:hover{
 
 
 
-<!-- Add side bar here -->
-<div id="loading" style="display:none; top:31%; left:40%; position:fixed; z-index:1001;"><img style="height:250px; width:250px;"src="/assets/images/loading.gif"/></div>
-<div class="col-xs-1 sidebar-left">
-<i class="icon fa-bars" aria-hidden="true" style="
-    color: white;
-    text-align: center;
-    font-size: 21px;
-    margin-left: 5px;
-    height: 20px;
-    padding-top: 15px;
-"></i>
-  <div id="li-container" style="display:none;">
-    <li class="item"><a class="side-link" href="/dashboard.php"> DASHBOARD </a> </li>
-    <li class="item"><a class="side-link" href="/acdiscover.php"> DISCOVER </a></li>
-    <li class="item"><a class="side-link" href="/settings.php"> ACCOUNT SETTINGS </a></li>
-    <li class="item"><a class="side-link" href="#"> FAQ</a> </li>
-    <li class="item"><a class="side-link" href="#"> CONTACT</a> </li>
-    <li class="item"><a class="side-link" href="#"> LATEST UPDATES</a></li>
-    <li class="item"><a class="side-link" href="/logout.php"> LOGOUT</a></li>
-  </div>
-</div>
 
-
-<!-- The third nav bar , we might be able to take this out. In the mean time, we'll keep it here -->
-
-<div class="mininav col-xs-12" style="height:50px;">
-    <p class="nav3">INFLUENCERS</p>
-</div>
-<div id="myNav" class="overlay"></div>
-<div id="stuff">
 
 <!--Filter content -->
 

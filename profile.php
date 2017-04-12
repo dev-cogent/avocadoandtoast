@@ -55,7 +55,7 @@ $id = $_GET['id'];
 
 
 
-<?php include 'acnav.php'; ?>
+
 
 
 

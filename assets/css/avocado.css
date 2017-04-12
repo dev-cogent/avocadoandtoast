@@ -372,7 +372,7 @@ li.footer-links{
     top:170px;
   }
   ul.nav.navbar-nav{
-    padding: 15px;
+    padding: 20px;
   }
   a.start-btn{
     font-size: 12px;
@@ -1423,6 +1423,8 @@ textarea.form-control.category.avocado-focus {
   .settings-box{
     margin-left: 25%;
   }
+
+
 }
 
 @media(min-width:600px) and (max-width:899px){
@@ -1431,6 +1433,9 @@ textarea.form-control.category.avocado-focus {
   }
   .settings{
     margin-top: 12%;
+  }
+
+
   }
 }
 
@@ -1466,7 +1471,10 @@ textarea.form-control.category.avocado-focus {
   .sidebar-left {
     /*margin-top: 66px;*/
   }
-  .mininav{
-    display: none;
-  }
+ 
+
 }
+ /*alejandra's test CSS for NAV BAR */
+
+
+
