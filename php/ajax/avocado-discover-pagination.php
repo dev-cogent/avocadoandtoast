@@ -24,7 +24,7 @@ if(isset($filters['location'])){
 
 
 $num = $_POST['page'];
-$position = $num * 32;
+$position = $num * 24;
 $users = array();
 $where = "";
 $rownum = 0;
@@ -49,7 +49,7 @@ if($where == '')
 else
     $default = '';
 
-$stmt = $conn->prepare("SELECT `id`, `image_url` , `instagram_count`, `instagram_url`, `twitter_url`, `twitter_count`, `facebook_count`,`facebook_url`,`facebook_handle`,`engagement` FROM `Influencer_Information` $where $default LIMIT $position, 32");
+$stmt = $conn->prepare("SELECT `id`, `image_url` , `instagram_count`, `instagram_url`, `twitter_url`, `twitter_count`, `facebook_count`,`facebook_url`,`facebook_handle`,`engagement` FROM `Influencer_Information` $where $default LIMIT $position, 24");
 if($where != ''){
 $types = '';
 foreach($params as $param) {

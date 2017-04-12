@@ -13,10 +13,13 @@ include 'php/numberAbbreviation.php';
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700" rel="stylesheet">
+<script src="/assets/js/abbreviatenumber.js"></script>
 <script src="/assets/wnumb/wNumb.js"></script>
 <script src="/assets/uislider/nouislider.js"></script>
 <script src="/assets/js/tokenfield/dist/bootstrap-tokenfield.js"></script>
 <script src="/assets/js/loading.js"></script>
+<script src="/assets/js/avocado-card-functions.js"></script>
+<script src="/assets/js/avocado-calculate.js"></script>
 <link rel="stylesheet" href="/assets/js/tokenfield/dist/css/bootstrap-tokenfield.css">
 <link rel="stylesheet" href="/assets/uislider/nouislider.css">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
@@ -149,8 +152,7 @@ include 'php/numberAbbreviation.php';
 
         <div class="found-influencers col-xs-12">
             <?php
-                $count = 3;
-                $stmt = $conn->prepare('SELECT `id`,`image_url`,`instagram_url`,`instagram_count`,`facebook_url`,`facebook_handle`,`facebook_count`,`twitter_url`,`twitter_count`,`engagement`,`total` FROM `Influencer_Information` ORDER BY `total`  DESC LIMIT 0,32');
+                $stmt = $conn->prepare('SELECT `id`,`image_url`,`instagram_url`,`instagram_count`,`facebook_url`,`facebook_handle`,`facebook_count`,`twitter_url`,`twitter_count`,`engagement`,`total` FROM `Influencer_Information` ORDER BY `total`  DESC LIMIT 0,24');
                 $stmt->execute();
                 $stmt->bind_result($id,$image,$instagramurl,$instagramcount,$facebookurl,$facebookhandle,$facebookcount,$twitterurl,$twittercount,$engagement,$total);
                 while($stmt->fetch()){
@@ -171,7 +173,7 @@ include 'php/numberAbbreviation.php';
                 $twitterhandle = explode('?',$twitterhandle[0]);
                 $twitterhandle = $twitterhandle[0];
                 $engagement = json_decode($engagement,true);
-                //var_dump($engagement);
+
                 $twitterengagement = number_format((($engagement['twitter']['average_engagement']/$twittercount)*100),2,'.','');
                 $instagramengagement = number_format((($engagement['instagram']['average_engagement']/$instagramcount)*100),2,'.','');
                 $facebookengagement = number_format((($engagement['facebook']['average_engagement']/$facebookcount)*100),2,'.','');
@@ -188,7 +190,6 @@ include 'php/numberAbbreviation.php';
                                         </div>
                                         <div class="col-xs-12 insthandle-info">
                                             <!--icon here -->
-
                                             <p class="instagram-handle insthandle-text" data-id="'.$id.'">'.$insthandle.'</p>
                                             <p class="facebook-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</p>
                                             <p class="twitter-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</p>
@@ -199,7 +200,7 @@ include 'php/numberAbbreviation.php';
                                         <p class="facebook-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($facebookcount).' Likes</p>
                                         <p class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($twittercount).' Followers</p>
                                     </div>
-                                    <!-- Engagement ?-->
+                                    <!-- Engagement -->
                                     <div class="col-xs-12">
                                         <p class="instagram-engagement engagement-count" data-id="'.$id.'">'.$instagramengagement.'% eng per post</p>
                                         <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$id.'">'.$facebookengagement.'% eng per post</p>
@@ -213,7 +214,6 @@ include 'php/numberAbbreviation.php';
                             </div>
                     </div>
                     <!-- Influencer box has ended -->';
-                    $count++;
                 }
                     ?>
         </div>
@@ -231,70 +231,9 @@ var selectedusers = [];
 var filters = {};
 var target = $("#test-height").offset().top;
 var target2 = $('#stuff').offset().top;
-var sidebar = false;
-function abbrNum(number, decPlaces = 2) {
-    var orig = number;
-    var dec = decPlaces;
-    // 2 decimal places => 100, 3 => 1000, etc
-    decPlaces = Math.pow(10, decPlaces);
-
-    // Enumerate number abbreviations
-    var abbrev = ["k", "m", "b", "t"];
-
-    // Go through the array backwards, so we do the largest first
-    for (var i = abbrev.length - 1; i >= 0; i--) {
-
-        // Convert array index to "1000", "1000000", etc
-        var size = Math.pow(10, (i + 1) * 3);
-
-        // If the number is bigger or equal do the abbreviation
-        if (size <= number) {
-            // Here, we multiply by decPlaces, round, and then divide by decPlaces.
-            // This gives us nice rounding to a particular decimal place.
-            var number = Math.round(number * decPlaces / size) / decPlaces;
-
-            // instHandle special case where we round up to the next abbreviation
-            if((number == 1000) && (i < abbrev.length - 1)) {
-                number = 1;
-                i++;
-            }
-
-            // console.log(number);
-            // Add the letter for the abbreviation
-            number += abbrev[i];
-
-            // We are done... stop
-            break;
-        }
-    }
-
-    return number;
-}
-$(document).on('click','.sidebar-left',function(){
-
-if(sidebar == false){
-$(this).animate({
-'max-width':'300px',
- 'width':'300px'
-}, 'slow');
-$('#li-container').fadeIn();
-sidebar = true;
-}
-
-else{
-    $(this).animate({
-    'width':'55px',
-    'max-width':'55px'
-},'slow');
-$('#li-container').fadeOut();
-sidebar = false;
-}
-
-
-
-});
 $('#tokenfield').tokenfield();
 </script>
-<script src="/assets/js/acslider.js"></script>
+<script src="/assets/js/avocado-slider.js"></script>
 <script src="/assets/js/avocado-discover.js"></script>
 <script src="/assets/js/create-campaign.js"></script>
+ 
