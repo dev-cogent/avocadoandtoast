@@ -46,7 +46,7 @@ if($where == '')
 else
     $default = '';
 
-$stmt = $conn->prepare("SELECT `id`, `image_url` , `instagram_count`, `instagram_url`, `twitter_url`, `twitter_count`, `facebook_count`,`facebook_url`,`facebook_handle`,`engagement` FROM `Influencer_Information` $where $default LIMIT $position, 32");
+$stmt = $conn->prepare("SELECT `id`, `image_url` , `instagram_count`, `instagram_url`, `twitter_url`, `twitter_count`, `facebook_count`,`facebook_url`,`facebook_handle`,`engagement` FROM `Influencer_Information` $where $default LIMIT $position, 24");
 if($where != ''){
 $types = '';
 foreach($params as $param) {
@@ -90,13 +90,15 @@ while($stmt->fetch()){
                 $twitterengagement = number_format((($engagement['twitter']['average_engagement']/$twittercount)*100),2,'.','');
                 $instagramengagement = number_format((($engagement['instagram']['average_engagement']/$instagramcount)*100),2,'.','');
                 $facebookengagement = number_format((($engagement['facebook']['average_engagement']/$facebookcount)*100),2,'.','');
+                $jsonarr->$id = new stdClass;
                 //setting instagram information in array 
                 setArrayPlatform($jsonarr,$id,'instagram',$insthandle,$instagramcount,$instagramengagement,$instagramurl);
                 //setting facebook information in 
                 setArrayPlatform($jsonarr,$id,'facebook',$facebookhandle,$facebookcount,$facebookengagement,$facebookurl);
                 //setting twitter information 
                 setArrayPlatform($jsonarr,$id,'twitter',$twitterhandle,$twittercount,$twitterengagement,$twitterurl);
-                
+                //at the end we set the image property 
+                $jsonarr->$id->image = $image;
                 
 
     }
@@ -109,20 +111,12 @@ echo $jsonarr;
 
 
 function setArrayPlatform(&$jsonarr,$id,$platform,$handle,$followers,$engagement,$url){
-         $jsonarr->$id = new stdClass();
          $jsonarr->$id->$platform = new stdClass();
          $jsonarr->$id->$platform->handle = $handle;
          $jsonarr->$id->$platform->followers = $followers;
          $jsonarr->$id->$platform->url = $url;
          $jsonarr->$id->$platform->engagement = $engagement;
 }
-
-
-function setArrayInfluencerInfo(&$jsonarr,$image){
-    $jsonarr[$id]['image'] = $image;
-}
-
-
 
 
 function checkBio($bio, $searchoptions, $options, &$where, &$arr){
@@ -249,238 +243,5 @@ function makeValuesReferenced($arr){
     return $refs;
 }
 
-function checkDisplayInstagram($url,$id, $filtered){
-if($url == NULL || $url == '') return '<a> <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" style="display:none;" aria-hidden="true"></i></a>';
-if(!$filtered) return '<a> <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" aria-hidden="true"></i></a>';
-else return '<a> <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" aria-hidden="true"  style="color:#73C48D"></i></a>';
-}
 
-function checkDisplayFacebook($url,$id,$filtered){
-if($url == NULL || $url == '') return '<a> <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" style="display:none;" aria-hidden="true"></i></a>';
-if(!$filtered) return '<a> <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true" ></i></a>';
-else return '<a> <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true" style="color:#73C48D"></i></a>';
-}
-
-
-function checkDisplayTwitter($url,$id,$filtered){
-if($url == NULL || $url == '') return '<a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true" style="display:none;"></i></a>';
-if(!$filtered)return '<a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true"></i></a>';
-else return '<a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true" style="color:#73C48D"></i></a>';
-}
-
-
-function buildCard($platform,$id,$insthandle,$instagramcount,$instagramengagement,$facebookhandle,$facebookcount,$facebookengagement,$twitterhandle,$twittercount,$twitterengagement){
-        if($platform == 'instagram'){
-            echo '
-                </div>
-                <div class="col-xs-12 insthandle-info">
-                <!--icon here -->
-                <p class="instagram-handle insthandle-text" data-id="'.$id.'">'.$insthandle.'</p>
-                <p class="facebook-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</p>
-                <p class="twitter-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</p>
-                </div>
-                <!-- followers -->
-                <div class="col-xs-12">
-                <p class="instagram-follower-count follower-count" data-id="'.$id.'">'.numberAbbreviation($instagramcount).' Followers</p>
-                <p class="facebook-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($facebookcount).' Likes</p>
-                <p class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($twittercount).' Followers</p>
-                    </div>
-                    <!-- Engagement ?-->
-                    <div class="col-xs-12">
-                            <p class="instagram-engagement engagement-count" data-id="'.$id.'">'.$instagramengagement.'% eng post</p>
-                            <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$id.'">'.$facebookengagement.'% eng post</p>
-                            <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$id.'">'.$twitterengagement.'% eng per post</p>
-                    </div>
-                    <div class="col-xs-12">
-                            <div style="display:inline;"class="col-xs-12 invite avocado-focus" data-id="'.$id.'" data-image="images/'.$id.'.jpg"></div>
-                        </div>
-                    </div>
-                </div>
-        </div>
-        <!-- Influencer box has ended -->';
-
-        }
-        if($platform == 'facebook'){
-        echo '
-            </div>
-            <div class="col-xs-12 insthandle-info">
-            <!--icon here -->     
-            <p class="instagram-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$insthandle.'</p>
-            <p class="facebook-handle insthandle-text" data-id="'.$id.'">'.$facebookhandle.'</p>
-            <p class="twitter-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</p>
-            </div>
-            <!-- followers -->
-            <div class="col-xs-12">
-            <p class="instagram-follower-count follower-count" data-id="'.$id.'" style="display:none">'.numberAbbreviation($instagramcount).' Followers</p>
-            <p class="facebook-follower-count follower-count"  data-id="'.$id.'">'.numberAbbreviation($facebookcount).' Likes</p>
-            <p class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($twittercount).' Followers</p>
-            </div>
-            <!-- Engagement ?-->
-            <div class="col-xs-12">
-                    <p class="instagram-engagement engagement-count" data-id="'.$id.'" style="display:none;">'.$instagramengagement.'% eng post</p>
-                    <p class="facebook-engagement engagement-count" data-id="'.$id.'">'.$facebookengagement.'% eng post</p>
-                    <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$id.'">'.$twitterengagement.'% eng per post</p>
-                </div>
-                <div class="col-xs-12">
-                    <div style="display:inline;"class="col-xs-12 invite avocado-focus" data-id="'.$id.'" data-image="images/'.$id.'.jpg"></div>
-                </div>
-                        </div>
-                    </div>
-            </div>
-            <!-- Influencer box has ended -->';
-        }
-        if($platform == 'twitter'){
-            echo '
-                </div>
-                <div class="col-xs-12 insthandle-info">
-                <!--icon here -->
-                <p class="instagram-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$insthandle.'</p>
-                <p class="facebook-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</p>
-                <p class="twitter-handle insthandle-text" data-id="'.$id.'">'.$twitterhandle.'</p>
-                </div>
-                <!-- followers -->
-                <div class="col-xs-12">
-                <p class="instagram-follower-count follower-count" data-id="'.$id.'" style="display:none">'.numberAbbreviation($instagramcount).' Followers</p>
-                <p class="facebook-follower-count follower-count"  data-id="'.$id.'" style="display:none">'.numberAbbreviation($facebookcount).' Likes</p>
-                <p class="twitter-follower-count follower-count"  data-id="'.$id.'">'.numberAbbreviation($twittercount).' Followers</p>
-                </div>
-                    <!-- Engagement ?-->
-                    <div class="col-xs-12">
-                        <p class="instagram-engagement engagement-count" data-id="'.$id.'">'.$instagramengagement.'% eng post</p>
-                        <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$id.'">'.$facebookengagement.'% eng post</p>
-                        <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$id.'">'.$twitterengagement.'% eng per post</p>
-                    </div>
-                    <div class="col-xs-12">
-                        <div style="display:inline;"class="col-xs-12 invite avocado-focus" data-id="'.$id.'" data-image="images/'.$id.'.jpg"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Influencer box has ended -->';
-    }
-}
-
-
-function buildCardAll($id,$instagramurl,$insthandle,$instagramcount,$instagramengagement,$facebookurl,$facebookhandle,$facebookcount,$facebookengagement,$twitterurl,$twitterhandle,$twittercount,$twitterengagement){
-                    echo '
-                    </div>
-                    <div class="col-xs-12 insthandle-info">
-                        <!--icon here -->';
-                                if($instagramurl  != NULL){
-                                    echo '<p class="instagram-handle insthandle-text" data-id="'.$id.'">'.$insthandle.'</p>
-                                        <p class="facebook-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</p>
-                                        <p class="twitter-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</p>
-                                        </div>
-                                    <!-- followers -->
-                                    <div class="col-xs-12">
-                                    <p class="instagram-follower-count follower-count" data-id="'.$id.'">'.numberAbbreviation($instagramcount).' Followers</p>
-                                    <p class="facebook-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($facebookcount).' Likes</p>
-                                    <p class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($twittercount).' Followers</p>
-                                    </div>
-                                        <!-- Engagement ?-->
-                                        <div class="col-xs-12">
-                                            <p class="instagram-engagement engagement-count" data-id="'.$id.'">'.$instagramengagement.'% eng post</p>
-                                            <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$id.'">'.$facebookengagement.'% eng post</p>
-                                            <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$id.'">'.$twitterengagement.'% eng per post</p>
-                                        </div>
-                                        <div class="col-xs-12">
-                                            <div style="display:inline;"class="col-xs-12 invite avocado-focus" data-id="'.$id.'" data-image="images/'.$id.'.jpg"></div>
-                                        </div>
-                                        </div>
-                                        </div>
-                                    </div>
-                                    <!-- Influencer box has ended -->';
-                                }
-                                elseif($facebookurl != NULL){
-                                    echo '<p class="instagram-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$insthandle.'</p>
-                                        <p class="facebook-handle insthandle-text" data-id="'.$id.'">'.$facebookhandle.'</p>
-                                        <p class="twitter-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</p>
-                                        </div>
-                                        <!-- followers -->
-                                        <div class="col-xs-12">  
-                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'" style="display:none">'.numberAbbreviation($instagramcount).' Followers</p>
-                                        <p class="facebook-follower-count follower-count"  data-id="'.$id.'">'.numberAbbreviation($facebookcount).' Likes</p>
-                                        <p class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($twittercount).' Followers</p>  
-                                        </div>
-                                                <!-- Engagement ?-->
-                                                <div class="col-xs-12">
-                                                    <p class="instagram-engagement engagement-count" data-id="'.$id.'" style="display:none;">'.$instagramengagement.'% eng post</p>
-                                                    <p class="facebook-engagement engagement-count" data-id="'.$id.'">'.$facebookengagement.'% eng post</p>
-                                                    <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$id.'">'.$twitterengagement.'% eng per post</p>
-                                                </div>
-                                                <div class="col-xs-12">
-
-                                                    <div style="display:inline;"class="col-xs-12 invite avocado-focus" data-id="'.$id.'" data-image="images/'.$id.'.jpg"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <!-- Influencer box has ended -->   
-                                        
-                                        ';
-                                }
-                                elseif($twitterurl != NULL){
-                                    echo '<p class="instagram-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$insthandle.'</p>
-                                        <p class="facebook-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</p>
-                                        <p class="twitter-handle insthandle-text" data-id="'.$id.'">'.$twitterhandle.'</p>
-                                        </div>
-                                        <!-- followers -->
-                                        <div class="col-xs-12">                
-                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'" style="display:none">'.numberAbbreviation($instagramcount).' Followers</p>
-                                        <p class="facebook-follower-count follower-count"  data-id="'.$id.'" style="display:none">'.numberAbbreviation($facebookcount).' Likes</p>
-                                        <p class="twitter-follower-count follower-count"  data-id="'.$id.'">'.numberAbbreviation($twittercount).' Followers</p>                              
-                                        </div>
-                                                        <!-- Engagement ?-->
-                                                        <div class="col-xs-12">
-                                                            <p class="instagram-engagement engagement-count" data-id="'.$id.'" style="display:none;">'.$instagramengagement.'% eng post</p>
-                                                            <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$id.'">'.$facebookengagement.'% eng post</p>
-                                                            <p class="twitter-engagement engagement-count"  data-id="'.$id.'">'.$twitterengagement.'% eng per post</p>
-                                                        </div>
-                                                        <div class="col-xs-12">
-                                                            <div style="display:inline;"class="col-xs-12 invite avocado-focus" data-id="'.$id.'" data-image="images/'.$id.'.jpg"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                        <!-- Influencer box has ended -->';
-                                }
-
-}
-
-
-function checkDisplayAll($instagramurl,$facebookurl,$twitterurl,$id){
-$html ='';
-if($instagramurl == NULL || $instagramurl == ''){
-    $html .= '<a> <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" style="display:none;" aria-hidden="true"></i></a>';
-}
-else{
-    $html .='<a> <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" aria-hidden="true"  style="color:#73C48D"></i></a>';
-}
-
-
-//For facebook
-if($facebookurl == NULL || $facebookurl == ''){
-    $html .= '<a> <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" style="display:none;" aria-hidden="true"></i></a>';
-}
-elseif($instagramurl == NULL || $instagramurl == '' && $facebookurl != NULL){
-    $html .= '<a> <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true" style="color:#73C48D"></i></a>';
-}
-else {
-    $html .= '<a> <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true"></i></a>';
-}
-
-if($twitterurl == NULL || $twitterurl == ''){
-    $html .= '<a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true" style="display:none;"></i></a>';
-}
-elseif((($facebookurl == NULL || $facebookurl) == '' && ($twitterurl == NULL || $twitterurl == '')) && ($twitterurl != NULL || $twitterurl !== '') ){
-    $html .= '<a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true" style="color:#73C48D"></i></a>';
-}
-else{
-    $html .= '<a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true"></i></a>';
-}
-
-return $html;
-
-
-}
 ?>
