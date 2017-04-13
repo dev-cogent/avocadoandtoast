@@ -1,45 +1,104 @@
-function abbrNum(number, decPlaces = 2) {
-    var orig = number;
-    var dec = decPlaces;
-    // 2 decimal places => 100, 3 => 1000, etc
-    decPlaces = Math.pow(10, decPlaces);
+$(document).ready(function(){
+    getCampaignInformation(campaignid);
+    getCampaignInfluencers(campaignid);
 
-    // Enumerate number abbreviations
-    var abbrev = ["k", "m", "b", "t"];
+});
 
-    // Go through the array backwards, so we do the largest first
-    for (var i = abbrev.length - 1; i >= 0; i--) {
 
-        // Convert array index to "1000", "1000000", etc
-        var size = Math.pow(10, (i + 1) * 3);
+function getCampaignInformation(campaignid){
+    $.ajax({
+            type: 'POST', 
+            url: '/php/ajax/getCampaignInfo.php',
+            data: {
+                campaignid: campaignid
+            },
+            success: function (jqXHR, textStatus, errorThrown) {
+                campaignJSON = JSON.parse(jqXHR);
+                setCampaignInformation(campaignJSON);
+        } // end ajax request*/
 
-        // If the number is bigger or equal do the abbreviation
-        if (size <= number) {
-            // Here, we multiply by decPlaces, round, and then divide by decPlaces.
-            // This gives us nice rounding to a particular decimal place.
-            var number = Math.round(number * decPlaces / size) / decPlaces;
-
-            // instHandle special case where we round up to the next abbreviation
-            if((number == 1000) && (i < abbrev.length - 1)) {
-                number = 1;
-                i++;
-            }
-
-            // console.log(number);
-            // Add the letter for the abbreviation
-            number += abbrev[i];
-
-            // We are done... stop
-            break;
-        }
-    }
-    if(typeof number == 'number') number = 0;
-
-    return number;
+    });
 }
+
+
+function setCampaignInformation(campaignJSON){
+        $('#campaign-description').append(campaignJSON.description);
+        $('#campaign-name').prepend(campaignJSON.campaignname);
+        $('#influnum').text(campaignJSON.total_influencers);
+        $('#total-posts').text(campaignJSON.totalposts);
+        var avgImpressions = campaignJSON.totalimpressions/campaignJSON.total_influencers;
+        var avgEngagement = campaignJSON.totalengagement/campaignJSON.total_influencers;
+        $('#avg-impressions').attr('data-number',avgImpressions);
+        $('#avg-impressions').text(abbrNum(avgImpressions));
+        $('#avg-engagement').attr('data-number',avgEngagement);
+        $('#avg-engagement').text(abbrNum(avgEngagement));
+        $('#total-reach').attr('data-number',campaignJSON.totalimpressions);
+        $('#total-reach').text(abbrNum(campaignJSON.totalimpressions));
+        $('#total-engagement').attr('data-number',campaignJSON.totalengagement);
+        $('#total-engagement').text(abbrNum(campaignJSON.totalengagement));
+}
+
+
+function getCampaignInfluencers(campaignid){
+    $.ajax({
+            type: 'POST', 
+            url: '/php/ajax/getCampInfluInfo.php',
+            data: {
+                campaignid: campaignid
+            },
+            success: function (jqXHR, textStatus, errorThrown) {
+                campaignJSON = JSON.parse(jqXHR);
+                setCampaignInfluencers(campaignJSON);
+        } // end ajax request*/
+
+    });
+
+
+}
+
+function setCampaignInfluencers(campaignJSON){
+    $.each(campaignJSON, function (key, obj) {
+           $('.found-influencers').append( '<div  class="influencer-box col-xs-12 col-md-6 col-lg-3 col-xl-2" data-id="'+key+'"'+
+           'data-t-post="'+obj.twitter_post+'" data-f-post="'+obj.facebook_post+'" data-i-post="'+obj.instagram_post+'" data-t-impressions="'+obj.twitter_impressions+'" data-f-impressions="'+obj.facebook_impressions+'" data-i-impressions="'+obj.instagram_impressions+'"'+
+           'data-t-engagement="'+obj.twitter_engagement+'" data-i-engagement="'+obj.instagram_engagement+'" data-f-engagement="'+obj.facebook_engagement+'">'+
+                '<div class="influencer-card-discover">'+
+                                '<img class="influencer-image-card" src="http://cogenttools.com/'+obj.image+'" onerror="this.src=`/assets/images/default-photo.png`">'+
+                                    '<div class="col-xs-12" style="height:170px; box-shadow: rgb(115, 196, 141) 0px -10px 0px;">'+
+                                        '<!-- insthandle stuff -->'+
+                                        '<div class="icons col-xs-12"></div>'+
+                                        '<div class="col-xs-12 insthandle-info">'+
+                                                '<p class="instagram-handle insthandle-text" data-id="'+key+'">'+obj.instagram_handle+'</p>'+
+                                                '<p class="facebook-handle insthandle-text" data-id="'+key+'" style="display:none;">'+obj.facebook_handle+'</p>'+
+                                               '<p class="twitter-handle insthandle-text" data-id="'+key+'" style="display:none;">'+obj.twitter_handle+'</p>'+                                            
+                                        '</div>'+
+                                    '<!-- followers -->'+
+                                    '<div class="col-xs-12">'+
+                                        '<p class="instagram-follower-count follower-count" data-id="'+key+'">'+ abbrNum(obj.instagram_impressions)+' Impressions</p>'+
+                                        '<p class="facebook-follower-count follower-count" style="display:none" data-id="'+key+'">'+abbrNum(obj.facebook_impressions)+' Impressions</p>'+
+                                        '<p class="twitter-follower-count follower-count" style="display:none" data-id="'+key+'">'+abbrNum(obj.twitter_impressions)+' Impressions</p>'+
+                                    '</div>'+
+                                    '<div class="col-xs-12">'+
+                                        '<p class="instagram-engagement engagement-count" data-id="'+key+'">'+abbrNum(obj.instagram_engagement)+ 'Engagaement </p>'+
+                                        '<p class="facebook-engagement engagement-count" style="display:none"data-id="'+key+'">'+abbrNum(obj.facebook_engagement)+' Engagaement</p>'+
+                                        '<p class="twitter-engagement engagement-count" style="display:none"data-id="'+key+'">'+abbrNum(obj.twitter_engagement)+' Engagement</p>'+
+                                    '</div>'+
+                                    '<div class="col-xs-12">'+
+                                    '<div style="display:inline; background-color:white; margin-top:1px; margin-bottom:4px; height:28px; padding-top:0px; width:100%;"class="col-xs-12 invite  avocado-focus" data-id="'+key+'" >'+
+                                              '<p  class="instagram-total-post total-post" data-id="'+key+'" style="text-align:center;padding-top: 3px; color:#73C48D;">'+obj.instagram_post+' total post(s) </p>'+
+                                               '<p  class="facebook-total-post total-post" data-id="'+key+'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;">'+obj.facebook_post+'  total post(s) </p>'+
+                                               '<p  class="twitter-total-post total-post" data-id="'+key+'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;">'+obj.twitter_post+'  total post(s) </p>'+
+                                              '<i class="icon fa-check check" aria-hidden="true" style="text-align:center; width:100%; margin-left:0px;"></i>'+
+                                        '</div></div></div></div></div>');
+
+
+            });
+}
+
+
+
+
 // same ajax call but calling a different php file that contains different bootstrap styling
 // for the view campaigns onscroll pagination
-
     $(window).scroll(function () {
         if(calculate == false){
         if ($(window).scrollTop() == $(document).height() - $(window).height()) {
@@ -54,7 +113,8 @@ function abbrNum(number, decPlaces = 2) {
                     campaignid: campaignid
                 },
                 success: function (jqXHR, textStatus, errorThrown) {
-                    $('.found-influencers').append(jqXHR);
+                    campaignJSON = JSON.parse(jqXHR);
+                    setCampaignInfluencers(campaignJSON);
 
                 }
 
@@ -217,11 +277,11 @@ undoInfluencer();
 function removeInfluencerFromCampaign(id,card){
     card.fadeOut(); //Taking the influencer card and making it fadeOut/Disappear... like magic :) 
  
-    var reach = parseInt($('#reach').attr('data-num')); //reach is also the totalImpressions. 
+    var reach = parseInt($('#total-reach').attr('data-num')); //reach is also the totalImpressions. 
     var numberOfInfluencers = parseInt($('#influnum').text());
-    var totalPost = parseInt($('#posts').text());
+    var totalPost = parseInt($('#total-posts').text());
     var totalInfluencerImpressions = parseInt(card.attr('data-t-impressions')) + parseInt(card.attr('data-f-impressions')) + parseInt(card.attr('data-i-impressions'));
-    var totalEngagement = $('#engagement').attr('data-number');
+    var totalEngagement = $('#total-engagement').attr('data-number');
     var totalInfluencerEngagement = parseInt(card.attr('data-t-engagement')) + parseInt(card.attr('data-f-engagement')) + parseInt(card.attr('data-i-engagement'));
     var totalInfluencerPost = parseInt(card.attr('data-t-post')) + parseInt(card.attr('data-i-post')) + parseInt(card.attr('data-f-post'));
     var newEngagement = totalEngagement - totalInfluencerEngagement;
@@ -230,13 +290,13 @@ function removeInfluencerFromCampaign(id,card){
     var newAvgImpressions = newreach /(numberOfInfluencers-1); 
 
     $('#influnum').text(numberOfInfluencers - 1);     //Changing the influencer number
-    $('#posts').text(totalPost - totalInfluencerPost);     //changing the totalpost number 
-    $('#reach').attr('data-num',newreach); //changing reach 
-    $('#reach').text(abbrNum(newreach));
-    $('#engagement').text(abbrNum(newEngagement)); // changing engagement 
-    $('#engagement').attr('data-number',newEngagement); 
-    $('#avgimp').text(abbrNum(newAvgImpressions)); // chaning avg impresions
-    $('#avgeng').text(abbrNum(newAvgEngagement)); // changing avg engagement
+    $('#total-posts').text(totalPost - totalInfluencerPost);     //changing the totalpost number 
+    $('#total-reach').attr('data-num',newreach); //changing reach 
+    $('#total-reach').text(abbrNum(newreach));
+    $('#total-engagement').text(abbrNum(newEngagement)); // changing engagement 
+    $('#total-engagement').attr('data-number',newEngagement); 
+    $('#avg-impressions').text(abbrNum(newAvgImpressions)); // chaning avg impresions
+    $('#avg-engagement').text(abbrNum(newAvgEngagement)); // changing avg engagement
     deletedusers.push(id); //adding influcner to removed users array 
 
 }
@@ -285,11 +345,11 @@ function undoInfluencer(){
  */
 function addInfluencerToCampaign(id,card){
     card.fadeIn();
-    var reach = parseInt($('#reach').attr('data-num')); //reach is also the totalImpressions. 
+    var reach = parseInt($('#total-reach').attr('data-num')); //reach is also the totalImpressions. 
     var numberOfInfluencers = parseInt($('#influnum').text());
-    var totalPost = parseInt($('#posts').text());
+    var totalPost = parseInt($('#total-posts').text());
     var totalInfluencerImpressions = parseInt(card.attr('data-t-impressions')) + parseInt(card.attr('data-f-impressions')) + parseInt(card.attr('data-i-impressions'));
-    var totalEngagement = parseInt($('#engagement').attr('data-number'));
+    var totalEngagement = parseInt($('#total-engagement').attr('data-number'));
     var totalInfluencerEngagement = parseInt(card.attr('data-t-engagement')) + parseInt(card.attr('data-f-engagement')) + parseInt(card.attr('data-i-engagement'));
     var totalInfluencerPost = parseInt(card.attr('data-t-post')) + parseInt(card.attr('data-i-post')) + parseInt(card.attr('data-f-post'));
     var newEngagement = totalEngagement + totalInfluencerEngagement;
@@ -297,13 +357,13 @@ function addInfluencerToCampaign(id,card){
     var newreach = reach + totalInfluencerImpressions;
     var newAvgImpressions = newreach /(numberOfInfluencers + 1);
     $('#influnum').text(numberOfInfluencers + 1);     //Changing the influencer number
-    $('#posts').text(totalPost + totalInfluencerPost);     //changing the totalpost number 
-    $('#reach').attr('data-num',newreach); //changing reach 
-    $('#reach').text(abbrNum(newreach));
-    $('#engagement').text(abbrNum(newEngagement)); // changing engagement 
-    $('#engagement').attr('data-number',newEngagement); 
-    $('#avgimp').text(abbrNum(newAvgImpressions)); // chaning avg impresions
-    $('#avgeng').text(abbrNum(newAvgEngagement)); // changing avg engagement
+    $('#total-posts').text(totalPost + totalInfluencerPost);     //changing the totalpost number 
+    $('#total-reach').attr('data-num',newreach); //changing reach 
+    $('#total-reach').text(abbrNum(newreach));
+    $('#total-engagement').text(abbrNum(newEngagement)); // changing engagement 
+    $('#total-engagement').attr('data-number',newEngagement); 
+    $('#avg-impressions').text(abbrNum(newAvgImpressions)); // chaning avg impresions
+    $('#avg-engagement').text(abbrNum(newAvgEngagement)); // changing avg engagement
 
 }
 

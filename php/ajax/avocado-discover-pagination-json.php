@@ -12,41 +12,27 @@ $searchoptions = $filters['search'];
 $searchuser = $filters['user'];
 
 //checking if the user is filtering for followers and / or engagement.
-if(isset($filters['max']) && isset($filters['min']) && isset($filters['platform'])){
-    $engmin = $filters['eng-min'];
-    $engmax = $filters['eng-max'];
-    $max = intval($filters['max']);
-    $min = intval($filters['min']);
-    $platform = $filters['platform'];
-}
-
-
+$engmin = $filters['eng-min'];
+$engmax = $filters['eng-max'];
+$max = intval($filters['max']);
+$min = intval($filters['min']);
+$platform = $filters['platform'];
 $position = $_POST['page'] * 24;
 $users = array();
 $where = "";
 $rownum = 0;
 $arr = array();
-if(isset($bio)) $temparr = checkBio($bio, $searchoptions, $options, $where, $arr);
-if(isset($location)) $temparr = checkLocation($location, $where, $arr);
-if(isset($searchuser)) $temparr = checkUser($searchuser, $where, $arr);
-if(isset($platform) && $platform == 'total') $temparr =checkTotal($min,$max, $where, $arr);
-if(isset($platform) && $platform == 'instagram') $temparr =checkInstagram($min,$max,$engmin,$engmax, $where, $arr);
-if(isset($platform) && $platform =='twitter') $temparr =checkTwitter($min,$max,$engmin,$engmax, $where, $arr);
-if(isset($platform) && $platform == 'facebook') $temparr =checkFacebook($min,$max,$engmin,$engmax, $where, $arr);
+
+if($bio !== NULL) $temparr = checkBio($bio, $searchoptions, $options, $where, $arr);
+if($searchuser !== NULL) $temparr = checkUser($searchuser, $where, $arr);
+if($platform !== NULL) $temparr =checkPlatform($min,$max,$engmin,$engmax, $where, $arr,$platform);
 $binding = array();
 $params = $arr['term'];
 if($position < 0) $position = 0;
 unset($stmt);
-if($where != ''){
-    if(strpos($where, 'ORDER BY') === FALSE)
-        $where.=' ORDER BY `total` DESC ';
-}
-if($where == '')
-    $default = 'ORDER BY `total` DESC';
-else
-    $default = '';
 
-$stmt = $conn->prepare("SELECT `id`, `image_url` , `instagram_count`, `instagram_url`, `twitter_url`, `twitter_count`, `facebook_count`,`facebook_url`,`facebook_handle`,`engagement` FROM `Influencer_Information` $where $default LIMIT $position, 24");
+
+$stmt = $conn->prepare("SELECT `id`, `image_url` , `instagram_count`, `instagram_url`, `twitter_url`, `twitter_count`, `facebook_count`,`facebook_url`,`facebook_handle`,`engagement` FROM `Influencer_Information` $where LIMIT $position, 24");
 if($where != ''){
 $types = '';
 foreach($params as $param) {
@@ -132,15 +118,7 @@ function checkBio($bio, $searchoptions, $options, &$where, &$arr){
          $arr['term'][] = ''.$keyword.'';
          $arr['term'][] = ''.$keyword.'';
 
-    /*if(in_array('names',$searchoptions)){
-        if(isset($tags))
-            $names = ' OR `user` LIKE ? ';
-        else
-            $names =' `user` LIKE ? ';
 
-        $arr['term'][] = '%'.$keyword.'%';
-
-    }*/
        if(checkWhere($where))
           $where .= "$options ($tags $names) ";
        else
@@ -152,22 +130,12 @@ function checkBio($bio, $searchoptions, $options, &$where, &$arr){
 }
 
 
-function checkTotal($mintotal,$maxtotal, &$where, &$arr){
-    if(checkWhere($where))
-    $where .= 'AND `total` >= ? AND `total` <= ? ';
-    else
-    $where .= 'WHERE `total` >= ? AND `total` <= ? ';
-    $arr['term'][] = $mintotal;
-    $arr['term'][] = $maxtotal;
-    return $arr;
-}
 
-
-function checkInstagram($mininstagram,$maxinstagram,$mineng,$maxeng, &$where, &$arr){
+function checkPlatform($mininstagram,$maxinstagram,$mineng,$maxeng, &$where, &$arr,$platform){
     if(checkWhere($where))
-    $where .= 'AND (`instagram_count` >= ? AND `instagram_count` <= ?) AND (`instagram_eng` >= ? AND `instagram_eng` <= ?)  ORDER BY `instagram_count` DESC ';
+    $where .= 'AND (`'.$platform.'_count` >= ? AND `'.$platform.'_count` <= ?) AND (`'.$platform.'_eng` >= ? AND `'.$platform.'_eng` <= ?)  ORDER BY `'.$platform.'_count` DESC ';
     else
-    $where .= 'WHERE (`instagram_count` >= ? AND `instagram_count` <= ?) AND (`instagram_eng` >= ? AND `instagram_eng` <= ?)  ORDER BY `instagram_count` DESC ';
+    $where .= 'WHERE (`'.$platform.'_count` >= ? AND `'.$platform.'_count` <= ?) AND (`'.$platform.'_eng` >= ? AND `'.$platform.'_eng` <= ?)  ORDER BY `'.$platform.'_count` DESC ';
     $arr['term'][] = $mininstagram;
     $arr['term'][] = $maxinstagram;
     $arr['term'][] = $mineng;
@@ -176,40 +144,6 @@ function checkInstagram($mininstagram,$maxinstagram,$mineng,$maxeng, &$where, &$
 }
 
 
-function checkTwitter($mintwitter,$maxtwitter, $mineng,$maxeng, &$where, &$arr){
-    if(checkWhere($where))
-    $where .= 'AND (`twitter_count` >= ? AND `twitter_count` <= ?) AND (`twitter_eng` >= ? AND `twitter_eng` <= ?) ORDER BY `twitter_count` DESC ';
-    else
-    $where .= 'WHERE (`twitter_count` >= ? AND `twitter_count` <= ?) AND (`twitter_eng` >= ? AND `twitter_eng` <= ?)  ORDER BY `twitter_count` DESC ';
-    $arr['term'][] = $mintwitter;
-    $arr['term'][] = $maxtwitter;
-    $arr['term'][] = $mineng;
-    $arr['term'][] = $maxeng;
-    return $arr;
-}
-
-
-function checkFacebook($minfacebook,$maxfacebook, $mineng,$maxeng, &$where, &$arr){
-    if(checkWhere($where))
-    $where .= 'AND (`facebook_count` >= ? AND `facebook_count` <= ?) AND (`facebook_eng` >= ? AND `facebook_eng` <= ?) ORDER BY `facebook_count` DESC ';
-    else
-    $where .= 'WHERE (`facebook_count` >= ? AND `facebook_count` <= ?) AND (`facebook_eng` >= ? AND `facebook_eng` <= ?) ORDER BY `facebook_count` DESC ';
-    $arr['term'][] = $minfacebook;
-    $arr['term'][] = $maxfacebook;
-    $arr['term'][] = $mineng;
-    $arr['term'][] = $maxeng;
-    return $arr;
-}
-
-
-function checkLocation($location,&$where, &$arr){
-    if(checkWhere($where))
-    $where .= ' AND `location` LIKE ? ';
-    else
-    $where .= ' WHERE `location` LIKE ? ';
-    $arr['term'][] = '%'.$location.'%';
-    return $arr;
-}
 
 
 function checkUser($user,&$where, &$arr){
