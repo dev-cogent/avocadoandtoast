@@ -236,10 +236,7 @@ public function getSavedCampaigns($columnid){
  
 
  public function getCampaign($campaignid, $position = 0, $influencernumber = 30){
-    $influencerarr = array();
-    $influencertemp = array();
-    $infoarr = array();
-    $conn = $this->dbinfo();
+    $infoarr = new stdClass;
     $saved = $this->savedDB();
     $stmt = $saved->prepare("SELECT l5o0c8t4_save_campaign.$campaignid.influencer_id, l5o0c8t4_save_campaign.$campaignid.facebook_post,l5o0c8t4_save_campaign.$campaignid.instagram_post,l5o0c8t4_save_campaign.$campaignid.twitter_post,
                                     l5o0c8t4_save_campaign.$campaignid.instagram_impressions,l5o0c8t4_save_campaign.$campaignid.facebook_impressions,l5o0c8t4_save_campaign.$campaignid.twitter_impressions,
@@ -252,6 +249,47 @@ public function getSavedCampaigns($columnid){
     $stmt->execute();
     $stmt->bind_result($id,$facebookpost,$instagrampost,$twitterpost,$instagramimpressions,$facebookimpressions,$twitterimpressions,$instagramengagement,$facebookengagement,$twitterengagement,$image,$instagramcount,$instagramurl,$twitterurl,$twittercount,$facebookcount,$facebookurl,$engagement);
     while($stmt->fetch()){
+        $infoarr->$id = new stdClass;
+        $handles = $this->getHandles($instagramurl,$twitterurl,$facebookurl);
+        $insthandle = $handles->instagram;
+        $twitterhandle = $handles->twitter;
+        $facebookhandle = $handles->facebook;
+
+        $engagement = json_decode($engagement,true);
+        $infoarr->$id->image = $image;
+        $infoarr->$id->instagram_count = $instagramcount;
+        $infoarr->$id->instagram_url = $instagramurl;
+        $infoarr->$id->instagram_handle = $insthandle;
+        $infoarr->$id->instagram_post = $instagrampost;
+        $infoarr->$id->instagram_impressions = $instagramimpressions;
+        $infoarr->$id->instagram_engagement = $instagramengagement;
+        $infoarr->$id->facebook_count = $facebookcount;
+        $infoarr->$id->facebook_url = $facebookurl;
+        $infoarr->$id->facebook_handle = $facebookhandle;
+        $infoarr->$id->facebook_post = $facebookpost;
+        $infoarr->$id->facebook_impressions = $facebookimpressions;
+        $infoarr->$id->facebook_engagement = $facebookengagement;
+        $infoarr->$id->twitter_count = $twittercount;
+        $infoarr->$id->twitter_url = $twitterurl;
+        $infoarr->$id->twitter_handle = $twitterhandle;
+        $infoarr->$id->twitter_post = $twitterpost;
+        $infoarr->$id->twitter_impressions = $twitterimpressions;
+        $infoarr->$id->twitter_engagement = $twitterengagement;
+
+    }
+
+    unset($saved);
+    return json_encode($infoarr);
+
+
+
+ }
+
+
+
+
+public function getHandles($instagramurl,$twitterurl,$facebookurl){
+        $handles = new stdClass;
         $insthandle = explode('.com/',$instagramurl);
         $insthandle = explode('/',$insthandle[1]);
         $insthandle = explode('?',$insthandle[0]);
@@ -266,50 +304,13 @@ public function getSavedCampaigns($columnid){
         $twitterhandle = explode('/',$twitterhandle[1]);
         $twitterhandle = explode('?',$twitterhandle[0]);
         $twitterhandle = $twitterhandle[0];
-        $engagement = json_decode($engagement,true);
-        $infoarr['influencer'][$id]['image'] = $image;
-        $infoarr['influencer'][$id]['instagram_count'] = $instagramcount;
-        $infoarr['influencer'][$id]['instagram_url'] = $instagramurl;
-        $infoarr['influencer'][$id]['instagram_handle'] = $insthandle;
-        $infoarr['influencer'][$id]['instagram_post'] = $instagrampost;
-        $infoarr['influencer'][$id]['instagram_impressions'] = $instagramimpressions;
-        $infoarr['influencer'][$id]['instagram_engagement'] = $instagramengagement;
-        $infoarr['influencer'][$id]['facebook_count'] = $facebookcount;
-        $infoarr['influencer'][$id]['facebook_url'] = $facebookurl;
-        $infoarr['influencer'][$id]['facebook_handle'] = $facebookhandle;
-        $infoarr['influencer'][$id]['facebook_post'] = $facebookpost;
-        $infoarr['influencer'][$id]['facebook_impressions'] = $facebookimpressions;
-        $infoarr['influencer'][$id]['facebook_engagement'] = $facebookengagement;
-        $infoarr['influencer'][$id]['twitter_count'] = $twittercount;
-        $infoarr['influencer'][$id]['twitter_url'] = $twitterurl;
-        $infoarr['influencer'][$id]['twitter_handle'] = $twitterhandle;
-        $infoarr['influencer'][$id]['twitter_post'] = $twitterpost;
-        $infoarr['influencer'][$id]['twitter_impressions'] = $twitterimpressions;
-        $infoarr['influencer'][$id]['twitter_engagement'] = $twitterengagement;
-    }
-
-    unset($stmt);
-    $stmt = $conn->prepare("SELECT `campaign_name` FROM `campaign_save_link` WHERE `campaign_id` = ? ");
-    $stmt->bind_param('s',$campaignid);
-    $stmt->execute();
-    $stmt->bind_result($campaignname);
-    $stmt->fetch();
-    $infoarr['campaign_name'] = $campaignname;
-    unset($stmt);
-    $stmt = $saved->prepare("SELECT COUNT(*) FROM `$campaignid`");
-    $stmt->execute();
-    $stmt->bind_result($count);
-    $stmt->fetch();
-    $infoarr['campaign_count'] = $count;
-    unset($saved);
-    return $infoarr;
+        $handles->instagram = $insthandle;
+        $handles->facebook = $facebookhandle;
+        $handles->twitter = $twitterhandle;
+        return $handles; 
 
 
-
- }
-
-
-
+}
 
 public function checkCampaign($campaignid, $columnid){
 $conn = $this->dbinfo();
@@ -326,33 +327,33 @@ else
  
 
 public function getCampaignInfo($campaignid){
-    error_reporting(-1);
+    $campaignInfo = new stdClass;
     $conn = $this->dbinfo();
-    $stmt = $conn->prepare('SELECT `campaign_name`,`campaign_desc`,`campaign_request`,`created_date`,`start_date`,`end_date`,`brand_name`,`total_instagram_impressions`,`total_twitter_impressions`,`total_facebook_impressions`,`total_impressions`,`total_instagram_engagement`,`total_twitter_engagement`,`total_facebook_engagement`,`total_engagement`,`total_post` FROM `campaign_save_link` WHERE `campaign_id` = ?');
+    $stmt = $conn->prepare('SELECT `campaign_name`,`campaign_desc`,`campaign_request`,`created_date`,`start_date`,`end_date`,`brand_name`,`total_instagram_impressions`,`total_twitter_impressions`,`total_facebook_impressions`,`total_impressions`,`total_instagram_engagement`,`total_twitter_engagement`,`total_facebook_engagement`,`total_engagement`,`total_post`,`total_influencers` FROM `campaign_save_link` WHERE `campaign_id` = ?');
     $stmt->bind_param('s',$campaignid);
     $stmt->execute();
-    $stmt->bind_result($campaignname,$campaigndesc,$campaignrequest,$created,$start,$end,$brandname, $instimp,$twitimp,$faceimp,$totalimpressions,$insteng,$twiteng,$faceeng,$totalengagement,$totalpost);
-    while($stmt->fetch()){
-        $arr['campaignname'] = $campaignname;
-        $arr['campaignrequest'] = $campaignrequest;
-        $arr['campaignid'] = $campaignid;
-        $arr['description'] = $campaigndesc;
-        $arr['created'] = $created;
-        $arr['brandname'] = $brandname;
-        $arr['totalposts'] = $totalpost;
-        $arr['total_instagram_impressions'] = $instimp;
-        $arr['total_facebook_impressions'] = $faceimp;
-        $arr['total_twitter_impressions'] = $twitimp;
-        $arr['totalimpressions'] = $totalimpressions;
-        $arr['total_instagram_engagement'] = $insteng;
-        $arr['total_facebook_engagement'] = $faceeng;
-        $arr['total_twitter_engagement'] = $twiteng;
-        $arr['totalengagement'] = $totalengagement;
-        $arr['campaignstart'] = $start;
-        $arr['campaignend'] = $end;
-    return $arr;
-
-}
+    $stmt->bind_result($campaignname,$campaigndesc,$campaignrequest,$created,$start,$end,$brandname, $instimp,$twitimp,$faceimp,$totalimpressions,$insteng,$twiteng,$faceeng,$totalengagement,$totalpost,$totalinfluencers);
+    $stmt->fetch();
+    $campaignInfo->campaignname = $campaignname;
+    $campaignInfo->campaignrequest = $campaignrequest;
+    $campaignInfo->campaignid = $campaignid;
+    $campaignInfo->description = $campaigndesc;
+    $campaignInfo->created = $created;
+    $campaignInfo->brandname = $brandname;
+    $campaignInfo->totalposts = $totalpost;
+    $campaignInfo->total_instagram_impressions = $instimp;
+    $campaignInfo->total_facebook_impressions = $faceimp;
+    $campaignInfo->total_twitter_impressions = $twitimp;
+    $campaignInfo->totalimpressions = $totalimpressions;
+    $campaignInfo->total_instagram_engagement = $insteng;
+    $campaignInfo->total_facebook_engagement = $faceeng;
+    $campaignInfo->total_twitter_engagement = $twiteng;
+    $campaignInfo->totalengagement = $totalengagement;
+    $campaignInfo->campaignstart = $start;
+    $campaignInfo->campaignend = $end;
+    $campaignInfo->total_influencers = $totalinfluencers;
+    
+    return json_encode($campaignInfo);
 }
 
 public function getCampaignName($campaignid){
