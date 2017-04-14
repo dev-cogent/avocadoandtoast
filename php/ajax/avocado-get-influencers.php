@@ -3,6 +3,7 @@ session_start();
 error_reporting(0);
 include '../dbinfo.php';
 include '../numberAbbreviation.php';
+
 $stmt = $conn->prepare("SELECT `campaign_name`,`campaign_id` FROM `campaign_save_link` WHERE `column_id` = ?");
 $stmt->bind_param('s',$_SESSION['column_id']);
 $stmt->execute();
@@ -13,58 +14,64 @@ while($stmt->fetch()){
 unset($stmt);
 
 echo '
-<div class="col-xs-12 info-container">
+ <link rel="stylesheet" href="/assets/css/campaign-calculator.css">
+ <div class="container-fluid">
+<div class="info-container">
 
 
 
         <div class="row">
-    <div class="col-sm-12 col-lg-6 campaign-info" style="margin-left:20px;">
+
+    <div class="col-sm-12 col-md-6 col-lg-6 campaign-info" style="">
     <div class="camapaign-label-container">
     <div class="campaign-label-div">
     <label id="campaign-label" class="campaign-label">CAMPAIGN NAME:</label><input id="campaign-name" type="text" placeholder="Untitled Campaign"> </div>
 
-    <div class="campaign-desc-div"> <div class="campaign-desc-container"> </div>
-    </div></div>
-    </div>
-
-
-    <button class="col-md-6 col-lg-2 col-xs-12 info-button secondary-button" style="">SUBMIT FOR PRICING</button>
-    <button class="col-md-6 col-lg-2 col-xs-12 info-button main-button" id="createcampaign">CREATE CAMPAIGN </button>
-    <button class="col-md-6 col-lg-2 col-xs-12 info-button secondary-button" id="add-existing">ADD TO EXISTING CAMPAIGN </button>
-
-    </div>
-<div class="col-xs-12 campaign-select">
-        <p  id="campaign-select-text" class="col-xs-12 col-md-1" style="font-family:Montserrat, sans-serif; width:175px;">SELECT CAMPAIGN:</p>
+  
+     <div class="select-campaign-container"> 
+            <div id="campaign-select-text" class="col-xs-12 col-md-1">ADD TO EXISTING: </div>
             <select class="form-control category avocado-focus  campaign-dropdown col-xs-12">
                 <option class="option" value=""> None</option>
                 '.$options.'    
-            </select>
+            </select> 
+            <button class="save-btn" id="add-existing"> <i class="icon ti-plus black-plus" aria-hidden="true"></i> </button>
+            </div> 
+
+    </div></div>
+    
+
+
+<div class="col-xs-12 col-md-6 col-lg-6 campaign-select">
+
+
+  <div class="campaign-calc-btn-container"> 
+    <button class="info-button secondary-button" style="">SUBMIT FOR PRICING</button>
+    <button class="info-button main-button" id="createcampaign">CREATE CAMPAIGN </button>
+    </div> 
+
+          
             </div>
+            </div>
+    </div>
 
-    <div class="row name-index-row">
-    <div class="col-lg-8 col-md-6 col-xs-12">
+    <div class="row"> 
 
-   </div>
-
-
-    <div class="col-md-6 col-lg-4  col-xs-12 campaign-info-index">
+      
+        <div class="campaign-info-index col-xs-12">
       <div class="posts-green index-name"> POSTS </div>
       <div class="impression-blue index-name"> IMPRESSION </div>
       <div class="engagement-orange index-name"> ENGAGEMENT </div>
       <div class="social-following-red index-name"> SOCIAL FOLLOWING </div>
     </div>
+    
+    </div>
 
-  </div>
-
-
-
-</div>
 
 <div class="post-container col-xs-12">
 
               <table summary="This table shows a list of influencers added to a campaign" style="width: 100%; max-width: 100%; margin-bottom: 1rem;"class="table-hover">
                 <thead class="campaign-calc-table">
-                  <tr class="cat-in-campaign-list-table">
+                  <tr class="cat-in-influencer-result-row">
                       <th class="text-center"><button class="secondary-button" id="apply">Apply Posts to All</button></th>
                       <th class="text-center"> <img src="assets/images/ig_black.png" class="insta-logo" />
                    </th>
@@ -102,9 +109,9 @@ echo '
                 }
 
                   echo'
-                    <tr class="campaign-list-table">
-                        <td class="campaign-tablerow" style="width:15%; padding-left:0%;">
-                                <div class="information">
+                    <tr class="influencer-result-row">
+                        <td class="influencer-column" style="width:15%; padding-left:0%;">
+                                <div class="influencer-info-container"> 
                             <img src="http://cogenttools.com/'.$image.'" onerror="this.src=`/assets/images/default-photo.png`" class="influencer-campaign-image ">
                             <h4 class="influencer-handle-text handle">@'.$displayhandle.'</h4>
                             <h4 class="influencer-handle-text location-text">'.$location.'</h4>
@@ -113,7 +120,7 @@ echo '
                       <td data-id="'.$id.'" class="insta-column" style="width:15%;">
                           <div class="posts-res-div">
                             <input data-id="'.$id.'" data-platform="instagram" class="instagraminput campaignfocus" type="number" value="0" max="100" min="0">
-                            <div class="post-results">posts</div>
+                            <div class="post-results-container">posts</div>
                           </div>
                           <div class="results-mini-col">
                             <div class="impression-res impression-blue impression-instagram-blue" data-id="'.$id.'" data-number="0">0</div>
@@ -124,7 +131,7 @@ echo '
 
                       <td data-id="'.$id.'" class="twit-column" style="width:15%;">
                         <input data-id="'.$id.'" data-platform="facebook" class="facebookinput campaignfocus" type="number" value="0" max="100" min="0">
-                        <div class="post-results"> posts</div>
+                        <div class="post-results-container"> posts</div>
                         <div class="results-mini-col">
                           <div class="impression-res impression-blue impression-facebook-blue" data-id="'.$id.'" data-number="0">0</div>
                           <div class="engagement-res engagement-orange engagement-orange-facebook"  data-id="'.$id.'" data-number="0" >0</div>
@@ -134,7 +141,7 @@ echo '
 
                       <td data-id="'.$id.'" class="face-column" style="width:15%;">
                         <input data-id="'.$id.'" data-platform="twitter" class="twitterinput campaignfocus" type="number" value="0" max="100" min="0">
-                        <div class="post-results"> posts</div>
+                        <div class="post-results-container"> posts</div>
                         <div class="results-mini-col">
                           <div class="impression-res impression-blue impression-twitter-blue" data-id="'.$id.'" data-number="0">0</div>
                           <div class="engagement-res engagement-orange engagement-orange-twitter" data-id="'.$id.'" data-number="0">0</div>
@@ -144,7 +151,7 @@ echo '
 
                       <td data-id="'.$id.'" class="overall-inf-total-column" style="width:15%;">
                           <input data-id="'.$id.'" data-platform="total" class="totalinput campaignfocus" type="number" value="0" max="100" disabled>
-                          <div class="post-results"> posts</div>
+                          <div class="post-results-container"> posts</div>
                           <div class="results-mini-col">
                             <div class="impression-res impression-blue impression-total-blue" data-id="'.$id.'" data-number="0" >0</div>
                             <div class="engagement-res engagement-orange engagement-orange-total"  data-id="'.$id.'" data-number="0" >0</div>
@@ -157,9 +164,9 @@ echo '
                   echo '
 
                        <!-- results -->
-                        <tr class="result-row campaign-list-table">
-                        <td class="campaign-tablerow" style="width:15%;">
-                            <div class="information">
+                        <tr class="result-row influencer-result-row">
+                        <td class="influencer-column" style="width:15%;">
+                            <div class="influencer-info-container">
                                 <p class="result-name" style="width:210px;">  CAMPAIGN ENGAGEMENT</p>
                             </div>
                       <td  class="insta-column" style="width:15%;"> <p class="instagram-posts results-text" id="instagram-engagement" data-number="0"> 0 </p> </td>
@@ -169,9 +176,9 @@ echo '
                     </tr>
 
 
-                        <tr class="result-row campaign-list-table">
-                        <td class="campaign-tablerow" style="width:15%;">
-                            <div class="information">
+                        <tr class="result-row influencer-result-row">
+                        <td class="influencer-column" style="width:15%;">
+                            <div class="influencer-info-container">
                             <p class="result-name" style="width:210px;"> CAMPAIGN IMPRESSIONS</p>
                             </div>
                       <td  class="insta-column" style="width:15%;"><p class="instagram-posts results-text" id="instagram-impressions" data-number="0"> 0 </p> </td>
@@ -184,4 +191,4 @@ echo '
 
                     </tbody>
                 </table>
-</div>';
+</div> </div>';
