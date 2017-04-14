@@ -1,0 +1,59 @@
+<?php
+session_start();
+error_reporting(0);
+include 'php/dbinfo.php';
+include 'php/numberAbbreviation.php';
+
+?>
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="en">
+<head>
+  <?php include 'html/head.html' ?>
+    <title>Discover | Avocado & Toast</title>
+<script src="/bootbox/bootbox.js"></script>
+<script src="/global/vendor/bootstrap/bootstrap.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700" rel="stylesheet">
+<script src="/assets/js/abbreviatenumber.js"></script>
+<script src="/assets/wnumb/wNumb.js"></script>
+<script src="/assets/uislider/nouislider.js"></script>
+<script src="/assets/js/tokenfield/dist/bootstrap-tokenfield.js"></script>
+<script src="/assets/js/loading.js"></script>
+<script src="/assets/js/avocado-card-functions.js"></script>
+<script src="/assets/js/avocado-calculate.js"></script>
+<link rel="stylesheet" href="/assets/js/tokenfield/dist/css/bootstrap-tokenfield.css">
+<link rel="stylesheet" href="/assets/uislider/nouislider.css">
+<link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
+<link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
+<link rel="stylesheet" href="/assets/css/discover.css">
+<link rel="stylesheet" href="/assets/css/sidebar.css">
+<link rel="stylesheet" href="/assets/css/alenav.css">
+</head>
+
+
+<body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
+
+<div class="col-xs-12">
+       <a href="/discover.php"><img src="/assets/images/at-logo-black.png" style="margin-top:-8px;"></a>
+
+ </div>
+<!-- Content where the discover, communicatie, order management would be -->
+
+<div class="avo-nav">
+    <div class="floater-border">
+    <div class="nav2 discover"> <a href="/discover.php" class="link-pages"> DISCOVER </a> </div>
+      <div class="nav2 campaigns"> <a href="/dashboard.php" class="link-pages"> YOUR CAMPAIGNS </a> </div>
+        <div class="nav2 price"> <a href="" class="link-pages">  PRICE CAMPAIGN </a></div>
+          <div class="nav2 account"> <a href="/logout.php" class="link-pages"> ACCOUNT </a></div>
+    </div> <!--closes floater div -->
+</div>
+ <div class="col-xs-12 bottom"> </div>
+
+<script src="/assets/js/nav.js"></script>
+<style>
+
+a:hover{
+  text-decoration:none;
+  background-color: transparent;
+}
+</style>
+
