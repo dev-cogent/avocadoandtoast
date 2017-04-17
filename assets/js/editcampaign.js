@@ -22,7 +22,7 @@ $(document).ready(function(){
 });
 
 
-$(document).on('click','.submit',function(){
+$(document).on('click','#submit-campaign',function(){
     const campaignname = $('#name').val();
     const campaignsummary = $('#campaign-summary').val();
     const campaignrequest = $('#campaign-request').val();
@@ -58,7 +58,7 @@ $(document).on('click','.submit',function(){
 });
 
 
-$(document).on('click','.delete',function(){
+$(document).on('click','#delete-campaign',function(){
         $.ajax({
         type: 'POST',
         url: '/php/ajax/deletecampaign.php',
