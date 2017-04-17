@@ -1,22 +1,6 @@
-<?php
-session_start();
-include '../php/class/savecampaign.php';
-$id = $_GET['id'];//$id[2];
-if($id == NULL){
-$campaignid = $_SESSION['temp_campaign_id'];
-}
-else{
-$campaignid = $id;
-}
-$save = new saveCampaign;
-$checkcampaign = $save->checkCampaign($campaignid, $_SESSION['column_id']);
-if($checkcampaign === false) header('Location: /dashboard.php');
-$today = date('Y-m-d');
-$tomorrow = date("Y-m-d", strtotime('tomorrow'));
+<?php include '../php/verify-campaign.php';?>
 
 
-
-?>
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
 <head> 
@@ -26,40 +10,7 @@ $tomorrow = date("Y-m-d", strtotime('tomorrow'));
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 <script src="/assets/uislider/nouislider.js"></script>
 <link rel="stylesheet" href="/assets/css/discover.css">
-<style>
-.form-control{
-    letter-spacing:0px;
-    color:#515862;
-    font-size:15px;
-}
-
-.title{
-    color:rgb(29, 40, 76);  
-    font-family: 'Open Sans', sans-serif;
-    padding-top:20px;
-    font-weight:600;
-}
-
-.search{
-    min-width:143.5px;
-}
-.delete{
-float:left; 
-margin-left: 4.2%; 
-width:40%; 
-background-color:white;
-border:1px solid #30363C; 
-color:#30363C;
-height: 50px;
-font-size: 16px;
-font-family: 'Montserrat', sans-serif;
-min-width:143.5px;
-}
-
-.delete:hover{
-    box-shadow: 0 0 1px #30363C;
-}
-</style>
+<link rel="stylesheet" href="/assets/css/edit-campaign.css">
 </head>
 
 <body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
@@ -67,13 +18,10 @@ min-width:143.5px;
 
 
 
+<div class="center-form-content" >
 
-
-
-<div class="container" style="margin-left:28.2%; padding-bottom:100px;">
-
-<p class="desc-header" id="edit-campaign-name" style="padding-top:30px;">Edit </p>
-<div class="input-container" style="width:45%;">
+<div class="desc-header" id="edit-campaign-name">Edit </div>
+<div  class="input-container">
 
     <label class="title">Campaign Name </label>
     <input type="text" class="form-control category avocado-focus" id="name" value="">
@@ -84,23 +32,34 @@ min-width:143.5px;
 
     <label class="title">Campaign Summary </label>
     <br/>
+
     <label>What is it you are trying to do? </label>
     <textarea type="text" class="form-control category avocado-focus" id="campaign-summary"   style="height:150px;"></textarea>
+
+
     <label class="title">Campaign Requests </label>
     <br/>
     <label>What type of content do you want? Be specific about what the influencer should be posting about.</label>
     <textarea type="text" class="form-control category avocado-focus" id="campaign-request" style="height:150px;"></textarea>
 
+
     <label class="title">Campaign Schedule </label>
     <br/>
-    <div class="col-xs-12" style="padding-left:0px; padding-right:0px;">
-        <input type="date" class="form-control category avocado-focus" id="campaign-start" style="float:left; width:45%;" value=""><p style="float:left; padding-left:3%;padding-right:3%;">to</p> 
-        <input type="date" class="form-control category avocado-focus"  id="campaign-end" style="float:left; width:45%;" value="">
+
+        <input type="date" class="col-xs-5 category avocado-focus avo-date" id="campaign-start" value="">
+        <div id="date-seperate" class="col-xs-2">TO</div> 
+        <input type="date" class="col-xs-5 category avocado-focus avo-date"  id="campaign-end"  value="">
+        <br/>
+
+    <label class="title" style="visibility:hidden;">Buttons</label>
+    
+    <div class="col-xs-12">
+        <button class="col-xs-5 avo-btn-edit avo-btn-edit-secondary" id="delete-campaign" >DELETE</button>
+        <button class="col-xs-5 avo-btn-edit avo-btn-edit-primary" id="submit-campaign" >SUBMIT</button>
     </div>
-    <div style="margin-top:50px;">
-        <button class="col-xs-4 delete" id="search-keyword" style="float:left; margin-left: 4.2%; width:40%; background-color:white; border:1px solid #30363C; color:#30363C;">DELETE</button>
-        <button class="search avocado-hover col-xs-4 submit" id="search-keyword" style="float:left; margin-left:10%; width:40%;">SUBMIT</button>
-    </div>
+
+
+    <br/>
 
 
 </div>
