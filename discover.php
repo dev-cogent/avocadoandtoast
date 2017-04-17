@@ -26,11 +26,10 @@ include 'php/numberAbbreviation.php';
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
 <link rel="stylesheet" href="/assets/css/discover.css">
 <link rel="stylesheet" href="/assets/css/sidebar.css">
-<link rel="stylesheet" href="/assets/css/alenav.css">
 </head>
 
+<?php include 'php/avocado-nav.php'; ?>
 <body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
-<?php include 'acnav.php';?>
 
 
 
