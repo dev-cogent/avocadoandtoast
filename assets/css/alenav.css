@@ -1,0 +1,54 @@
+.col-xs-12{
+    border-top: 1px solid rgb(210,215,220); 
+    border-bottom:1px solid rgb(210,215,220); 
+    height:66px
+}
+
+.col-xs-12.bottom{
+    height: 35px; 
+    border-bottom:1px solid rgb(210,215,220);
+    background-color: #73C48D;
+}
+
+.avo-nav{
+    position: relative;
+    margin-top: -56px;
+    margin-left: 310px;
+    text-align: right;
+    width:75%;
+}
+
+nav2{
+    padding:10px;
+    padding-left: 8px;
+    padding-right:10px;
+    display: inline-block;
+    line-height: 39px;
+    
+}
+
+.discover{
+    padding-right: 20px;
+}
+
+.campaigns{
+    padding-right: 20px;
+}
+
+.price{
+    padding-right: 20px;
+}
+
+.floater-border {
+    position: relative;
+    margin-bottom: -10px;
+}
+
+.link-pages{
+    text-decoration: none;
+}
+
+
+.link-pages{
+    color: rgb(70, 70, 70);
+}
