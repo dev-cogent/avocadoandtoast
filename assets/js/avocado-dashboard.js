@@ -5,31 +5,31 @@ $(document).ready(function(){
         success: function (jqXHR, textStatus, errorThrown) {
             campaignJSON = JSON.parse(jqXHR);
             $.each(campaignJSON, function(key,obj){
-            $('#campaign-container').append('<div class="campaign-block col-xs-9" data-id="'+key+'" data-desc="'+obj.description+'" data-name="'+obj.campaignname+'" data-start="'+obj.campaignstart+'" data-end="'+obj.campaignend+'" style="padding-left:75px;" >'+
+            $('#campaign-container').append('<a href="/campaigns/?id='+key+'"> <div class="campaign-block col-xs-12" data-id="'+key+'" data-desc="'+obj.description+'" data-name="'+obj.campaignname+'" data-start="'+obj.campaignstart+'" data-end="'+obj.campaignend+'" >'+
                    '<table class="col-xs-12">'+
                         '<tbody style="border-top:0px;">'+
                         '<tr>'+
-                            '<td class="campaign-details name" ><a class="campaign-details" href="/campaigns/?id='+key+'">'+obj.campaignname+' </a></td>'+
+                            '<td class="campaign-details name" ><a class="campaign-details">'+obj.campaignname+' </a></td>'+
                             '<td class="campaign-details" > '+obj.state+' </td>'+
                             '<td class="campaign-details date" > Created '+obj.created+'</td>'+
                         '</tr>'+
                        '<tr>'+
                             '<td class="stats">'+obj.totalinfluencers+'</td>'+
                             '<td class="stats">'+obj.totalposts+'</td>'+
-                            '<td class="stats">'+abbrNum(obj.average_impressions)+'</td>'+
-                            '<td class="stats">'+abbrNum(obj.average_engagement)+'</td>'+
+                            '<td class="stats mobile-off">'+abbrNum(obj.average_impressions)+'</td>'+
+                            '<td class="stats mobile-off">'+abbrNum(obj.average_engagement)+'</td>'+
                             '<td class="stats">'+abbrNum(obj.totalimpressions)+'</td>'+
                         '</tr>'+ 
                         '<tr>'+
                             '<td class="label-info"># of Influencers</td>'+
                             '<td class="label-info">Total Post</td>'+
-                            '<td class="label-info">Average Impressions</td>'+
-                            '<td class="label-info"> Average Engagement</td>'+
-                            '<td class="label-info"> Total Reach</td>'+
+                            '<td class="label-info mobile-off">Avg Impressions</td>'+
+                            '<td class="label-info mobile-off">Avg Engagement</td>'+
+                            '<td class="label-info">Reach</td>'+
                         '</tr>'+
                         '</tbody>'+
                     '</table>'+
-                '</div>');
+                '</div></a>');
             });
         }
     }); // end ajax request*/
