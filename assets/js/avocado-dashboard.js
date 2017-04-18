@@ -5,26 +5,27 @@ $(document).ready(function(){
         success: function (jqXHR, textStatus, errorThrown) {
             campaignJSON = JSON.parse(jqXHR);
             $.each(campaignJSON, function(key,obj){
-            $('#campaign-container').append('<a href="/campaigns/?id='+key+'"> <div class="campaign-block col-xs-12" data-id="'+key+'" data-desc="'+obj.description+'" data-name="'+obj.campaignname+'" data-start="'+obj.campaignstart+'" data-end="'+obj.campaignend+'" >'+
+            $('#campaign-container').append('<div class="campaign-block col-xs-12" data-id="'+key+'" data-desc="'+obj.description+'" data-name="'+obj.campaignname+'" data-start="'+obj.campaignstart+'" data-end="'+obj.campaignend+'" >'+
                    '<table class="col-xs-12">'+
                         '<tbody style="border-top:0px;">'+
                         '<tr>'+
-                            '<td class="campaign-details name" ><a class="campaign-details">'+obj.campaignname+' </a></td>'+
+                            '<td class="campaign-details name" ><a href="/campaigns/?id='+key+'" class="campaign-details">'+obj.campaignname+' </a></td>'+
                             '<td class="campaign-details" > '+obj.state+' </td>'+
                             '<td class="campaign-details date" > Created '+obj.created+'</td>'+
                         '</tr>'+
                        '<tr>'+
-                            '<td class="stats">'+obj.totalinfluencers+'</td>'+
-                            '<td class="stats">'+obj.totalposts+'</td>'+
-                            '<td class="stats mobile-off">'+abbrNum(obj.average_impressions)+'</td>'+
-                            '<td class="stats mobile-off">'+abbrNum(obj.average_engagement)+'</td>'+
-                            '<td class="stats">'+abbrNum(obj.totalimpressions)+'</td>'+
+                            '<td class="stats"><a class="stats" href="/campaign/?id='+key+'">'+obj.totalinfluencers+'</a></td>'+
+                            '<td class="stats mobile-off"><a class="stats" href="/campaigns/?id='+key+'">'+obj.totalposts+'</a></td>'+
+                            '<td class="stats mobile-off"><a class="stats" href="/campaigns/?id='+key+'">'+abbrNum(obj.average_impressions)+'</a></td>'+
+                            '<td class="stats mobile-off mobile-off-first"><a class="stats" href="/campaigns/?id='+key+'">'+abbrNum(obj.average_engagement)+'</a></td>'+
+                            '<td class="stats"><a class="stats" href="/campaigns/?id='+key+'">'+abbrNum(obj.totalimpressions)+'</a></td>'+
+                            '<td class="button-stats"><button onclick="location.href=`/price/?id='+key+'`" class="button-stats-bt">PRICE CAMPAIGN</button></td>'+
                         '</tr>'+ 
                         '<tr>'+
-                            '<td class="label-info"># of Influencers</td>'+
-                            '<td class="label-info">Total Post</td>'+
+                            '<td class="label-info">Influencers</td>'+
+                            '<td class="label-info mobile-off">Posts</td>'+
                             '<td class="label-info mobile-off">Avg Impressions</td>'+
-                            '<td class="label-info mobile-off">Avg Engagement</td>'+
+                            '<td class="label-info mobile-off mobile-off-first">Avg Engagement</td>'+
                             '<td class="label-info">Reach</td>'+
                         '</tr>'+
                         '</tbody>'+
@@ -59,7 +60,7 @@ $(document).on('click','.campaign-block',function(){
     '</div>');
 });
 
-function abbrNum(number, decPlaces = 2) {
+function abbrNum(number, decPlaces = 1) {
     var orig = number;
     var dec = decPlaces;
     // 2 decimal places => 100, 3 => 1000, etc

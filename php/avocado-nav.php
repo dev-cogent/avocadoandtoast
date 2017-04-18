@@ -23,11 +23,10 @@ $url = $_SERVER['REQUEST_URI'];
         </div>  
           <div class="avo-navtabs"> <a href="/dashboard.php" class="link-pages <?php if($url == '/dashboard.php') echo 'active-tab';?>">DASHBOARD </a> </div>
           <div class="avo-navtabs"> <a href="/discover.php" class="link-pages <?php if($url == '/discover.php') echo 'active-tab';?>"> DISCOVER </a> </div>
-          <div class="avo-navtabs"> <a href="/price.php" class="link-pages <?php if($url == '/price.php') echo 'active-tab';?>">  PRICE CAMPAIGN </a></div>
+          <div class="avo-navtabs"> <a href="/price.php" class="link-pages <?php if($url == '/contact.php') echo 'active-tab';?>">  CONTACT </a></div>
           <div class="avo-navtabs dropdown"> <a href="/settings.php" class="link-pages <?php if($url == '/settings.php') echo 'active-tab';?>"> ACCOUNT </a>
           <div class="dropdown-content">
                 <a href="/settings.php">SETTINGS</a>
-                <a href="#">CONTACT</a>
                 <a href="/logout.php">LOGOUT</a>
           </div>       
         
