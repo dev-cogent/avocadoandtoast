@@ -39,7 +39,7 @@ td.campaign-details.name{
     padding-top: 10px;
     width: 100px;
     max-width: 100px;
-    text-align: center;
+
 
 }
 
@@ -68,7 +68,7 @@ td.campaign-details.name{
     font-size: 15px;
     font-family: 'open sans';
     padding-bottom: 10px;
-    text-align: center;
+
 
 }
 
@@ -132,7 +132,6 @@ color:rgb(29, 40, 76);
 font-family:'open sans';
 padding-top: 30px;
 width:20%;
-text-align: center;
 }
 
 i.fa.fa-exclamation-triangle {

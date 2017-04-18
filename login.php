@@ -170,7 +170,7 @@ border-radius:0px;
                 <br/>
                 <button class="form-control" id="login-button"> SIGN IN </button>
                 </form>
-                <a href="/register.php" style="text-decoration:none;"><button class="form-control" id="register-button" > REGISTER </button></a>
+                <a href="/signup.php" style="text-decoration:none;"><button class="form-control" id="register-button" > REGISTER </button></a>
     </div>
 </div>
 
