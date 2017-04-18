@@ -64,6 +64,11 @@ function setCampaignInfluencers(campaignJSON){
                 '<div class="influencer-card-discover">'+
                                 '<img class="influencer-image-card" src="http://cogenttools.com/'+obj.image+'" onerror="this.src=`/assets/images/default-photo.png`">'+
                                     '<div class="col-xs-12" style="height:170px; box-shadow: rgb(115, 196, 141) 0px -10px 0px;">'+
+                                      '<div class="icons col-xs-12">'+
+                                      '<a> <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'+key+'" data-platform="instagram" aria-hidden="true"  style="color:#73C48D"></i></a>'+
+                                      '<a> <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'+key+'" data-platform="facebook" aria-hidden="true" ></i></a>'+
+                                      '<a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'+key+'" data-platform="twitter" aria-hidden="true"></i></a>'+
+                                      '</div>'+
                                         '<!-- insthandle stuff -->'+
                                         '<div class="icons col-xs-12"></div>'+
                                         '<div class="col-xs-12 insthandle-info">'+
@@ -87,7 +92,7 @@ function setCampaignInfluencers(campaignJSON){
                                               '<p  class="instagram-total-post total-post" data-id="'+key+'" style="text-align:center;padding-top: 3px; color:#73C48D;">'+obj.instagram_post+' total post(s) </p>'+
                                                '<p  class="facebook-total-post total-post" data-id="'+key+'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;">'+obj.facebook_post+'  total post(s) </p>'+
                                                '<p  class="twitter-total-post total-post" data-id="'+key+'" style="text-align:center;padding-top: 3px; color:#73C48D; display:none;">'+obj.twitter_post+'  total post(s) </p>'+
-                                              '<i class="icon fa-check check" aria-hidden="true" style="text-align:center; width:100%; margin-left:0px;"></i>'+
+                                              '<i class="icon fa-times remove-influencer" aria-hidden="true" style="text-align:center; width:100%; margin-left:0px;"></i>'+
                                         '</div></div></div></div></div>');
 
 
@@ -277,10 +282,11 @@ undoInfluencer();
 function removeInfluencerFromCampaign(id,card){
     card.fadeOut(); //Taking the influencer card and making it fadeOut/Disappear... like magic :) 
  
-    var reach = parseInt($('#total-reach').attr('data-num')); //reach is also the totalImpressions. 
+    var reach = parseInt($('#total-reach').attr('data-number')); //reach is also the totalImpressions. 
     var numberOfInfluencers = parseInt($('#influnum').text());
     var totalPost = parseInt($('#total-posts').text());
     var totalInfluencerImpressions = parseInt(card.attr('data-t-impressions')) + parseInt(card.attr('data-f-impressions')) + parseInt(card.attr('data-i-impressions'));
+    console.log(totalInfluencerImpressions);
     var totalEngagement = $('#total-engagement').attr('data-number');
     var totalInfluencerEngagement = parseInt(card.attr('data-t-engagement')) + parseInt(card.attr('data-f-engagement')) + parseInt(card.attr('data-i-engagement'));
     var totalInfluencerPost = parseInt(card.attr('data-t-post')) + parseInt(card.attr('data-i-post')) + parseInt(card.attr('data-f-post'));
@@ -291,7 +297,7 @@ function removeInfluencerFromCampaign(id,card){
 
     $('#influnum').text(numberOfInfluencers - 1);     //Changing the influencer number
     $('#total-posts').text(totalPost - totalInfluencerPost);     //changing the totalpost number 
-    $('#total-reach').attr('data-num',newreach); //changing reach 
+    $('#total-reach').attr('data-number',newreach); //changing reach 
     $('#total-reach').text(abbrNum(newreach));
     $('#total-engagement').text(abbrNum(newEngagement)); // changing engagement 
     $('#total-engagement').attr('data-number',newEngagement); 
@@ -345,7 +351,7 @@ function undoInfluencer(){
  */
 function addInfluencerToCampaign(id,card){
     card.fadeIn();
-    var reach = parseInt($('#total-reach').attr('data-num')); //reach is also the totalImpressions. 
+    var reach = parseInt($('#total-reach').attr('data-number')); //reach is also the totalImpressions. 
     var numberOfInfluencers = parseInt($('#influnum').text());
     var totalPost = parseInt($('#total-posts').text());
     var totalInfluencerImpressions = parseInt(card.attr('data-t-impressions')) + parseInt(card.attr('data-f-impressions')) + parseInt(card.attr('data-i-impressions'));
@@ -358,7 +364,7 @@ function addInfluencerToCampaign(id,card){
     var newAvgImpressions = newreach /(numberOfInfluencers + 1);
     $('#influnum').text(numberOfInfluencers + 1);     //Changing the influencer number
     $('#total-posts').text(totalPost + totalInfluencerPost);     //changing the totalpost number 
-    $('#total-reach').attr('data-num',newreach); //changing reach 
+    $('#total-reach').attr('data-number',newreach); //changing reach 
     $('#total-reach').text(abbrNum(newreach));
     $('#total-engagement').text(abbrNum(newEngagement)); // changing engagement 
     $('#total-engagement').attr('data-number',newEngagement); 

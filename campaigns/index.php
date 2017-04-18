@@ -1,35 +1,16 @@
 <?php
-session_start(); 
-error_reporting(-1);
+session_start();
+error_reporting(0);
 include '../php/dbinfo.php';
-include '../php/class/savecampaign.php';
+include '../php/verify-campaign.php';
 include '../php/numberAbbreviation.php';
-//$url = $_SERVER['REQUEST_URI'];
-//$id = explode('/',$url);
-$id = $_GET['id'];
-if($id == NULL){
-$campaignid = $_SESSION['temp_campaign_id'];
-}
-else{
-$campaignid = $id;
-}
-
-
-$save = new saveCampaign;
-//Checking for campaign validity
-$checkcampaign = $save->checkCampaign($campaignid, $_SESSION['column_id']);
-if($checkcampaign === false) header('Location: /dashboard.php');
-
 //If all is good, we continue. 
-
-
-
 ?>
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
 <head>
   <?php include '../html/head.html' ?>
-    <title><?php echo $influencerinfo['campaign_name'];?> | Avocado & Toast</title>
+    <title>Campaign | Avocado & Toast</title>
 <script src="/assets/js/abbreviatenumber.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 
@@ -40,121 +21,65 @@ if($checkcampaign === false) header('Location: /dashboard.php');
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
 <link rel="stylesheet" href="/assets/css/discover.css">
 <link rel="stylesheet" href="/assets/css/sidebar.css">
+<link rel="stylesheet" href="/assets/css/avocado-campaign.css">
 <style>
-.stats{
-    color: #73C48D;
-    font-family: 'montserratsemibold';
-    font-size: 40px;
-    padding-right: 17px;
-    font-weight: 600;
-    padding-top: 10px;
-
-}
-.label-info{
-
-    color: rgb(29, 40, 76);
-    font-weight: 600;
-    font-size: 13px;
-    font-family: 'open sans';
-    padding-bottom: 10px;
-
-}
 .campaign-details{
-font-size:15px;
-color:rgb(29, 40, 76);
-font-family:'open sans';
-padding-top: 30px;
-width:20%;
+    
 }
-
-.engagement-count{
-    padding-bottom:0px;
-    margin-bottom:0px;
-}
-
-.invite{
-    margin-left:0%;
-}
-
-
-.btn-campaign-options{
-    width: 160px;
-    height: 35px;
-    background-color: white;
-    border: 1px solid black;
-    font-size:12px;
-    margin-right:5px;
-    font-family:'montserratlight';
-
-}
-.button-container{
-padding-left: 90px;
-border-bottom: 0px;
-height: 145px;
-padding-top: 45px;
-}
-
+  
 </style>
 </head>
-
-<body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
 <?php include '../php/avocado-nav.php';?>
 
-
-
-
-
+<body>
 
 
 
 <!-- Add side bar here -->
 
 
-<div id="stuff"></div>
-
-
-
 
 <!--Filter content -->
 
-
-<div class="button-container col-xs-12" style="border-bottom:0px; height:145px; padding-top:45px;">
-  <a href="/edit/?id=<?php echo $campaignid;?>" style="color:black;">  <button class="btn-campaign-options avocado-hover avocado-focus">  EDIT CAMPAIGN  </button></a>
-  <a href="#"style="color:black;" class="pdf" data-id="<?php echo $campaignid; ?>">  <button class="btn-campaign-options avocado-hover avocado-focus">  EXPORT CAMPAIGN  </button></a>
-  <a href="/price/?id=<?php echo $campaignid;?>" style="color:black;">  <button class="btn-campaign-options avocado-hover avocado-focus">  PRICE CAMPAIGN  </button></a>
-  <a href="/recalculate.php?id=<?php echo $campaignid;?>" style="color:black;">  <button class="btn-campaign-options avocado-hover avocado-focus">  CALCULATE CAMPAIGN  </button></a>
-  <a style="display:none;" id="undo-button" >  <button class="btn-campaign-options avocado-hover avocado-focus" style="background-color:#73C48D; color:white; border:0px;">UNDO</button></a>
-  <a style="display:none;" id="save-button" >  <button class="btn-campaign-options avocado-hover avocado-focus" style="background-color:#73C48D; color:white; border:0px;">SAVE</button></a>
+<div class="col-xs-12 campaign-details">
+    <div class="campaign-name col-xs-12" id="campaign-name"> </div>
+    <div class="campaign-summary col-xs-12" id="campaign-description"><span><strong>Campaign Summary:</strong></span> </div>
 </div>
 
-<div class="col-xs-12" style="padding-left:75px;">
-    <div class="user-campaign-name col-xs-2" id="campaign-name" style="padding-left:13px; padding-bottom:20px; margin-left:0px; margin-top: -12px; color:#73C48D;">
 
-    <p style="font-size:13px; color:rgb(29, 40, 76);" id="campaign-description"><span><strong>Campaign Summary: </strong></span></p>
-    
-    </div>
+
+<div class="button-container col-xs-12">
+   <button class="btn-campaign-options avocado-hover avocado-focus" onclick="location.href='/edit/?id=<?php echo $campaignid;?>'">  EDIT CAMPAIGN  </button></a>
+   <button class="btn-campaign-options avocado-hover avocado-focus pdf" data-id="<?php echo $campaignid; ?>">  EXPORT CAMPAIGN  </button></a>
+   <button class="btn-campaign-options avocado-hover avocado-focus" onclick="location.href='/price/?id=<?php echo $campaignid;?>'">  PRICE CAMPAIGN  </button></a>
+   <button class="btn-campaign-options avocado-hover avocado-focus" onclick="location.href='/recalculate.php?id=<?php echo $campaignid;?>'">  RECALCULATE CAMPAIGN  </button></a>
+   <button class="btn-campaign-options-primary  avocado-focus" id="undo-button" style="display:none;">UNDO</button></a>
+   <button class="btn-campaign-options-primary  avocado-focus" id="save-button" style="display:none;">SAVE</button></a>
+</div>
+
+
   <!--  <div class="user-campaign-inf-count"> <span class="campaign-inf-count"><?php// echo $influencerinfo['campaign_count'];?> </span> Influencers Invited to this Campaign </div> -->
 
-    <div class="col-xs-9" id="campaign-breakdown" style="height:240px; padding-bottom:30px; border-radius: 4px;">
-        <div class="col-xs-12" style="border:1px solid rgb(210,215,220);">
-        <div class="campaign-block col-xs-12"  style="padding-left:75px;" >
+    <div class="col-xs-12" id="campaign-breakdown">
+        <div class="col-xs-12 campaign-border">
+        <div class="campaign-block col-xs-12"  >
         <table class="col-xs-12">
             <tbody style="border-top:0px;">
             <tr>
                 <td class="stats" id="influnum"></td>
                 <td class="stats" id="total-posts"></td>
-                <td class="stats" id="avg-impressions" data-number="0"></td>
-                <td class="stats" id="avg-engagement" data-number="0"></td>
-                <td class="stats"id="total-reach" data-num="0"></td>
+                <td class="stats mobile-off" id="avg-impressions" data-number="0"></td>
+                <td class="stats mobile-off" id="avg-engagement" data-number="0"></td>
+                <td class="stats"id="total-reach" data-number="0"></td>
                 <td class="stats"id="total-engagement" data-number="0"></td>
             </tr>
             <tr>
                 <td class="label-info">Influencers</td>
-                <td class="label-info">Total Post</td>
-                <td class="label-info">Avg Impressions</td>
-                <td class="label-info"> Avg Engagement</td>
-                <td class="label-info"> Total Reach</td>
-                <td class="label-info"> Total Engagement</td>
+                <td class="label-info">Posts</td>
+                <td class="label-info mobile-off">Avg Impressions</td>
+                <td class="label-info mobile-off"> Avg Engagement</td>
+                <td class="label-info">Reach</td>
+                <td class="label-info">Engagement</td>
             </tr>
             </tbody>
         </table>
@@ -222,7 +147,7 @@ padding-top: 45px;
 
 
 
-
+ 
             
         </div>
 </div>
