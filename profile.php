@@ -27,7 +27,7 @@ $id = $_GET['id'];
 
 
 </head>
-
+<?php include 'php/avocado-nav.php';?>
 <body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
     <!-- Facebook scripts and stuff -->
 <script>
@@ -61,22 +61,6 @@ $id = $_GET['id'];
 
 
 
-
-
-
-
-<!-- Add side bar here -->
-
-<div class="col-xs-1 sidebar-left" style="position:relative;">
-<i class="icon fa-bars" aria-hidden="true" style="
-    color: white;
-    text-align: center;
-    font-size: 21px;
-    margin-left: 5px;
-    height: 20px;
-    padding-top: 15px;
-"></i>
-</div>
 
 <div class="col-md-3 influencer-card-container">
     <?php

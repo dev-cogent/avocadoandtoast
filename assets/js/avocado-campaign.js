@@ -83,7 +83,7 @@ function setCampaignInfluencers(campaignJSON){
                                         '<p class="twitter-follower-count follower-count" style="display:none" data-id="'+key+'">'+abbrNum(obj.twitter_impressions)+' Impressions</p>'+
                                     '</div>'+
                                     '<div class="col-xs-12">'+
-                                        '<p class="instagram-engagement engagement-count" data-id="'+key+'">'+abbrNum(obj.instagram_engagement)+ 'Engagaement </p>'+
+                                        '<p class="instagram-engagement engagement-count" data-id="'+key+'">'+abbrNum(obj.instagram_engagement)+ ' Engagaement </p>'+
                                         '<p class="facebook-engagement engagement-count" style="display:none"data-id="'+key+'">'+abbrNum(obj.facebook_engagement)+' Engagaement</p>'+
                                         '<p class="twitter-engagement engagement-count" style="display:none"data-id="'+key+'">'+abbrNum(obj.twitter_engagement)+' Engagement</p>'+
                                     '</div>'+
@@ -310,17 +310,17 @@ function removeInfluencerFromCampaign(id,card){
 
 function saveButton(){
     if (deletedusers.length == 0)
-    $('#save-button').css('display','none');
+    $('#save-button').css('visibility','hidden');
     else
-    $('#save-button').css('display','unset');
+    $('#save-button').css('visibility','visible');
 }
 
 
 function UndoButton(){
     if (deletedusers.length == 0)
-    $('#undo-button').css('display','none');
+    $('#undo-button').css('visibility','hidden');
     else
-    $('#undo-button').css('display','unset');
+    $('#undo-button').css('visibility','visible');
 }
 
 

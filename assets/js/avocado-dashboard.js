@@ -14,7 +14,7 @@ $(document).ready(function(){
                             '<td class="campaign-details date" > Created '+obj.created+'</td>'+
                         '</tr>'+
                        '<tr>'+
-                            '<td class="stats"><a class="stats" href="/campaign/?id='+key+'">'+obj.totalinfluencers+'</a></td>'+
+                            '<td class="stats"><a class="stats" href="/campaigns/?id='+key+'">'+obj.totalinfluencers+'</a></td>'+
                             '<td class="stats mobile-off"><a class="stats" href="/campaigns/?id='+key+'">'+obj.totalposts+'</a></td>'+
                             '<td class="stats mobile-off"><a class="stats" href="/campaigns/?id='+key+'">'+abbrNum(obj.average_impressions)+'</a></td>'+
                             '<td class="stats mobile-off mobile-off-first"><a class="stats" href="/campaigns/?id='+key+'">'+abbrNum(obj.average_engagement)+'</a></td>'+
@@ -61,6 +61,10 @@ $(document).on('click','.campaign-block',function(){
 });
 
 function abbrNum(number, decPlaces = 1) {
+    if(number < 1000){
+        number = parseInt(number);
+        return number;
+    }
     var orig = number;
     var dec = decPlaces;
     // 2 decimal places => 100, 3 => 1000, etc
@@ -80,21 +84,20 @@ function abbrNum(number, decPlaces = 1) {
             // Here, we multiply by decPlaces, round, and then divide by decPlaces.
             // This gives us nice rounding to a particular decimal place.
             var number = Math.round(number * decPlaces / size) / decPlaces;
-
+            
             // instHandle special case where we round up to the next abbreviation
             if((number == 1000) && (i < abbrev.length - 1)) {
                 number = 1;
                 i++;
             }
 
-            // console.log(number);
             // Add the letter for the abbreviation
             number += abbrev[i];
-
             // We are done... stop
             break;
         }
+        
     }
-
+    console.log(number);
     return number;
 }

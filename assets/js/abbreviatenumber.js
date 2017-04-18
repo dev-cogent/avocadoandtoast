@@ -1,4 +1,8 @@
-function abbrNum(number, decPlaces = 2) {
+function abbrNum(number, decPlaces = 1) {
+    if(number < 1000){
+        number = parseInt(number);
+        return number;
+    }
     var orig = number;
     var dec = decPlaces;
     // 2 decimal places => 100, 3 => 1000, etc

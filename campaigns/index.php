@@ -1,9 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
-include '../php/dbinfo.php';
 include '../php/verify-campaign.php';
-include '../php/numberAbbreviation.php';
 //If all is good, we continue. 
 ?>
 <!DOCTYPE html>
@@ -22,12 +20,6 @@ include '../php/numberAbbreviation.php';
 <link rel="stylesheet" href="/assets/css/discover.css">
 <link rel="stylesheet" href="/assets/css/sidebar.css">
 <link rel="stylesheet" href="/assets/css/avocado-campaign.css">
-<style>
-.campaign-details{
-    
-}
-  
-</style>
 </head>
 <?php include '../php/avocado-nav.php';?>
 
@@ -53,8 +45,8 @@ include '../php/numberAbbreviation.php';
    <button class="btn-campaign-options avocado-hover avocado-focus pdf" data-id="<?php echo $campaignid; ?>">  EXPORT CAMPAIGN  </button></a>
    <button class="btn-campaign-options avocado-hover avocado-focus" onclick="location.href='/price/?id=<?php echo $campaignid;?>'">  PRICE CAMPAIGN  </button></a>
    <button class="btn-campaign-options avocado-hover avocado-focus" onclick="location.href='/recalculate.php?id=<?php echo $campaignid;?>'">  RECALCULATE CAMPAIGN  </button></a>
-   <button class="btn-campaign-options-primary  avocado-focus" id="undo-button" style="display:none;">UNDO</button></a>
-   <button class="btn-campaign-options-primary  avocado-focus" id="save-button" style="display:none;">SAVE</button></a>
+   <button class="btn-campaign-options-primary  avocado-focus" id="undo-button" style="visibility:hidden;">UNDO</button></a>
+   <button class="btn-campaign-options-primary  avocado-focus" id="save-button" style="visibility:hidden;">SAVE</button></a>
 </div>
 
 
