@@ -19,14 +19,14 @@
             },
             success: function (jqXHR, textStatus, errorThrown) {
                 calculate = true;
-                $('#stuff').empty();
-                $('#stuff').append(jqXHR);
+                $('#discover-container').empty();
+                $('#discover-container').append(jqXHR);
                 unsetLoading();
             }
         }); // end ajax request*/
     });
 
-
+ 
 
     /**
      * Function to get all the filters in the 2 input fields. This includes tags and influencers names/handles. 

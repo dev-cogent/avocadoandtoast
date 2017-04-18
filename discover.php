@@ -28,9 +28,8 @@ include 'php/numberAbbreviation.php';
 <link rel="stylesheet" href="/assets/css/sidebar.css">
 </head>
 
-<?php include 'php/avocado-nav.php'; ?>
 <body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
-
+<?php include 'php/avocado-nav.php'; ?>
 
 
 
@@ -42,7 +41,7 @@ include 'php/numberAbbreviation.php';
 <!-- The third nav bar , we might be able to take this out. In the mean time, we'll keep it here -->
 
 <div id="myNav" class="overlay"></div>
-<div id="stuff">
+<div id="discover-container">
 
 <!--Filter content -->
 
@@ -225,13 +224,14 @@ include 'php/numberAbbreviation.php';
 </body>
 </html>
 <script>
+$('#tokenfield').tokenfield();
 var calculate = false;
 var page = 0;
 var selectedusers = [];
 var filters = {};
 var target = $("#test-height").offset().top;
-var target2 = $('#stuff').offset().top;
-$('#tokenfield').tokenfield();
+var target2 = $('#discover-container').offset().top;
+
 </script>
 <script src="/assets/js/avocado-slider.js"></script>
 <script src="/assets/js/avocado-discover.js"></script>

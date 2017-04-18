@@ -492,10 +492,9 @@
     padding-top: 3px;
 }
 
-.check {
-    font-size: 34px;
-    margin-left: -8px;
-    margin-top: -14px;
+.remove-influencer {
+    font-size: 34px;    
+    margin-top:-15px;
     color: #73C48D;
 }
 
