@@ -26,4 +26,5 @@
     </div>
 
 </body>
+<?php include 'avocado-footer.php'; ?>
 <script src="/assets/js/avocado-dashboard.js"></script>
