@@ -39,7 +39,6 @@ a:focus{
       <form action="" method="POST" enctype= "multipart/form-data">
 
         <div class="upload-img">
-
           <div class="uploaded-img-square"><img id="uploaded-img" src="http://avocadoandtoast.com/images/user/<?php echo $userid ;?>.jpg" onerror="this.src=`/assets/images/default-photo.png`"> </div>
           <div class="profile-title"> Your Avatar </div>
           <input type="file" class="upload-img-btn avocado-hover avocado-focus" name="image" >  Upload Image
