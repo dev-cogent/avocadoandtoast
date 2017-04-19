@@ -1,4 +1,5 @@
 <?php 
+error_reporting(-1);
 include 'savecampaign.php';
 class editCampaign extends saveCampaign{
 
@@ -9,9 +10,9 @@ class editCampaign extends saveCampaign{
 public function saveUpdatedCampaign($totalstats,$campaignid){
 $conn = $this->dbinfo();
 $stmt = $conn->prepare("UPDATE `campaign_save_link` SET `total_instagram_impressions` = ?, `total_twitter_impressions` = ?, `total_facebook_impressions` = ?,
-                        `total_impressions` = ?, `total_instagram_engagement` = ?, `total_twitter_engagement` = ?, `total_facebook_engagement` = ?, `total_engagement` = ?, `total_post` = ? WHERE `campaign_id` = ?");
-$stmt->bind_param('ssssssssss',$totalstats['total_instagram_impressions'],$totalstats['total_twitter_impressions'], $totalstats['total_facebook_impressions'], $totalstats['total_impressions'], $totalstats['total_instagram_engagement'],
-                               $totalstats['total_twitter_engagement'],$totalstats['total_facebook_engagement'], $totalstats['total_engagement'], $totalstats['total_post'],$campaignid);  
+                        `total_impressions` = ?, `total_instagram_engagement` = ?, `total_twitter_engagement` = ?, `total_facebook_engagement` = ?, `total_engagement` = ?, `total_post` = ?, `total_influencers` = ? WHERE `campaign_id` = ?");
+$stmt->bind_param('sssssssssss',$totalstats['total_instagram_impressions'],$totalstats['total_twitter_impressions'], $totalstats['total_facebook_impressions'], $totalstats['total_impressions'], $totalstats['total_instagram_engagement'],
+                               $totalstats['total_twitter_engagement'],$totalstats['total_facebook_engagement'], $totalstats['total_engagement'], $totalstats['total_post'],$totalstats['total_influencers'],$campaignid);  
     if($stmt->execute()){
         unset($conn);
         return true;
@@ -50,6 +51,8 @@ public function recalculate($campaignid,$influencersToRemove){
         $totalInfluencerPost = $instpost + $twitpost + $facepost;
         $totalImpressionsLost = $instimp + $twitimp + $faceimp;
         $totalEngagementLost = $insteng + $twiteng + $faceeng;
+       // echo 'This is total instagram impressions prior'
+        //var_dump($instimp);
         $totalstats['total_instagram_impressions'] -= $instimp;
         $totalstats['total_twitter_impressions'] -= $twitimp;
         $totalstats['total_facebook_impressions'] -= $faceimp;
@@ -60,7 +63,8 @@ public function recalculate($campaignid,$influencersToRemove){
         $totalstats['total_engagement'] -= $totalEngagementLost;
         $totalstats['total_post'] -= $totalInfluencerPost;
     }
-    
+ $totalRemoved = count($influencersToRemove);
+ $totalstats['total_influencers'] = $totalstats['total_influencers'] - $totalRemoved;
  $removeInfluencers = $this->removeInfluencers($influencersToRemove,$campaignid);
  if(!$removeInfluencers) return 'Error. Influencers Could not be removed';
  $updateCampaign = $this->saveUpdatedCampaign($totalstats,$campaignid);
@@ -77,10 +81,10 @@ public function recalculate($campaignid,$influencersToRemove){
 private function getTotalNumbers($campaignid){
     $totalstats = array();
     $conn = $this->dbinfo();
-    $stmt = $conn->prepare("SELECT `total_instagram_impressions`,`total_twitter_impressions`,`total_facebook_impressions`,`total_impressions`,`total_instagram_engagement`,`total_twitter_engagement`,`total_facebook_engagement`,`total_engagement`,`total_post` FROM `campaign_save_link` WHERE `campaign_id` = ?");
+    $stmt = $conn->prepare("SELECT `total_instagram_impressions`,`total_twitter_impressions`,`total_facebook_impressions`,`total_impressions`,`total_instagram_engagement`,`total_twitter_engagement`,`total_facebook_engagement`,`total_engagement`,`total_post`,`total_influencers` FROM `campaign_save_link` WHERE `campaign_id` = ?");
     $stmt->bind_param('s',$campaignid);
     $stmt->execute();
-    $stmt->bind_result($totalinstimp,$totaltwitimp,$totalfaceimp,$totalimp,$totalinsteng,$totaltwiteng,$totalfaceeng,$totaleng,$totalpost);
+    $stmt->bind_result($totalinstimp,$totaltwitimp,$totalfaceimp,$totalimp,$totalinsteng,$totaltwiteng,$totalfaceeng,$totaleng,$totalpost,$totalinfluencers);
     $stmt->fetch();
     $totalstats['total_instagram_impressions'] = $totalinstimp;
     $totalstats['total_twitter_impressions'] = $totaltwitimp;
@@ -91,9 +95,11 @@ private function getTotalNumbers($campaignid){
     $totalstats['total_facebook_engagement'] = $totalfaceeng;
     $totalstats['total_engagement'] = $totaleng;
     $totalstats['total_post'] = $totalpost;
+    $totalstats['total_influencers'] = $totalinfluencers;
     unset($conn);
     return $totalstats;
 }
+
 
 
 

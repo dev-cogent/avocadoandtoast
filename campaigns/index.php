@@ -11,7 +11,7 @@ include '../php/verify-campaign.php';
     <title>Campaign | Avocado & Toast</title>
 <script src="/assets/js/abbreviatenumber.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
-
+<script src="/bootbox/bootbox.js"></script>
 <script src="/assets/js/avocado-campaign.js"></script>
 
 <link rel="stylesheet" href="/assets/js/tokenfield/dist/css/bootstrap-tokenfield.css">
@@ -28,7 +28,7 @@ include '../php/verify-campaign.php';
 
 
 <!-- Add side bar here -->
-
+ 
 
 
 <!--Filter content -->
