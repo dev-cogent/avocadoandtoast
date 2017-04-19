@@ -30,13 +30,6 @@ a:focus{
 
 <?php include 'php/avocado-nav.php';?>
 
-<div class="col-xs-2 small-col">
-  <div class="settings-box">
-      <div class="profile-sect settings"> <i class="icon wb-user" aria-hidden="true"></i> <span class="setting-title" id="getProfile"> Profile </span> </div>
-      <div class="password-sect settings"> <i class="icon fa-lock" aria-hidden="true"></i> <span class="setting-title" id="getPassword"> Password </span> </div>
-      <div class="user-settings-sect settings" id="logout"> <i class="icon fa-users" aria-hidden="true"></i> <span class="setting-title"> Logout</span> </div>
-  </div>
-</div>
 
 
 
@@ -74,6 +67,7 @@ a:focus{
     </input>
 
       <button class="update-profile-btn col-xs-12"  style="margin-top:30px;" id="submit" type="submit" name="profile"> Update Profile </button>
+       <button class="update-profile-btn col-xs-12"  style="margin-top:30px;" id="getPassword" type="submit" name="profile"> Change Password </button>
       </form>
     </div>
   </div>
