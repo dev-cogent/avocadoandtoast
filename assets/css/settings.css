@@ -1,0 +1,14 @@
+.update-password-btn {
+    border-radius: 1px;
+    border-color: black;
+    color: black;
+    height: 50px;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: white;
+}
+
+#uploaded-img{
+    height:150px; 
+    width:150px;
+}
