@@ -1,21 +1,6 @@
 <?php
-session_start(); 
+include 'php/verify-campaign.php'; 
 error_reporting(-1);
-include 'php/dbinfo.php';
-include 'php/class/savecampaign.php';
-include 'php/numberAbbreviation.php';
-
-$campaignid = $_GET['id'];
-$save = new saveCampaign;
-//Checking for campaign validity
-$checkcampaign = $save->checkCampaign($campaignid, $_SESSION['column_id']);
-if($checkcampaign === false) header('Location: /dashboard.php');
-
-//If all is good, we continue. 
-$influencerinfo = $save->getCampaign($campaignid,0,100);
-$campaigninfo = $save->getCampaignInfo($campaignid);
-
- 
 ?>
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
@@ -25,10 +10,12 @@ $campaigninfo = $save->getCampaignInfo($campaignid);
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 <script src="/assets/js/loading.js"></script>
+<script src="/assets/js/abbreviatenumber.js"></script>
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
 <link rel="stylesheet" href="/assets/css/discover.css">
 <link rel="stylesheet" href="/assets/css/sidebar.css">
+<link rel="stylesheet" href="/assets/css/campaign-calculator.css">
 <style>
 .stats{
     color: #73C48D;
@@ -87,7 +74,7 @@ padding-top: 45px;
 </head>
 
 <body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
-<?php include 'acnav.php';?>
+<?php include 'php/avocado-nav.php';?>
 
 
 
@@ -107,7 +94,7 @@ padding-top: 45px;
     <div class="col-sm-12 col-lg-6 campaign-info" style="margin-left:20px;">
     <div class="camapaign-label-container">
     <div class="campaign-label-div">
-    <h3 id="campaign-label" class="campaign-label" style="margin-right: 43%;"><?php echo $campaigninfo['campaignname']; ?></h3> </div>
+    <h3 id="campaign-label" class="campaign-label" style="margin-right: 43%;">Campaign name goes here </h3> </div>
 
     <div class="campaign-desc-div"> <div class="campaign-desc-container"> </div>
     </div></div>
@@ -155,100 +142,21 @@ padding-top: 45px;
                         <th class="text-center total-heading">  TOTAL  </th>
                     </tr>
                   </thead>
-                  <tbody>
-                  <?php
-                  $influencerarr = array();
-                  foreach($influencerinfo['influencer'] as $id => $info){
-                  array_push($influencerarr, $id);
-                  echo'
-                    <tr class="campaign-list-table">
-                        <td class="campaign-tablerow" style="width:15%; padding-left:0%;">
-                                <div class="information">
-                            <img src="http://cogenttools.com/'.$info['image'].'" onerror="this.src=`/assets/images/default-photo.png`" class="influencer-campaign-image ">
-                            <h4 class="influencer-handle-text handle">@'.$info['instagram_handle'].'</h4>
-                            <h4 class="influencer-handle-text location-text">Location</h4>
-                      </div></td>
-
-                      <td data-id="'.$id.'" class="insta-column" style="width:15%;">
-                          <div class="posts-res-div">
-                            <input data-id="'.$id.'" data-platform="instagram" class="instagraminput campaignfocus" type="number"  value="'.$info['instagram_post'].'"max="100" min="0">
-                            <div class="post-results">posts</div>
-                          </div>
-                          <div class="results-mini-col">
-                            <div class="impression-res impression-blue impression-instagram-blue" data-id="'.$id.'" data-number="'.$info['instagram_impressions'].'">'.numberAbbreviation($info['instagram_impressions']).'</div>
-                            <div class="engagement-res engagement-orange engagement-orange-instagram" data-id="'.$id.'" data-number="'.$info['instagram_engagement'].'" >'.numberAbbreviation($info['instagram_engagement']).'</div>
-                            <div class="social-following-res social-following-red">'.numberAbbreviation($info['instagram_count']).'</div>
-                          </div>
-                      </td>
-
-                      <td data-id="'.$id.'" class="twit-column" style="width:15%;">
-                        <input data-id="'.$id.'" data-platform="facebook" class="facebookinput campaignfocus" type="number" value="'.$info['facebook_post'].'" max="100" min="0">
-                        <div class="post-results"> posts</div>
-                        <div class="results-mini-col">
-                          <div class="impression-res impression-blue impression-facebook-blue" data-id="'.$id.'" data-number="'.$info['facebook_impressions'].'">'.numberAbbreviation($info['facebook_impressions']).'</div>
-                          <div class="engagement-res engagement-orange engagement-orange-facebook"  data-id="'.$id.'" data-number="'.$info['facebook_engagement'].'" >'.numberAbbreviation($info['facebook_engagement']).'</div>
-                          <div class="social-following-res social-following-red">'.numberAbbreviation($info['facebook_count']).'</div>
-                        </div>
-                      </td>
-
-                      <td data-id="'.$id.'" class="face-column" style="width:15%;">
-                        <input data-id="'.$id.'" data-platform="twitter" class="twitterinput campaignfocus" type="number" value="'.$info['twitter_post'].'" max="100" min="0">
-                        <div class="post-results"> posts</div>
-                        <div class="results-mini-col">
-                          <div class="impression-res impression-blue impression-twitter-blue" data-id="'.$id.'" data-number="'.$info['twitter_impressions'].'">'.numberAbbreviation($info['twitter_impressions']).'</div>
-                          <div class="engagement-res engagement-orange engagement-orange-twitter" data-id="'.$id.'" data-number="'.$info['twitter_engagement'].'">'.numberAbbreviation($info['twitter_engagement']).'</div>
-                          <div class="social-following-res social-following-red">'.numberAbbreviation($info['twitter_count']).'</div>
-                        </div>
-                      </td>
-
-                      <td data-id="'.$id.'" class="overall-inf-total-column" style="width:15%;">
-                          <input data-id="'.$id.'" data-platform="total" class="totalinput campaignfocus" type="number" value="'.($info['instagram_post'] + $info['twitter_post'] + $info['facebook_post']).'" max="100" disabled>
-                          <div class="post-results"> posts</div>
-                          <div class="results-mini-col">
-                            <div class="impression-res impression-blue impression-total-blue" data-id="'.$id.'" data-number="'.($info['instagram_impressions'] + $info['facebook_impressions'] + $info['twitter_impressions']).'" >'.numberAbbreviation($info['instagram_impressions'] + $info['facebook_impressions'] + $info['twitter_impressions']).'</div>
-                            <div class="engagement-res engagement-orange engagement-orange-total"  data-id="'.$id.'" data-number="'.($info['instagram_engagement'] + $info['facebook_engagement'] + $info['twitter_engagement']).'" >'.numberAbbreviation($info['instagram_engagement'] + $info['facebook_engagement'] + $info['twitter_engagement']).'</div>
-                            <div class="social-following-res social-following-red"> </div>
-                          </div>
-                      </td>
-                    </tr>';
-                    unset($stmt);
-                  }
-                  echo '
-
-                       <!-- results -->
-                        <tr class="result-row campaign-list-table">
-                        <td class="campaign-tablerow" style="width:15%;">
-                            <div class="information">
-                                <p class="result-name" style="width:210px;">  CAMPAIGN ENGAGEMENT</p>
-                            </div>
-                      <td  class="insta-column" style="width:15%;"> <p class="instagram-posts results-text" id="instagram-engagement" data-number="'.$campaigninfo['total_instagram_engagement'].'"> '.numberAbbreviation($campaigninfo['total_instagram_engagement']).' </p> </td>
-                      <td  class="twit-column" style="width:15%;"> <p class="facebook-posts results-text" id="facebook-engagement" data-number="'.$campaigninfo['total_facebook_engagement'].'"> '.numberAbbreviation($campaigninfo['total_facebook_engagement']).' </p> </td>
-                      <td  class="face-column" style="width:15%;"> <p class="twitter-posts results-text" id="twitter-engagement" data-number="'.$campaigninfo['total_twitter_engagement'].'">'.numberAbbreviation($campaigninfo['total_twitter_engagement']).'</p></td>
-                      <td  class="face-column" style="width:15%;"> <p class="total-posts results-text" id="total-engagement" data-number="'.$campaigninfo['totalengagement'].'" >'.numberAbbreviation($campaigninfo['totalengagement']).'</p>  </td>
-                    </tr>
-
-
-                        <tr class="result-row campaign-list-table">
-                        <td class="campaign-tablerow" style="width:15%;">
-                            <div class="information">
-                            <p class="result-name" style="width:210px;"> CAMPAIGN IMPRESSIONS</p>
-                            </div>
-                      <td  class="insta-column" style="width:15%;"><p class="instagram-posts results-text" id="instagram-impressions" data-number="'.$campaigninfo['total_instagram_impressions'].'"> '.numberAbbreviation($campaigninfo['total_instagram_impressions']).' </p> </td>
-                      <td  class="twit-column" style="width:15%;"> <p class="facebook-posts results-text" id="facebook-impressions" data-number="'.$campaigninfo['total_facebook_impressions'].'"> '.numberAbbreviation($campaigninfo['total_facebook_impressions']).' </p> </td>
-                      <td  class="face-column" style="width:15%;"> <p class="twitter-posts results-text" id="twitter-impressions" data-number="'.$campaigninfo['total_twitter_impressions'].'"> '.numberAbbreviation($campaigninfo['total_twitter_impressions']).' </p></td>
-                      <td  class="total-column" style="width:15%;"> <p class="total-posts results-text" id="total-impressions" data-number="'.$campaigninfo['totalimpressions'].'"> '.numberAbbreviation($campaigninfo['totalimpressions']).' </p></td>
-
-                    </tr>
+                  <tbody id="all-influencers">
+                  
+                   
 
 
                     </tbody>
                 </table>
-</div>';
+</div>
 
-?>
+
 <script>
-var selectedusers = <?php echo json_encode($influencerarr); ?>;
+var selectedusers = [];
 var target2 = $('#stuff').offset().top;
 var urlParams = new URLSearchParams(window.location.search);
+var campaignid = urlParams.get('id');
+console.log(campaignid);
 </script>
 <script src="/assets/js/recalculate.js"></script>

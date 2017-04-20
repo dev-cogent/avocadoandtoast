@@ -1,24 +1,57 @@
-$(document).on('click','#calculate',function(){
-    var appendstatus = 0;
-    setLoading();
-    if(selectedusers.length == 0) return 0;
-    calculate = true;
-    $.ajax({
-    type: 'POST',
-    url: '/php/ajax/avocado-get-influencers.php',
-    data: {
-        influencers: selectedusers
-    },
-    success: function (jqXHR, textStatus, errorThrown) {
-        calculate = true;
-        $('#stuff').empty();
-        $('#stuff').append(jqXHR);
-        unsetLoading();
-        $('.sidebar-left').css('position','absolute');
-        $('.sidebar-left').css('margin-top','0px');
-    }
+$(document).ready(function(){
+        $.ajax({
+        type: 'POST',
+        url: '../php/ajax/avocado-recalculate.php',
+        data: {
+            campaignid: campaignid,
+        },
+        success: function (jqXHR, textStatus, errorThrown) {
+            var campaignJSON = JSON.parse(jqXHR);
 
-}); // end ajax request*/
+            $.each(campaignJSON, function (key, obj) {
+            selectedusers.push(key);
+            $('#all-influencers').append('<tr class="campaign-list-table">'+
+                        '<td class="campaign-tablerow" style="width:15%; padding-left:0%;">'+
+                                '<div class="information">'+
+                            '<img src="http://cogenttools.com/'+obj.image+'" onerror="this.src=`/assets/images/default-photo.png`" class="influencer-campaign-image ">'+
+                            '<h4 class="influencer-handle-text handle">@'+obj.instagram_handle+'</h4>'+
+                            '<h4 class="influencer-handle-text location-text">Location</h4></div></td>'+
+                      '<td data-id="'+key+'" class="insta-column" style="width:15%;">'+
+                          '<div class="posts-res-div">'+
+                            '<input data-id="'+key+'" data-platform="instagram" class="instagraminput campaignfocus" type="number"  value="'+obj.instagram_post+'"max="100" min="0">'+
+                            '<div class="post-results">posts</div>'+
+                          '</div>'+
+                          '<div class="results-mini-col">'+
+                            '<div class="impression-res impression-blue impression-instagram-blue" data-id="'+key+'" data-number="'+obj.instagram_impressions+'">'+abbrNum(obj.instagram_impressions)+'</div>'+
+                            '<div class="engagement-res engagement-orange engagement-orange-instagram" data-id="'+key+'" data-number="'+obj.instagram_engagement+'" >'+abbrNum(obj.instagram_engagement)+'</div>'+
+                            '<div class="social-following-res social-following-red">'+abbrNum(obj.instagram_count)+'</div> </div></td>'+
+                       '<td data-id="'+key+'" class="twit-column" style="width:15%;">'+
+                        '<input data-id="'+key+'" data-platform="facebook" class="facebookinput campaignfocus" type="number" value="'+obj.facebook_post+'" max="100" min="0">'+
+                        '<div class="post-results"> posts</div>'+
+                        '<div class="results-mini-col">'+
+                          '<div class="impression-res impression-blue impression-facebook-blue" data-id="'+key+'" data-number="'+obj.facebook_impressions+'">'+abbrNum(obj.facebook_impressions)+'</div>'+
+                          '<div class="engagement-res engagement-orange engagement-orange-facebook"  data-id="'+key+'" data-number="'+obj.facebook_engagement+'" >'+abbrNum(obj.facebook_engagement)+'</div>'+
+                          '<div class="social-following-res social-following-red">'+abbrNum(obj.facebook_count)+'</div></div></td>'+
+                      '<td data-id="'+key+'" class="face-column" style="width:15%;">'+
+                        '<input data-id="'+key+'" data-platform="twitter" class="twitterinput campaignfocus" type="number" value="'+obj.twitter_post+'" max="100" min="0">'+
+                        '<div class="post-results"> posts</div>'+
+                        '<div class="results-mini-col">'+
+                          '<div class="impression-res impression-blue impression-twitter-blue" data-id="'+key+'" data-number="'+obj.twitter_impressions+'">'+abbrNum(obj.twitter_impressions)+'</div>'+
+                          '<div class="engagement-res engagement-orange engagement-orange-twitter" data-id="'+key+'" data-number="'+obj.twitter_engagement+'">'+abbrNum(obj.twitter_engagement)+'</div>'+
+                          '<div class="social-following-res social-following-red">'+abbrNum(obj.twitter_count)+'</div></div></td>'+
+                     '<td data-id="'+key+'" class="overall-inf-total-column" style="width:15%;">'+
+                          '<input data-id="'+key+'" data-platform="total" class="totalinput campaignfocus" type="number" value="'+obj.instagram_post + obj.twitter_post + obj.facebook_post+'" max="100" disabled>'+
+                          '<div class="post-results"> posts</div>'+
+                          '<div class="results-mini-col">'+
+                            '<div class="impression-res impression-blue impression-total-blue" data-id="'+key+'" data-number="'+(obj.instagram_impressions + obj.facebook_impressions + obj.twitter_impressions)+'" >'+abbrNum(obj.instagram_impressions + obj.facebook_impressions + obj.twitter_impressions)+'</div>'+
+                            '<div class="engagement-res engagement-orange engagement-orange-total"  data-id="'+key+'" data-number="'+(obj.instagram_engagement + obj.facebook_engagement + obj.twitter_engagement)+'" >'+abbrNum(obj.instagram_engagement + obj.facebook_engagement + obj.twitter_engagement)+'</div>'+
+                            '<div class="social-following-res social-following-red"> </div></div></td></tr>');
+            
+
+            });
+        }
+    }); // end ajax request*/
+
 
 });
 
@@ -76,21 +109,6 @@ getCalculation('twitter',twitterposts,selectedusers);
 
 
 
-$(window).scroll(function () {
-    if (document.body.scrollTop > target2) {
-        $('.sidebar-left').css('position', 'fixed');
-        $('.sidebar-left').css('margin-top', '-131px');
-    }
-    else {
-        $('.sidebar-left').css('position', 'absolute');
-        $('.sidebar-left').css('margin-top', '0px');
-    }
-});
-
-
-
-
-
  
 $(document).on('change', '.campaignfocus', function () {
 
@@ -119,10 +137,6 @@ $(document).on('change', '.campaignfocus', function () {
         });
         getCalculation(type, posts, selectedusers);
     }
-
-
-
-
 });
 
 function getCalculation(type, posts, selectedusers) {
@@ -234,7 +248,7 @@ function getTotal(selectedusers){
 }
 
 
-function abbrNum(number, decPlaces = 2) {
+function abbrNum(number, decPlaces = 1) {
     var orig = number;
     var dec = decPlaces;
     // 2 decimal places => 100, 3 => 1000, etc
@@ -295,8 +309,6 @@ $(document).on('click', '#savecampaign', function () {
             info: JSON.stringify(arr)
         },
         success: function (jqXHR, textStatus, errorThrown) {
-            console.log(jqXHR);
-            //unsetLoading();
             if (jqXHR != 0 || jqXHR != '0') {
                 dialog = bootbox.dialog({
                     message: '<div class="bootbox-body">' +

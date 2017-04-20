@@ -1,0 +1,121 @@
+$font-family: 'Montserrat', sans-serif;
+$avo-green: #73C48D;
+
+$pullout-width: 400px;
+
+$break-small: 600px;
+
+
+body {
+  font-family: $font-family;
+}
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+
+.green-button {
+  border: none; 
+  background: $avo-green;
+  color: white;
+  padding: 10px;
+  transition: background .5s;
+
+  &:hover {
+    background: rgb(8, 184, 31);
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.content {
+  min-width: 100%;
+  min-height: 100%;
+  padding: 40px;
+  background-color: #fff;
+  position: relative;
+  top: 0;
+  bottom: 100%;
+  left: 0;
+  z-index: 1;
+}
+
+#influencers-pullout {
+
+  position: fixed;
+  z-index: 200;
+  left: 100vw;
+  height: 100%;
+  width: 400px;
+  padding: 10px;
+
+  user-select: none;
+
+  background: white;
+  border-left: 8px solid $avo-green;
+
+
+  #pulltab {
+    position: absolute;
+    width: 100px;
+    height: auto;
+    left: -100px;
+    top: 455px;
+
+  }
+
+  header {
+    @include clearfix;
+    margin-bottom: 15px;
+
+    #num-influencers {
+      float: left;
+      color: $avo-green;
+      font-size: 68px;
+      font-weight: 600;
+      line-height: 62px;
+      margin-right: 12px;
+    }
+
+    #header-text {
+      font-size: 21px;
+      color: #30363F;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 600;
+    }
+  }
+
+  button {
+    @extend .green-button;
+    &.greyed-out {
+      background: #A2A8B1;
+    }
+  }
+
+
+
+  #influencer-pullout-image-container {
+    overflow: scroll;
+    height: calc(100vh - 230px); // height equals vh minus height of other shit
+    margin: 5% 0 5% 0;
+
+    .influencer-pullout-image {
+      border-radius: 50%;
+      width: 21%;
+      height: auto;
+      margin: 0 3% 3% 0;
+      border: 2px solid rgba(0,0,0,0);
+    }
+
+    .image-selected {
+      border: 2px solid $avo-green;
+    }
+  }
+
+}
