@@ -13,6 +13,10 @@
     width:150px;
 }
 
+.image-title {
+    margin-top: 110px;
+    margin-left: -285px;
+}
 
 
 
@@ -29,12 +33,19 @@
     .settings {
         margin-top: 12%;
     }
-    .image-title {
-    margin-top: 58px;
-    margin-left: -125px;
-    }
 }
 
+@media(min-width:320px) and (max-width:644px) {
+    .input-container {
+    margin-left: -50%;
+    }
+
+}
+
+
+
+
+/* iphone 6 media query */
 @media only screen 
   and (min-device-width: 375px) 
   and (max-device-width: 667px) 
@@ -45,13 +56,13 @@
     .input-container {
     margin-left: -49%;
     }
-    .image-title {
-    margin-top: 58px;
+   .image-title {
+    margin-top: 55px;
     margin-left: -125px;
 }
 } 
 
-
+/* iphone 5 media query*/
 @media only screen 
   and (min-device-width: 320px) 
   and (max-device-width: 568px)
@@ -80,7 +91,7 @@
     }
 
     .input-container {
-        margin-left: -70%;
+        margin-left: -50%;
     }
    input.form-control.category.avocado-focus {
     width: 250px;
@@ -169,13 +180,27 @@ input.upload-img-btn {
 
 
 }
-
+/* Landscape iphone 6 */
 @media only screen 
-and (-webkit-min-device-pixel-ratio: 2) 
-and (max-device-width: 667px) 
-and (min-device-width: 375px) {
-.image-title {
-    margin-top: 102px;
-    margin-left: -270px;
-}
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) { 
+      .image-title {
+    margin-top: 103px;
+    margin-left: -265px;
+   }  
+  }
+
+
+/* Landscape iphone 6+ */
+@media only screen 
+  and (min-device-width: 414px) 
+  and (max-device-width: 736px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: landscape) { 
+   .image-title {
+        margin-left: -282px;
+        margin-top: 106px;
+    }   
 }
