@@ -90,56 +90,6 @@
     }
 
 
-
-
-    /**
-     * This function launches selectInfluencer which adds an influencer to the campaign. 
-     */
-    $(document).on('click', '.invite', function () {
-        var id = $(this).attr('data-id');
-        var element = $(this);
-        selectInfluencer(id, element);
-
-    });
-
-    /**
-     * @about Taking the influencer selected, putting them in an array and putting the image in a sidebar. 
-     * @param {string} id 
-     * @param {object} element 
-     */
-    function selectInfluencer(id, element) {
-        var image = element.attr('data-image');
-        var influencerCount = parseInt($('#count').text());
-        //Then we are adding them to our campaign/sidebar. 
-        if (!selectedusers.includes(id)) {
-
-                selectedusers.push(id);
-                $('#added-influencers').append('<img class="col-lg-4 col-xs-12 col-xl-3 images-added" data-id="' + id + '" onerror="this.src=`/assets/images/default-photo.png`" src="http://cogenttools.com/' + image + '" style="padding-top:10px; padding-bottom:1px; padding-right:1px; z-index:-1;">');
-                element.css('background-color', 'white');
-                element.empty();
-                element.append('<div class="checkmark-circle"><div class="background"></div><div class="checkmark draw"></div></div>');
-                $('.influ-bottom[data-id="' + id + '"]').css('box-shadow', '0px -10px 0px #73C48D');
-                influencerCount++;
-                $('#count').text(influencerCount);
-        }
-        else { // removes user from the sidebar/campaign
-                var index = selectedusers.indexOf(id);
-                if (index > -1) {
-                    selectedusers.splice(index, 1);
-                }
-                influencerCount--;
-                $('#count').text(influencerCount);
-                element.css('background-color', '#e0e0e0');
-                element.empty();
-                $('.influ-bottom[data-id="' + id + '"]').css('box-shadow', 'none');
-                $('.images-added[data-id=' + id + ']').fadeOut("slow", function () {
-                    $(this).remove();
-                });
-            }  
-        }
-
-
-
     /**
      * Function for pagination. 
      */
@@ -189,13 +139,13 @@
         });
     }
 
-
     /**
      * @About taking JSON from other functions and making the HTML card view. 
      * @param {JSON} campaignJSON 
      */
     function appendCards(campaignJSON) {
         $.each(campaignJSON, function (key, obj) {
+
             $('.found-influencers').append('<div  class="influencer-box col-xs-12 col-md-6 col-lg-4 col-xl-3">' +
                 '<div class="influencer-card-discover">' +
                 '<a href="/profile.php/?id=' + key + '"><img class="influencer-image-card" src="http://cogenttools.com/' + obj.image + '" onerror="this.src=`/assets/images/default-photo.png`"> </a>' +

@@ -20,18 +20,49 @@ include 'php/numberAbbreviation.php';
 <script src="/assets/js/loading.js"></script>
 <script src="/assets/js/avocado-card-functions.js"></script>
 <script src="/assets/js/avocado-calculate.js"></script>
+<script src="assets/js/influencer_pullout.js"></script>
 <link rel="stylesheet" href="/assets/js/tokenfield/dist/css/bootstrap-tokenfield.css">
 <link rel="stylesheet" href="/assets/uislider/nouislider.css">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
 <link rel="stylesheet" href="/assets/css/discover.css">
 <link rel="stylesheet" href="/assets/css/sidebar.css">
+<link rel="stylesheet" href="/assets/css/new-discover.css">
+<link rel="stylesheet" href="assets/css/pullout.css">
+
 </head>
 
-<body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
+<body>
 <?php include 'php/avocado-nav.php'; ?>
 
+<!-- right side bar -->
+    <div id="influencers-pullout">
+      <img id="pulltab" src="assets/images/pulltab.png" alt="">
 
+
+      <header>
+        <div id="num-influencers">__</div>
+        <div id="header-text"> Influencers in current campaign </div>
+      </header>
+
+      <button type="button" name="button" id="calculate">Calculate campaign</button>
+
+      <div  id="influencer-pullout-image-container">
+
+
+ <!-- images go here -->
+
+
+      </div>
+
+      <div id="action-buttons">
+        <button id="remove-button" class="greyed-out" type="button" name="button">Remove selected</button>
+        <button id="remove-all-button" class="greyed-out" type="button" name="button">Remove all</button>
+        <button id="undo-button" class="greyed-out" type="button" name="button"> Undo</button>
+      </div>
+    </div>
+
+<!-- end right side bar -->
 
 <!-- Add side bar here -->
 <div id="loading" style="display:none; top:31%; left:40%; position:fixed; z-index:1001;"><img style="height:250px; width:250px;"src="/assets/images/loading.gif"/></div>
@@ -45,27 +76,32 @@ include 'php/numberAbbreviation.php';
 
 <!--Filter content -->
 
-<div class="filter-container col-xs-9">
-            <p class="desc-header col-xs-12" style="padding-left:0px; padding-top:10px;text-align:center; font-family:'montserratsemibold'; letter-spacing: 2px; font-size:40px;">DISCOVER</p>
 
-            <div class="col-xs-2"></div>
-            <div class="col-xs-8" id="searchA">
-                <p class="filter-text col-xs-12" style="text-align: center;">Search by Influencer handles and keywords</p>
-                    <input type="text" class="form-control category avocado-focus" id="influencer-search-name" placeholder="Influencer Name or social handle">
-                    <input type="text" class="form-control category avocado-focus col-xs-6 col-sm-12" style="margin-top:12px;" id="tokenfield" placeholder="keyword"/>
-                    <p class="description-text col-xs-12">Seperate tags with commas or by pressing "tab" in the above field. Use double quotes for multi-word tags (e.g. "avocado toast")</p>
-                    <button class="search avocado-hover col-xs-12" id="search-keyword">SEARCH</button>
+
+
+<div class="filter-section col-xs-12">
+            <div class="desc-header">
+                <div class="discover-header">DISCOVER</div>
+                <div class="filter-text">Search by Influencer handles and keywords</div>
+
+                    <input type="text" class="filter-input form-control category avocado-focus" id="influencer-search-name" placeholder="Influencer Name or social handle">
+                    <input type="text" class="filter-input form-control category avocado-focus" id="tokenfield" placeholder="keyword"/>
+                    <div class="description-text">Seperate tags with commas or by pressing "tab" in the above field. Use double quotes for multi-word tags (e.g. "avocado toast")</div>
+                    <div class="button-container"> 
+                        <button class="search-button" id="search-keyword">SEARCH</button>
+                    </div>
             </div>
-            <div class="col-xs-2"></div>
 
-
-
-    </div>
-
+</div>
 
 
 
 
+
+
+
+
+<!-- 
 <div class="user-container col-xs-3" id="test-height">
     <div id="fixed-position">
     <p style="margin-top:1rem; font-weight:600;" class="filter-text"> Influencers Inside this Campaign </p>
@@ -76,78 +112,99 @@ include 'php/numberAbbreviation.php';
 
 
 <!-- Eventually items will be appened here -->
+<!--
     <div id="added-influencers">
         <!-- Influencers go here -->
+    <!--
     </div>
         <button id="additional-influencers" class="show-hidden" style="visibility:hidden" data-number="0">+0 More</button>
     </div>
 </div>
+-->
 
-<div class="filter-container col-xs-9" style="height:100%; border-bottom:0px;">
-    <p class="desc-header col-xs-12">Influencer Results</p>
+<div class="influencer-results-container col-xs-12">
+         <div class="influencer-header">FILTER INFLUENCERS</div>
 
-        <div class="col-xs-12 col-md-12 col-lg-3 col-xl-2" id="button-filter">
-            <button class="col-xs-12 filter-option" data-platform="instagram" style="    background-color: rgb(115, 196, 141);"><div class="filter-option-text"> <i class="button-icon icon bd-instagram"  data-platform="instagram" aria-hidden="true"></i> INSTAGRAM</div></button>
-            <button class="col-xs-12 filter-option" data-platform="facebook"><div class="filter-option-text"> <i class="button-icon icon bd-facebook"  data-platform="facebook" aria-hidden="true"></i> FACEBOOK</div></button>
-            <button class="col-xs-12 filter-option" data-platform="twitter"><div class="filter-option-text"> <i class="button-icon icon bd-twitter"  data-platform="twitter" aria-hidden="true"></i> TWITTER</div></button>
-
-
+        <div class="filter-button-container" id="button-filter">
+             <i class="button-icon button-icon-active icon bd-instagram"  data-platform="instagram" aria-hidden="true"></i> 
+            <i class="button-icon icon bd-facebook"  data-platform="facebook" aria-hidden="true"></i> 
+            <i class="button-icon icon bd-twitter"  data-platform="twitter" aria-hidden="true"></i> 
         </div>
 
 
-        <div class="col-xs-12 col-md-4 col-lg-3 col-xl-2" id="text-container" style="padding-bottom:25px;">
-                <p class="filter-text">Filter Results</p>
-                <p class="measure-text">FOLLOWERS</p>
-                <p class="measure-text">ENGAGEMENT %</p>
-        </div>
-        <div class="col-xs-12 col-md-8 col-lg-6 col-xl-8" id="slider-container">
-            <p id="influ-result"> Use the filters below to fine-tune your influencer results. </p>
-            <!-- Instagram slider -->
-            <div class="sliders" data-platform="instagram">
-                <input  class="col-xs-1 input-filter " type="text" id="min-instagram">
-                <div id="slider-instagram" class="col-xs-10"></div>
-                <input id="max-instagram" class="col-xs-1 input-filter"style="display:inline; padding-left:2%; padding-right:0px;" type="text">
+<!-- Slider Rows -->
+        <div class="slider-container">
+                <div class="measure-text">FOLLOWERS</div> 
+                        <div class="sliders"  data-platform="instagram">
+                            <input  class="col-xs-1 input-filter " type="text" id="min-instagram">
+                            <div id="slider-instagram" class="col-xs-10"></div>
+                            <input id="max-instagram" class="col-xs-1 input-filter"style="display:inline; padding-left:2%; padding-right:0px;" type="text">
+                        </div>
             </div>
+                
+        <div class="slider-container" >
+                <div class="measure-text" id="engagement-text" >ENGAGEMENT %</div> 
             <div class="sliders" data-platform="instagram-engagement">
                 <input  class="col-xs-1 input-filter engagement-slider " type="text" id="min-instagram-engagement">
                 <div style="margin-top:20px;" id="slider-instagram-engagement" class="col-xs-10"></div>
                 <input id="max-instagram-engagement" class="col-xs-1 input-filter engagement-slider"style="display:inline; padding-left:2%; padding-right:0px;" type="text">
             </div>
-            <!-- end instagram slider -->
 
 
             <!-- Start Facebook slider -->
+        <div class="slider-container">
             <div class="sliders" data-platform="facebook" style="display:none;">
                 <input  class="col-xs-1 input-filter" type="text" id="min-facebook">
                 <div  id="slider-facebook" class="col-xs-10"></div>
                 <input id="max-facebook" class="col-xs-1 input-filter"style="display:inline; padding-left:2%; padding-right:0px;" type="text">
             </div>
+        </div>
+
+        <div class="slider-container">
             <div class="sliders" data-platform="facebook-engagement" style="display:none;">
                 <input  class="col-xs-1 input-filter engagement-slider" type="text" id="min-facebook-engagement">
                 <div  style="margin-top:20px;" id="slider-facebook-engagement" class="col-xs-10"></div>
                 <input id="max-facebook-engagement" class="col-xs-1 input-filter engagement-slider"style="display:inline; padding-left:2%; padding-right:0px;" type="text">
             </div>
+        </div>
             <!--end facebook slider-->
 
 
 
 
             <!-- Start Twitter slider -->
+        <div class="slider-container">
             <div class="sliders" data-platform="twitter" style="display:none;">
                 <input  class="col-xs-1 input-filter" type="text" id="min-twitter">
                 <div id="slider-twitter" class="col-xs-10"></div>
                 <input id="max-twitter" class="col-xs-1 input-filter"style="display:inline; padding-left:2%; padding-right:0px;" type="text">
             </div>
+        </div> 
+         <div class="slider-container">
             <div class="sliders" data-platform="twitter-engagement" style="display:none;">
                 <input  class="col-xs-1 input-filter engagement-slider" type="text" id="min-twitter-engagement">
                 <div style="margin-top:20px;" id="slider-twitter-engagement" class="col-xs-10"></div>
                 <input id="max-twitter-engagement" class="col-xs-1 input-filter engagement-slider"style="display:inline; padding-left:2%; padding-right:0px;" type="text">
             </div>
-            <!--end Twitter slider-->
-
         </div>
 
 
+
+
+
+
+
+
+
+     </div>
+<!--end slider rows -->
+
+
+    <br>
+    <div class="influencer-header">INFLUENCER RESULTS</div>
+
+
+       <!-- <div class="influencer-header">INFLUENCER RESULTS</div>-->
 
         <div class="found-influencers col-xs-12">
             <?php
@@ -177,7 +234,7 @@ include 'php/numberAbbreviation.php';
                 $instagramengagement = number_format((($engagement['instagram']['average_engagement']/$instagramcount)*100),2,'.','');
                 $facebookengagement = number_format((($engagement['facebook']['average_engagement']/$facebookcount)*100),2,'.','');
                 echo '
-                    <div  class="influencer-box col-xs-12 col-md-6 col-lg-4 col-xl-3">
+                    <div  class="influencer-box col-xs-12 col-md-4 col-lg-3">
                             <div class="influencer-card-discover">
                                 <a href="/profile.php/?id='.$id.'"><img class="influencer-image-card" src="http://cogenttools.com/'.$image.'" onerror="this.src=`/assets/images/default-photo.png`"> </a>
                                 <div class="col-xs-12 influ-bottom" style="" data-id="'.$id.'">
