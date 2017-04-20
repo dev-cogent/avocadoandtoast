@@ -55,8 +55,13 @@
     text-align:center;
  }
 
+ #campaign-name{
+     text-align:center;
+ }
+
  .sub-heading{
      font-family:'Open Sans';
+     text-align: center;
 
  }
 
