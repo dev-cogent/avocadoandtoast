@@ -31,8 +31,8 @@ a:focus{
 
 <?php include 'php/avocado-nav.php';?>
 
-<div class="col-xs-3"></div>
-<div class="col-xs-6 settings-lg-col" id="setting-container">
+<div class="col-xs-1 col-sm-2 col-lg-3"></div>
+<div class="col-xs-10 col-sm-8  col-lg-6 settings-lg-col" id="setting-container">
 
   <div class="input-container">
 
@@ -69,7 +69,7 @@ a:focus{
        <button class="update-password-btn col-xs-12"  style="margin-top:30px;" id="getPassword" type="submit" name="profile"> Change Password </button>
       </form>
     </div>
-    <div class="col-xs-3"></div>
+    <div class="col-xs-1 col-sm-2 col-lg-3"></div>
   </div>
   </div>
 

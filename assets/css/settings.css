@@ -36,44 +36,54 @@
 }
 
 @media(min-width:320px) and (max-width:644px) {
-    .input-container {
-    margin-left: -50%;
-    }
+
+}
+@media(min-width:502px) and (max-width:644px) {
 
 }
 
+@media(min-width:502px) and (max-width:644px) {
 
+}
 
+@media only screen (min-width:540px) and (max-width:644px) {
+
+}
 
 /* iphone 6 media query */
 @media only screen 
   and (min-device-width: 375px) 
   and (max-device-width: 667px) 
   and (-webkit-min-device-pixel-ratio: 2) { 
-     .input-container {
-    margin-left: -70%;
-    }
-    .input-container {
-    margin-left: -49%;
-    }
+
    .image-title {
-    margin-top: 55px;
-    margin-left: -125px;
-}
+    display:none;
 } 
+    .upload-img{
+        display: block;
+    }
+    input.upload-img-btn.avocado-hover.avocado-focus{
+        width: 44%;
+    }
+
+  }
 
 /* iphone 5 media query*/
 @media only screen 
   and (min-device-width: 320px) 
-  and (max-device-width: 568px)
+  and (max-device-width: 374px)
   and (-webkit-min-device-pixel-ratio: 2) {
     .form-control{
         font-size:12px;
     }
-    .upload-img-btn {
-    padding: 5px 0px;
-    margin-left: 0px;
-    max-width: 250px;
+    .upload-img {
+        display:block;
+      
+    }
+    input.upload-img-btn.avocado-hover.avocado-focus{
+        width: 50%;
+        padding: 4px 15px;
+        margin-left: 5%;
     }
 
     .update-password-btn{
@@ -85,24 +95,21 @@
         height: 40px;
         width: 250px;
     }
-
+/*
     input.form-control{
         max-width: 250px;
     }
 
-    .input-container {
-        margin-left: -50%;
-    }
    input.form-control.category.avocado-focus {
     width: 250px;
-   }
+   }*/
     
    .uploaded-img-square{
        width:100px;
        height:100px;
    }
    .input-container {
-    margin-left: -65%;
+    /*margin-left: -65%;*/
     }
 
    #uploaded-img {
@@ -110,13 +117,12 @@
     width: 100px;
    }
    .image-title {
-    margin-top: 58px;
-    margin-left: -125px;
+   display:none;
 }
 /**************************/
     .settings-lg-col {
-        width: 36%;
-        margin-left: 0%;
+        /*width: 36%;
+        margin-left: 0%;*/
         margin-top: 5%;
     }
     .small-col {
@@ -129,7 +135,7 @@
         margin-left: 35%;
     }
     .uploaded-img-square {
-        display: -webkit-inline-box;
+        /*display: -webkit-inline-box;*/
     }
     .profile-title {
         font-size: 11px;
@@ -140,13 +146,28 @@
     }
    
 }
+
+/* Iphone 5 landscape*/
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+    input.upload-img-btn.avocado-hover.avocado-focus{
+        width: 34%;
+    }
+
+
+}
+/* iphone 6+*/
 @media only screen 
   and (min-device-width: 414px) 
   and (max-device-width: 736px) 
   and (-webkit-min-device-pixel-ratio: 3) { 
-    .input-container {
-    margin-left: -50%;
-}
+    input.upload-img-btn.avocado-hover.avocado-focus{
+        width: 39%;
+    }
+
 
 }
 @media only screen 
@@ -154,9 +175,6 @@
   and (max-device-width: 1024px) 
   and (-webkit-min-device-pixel-ratio: 1) {
 
-.input-container {
-    margin-left: -100px;
-}
 
 input.upload-img-btn {
     width: 220px;
@@ -186,10 +204,15 @@ input.upload-img-btn {
   and (max-device-width: 667px) 
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: landscape) { 
-      .image-title {
+    .image-title {
     margin-top: 103px;
     margin-left: -265px;
    }  
+    input.upload-img-btn.avocado-hover.avocado-focus {
+    width: 30%;
+}
+
+
   }
 
 
@@ -200,7 +223,9 @@ input.upload-img-btn {
   and (-webkit-min-device-pixel-ratio: 3)
   and (orientation: landscape) { 
    .image-title {
-        margin-left: -282px;
-        margin-top: 106px;
+        display: none;
     }   
+    input.upload-img-btn.avocado-hover.avocado-focus {
+       width: 29%; 
+  }   
 }
