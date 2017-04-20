@@ -29,28 +29,80 @@
     .settings {
         margin-top: 12%;
     }
+    .image-title {
+    margin-top: 58px;
+    margin-left: -125px;
+    }
 }
 
-@media(min-width:300px) and (max-width:599px) {
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
+     .input-container {
+    margin-left: -70%;
+    }
+    .input-container {
+    margin-left: -49%;
+    }
+    .image-title {
+    margin-top: 58px;
+    margin-left: -125px;
+}
+} 
+
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
     .form-control{
         font-size:12px;
     }
     .upload-img-btn {
     padding: 5px 0px;
     margin-left: 0px;
-    max-width: 150px;
+    max-width: 250px;
     }
 
     .update-password-btn{
         height: 52px;
-        width: 150px;
+        width: 250px;
     }
 
      .update-profile-btn {
         height: 40px;
-        width: 150px;
+        width: 250px;
     }
 
+    input.form-control{
+        max-width: 250px;
+    }
+
+    .input-container {
+        margin-left: -70%;
+    }
+   input.form-control.category.avocado-focus {
+    width: 250px;
+   }
+    
+   .uploaded-img-square{
+       width:100px;
+       height:100px;
+   }
+   .input-container {
+    margin-left: -65%;
+    }
+
+   #uploaded-img {
+    height: 100px;
+    width: 100px;
+   }
+   .image-title {
+    margin-top: 58px;
+    margin-left: -125px;
+}
+/**************************/
     .settings-lg-col {
         width: 36%;
         margin-left: 0%;
@@ -70,13 +122,60 @@
     }
     .profile-title {
         font-size: 11px;
-        float: right;
     }
    
     .title {
         width: 120px;
     }
-    .sidebar-left {
-        /*margin-top: 66px;*/
+   
+}
+@media only screen 
+  and (min-device-width: 414px) 
+  and (max-device-width: 736px) 
+  and (-webkit-min-device-pixel-ratio: 3) { 
+    .input-container {
+    margin-left: -50%;
+}
+
+}
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+.input-container {
+    margin-left: -100px;
+}
+
+input.upload-img-btn {
+    width: 220px;
+    height: 50px;
+}
+
+.image-title {
+    margin-top: 100px;
+    margin-left: -230px;
+ }
+
+} 
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 1) { 
+    .image-title {
+        margin-left: -290px;
+        margin-top: 115px;
     }
+
+
+}
+
+@media only screen 
+and (-webkit-min-device-pixel-ratio: 2) 
+and (max-device-width: 667px) 
+and (min-device-width: 375px) {
+.image-title {
+    margin-top: 102px;
+    margin-left: -270px;
+}
 }
