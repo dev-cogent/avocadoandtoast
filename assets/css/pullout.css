@@ -1,20 +1,16 @@
-.primary-button, #influencers-pullout button, .secondary-button {
+body {
+  font-family: "Montserrat", sans-serif; }
+
+.green-button, #influencers-pullout button {
   border: none;
-
-  border-radius: 1px;
-  font-family: "Montserrat", sans-serif;
-  transition: background .5s, box-shadow .3s; }
-  .primary-button:focus, #influencers-pullout button:focus, .secondary-button:focus {
-
-    outline: none; }
-
-.primary-button, #influencers-pullout button {
   background: #73C48D;
-  color: white; }
-  .primary-button:hover, #influencers-pullout button:hover {
-    box-shadow: 0px 0px 3px #63AB80; }
-  .primary-button:active, #influencers-pullout button:active {
-    box-shadow: 0px 0px 0px white; }
+  color: white;
+  padding: 10px;
+  transition: background .5s; }
+  .green-button:hover, #influencers-pullout button:hover {
+    background: #08b81f; }
+  .green-button:focus, #influencers-pullout button:focus {
+    outline: none; }
 
 .content {
   min-width: 100%;
@@ -28,7 +24,6 @@
   z-index: 1; }
 
 #influencers-pullout {
-  font-family: "Montserrat", sans-serif;
   position: fixed;
   z-index: 200;
   left: 100vw;
@@ -60,16 +55,10 @@
     #influencers-pullout header #header-text {
       font-size: 21px;
       color: #30363F;
-      font-family: "Open Sans", sans-serif;
+      font-family: 'Open Sans', sans-serif;
       font-weight: 600; }
-  #influencers-pullout button {
-    padding: 10px; }
-    #influencers-pullout button.greyed-out {
-      background: #A2A8B1; }
-      #influencers-pullout button.greyed-out:hover {
-        box-shadow: 0px 0px 0px white; }
-      #influencers-pullout button.greyed-out:active {
-        box-shadow: 0px 0px 0px white; }
+  #influencers-pullout button.greyed-out {
+    background: #A2A8B1; }
   #influencers-pullout #influencer-pullout-image-container {
     overflow: scroll;
     height: calc(100vh - 230px);
@@ -79,9 +68,6 @@
       width: 21%;
       height: auto;
       margin: 0 3% 3% 0;
-      border: 2.5px solid transparent; }
+      border: 2px solid transparent; }
     #influencers-pullout #influencer-pullout-image-container .image-selected {
-
-      border: 2.5px solid #73C48D; }
-
-
+      border: 2px solid #73C48D; }
