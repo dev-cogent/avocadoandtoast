@@ -11,7 +11,7 @@ $confirmed = 'true';
 $stmt->prepare("UPDATE `login_information` SET `confirmed` = ? WHERE `userid` = ?");
 $stmt->bind_param('ss',$confirmed,$userid);
 if($stmt->execute()){
-header('Location: http://dev.avocadoandtoast.com/login');
+header('Location: http://avocadoandtoast.com/login');
 }
 else{
 echo 'no';

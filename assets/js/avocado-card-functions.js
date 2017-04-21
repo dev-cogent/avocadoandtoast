@@ -34,29 +34,3 @@ $(document).on('click', '.switch', function () {
 });
 
 
-$(document).on('click', '.filter-option', function () {
-    var platform = $(this).attr('data-platform');
-    $(this).css('background-color', '#73C48D');
-    if (platform == 'facebook') {
-        platform1 = 'instagram';
-        platform2 = 'twitter';
-    }
-    if (platform == 'twitter') {
-        platform1 = 'instagram';
-        platform2 = 'facebook';
-    }
-    if (platform == 'instagram') {
-        platform1 = 'twitter';
-        platform2 = 'facebook';
-    }
-    $('.filter-option[data-platform=' + platform1 + ']').css('background-color', '#A2A8B1');
-    $('.filter-option[data-platform=' + platform2 + ']').css('background-color', '#A2A8B1');
-
-    $('.sliders[data-platform=' + platform + ']').show();
-    $('.sliders[data-platform=' + platform + '-engagement]').show();
-    $('.sliders[data-platform=' + platform1 + ']').css('display', 'none');
-    $('.sliders[data-platform=' + platform1 + '-engagement]').css('display', 'none');
-    $('.sliders[data-platform=' + platform2 + ']').css('display', 'none');
-    $('.sliders[data-platform=' + platform2 + '-engagement]').css('display', 'none');
-
-});

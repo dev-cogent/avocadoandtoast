@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/assets/css/discover.css">
 <link rel="stylesheet" href="/assets/css/dashboard.css">
+<link rel="stylesheet" href="/assets/css/footer.css">
 </head>
 
 <?php include 'php/avocado-nav.php'; ?>
@@ -25,6 +26,10 @@
          <!-- Information here is appened in javascript --> 
     </div>
 
+    <?php include 'footer.php'; ?>
+
 </body>
 
 <script src="/assets/js/avocado-dashboard.js"></script>
+
+
