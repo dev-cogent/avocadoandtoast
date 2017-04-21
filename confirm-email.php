@@ -5,15 +5,17 @@
 
 
 <div class="thank-you-email">
-    <p class="confirm-email"> 
+        <h1 class="check-email"> Check your Email</h1>
+        <div class="skating-avo"> 
+        <img src="assets/images/shred_2.gif" alt="email-confirmation"/> </div>
+         <p class="confirm-email"> 
         Done!
         <br>
         An email has been sent to the address you provided.
         <br>
          Please check your email
         and follow the instructions. 
-        <div class="skating-avo"> 
-        <img src="assets/images/shred_2.gif" alt="email-confirmation"/>
+        </p>
 
         <button type="button" class="btn btn-primary btn-lg confirm-btn">Back to Login </button>
 </div>
