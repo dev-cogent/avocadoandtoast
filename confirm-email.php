@@ -1,5 +1,9 @@
 
 
+<link rel="stylesheet" href="/assets/css/confirm-email.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700" rel="stylesheet">
+
+
 <div class="thank-you-email">
     <p class="confirm-email"> 
         Done!
@@ -9,7 +13,7 @@
          Please check your email
         and follow the instructions. 
         <div class="skating-avo"> 
-        <img src="images/shred_2.gif" alt="email-confirmation"/>
+        <img src="assets/images/shred_2.gif" alt="email-confirmation"/>
 
-        <button 
+        <button type="button" class="btn btn-primary btn-lg confirm-btn">Back to Login </button>
 </div>
