@@ -1,38 +1,5 @@
-$font-family: 'Montserrat', sans-serif;
-$avo-green: #73C48D;
+@import 'utility';
 
-$pullout-width: 400px;
-
-$break-small: 600px;
-
-
-body {
-  font-family: $font-family;
-}
-
-@mixin clearfix {
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-}
-
-
-.green-button {
-  border: none; 
-  background: $avo-green;
-  color: white;
-  padding: 10px;
-  transition: background .5s;
-
-  &:hover {
-    background: rgb(8, 184, 31);
-  }
-  &:focus {
-    outline: none;
-  }
-}
 
 .content {
   min-width: 100%;
@@ -47,16 +14,14 @@ body {
 }
 
 #influencers-pullout {
-
+  font-family: $main-font;
   position: fixed;
   z-index: 200;
   left: 100vw;
   height: 100%;
   width: 400px;
   padding: 10px;
-
   user-select: none;
-
   background: white;
   border-left: 8px solid $avo-green;
 
@@ -67,7 +32,6 @@ body {
     height: auto;
     left: -100px;
     top: 455px;
-
   }
 
   header {
@@ -85,20 +49,21 @@ body {
 
     #header-text {
       font-size: 21px;
-      color: #30363F;
-      font-family: 'Open Sans', sans-serif;
+      color: $header-grey;
+      font-family: $secondary-font;
       font-weight: 600;
     }
   }
 
   button {
-    @extend .green-button;
+    @extend .primary-button;
+    padding: 10px;
+
     &.greyed-out {
-      background: #A2A8B1;
+      background: $inactive-grey;
+      @include button-box-shadow(null);
     }
   }
-
-
 
   #influencer-pullout-image-container {
     overflow: scroll;
@@ -110,11 +75,11 @@ body {
       width: 21%;
       height: auto;
       margin: 0 3% 3% 0;
-      border: 2px solid rgba(0,0,0,0);
+      border: 2.5px solid rgba(0,0,0,0);
     }
 
     .image-selected {
-      border: 2px solid $avo-green;
+      border: 2.5px solid $avo-green;
     }
   }
 
