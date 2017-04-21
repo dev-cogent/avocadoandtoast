@@ -58,7 +58,7 @@ function getCampaignInfluencers(campaignid){
 
 function setCampaignInfluencers(campaignJSON){
     $.each(campaignJSON, function (key, obj) {
-           $('.found-influencers').append( '<div  class="influencer-box col-xs-12 col-md-6 col-lg-3 col-xl-2" data-id="'+key+'"'+
+           $('.found-influencers').append( '<div  class="influencer-box col-xs-12 col-sm-6 col-md-4 col-lg-3" data-id="'+key+'"'+
            'data-t-post="'+obj.twitter_post+'" data-f-post="'+obj.facebook_post+'" data-i-post="'+obj.instagram_post+'" data-t-impressions="'+obj.twitter_impressions+'" data-f-impressions="'+obj.facebook_impressions+'" data-i-impressions="'+obj.instagram_impressions+'"'+
            'data-t-engagement="'+obj.twitter_engagement+'" data-i-engagement="'+obj.instagram_engagement+'" data-f-engagement="'+obj.facebook_engagement+'">'+
                 '<div class="influencer-card-discover">'+

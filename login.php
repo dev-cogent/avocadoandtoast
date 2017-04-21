@@ -110,8 +110,7 @@ border-radius:0px;
     color:#515862; 
     letter-spacing: 2px; 
     font-size:55px; 
-    padding-bottom:50px; 
-    padding-top:25px;
+    padding-bottom:11px; 
 }
 
 @media screen and (max-width:480px){

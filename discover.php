@@ -87,7 +87,7 @@ include 'php/numberAbbreviation.php';
                     <input type="text" class="filter-input form-control category avocado-focus" id="influencer-search-name" placeholder="Influencer Name or social handle">
                     <input type="text" class="filter-input form-control category avocado-focus" id="tokenfield" placeholder="keyword"/>
                     <div class="description-text">Seperate tags with commas or by pressing "tab" in the above field. Use double quotes for multi-word tags (e.g. "avocado toast")</div>
-                    <div class="button-container"> 
+                    <div class="button-container">
                         <button class="search-button" id="search-keyword">SEARCH</button>
                     </div>
             </div>
@@ -97,96 +97,63 @@ include 'php/numberAbbreviation.php';
 
 
 
-
-
-
-
-<!-- 
-<div class="user-container col-xs-3" id="test-height">
-    <div id="fixed-position">
-    <p style="margin-top:1rem; font-weight:600;" class="filter-text"> Influencers Inside this Campaign </p>
-    <p id="count">0</p>
-
-    <button id="viewall" class="show-hidden">View All </button>
-    <button id="calculate" class="avocado-button-focus">Calculate Campaign </button>
-
-
-<!-- Eventually items will be appened here -->
-<!--
-    <div id="added-influencers">
-        <!-- Influencers go here -->
-    <!--
-    </div>
-        <button id="additional-influencers" class="show-hidden" style="visibility:hidden" data-number="0">+0 More</button>
-    </div>
-</div>
--->
-
 <div class="influencer-results-container col-xs-12">
          <div class="influencer-header">FILTER INFLUENCERS</div>
 
         <div class="filter-button-container" id="button-filter">
-             <i class="button-icon button-icon-active icon bd-instagram"  data-platform="instagram" aria-hidden="true"></i> 
-            <i class="button-icon icon bd-facebook"  data-platform="facebook" aria-hidden="true"></i> 
-            <i class="button-icon icon bd-twitter"  data-platform="twitter" aria-hidden="true"></i> 
+             <i class="filter-option button-icon button-icon-active icon bd-instagram"  data-platform="instagram" aria-hidden="true"></i>
+            <i class="filter-option button-icon icon bd-facebook"  data-platform="facebook" aria-hidden="true"></i>
+            <i class="filter-option button-icon icon bd-twitter"  data-platform="twitter" aria-hidden="true"></i>
         </div>
 
 
 <!-- Slider Rows -->
         <div class="slider-container">
-                <div class="measure-text">FOLLOWERS</div> 
+                <div class="measure-text">FOLLOWERS</div>
                         <div class="sliders"  data-platform="instagram">
                             <input  class="col-xs-1 input-filter " type="text" id="min-instagram">
                             <div id="slider-instagram" class="col-xs-10"></div>
                             <input id="max-instagram" class="col-xs-1 input-filter"style="display:inline; padding-left:2%; padding-right:0px;" type="text">
                         </div>
-            </div>
-                
-        <div class="slider-container" >
-                <div class="measure-text" id="engagement-text" >ENGAGEMENT %</div> 
-            <div class="sliders" data-platform="instagram-engagement">
-                <input  class="col-xs-1 input-filter engagement-slider " type="text" id="min-instagram-engagement">
-                <div style="margin-top:20px;" id="slider-instagram-engagement" class="col-xs-10"></div>
-                <input id="max-instagram-engagement" class="col-xs-1 input-filter engagement-slider"style="display:inline; padding-left:2%; padding-right:0px;" type="text">
-            </div>
 
-
-            <!-- Start Facebook slider -->
-        <div class="slider-container">
             <div class="sliders" data-platform="facebook" style="display:none;">
                 <input  class="col-xs-1 input-filter" type="text" id="min-facebook">
                 <div  id="slider-facebook" class="col-xs-10"></div>
                 <input id="max-facebook" class="col-xs-1 input-filter"style="display:inline; padding-left:2%; padding-right:0px;" type="text">
             </div>
-        </div>
 
-        <div class="slider-container">
-            <div class="sliders" data-platform="facebook-engagement" style="display:none;">
-                <input  class="col-xs-1 input-filter engagement-slider" type="text" id="min-facebook-engagement">
-                <div  style="margin-top:20px;" id="slider-facebook-engagement" class="col-xs-10"></div>
-                <input id="max-facebook-engagement" class="col-xs-1 input-filter engagement-slider"style="display:inline; padding-left:2%; padding-right:0px;" type="text">
-            </div>
-        </div>
-            <!--end facebook slider-->
-
-
-
-
-            <!-- Start Twitter slider -->
-        <div class="slider-container">
             <div class="sliders" data-platform="twitter" style="display:none;">
                 <input  class="col-xs-1 input-filter" type="text" id="min-twitter">
                 <div id="slider-twitter" class="col-xs-10"></div>
                 <input id="max-twitter" class="col-xs-1 input-filter"style="display:inline; padding-left:2%; padding-right:0px;" type="text">
             </div>
-        </div> 
-         <div class="slider-container">
+
+
+
+
+            </div>
+
+        <div class="slider-container" >
+                <div class="measure-text" id="engagement-text" >ENGAGEMENT %</div>
+            <div class="sliders" data-platform="instagram-engagement">
+                <input  class="col-xs-1 input-filter engagement-slider " type="text" id="min-instagram-engagement">
+                <div style="margin-top:20px;" id="slider-instagram-engagement" class="col-xs-10"></div>
+                <input id="max-instagram-engagement" class="col-xs-1 input-filter engagement-slider"style="display:inline; padding-left:2%; padding-right:0px;" type="text">
+            </div>
+            <div class="sliders" data-platform="facebook-engagement" style="display:none;">
+                <input  class="col-xs-1 input-filter engagement-slider" type="text" id="min-facebook-engagement">
+                <div  style="margin-top:20px;" id="slider-facebook-engagement" class="col-xs-10"></div>
+                <input id="max-facebook-engagement" class="col-xs-1 input-filter engagement-slider"style="display:inline; padding-left:2%; padding-right:0px;" type="text">
+            </div>
+
             <div class="sliders" data-platform="twitter-engagement" style="display:none;">
                 <input  class="col-xs-1 input-filter engagement-slider" type="text" id="min-twitter-engagement">
                 <div style="margin-top:20px;" id="slider-twitter-engagement" class="col-xs-10"></div>
                 <input id="max-twitter-engagement" class="col-xs-1 input-filter engagement-slider"style="display:inline; padding-left:2%; padding-right:0px;" type="text">
             </div>
-        </div>
+
+
+            </div>
 
 
 
@@ -196,7 +163,9 @@ include 'php/numberAbbreviation.php';
 
 
 
-     </div>
+
+
+
 <!--end slider rows -->
 
 
@@ -293,4 +262,3 @@ var target2 = $('#discover-container').offset().top;
 <script src="/assets/js/avocado-slider.js"></script>
 <script src="/assets/js/avocado-discover.js"></script>
 <script src="/assets/js/create-campaign.js"></script>
- 
