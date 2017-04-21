@@ -1,4 +1,31 @@
+$(document).on('click', '.filter-option', function () {
+    var platform = $(this).attr('data-platform');
+    $(this).css('color', '#73C48D');
+    if (platform == 'facebook') {
+        platform1 = 'instagram';
+        platform2 = 'twitter';
+    }
+    if (platform == 'twitter') {
+        platform1 = 'instagram';
+        platform2 = 'facebook';
+    }
+    if (platform == 'instagram') {
+        platform1 = 'twitter';
+        platform2 = 'facebook';
+    }
+    $('.filter-option[data-platform=' + platform1 + ']').css('color', '#A2A8B1');
+    $('.filter-option[data-platform=' + platform2 + ']').css('color', '#A2A8B1');
 
+    $('.sliders[data-platform=' + platform + ']').show();
+    $('.sliders[data-platform=' + platform + '-engagement]').show();
+    $('.sliders[data-platform=' + platform1 + ']').css('display', 'none');
+    $('.sliders[data-platform=' + platform1 + '-engagement]').css('display', 'none');
+    $('.sliders[data-platform=' + platform2 + ']').css('display', 'none');
+    $('.sliders[data-platform=' + platform2 + '-engagement]').css('display', 'none');
+
+});
+    
+    
     /**
      * Function when the user clicks on the "Calculate Campaign button" all javascript pertaining that page can be found at avocado-calculate.js 
      * @return NULL
@@ -146,7 +173,7 @@
     function appendCards(campaignJSON) {
         $.each(campaignJSON, function (key, obj) {
 
-            $('.found-influencers').append('<div  class="influencer-box col-xs-12 col-md-6 col-lg-4 col-xl-3">' +
+            $('.found-influencers').append('<div  class="influencer-box col-xs-12 col-sm-6 col-md-4 col-lg-3">' +
                 '<div class="influencer-card-discover">' +
                 '<a href="/profile.php/?id=' + key + '"><img class="influencer-image-card" src="http://cogenttools.com/' + obj.image + '" onerror="this.src=`/assets/images/default-photo.png`"> </a>' +
                 '<div class="col-xs-12 influ-bottom" style="" data-id="' + key + '">' +

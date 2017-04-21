@@ -456,21 +456,7 @@
     padding-top: 6px;
 }
 
-.filter-option {
-    padding-bottom: 2rem;
-    font-size: 13px;
-    font-family: 'Montserrat', sans-serif;
-    color: #30363F;
-    padding-left: 11px;
-    background-color: #A2A8B1;
-    border: 1px;
-    float: left;
-    margin-bottom: 8px;
-}
 
-.filter-option:focus {
-    outline: none;
-}
 
 .filter-option-text {
     position: absolute;
