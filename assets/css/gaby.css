@@ -3,4 +3,7 @@ body {
 
 div {
   background: green;
-  animation-duration: foo; }
+  -webkit-animation-duration: foo;
+          animation-duration: foo; }
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImdhYnkuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsaUJBQWlCLEVBQUU7O0FBRXJCO0VBQ0Usa0JBQWtCO0VBQ2xCLGdDQUF3QjtVQUF4Qix3QkFBd0IsRUFBRSIsImZpbGUiOiJnYWJ5LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImJvZHkge1xuICBiYWNrZ3JvdW5kOiBibHVlOyB9XG5cbmRpdiB7XG4gIGJhY2tncm91bmQ6IGdyZWVuO1xuICBhbmltYXRpb24tZHVyYXRpb246IGZvbzsgfVxuIl19 */
