@@ -1,0 +1,41 @@
+body {
+    background-color: #73C48D;
+    display: block;
+    margin: 8px;
+}
+
+.thank-you-email{
+    background: white;
+    color: black;
+    padding-top: 80px;
+    text-align: center;
+    box-sizing: border-box;
+    font-family:'Montserrat', sans-serif;
+    line-height: 1.5em;
+    min-height: 800px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.confirm-btn{
+    width: 100%;
+    width: 240px;
+    background-color: #73c48d;
+    border: none;
+    color: black;
+    font-family:'Montserrat', sans-serif;
+    height: 42px;
+    line-height: 40px;
+    margin: 0 auto;
+    display: block;
+    font-size: 1em;
+}
+
+h1.check-email{
+    font-family:'Montserrat', sans-serif;
+    color: black;
+    font-weight: normal;
+
+}
