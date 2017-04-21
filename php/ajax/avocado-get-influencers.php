@@ -23,30 +23,33 @@ echo '
         <div class="row">
 
     <div class="col-sm-12 col-md-6 col-lg-6 campaign-info" style="">
-    <div class="camapaign-label-container">
+    <div class="camapaign-label-container mobile">
     <div class="campaign-label-div">
-    <label id="campaign-label" class="campaign-label">CAMPAIGN NAME:</label><input id="campaign-name" type="text" placeholder="Untitled Campaign"> </div>
+    <label id="campaign-label" class="campaign-label">CAMPAIGN NAME:</label><input id="campaign-name" class="mobile" type="text" placeholder="Untitled Campaign"> </div>
 
   
-     <div class="select-campaign-container"> 
+     <div class="select-campaign-container small"> 
             <div id="campaign-select-text" class="col-xs-12 col-md-1">ADD TO EXISTING: </div>
+            <div class="add-to-existing-container">
             <select class="form-control category avocado-focus  campaign-dropdown col-xs-12">
                 <option class="option" value=""> None</option>
                 '.$options.'    
             </select> 
             <button class="save-btn" id="add-existing"> <i class="icon ti-plus black-plus" aria-hidden="true"></i> </button>
+          
+      </div>     
             </div> 
 
     </div></div>
     
 
 
-<div class="col-xs-12 col-md-6 col-lg-6 campaign-select">
+<div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 campaign-select">
 
 
-  <div class="campaign-calc-btn-container"> 
-    <button class="info-button secondary-button" style="">SUBMIT FOR PRICING</button>
-    <button class="info-button main-button" id="createcampaign">CREATE CAMPAIGN </button>
+  <div class="campaign-calc-btn-container tablet"> 
+    <button class="info-button secondary-button mobile sm-mobile" style="">SUBMIT FOR PRICING</button>
+    <button class="info-button main-button mobile sm-mobile" id="createcampaign">CREATE CAMPAIGN </button>
     </div> 
 
           
@@ -67,17 +70,17 @@ echo '
     </div>
 
 
-<div class="post-container col-xs-12">
+<div class="post-container col-xs-12 tablet mobile">
 
-              <table summary="This table shows a list of influencers added to a campaign" style="width: 100%; max-width: 100%; margin-bottom: 1rem;"class="table-hover">
+              <table summary="This table shows a list of influencers added to a campaign" class="table-hover">
                 <thead class="campaign-calc-table">
                   <tr class="cat-in-influencer-result-row">
-                      <th class="text-center"><button class="secondary-button" id="apply">Apply Posts to All</button></th>
-                      <th class="text-center"> <img src="assets/images/ig_black.png" class="insta-logo" />
+                      <th class="text-center" scope="col"><button class="secondary-button mobile-apply small" id="apply">Apply Posts to All</button></th>
+                      <th class="text-center" scope="col"> <img src="assets/images/ig_black.png" class="insta-logo" />
                    </th>
-                      <th class="text-center"> <img src="assets/images/fb_black.png" class="fb-logo" /> <p class="number-posts-text"> </p> </th>
-                      <th class="text-center"> <img src="assets/images/twitter_black.png" class="twitter-logo2" />  </th>
-                        <th class="text-center total-heading">  TOTAL  </th>
+                      <th class="text-center" scope="col"> <img src="assets/images/fb_black.png" class="fb-logo" /> <p class="number-posts-text"> </p> </th>
+                      <th class="text-center" scope="col"> <img src="assets/images/twitter_black.png" class="twitter-logo2" />  </th>
+                        <th class="text-center total-heading" scope="col">  TOTAL  </th>
                     </tr>
                   </thead>
                   <tbody>';
@@ -110,49 +113,49 @@ echo '
 
                   echo'
                     <tr class="influencer-result-row">
-                        <td class="influencer-column" style="width:15%; padding-left:0%;">
-                                <div class="influencer-info-container"> 
+                        <td class="influencer-column" data-label="Name" style="width:15%; padding-left:0%;">
+                                <div class="influencer-info-container mobile"> 
                             <img src="http://cogenttools.com/'.$image.'" onerror="this.src=`/assets/images/default-photo.png`" class="influencer-campaign-image ">
-                            <h4 class="influencer-handle-text handle">@'.$displayhandle.'</h4>
-                            <h4 class="influencer-handle-text location-text">'.$location.'</h4>
+                            <div class="influencer-handle-text handle">@'.$displayhandle.'</div>
+                            <div class="influencer-handle-text location-text">'.$location.'</div>
                       </div></td>
 
-                      <td data-id="'.$id.'" class="insta-column" style="width:15%;">
+                      <td data-id="'.$id.'" class="insta-column" data-label="Instagram" style="width:15%;">
                           <div class="posts-res-div">
-                            <input data-id="'.$id.'" data-platform="instagram" class="instagraminput campaignfocus" type="number" value="0" max="100" min="0">
-                            <div class="post-results-container">posts</div>
+                            <input data-id="'.$id.'" data-platform="instagram" class="instagraminput campaignfocus mobile" type="number" value="0" max="100" min="0">
+                            <div class="post-results-container tablet tm mobile ">posts</div>
                           </div>
-                          <div class="results-mini-col">
+                          <div class="results-mini-col tablet mobile">
                             <div class="impression-res impression-blue impression-instagram-blue" data-id="'.$id.'" data-number="0">0</div>
                             <div class="engagement-res engagement-orange engagement-orange-instagram" data-id="'.$id.'" data-number="0" >0</div>
                             <div class="social-following-res social-following-red">'.numberAbbreviation($instagramcount).'</div>
                           </div>
                       </td>
 
-                      <td data-id="'.$id.'" class="twit-column" style="width:15%;">
+                      <td data-id="'.$id.'" class="twit-column" data-label="Twitter" style="width:15%;">
                         <input data-id="'.$id.'" data-platform="facebook" class="facebookinput campaignfocus" type="number" value="0" max="100" min="0">
-                        <div class="post-results-container"> posts</div>
-                        <div class="results-mini-col">
+                        <div class="post-results-container tablet tm mobile"> posts</div>
+                        <div class="results-mini-col tablet mobile">
                           <div class="impression-res impression-blue impression-facebook-blue" data-id="'.$id.'" data-number="0">0</div>
                           <div class="engagement-res engagement-orange engagement-orange-facebook"  data-id="'.$id.'" data-number="0" >0</div>
                           <div class="social-following-res social-following-red">'.numberAbbreviation($facebookcount).'</div>
                         </div>
                       </td>
 
-                      <td data-id="'.$id.'" class="face-column" style="width:15%;">
+                      <td data-id="'.$id.'" class="face-column" data-label="Facebook" style="width:15%;">
                         <input data-id="'.$id.'" data-platform="twitter" class="twitterinput campaignfocus" type="number" value="0" max="100" min="0">
-                        <div class="post-results-container"> posts</div>
-                        <div class="results-mini-col">
+                        <div class="post-results-container tablet tm mobile"> posts</div>
+                        <div class="results-mini-col tablet mobile">
                           <div class="impression-res impression-blue impression-twitter-blue" data-id="'.$id.'" data-number="0">0</div>
                           <div class="engagement-res engagement-orange engagement-orange-twitter" data-id="'.$id.'" data-number="0">0</div>
                           <div class="social-following-res social-following-red">'.numberAbbreviation($twittercount).'</div>
                         </div>
                       </td>
 
-                      <td data-id="'.$id.'" class="overall-inf-total-column" style="width:15%;">
+                      <td data-id="'.$id.'" class="overall-inf-total-column" data-label="Total" style="width:15%;">
                           <input data-id="'.$id.'" data-platform="total" class="totalinput campaignfocus" type="number" value="0" max="100" disabled>
-                          <div class="post-results-container"> posts</div>
-                          <div class="results-mini-col">
+                          <div class="post-results-container tablet tm mobile"> posts</div>
+                          <div class="results-mini-col tablet mobile">
                             <div class="impression-res impression-blue impression-total-blue" data-id="'.$id.'" data-number="0" >0</div>
                             <div class="engagement-res engagement-orange engagement-orange-total"  data-id="'.$id.'" data-number="0" >0</div>
                             <div class="social-following-res social-following-red"> '.numberAbbreviation($total).' </div>
@@ -165,26 +168,26 @@ echo '
 
                        <!-- results -->
                         <tr class="result-row influencer-result-row">
-                        <td class="influencer-column" style="width:15%;">
+                        <td class="influencer-column" scope="row" data-label="Name" style="width:15%;">
                             <div class="influencer-info-container">
-                                <p class="result-name" style="width:210px;">  CAMPAIGN ENGAGEMENT</p>
+                                <p class="result-name mobile">  CAMPAIGN ENGAGEMENT</p>
                             </div>
-                      <td  class="insta-column" style="width:15%;"> <p class="instagram-posts results-text" id="instagram-engagement" data-number="0"> 0 </p> </td>
-                      <td  class="twit-column" style="width:15%;"> <p class="facebook-posts results-text" id="facebook-engagement" data-number="0"> 0 </p> </td>
-                      <td  class="face-column" style="width:15%;"> <p class="twitter-posts results-text" id="twitter-engagement" data-number="0"> 0 </p></td>
-                      <td  class="face-column" style="width:15%;"> <p class="total-posts results-text" id="total-engagement" data-number="0" > 0</p>  </td>
+                      <td  class="insta-column"  data-label="Instagram" style="width:15%;" > <p class="instagram-posts results-text mobile" id="instagram-engagement" data-number="0"> 0 </p> </td>
+                      <td  class="twit-column" data-label="Twitter" style="width:15%;"> <p class="facebook-posts results-text mobile" id="facebook-engagement" data-number="0"> 0 </p> </td>
+                      <td  class="face-column" data-label="Facebook" style="width:15%;"> <p class="twitter-posts results-text mobile" id="twitter-engagement" data-number="0"> 0 </p></td>
+                      <td  class="face-column" data-label="Total" style="width:15%;"> <p class="total-posts results-text mobile" id="total-engagement" data-number="0" > 0</p>  </td>
                     </tr>
 
 
                         <tr class="result-row influencer-result-row">
-                        <td class="influencer-column" style="width:15%;">
+                        <td class="influencer-column" style="width:15%;" scope="row" data-label="Name">
                             <div class="influencer-info-container">
-                            <p class="result-name" style="width:210px;"> CAMPAIGN IMPRESSIONS</p>
+                            <p class="result-name mobile"> CAMPAIGN IMPRESSIONS</p>
                             </div>
-                      <td  class="insta-column" style="width:15%;"><p class="instagram-posts results-text" id="instagram-impressions" data-number="0"> 0 </p> </td>
-                      <td  class="twit-column" style="width:15%;"> <p class="facebook-posts results-text" id="facebook-impressions" data-number="0"> 0 </p> </td>
-                      <td  class="face-column" style="width:15%;"> <p class="twitter-posts results-text" id="twitter-impressions" data-number="0"> 0 </p></td>
-                      <td  class="total-column" style="width:15%;"> <p class="total-posts results-text" id="total-impressions" data-number="0" > 0 </p></td>
+                      <td  class="insta-column" data-label="Instagram" style="width:15%;"><p class="instagram-posts results-text mobile" id="instagram-impressions" data-number="0"> 0 </p> </td>
+                      <td  class="twit-column" data-label="Twitter" style="width:15%;"> <p class="facebook-posts results-text mobile" id="facebook-impressions" data-number="0"> 0 </p> </td>
+                      <td  class="face-column" data-label="Facebook"  style="width:15%;"> <p class="twitter-posts results-text mobile" id="twitter-impressions" data-number="0"> 0 </p></td>
+                      <td  class="total-column" data-label="Total"  style="width:15%;"> <p class="total-posts results-text mobile" id="total-impressions" data-number="0" > 0 </p></td>
 
                     </tr>
 
