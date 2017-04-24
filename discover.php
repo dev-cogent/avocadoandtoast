@@ -65,7 +65,7 @@ include 'php/numberAbbreviation.php';
 <!-- end right side bar -->
 
 <!-- Add side bar here -->
-<div id="loading" style="display:none; top:31%; left:40%; position:fixed; z-index:1001;"><img style="height:250px; width:250px;"src="/assets/images/loading.gif"/></div>
+<div id="loading"><img style="height:250px; width:250px;"src="/assets/images/loading.gif"/></div>
 
 
 
@@ -233,7 +233,7 @@ include 'php/numberAbbreviation.php';
                                     </div>
                                     <div class="col-xs-12">
 
-                                        <div style="display:inline;"class="col-xs-12 invite  avocado-focus" data-id="'.$id.'" data-image="'.$image.'"></div>
+                                        <div class="col-xs-12 invite  avocado-focus" data-id="'.$id.'" data-image="'.$image.'"></div>
                                     </div>
                                 </div>
                             </div>
