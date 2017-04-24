@@ -202,7 +202,7 @@ $(document).on('click', '.filter-option', function () {
                 '<p class="twitter-engagement engagement-count" style="display:none"data-id="' + key + '">' + obj.twitter.engagement + '% eng per post</p>' +
                 '</div>' +
                 '<div class="col-xs-12">' +
-                '<div style="display:inline;"class="col-xs-12 invite  avocado-focus" data-id="' + key + '" data-image="' + obj.image + '"></div>' +
+                '<div class="col-xs-12 invite  avocado-focus" data-id="' + key + '" data-image="' + obj.image + '"></div>' +
                 '</div></div></div> </div>');
         });
 

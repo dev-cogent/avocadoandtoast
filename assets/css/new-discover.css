@@ -62,6 +62,27 @@
     padding-top:20px;
 }
 
+.invite{
+    height: 35px;
+    padding-top: 5px;
+    width: 36px;
+    border-radius: 32px;
+    background-color: #e0e0e0;
+    margin: 0 auto;
+    text-align: center;
+    float: none;
+
+
+}
+
+#loading{
+    display:none; 
+    top:31%; 
+    left:43%; 
+    position:fixed; 
+    z-index:1001;
+}
+
 .tokenfield{
     max-width:700px !important;
     margin: 0 auto !important; 
