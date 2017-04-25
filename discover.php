@@ -82,13 +82,11 @@ include 'php/numberAbbreviation.php';
 <div class="filter-section col-xs-12">
             <div class="desc-header">
                 <div class="discover-header">DISCOVER</div>
-                <div class="filter-text">Search by Influencer handles and keywords</div>
-
-                    <input type="text" class="filter-input form-control category avocado-focus" id="influencer-search-name" placeholder="Influencer Name or social handle">
-                    <input type="text" class="filter-input form-control category avocado-focus" id="tokenfield" placeholder="keyword"/>
-                    <div class="description-text">Seperate tags with commas or by pressing "tab" in the above field. Use double quotes for multi-word tags (e.g. "avocado toast")</div>
+                <div class="filter-text">Search by influencer handles and keywords</div>
+                    <input type="text" class="filter-input form-control category avocado-focus" id="tokenfield" placeholder="keyword" style="height:40px;"/>
+                    <div class="description-text">Separate tags with commas or by pressing "tab" in the above field. Use double quotes for multi-word tags (e.g. "avocado toast")</div>
                     <div class="button-container">
-                        <button class="search-button" id="search-keyword">SEARCH</button>
+                        <button class="search-button primary-button" id="search-keyword">SEARCH</button>
                     </div>
             </div>
 
@@ -104,6 +102,7 @@ include 'php/numberAbbreviation.php';
              <i class="filter-option button-icon button-icon-active icon bd-instagram"  data-platform="instagram" aria-hidden="true"></i>
             <i class="filter-option button-icon icon bd-facebook"  data-platform="facebook" aria-hidden="true"></i>
             <i class="filter-option button-icon icon bd-twitter"  data-platform="twitter" aria-hidden="true"></i>
+            <i class="filter-option button-icon icon bd-youtube"  data-platform="youtube" aria-hidden="true"></i>
         </div>
 
 
@@ -203,7 +202,7 @@ include 'php/numberAbbreviation.php';
                 $instagramengagement = number_format((($engagement['instagram']['average_engagement']/$instagramcount)*100),2,'.','');
                 $facebookengagement = number_format((($engagement['facebook']['average_engagement']/$facebookcount)*100),2,'.','');
                 echo '
-                    <div  class="influencer-box col-xs-12 col-md-4 col-lg-3">
+                    <div  class="influencer-box col-xs-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="influencer-card-discover">
                                 <a href="/profile.php/?id='.$id.'"><img class="influencer-image-card" src="http://cogenttools.com/'.$image.'" onerror="this.src=`/assets/images/default-photo.png`"> </a>
                                 <div class="col-xs-12 influ-bottom" style="" data-id="'.$id.'">
@@ -255,8 +254,6 @@ var calculate = false;
 var page = 0;
 var selectedusers = [];
 var filters = {};
-var target = $("#test-height").offset().top;
-var target2 = $('#discover-container').offset().top;
 
 </script>
 <script src="/assets/js/avocado-slider.js"></script>

@@ -24,7 +24,7 @@ $rownum = 0;
 $arr = array();
 
 if($bio !== NULL) $temparr = checkBio($bio, $searchoptions, $options, $where, $arr);
-if($searchuser !== NULL) $temparr = checkUser($searchuser, $where, $arr);
+// if($searchuser !== NULL) $temparr = checkUser($searchuser, $where, $arr);
 if($platform !== NULL) $temparr =checkPlatform($min,$max,$engmin,$engmax, $where, $arr,$platform);
 $binding = array();
 $params = $arr['term'];
@@ -32,7 +32,7 @@ if($position < 0) $position = 0;
 unset($stmt);
 
 
-$stmt = $conn->prepare("SELECT `id`, `image_url` , `instagram_count`, `instagram_url`, `twitter_url`, `twitter_count`, `facebook_count`,`facebook_url`,`facebook_handle`,`engagement` FROM `Influencer_Information` $where LIMIT $position, 24");
+$stmt = $conn->prepare("SELECT `id`, `image_url` , `instagram_count`, `instagram_url`, `twitter_url`, `twitter_count`, `facebook_count`,`facebook_url`,`facebook_handle`,`youtube_url`,`youtube_count`,`engagement` FROM `Influencer_Information` $where LIMIT $position, 24");
 if($where != ''){
 $types = '';
 foreach($params as $param) {
@@ -52,7 +52,7 @@ call_user_func_array(array($stmt,'bind_param'),makeValuesReferenced($params));
 }
 
 $stmt->execute();
-$stmt->bind_result($id,$image,$instagramcount,$instagramurl,$twitterurl,$twittercount,$facebookcount,$facebookurl, $facebookhandle,$engagement);
+$stmt->bind_result($id,$image,$instagramcount,$instagramurl,$twitterurl,$twittercount,$facebookcount,$facebookurl, $facebookhandle,$youtubeurl,$youtubecount,$engagement);
 $count = 3;
 while($stmt->fetch()){
                 
@@ -84,6 +84,7 @@ while($stmt->fetch()){
                 //setting twitter information 
                 setArrayPlatform($jsonarr,$id,'twitter',$twitterhandle,$twittercount,$twitterengagement,$twitterurl);
                 //at the end we set the image property 
+                setArrayPlatform($jsonarr,$id,'youtube',$youtubeurl,$youtubecount,0,$youtubeurl);
                 $jsonarr->$id->image = $image;
                 
 
@@ -112,11 +113,16 @@ function checkBio($bio, $searchoptions, $options, &$where, &$arr){
 
     foreach($bio as $keyword){
 
-         $tags = '`bio` LIKE ? OR `tags` LIKE ? OR `category` LIKE ? OR `sub_category` LIKE ?';
+         $tags = '`bio` LIKE ? OR `tags` LIKE ? OR `category` LIKE ? OR `sub_category` LIKE ? OR `user` LIKE ? OR `instagram_url` LIKE ? OR `facebook_url` LIKE ? OR `twitter_url` LIKE ? OR `full_name` LIKE ?';
          $arr['term'][] = '%'.$keyword.'%';
          $arr['term'][] = '%'.$keyword.'%';
-         $arr['term'][] = ''.$keyword.'';
-         $arr['term'][] = ''.$keyword.'';
+         $arr['term'][] = '%'.$keyword.'%';
+         $arr['term'][] = '%'.$keyword.'%';
+         $arr['term'][] = '%'.$keyword.'%';
+         $arr['term'][] = '%'.$keyword.'%';
+         $arr['term'][] = '%'.$keyword.'%';
+         $arr['term'][] = '%'.$keyword.'%';
+         $arr['term'][] = '%'.$keyword.'%';
 
 
        if(checkWhere($where))
@@ -146,7 +152,7 @@ function checkPlatform($mininstagram,$maxinstagram,$mineng,$maxeng, &$where, &$a
 
 
 
-function checkUser($user,&$where, &$arr){
+/*function checkUser($user,&$where, &$arr){
     if(checkWhere($where))
     $where .= ' AND (`user` LIKE ? OR `instagram_url` LIKE ? OR `facebook_url` LIKE ? OR `twitter_url` LIKE ? OR `full_name` LIKE ? )';
     else
@@ -158,7 +164,7 @@ function checkUser($user,&$where, &$arr){
     $arr['term'][] = '%'.$user.'%';
     return $arr;
 }
-
+*/
 
 
 
