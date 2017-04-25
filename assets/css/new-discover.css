@@ -41,9 +41,10 @@
     text-align: center;
 }
 .filter-input{
-    max-width:700px;
+    max-width:600px;
     margin: 0 auto;
     margin-top:15px;
+    height:40px;
 }
 
 .influencer-header{
@@ -71,8 +72,6 @@
     margin: 0 auto;
     text-align: center;
     float: none;
-
-
 }
 
 #loading{
@@ -83,18 +82,28 @@
     z-index:1001;
 }
 
+
+
 .tokenfield{
-    max-width:700px !important;
+    /*These are !important because tokenfield( the js library) will override the css */
+    max-width:600px !important;
     margin: 0 auto !important; 
     margin-top:15px !important;
-    
+    height:40px !important;
 }
+
+.tokenfield .token{
+    height:26px !important;
+    margin: 0 5px 5px 0 !important;
+}
+
+
 .button-container{
     text-align: center;
 }
 
 .filter-section{
-    padding-top:30px;
+    padding-top:20px;
 }
 .measure-text{
     float: left;
@@ -112,7 +121,6 @@
     background-color: #73C48D;
     margin-bottom:30px;
 }
-
 
 
 .slider-container{
@@ -156,7 +164,7 @@ clear:both;
     }
 }
 
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 767px) {
     .filter-text{
         font-size: 13px;
     }
