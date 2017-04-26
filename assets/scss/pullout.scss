@@ -31,7 +31,7 @@
     width: 100px;
     height: auto;
     left: -100px;
-    top: 455px;
+    top: 36%;
   }
 
   header {
@@ -52,7 +52,28 @@
       color: $header-grey;
       font-family: $secondary-font;
       font-weight: 600;
+
     }
+
+    #dismiss-button {
+      position: absolute;
+      top: 10px;
+      left: 350px;
+      padding: 0 10px;
+
+      font-size: 21px;
+      color: $avo-green;
+      font-family: $secondary-font;
+      font-weight: 100;
+      border: 2px solid;
+      border-radius: 50%;
+      transition: color .5s ease;
+
+      &:hover {
+        color: $social-following-red;
+      }
+    }
+
   }
 
   button {
@@ -64,6 +85,12 @@
       @include button-box-shadow(null);
     }
   }
+
+  // #dismiss-button {
+  //   width: 18px;
+  //   height: auto;
+  //   float: right;
+  // }
 
   #influencer-pullout-image-container {
     overflow: scroll;

@@ -28,7 +28,7 @@ $(document).ready(function () {
 
     var image = element.attr('data-image');
     var influencerCount = parseInt($('#count').text());
-    //Then we are adding them to our campaign/sidebar. 
+    //Then we are adding them to our campaign/sidebar.
     selectedusers.push(id);
     $('#influencer-pullout-image-container').append('<img class="influencer-pullout-image" data-id="' + id + '" onerror="this.src=`/assets/images/default-photo.png`" src="http://cogenttools.com/' + image + '">');
     element.css('background-color', 'white');
@@ -102,9 +102,16 @@ $(document).ready(function () {
   }
 
   function addButtonHandlers() {
+    $('#dismiss-button').click(function() {dismissPullout();})
+
     $('#remove-button').click(function () { removeSelected(); })
     $('#remove-all-button').click(function () { removeAll(); })
     $('#undo-button').click(function () { undo(); })
+  }
+
+  function dismissPullout() {
+    $("#influencers-pullout").animate({ left: (vw + "px") }, 750);
+    pulledOut = false;
   }
 
   function removeSelected() {

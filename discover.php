@@ -37,12 +37,16 @@ include 'php/numberAbbreviation.php';
 
 <!-- right side bar -->
     <div id="influencers-pullout">
-      <img id="pulltab" src="assets/images/pulltab.png" alt="">
+      <img id="pulltab" src="assets/images/pulltab3.png" alt="">
 
 
       <header>
         <div id="num-influencers">__</div>
-        <div id="header-text"> Influencers in current campaign </div>
+        <div id="header-text">
+          Influencers in current campaign
+        </div>
+        <div id=dismiss-button>x</div>
+
       </header>
 
       <button type="button" name="button" id="calculate">Calculate campaign</button>
