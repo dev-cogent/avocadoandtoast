@@ -208,3 +208,13 @@ $(document).on('click', '.filter-option', function () {
 
     }
 
+
+/** this function was created to read the instahandle info, and either append icon or hide icon
+ *  */
+    function appendIcons($id) {
+            if{( $twitterhandle == null).hide('inst-icon');
+        } else { 
+            console.log('icon should show up')
+        }
+    };
+
