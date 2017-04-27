@@ -1,0 +1,204 @@
+
+
+.stats{
+    color: #73C48D;
+    font-family: 'montserratsemibold';
+    font-size: 40px;
+    font-weight: 600;
+    padding-top: 10px;
+    text-align:center;
+    max-width: 100px;
+
+}
+.label-info{
+
+    color: rgb(29, 40, 76);
+    font-weight: 600;
+    font-size: 13px;
+    font-family: 'open sans';
+    padding-bottom: 10px;
+    text-align:center;
+
+}
+.campaign-details{
+font-size:15px;
+color:rgb(29, 40, 76);
+font-family:'open sans';
+padding-top: 30px;
+width:40%;
+min-width: 300px;
+}
+
+.engagement-count{
+    padding-bottom:0px;
+    margin-bottom:0px;
+}
+
+.invite{
+    margin-left:0%;
+}
+
+
+.btn-campaign-options{
+    color:rgb(29, 40, 76);
+    width: 180px;
+    height: 35px;
+    background-color: white;
+    border: 1px solid black;
+    font-size:12px;
+    margin-right:5px;
+    font-family:'montserratlight';
+    margin-bottom:20px;
+}
+
+.btn-campaign-options-primary{
+    width: 180px;
+    height: 35px;
+    background-color:#73C48D;
+    color:white;
+    border:0px;
+    font-size:12px;
+    margin-right:5px;
+    font-family:'montserratlight';
+    margin-bottom:20px;
+}
+.button-container{
+    padding-left: 25px;
+    border-bottom: 0px;
+    height: 145px;
+    padding-top: 45px;
+}
+
+.campaign-name{
+    padding-left:13px; 
+    padding-bottom:20px; 
+    margin-left:0px; 
+    margin-top: -12px; 
+    color:#73C48D;
+    font-size:30px;
+
+}
+
+.campaign-summary{
+    font-size:13px; 
+    color:rgb(29, 40, 76);
+}
+#campaign-breakdown{
+    height:180px; 
+    padding-bottom:30px; 
+    padding-left:0px;
+    padding-right:0px;
+    border-radius: 4px;
+}
+.campaign-border{
+    border-top:1px solid rgb(210,215,220);
+    border-bottom:1px solid rgb(210,215,220);
+} 
+
+
+
+
+@media only screen and (max-width: 1024px) and (min-width:768px) {
+    .stats {
+        font-size:30px;
+    }
+    .campaign-details{
+        font-size:15px;
+    }
+    .label-info{
+        font-size:15px;
+    }
+
+}
+
+
+@media(max-width:800px) and (min-width:601px) {
+    .button-container{
+        height:230px;
+
+    }
+}
+
+
+/*Laptop to a smaller size. Still large enough to keep all info on screen but we have to make it just a bit smaller. */ 
+@media only screen and (max-width: 768px) and (min-width:600px) {
+        .influencer-card-discover{
+        width:100%;
+    }
+        #campaign-breakdown{
+        height:150px;
+    }
+    .stats {
+        font-size:20px;
+    }
+    .campaign-details{
+        font-size:12px;
+    }
+    .label-info{
+        font-size:12px;
+    }
+
+}
+
+ 
+
+@media only screen and (max-width: 600px) and (min-width:374px) {
+    .button-container{
+        height:230px;
+        text-align:center;
+    }
+}
+
+
+/*Anything smaller then we start getting rid of some information */
+@media only screen and (max-width: 600px) {
+    #campaign-breakdown{
+        height:150px;
+    }
+    .stats {
+        font-size:25px;
+    }
+    .campaign-details{
+        font-size:12px;
+    }
+    .label-info{
+        font-size:12px;
+    }
+
+    .mobile-off{
+        display:none;
+    }
+
+}
+
+
+
+@media(max-width:482px) and (min-width:360px) {
+        .influencer-card-discover{
+        width:100%;
+    }
+    .button-container{
+        height:285px;
+
+    }
+}
+
+
+@media only screen and (max-width: 425px) {
+    .influencer-card-discover{
+        width:100%;
+    }
+    .button-container{
+        padding-right:0px;
+        text-align: center;
+        padding-left:0px;
+    }
+
+}
+
+@media(max-width:360px)  {
+    .button-container{
+        height:400px;
+
+    }
+}

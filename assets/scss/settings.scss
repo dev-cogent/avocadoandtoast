@@ -1,0 +1,206 @@
+@import 'utility';
+
+.update-password-btn {
+    @extend .secondary-button;
+    border-radius: 1px;
+    height: 50px;
+    font-size: 16px;
+}
+
+#uploaded-img{
+    height:150px; 
+    width:150px;
+}
+
+.image-title {
+    margin-top: 110px;
+    margin-left: -285px;
+}
+
+
+
+@media(min-width:900px) and (max-width:1100px) {
+    .settings-box {
+        margin-left: 25%;
+    }
+}
+
+@media(min-width:600px) and (max-width:899px) {
+    .settings-box {
+        margin-left: 30%;
+    }
+    .settings {
+        margin-top: 12%;
+    }
+}
+
+
+
+
+/* iphone 6 media query */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
+
+   .image-title {
+    display:none;
+} 
+    .upload-img{
+        display: block;
+    }
+    input.upload-img-btn.avocado-hover.avocado-focus{
+        width: 44%;
+    }
+
+  }
+
+/* iphone 5 media query*/
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 374px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .form-control{
+        font-size:12px;
+    }
+    .upload-img {
+        display:block;
+      
+    }
+    input.upload-img-btn.avocado-hover.avocado-focus{
+        width: 50%;
+        padding: 4px 15px;
+        margin-left: 5%;
+    }
+
+    .update-password-btn{
+        height: 52px;
+        width: 250px;
+    }
+
+     .update-profile-btn {
+        height: 40px;
+        width: 250px;
+    }
+
+    
+   .uploaded-img-square{
+       width:100px;
+       height:100px;
+   }
+
+   #uploaded-img {
+    height: 100px;
+    width: 100px;
+   }
+   .image-title {
+   display:none;
+}
+/**************************/
+    .settings-lg-col {
+        /*width: 36%;
+        margin-left: 0%;*/
+        margin-top: 5%;
+    }
+    .small-col {
+        width: 40%;
+    }
+    .settings {
+        margin-top: 25%;
+    }
+    .settings-box {
+        margin-left: 35%;
+    }
+
+    .profile-title {
+        font-size: 11px;
+    }
+   
+    .title {
+        width: 120px;
+    }
+   
+}
+
+/* Iphone 5 landscape*/
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+    input.upload-img-btn.avocado-hover.avocado-focus{
+        width: 34%;
+    }
+}
+/* iphone 6+*/
+@media only screen 
+  and (min-device-width: 414px) 
+  and (max-device-width: 736px) 
+  and (-webkit-min-device-pixel-ratio: 3) { 
+    input.upload-img-btn.avocado-hover.avocado-focus{
+        width: 39%;
+    }
+
+
+}
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+
+input.upload-img-btn {
+    width: 220px;
+    height: 50px;
+}
+
+.image-title {
+    margin-top: 100px;
+    margin-left: -230px;
+ }
+
+} 
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 1) { 
+    .image-title {
+        margin-left: -290px;
+        margin-top: 115px;
+    }
+
+
+}
+/* Landscape iphone 6 */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) { 
+    .image-title {
+    margin-top: 103px;
+    margin-left: -265px;
+   }  
+    input.upload-img-btn.avocado-hover.avocado-focus {
+    width: 30%;
+}
+
+
+  }
+
+
+/* Landscape iphone 6+ */
+@media only screen 
+  and (min-device-width: 414px) 
+  and (max-device-width: 736px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: landscape) { 
+   .image-title {
+        display: none;
+    }   
+    input.upload-img-btn.avocado-hover.avocado-focus {
+       width: 29%; 
+  }   
+}
+
+
