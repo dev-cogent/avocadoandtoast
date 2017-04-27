@@ -10,6 +10,7 @@ include 'php/numberAbbreviation.php';
 <head>
   <?php include 'html/head.html' ?>
     <title>Discover | Avocado & Toast</title>
+
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700" rel="stylesheet">
@@ -21,14 +22,15 @@ include 'php/numberAbbreviation.php';
 <script src="/assets/js/avocado-card-functions.js"></script>
 <script src="/assets/js/avocado-calculate.js"></script>
 <script src="assets/js/influencer_pullout.js"></script>
+
 <link rel="stylesheet" href="/assets/js/tokenfield/dist/css/bootstrap-tokenfield.css">
 <link rel="stylesheet" href="/assets/uislider/nouislider.css">
+
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
-<link rel="stylesheet" href="/assets/css/discover.css">
 <link rel="stylesheet" href="/assets/css/sidebar.css">
-<link rel="stylesheet" href="/assets/css/new-discover.css">
 <link rel="stylesheet" href="assets/css/pullout.css">
+<link rel="stylesheet" href="/assets/css/the-real-discover.css">
 
 </head>
 
@@ -92,6 +94,8 @@ include 'php/numberAbbreviation.php';
                     <div class="description-text">Separate tags with commas or by pressing "tab" in the above field. Use double quotes for multi-word tags (e.g. "avocado toast")</div>
                     <div class="button-container">
                         <button class="search-button primary-button" id="search-keyword">SEARCH</button>
+                        <div class="advanced-filter"> Advanced Filtering </div>
+                        <!-- Filtering options will go here -->
                     </div>
             </div>
 
@@ -207,7 +211,7 @@ include 'php/numberAbbreviation.php';
                 $instagramengagement = number_format((($engagement['instagram']['average_engagement']/$instagramcount)*100),2,'.','');
                 $facebookengagement = number_format((($engagement['facebook']['average_engagement']/$facebookcount)*100),2,'.','');
                 echo '
-                    <div  class="influencer-box col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <div  class="influencer-box col-xs-9 col-sm-5 col-md-4 col-lg-3">
                             <div class="influencer-card-discover">
                                 <a href="/profile.php/?id='.$id.'"><img class="influencer-image-card" src="http://cogenttools.com/'.$image.'" onerror="this.src=`/assets/images/default-photo.png`"> </a>
                                 <div class="col-xs-12 influ-bottom" style="" data-id="'.$id.'">
