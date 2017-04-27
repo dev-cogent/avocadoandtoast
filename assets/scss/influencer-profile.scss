@@ -66,8 +66,9 @@
     padding-top: 5px;
     padding-bottom: 31px;
 }
-.social-btn-text{
-    display:inline;
+
+.social-btn-text {
+    display: inline;
 }
 
 .card-discover {
@@ -98,37 +99,35 @@
 }
 
 .tag-btn {
-    color: $header-grey; 
+    color: $header-grey;
 }
 
 .tag {
     text-align: center;
     text-transform: uppercase;
     width: 132px;
-    max-width: 100%; 
+    max-width: 100%;
     height: 30px;
     font-size: 14px;
-    border: 1px solid black; 
-    background-color: white; 
+    border: 1px solid black;
+    background-color: white;
     border-radius: 0;
     line-height: 23px;
     margin-top: 3%;
     margin-right: 2%;
-
 }
 
 .fb-feed-card {
-    width:  96%;
+    width: 96%;
     margin-top: 15px;
     height: 330px;
     border: 1px solid $separator-grey;
     border-radius: 3px;
     color: $body-black;
     &:hover {
-    border: 1px solid $avo-green;
+        border: 1px solid $avo-green;
     }
 }
-
 
 .fb-card {
     height: 375px;
@@ -136,7 +135,7 @@
     max-width: 100%;
     max-height: 240px;
     object-fit: cover;
-    object-position: 0 12%; 
+    object-position: 0 12%;
     background-position: 50%;
     background-image: url('/assets/images/default-photo.png');
 }
@@ -191,108 +190,106 @@ img.share-green {
 }
 
 // @media () and (max-width:767px){
-
 // }
-
-@media (min-width:768px) and (max-width: 991px){
+@media (min-width:768px) and (max-width: 991px) {
     .influencer-card-container {
-        padding-right:0;
+        padding-right: 0;
         margin-left: 30px;
     }
-    .col-md-8.social-collage{
+    .col-md-8.social-collage {
         margin-left: 3%;
     }
-
 }
 
 @media (min-width:992px) and (max-width:1200px) {
     .col-md-3.influencer-card-container {
-    width: 31.3% 
+        width: 31.3%
     }
 }
 
-
-
-
-
-
-@media(max-width:480px){
-     .influencer-card-container{
-        margin-left: 0; 
-        padding-top: 35px; 
-        padding-left: 20px; 
-        padding-right: 20px; 
+@media(max-width:480px) {
+    .influencer-card-container {
+        margin-left: 0;
+        padding-top: 35px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
-    div.social-btn-text, .followers-text {
-        display:none; 
+    div.social-btn-text,
+    .followers-text {
+        display: none;
     }
-    .icons{
-        padding-top: 10px; 
+    .icons {
+        padding-top: 10px;
     }
-    .tag{
-       float: none;   
+    .tag {
+        float: none;
     }
-    .social-button{
-        height: 37px; 
+    .social-button {
+        height: 37px;
     }
-    .platform-container{
-        margin-top: 6%; 
+    .platform-container {
+        margin-top: 6%;
     }
-    .instagram-logo-green, .twitter-logo-green, .facebook-logo-green{
+    .instagram-logo-green,
+    .twitter-logo-green,
+    .facebook-logo-green {
         width: 30px;
     }
-    .youtube-logo-green{
-        width: 43px; 
+    .youtube-logo-green {
+        width: 43px;
     }
-    i.switch.show-facebook.inst-icon.icon.bd-facebook, i.switch.show-instagram.inst-icon.icon.bd-instagram,i.switch.show-twitter.inst-icon.icon.bd-twitter{
-        font-size:19px; 
-    }  
-    .insthandle-text{
-        font-size: 23px; 
+    i.switch.show-facebook.inst-icon.icon.bd-facebook,
+    i.switch.show-instagram.inst-icon.icon.bd-instagram,
+    i.switch.show-twitter.inst-icon.icon.bd-twitter {
+        font-size: 19px;
     }
-    .follower-count, .engagement-count {
-        font-size:17px; 
+    .insthandle-text {
+        font-size: 23px;
+    }
+    .follower-count,
+    .engagement-count {
+        font-size: 17px;
     }
     .inf-number {
-        font-size: 19px; 
-        margin-bottom: 13%; 
-    }
-
-    i.button-icon.icon.bd-instagram, i.button-icon.icon.bd-facebook, i.button-icon.icon.bd-twitter{
         font-size: 19px;
-        vertical-align: middle;  
-        margin-left: 12px; 
+        margin-bottom: 13%;
     }
-    .button-container{
-        padding-right:8px;
+    i.button-icon.icon.bd-instagram,
+    i.button-icon.icon.bd-facebook,
+    i.button-icon.icon.bd-twitter {
+        font-size: 19px;
+        vertical-align: middle;
+        margin-left: 12px;
     }
-    .image-container{
-        padding-right: 0; 
+    .button-container {
+        padding-right: 8px;
+    }
+    .image-container {
+        padding-right: 0;
     }
     .button-container.twitter-platform {
-        padding-right: 0; 
+        padding-right: 0;
     }
-    div#facebook{
-        margin-top: -20px; 
+    div#facebook {
+        margin-top: -20px;
     }
-    .fb-feed-card{
+    .fb-feed-card {
         height: 385px;
         width: 100%;
     }
-    .fb-card{
+    .fb-card {
         max-height: 295px;
     }
-    
-
 }
 
- /* landscape mobile viewz */ 
- @media (max-width:740px) and (orientation:landscape){
-     .influencer-card-container{
-         margin-left: 13%; 
-     }
 
- }
+/* landscape mobile viewz */
+
+@media (max-width:740px) and (orientation:landscape) {
+    .influencer-card-container {
+        margin-left: 13%;
+    }
+}
 
 @media(min-width:600px) and(max-width:770px) {
     .col-sm-9.social-content,

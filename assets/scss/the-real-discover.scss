@@ -1,0 +1,778 @@
+/* Hello folks, sit down and relax because this is the real discover scss sheet */
+
+@import 'utility';
+.sidebar-left {
+    float: left;
+    background-color: $header-grey;
+    height: 100%;
+    max-width: 55px;
+    min-width: 50px;
+    position: absolute;
+    z-index: 1;
+    min-height: 100%;
+}
+
+.filter-container {
+    height: 360px;
+    /*width:75%;*/
+    border: 1px solid rgb(210, 215, 220);
+    padding-left: 90px;
+    padding-top: 15px;
+    float: left;
+}
+
+.user-container {
+    border-top: 1px solid rgb(210, 215, 220);
+    border-bottom: 0px;
+    height: 100%;
+    padding-left: 26px;
+    padding-right: 25px;
+    min-height: 100%;
+    float: right;
+}
+
+.desc-header {
+    font-size: 25px;
+    color: #515862;
+    font-weight: 100;
+    /*font-family: $secondary-font; */
+    letter-spacing: 0.5px;
+}
+
+#searchA {
+    /*width:44%;*/
+    padding-left: 10px;
+    display: inline-block;
+    float: left;
+}
+
+#searchB {
+    display: inline-block;
+    /*width: 44%;*/
+    float: left;
+}
+
+.filter-text {
+    font-size: 20px;
+    color: $header-grey;
+    font-family: $secondary-font;
+    font-weight: 400;
+    padding-left: 0px;
+    min-width: 135px;
+}
+
+.category {
+    border: 1px solid $header-grey;
+    border-radius: 1px;
+    color: $body-black;
+    font-family: $secondary-font;
+    min-width: 150px;
+}
+
+.search {
+    width: 35%;
+    border-radius: 1px;
+    border: 0;
+    color: white;
+    background-color: white;
+    height: 50px;
+    font-size: 16px;
+    font-family: $main-font;
+    background-color: $avo-green;
+    margin-left: 31%;
+    &:hover {
+        color: white !important;
+        border: 1px solid $avo-green;
+        box-shadow: 0 0 10px $avo-green;
+    }
+    &:focus {
+        outline: none !important;
+        border: 1px solid $avo-green;
+        box-shadow: 0 0 10px $avo-green;
+    }
+}
+
+#divider {
+    float: left;
+    padding-left: 0.2%;
+}
+
+#divider1 {
+    background-color: rgb(210, 215, 220);
+    height: 104px;
+    width: 2px;
+    margin-left: 7px;
+    margin-top: 12px;
+}
+
+#divider2 {
+    background-color: rgb(210, 215, 220);
+    height: 104px;
+    width: 2px;
+    margin-left: 7px;
+}
+
+.description-text {
+    color: $inactive-grey;
+    /*font-family: $secondary-font; */
+    font-weight: 100;
+    margin-top: 1rem;
+    font-size: 13px;
+    padding-left: 0px;
+    text-align: center;
+    padding-right: 0px;
+}
+
+#count {
+    color: $avo-green;
+    font-size: 40px;
+    font-family: $main-font;
+    font-weight: 600;
+    display: inline;
+    padding-left: 15px;
+}
+
+#viewall {
+    display: inline;
+    float: right;
+    height: 35px;
+    margin-top: 12px;
+    width: 100px;
+    background-color: white;
+    color: $body-black;
+    border: 1px solid $body-black;
+    &:focus {
+        outline: none !important;
+        border: 1px solid $avo-green;
+        color: $avo-green;
+        box-shadow: 0 0 10px $avo-green;
+    }
+    &:hover {
+        border: 1px solid $avo-green;
+        color: $avo-green;
+    }
+}
+
+#added-influencers {}
+
+.influencer-add-image {
+    height: 75px;
+    width: 75px;
+    padding-right: 1px;
+    padding-bottom: 1px;
+}
+
+.noUi-connect {
+    background: $header-grey;
+    box-shadow: inset 0 0 3px rgba(51, 51, 51, 0.45);
+    transition: background 450ms;
+}
+
+.noUi-handle {
+    border-radius: 30px;
+    background: $inactive-grey;
+    cursor: default;
+    width: 20px;
+    height: 20px;
+    box-shadow: none;
+    border: 0px;
+}
+
+.noUi-base {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.influencer-card-discover {
+    height: 65%;
+    border: 1px solid rgb(210, 215, 220);
+    float: left;
+    width: 88%;
+    margin-bottom: 30px;
+    padding-right: 0px;
+    padding-left: 0px;
+    &:hover {
+        border: 1px solid $avo-green;
+    }
+}
+
+.influencer-image-card {
+    max-width: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: 0 33%;
+    object-position: 0 33%;
+}
+
+.noUi-horizontal .noUi-handle {
+    width: 20px;
+    height: 20px;
+    left: -17px;
+    top: -6px;
+    height: 1;
+}
+
+.divider-text {
+    color: black;
+    font-size: 18px;
+    margin-bottom: 2px;
+}
+
+#search-influencer {
+    margin-top: 120px;
+    width: 110%;
+}
+
+.measure-text {
+    font-size: 13px;
+    font-family: $main-font;
+    color: $header-grey;
+    font-weight: 600;
+    padding-left: 11px;
+    min-width: 120px;
+}
+
+#text-container {
+    padding-right: 5.5%;
+    display: inline;
+    float: left;
+    padding-left: 0px;
+}
+
+#additional-influencers {
+    margin-left: 40%;
+    height: 40px;
+    width: 100px;
+    background-color: $avo-green;
+    border: 0px solid black;
+    color: white;
+    margin-top: -10%;
+}
+
+#slider-instagram {
+    height: 12px;
+    margin-top: 5px;
+    margin-left: -4%;
+    padding-right: 0px;
+}
+
+#slider-instagram-engagement {
+    height: 12px;
+    margin-top: 5px;
+    margin-left: -4%;
+    padding-right: 0px;
+}
+
+#slider-twitter {
+    height: 12px;
+    margin-top: 5px;
+    margin-left: -4%;
+    padding-right: 0px;
+}
+
+#slider-twitter-engagement {
+    height: 12px;
+    margin-top: 5px;
+    margin-left: -4%;
+    padding-right: 0px;
+}
+
+#slider-facebook {
+    height: 12px;
+    margin-top: 5px;
+    margin-left: -4%;
+    padding-right: 0px;
+}
+
+#slider-facebook-engagement {
+    height: 12px;
+    margin-top: 5px;
+    margin-left: -4%;
+    padding-right: 0px;
+}
+
+#influ-result {
+    margin-top: 5px;
+    color: $inactive-grey;
+    font-weight: 100;
+    font-size: 14px;
+}
+
+.influencer-box {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.insthandle-text {
+    font-family: $main-font-skinny;
+    letter-spacing: 0px;
+    text-align: center;
+    font-size: 19px;
+    display: inline;
+    max-width: 20px;
+    color: $header-grey;
+}
+
+.follower-count {
+    text-align: center;
+    font-size: 14px;
+    font-family: $main-font-skinny;
+    font-weight: 200;
+    margin-top: -5px;
+    color: $header-grey;
+}
+
+.engagement-count {
+    text-align: center;
+    font-size: 14px;
+    font-family: $main-font-skinny;
+    font-weight: 200;
+    margin-top: -17px;
+    padding-bottom: 5px;
+    color: $header-grey;
+}
+
+.invite {
+    height: 35px;
+    padding-top: 5px;
+    width: 36px;
+    margin-left: 39%;
+    border-radius: 32px;
+    background-color: #e0e0e0;
+}
+
+.insthandle-info {
+    text-align: center;
+    padding-bottom: 6px;
+    min-height: 35px;
+}
+
+.inst-icon {
+    height: 12px;
+    width: 12px;
+    display: inline;
+    margin-right: 15px;
+    margin-bottom: 5px;
+}
+
+.thumb-up {
+    display: inline;
+    width: 20px;
+    height: 20px;
+    margin-right: 14px;
+    margin-left: -30px;
+    margin-bottom: 7px;
+}
+
+.input-filter {
+    border: 0px;
+    color: $header-grey;
+    padding-left: 0px;
+    padding-right: 0px;
+    &:focus {
+        outline: none;
+        background-color: transparent;
+    }
+}
+
+.tokenfield {
+    position: inherit;
+    margin-top: 14px;
+    height: 35px;
+    border: 1px solid $header-grey;
+    border-radius: 1px;
+    color: $body-black;
+    font-family: $secondary-font;
+    min-width: 150px;
+    &.focus {
+        outline: none !important;
+        border: 1px solid $avo-green;
+    }
+}
+
+.token {
+    border: 1px solid $header-grey !important;
+    background-color: white !important;
+    color: $header-grey;
+    font-family: $secondary-font;
+    font-weight: 600;
+    &:hover {
+        border: 1px solid $avo-green !important;
+        color: $avo-green;
+    }
+}
+
+.close {
+    margin-left: 5px;
+    padding-left: 10px;
+    border-left: 1px solid $header-grey;
+    &:hover {
+        color: $avo-green;
+    }
+}
+
+#fixed-position {
+    padding-right: 29px;
+    position: relative;
+    border-left: 1px solid rgb(210, 215, 220);
+    margin-left: -27px;
+    padding-left: 20px;
+    height: 100%;
+    overflow: scroll;
+}
+
+.hidden-influencers {
+    display: none;
+}
+
+.icons {
+    text-align: center;
+    margin-left: 8px;
+    padding-top: 6px;
+}
+
+.filter-option-text {
+    position: absolute;
+    padding-left: 13%;
+    color: white;
+    font-family: $main-font-skinny;
+    font-size: 12px;
+    padding-top: 3px;
+}
+
+.remove-influencer {
+    font-size: 34px;
+    margin-top: -15px;
+    color: $avo-green;
+}
+
+.influencer-card-discover {
+    height: 65%;
+    border: 1px solid rgb(210, 215, 220);
+    float: left;
+    width: 88%;
+    margin-bottom: 30px;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.influencer-image-card {
+    max-width: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: 0 33%;
+    object-position: 0 33%;
+}
+
+.influ-bottom {
+    height: 170px;
+}
+
+.button-icon {
+    padding-right: 25px;
+    padding-left: 10px;
+    font-size: 30px;
+    @media (max-width: 1350px) {
+        padding-right: 10px;
+    }
+}
+
+.engagement-slider {
+    margin-top: 13px;
+}
+
+
+/* Overlay styiling  */
+
+.overlay {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow-y: hidden;
+    a {
+        padding: 8px;
+        text-decoration: none;
+        font-size: 36px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+        &:hover,
+         :focus {
+            color: #f1f1f1;
+        }
+    }
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+    .overlay {
+        overflow-y: auto;
+        a {
+            font-size: 20px;
+        }
+    }
+    .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
+}
+
+.button-icon-active {
+    color: $avo-green;
+}
+
+.description-text {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    color: $inactive-grey;
+    font-weight: 100;
+    font-size: 13px;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.discover-header {
+    color: #515862;
+    text-align: center;
+    font-size: 45px;
+    font-family: $main-font;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+#engagement-text {
+    margin-top: 15px;
+}
+
+.filter-button-container {
+    padding-bottom: 20px;
+}
+
+.filter-text {
+    font-size: 20px;
+    color: $header-grey;
+    font-family: $secondary-font;
+    font-weight: 400;
+    padding-left: 0px;
+    min-width: 135px;
+    text-align: center;
+}
+
+.filter-input {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 15px;
+    height: 40px;
+}
+
+.influencer-header {
+    color: #515862;
+    font-family: $main-font;
+    font-weight: 600;
+    font-size: 23px;
+    padding-left: 12px;
+    padding-bottom: 20px;
+}
+
+.influencer-results-container {
+    height: 360px;
+    border-top: 1px solid rgb(210, 215, 220);
+    padding-left: 50px;
+    padding-top: 20px;
+}
+
+.invite {
+    height: 35px;
+    padding-top: 5px;
+    width: 36px;
+    border-radius: 32px;
+    background-color: #e0e0e0;
+    margin: 0 auto;
+    text-align: center;
+    float: none;
+}
+
+#loading {
+    display: none;
+    top: 31%;
+    left: 43%;
+    position: fixed;
+    z-index: 1001;
+}
+
+.tokenfield {
+    /*These are !important because tokenfield( the js library) will override the css */
+    max-width: 600px !important;
+    margin: 0 auto !important;
+    margin-top: 15px !important;
+    height: 40px !important;
+}
+
+// .tokenfield .token {
+//     height: 26px !important;
+//     margin: 0 5px 5px 0 !important;
+// }
+.button-container {
+    text-align: center;
+}
+
+.filter-section {
+    padding-top: 20px;
+}
+
+.measure-text {
+    float: left;
+    min-width: 150px;
+}
+
+.search-button {
+    width: 300px;
+    border-radius: 1px;
+    border: 0px;
+    color: white;
+    background-color: white;
+    height: 50px;
+    font-size: 16px;
+    font-family: $main-font;
+    background-color: $avo-green;
+    margin-bottom: 30px;
+}
+
+.slider-container {
+    width: 80%;
+    &:after {
+        display: table;
+        content: "";
+        clear: both;
+    }
+}
+
+.sliders {
+    float: left;
+    width: 80%;
+}
+
+@media only screen and (max-width: 700px) {
+    .discover-header {
+        font-size: 35px;
+    }
+    .filter-text {
+        font-size: 16px;
+    }
+    .filter-input {
+        max-width: 425px;
+    }
+    .tokenfield {
+        max-width: 425px !important;
+    }
+    .description-text {
+        max-width: 425px;
+    }
+}
+
+@media only screen and (max-width: 1000px) and (min-width: 768px) {
+    .measure-text {
+        min-width: 0px;
+    }
+}
+
+@media(min-width:1px) and (max-width:479px) {
+    .influencer-box {
+        margin-left: 7%;
+    }
+}
+
+@media (min-width:480px) and (max-width: 767px) {
+    .influencer-box {
+        margin-left: 4%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .filter-text {
+        font-size: 13px;
+    }
+    .description-text {
+        font-size: 11px;
+    }
+    .influencer-results-container {
+        padding-left: 0px;
+    }
+    .influencer-header {
+        text-align: center;
+        font-size: 20px;
+    }
+    .filter-button-container {
+        text-align: center;
+    }
+    .button-icon {
+        font-size: 20px;
+        padding-left: 20px;
+    }
+    .measure-text {
+        float: none;
+        text-align: center;
+        padding-left: 0px;
+    }
+    .sliders {
+        float: none;
+        margin: 0 auto;
+    }
+    .slider-container {
+        width: 100%;
+    }
+    .found-influencers {
+        padding-right: 0px;
+    }
+    .influencer-card-discover {
+        width: 100%;
+    }
+}
+
+.active-platform {
+    color: $avo-green;
+}
+
+.disable-platform {
+    display: none;
+}
+
+.active-handle-information {
+    display: unset;
+}
+
+ .advanced-filter{
+
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: -20px;
+    padding-bottom: 10px;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing:0px;
+
+}
