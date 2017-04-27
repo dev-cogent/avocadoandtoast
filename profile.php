@@ -146,22 +146,23 @@ $id = $_GET['id'];
   <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 platform-container">
  <div class="social-container">
  <div class="inf-number"> 93.3m <br> <span class="followers-text"> followers </span> </div>
-   <img src="/assets/images/instagram-logo-green.png" class="instagram-logo-green"> </div> </div>
+  <a class="social-profile-tab" data-platform="instagram" data-handle="'.$insthandle.'" > <img src="/assets/images/instagram-logo-green.png" class="instagram-logo-green"> </a> </div> </div>
+
+ <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 platform-container">
+   <div class="social-container">
+   <div class="inf-number"> 93.3m <br> <span class="followers-text"> followers </span> </div>
+  <a class="social-profile-tab" data-platform="facebook" data-handle="'.$facebookhandle.'"> <img src="/assets/images/fb-logo-green.png" class="facebook-logo-green"> </a>  </div> </div>
+
 
  <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 platform-container">
   <div class="social-container">
   <div class="inf-number"> 51.3m <br><span class="followers-text"> followers </span> </div>
-    <img src="/assets/images/twitter-logo-green.png" class="twitter-logo-green"> </div> </div>
-
-  <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 platform-container">
-   <div class="social-container">
-   <div class="inf-number facebook"> 93.3m <br> <span class="followers-text"> followers </span> </div>
-     <img src="/assets/images/fb-logo-green.png" class="facebook-logo-green"> </div> </div>
+    <a class="social-profile-tab" data-platform="twitter" data-handle="'.$twitterhandle.'"> <img src="/assets/images/twitter-logo-green.png" class="twitter-logo-green"> </a> </div> </div>
 
    <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 platform-container">
     <div class="social-container">
-    <div class="inf-number youtube"> 200k <br> <span class="followers-text"> followers </span> </div>
-      <img src="/assets/images/youtube-icon-green.png" class="youtube-logo-green"> </div> </div>
+    <div class="inf-number"> 200k <br> <span class="followers-text"> followers </span> </div>
+    <a class="social-profile-tab" data-platform="youtube" data-handle="">  <img src="/assets/images/youtube-icon-green.png" class="youtube-logo-green"> </a>  </div> </div>
 
 </div>
     <div class="col-xs-12 col-sm-12 col-lg-12 social-buttons">';
