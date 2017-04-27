@@ -1,0 +1,116 @@
+// FONTS
+$main-font: 'Montserrat',
+sans-serif;
+$main-font-semi: 'montserratsemibold',
+sans-serif;
+$main-font-skinny: 'montserratlight',
+sans-serif;
+$secondary-font: 'Open Sans',
+sans-serif;
+// COLORS
+$avo-green: #73C48D;
+$avo-green-active: #63AB80;
+$header-grey: #30363F;
+$body-black: #1F232A;
+$inactive-grey: #A2A8B1;
+$separator-grey: #d2d7dc;
+$separator-lightgrey: #efefef;
+$impression-blue: rgb(50, 157, 223);
+$engagement-orange: rgb(255, 139, 104);
+$social-following-red: rgb(231, 72, 69);
+//SEPARATORS:
+// usage:
+// .some-element { @include separator("bottom", $separator-grey); }
+@mixin separator($position, $color) {
+    border-#{$position}: 1px solid $color;
+}
+
+//BUTTONS:
+//BUTTON MIXINS
+@mixin button-box-shadow($color) {
+    @if $color {
+        &:hover {
+            box-shadow: 0px 0px 3px $color;
+        }
+        &:active {
+            box-shadow: 0px 0px 0px white;
+        }
+    }
+    @else {
+        &:hover {
+            box-shadow: 0px 0px 0px white;
+        }
+        &:active {
+            box-shadow: 0px 0px 0px white;
+        }
+    }
+}
+
+// PLACEHOLDER CLASSES
+%basic-button {
+    border-radius: 1px;
+    font-family: $main-font;
+    transition: background .5s, box-shadow .3s;
+    &:focus {
+        outline: none;
+    }
+}
+
+%x-button {
+  font-size: 21px;
+  color: $avo-green;
+  font-family: $secondary-font;
+  font-weight: 100;
+  border: 2px solid;
+  border-radius: 50%;
+  transition: color .5s ease;
+
+  cursor: pointer;
+
+  &:hover {
+    color: $social-following-red;
+  }
+}
+
+//ACTUAL BUTTON CLASSES
+.primary-button {
+    border: none;
+    @extend %basic-button;
+    background: $avo-green;
+    color: white;
+    @include button-box-shadow($avo-green-active);
+}
+
+.secondary-button {
+    @extend %basic-button;
+    border: 1px solid $header-grey;
+    background: white;
+    color: $header-grey;
+    @include button-box-shadow($avo-green-active);
+    transform: rotate(0deg);
+    &:hover {
+        border: 1px solid $avo-green-active;
+        color: $avo-green-active;
+        animation-name: gocrazy;
+        animation-duration: 45s;
+        animation-iteration-count: infinite;
+    }
+}
+
+@keyframes gocrazy {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+// UTILITY MIXINS
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}

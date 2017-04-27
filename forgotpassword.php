@@ -3,7 +3,7 @@ session_start();
 session_destroy();
 unset($_SESSION);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-include 'includes/forgot.php';
+include 'php/forgot.php';
 
 }
 
@@ -134,15 +134,15 @@ border-radius:0px;
 }
 
 </style>
-  <?php include 'includes/head.php' ?>
+  <?php include 'html/head.html' ?>
     <title>Login | Avocado & Toast</title>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700" rel="stylesheet">
 <script src="/assets/wnumb/wNumb.js"></script>
 <script src="/assets/uislider/nouislider.js"></script>
-<script src="/includes/javascript/tokenfield/dist/bootstrap-tokenfield.js"></script>
-<link rel="stylesheet" href="/includes/javascript/tokenfield/dist/css/bootstrap-tokenfield.css">
+<script src="/assets/js/tokenfield/dist/bootstrap-tokenfield.js"></script>
+<link rel="stylesheet" href="/assets/js/tokenfield/dist/css/bootstrap-tokenfield.css">
 <link rel="stylesheet" href="/assets/uislider/nouislider.css">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">

@@ -1,0 +1,103 @@
+@import 'utility';
+
+
+.content {
+  min-width: 100%;
+  min-height: 100%;
+  padding: 40px;
+  background-color: #fff;
+  position: relative;
+  top: 0;
+  bottom: 100%;
+  left: 0;
+  z-index: 1;
+}
+
+#influencers-pullout {
+  font-family: $main-font;
+  position: fixed;
+  z-index: 200;
+  left: 100vw;
+  height: 100%;
+  width: 400px;
+  padding: 10px;
+  user-select: none;
+  background: white;
+  border-left: 5px solid $avo-green;
+
+
+  #pulltab {
+    position: absolute;
+    width: 65px;
+    height: auto;
+    left: -65px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    cursor: pointer;
+  }
+
+  header {
+    @include clearfix;
+    margin-bottom: 15px;
+
+    #num-influencers {
+      float: left;
+      color: $avo-green;
+      font-size: 68px;
+      font-weight: 600;
+      line-height: 62px;
+      margin-right: 12px;
+    }
+
+    #header-text {
+      font-size: 21px;
+      color: $header-grey;
+      font-family: $secondary-font;
+      font-weight: 600;
+
+    }
+
+    #dismiss-button {
+      @extend %x-button;
+      position: absolute;
+      top: 10px;
+      left: 345px;
+      padding: 0 10px;
+    }
+
+  }
+
+  button {
+    @extend .primary-button;
+    padding: 12px;
+
+    &.greyed-out {
+      background: $inactive-grey;
+      @include button-box-shadow(null);
+    }
+  }
+
+  #action-buttons {
+    margin-top: -10.5px;
+  }
+
+  #influencer-pullout-image-container {
+    overflow: scroll;
+    height: calc(100vh - 230px); // height equals vh minus height of other shit
+    margin: 5% 0 5% 0;
+
+    .influencer-pullout-image {
+      border-radius: 50%;
+      width: 21%;
+      height: auto;
+      margin: 0 3% 3% 0;
+      border: 2.5px solid rgba(0,0,0,0);
+    }
+
+    .image-selected {
+      border: 2.5px solid $avo-green;
+    }
+  }
+
+}

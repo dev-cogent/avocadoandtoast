@@ -3,7 +3,7 @@ session_start();
 session_destroy();
 unset($_SESSION);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-include 'includes/verify.php';
+include 'php/verify.php';
 
 }
 
@@ -110,8 +110,7 @@ border-radius:0px;
     color:#515862; 
     letter-spacing: 2px; 
     font-size:55px; 
-    padding-bottom:50px; 
-    padding-top:25px;
+    padding-bottom:11px; 
 }
 
 @media screen and (max-width:480px){
@@ -134,15 +133,13 @@ border-radius:0px;
 }
 
 </style>
-  <?php include 'includes/head.php' ?>
+  <?php include 'html/head.html' ?>
     <title>Login | Avocado & Toast</title>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700" rel="stylesheet">
 <script src="/assets/wnumb/wNumb.js"></script>
 <script src="/assets/uislider/nouislider.js"></script>
-<script src="/includes/javascript/tokenfield/dist/bootstrap-tokenfield.js"></script>
-<link rel="stylesheet" href="/includes/javascript/tokenfield/dist/css/bootstrap-tokenfield.css">
 <link rel="stylesheet" href="/assets/uislider/nouislider.css">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
@@ -172,7 +169,7 @@ border-radius:0px;
                 <br/>
                 <button class="form-control" id="login-button"> SIGN IN </button>
                 </form>
-                <a href="/register.php" style="text-decoration:none;"><button class="form-control" id="register-button" > REGISTER </button></a>
+                <a href="/signup.php" style="text-decoration:none;"><button class="form-control" id="register-button" > REGISTER </button></a>
     </div>
 </div>
 

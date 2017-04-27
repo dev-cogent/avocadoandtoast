@@ -1,17 +1,13 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-include 'includes/registerinfo.php';
+include 'php/registerinfo.php';
 }
 
 ?>
 <!DOCTYPE html>
 <head>
-  <?php include 'includes/head.php' ?>
+  <?php include 'html/head.html' ?>
     <title>Sign Up | Avocado & Toast</title>
-<script src="/bootbox/bootbox.js"></script>
-<script src="/includes/javascript/savecampaign.js"></script>
-<script src="/includes/javascript/addtolist.js"></script>
-<script src="/global/vendor/bootstrap/bootstrap.js"></script>
 <style>
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color:    #C7C7CD !important;
@@ -229,4 +225,4 @@ include 'includes/registerinfo.php';
 
     </footer>
 
-<script src="/includes/javascript/signup.js"></script>
+<script src="/assets/js/signup.js"></script>

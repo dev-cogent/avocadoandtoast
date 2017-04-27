@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <head>
-  <?php include 'includes/head.php' ?>
+  <?php include 'html/head.html' ?>
     <title>Avocado & Toast</title>
-<script src="/bootbox/bootbox.js"></script>
-<script src="/includes/javascript/savecampaign.js"></script>
-<script src="/includes/javascript/addtolist.js"></script>
-<script src="/global/vendor/bootstrap/bootstrap.js"></script>
 </head>
 
 
@@ -142,4 +138,4 @@
     </div>
 
 
-    <?php include 'acfooter.php'; ?>
+    <?php include 'html/main-footer.html'; ?>
