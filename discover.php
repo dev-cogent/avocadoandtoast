@@ -51,6 +51,7 @@ include 'php/numberAbbreviation.php';
 
       <button type="button" name="button" id="calculate">Calculate campaign</button>
 
+
       <div  id="influencer-pullout-image-container">
 
 
