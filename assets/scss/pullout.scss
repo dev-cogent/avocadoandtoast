@@ -23,15 +23,18 @@
   padding: 10px;
   user-select: none;
   background: white;
-  border-left: 8px solid $avo-green;
+  border-left: 5px solid $avo-green;
 
 
   #pulltab {
     position: absolute;
-    width: 100px;
+    width: 65px;
     height: auto;
-    left: -100px;
-    top: 455px;
+    left: -65px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    cursor: pointer;
   }
 
   header {
@@ -52,17 +55,31 @@
       color: $header-grey;
       font-family: $secondary-font;
       font-weight: 600;
+
     }
+
+    #dismiss-button {
+      @extend %x-button;
+      position: absolute;
+      top: 10px;
+      left: 345px;
+      padding: 0 10px;
+    }
+
   }
 
   button {
     @extend .primary-button;
-    padding: 10px;
+    padding: 12px;
 
     &.greyed-out {
       background: $inactive-grey;
       @include button-box-shadow(null);
     }
+  }
+
+  #action-buttons {
+    margin-top: -10.5px;
   }
 
   #influencer-pullout-image-container {

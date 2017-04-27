@@ -1,0 +1,241 @@
+@import 'utility';
+.avo-nav {
+    text-align: right;
+    padding-right: 30px;
+}
+
+.avo-navtabs {
+    font-family: $main-font;
+    font-size: 16px;
+    display: inline;
+    letter-spacing: 1px;
+    font-weight: 400;
+    line-height: 65px;
+    padding-right: 20px;
+    .link-pages {
+        text-decoration: none;
+        color: rgb(70, 70, 70);
+         :hover {
+            text-decoration: none;
+            background-color: transparent;
+        }
+    }
+    .active-tab {
+        color: $avo-green !important;
+    }
+}
+
+.bar-settings {
+    color: rgb(70, 70, 70);
+    text-align: center;
+    font-size: 25px;
+    margin-left: 5px;
+    height: 20px;
+    padding-top: 20px;
+}
+
+.campaign-nav,
+.create-nav,
+.discover-nav,
+.price-nav,
+{
+    color: rgb(29, 40, 76);
+}
+
+.collapse-icon.dropdown {
+    display: none;
+}
+
+.discover-nav {
+    padding-bottom: 21px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    margin-top: -10px;
+}
+
+.dropdown-content a {
+    color: rgb(70, 70, 70);
+    display: block;
+    font-family: $main-font;
+    font-size: 16px;
+    font-weight: 400;
+    height: 20px;
+    letter-spacing: 1px;
+    margin-left: 5px;
+    padding: 15px 20px 60px 20px;
+    text-align: center;
+    text-decoration: none;
+     :hover {
+        background-color: #f1f1f1
+    }
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.floater-border {
+    position: relative;
+    margin-bottom: -10px;
+    margin-top: -5px;
+}
+
+.link-pages {
+    text-decoration: none;
+    color: rgb(70, 70, 70);
+     :hover {
+        text-decoration: none;
+        background-color: transparent;
+    }
+}
+
+.logo-container {
+    height: 66px;
+    margin-top: -14px;
+}
+
+.nav-bottom {
+    height: 25px;
+    position: relative;
+    /*border-bottom: 1px solid rgb(210, 215, 220);*/
+    background-color: $avo-green;
+}
+
+i.icon.pe-close {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+i.input-search-icon.wb-search {
+    color: #515862;
+    position: relative;
+    top: 2px;
+    padding-right: 2%;
+    font-size: 16px;
+    right: -5px;
+}
+
+i.fa.fa-bars.bar-settings {
+    font-size: 24px;
+}
+
+a#search {
+    padding: relative;
+    top: 2px;
+    font-size: 18px;
+}
+
+div.search-bar {
+    width: 100%;
+    margin-top: 50px;
+    height: 75px;
+    background: $avo-green;
+    box-sizing: border-box;
+    padding: 0 50px;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
+a#close-search-bar {
+    position: absolute;
+    right: 25px;
+    top: 15px;
+    text-decoration: none;
+    color: white;
+    background: transparent;
+    border: 1px solid white;
+    padding-top: 1px;
+    padding-left: 3px;
+    padding-right: 3px;
+    transition: all 0.2s ease-in-out;
+    font-weight: bold;
+     :hover {
+        color: #131418;
+        background: white;
+        border: 1px solid white;
+    }
+}
+
+input[type=text].search-placeholder {
+    margin: 15px auto;
+    width: 100%;
+    height: 50px;
+    outline: 0;
+    border: 0;
+    font-size: 36px;
+    padding: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+    background: transparent;
+    color: white;
+    font-family: $main-font;
+}
+
+input[type=text] ::-webkit-input-placeholder
+/* Chrome/Opera/Safari */
+
+{
+    color: white;
+}
+
+@media(min-width:650px) and (max-width:900px) {
+    .avo-navtabs {
+        padding-right: 10px;
+        font-size: 14px;
+    }
+    .avo-nav {
+        padding-right: 20px;
+    }
+}
+
+@media(min-width:300px) and (max-width:700px) {
+    .avo-navtabs {
+        padding-right: 10px;
+        font-size: 14px;
+    }
+    .avo-nav {
+        padding-right: 0px;
+    }
+}
+
+@media(max-width:750px) {
+    .avo-navtabs {
+        display: none;
+    }
+    .collapse-icon.dropdown {
+        display: unset;
+        float: right;
+        width: 138px;
+    }
+    i.input-search-icon.wb-search {
+        color: #515862;
+        position: relative;
+        top: 17px;
+        padding-right: 0;
+        right: -96px;
+    }
+    .dropdown-content {
+        position: absolute;
+        background-color: #f9f9f9;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        margin-top: 0px;
+        a {
+            font-size: 15px;
+        }
+    }
+}

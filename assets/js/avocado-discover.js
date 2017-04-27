@@ -4,24 +4,35 @@ $(document).on('click', '.filter-option', function () {
     if (platform == 'facebook') {
         platform1 = 'instagram';
         platform2 = 'twitter';
+        platform3 = 'youtube';
     }
     if (platform == 'twitter') {
         platform1 = 'instagram';
         platform2 = 'facebook';
+        platform3 = 'youtube';
     }
     if (platform == 'instagram') {
         platform1 = 'twitter';
         platform2 = 'facebook';
+        platform3 = 'youtube';
+    }
+    if(platform == 'youtube'){
+        platform1 = 'facebook';
+        platform2 = 'instagram';
+        platform3 = 'twitter';
+
     }
     $('.filter-option[data-platform=' + platform1 + ']').css('color', '#A2A8B1');
     $('.filter-option[data-platform=' + platform2 + ']').css('color', '#A2A8B1');
-
+    $('.filter-option[data-platform=' + platform3 + ']').css('color','#A2A8B1');
     $('.sliders[data-platform=' + platform + ']').show();
     $('.sliders[data-platform=' + platform + '-engagement]').show();
     $('.sliders[data-platform=' + platform1 + ']').css('display', 'none');
     $('.sliders[data-platform=' + platform1 + '-engagement]').css('display', 'none');
     $('.sliders[data-platform=' + platform2 + ']').css('display', 'none');
     $('.sliders[data-platform=' + platform2 + '-engagement]').css('display', 'none');
+    $('.sliders[data-platform=' + platform3 + ']').css('display', 'none');
+    $('.sliders[data-platform=' + platform3 + '-engagement]').css('display', 'none');
 
 });
     
@@ -72,9 +83,6 @@ $(document).on('click', '.filter-option', function () {
             var keyword = $('.dropdown').val();
             filters['keywords'] = [keyword];
         }
-        var user = $('#influencer-search-name').val();
-        if (user.length > 0) filters['user'] = user;
-        else delete filters['user'];
         applyFilters(filters);
     });
 

@@ -213,9 +213,12 @@
                     float: right;
                     font-size: 2.4em;
                 }
-                .result-name.mobile,
                 .index-name {
                     font-size: 14px;
+                }
+                .result-name.mobile {
+                    font-size: 12px;
+                    margin-left: -30%;
                 }
                 .campaign-info-index {
                     margin-top: 6%;
@@ -557,4 +560,139 @@
                 &:focus {
                     outline: none;
                 }
+            }
+            /*create campaign popups*/
+            
+            .modal-body {
+                padding: 0;
+            }
+            
+            .modal-content {
+                min-height: 550px;
+            }
+            
+            .popup-detail {
+                text-transform: uppercase;
+                font-size: 22px;
+                margin-bottom: 4%;
+                margin-top: -4%;
+                color: black;
+            }
+            
+            .input-div {
+                display: inline-block;
+                text-align: -webkit-center;
+            }
+            
+            .input-popup {
+                margin-top: 10%;
+                text-align: right;
+                max-width: 60px;
+                font-size: 36px;
+                color: $header-grey;
+                border: none;
+                background-color: rgba(220, 220, 220, 0.2);
+                font-family: 'montserratsemibold';
+                border-radius: 3px;
+            }
+            
+            .row,
+            .submit-btn-div {
+                text-align: center;
+                font-family: $main-font;
+            }
+            
+            .icon-popup-div {
+                text-align: center;
+            }
+            
+            .submit-btn {
+                font-size: 16px;
+                text-transform: uppercase;
+                padding: 10px 30px 10px 30px;
+                color: white;
+                background-color: $avo-green;
+                border: none;
+                min-width: 195px;
+            }
+            
+            .submit-btn-div {
+                padding-top: 5%;
+            }
+            
+            .avocado-popup-icon {
+                max-width: 255px;
+            }
+            
+            .fb-logo-popup,
+            .insta-logo-popup,
+            .twitter-icon-popup {
+                max-width: 25px;
+                max-height: 50px;
+                display: block;
+                text-align: center;
+            }
+            
+            .close {
+                opacity: 1;
+                font-size: 3rem;
+                margin-right: 10px;
+                color: #000;
+            }
+            
+            .col-xs-12.popup-detail.success {
+                margin-top: 0%;
+            }
+            
+            .col-xs-12.btn-col {
+                margin-top: -2%;
+            }
+            
+            .popup-btn-div {
+                padding-top: 3%;
+            }
+            
+            @media (max-width:500px) {
+                .popup-detail {
+                    font-size: 18px;
+                }
+                .input-popup {
+                    text-align: center;
+                }
+            }
+            
+            input[type="number"].input-popup:focus {
+                border: 1px solid #73C4A0;
+                outline: none;
+            }
+            
+            input[type=number]::-webkit-inner-spin-button,
+            input[type=number]::-webkit-outer-spin-button {
+                /*-webkit-appearance: none;*/
+                /*margin: 0;*/
+            }
+            
+            .success-popup-icon {
+                max-width: 375px;
+            }
+            
+            .yay {
+                font-size: 28px;
+            }
+            
+            .form-control {
+                font-size: 15px;
+                letter-spacing: 1px;
+            }
+            
+            .token-input::-webkit-input-placeholder {
+                /* Chrome/Opera/Safari */
+                color: $inactive-grey;
+                font-family: 'Open Sans';
+                letter-spacing: 1px;
+            }
+            
+            body {
+                margin: 0;
+                font-family: 'Lato', sans-serif;
             }

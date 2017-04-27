@@ -28,13 +28,23 @@ $(document).ready(function () {
 
     var image = element.attr('data-image');
     var influencerCount = parseInt($('#count').text());
-    //Then we are adding them to our campaign/sidebar. 
-    selectedusers.push(id);
-    $('#influencer-pullout-image-container').append('<img class="influencer-pullout-image" data-id="' + id + '" onerror="this.src=`/assets/images/default-photo.png`" src="http://cogenttools.com/' + image + '">');
-    element.css('background-color', 'white');
-    element.empty();
-    element.append('<div class="checkmark-circle"><div class="background"></div><div class="checkmark draw"></div></div>');
-    $('.influ-bottom[data-id="' + id + '"]').css('box-shadow', '0px -10px 0px #73C48D');
+    //Then we are adding them to our campaign/sidebar.
+    if(selectedusers.indexOf(id) == -1) {
+
+      selectedusers.push(id);
+      $('#influencer-pullout-image-container').append('<img class="influencer-pullout-image" data-id="' + id + '" onerror="this.src=`/assets/images/default-photo.png`" src="http://cogenttools.com/' + image + '">');
+      element.css('background-color', 'white');
+      element.empty();
+      element.append('<div class="checkmark-circle"><div class="background"></div><div class="checkmark draw"></div></div>');
+      $('.influ-bottom[data-id="' + id + '"]').css('box-shadow', '0px -10px 0px #73C48D');
+    } else {
+      selectedusers.splice(selectedusers.indexOf(id), 1);
+      $('.influencer-pullout-image[data-id="' + id + '"]').remove();
+
+      $(".invite[data-id='" + id + "']").empty();
+      $(".invite[data-id='" + id + "']").css('background-color', '#e0e0e0');
+      $('.influ-bottom[data-id="' + id + '"]').css('box-shadow', 'none');
+    }
 
   }
 
@@ -84,9 +94,9 @@ $(document).ready(function () {
   function addPulloutClick() {
     $("#pulltab").click(function (e) {
       if (!pulledOut) {
-        $("#influencers-pullout").animate({ left: leftVal }, 750);
+        $("#influencers-pullout").animate({ left: leftVal }, 600);
       } else {
-        $("#influencers-pullout").animate({ left: (vw + "px") }, 750);
+        $("#influencers-pullout").animate({ left: (vw + "px") }, 600);
       }
       pulledOut = !pulledOut;
     })
@@ -102,9 +112,16 @@ $(document).ready(function () {
   }
 
   function addButtonHandlers() {
+    $('#dismiss-button').click(function() {dismissPullout();})
+
     $('#remove-button').click(function () { removeSelected(); })
     $('#remove-all-button').click(function () { removeAll(); })
     $('#undo-button').click(function () { undo(); })
+  }
+
+  function dismissPullout() {
+    $("#influencers-pullout").animate({ left: (vw + "px") }, 600);
+    pulledOut = false;
   }
 
   function removeSelected() {

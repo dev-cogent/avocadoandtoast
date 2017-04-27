@@ -20,6 +20,14 @@ $url = $_SERVER['REQUEST_URI'];
               
               
         </div>  
+
+                 <a href="javascript:void(0);" class="" id="search"> <i class="input-search-icon wb-search" aria-hidden="true"></i> </a>
+
+<div class="search-bar">
+	<a href="javascript:void(0);" class="ion-android-close" id="close-search-bar"> <i class="icon pe-close" aria-hidden="true"></i> </a>
+	<input type="text" class="search-placeholder" placeholder="Search here..." />
+</div>
+
           <div class="avo-navtabs"> <a href="/discover.php" class="link-pages <?php if($url == '/discover.php') echo 'active-tab';?>"> DISCOVER </a> </div>
           <div class="avo-navtabs"> <a href="/dashboard.php" class="link-pages <?php if($url == '/dashboard.php') echo 'active-tab';?>">DASHBOARD </a> </div>
           <div class="avo-navtabs"> <a href="/contact.php" class="link-pages <?php if($url == '/contact.php') echo 'active-tab';?>">  CONTACT </a></div>
@@ -30,6 +38,13 @@ $url = $_SERVER['REQUEST_URI'];
           </div>       
         
           </div>
+
+ 
+          <!--<div class="avo-navtabs"> 
+              <a class="icon wb-search collapsed" data-toggle="collapse" href="#" data-target="#site-navbar-search" role="button" aria-expanded="false">
+              <span class="sr-only">Toggle Search</span>
+            </a>
+          </div>-->
       </div> <!--closes floater div -->
          
   </div>
@@ -40,6 +55,20 @@ $url = $_SERVER['REQUEST_URI'];
 
 </div>
 
+<script>
+    $(document).ready(function() {
+	$('a#search').on('click', function() {
+		$('div.search-bar').slideDown('1500');
+       $('.nav-bottom').css('z-index','2');
+       $('.filter-section').css('padding-top', '70px');
+	});
+	
+	$('div.search-bar a#close-search-bar').on('click', function() {
+		$('div.search-bar').slideUp('1500');
+         $('.filter-section').css('padding-top', '30px');
+	});
+});
+</script>
 
 
   
