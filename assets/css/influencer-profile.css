@@ -1,7 +1,8 @@
 .primary-button, .secondary-button {
   border-radius: 1px;
   font-family: "Montserrat", sans-serif;
-  transition: background .5s, box-shadow .3s; }
+  transition: background .4s, box-shadow .4s, color .4s, border .4s;
+  cursor: pointer; }
   .primary-button:focus, .secondary-button:focus {
     outline: none; }
 
@@ -10,45 +11,21 @@
   background: #73C48D;
   color: white; }
   .primary-button:hover {
-    box-shadow: 0px 0px 3px #63AB80; }
+    box-shadow: 0px 0px 4px #63AB80; }
   .primary-button:active {
     box-shadow: 0px 0px 0px white; }
 
 .secondary-button {
   border: 1px solid #30363F;
   background: white;
-  color: #30363F;
-  -webkit-transform: rotate(0deg);
-          transform: rotate(0deg); }
+  color: #30363F; }
   .secondary-button:hover {
-    box-shadow: 0px 0px 3px #63AB80; }
+    box-shadow: 0px 0px 4px #63AB80; }
   .secondary-button:active {
     box-shadow: 0px 0px 0px white; }
   .secondary-button:hover {
-    border: 1px solid #63AB80;
     color: #63AB80;
-    -webkit-animation-name: gocrazy;
-            animation-name: gocrazy;
-    -webkit-animation-duration: 45s;
-            animation-duration: 45s;
-    -webkit-animation-iteration-count: infinite;
-            animation-iteration-count: infinite; }
-
-@-webkit-keyframes gocrazy {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg); }
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg); } }
-
-@keyframes gocrazy {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg); }
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg); } }
+    border: 1px solid #63AB80; }
 
 .influencer-card-container {
   padding-top: 35px;
