@@ -171,8 +171,9 @@ $(document).on('click', '.filter-option', function () {
      * @param {JSON} campaignJSON 
      */
     function appendCards(campaignJSON) {
-        $.each(campaignJSON, function (key, obj) {
-
+         console.log(campaignJSON);
+            $.each(campaignJSON, function (key, obj) {
+   
             $('.found-influencers').append('<div  class="influencer-box col-xs-12 col-sm-6 col-md-4 col-lg-3">' +
                 '<div class="influencer-card-discover">' +
                 '<a href="/profile.php/?id=' + key + '"><img class="influencer-image-card" src="http://cogenttools.com/' + obj.image + '" onerror="this.src=`/assets/images/default-photo.png`"> </a>' +
@@ -211,10 +212,24 @@ $(document).on('click', '.filter-option', function () {
 
 /** this function was created to read the instahandle info, and either append icon or hide icon
  *  */
-    function appendIcons($id) {
-            if{( $twitterhandle == null).hide('inst-icon');
-        } else { 
-            console.log('icon should show up')
-        }
-    };
+
+
+//    function checkUrl (campaignJSON) {
+//          console.log(campaignJSON);
+//    } 
+ 
+//  var key = $('.twitter-follower-count').data('id')
+  
+//  function checkExistancePlatform (campaignJSON) {
+//          console.log(campaignJSON);
+//             $.each(campaignJSON, function(key,obj) {
+//                 var twitt = obj.twitter.url; 
+//                 if(twitt.key === null) {
+//                     return console.log('hello bitch');
+//                 } else {
+//                     console.log('this is another message'); 
+//                 }
+
+//             });
+//  };
 
