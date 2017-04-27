@@ -22,15 +22,12 @@ include 'php/numberAbbreviation.php';
 <script src="/assets/js/avocado-card-functions.js"></script>
 <script src="/assets/js/avocado-calculate.js"></script>
 <script src="assets/js/influencer_pullout.js"></script>
-
 <link rel="stylesheet" href="/assets/js/tokenfield/dist/css/bootstrap-tokenfield.css">
-<link rel="stylesheet" href="/assets/uislider/nouislider.css">
-
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
 <link rel="stylesheet" href="/assets/css/sidebar.css">
 <link rel="stylesheet" href="assets/css/pullout.css">
-<link rel="stylesheet" href="/assets/css/the-real-discover.css">
+
 
 </head>
 
@@ -228,7 +225,6 @@ include 'php/numberAbbreviation.php';
                                             <div class="twitter-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</div>
                                         </div>
                                     <!-- followers -->
-                                <div class="influencer-info-container">
                                     <div class="col-xs-12">
                                         <div class="follower-count">Total Reach: '.numberAbbreviation($total).'</div>
                                         <div class="instagram-follower-count follower-count" data-id="'.$id.'" style="display:none">Followers: '.numberAbbreviation($instagramcount).' </div>
@@ -241,7 +237,6 @@ include 'php/numberAbbreviation.php';
                                         <div class="facebook-engagement follower-count" style="display:none"data-id="'.$id.'">Engagement: '.$facebookengagement.'%</div>
                                         <div class="twitter-engagement follower-count" style="display:none"data-id="'.$id.'">Engagement: '.$twitterengagement.'%</div>
                                     </div>
-                                </div>
                                     <div class="col-xs-12">
 
                                         <div class="col-xs-12 invite  avocado-focus" data-id="'.$id.'" data-image="'.$image.'"></div>

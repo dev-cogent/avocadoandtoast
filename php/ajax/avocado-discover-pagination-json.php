@@ -32,7 +32,7 @@ if($position < 0) $position = 0;
 unset($stmt);
 
 
-$stmt = $conn->prepare("SELECT `id`, `image_url` , `instagram_count`, `instagram_url`, `twitter_url`, `twitter_count`, `facebook_count`,`facebook_url`,`facebook_handle`,`youtube_url`,`youtube_count`,`engagement` FROM `Influencer_Information` $where LIMIT $position, 24");
+$stmt = $conn->prepare("SELECT `id`, `image_url` , `instagram_count`, `instagram_url`, `twitter_url`, `twitter_count`, `facebook_count`,`facebook_url`,`facebook_handle`,`youtube_url`,`youtube_count`,`engagement`,`total` FROM `Influencer_Information` $where LIMIT $position, 24");
 if($where != ''){
 $types = '';
 foreach($params as $param) {
@@ -52,7 +52,7 @@ call_user_func_array(array($stmt,'bind_param'),makeValuesReferenced($params));
 }
 
 $stmt->execute();
-$stmt->bind_result($id,$image,$instagramcount,$instagramurl,$twitterurl,$twittercount,$facebookcount,$facebookurl, $facebookhandle,$youtubeurl,$youtubecount,$engagement);
+$stmt->bind_result($id,$image,$instagramcount,$instagramurl,$twitterurl,$twittercount,$facebookcount,$facebookurl, $facebookhandle,$youtubeurl,$youtubecount,$engagement,$total);
 $count = 3;
 while($stmt->fetch()){
                 
@@ -85,6 +85,7 @@ while($stmt->fetch()){
                 setArrayPlatform($jsonarr,$id,'twitter',$twitterhandle,$twittercount,$twitterengagement,$twitterurl);
                 //at the end we set the image property 
                 setArrayPlatform($jsonarr,$id,'youtube',$youtubeurl,$youtubecount,0,$youtubeurl);
+                $jsonarr->$id->total = $total;
                 $jsonarr->$id->image = $image;
                 
 

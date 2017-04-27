@@ -322,7 +322,7 @@
     font-size: 14px;
     font-family: $main-font-skinny;
     font-weight: 200;
-    margin-top: -5px;
+    margin-top: -4px;
     color: $header-grey;
 }
 
@@ -336,14 +336,6 @@
     color: $header-grey;
 }
 
-.invite {
-    height: 35px;
-    padding-top: 5px;
-    width: 36px;
-    margin-left: 39%;
-    border-radius: 32px;
-    background-color: #e0e0e0;
-}
 
 .insthandle-info {
     text-align: center;
@@ -615,6 +607,7 @@
     margin: 0 auto;
     text-align: center;
     float: none;
+    margin-top:10px;
 }
 
 #loading {
@@ -755,7 +748,7 @@
 }
 
 .active-platform {
-    color: $avo-green;
+    /*color: $avo-green;*/
 }
 
 .disable-platform {
