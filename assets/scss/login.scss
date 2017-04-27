@@ -1,0 +1,58 @@
+@import 'utility';
+
+#email{
+    height:30px;
+}
+#email:focus{
+    outline:none;
+}
+#spacing{
+    width:100%;
+    height:100px;
+}
+
+#login-button{
+  width:72%;
+  height:50px;
+  margin-bottom:30px;
+  margin-left:14%;
+  float:left;
+  font-size: 16px;
+  @extend .primary-button;
+}
+
+#register-button{
+  width:72%;
+  height:50px;
+  margin-left:14%;
+  font-size: 16px;
+  @extend .secondary-button;
+}
+
+@media (max-width:960px) {
+  #centercontent{
+    padding-right: 0% !important;
+    padding-left: 0% !important;
+  }
+}
+#centercontent{
+  padding-right:27%;
+  padding-left:27%;
+  padding-top:50px;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #c4c4c4 !important;
+}
+
+#header-text{
+    text-align:center;
+    font-family: $main-font;
+    color: $header-grey;
+    letter-spacing: 2px;
+    font-size:55px;
+    padding-bottom:11px;
+    @media screen and (max-width:480px){
+      font-size:25px;
+    }
+}
