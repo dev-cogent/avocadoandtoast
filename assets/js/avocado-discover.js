@@ -181,40 +181,96 @@ $(document).on('click', '.filter-option', function () {
      * @param {JSON} campaignJSON 
      */
     function appendCards(campaignJSON) {
-        $.each(campaignJSON, function (key, obj) {
-
+         //console.log(campaignJSON);
+            $.each(campaignJSON, function (key, obj) {
+                
             $('.found-influencers').append('<div  class="influencer-box col-xs-12 col-sm-6 col-md-4 col-lg-3">' +
                 '<div class="influencer-card-discover">' +
                 '<a href="/profile.php/?id=' + key + '"><img class="influencer-image-card" src="http://cogenttools.com/' + obj.image + '" onerror="this.src=`/assets/images/default-photo.png`"> </a>' +
                 '<div class="col-xs-12 influ-bottom" style="" data-id="' + key + '">' +
                 '<!-- insthandle stuff -->' +
                 '<div class="icons col-xs-12">' +
-                '<i class="switch show-instagram inst-icon icon bd-instagram" data-id="' + key + '" data-platform="instagram" style="color:#73C48D" aria-hidden="true"></i>' +
+                '<i class="switch show-instagram inst-icon icon bd-instagram active-platform" data-id="' + key + '" data-platform="instagram" aria-hidden="true"></i>' +
                 '<i class="switch show-facebook inst-icon icon bd-facebook" data-id="' + key + '" data-platform="facebook" aria-hidden="true"></i>' +
                 '<i class="switch show-twitter inst-icon icon bd-twitter" data-id="' + key + '" data-platform="twitter" aria-hidden="true"></i>' +
                 '</div>' +
                 '<div class="col-xs-12 insthandle-info">' +
                 '<!--icon here -->' +
                 '<p class="instagram-handle insthandle-text" data-id="' + key + '">' + obj.instagram.handle + '</p>' +
-                '<p class="facebook-handle insthandle-text" data-id="' + key + '" style="display:none;">' + obj.facebook.handle + '</p>' +
-                '<p class="twitter-handle insthandle-text" data-id="' + key + '" style="display:none;">' + obj.twitter.handle + '</p>' +
+                '<p class="facebook-handle insthandle-text disable-platform" data-id="' + key + '" >' + obj.facebook.handle + '</p>' +
+                '<p class="twitter-handle insthandle-text disable-platform" data-id="' + key + '" >' + obj.twitter.handle + '</p>' +
                 '</div>' +
                 ' <!-- followers -->' +
                 '<div class="col-xs-12">' +
                 '<p class="instagram-follower-count follower-count" data-id="' + key + '">' + abbrNum(obj.instagram.followers) + ' Followers</p>' +
-                '<p class="facebook-follower-count follower-count" style="display:none" data-id="' + key + '">' + abbrNum(obj.facebook.followers) + ' Likes</p>' +
-                '<p class="twitter-follower-count follower-count" style="display:none" data-id="' + key + '">' + abbrNum(obj.twitter.followers) + ' Followers</p>' +
+                '<p class="facebook-follower-count follower-count disable-platform"  data-id="' + key + '">' + abbrNum(obj.facebook.followers) + ' Likes</p>' +
+                '<p class="twitter-follower-count follower-count disable-platform"  data-id="' + key + '">' + abbrNum(obj.twitter.followers) + ' Followers</p>' +
                 '</div>' +
                 '<!-- Engagement ?-->' +
                 '<div class="col-xs-12">' +
                 '<p class="instagram-engagement engagement-count" data-id="' + key + '">' + obj.instagram.engagement + '% eng per post</p>' +
-                '<p class="facebook-engagement engagement-count" style="display:none"data-id="' + key + '">' + obj.facebook.engagement + '% eng per post</p>' +
-                '<p class="twitter-engagement engagement-count" style="display:none"data-id="' + key + '">' + obj.twitter.engagement + '% eng per post</p>' +
+                '<p class="facebook-engagement engagement-count disable-platform" data-id="' + key + '">' + obj.facebook.engagement + '% eng per post</p>' +
+                '<p class="twitter-engagement engagement-count disable-platform" data-id="' + key + '">' + obj.twitter.engagement + '% eng per post</p>' +
                 '</div>' +
                 '<div class="col-xs-12">' +
                 '<div class="col-xs-12 invite  avocado-focus" data-id="' + key + '" data-image="' + obj.image + '"></div>' +
                 '</div></div></div> </div>');
+                checkExistancePlatform(key, obj);
         });
 
     }
 
+
+/** this function was created to read the instahandle info, and either append icon or hide icon
+ *  */
+
+
+
+
+
+
+
+ 
+
+  
+ function checkExistancePlatform (id, influencerObj) {
+        
+         var instagramUrl = influencerObj.instagram.url;
+         var facebookUrl = influencerObj.facebook.url;
+         var twitterUrl = influencerObj.twitter.url;
+
+         if(!instagramUrl){
+            changePlatforminfo(id,'instagram');
+         }
+         if(!facebookUrl){
+             changePlatforminfo(id,'facebook');
+         }
+         if(!twitterUrl){
+            changePlatforminfo(id,'twitter');
+         }         
+ }
+
+
+function changePlatforminfo(id, platform) {
+    if(platform = "instagram"){
+        var platform1= "facebook";
+        var platform2= "twitter";
+
+    }
+    if(platform == "facebook"){
+        var platform1= "twitter";
+
+    }
+    if(platform == "twitter"){
+
+
+    }
+        $('.show-' + platform + '[data-id="'+id+'"]').addClass('disable-platform');
+        $('.show-' + platform1 + '[data-id="'+id+'"]').addClass('active-platform');
+        $('.' + platform +'-handle[data-id="'+id+'"]').addClass('disable-platform');
+        $('.' + platform1 +'-handle[data-id="'+id+'"]').removeClass('disable-platform');
+        $('.' + platform +'-follower-count[data-id="'+id+'"]').addClass('disable-platform');
+        $('.' + platform1 +'-follower-count[data-id="'+id+'"]').removeClass('disable-platform');
+        $('.' + platform +'-engagement[data-id="'+id+'"]').addClass('disable-platform');
+        $('.' + platform1 +'-engagement[data-id="'+id+'"]').removeClass('disable-platform'); 
+}
