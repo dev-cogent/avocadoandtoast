@@ -56,10 +56,12 @@ $(document).on('click', '.filter-option', function () {
                 influencers: selectedusers
             },
             success: function (jqXHR, textStatus, errorThrown) {
+
                 calculate = true;
                 $('#discover-container').empty();
                 $('#discover-container').append(jqXHR);
                 unsetLoading();
+               
             }
         }); // end ajax request*/
     });
