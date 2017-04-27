@@ -46,7 +46,7 @@ $social-following-red: rgb(231, 72, 69);
     }
 }
 
-// PLACEHOLDER CLASS
+// PLACEHOLDER CLASSES
 %basic-button {
     border-radius: 1px;
     font-family: $main-font;
@@ -54,6 +54,22 @@ $social-following-red: rgb(231, 72, 69);
     &:focus {
         outline: none;
     }
+}
+
+%x-button {
+  font-size: 21px;
+  color: $avo-green;
+  font-family: $secondary-font;
+  font-weight: 100;
+  border: 2px solid;
+  border-radius: 50%;
+  transition: color .5s ease;
+
+  cursor: pointer;
+
+  &:hover {
+    color: $social-following-red;
+  }
 }
 
 //ACTUAL BUTTON CLASSES

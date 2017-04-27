@@ -37,7 +37,7 @@ include 'php/numberAbbreviation.php';
 
 <!-- right side bar -->
     <div id="influencers-pullout">
-      <img id="pulltab" src="assets/images/pulltab3.png" alt="">
+      <img id="pulltab" src="assets/images/pulltab_icon.png" alt="">
 
 
       <header>

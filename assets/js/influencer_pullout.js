@@ -94,9 +94,9 @@ $(document).ready(function () {
   function addPulloutClick() {
     $("#pulltab").click(function (e) {
       if (!pulledOut) {
-        $("#influencers-pullout").animate({ left: leftVal }, 750);
+        $("#influencers-pullout").animate({ left: leftVal }, 600);
       } else {
-        $("#influencers-pullout").animate({ left: (vw + "px") }, 750);
+        $("#influencers-pullout").animate({ left: (vw + "px") }, 600);
       }
       pulledOut = !pulledOut;
     })
@@ -120,7 +120,7 @@ $(document).ready(function () {
   }
 
   function dismissPullout() {
-    $("#influencers-pullout").animate({ left: (vw + "px") }, 750);
+    $("#influencers-pullout").animate({ left: (vw + "px") }, 600);
     pulledOut = false;
   }
 
