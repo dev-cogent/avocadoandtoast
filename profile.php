@@ -86,7 +86,7 @@ $id = $_GET['id'];
     $twitterhandle = explode('?',$twitterhandle[0]);
     $twitterhandle = $twitterhandle[0];
     echo '
-                    <div  class="influencer-box col-xs-12 ">
+                    <div  class="influencer-box col-xs-10 col-sm-12  ">
                             <div class="card-discover profile-tag-margin">
                                 <img class="influencer-image-card" src="http://cogenttools.com/'.$image.'">
                                 <div class="col-xs-12 profile-card" style="">

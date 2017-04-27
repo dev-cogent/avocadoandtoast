@@ -16,6 +16,16 @@
     margin-top: 25%;
 }
 
+.social-content {
+    padding: 0;
+    margin-top: 3%;
+    margin-left: 2%;
+}
+
+.social-buttons {
+    display: none;
+}
+
 .instagram-logo-green,
 .twitter-logo-green {
     width: 40px;
@@ -119,7 +129,7 @@
 
 .fb-feed-card {
     width: 96%;
-    margin-top: 15px;
+    // margin-top: 15px;
     height: 330px;
     border: 1px solid $separator-grey;
     border-radius: 3px;
