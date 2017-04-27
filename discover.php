@@ -8,6 +8,7 @@ include 'php/numberAbbreviation.php';
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
 <head>
+    <link rel="stylesheet" href="/assets/uislider/nouislider.css">
   <?php include 'html/head.html' ?>
     <title>Discover | Avocado & Toast</title>
     <script src="/bootbox/bootbox.js"></script>
@@ -22,10 +23,8 @@ include 'php/numberAbbreviation.php';
     <script src="/assets/js/avocado-calculate.js"></script>
     <script src="assets/js/influencer_pullout.js"></script>
     <link rel="stylesheet" href="/assets/js/tokenfield/dist/css/bootstrap-tokenfield.css">
-    <link rel="stylesheet" href="/assets/uislider/nouislider.css">
     <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
     <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
-    <link rel="stylesheet" href="/assets/css/discover.css">
     <link rel="stylesheet" href="/assets/css/sidebar.css">
     <link rel="stylesheet" href="/assets/css/new-discover.css">
     <link rel="stylesheet" href="assets/css/pullout.css">
@@ -214,28 +213,31 @@ include 'php/numberAbbreviation.php';
                                 <div class="col-xs-12 influ-bottom" style="" data-id="'.$id.'">
                                     <!-- insthandle stuff -->
                                         <div class="icons col-xs-12">
-                                            <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" style="color:#73C48D" aria-hidden="true"></i>
+                                            <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram"  aria-hidden="true"></i>
                                             <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true"></i>
                                             <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true"></i>
                                         </div>
                                         <div class="col-xs-12 insthandle-info">
                                             <!--icon here -->
-                                            <p class="instagram-handle insthandle-text" data-id="'.$id.'">'.$insthandle.'</p>
-                                            <p class="facebook-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</p>
-                                            <p class="twitter-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</p>
+                                            <div class="instagram-handle insthandle-text" data-id="'.$id.'" >'.$insthandle.'</div>
+                                            <div class="facebook-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</div>
+                                            <div class="twitter-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</div>
                                         </div>
                                     <!-- followers -->
+                                <div class="influencer-info-container">
                                     <div class="col-xs-12">
-                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'">'.numberAbbreviation($instagramcount).' Followers</p>
-                                        <p class="facebook-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($facebookcount).' Likes</p>
-                                        <p class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($twittercount).' Followers</p>
+                                        <div class="follower-count">Total Reach: '.numberAbbreviation($total).'</div>
+                                        <div class="instagram-follower-count follower-count" data-id="'.$id.'" style="display:none">Followers: '.numberAbbreviation($instagramcount).' </div>
+                                        <div class="facebook-follower-count follower-count" style="display:none" data-id="'.$id.'">Likes: '.numberAbbreviation($facebookcount).' </div>
+                                        <div class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">Followers: '.numberAbbreviation($twittercount).' </div>
                                     </div>
                                     <!-- Engagement -->
                                     <div class="col-xs-12">
-                                        <p class="instagram-engagement engagement-count" data-id="'.$id.'">'.$instagramengagement.'% eng per post</p>
-                                        <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$id.'">'.$facebookengagement.'% eng per post</p>
-                                        <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$id.'">'.$twitterengagement.'% eng per post</p>
+                                        <div class="instagram-engagement follower-count" data-id="'.$id.'" style="display:none">Engagement: '.$instagramengagement.'%</div>
+                                        <div class="facebook-engagement follower-count" style="display:none"data-id="'.$id.'">Engagement: '.$facebookengagement.'%</div>
+                                        <div class="twitter-engagement follower-count" style="display:none"data-id="'.$id.'">Engagement: '.$twitterengagement.'%</div>
                                     </div>
+                                </div>
                                     <div class="col-xs-12">
 
                                         <div class="col-xs-12 invite  avocado-focus" data-id="'.$id.'" data-image="'.$image.'"></div>

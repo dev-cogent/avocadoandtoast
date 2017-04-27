@@ -117,6 +117,10 @@ $(document).ready(function () {
     $('#remove-button').click(function () { removeSelected(); })
     $('#remove-all-button').click(function () { removeAll(); })
     $('#undo-button').click(function () { undo(); })
+
+    $('#calculate').click(function() { 
+      if(selectedusers.length != 0) { dismissPullout(); }
+    });
   }
 
   function dismissPullout() {
