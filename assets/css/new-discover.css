@@ -1,3 +1,16 @@
+.active-platform{
+    color:#73C48D;
+}
+
+.disable-platform{
+    display:none;
+}
+
+.active-handle-information{
+    display:unset;
+}
+
+
 .button-icon{
     padding-left: 10px;
     font-size: 30px;
