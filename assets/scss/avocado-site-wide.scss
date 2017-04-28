@@ -1,14 +1,14 @@
-
+@import 'utility';
 .avocado-button-focus:focus {
     outline: none !important;
     border: 1px solid #73C48D;
-    color: #73C48D;
+    color: $avo-green;
     box-shadow: 0 0 10px #73C48D;
 }
 
 .avocado-hover:hover {
     border: 1px solid #73C48D;
-    color: #73C48D;
+    color: $avo-green;
 }
 
 .avocado-focus:focus {
@@ -112,7 +112,7 @@ button.navbar-toggle.collapsed {
     display: inline;
     text-transform: uppercase;
     font-size: 14.5px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: $main-font;
     padding-right: 40px;
     letter-spacing: 1.3px;
 }
@@ -121,7 +121,7 @@ button.navbar-toggle.collapsed {
     border: 1px solid white;
     padding: 5px 15px;
     font-size: 14.5px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: $main-font;
 }
 
 ul.nav.navbar-nav {
@@ -162,8 +162,8 @@ a.view-btn {
     text-transform: uppercase;
     letter-spacing: 1.5px;
     padding: 10px 30px;
-    background-color: #73c48d;
-    font-family: 'Montserrat', sans-serif;
+    background-color: $avo-green;
+    font-family: $main-font;
     position: relative;
     margin-left: 75%;
     top: -365px;
@@ -184,8 +184,8 @@ a.view-btn {
 .powerful-tool {
     font-size: 34px;
     max-width: 350px;
-    color: #30363F;
-    font-family: 'Montserrat', sans-serif;
+    color: $header-grey;
+    font-family: $main-font;
     line-height: 43px;
     letter-spacing: 1px;
     margin-left: 30%;
@@ -195,8 +195,8 @@ a.view-btn {
 .powerful-tool-info {
     max-width: 400px;
     font-size: 18px;
-    color: #30363F;
-    font-family: 'Montserrat', sans-serif;
+    color: $header-grey;
+    font-family: $main-font;
     margin-top: 2%;
     margin-left: 30%;
 }
@@ -209,8 +209,8 @@ a.view-btn {
     max-width: 525px;
     line-height: 47px;
     letter-spacing: 0.5px;
-    font-family: 'Montserrat', sans-serif;
-    color: #30363F;
+    font-family: $main-font;
+    color: $header-grey;
     padding-top: 25%;
     padding-bottom: 2%;
     padding-left: 20%;
@@ -219,8 +219,8 @@ a.view-btn {
 .discover-details {
     font-size: 18px;
     padding-left: 20%;
-    font-family: 'Montserrat', sans-serif;
-    color: #30363F;
+    font-family: $main-font;
+    color: $header-grey;
     max-width: 545px;
     letter-spacing: 0.1px;
 }
@@ -243,12 +243,17 @@ a.view-btn {
 }
 
 .signup-btn {
+    @extend .primary-button;
+    @include $color;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    background-color: #73c48d;
-    font-size: 14px;
-    font-family: 'Montserrat', sans-serif;
     padding: 12px 20px;
+}
+
+.sign-up{
+    @extend .primary-button;
+    @include $color;
+
 }
 
 .row.third-sect {
@@ -286,7 +291,7 @@ li.footer-title {
 
 .address {
     font-size: 15px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: $main-font;
     color: #4E4E4E;
 }
 
@@ -308,7 +313,7 @@ img.newyork-map {
 }
 
 li.footer-links {
-    font-family: 'Montserrat', sans-serif;
+    font-family: $main-font;
     color: #5F5F5F;
     text-transform: capitalize;
     padding-bottom: 2%;
@@ -532,7 +537,7 @@ i.icon.wb-plus.list-icon.avo {
     font-size: 17px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: $main-font;
     color: rgb(99, 99, 99);
     margin-left: 2%;
 }
@@ -567,7 +572,7 @@ i.icon.wb-plus.list-icon.avo.med {
 }
 
 .software-head {
-    font-family: 'montserratsemibold';
+    font-family: $main-font-semi;
     font-size: 28px;
     text-align: center;
     text-transform: uppercase;
@@ -603,7 +608,7 @@ span.software {
 .number-02 {
     font-size: 170px;
     margin-left: 2%;
-    font-family: 'montserratsemibold';
+    font-family: $main-font-semi;
     letter-spacing: 3px;
     color: rgb(225, 224, 225);
 }
@@ -627,13 +632,13 @@ span.software {
     letter-spacing: 1px;
     position: relative;
     top: -40px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: $main-font;
     color: rgb(70, 70, 70);
 }
 
 .second-word-det {
     padding-left: 10%;
-    font-family: 'Montserrat', sans-serif;
+    font-family: $main-font;
     color: rgb(70, 70, 70);
     line-height: 25px;
     max-width: 400px;
@@ -652,7 +657,7 @@ span.software {
 .agency-third {
     font-size: 16px;
     color: rgb(70, 70, 70);
-    font-family: 'Montserrat', sans-serif;
+    font-family: $main-font;
     min-height: 135px;
     padding-left: 3%;
     padding-right: 3%;
@@ -661,7 +666,7 @@ span.software {
 .icons-title {
     color: rgb(62, 62, 62);
     font-size: 20px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: $main-font;
     padding-bottom: 2%;
 }
 
@@ -675,7 +680,7 @@ span.software {
     padding: 5px 10px;
     border: 1px solid black;
     color: rgb(70, 70, 70);
-    font-family: 'Montserrat', sans-serif;
+    font-family: $main-font;
 }
 
 .toast-icon,
@@ -688,13 +693,13 @@ span.software {
 
 .signup-header {
     font-size: 100px;
-    font-family: 'montserratsemibold';
+    font-family: $main-font-semi;
     color: #515862;
 }
 
 .signup-subheader {
     font-size: 26px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: $main-font;
     color: #515862;
     letter-spacing: 1px;
 }
@@ -728,7 +733,7 @@ span.software {
     /*Commenting out text transform due to the fact that it is confusing to UX. Let me know if this is confusing -- Trump
    text-transform: uppercase;*/
     letter-spacing: 2px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: $secondary-font;
     color: #515862;
 }
 
@@ -739,14 +744,11 @@ span.software {
 }
 
 .get-started-btn {
-    background-color: #73c48d;
-    font-size: 18px;
+    @extend .primary-button;
     letter-spacing: 1.5px;
-    font-family: 'montserratlight', sans-serif;
+    font-family: $main-font;
     padding: 14px 23px;
-    color: white;
     width: 100%;
-    border: 0px;
 }
 
 
@@ -1475,13 +1477,9 @@ textarea.form-control.category.avocado-focus {
 }
 
 .update-profile-btn {
-    border-radius: 1px;
-    border: 0px;
-    color: white;
+   @extend .primary-button;
     height: 50px;
-    font-size: 16px;
-    font-family: 'Montserrat', sans-serif;
-    background-color: #73C48D;
+   
 }
 
 .switch-div {

@@ -1,4 +1,4 @@
-
+ @import 'utility';
 a:hover{
     text-decoration:none;
 }
@@ -51,14 +51,11 @@ td.campaign-details.name{
 }
     
 .button-stats-bt{
+    @extend .primary-button;
     width: 130px;
     height: 35px;
-    background-color: #73C48D;
-    color: white;
-    border: 0px;
-    font-size: 12px;
     margin-right: 5px;
-    font-family: 'montserratlight';
+    font-family: $main-font-skinny;
     }
 
 .label-info{
