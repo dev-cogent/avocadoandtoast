@@ -42,10 +42,10 @@ include '../php/verify-campaign.php';
 
 
 <div class="button-container col-xs-12">
-   <button class="btn-campaign-options avocado-hover avocado-focus" onclick="location.href='/edit/?id=<?php echo $campaignid;?>'">  EDIT CAMPAIGN  </button></a>
-   <button class="btn-campaign-options avocado-hover avocado-focus pdf" data-id="<?php echo $campaignid; ?>">  EXPORT CAMPAIGN  </button></a>
-   <button class="btn-campaign-options avocado-hover avocado-focus" onclick="location.href='/price/?id=<?php echo $campaignid;?>'">  PRICE CAMPAIGN  </button></a>
-   <button class="btn-campaign-options avocado-hover avocado-focus" onclick="location.href='/recalculate.php?id=<?php echo $campaignid;?>'">  RECALCULATE CAMPAIGN  </button></a>
+   <button class="btn-campaign-options avocado-hover avocado-focus" onclick="location.href='/edit/?id=<?php echo $campaignid;?>'">  EDIT   </button></a>
+   <button class="btn-campaign-options avocado-hover avocado-focus pdf" data-id="<?php echo $campaignid; ?>">  EXPORT </button></a>
+   <button class="btn-campaign-options avocado-hover avocado-focus" onclick="location.href='/price/?id=<?php echo $campaignid;?>'">  PRICE </button></a>
+   <button class="btn-campaign-options avocado-hover avocado-focus" onclick="location.href='/recalculate.php?id=<?php echo $campaignid;?>'">  RECALCULATE  </button></a>
    <button class="btn-campaign-options-primary  avocado-focus" id="undo-button" style="visibility:hidden;">UNDO</button></a>
    <button class="btn-campaign-options-primary  avocado-focus" id="save-button" style="visibility:hidden;">SAVE</button></a>
 </div> 
