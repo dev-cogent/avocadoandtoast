@@ -1,0 +1,122 @@
+@import 'utility'; 
+
+.engagement-count {
+    text-align: center;
+    font-size: 14px;
+    font-family: $main-font-skinny;
+    font-weight: 200;
+    margin-top: -17px;
+    padding-bottom: 5px;
+    color: $header-grey;
+}
+
+.follower-count {
+    text-align: center;
+    font-size: 14px;
+    font-family: $main-font-skinny;
+    font-weight: 200;
+    margin-top: -4px;
+    color: $header-grey;
+}
+
+.influencer-card-discover {
+    height: 65%;
+    border: 1px solid rgb(210, 215, 220);
+    float: left;
+    width: 88%;
+    margin-bottom: 30px;
+    padding-right: 0px;
+    padding-left: 0px;
+    &:hover {
+        border: 1px solid $avo-green;
+    }
+}
+
+
+.influencer-image-card {
+    max-width: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: 0 33%;
+    object-position: 0 33%;
+}
+
+.influ-bottom {
+    height: 170px;
+}
+ 
+
+.influencer-icons {
+    text-align: center;
+    margin-left: 8px;
+    padding-top: 6px;
+}
+
+.influencer-box {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.handle-info {
+    text-align: center;
+    padding-bottom: 6px;
+    min-height: 35px;
+}
+
+.handle-text {
+    font-family: $main-font-skinny;
+    font-size: 19px;
+    color: $header-grey;
+}
+
+
+.influencer-card-icon {
+    height: 12px;
+    width: 12px;
+    display: inline;
+    margin-right: 15px;
+    margin-bottom: 5px;
+}
+
+.invite {
+    height: 35px;
+    padding-top: 5px;
+    width: 36px;
+    border-radius: 32px;
+    background-color: #e0e0e0;
+    margin: 0 auto;
+    text-align: center;
+    float: none;
+    margin-top:10px;
+}
+
+.total-post {
+    color: $avo-green;
+    text-align: center;
+}
+
+
+
+.x-button-container {
+    width: 30px;
+    position: absolute;
+    top: 75%;
+    right: 3%;
+}
+.remove-influencer {
+    @extend %x-button;
+    font-size: 18px;
+    text-align:center;
+}
+
+
+
+
+
+
+@media only screen and (max-width: 767px) {
+    .influencer-card-discover {
+        width: 100%;
+    }
+}

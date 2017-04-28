@@ -17,28 +17,31 @@ $stmt->fetch();
 $html = '';
         $influencerinfo = $obj->getCampaign($campaignid);
         $campaigninfo = $obj->getCampaignInfo($campaignid);
-        foreach($influencerinfo['influencer'] as $influencerid => $info){
+        $influencerinfo = json_decode($influencerinfo);
+        $campaigninfo = json_decode($campaigninfo);
+        foreach($influencerinfo as $influencerid => $info){
+         
         $id = $influencerid;
-        $instagramurl = $info['instagram_url'];
-        $facebookurl = $info['facebook_url'];
-        $twitterurl = $info['twitter_url'];
-        $insthandle = $info['instagram_handle'];
-        $facebookhandle = $info['facebook_handle'];
-        $twitterhandle = $info['twitter_handle'];
-        $insthandle = $info['instagram_handle'];
+        $instagramurl = $info->instagram->url;
+        $facebookurl = $info->facebook->url;
+        $twitterurl = $info->twitter->url;
+        $insthandle = $info->instagram->handle;
+        $facebookhandle = $info->facebook->handle;
+        $twitterhandle = $info->twitter->handle;
+        $insthandle = $info->instagram->handle;
 
-        $instagrampost = $info['instagram_post'];
-        $twitterpost = $info['twitter_post'];
-        $facebookpost = $info['facebook_post'];
+        $instagrampost = $info->instagram->post;
+        $twitterpost = $info->twitter->post;
+        $facebookpost = $info->facebook->post;
 
-        $instagramimpressions = $info['instagram_impressions'];
-        $twitterimpressions = $info['twitter_impressions'];
-        $facebookimpressions = $info['facebook_impressions'];
+        $instagramimpressions = $info->instagram->impressions;
+        $twitterimpressions = $info->twitter->impressions;
+        $facebookimpressions = $info->facebook->impressions;
 
 
-        $instagrameng = $info['instagram_engagement'];
-        $twittereng = $info['twitter_engagement'];
-        $facebookeng = $info['facebook_engagement'];
+        $instagrameng = $info->instagram->engagement;
+        $twittereng = $info->twitter->engagement;
+        $facebookeng = $info->facebook->engagement;
         $handle = $insthandle;
         if($insthandle == NULL){
           $handle = $facebookhandle;
@@ -53,7 +56,7 @@ $html = '';
              <img src="http://cogenttools.com/images/'.$id.'.jpg"  class="influencer-campaign-image">
                 <div class="influencer-name">
                   <p class="influencer-handle"> @'.$handle.' </p>
-                  <p class="influencer-loc"> Brooklyn, NY </p> 
+                  <p class="influencer-loc"></p> 
                 </div>
            </div>
        </td>
@@ -67,7 +70,7 @@ $html = '';
     <div class="res-mini-col">
         <div class="impression-res">'.numberAbbreviation($instagramimpressions).'</div>
         <div class="engagement-res">'.numberAbbreviation($instagrameng).'</div>
-        <div class="social-following">'.numberAbbreviation($info['instagram_count']).'</div>
+        <div class="social-following">'.numberAbbreviation($info->instagram->count).'</div>
     </div>
     </div>
 
@@ -82,7 +85,7 @@ $html = '';
     <div class="res-mini-col">
         <div class="impression-res">'.numberAbbreviation($facebookimpressions).'</div>
         <div class="engagement-res"> '.numberAbbreviation($facebookeng).'</div>
-        <div class="social-following"> '.numberAbbreviation($info['facebook_count']).'</div>
+        <div class="social-following"> '.numberAbbreviation($info->facebook->count).'</div>
     </div>
     </div>
 
@@ -98,7 +101,7 @@ $html = '';
     <div class="res-mini-col">
         <div class="impression-res">'.numberAbbreviation($twitterimpressions).'</div>
         <div class="engagement-res"> '.numberAbbreviation($twittereng).' </div>
-        <div class="social-following">'.numberAbbreviation($info['twitter_count']).' </div>
+        <div class="social-following">'.numberAbbreviation($info->twitter->count).' </div>
     </div>
     </div>
 
@@ -114,7 +117,7 @@ $html = '';
     <div class="res-mini-col" style="position:relative; left:15px;">
         <div class="impression-res">'.numberAbbreviation($instagramimpressions+$facebookimpressions+$twitterimpressions).'</div>
         <div class="engagement-res"> '.numberAbbreviation($instagrameng+$facebookeng+$twittereng).'</div>
-        <div class="social-following">'.numberAbbreviation($info['instagram_count']+$info['twitter_count']+$info['facebook_count']).'</div>
+        <div class="social-following">'.numberAbbreviation($info->instagram->followers +$info->twitter->followers+$info->facebook->likes).'</div>
     </div>
     </div>
 
@@ -392,7 +395,7 @@ table  {
 
 
 <div id="brand-name" style="margin-top:-30px;">
-  <h2 id="brand">'.$campaigninfo['brandname'].'</h2>
+  <h2 id="brand">'.$campaigninfo->brandname.'</h2>
   <h1 id="title">'.$name.'</h1>
 
 </div>
@@ -512,13 +515,13 @@ table  {
   <div class="campaign-date">  CREATED '.$createdate.' </div>
   </div>
 
-  <div class="summary-influencers">'.$influencerinfo['campaign_count'].'<br>  <span class="total-influencer-copy" style="font-size:11px;"> Influencers </span> </div>
+  <div class="summary-influencers">'.$campaigninfo->total_influencers.'<br>  <span class="total-influencer-copy" style="font-size:11px;"> Influencers </span> </div>
 
-    <div class="summary-post">'.$campaigninfo['totalposts'].'<br> <span class="total-post-copy total-bottom" style="font-size:11px;" > Total Post </span> </div>
+    <div class="summary-post">'.$campaigninfo->totalposts.'<br> <span class="total-post-copy total-bottom" style="font-size:11px;" > Total Post </span> </div>
 
-      <div class="summary-impressions">'.numberAbbreviation($campaigninfo['totalimpressions']/$influencerinfo['campaign_count']).'<br> <span class="total-impressions-copy" style="font-size:11px;"> Avg Impressions </span> </div>
+      <div class="summary-impressions">'.numberAbbreviation($campaigninfo->totalimpressions/$campaigninfo->total_influencers).'<br> <span class="total-impressions-copy" style="font-size:11px;"> Avg Impressions </span> </div>
 
-      <div class="summary-engagement">'.numberAbbreviation($campaigninfo['totalengagement']/$influencerinfo['campaign_count']).'<br> <span class="total-engagement-copy" style="font-size:11px;"> Avg Engagement </span> </div>
+      <div class="summary-engagement">'.numberAbbreviation($campaigninfo->totalengagement/$campaigninfo->total_influencers).'<br> <span class="total-engagement-copy" style="font-size:11px;"> Avg Engagement </span> </div>
 
 
 </div>

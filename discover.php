@@ -27,6 +27,8 @@ include 'php/numberAbbreviation.php';
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
 <link rel="stylesheet" href="/assets/css/sidebar.css">
 <link rel="stylesheet" href="assets/css/pullout.css">
+<link rel="stylesheet" href="assets/css/influencer-card.css">
+<link rel="stylesheet" href="/assets/css/discover.css">
 
 
 </head>
@@ -208,21 +210,21 @@ include 'php/numberAbbreviation.php';
                 $instagramengagement = number_format((($engagement['instagram']['average_engagement']/$instagramcount)*100),2,'.','');
                 $facebookengagement = number_format((($engagement['facebook']['average_engagement']/$facebookcount)*100),2,'.','');
                 echo '
-                    <div  class="influencer-box col-xs-9 col-sm-5 col-md-4 col-lg-3">
+                    <div  class="influencer-box col-xs-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="influencer-card-discover">
                                 <a href="/profile.php/?id='.$id.'"><img class="influencer-image-card" src="http://cogenttools.com/'.$image.'" onerror="this.src=`/assets/images/default-photo.png`"> </a>
                                 <div class="col-xs-12 influ-bottom" style="" data-id="'.$id.'">
                                     <!-- insthandle stuff -->
-                                        <div class="icons col-xs-12">
-                                            <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram"  aria-hidden="true"></i>
-                                            <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true"></i>
-                                            <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true"></i>
+                                        <div class="influencer-icons col-xs-12">
+                                            <i class="switch show-instagram influencer-card-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram"  aria-hidden="true"></i>
+                                            <i class="switch show-facebook influencer-card-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true"></i>
+                                            <i class="switch show-twitter influencer-card-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true"></i>
                                         </div>
-                                        <div class="col-xs-12 insthandle-info">
+                                        <div class="col-xs-12 handle-info">
                                             <!--icon here -->
-                                            <div class="instagram-handle insthandle-text" data-id="'.$id.'" >'.$insthandle.'</div>
-                                            <div class="facebook-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</div>
-                                            <div class="twitter-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</div>
+                                            <div class="instagram-handle handle-text" data-id="'.$id.'" >'.$insthandle.'</div>
+                                            <div class="facebook-handle handle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</div>
+                                            <div class="twitter-handle handle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</div>
                                         </div>
                                     <!-- followers -->
                                     <div class="col-xs-12">
