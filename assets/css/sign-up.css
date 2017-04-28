@@ -1,0 +1,56 @@
+.primary-button, .secondary-button {
+  border-radius: 1px;
+  font-family: "Montserrat", sans-serif;
+  -webkit-transition: background .4s, box-shadow .4s, color .4s, border .4s;
+  transition: background .4s, box-shadow .4s, color .4s, border .4s;
+  cursor: pointer; }
+  .primary-button:focus, .secondary-button:focus {
+    outline: none; }
+
+.primary-button {
+  border: none;
+  background: #73C48D;
+  color: white; }
+  .primary-button:hover {
+    box-shadow: 0px 0px 4px #63AB80; }
+  .primary-button:active {
+    box-shadow: 0px 0px 0px white; }
+
+.secondary-button {
+  border: 1px solid #30363F;
+  background: white;
+  color: #30363F; }
+  .secondary-button:hover {
+    box-shadow: 0px 0px 4px #63AB80; }
+  .secondary-button:active {
+    box-shadow: 0px 0px 0px white; }
+  .secondary-button:hover {
+    color: #63AB80;
+    border: 1px solid #63AB80; }
+
+::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: #C7C7CD !important; }
+
+.input-group {
+  padding-top: 0px; }
+
+@media only screen and (max-width: 590px) {
+  .signup-header {
+    font-size: 45px;
+    padding-bottom: 55px; }
+  .input-group {
+    /*min-width:300px;*/
+    width: 300px;
+    display: inline; }
+  #field {
+    height: 60px; }
+  .col-xs-6.form-col {
+    width: 96%;
+    margin-left: 2%; }
+  span {
+    display: block; }
+  .signup-btn-row {
+    margin-top: 12%; } }
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNpZ24tdXAuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsbUJBQW1CO0VBQ25CLHNDQUFzQztFQUN0QywwRUFBa0U7RUFBbEUsa0VBQWtFO0VBQ2xFLGdCQUFnQixFQUFFO0VBQ2xCO0lBQ0UsY0FBYyxFQUFFOztBQUVwQjtFQUNFLGFBQWE7RUFDYixvQkFBb0I7RUFDcEIsYUFBYSxFQUFFO0VBQ2Y7SUFDRSxnQ0FBZ0MsRUFBRTtFQUNwQztJQUNFLDhCQUE4QixFQUFFOztBQUVwQztFQUNFLDBCQUEwQjtFQUMxQixrQkFBa0I7RUFDbEIsZUFBZSxFQUFFO0VBQ2pCO0lBQ0UsZ0NBQWdDLEVBQUU7RUFDcEM7SUFDRSw4QkFBOEIsRUFBRTtFQUNsQztJQUNFLGVBQWU7SUFDZiwwQkFBMEIsRUFBRTs7QUFFaEM7RUFDRSx5QkFBeUI7RUFDekIsMEJBQTBCLEVBQUU7O0FBRTlCO0VBQ0UsaUJBQWlCLEVBQUU7O0FBRXJCO0VBQ0U7SUFDRSxnQkFBZ0I7SUFDaEIscUJBQXFCLEVBQUU7RUFDekI7SUFDRSxvQkFBb0I7SUFDcEIsYUFBYTtJQUNiLGdCQUFnQixFQUFFO0VBQ3BCO0lBQ0UsYUFBYSxFQUFFO0VBQ2pCO0lBQ0UsV0FBVztJQUNYLGdCQUFnQixFQUFFO0VBQ3BCO0lBQ0UsZUFBZSxFQUFFO0VBQ25CO0lBQ0UsZ0JBQWdCLEVBQUUsRUFBRSIsImZpbGUiOiJzaWduLXVwLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5wcmltYXJ5LWJ1dHRvbiwgLnNlY29uZGFyeS1idXR0b24ge1xuICBib3JkZXItcmFkaXVzOiAxcHg7XG4gIGZvbnQtZmFtaWx5OiBcIk1vbnRzZXJyYXRcIiwgc2Fucy1zZXJpZjtcbiAgdHJhbnNpdGlvbjogYmFja2dyb3VuZCAuNHMsIGJveC1zaGFkb3cgLjRzLCBjb2xvciAuNHMsIGJvcmRlciAuNHM7XG4gIGN1cnNvcjogcG9pbnRlcjsgfVxuICAucHJpbWFyeS1idXR0b246Zm9jdXMsIC5zZWNvbmRhcnktYnV0dG9uOmZvY3VzIHtcbiAgICBvdXRsaW5lOiBub25lOyB9XG5cbi5wcmltYXJ5LWJ1dHRvbiB7XG4gIGJvcmRlcjogbm9uZTtcbiAgYmFja2dyb3VuZDogIzczQzQ4RDtcbiAgY29sb3I6IHdoaXRlOyB9XG4gIC5wcmltYXJ5LWJ1dHRvbjpob3ZlciB7XG4gICAgYm94LXNoYWRvdzogMHB4IDBweCA0cHggIzYzQUI4MDsgfVxuICAucHJpbWFyeS1idXR0b246YWN0aXZlIHtcbiAgICBib3gtc2hhZG93OiAwcHggMHB4IDBweCB3aGl0ZTsgfVxuXG4uc2Vjb25kYXJ5LWJ1dHRvbiB7XG4gIGJvcmRlcjogMXB4IHNvbGlkICMzMDM2M0Y7XG4gIGJhY2tncm91bmQ6IHdoaXRlO1xuICBjb2xvcjogIzMwMzYzRjsgfVxuICAuc2Vjb25kYXJ5LWJ1dHRvbjpob3ZlciB7XG4gICAgYm94LXNoYWRvdzogMHB4IDBweCA0cHggIzYzQUI4MDsgfVxuICAuc2Vjb25kYXJ5LWJ1dHRvbjphY3RpdmUge1xuICAgIGJveC1zaGFkb3c6IDBweCAwcHggMHB4IHdoaXRlOyB9XG4gIC5zZWNvbmRhcnktYnV0dG9uOmhvdmVyIHtcbiAgICBjb2xvcjogIzYzQUI4MDtcbiAgICBib3JkZXI6IDFweCBzb2xpZCAjNjNBQjgwOyB9XG5cbjo6LXdlYmtpdC1pbnB1dC1wbGFjZWhvbGRlciB7XG4gIC8qIFdlYktpdCwgQmxpbmssIEVkZ2UgKi9cbiAgY29sb3I6ICNDN0M3Q0QgIWltcG9ydGFudDsgfVxuXG4uaW5wdXQtZ3JvdXAge1xuICBwYWRkaW5nLXRvcDogMHB4OyB9XG5cbkBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1heC13aWR0aDogNTkwcHgpIHtcbiAgLnNpZ251cC1oZWFkZXIge1xuICAgIGZvbnQtc2l6ZTogNDVweDtcbiAgICBwYWRkaW5nLWJvdHRvbTogNTVweDsgfVxuICAuaW5wdXQtZ3JvdXAge1xuICAgIC8qbWluLXdpZHRoOjMwMHB4OyovXG4gICAgd2lkdGg6IDMwMHB4O1xuICAgIGRpc3BsYXk6IGlubGluZTsgfVxuICAjZmllbGQge1xuICAgIGhlaWdodDogNjBweDsgfVxuICAuY29sLXhzLTYuZm9ybS1jb2wge1xuICAgIHdpZHRoOiA5NiU7XG4gICAgbWFyZ2luLWxlZnQ6IDIlOyB9XG4gIHNwYW4ge1xuICAgIGRpc3BsYXk6IGJsb2NrOyB9XG4gIC5zaWdudXAtYnRuLXJvdyB7XG4gICAgbWFyZ2luLXRvcDogMTIlOyB9IH1cbiJdfQ== */
