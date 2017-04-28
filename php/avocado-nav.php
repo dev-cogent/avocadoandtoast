@@ -1,7 +1,10 @@
 <?php 
 $url = $_SERVER['REQUEST_URI'];
 ?>
+
+
 <div class="avocado-nav-container "> 
+
   <div class="logo-container col-xs-2">
         <a href="/discover.php"><img src="/assets/images/at-logo-black.png"></a>
   </div>
@@ -24,8 +27,12 @@ $url = $_SERVER['REQUEST_URI'];
                  <a href="javascript:void(0);" class="" id="search"> <i class="input-search-icon wb-search" aria-hidden="true"></i> </a>
 
 <div class="search-bar">
-	<a href="javascript:void(0);" class="ion-android-close" id="close-search-bar"> <i class="icon pe-close" aria-hidden="true"></i> </a>
-	<input type="text" class="search-placeholder" placeholder="Search here..." />
+    <!--<div id=dismiss-button>x</div>-->
+	<!--<a href="javascript:void(0);" class="ion-android-close" id="close-search-bar"><i class="icon pe-close" aria-hidden="true"></i> </a>-->
+    <div class="search-bar-position"> 
+        <input type="text" class="search-placeholder" placeholder="Search here..." />
+        <div id="search-dismiss">x</div>
+    </div>
 </div>
 
           <div class="avo-navtabs"> <a href="/discover.php" class="link-pages <?php if($url == '/discover.php') echo 'active-tab';?>"> DISCOVER </a> </div>
@@ -54,21 +61,15 @@ $url = $_SERVER['REQUEST_URI'];
 
 
 </div>
-
+<div class="avocado-nav-spacing"></div>
 <script>
     $(document).ready(function() {
 	$('a#search').on('click', function() {
 		$('div.search-bar').slideDown('1500');
-       $('.nav-bottom').css('z-index','2');
-     //  $('.filter-section').css('padding-top', '70px');
-           $('div.search-bar').css('margin-top', '50px');
-
 	});
 	
 	$('div.search-bar a#close-search-bar').on('click', function() {
 		$('div.search-bar').slideUp('1500');
-         $('.filter-section').css('padding-top', '30px');
-        //  $('body.pace-done').css('margin-top', '0');
 	});
 
     // $(window).on("scroll", function() {

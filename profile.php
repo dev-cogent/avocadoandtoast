@@ -90,17 +90,17 @@ $id = $_GET['id'];
                                 <img class="influencer-image-card" src="http://cogenttools.com/'.$image.'">
                                 <div class="col-xs-12 profile-card" style="">
                                     <!-- insthandle stuff -->
-                                        <div class="icons col-xs-12">
-                                            <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" style="color:#73C48D" aria-hidden="true"></i>
-                                            <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true"></i>
-                                            <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true"></i>
+                                        <div class="influcner-icons col-xs-12">
+                                            <i class="switch show-instagram influencer-card-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" style="color:#73C48D" aria-hidden="true"></i>
+                                            <i class="switch show-facebook influencer-card-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true"></i>
+                                            <i class="switch show-twitter influencer-card-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true"></i>
                                         </div>
-                                        <div class="col-xs-12 insthandle-info">
+                                        <div class="col-xs-12 handle-info">
                                             <!--icon here -->
 
-                                            <p class="instagram-handle insthandle-text" data-id="'.$id.'">'.$insthandle.'</p>
-                                            <p class="facebook-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</p>
-                                            <p class="twitter-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</p>
+                                            <p class="instagram-handle handle-text" data-id="'.$id.'">'.$insthandle.'</p>
+                                            <p class="facebook-handle handle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</p>
+                                            <p class="twitter-handle handle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</p>
                                         </div>
                                     <!-- followers -->
                                     <div class="col-xs-12">
