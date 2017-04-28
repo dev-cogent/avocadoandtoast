@@ -44,7 +44,7 @@ include 'php/verify.php';
       <form method="POST" action="">
       <input style="width:72%; height:50px; margin-left:14%; text-transform:none; "type="email" class="avocado-focus form-control m-b-30"  name="email"    placeholder="Email">
       <input style="width:72%; height:50px; margin-left:14%; text-transform:none; "type="password" class="avocado-focus form-control m-b-30"  name="password" placeholder="Password">
-      <p style="font-size:10px; float:left; margin-left:14%;"><strong style="text-decoration: underline; color:#1F232A">FORGOT PASSWORD</strong> </p>
+      <div style="font-size:10px; float:left; margin-left:14%;"><strong style="text-decoration: underline; color:#1F232A">FORGOT PASSWORD</strong> </div>
       <br/>
       <button class="form-control" id="login-button"> SIGN IN </button>
       </form>
