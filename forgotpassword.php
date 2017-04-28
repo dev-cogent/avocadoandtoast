@@ -6,6 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 include 'php/forgot.php';
 
 }
+@import 'utility';
 
 ?>
 <!DOCTYPE html>
@@ -29,10 +30,11 @@ include 'php/forgot.php';
 }
 
 #login-button{
+    @extend .primary-button;
 border:none; 
 width:72%; 
 height:50px; 
-background-color:#73C48D;
+
 color:white; 
 margin-bottom:30px; 
 cursor:pointer; 
@@ -159,7 +161,7 @@ border-radius:0px;
 
 <!-- logo goes here -->
 <div id="spacing"></div>
-<div class="col-xs-1 col-xl-4" style="height: 100%;margin-top: -35px;background-color: #f7f7f7;"></div>
+<div class="col-xs-1 col-xl-4"></div>
 <div class="col-xs-10 col-xl-4"> 
 
 <div style="text-align:center; padding-top:30px;"> <img id="icon" src="/assets/images/avocado.png"></div>
