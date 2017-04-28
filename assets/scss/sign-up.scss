@@ -12,7 +12,6 @@
 
 .signup-btn {
     @extend .primary-button;
-    @include $color;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     padding: 12px 20px;
@@ -20,8 +19,6 @@
 
 .sign-up{
     @extend .primary-button;
-    @include $color;
-
 }
 
 @media only screen and (max-width: 590px) {

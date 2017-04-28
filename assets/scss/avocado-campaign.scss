@@ -1,4 +1,4 @@
-
+@import 'utility';
 
 .stats{
     color: #73C48D;
@@ -40,14 +40,10 @@ min-width: 300px;
 
 
 .btn-campaign-options{
-    color:rgb(29, 40, 76);
-    width: 180px;
+   @extend .secondary-button;
+    width: 140px;
     height: 35px;
-    background-color: white;
-    border: 1px solid black;
-    font-size:12px;
-    margin-right:5px;
-    font-family:'montserratlight';
+    margin-right:1%;
     margin-bottom:20px;
 }
 
