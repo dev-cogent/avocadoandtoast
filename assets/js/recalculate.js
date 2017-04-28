@@ -1,4 +1,13 @@
 $(document).ready(function(){
+    var totalIgImpressions = 0 ; 
+    var totalFbImpressions = 0;
+    var totalTwImpressions = 0;
+    var totalOverallImpressions = 0;
+
+    var totalIgEngagement = 0;
+    var totalFbEngagement = 0;
+    var totalTwEngagement = 0;
+    var totalOverallEngagement = 0;
         $.ajax({
         type: 'POST',
         url: '../php/ajax/avocado-recalculate.php',
@@ -10,45 +19,97 @@ $(document).ready(function(){
 
             $.each(campaignJSON, function (key, obj) {
             selectedusers.push(key);
-            $('#all-influencers').append('<tr class="campaign-list-table">'+
+            console.log(obj);
+            var igPost = parseInt(obj.instagram.post);
+            var fbPost = parseInt(obj.facebook.post);
+            var twPost = parseInt(obj.twitter.post);
+            var totalPost = igPost + fbPost + twPost;
+
+            var igImpressions = parseInt(obj.instagram.impressions);
+                totalIgImpressions += igImpressions;
+            var fbImpressions = parseInt(obj.facebook.impressions);
+                totalFbImpressions += fbImpressions;
+            var twImpressions = parseInt(obj.twitter.impressions);
+                totalTwImpressions += twImpressions;
+
+            var totalImpressions = igImpressions + fbImpressions + twImpressions;
+                totalOverallImpressions += parseInt(totalImpressions);
+                console.log(totalImpressions);
+                console.log(totalOverallImpressions);
+
+            var igEngagement = parseInt(obj.instagram.engagement);
+                totalIgEngagement += igEngagement;
+            var fbEngagement = parseInt(obj.facebook.engagement);
+                totalFbEngagement += fbEngagement;
+            var twEngagement = parseInt(obj.twitter.engagement);
+                totalTwEngagement += twEngagement;
+
+            var totalEngagement = igEngagement + fbEngagement + twEngagement;
+                totalOverallEngagement += totalEngagement;
+
+            var igFollowers = parseInt(obj.instagram.followers);
+            var fbFollowers = parseInt(obj.facebook.likes);
+            var twFollowers = parseInt(obj.twitter.followers);
+            var totalFollowers = igFollowers + fbFollowers + twFollowers;
+            $('#all-influencers').append('<tr class="campaign-list-table">'+ 
                         '<td class="campaign-tablerow" style="width:15%; padding-left:0%;">'+
                                 '<div class="information">'+
                             '<img src="http://cogenttools.com/'+obj.image+'" onerror="this.src=`/assets/images/default-photo.png`" class="influencer-campaign-image ">'+
-                            '<h4 class="influencer-handle-text handle">@'+obj.instagram_handle+'</h4>'+
+                            '<h4 class="influencer-handle-text handle">@'+obj.instagram.handle+'</h4>'+
                             '<h4 class="influencer-handle-text location-text">Location</h4></div></td>'+
                       '<td data-id="'+key+'" class="insta-column" style="width:15%;">'+
                           '<div class="posts-res-div">'+
-                            '<input data-id="'+key+'" data-platform="instagram" class="instagraminput campaignfocus" type="number"  value="'+obj.instagram_post+'"max="100" min="0">'+
+                            '<input data-id="'+key+'" data-platform="instagram" class="instagraminput campaignfocus" type="number"  value="'+obj.instagram.post+'"max="100" min="0">'+
                             '<div class="post-results">posts</div>'+
                           '</div>'+
                           '<div class="results-mini-col">'+
-                            '<div class="impression-res impression-blue impression-instagram-blue" data-id="'+key+'" data-number="'+obj.instagram_impressions+'">'+abbrNum(obj.instagram_impressions)+'</div>'+
-                            '<div class="engagement-res engagement-orange engagement-orange-instagram" data-id="'+key+'" data-number="'+obj.instagram_engagement+'" >'+abbrNum(obj.instagram_engagement)+'</div>'+
-                            '<div class="social-following-res social-following-red">'+abbrNum(obj.instagram_count)+'</div> </div></td>'+
+                            '<div class="impression-res impression-blue impression-instagram-blue" data-id="'+key+'" data-number="'+obj.instagram.impressions+'">'+abbrNum(obj.instagram.impressions)+'</div>'+
+                            '<div class="engagement-res engagement-orange engagement-orange-instagram" data-id="'+key+'" data-number="'+obj.instagram.engagement+'" >'+abbrNum(obj.instagram.engagement)+'</div>'+
+                            '<div class="social-following-res social-following-red">'+abbrNum(obj.instagram.followers)+'</div> </div></td>'+
                        '<td data-id="'+key+'" class="twit-column" style="width:15%;">'+
-                        '<input data-id="'+key+'" data-platform="facebook" class="facebookinput campaignfocus" type="number" value="'+obj.facebook_post+'" max="100" min="0">'+
+                        '<input data-id="'+key+'" data-platform="facebook" class="facebookinput campaignfocus" type="number" value="'+obj.facebook.post+'" max="100" min="0">'+
                         '<div class="post-results"> posts</div>'+
                         '<div class="results-mini-col">'+
-                          '<div class="impression-res impression-blue impression-facebook-blue" data-id="'+key+'" data-number="'+obj.facebook_impressions+'">'+abbrNum(obj.facebook_impressions)+'</div>'+
-                          '<div class="engagement-res engagement-orange engagement-orange-facebook"  data-id="'+key+'" data-number="'+obj.facebook_engagement+'" >'+abbrNum(obj.facebook_engagement)+'</div>'+
-                          '<div class="social-following-res social-following-red">'+abbrNum(obj.facebook_count)+'</div></div></td>'+
+                          '<div class="impression-res impression-blue impression-facebook-blue" data-id="'+key+'" data-number="'+obj.facebook.impressions+'">'+abbrNum(obj.facebook.impressions)+'</div>'+
+                          '<div class="engagement-res engagement-orange engagement-orange-facebook"  data-id="'+key+'" data-number="'+obj.facebook.engagement+'" >'+abbrNum(obj.facebook.engagement)+'</div>'+
+                          '<div class="social-following-res social-following-red">'+abbrNum(obj.facebook.likes)+'</div></div></td>'+
                       '<td data-id="'+key+'" class="face-column" style="width:15%;">'+
-                        '<input data-id="'+key+'" data-platform="twitter" class="twitterinput campaignfocus" type="number" value="'+obj.twitter_post+'" max="100" min="0">'+
+                        '<input data-id="'+key+'" data-platform="twitter" class="twitterinput campaignfocus" type="number" value="'+obj.twitter.post+'" max="100" min="0">'+
                         '<div class="post-results"> posts</div>'+
                         '<div class="results-mini-col">'+
-                          '<div class="impression-res impression-blue impression-twitter-blue" data-id="'+key+'" data-number="'+obj.twitter_impressions+'">'+abbrNum(obj.twitter_impressions)+'</div>'+
-                          '<div class="engagement-res engagement-orange engagement-orange-twitter" data-id="'+key+'" data-number="'+obj.twitter_engagement+'">'+abbrNum(obj.twitter_engagement)+'</div>'+
-                          '<div class="social-following-res social-following-red">'+abbrNum(obj.twitter_count)+'</div></div></td>'+
+                          '<div class="impression-res impression-blue impression-twitter-blue" data-id="'+key+'" data-number="'+obj.twitter.impressions+'">'+abbrNum(obj.twitter.impressions)+'</div>'+
+                          '<div class="engagement-res engagement-orange engagement-orange-twitter" data-id="'+key+'" data-number="'+obj.twitter.engagement+'">'+abbrNum(obj.twitter.engagement)+'</div>'+
+                          '<div class="social-following-res social-following-red">'+abbrNum(obj.twitter.followers)+'</div></div></td>'+
                      '<td data-id="'+key+'" class="overall-inf-total-column" style="width:15%;">'+
-                          '<input data-id="'+key+'" data-platform="total" class="totalinput campaignfocus" type="number" value="'+obj.instagram_post + obj.twitter_post + obj.facebook_post+'" max="100" disabled>'+
+                          '<input data-id="'+key+'" data-platform="total" class="totalinput campaignfocus" type="number" value="'+ totalPost +'" max="100" disabled>'+
                           '<div class="post-results"> posts</div>'+
                           '<div class="results-mini-col">'+
-                            '<div class="impression-res impression-blue impression-total-blue" data-id="'+key+'" data-number="'+(obj.instagram_impressions + obj.facebook_impressions + obj.twitter_impressions)+'" >'+abbrNum(obj.instagram_impressions + obj.facebook_impressions + obj.twitter_impressions)+'</div>'+
-                            '<div class="engagement-res engagement-orange engagement-orange-total"  data-id="'+key+'" data-number="'+(obj.instagram_engagement + obj.facebook_engagement + obj.twitter_engagement)+'" >'+abbrNum(obj.instagram_engagement + obj.facebook_engagement + obj.twitter_engagement)+'</div>'+
-                            '<div class="social-following-res social-following-red"> </div></div></td></tr>');
+                            '<div class="impression-res impression-blue impression-total-blue" data-id="'+key+'" data-number="'+( totalImpressions )+'" >'+abbrNum(totalImpressions)+'</div>'+
+                            '<div class="engagement-res engagement-orange engagement-orange-total"  data-id="'+key+'" data-number="'+(totalEngagement)+'" >'+abbrNum(totalEngagement)+'</div>'+
+                            '<div class="social-following-res social-following-red">'+ abbrNum(totalFollowers)+' </div></div></td></tr>');
             
 
             });
+        $('#all-influencers').append('<tr class="result-row influencer-result-row">'+
+                        '<td class="influencer-column" scope="row" data-label="Name" style="width:15%;">'+
+                            '<div class="influencer-info-container">'+
+                                '<p class="result-name mobile">  CAMPAIGN ENGAGEMENT</p>'+
+                            '</div>'+
+                      '<td  class="insta-column"  data-label="Instagram" style="width:15%;" > <p class="instagram-posts results-text mobile" id="instagram-engagement" data-number="'+totalIgEngagement+'">'+abbrNum(totalIgEngagement)+'</p> </td>'+
+                      '<td  class="twit-column" data-label="Twitter" style="width:15%;"> <p class="facebook-posts results-text mobile" id="facebook-engagement" data-number="'+totalFbEngagement+'">'+abbrNum(totalFbEngagement)+'</p> </td>'+
+                      '<td  class="face-column" data-label="Facebook" style="width:15%;"> <p class="twitter-posts results-text mobile" id="twitter-engagement" data-number="'+totalTwEngagement+'">'+abbrNum(totalTwEngagement)+' </p></td>'+
+                      '<td  class="face-column" data-label="Total" style="width:15%;"> <p class="total-posts results-text mobile" id="total-engagement" data-number="'+totalOverallEngagement+'" > '+abbrNum(totalOverallEngagement)+'</p>  </td>'+
+                    '</tr>'+        
+                    '<tr class="result-row influencer-result-row">'+
+                        '<td class="influencer-column" style="width:15%;" scope="row" data-label="Name">'+
+                            '<div class="influencer-info-container">'+
+                            '<p class="result-name mobile"> CAMPAIGN IMPRESSIONS</p>'+
+                            '</div>'+
+                      '<td  class="insta-column" data-label="Instagram" style="width:15%;"><p class="instagram-posts results-text mobile" id="instagram-impressions" data-number="'+totalIgImpressions+'">'+abbrNum(totalIgImpressions)+'</p> </td>'+
+                      '<td  class="twit-column" data-label="Twitter" style="width:15%;"> <p class="facebook-posts results-text mobile" id="facebook-impressions" data-number="'+totalFbImpressions+'">'+abbrNum(totalFbImpressions)+'</p> </td>'+
+                      '<td  class="face-column" data-label="Facebook"  style="width:15%;"> <p class="twitter-posts results-text mobile" id="twitter-impressions" data-number="'+totalTwImpressions+'">'+abbrNum(totalTwImpressions)+' </p></td>'+
+                      '<td  class="total-column" data-label="Total"  style="width:15%;"> <p class="total-posts results-text mobile" id="total-impressions" data-number="'+totalOverallImpressions+'" >'+abbrNum(totalOverallImpressions)+'</p></td>'+
+                    '</tr>')
         }
     }); // end ajax request*/
 
@@ -119,21 +180,21 @@ $(document).on('change', '.campaignfocus', function () {
 
     if (type == 'instagram') {
         $('.instagraminput').each(function () {
-            posts.push($(this).val());
+            posts.push(parseInt($(this).val()));
         });
         getCalculation(type, posts, selectedusers);
     }
 
     if (type == 'twitter') {
         $('.twitterinput').each(function () {
-            posts.push($(this).val());
+            posts.push(parseInt($(this).val()));
         });
         getCalculation(type, posts, selectedusers);
     }
 
     if (type == 'facebook') {
         $('.facebookinput').each(function () {
-            posts.push($(this).val());
+            posts.push(parseInt($(this).val()));
         });
         getCalculation(type, posts, selectedusers);
     }
@@ -157,7 +218,7 @@ function getCalculation(type, posts, selectedusers) {
                 console.log(jqXHR);
                 for(var i = 0; i < selectedusers.length; i++){
                     var id = selectedusers[i];
-                    console.log(id);
+
                     var engagementUser = abbrNum(arr.influencer[id].engagement);
                     var impressionUser = abbrNum(arr.influencer[id].impressions);
                     $('.engagement-orange-instagram[data-id='+id+']').text(engagementUser);
