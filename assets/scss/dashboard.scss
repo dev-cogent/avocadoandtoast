@@ -1,0 +1,200 @@
+
+a:hover{
+    text-decoration:none;
+}
+#allcampaigns{
+    font-size: 22px;
+    font-family: 'open sans';
+    color: #515862;
+    letter-spacing: 1px;
+}
+
+.divider-top{
+    border-bottom:1px solid rgb(210,215,220);
+    padding-bottom:20px;
+    border-right:1px solid rgb(210,215,220);
+}
+
+#campaign-details{
+    position: fixed;
+    width: 100%;
+    border-left: 1px solid rgb(210,215,220);
+    margin-left: -14px;
+    padding-left: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 100%;
+}
+
+td.campaign-details.name{
+  max-width: 180px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.stats{
+    color: #73C48D;
+    font-family: 'montserratsemibold';
+    font-size: 35px;
+    font-weight: 600;
+    padding-top: 10px;
+    width: 100px;
+    max-width: 100px;
+
+
+}
+
+.button-stats{
+       max-width: 100px; 
+       padding-right: 17px;
+       padding-top: 10px;
+       width: 100px;
+}
+    
+.button-stats-bt{
+    width: 130px;
+    height: 35px;
+    background-color: #73C48D;
+    color: white;
+    border: 0px;
+    font-size: 12px;
+    margin-right: 5px;
+    font-family: 'montserratlight';
+    }
+
+.label-info{
+
+    color: rgb(29, 40, 76);
+    font-weight: 600;
+    font-size: 15px;
+    font-family: 'open sans';
+    padding-bottom: 10px;
+
+
+}
+
+.campaign-block{
+    border-bottom: 1px solid rgb(210,215,220);
+    padding-bottom: 10px;
+    padding-top: 0px;
+    border-right:1px solid rgb(210,215,220);
+}
+
+#campaign-title{
+color: rgb(29, 40, 76);
+font-size: 20px;
+font-family:'open sans';
+
+} 
+
+.title{
+    font-weight:600;
+    font-family:'open sans';
+    font-size:15px;
+    color:rgb(29, 40, 76);
+}
+
+#summary{
+    color:#515862;
+    font-size:13px;
+    width: 70%;
+}
+
+.option-button{
+    border: 1px solid black;
+    border-radius: 0px;
+    background-color: white;
+    font-size: 13px;
+    font-family: 'Montserrat';
+    padding-left: 1px;
+    margin-right: 5px;
+    height: 40px; 
+    width: 130px;
+}
+.campaign-block:hover{
+    background-color:#eaeaea;
+}
+
+
+table{
+    margin-left: 11px;
+}
+.campaign-block{
+    background-color:#fcfcfc;
+
+}
+button:focus{
+    outline:none;
+}
+
+.campaign-details{
+font-size:17px;
+color:rgb(29, 40, 76);
+font-family:'open sans';
+padding-top: 30px;
+width:20%;
+}
+
+i.fa.fa-exclamation-triangle {
+  font-size: 22px;
+  color: #EC3241;
+}
+
+
+
+/*Added css for mobile - Bashir */
+/*Laptop to Tablet */
+@media only screen and (max-width: 1024px) and (min-width:768px) {
+    .stats {
+        font-size:30px;
+    }
+    .campaign-details{
+        font-size:15px;
+    }
+    .label-info{
+        font-size:15px;
+    }
+    .mobile-off-first{
+        display:none;
+    }
+
+}
+
+/*Laptop to a smaller size. Still large enough to keep all info on screen but we have to make it just a bit smaller. */ 
+@media only screen and (max-width: 768px) and (min-width:600px) {
+    .stats {
+        font-size:20px;
+    }
+    .campaign-details{
+        font-size:13px;
+    }
+    .label-info{
+        font-size:13px;
+    }
+    .mobile-off-first{
+        display:none;
+    }
+
+}
+
+/*Anything smaller then we start getting rid of some information */
+@media only screen and (max-width: 600px) {
+    .stats {
+        font-size:25px;
+    }
+    .campaign-details{
+        font-size:14px;
+    }
+    .label-info{
+        font-size:14px;
+    }
+
+    .mobile-off{
+        display:none;
+    }
+    .button-stats-bt{
+        width:115px;
+        font-size:11px;
+    }
+
+}
+/*END MOBILE CSS */

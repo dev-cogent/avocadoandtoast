@@ -47,6 +47,14 @@ $social-following-red: rgb(231, 72, 69);
 }
 
 // PLACEHOLDER CLASSES
+
+%basic-input{
+    
+    border: 1px solid $avo-green;
+    outline: none;
+}
+
+
 %basic-button {
     border-radius: 1px;
     font-family: $main-font;

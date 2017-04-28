@@ -25,8 +25,8 @@ $(document).on('click', '.filter-option', function () {
     $('.filter-option[data-platform=' + platform1 + ']').css('color', '#A2A8B1');
     $('.filter-option[data-platform=' + platform2 + ']').css('color', '#A2A8B1');
     $('.filter-option[data-platform=' + platform3 + ']').css('color','#A2A8B1');
-    $('.sliders[data-platform=' + platform + ']').show();
-    $('.sliders[data-platform=' + platform + '-engagement]').show();
+    $('.sliders[data-platform=' + platform + ']').css('display','unset');
+    $('.sliders[data-platform=' + platform + '-engagement]').css('display','unset');
     $('.sliders[data-platform=' + platform1 + ']').css('display', 'none');
     $('.sliders[data-platform=' + platform1 + '-engagement]').css('display', 'none');
     $('.sliders[data-platform=' + platform2 + ']').css('display', 'none');
@@ -181,7 +181,6 @@ $(document).on('click', '.filter-option', function () {
      * @param {JSON} campaignJSON 
      */
     function appendCards(campaignJSON) {
-         console.log(campaignJSON);
             $.each(campaignJSON, function (key, obj) {
             
             $('.found-influencers').append('<div  class="influencer-box col-xs-12 col-sm-6 col-md-4 col-lg-3">' +
@@ -266,12 +265,10 @@ function changePlatforminfo(id, platform) {
 
 
     }
-        //$('.show-' + platform + '[data-id="'+id+'"]').addClass('disable-platform');
-        $('.show-' + platform1 + '[data-id="'+id+'"]').addClass('active-platform');
-        $('.' + platform +'-handle[data-id="'+id+'"]').addClass('disable-platform');
-        $('.' + platform1 +'-handle[data-id="'+id+'"]').removeClass('disable-platform');
-        $('.' + platform +'-follower-count[data-id="'+id+'"]').addClass('disable-platform');
-        $('.' + platform1 +'-follower-count[data-id="'+id+'"]').removeClass('disable-platform');
-        $('.' + platform +'-engagement[data-id="'+id+'"]').addClass('disable-platform');
-        $('.' + platform1 +'-engagement[data-id="'+id+'"]').removeClass('disable-platform'); 
+        $('.show-' + platform + '[data-id="'+id+'"]').toggle();
+        //$('.show-' + platform1 + '[data-id="'+id+'"]').addClass('active-platform');
+        $('.' + platform +'-handle[data-id="'+id+'"]').toggle();
+        $('.' + platform1 +'-handle[data-id="'+id+'"]').toggle();
+
+
 }

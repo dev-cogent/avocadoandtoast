@@ -1,0 +1,136 @@
+
+.center-form-content{
+    padding-left:20%;
+    padding-right:20%;
+    padding-top:100px;
+    height:110%;
+}
+.input-container{
+    height:100%;
+    width:45%;
+    margin: 0 auto; 
+}
+.avo-btn-edit{
+    height:40px;
+    border-radius: 1px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.avo-btn-edit-secondary{
+    float: left;
+    background-color:white; 
+    border:1px solid #30363C; 
+    color:#30363C;
+}
+
+.avo-btn-edit-primary{
+    border:0px;
+    float: right;
+    color: white;
+    background-color: #73C48D;
+}
+
+.avo-date{
+    min-width:0px !important;
+    height:2.5rem;
+
+}
+
+
+#date-seperate{ 
+    padding-top:7px;
+    text-align:center;
+    font-size:12px;
+
+}
+
+.desc-header{
+    font-family:'Montserrat', sans-serif;
+}
+
+#edit-campaign-name{
+    text-align:center;
+ }
+
+ #campaign-name{
+     text-align:center;
+ }
+
+ .sub-heading{
+     font-family:'Open Sans';
+     text-align: center;
+
+ }
+
+ .pricing{
+    height: 50px;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 20px;
+    margin-bottom: 20px;
+ }
+ 
+.social-list{
+    list-style-type: none;
+    float:left;
+}
+
+.social-text{
+    display:inline;
+    padding-left:20px;
+    padding-right:20px;
+    color: #1F232A;
+    font-family: 'open sans';
+    font-size:15px;
+
+}
+/*There is too much empty space at this point so we start to widen things out just a bit ;) */
+@media only screen and (max-width: 1500px) and (min-width:1000px) {
+    .center-form-content {
+        padding-left:10%;
+        padding-right:10%;
+        padding-top:120px;
+    }
+}
+
+/*Making a little bit more space. This is for laptop L to Mobile L */
+@media only screen and (max-width: 1024px) and (min-width:425px) {
+    .center-form-content {
+        padding-left:10%;
+        padding-right:10%;
+        padding-top:120px;
+    }
+    .input-container{ 
+        width:80%;
+    }
+}
+
+/*Making a little bit more space. This is for laptop L to Mobile L */
+@media only screen and (max-width: 700px) {
+    .social-list {
+        float:none;
+    }
+    .input-container{ 
+        width:80%;
+    }
+}
+
+
+
+/*Mobile L and down  */
+
+@media only screen and (max-width: 424px) {
+    .center-form-content {
+    padding-left:10%;
+    padding-right:10%;
+    padding-top:120px;
+    }
+
+    .input-container{
+        margin:0;
+        width:100%;
+    }
+
+    .desc-header{ 
+        font-size:20px;   
+    }
+}
