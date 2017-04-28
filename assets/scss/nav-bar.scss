@@ -152,23 +152,17 @@ div.search-bar {
 }
 
 a#close-search-bar {
+    @extend %x-button;
     position: absolute;
     right: 25px;
     top: 15px;
-    text-decoration: none;
     color: white;
     background: transparent;
-    border: 1px solid white;
-    padding-top: 1px;
-    padding-left: 3px;
-    padding-right: 3px;
+    width: 50px;
+    text-align: -webkit-center;
+    padding-top: 3px;
     transition: all 0.2s ease-in-out;
     font-weight: bold;
-     :hover {
-        color: #131418;
-        background: white;
-        border: 1px solid white;
-    }
 }
 
 input[type=text].search-placeholder {
