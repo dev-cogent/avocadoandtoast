@@ -8,41 +8,7 @@ include 'php/registerinfo.php';
 <head>
   <?php include 'html/head.html' ?>
     <title>Sign Up | Avocado & Toast</title>
-<style>
-::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    #C7C7CD !important;
-}
-.input-group{
-  padding-top:0px;
-}
 
-@media only screen and (max-width: 590px) {
-    .signup-header {
-        font-size:45px;
-        padding-bottom: 55px;
-    }
-
-    .input-group{
-      /*min-width:300px;*/
-      width: 300px;
-      display:inline;
-    }
-    #field{
-          height: 60px;
-    }
-    .col-xs-6.form-col{
-      width:96%;
-      margin-left:2%;
-    }
-    span{
-      display:block;
-    }
-
-    .signup-btn-row{
-      margin-top:12%;
-    }
-}
-</style>
 </head>
 
 

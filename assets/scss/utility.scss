@@ -30,7 +30,7 @@ $social-following-red: rgb(231, 72, 69);
 @mixin button-box-shadow($color) {
     @if $color {
         &:hover {
-            box-shadow: 0px 0px 3px $color;
+            box-shadow: 0px 0px 4px $color;
         }
         &:active {
             box-shadow: 0px 0px 0px white;
@@ -47,10 +47,19 @@ $social-following-red: rgb(231, 72, 69);
 }
 
 // PLACEHOLDER CLASSES
+
+%basic-input{
+    
+    border: 1px solid $avo-green;
+    outline: none;
+}
+
+
 %basic-button {
     border-radius: 1px;
     font-family: $main-font;
-    transition: background .5s, box-shadow .3s;
+    transition: background .4s, box-shadow .4s, color .4s, border .4s;
+    cursor: pointer;
     &:focus {
         outline: none;
     }
@@ -87,22 +96,9 @@ $social-following-red: rgb(231, 72, 69);
     background: white;
     color: $header-grey;
     @include button-box-shadow($avo-green-active);
-    transform: rotate(0deg);
     &:hover {
-        border: 1px solid $avo-green-active;
-        color: $avo-green-active;
-        animation-name: gocrazy;
-        animation-duration: 45s;
-        animation-iteration-count: infinite;
-    }
-}
-
-@keyframes gocrazy {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
+      color: $avo-green-active;
+      border: 1px solid $avo-green-active;
     }
 }
 

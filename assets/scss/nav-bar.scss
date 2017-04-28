@@ -121,6 +121,7 @@ i.input-search-icon.wb-search {
     color: #515862;
     position: relative;
     top: 2px;
+    padding-right: 2%;
     font-size: 16px;
     right: -5px;
 }
@@ -130,6 +131,7 @@ i.fa.fa-bars.bar-settings {
 }
 
 a#search {
+    text-decoration: none;
     padding: relative;
     top: 2px;
     font-size: 18px;
@@ -224,6 +226,7 @@ input[type=text] ::-webkit-input-placeholder
         color: #515862;
         position: relative;
         top: 17px;
+        padding-right: 0;
         right: -96px;
     }
     .dropdown-content {

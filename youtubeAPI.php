@@ -11,11 +11,31 @@ class youtubeAPI{
 
 
 
-    public function getChannelID($user){
+    public function getChannelTopicDetails($user){
+        $topicDetails = array();
         $key = $this->getYoutubeAPIKey();
-        $url = 'https://www.googleapis.com/youtube/v3/channels?part=contentDetails&forUsername='.$user.'&key='.$key;
+        $url = 'https://www.googleapis.com/youtube/v3/channels?part=topicDetails&forUsername='.$user.'&key='.$key;
+        echo $url;
         $apiData = $this->curl($url);
-        $channelID = $apiData['items'][0]['id'];
+        foreach($apiData['items']['topicDetails']['topicCategories'] as $topic){
+            array_push($topicDetails,$topic);
+        }
+        print_r($topicDetails);
+
+    }
+
+
+
+    public function getChannelStats($user){
+        $basicInfo = new stdClass;
+        $key = $this->getYoutubeAPIKey();
+        $url = 'https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername='.$user.'&key='.$key;
+        $apiData = $this->curl($url);
+        $basicInfo->channelID = $apiData['items'][0]['id'];
+        $basicInfo->viewCount = $apiData['items'][0]['viewCount'];
+        $basicInfo->commentCount = $apiData['items'][0]['commentCount'];
+        $basicInfo->subscriberCount = $apiData['items'][0]['subscriberCount'];
+        $basicInfo->videoCount = $apiData['items'][0]['videoCount'];
         return $channelID;
     }
 
@@ -23,6 +43,8 @@ class youtubeAPI{
         $key = $this->getYoutubeAPIKey();
         
     }
+
+
 
 
     public function getYoutubeVideos($channelID){
@@ -58,7 +80,9 @@ class youtubeAPI{
             $engagementObj->$videoID->avg_engagement = $engagementObj->$videoID->total_engagement/(count($videoArr));
             
         }
+        print_r($engagementObj);
     }
+
 
     
 
@@ -77,8 +101,8 @@ class youtubeAPI{
 }
 //test youtube channel 
 $youtube = new youtubeAPI();
-$meh = $youtube->getYoutubeVideos('UCYEK6xds6eo-3tr4xRdflmQ');
-
+//$meh = $youtube->getYoutubeVideos('UCYEK6xds6eo-3tr4xRdflmQ');
+$meh = $youtube->getChannelTopicDetails('biolayne');
 
 
 

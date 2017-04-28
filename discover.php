@@ -8,27 +8,27 @@ include 'php/numberAbbreviation.php';
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
 <head>
+    <link rel="stylesheet" href="/assets/uislider/nouislider.css">
   <?php include 'html/head.html' ?>
     <title>Discover | Avocado & Toast</title>
-    <script src="/bootbox/bootbox.js"></script>
-    <script src="/global/vendor/bootstrap/bootstrap.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700" rel="stylesheet">
-    <script src="/assets/js/abbreviatenumber.js"></script>
-    <script src="/assets/wnumb/wNumb.js"></script>
-    <script src="/assets/uislider/nouislider.js"></script>
-    <script src="/assets/js/tokenfield/dist/bootstrap-tokenfield.js"></script>
-    <script src="/assets/js/loading.js"></script>
-    <script src="/assets/js/avocado-card-functions.js"></script>
-    <script src="/assets/js/avocado-calculate.js"></script>
-    <script src="assets/js/influencer_pullout.js"></script>
-    <link rel="stylesheet" href="/assets/js/tokenfield/dist/css/bootstrap-tokenfield.css">
-    <link rel="stylesheet" href="/assets/uislider/nouislider.css">
-    <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
-    <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
-    <link rel="stylesheet" href="/assets/css/discover.css">
-    <link rel="stylesheet" href="/assets/css/sidebar.css">
-    <link rel="stylesheet" href="/assets/css/new-discover.css">
-    <link rel="stylesheet" href="assets/css/pullout.css">
+<script src="/bootbox/bootbox.js"></script>
+<script src="/global/vendor/bootstrap/bootstrap.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700" rel="stylesheet">
+<script src="/assets/js/abbreviatenumber.js"></script>
+<script src="/assets/wnumb/wNumb.js"></script>
+<script src="/assets/uislider/nouislider.js"></script>
+<script src="/assets/js/tokenfield/dist/bootstrap-tokenfield.js"></script>
+<script src="/assets/js/loading.js"></script>
+<script src="/assets/js/avocado-card-functions.js"></script>
+<script src="/assets/js/avocado-calculate.js"></script>
+<script src="assets/js/influencer_pullout.js"></script>
+<link rel="stylesheet" href="/assets/js/tokenfield/dist/css/bootstrap-tokenfield.css">
+<link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
+<link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
+<link rel="stylesheet" href="/assets/css/sidebar.css">
+<link rel="stylesheet" href="assets/css/pullout.css">
+
+
 </head>
 
 <body>
@@ -208,33 +208,34 @@ include 'php/numberAbbreviation.php';
                 $instagramengagement = number_format((($engagement['instagram']['average_engagement']/$instagramcount)*100),2,'.','');
                 $facebookengagement = number_format((($engagement['facebook']['average_engagement']/$facebookcount)*100),2,'.','');
                 echo '
-                    <div  class="influencer-box col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <div  class="influencer-box col-xs-9 col-sm-5 col-md-4 col-lg-3">
                             <div class="influencer-card-discover">
                                 <a href="/profile.php/?id='.$id.'"><img class="influencer-image-card" src="http://cogenttools.com/'.$image.'" onerror="this.src=`/assets/images/default-photo.png`"> </a>
                                 <div class="col-xs-12 influ-bottom" style="" data-id="'.$id.'">
                                     <!-- insthandle stuff -->
                                         <div class="icons col-xs-12">
-                                            <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" style="color:#73C48D" aria-hidden="true"></i>
+                                            <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram"  aria-hidden="true"></i>
                                             <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true"></i>
                                             <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true"></i>
                                         </div>
                                         <div class="col-xs-12 insthandle-info">
                                             <!--icon here -->
-                                            <p class="instagram-handle insthandle-text" data-id="'.$id.'">'.$insthandle.'</p>
-                                            <p class="facebook-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</p>
-                                            <p class="twitter-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</p>
+                                            <div class="instagram-handle insthandle-text" data-id="'.$id.'" >'.$insthandle.'</div>
+                                            <div class="facebook-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</div>
+                                            <div class="twitter-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</div>
                                         </div>
                                     <!-- followers -->
                                     <div class="col-xs-12">
-                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'">'.numberAbbreviation($instagramcount).' Followers</p>
-                                        <p class="facebook-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($facebookcount).' Likes</p>
-                                        <p class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($twittercount).' Followers</p>
+                                        <div class="follower-count">Total Reach: '.numberAbbreviation($total).'</div>
+                                        <div class="instagram-follower-count follower-count" data-id="'.$id.'" style="display:none">Followers: '.numberAbbreviation($instagramcount).' </div>
+                                        <div class="facebook-follower-count follower-count" style="display:none" data-id="'.$id.'">Likes: '.numberAbbreviation($facebookcount).' </div>
+                                        <div class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">Followers: '.numberAbbreviation($twittercount).' </div>
                                     </div>
                                     <!-- Engagement -->
                                     <div class="col-xs-12">
-                                        <p class="instagram-engagement engagement-count" data-id="'.$id.'">'.$instagramengagement.'% eng per post</p>
-                                        <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$id.'">'.$facebookengagement.'% eng per post</p>
-                                        <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$id.'">'.$twitterengagement.'% eng per post</p>
+                                        <div class="instagram-engagement follower-count" data-id="'.$id.'" style="display:none">Engagement: '.$instagramengagement.'%</div>
+                                        <div class="facebook-engagement follower-count" style="display:none"data-id="'.$id.'">Engagement: '.$facebookengagement.'%</div>
+                                        <div class="twitter-engagement follower-count" style="display:none"data-id="'.$id.'">Engagement: '.$twitterengagement.'%</div>
                                     </div>
                                     <div class="col-xs-12">
 
