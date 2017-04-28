@@ -35,7 +35,7 @@ include 'php/verify.php';
 
 <!-- logo goes here -->
 <div id="spacing"></div>
-<div class="col-xs-1 col-xl-4" style="height: 100%;margin-top: -35px;background-color: #f7f7f7;"></div>
+<div class="col-xs-1 col-xl-4"></div>
 <div class="col-xs-10 col-xl-4">
 
 <div style="text-align:center;"> <img id="icon" src="/assets/images/avocado.png"></div>
