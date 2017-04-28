@@ -17,6 +17,8 @@ $stmt->fetch();
 $html = '';
         $influencerinfo = $obj->getCampaign($campaignid);
         $campaigninfo = $obj->getCampaignInfo($campaignid);
+        $influencerinfo = json_decode($influencerinfo);
+        $campaigninfo = json_decode($campaigninfo);
         foreach($influencerinfo['influencer'] as $influencerid => $info){
         $id = $influencerid;
         $instagramurl = $info['instagram_url'];
