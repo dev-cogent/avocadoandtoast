@@ -66,15 +66,23 @@ $url = $_SERVER['REQUEST_URI'];
     $(document).ready(function() {
 	$('a#search').on('click', function() {
 		$('div.search-bar').slideDown('1500');
-        // $('.nav-bottom').css('z-index','2');
-    //    $('.filter-section').css('padding-top', '70px');
 	});
 	
 	$('div.search-bar a#close-search-bar').on('click', function() {
 		$('div.search-bar').slideUp('1500');
-        //  $('.filter-section').css('padding-top', '30px');
 	});
+
+    // $(window).on("scroll", function() {
+    //     var scrollHeight = $(document).height(); 
+    //         if ($(window).scrollTop() - $(window).height() < scrollHeight - 100) {
+    //             $('div.search-bar').css('margin-top', '0');
+    //             $('body.pace-done').css('margin-top', '70px');
+    //             console.log('working')
+    //         } 
+    // })
 });
+
+
 </script>
 
 

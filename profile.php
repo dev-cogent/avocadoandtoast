@@ -19,7 +19,6 @@ $id = $_GET['id'];
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700" rel="stylesheet">
 <script src="/assets/wnumb/wNumb.js"></script>
 <script src="/assets/js/profile.js"></script>
-<script src="/assets/js/avocado-discover.js"></script>
 <link rel="stylesheet" href="/assets/css/influencer-profile.css">
 
 <link rel="stylesheet" href="/assets/uislider/nouislider.css">
@@ -30,7 +29,7 @@ $id = $_GET['id'];
 
 </head>
 <?php include 'php/avocado-nav.php';?>
-<body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
+<body style="padding-left:0px;padding-right:0px;">
     <!-- Facebook scripts and stuff -->
 <script>
   window.fbAsyncInit = function() {
@@ -86,7 +85,7 @@ $id = $_GET['id'];
     $twitterhandle = explode('?',$twitterhandle[0]);
     $twitterhandle = $twitterhandle[0];
     echo '
-                    <div  class="influencer-box col-xs-12 ">
+                    <div  class="influencer-box col-xs-10 col-sm-12  ">
                             <div class="card-discover profile-tag-margin">
                                 <img class="influencer-image-card" src="http://cogenttools.com/'.$image.'">
                                 <div class="col-xs-12 profile-card" style="">
@@ -115,9 +114,9 @@ $id = $_GET['id'];
                                         <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$id.'">1.5K Likes per post</p>
                                         <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$id.'">1.5K Likes per post</p>
                                     </div>
-                                    <div class="col-xs-12">
-                                    <div style="display:inline;" class="col-xs-12 invite checkmark-profile  avocado-focus" data-id="kixN6FS" data-image="images/kixN6FS.jpg"></div>
-                                    </div>
+                             
+                                    <div style="" class="col-xs-12 invite checkmark-profile  avocado-focus" data-id="kixN6FS" data-image="images/kixN6FS.jpg"></div>
+                                  
                                 </div>
                             </div>
                     </div>';
@@ -146,22 +145,23 @@ $id = $_GET['id'];
   <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 platform-container">
  <div class="social-container">
  <div class="inf-number"> 93.3m <br> <span class="followers-text"> followers </span> </div>
-   <img src="/assets/images/instagram-logo-green.png" class="instagram-logo-green"> </div> </div>
+  <a class="social-profile-tab" data-platform="instagram" data-handle="'.$insthandle.'" > <i class="switch show-instagram inst-icon icon bd-instagram influencer-prof" data-id="NB4gltv" data-platform="instagram" style="" aria-hidden="true"></i> </a> </div> </div>
+
+ <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 platform-container">
+   <div class="social-container">
+   <div class="inf-number"> 93.3m <br> <span class="followers-text"> followers </span> </div>
+  <a class="social-profile-tab" data-platform="facebook" data-handle="'.$facebookhandle.'"> <i class="switch show-facebook inst-icon icon bd-facebook influencer-prof" data-id="NB4gltv" data-platform="facebook" aria-hidden="true"></i> </a>  </div> </div>
+
 
  <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 platform-container">
   <div class="social-container">
   <div class="inf-number"> 51.3m <br><span class="followers-text"> followers </span> </div>
-    <img src="/assets/images/twitter-logo-green.png" class="twitter-logo-green"> </div> </div>
-
-  <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 platform-container">
-   <div class="social-container">
-   <div class="inf-number facebook"> 93.3m <br> <span class="followers-text"> followers </span> </div>
-     <img src="/assets/images/fb-logo-green.png" class="facebook-logo-green"> </div> </div>
+    <a class="social-profile-tab" data-platform="twitter" data-handle="'.$twitterhandle.'"> <i class="switch show-twitter inst-icon icon bd-twitter influencer-prof" data-id="NB4gltv" data-platform="twitter" aria-hidden="true"></i>  </a> </div> </div>
 
    <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 platform-container">
     <div class="social-container">
     <div class="inf-number youtube"> 200k <br> <span class="followers-text"> followers </span> </div>
-      <img src="/assets/images/youtube-icon-green.png" class="youtube-logo-green"> </div> </div>
+    <a class="social-profile-tab" data-platform="youtube" data-handle="">  <i class="switch show-twitter inst-icon icon bd-youtube influencer-prof yt" data-id="NB4gltv" data-platform="youtube" aria-hidden="true"></i> </a>  </div> </div>
 
 </div>
     <div class="col-xs-12 col-sm-12 col-lg-12 social-buttons">';

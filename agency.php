@@ -97,7 +97,7 @@
 
         <div class="row third-sect">
           <div class="button-protect">
-            <a href="/signup.php" class="signup-btn"> Sign up it's free </a>
+            <a class="signup-btn sign-up" href="/signup.php"> Sign up it's free </a>
           </div>
       </div>
 
