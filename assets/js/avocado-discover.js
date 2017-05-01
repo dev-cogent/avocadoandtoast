@@ -77,16 +77,11 @@ $(document).on('click', '.filter-option', function () {
         $('.token-label').each(function () {
             keywordarr.push($(this).text()); // taking all of the keywords the user has submitted. 
         });
-        if (keywordarr.length !== 0) {
-            filters['keywords'] = keywordarr;
-            $('.dropdown').val('');
-        }
-        else {
-            var keyword = $('.dropdown').val();
-            filters['keywords'] = [keyword];
-        }
+        
+        filters['keywords'] = keywordarr;
         applyFilters(filters);
     });
+
 
     $('#slider-instagram').click(function () {
         filterSlider('instagram');
@@ -188,16 +183,16 @@ $(document).on('click', '.filter-option', function () {
                 '<a href="/profile.php/?id=' + key + '"><img class="influencer-image-card" src="http://cogenttools.com/' + obj.image + '" onerror="this.src=`/assets/images/default-photo.png`"> </a>' +
                 '<div class="col-xs-12 influ-bottom" style="" data-id="' + key + '">' +
                 '<!-- insthandle stuff -->' +
-                '<div class="icons col-xs-12">' +
-                '<i class="switch show-instagram inst-icon icon bd-instagram active-platform" data-id="' + key + '" data-platform="instagram" aria-hidden="true"></i>' +
-                '<i class="switch show-facebook inst-icon icon bd-facebook" data-id="' + key + '" data-platform="facebook" aria-hidden="true"></i>' +
-                '<i class="switch show-twitter inst-icon icon bd-twitter" data-id="' + key + '" data-platform="twitter" aria-hidden="true"></i>' +
+                '<div class="influencer-icons col-xs-12">' +
+                '<i class="switch show-instagram influencer-card-icon icon bd-instagram active-platform" data-id="' + key + '" data-platform="instagram" aria-hidden="true"></i>' +
+                '<i class="switch show-facebook influencer-card-icon icon bd-facebook" data-id="' + key + '" data-platform="facebook" aria-hidden="true"></i>' +
+                '<i class="switch show-twitter influencer-card-icon icon bd-twitter" data-id="' + key + '" data-platform="twitter" aria-hidden="true"></i>' +
                 '</div>' +
-                '<div class="col-xs-12 insthandle-info">' +
+                '<div class="col-xs-12 handle-info">' +
                 '<!--icon here -->' +
-                '<div class="instagram-handle insthandle-text" data-id="' + key + '">' + obj.instagram.handle + '</div>' +
-                '<div class="facebook-handle insthandle-text disable-platform" data-id="' + key + '" >' + obj.facebook.handle + '</div>' +
-                '<div class="twitter-handle insthandle-text disable-platform" data-id="' + key + '" >' + obj.twitter.handle + '</div>' +
+                '<div class="instagram-handle handle-text" data-id="' + key + '">' + obj.instagram.handle + '</div>' +
+                '<div class="facebook-handle handle-text disable-platform" data-id="' + key + '" >' + obj.facebook.handle + '</div>' +
+                '<div class="twitter-handle handle-text disable-platform" data-id="' + key + '" >' + obj.twitter.handle + '</div>' +
                 '</div>' +
                 ' <!-- followers -->' +
                 '<div class="col-xs-12">' +
@@ -215,7 +210,7 @@ $(document).on('click', '.filter-option', function () {
                 '<div class="col-xs-12">' +
                 '<div class="col-xs-12 invite  avocado-focus" data-id="' + key + '" data-image="' + obj.image + '"></div>' +
                 '</div></div></div> </div>');
-                checkExistancePlatform(key, obj);
+                checkExistencePlatform(key, obj);
         });
 
     }
@@ -233,7 +228,7 @@ $(document).on('click', '.filter-option', function () {
  
 
   
- function checkExistancePlatform (id, influencerObj) {
+ function checkExistencePlatform (id, influencerObj) {
         
          var instagramUrl = influencerObj.instagram.url;
          var facebookUrl = influencerObj.facebook.url;

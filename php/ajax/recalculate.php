@@ -13,24 +13,36 @@ foreach($selectedusers as $user){
     $stmt->execute();
     $stmt->bind_result($instagramcount,$facebookcount,$twittercount);
     $stmt->fetch();
-    $arr[$user]['instagrampost'] = $_POST['instagramposts'][$i]; 
-    $arr[$user]['instagramimpressions'] =  $instagramcount * $_POST['instagramposts'][$i];
-    $arr[$user]['facebookpost'] = $_POST['facebookposts'][$i]; 
-    $arr[$user]['facebookimpressions'] = $facebookcount * $_POST['facebookposts'][$i];
-    $arr[$user]['twitterpost'] = $_POST['twitterposts'][$i]; 
-    $arr[$user]['twitterimpressions'] = $twittercount * $_POST['twitterposts'][$i];
+    $arr[$user]['instagrampost'] = checkNaN($_POST['instagramposts'][$i]); 
+    $arr[$user]['instagramimpressions'] =  checkNaN($instagramcount * $_POST['instagramposts'][$i]);
+    $arr[$user]['facebookpost'] = checkNaN($_POST['facebookposts'][$i]); 
+    $arr[$user]['facebookimpressions'] = checkNaN($facebookcount * $_POST['facebookposts'][$i]);
+    $arr[$user]['twitterpost'] = checkNaN($_POST['twitterposts'][$i]); 
+    $arr[$user]['twitterimpressions'] = checkNaN($twittercount * $_POST['twitterposts'][$i]);
     unset($stmt);
     $i++;
 }
 
-    $instagramimpression = $save->instagramCalculate($selectedusers,$_POST['instagramposts']);
-    $twitterimpressions = $save->twitterCalculate($selectedusers,$_POST['twitterposts']);
-    $facebookimpressions = $save->facebookCalculate($selectedusers,$_POST['facebookposts']);
+    $instagramimpression = $save->instagramCalculate($selectedusers,checkNaN($_POST['instagramposts']));
+    $twitterimpressions = $save->twitterCalculate($selectedusers,checkNaN($_POST['twitterposts']));
+    $facebookimpressions = $save->facebookCalculate($selectedusers,checkNaN($_POST['facebookposts']));
     $stats['totalinstagramimpressions'] = $instagramimpression;
     $stats['totaltwitterimpressions'] = $twitterimpressions;
     $stats['totalfacebookimpressions'] = $facebookimpressions;
     $stats['totalimpressions'] =  $instagramimpression + $twitterimpressions + $facebookimpressions;
     $stats['description'] = $_POST['campaigndescription'];
     $stats = json_encode($stats);
+    var_dump($stats);
     $savecampaign = $save->updateCampaignName($arr,$_SESSION['userid'],$stats,$_POST['campaignname'],$columnid);
     var_dump($savecampaign);
+
+
+    function checkNaN($number){
+        if(is_nan($number)){
+            $number = 0;
+
+        }
+        return $number;
+
+        
+    } 

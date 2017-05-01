@@ -1,3 +1,33 @@
+.primary-button, .btn-campaign-options-primary, .secondary-button, .btn-campaign-options {
+  border-radius: 1px;
+  font-family: "Montserrat", sans-serif;
+  -webkit-transition: background .4s, box-shadow .4s, color .4s, border .4s;
+  transition: background .4s, box-shadow .4s, color .4s, border .4s;
+  cursor: pointer; }
+  .primary-button:focus, .btn-campaign-options-primary:focus, .secondary-button:focus, .btn-campaign-options:focus {
+    outline: none; }
+
+.primary-button, .btn-campaign-options-primary {
+  border: none;
+  background: #73C48D;
+  color: white; }
+  .primary-button:hover, .btn-campaign-options-primary:hover {
+    box-shadow: 0px 0px 4px #63AB80; }
+  .primary-button:active, .btn-campaign-options-primary:active {
+    box-shadow: 0px 0px 0px white; }
+
+.secondary-button, .btn-campaign-options {
+  border: 1px solid #30363F;
+  background: white;
+  color: #30363F; }
+  .secondary-button:hover, .btn-campaign-options:hover {
+    box-shadow: 0px 0px 4px #63AB80; }
+  .secondary-button:active, .btn-campaign-options:active {
+    box-shadow: 0px 0px 0px white; }
+  .secondary-button:hover, .btn-campaign-options:hover {
+    color: #63AB80;
+    border: 1px solid #63AB80; }
+
 .stats {
   color: #73C48D;
   font-family: 'montserratsemibold';
@@ -31,25 +61,15 @@
   margin-left: 0%; }
 
 .btn-campaign-options {
-  color: #1d284c;
-  width: 180px;
+  width: 150px;
   height: 35px;
-  background-color: white;
-  border: 1px solid black;
-  font-size: 12px;
-  margin-right: 5px;
-  font-family: 'montserratlight';
+  margin-right: 1px;
   margin-bottom: 20px; }
 
 .btn-campaign-options-primary {
-  width: 180px;
+  width: 150px;
   height: 35px;
-  background-color: #73C48D;
-  color: white;
-  border: 0px;
-  font-size: 12px;
   margin-right: 5px;
-  font-family: 'montserratlight';
   margin-bottom: 20px; }
 
 .button-container {
@@ -87,7 +107,9 @@
   .campaign-details {
     font-size: 15px; }
   .label-info {
-    font-size: 15px; } }
+    font-size: 15px; }
+  .button-container {
+    width: 75%; } }
 
 @media (max-width: 800px) and (min-width: 601px) {
   .button-container {
@@ -104,7 +126,9 @@
   .campaign-details {
     font-size: 12px; }
   .label-info {
-    font-size: 12px; } }
+    font-size: 12px; }
+  .button-container {
+    width: 90%; } }
 
 @media only screen and (max-width: 600px) and (min-width: 374px) {
   .button-container {
@@ -136,8 +160,14 @@
   .button-container {
     padding-right: 0px;
     text-align: center;
-    padding-left: 0px; } }
+    padding-left: 0px;
+    width: 75%; } }
 
 @media (max-width: 360px) {
   .button-container {
     height: 400px; } }
+
+@media (max-width: 320px) {
+  .button-container {
+    width: 100%; } }
+

@@ -16,17 +16,25 @@
     margin-top: 25%;
 }
 
-.instagram-logo-green,
-.twitter-logo-green {
-    width: 40px;
+.social-content {
+    padding: 0;
+    margin-top: 3%;
+    margin-left: 2%;
 }
 
-.facebook-logo-green {
-    width: 38px;
+.social-buttons {
+    display: none;
 }
 
-.youtube-logo-green {
-    width: 60px;
+.influencer-prof {
+    font-size: 28px;
+    &:hover {
+        color: $avo-green;
+    }
+}
+
+.influencer-prof.yt {
+    font-size: 36px;
 }
 
 .followers-text {
@@ -43,15 +51,11 @@
     line-height: 18px;
     color: $body-black;
     letter-spacing: 1px;
-    margin-bottom: 10%;
-}
-
-.inf-number.youtube {
     margin-bottom: 4%;
 }
 
-.inf-number.facebook {
-    margin-bottom: 13%;
+.inf-number.youtube {
+    margin-bottom: 2.5%;
 }
 
 .social-button {
@@ -86,7 +90,7 @@
 }
 
 .checkmark-profile {
-    margin-left: 44%;
+    display: -webkit-box;
 }
 
 .profile-card {
@@ -119,7 +123,7 @@
 
 .fb-feed-card {
     width: 96%;
-    margin-top: 15px;
+    margin-bottom: 5%;
     height: 330px;
     border: 1px solid $separator-grey;
     border-radius: 3px;
@@ -238,12 +242,12 @@ img.share-green {
     .youtube-logo-green {
         width: 43px;
     }
-    i.switch.show-facebook.inst-icon.icon.bd-facebook,
-    i.switch.show-instagram.inst-icon.icon.bd-instagram,
-    i.switch.show-twitter.inst-icon.icon.bd-twitter {
+    i.switch.show-facebook.influencer-card-icon.icon.bd-facebook,
+    i.switch.show-instagram.influencer-card-icon.icon.bd-instagram,
+    i.switch.show-twitter.influencer-card-icon.icon.bd-twitter {
         font-size: 19px;
     }
-    .insthandle-text {
+    .handle-text {
         font-size: 23px;
     }
     .follower-count,
