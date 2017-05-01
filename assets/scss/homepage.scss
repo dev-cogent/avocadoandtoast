@@ -1,0 +1,25 @@
+@import 'utility';
+
+
+ul.nav.navbar-nav {
+    margin-top: 15px;
+}
+
+.sign-up-avo {
+    @extend .primary-button;
+    width: 20%;
+    font-size: 24px;
+    
+}
+
+.get-started {
+     @extend .primary-button;
+     width:15%;
+     font-size: 18px;
+
+}
+.learn-more{
+     @extend .secondary-button;
+     width:15%;
+     font-size: 18px;
+}
