@@ -14,6 +14,7 @@ include '../php/verify-campaign.php';
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/assets/js/avocado-campaign.js"></script>
+<script src="/assets/js/loading.js"></script>
 <link rel="stylesheet" href="/assets/js/tokenfield/dist/css/bootstrap-tokenfield.css">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
@@ -21,12 +22,14 @@ include '../php/verify-campaign.php';
 <link rel="stylesheet" href="/assets/css/avocado-campaign.css">
 <link rel="stylesheet" href="/assets/css/influencer-card.css">
 
+
 </head>
 <?php include '../php/avocado-nav.php';?>
 
 <body>
 
-
+<div id="loading"><img style="height:250px; width:250px;"src="/assets/images/loading.gif"/></div>
+<div id="myNav" class="overlay"></div>
 
 <!-- Add side bar here -->
  

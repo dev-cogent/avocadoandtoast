@@ -3,13 +3,15 @@ $(document).ready(function(){
         type: 'GET', 
         url: '/php/ajax/yourcampaigns-info.php',
         success: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR);
             campaignJSON = JSON.parse(jqXHR);
             $.each(campaignJSON, function(key,obj){
+                
             $('#campaign-container').append('<a href="/campaigns/?id='+key+'"><div class="campaign-block col-xs-12" data-id="'+key+'" data-desc="'+obj.description+'" data-name="'+obj.campaignname+'" data-start="'+obj.campaignstart+'" data-end="'+obj.campaignend+'" >'+
                    '<table class="col-xs-12">'+
                         '<tbody style="border-top:0px;">'+
                         '<tr>'+
-                            '<td class="campaign-details name" ><a href="/campaigns/?id='+key+'" class="campaign-details">'+obj.campaignname+' </a></td>'+
+                            '<td class="campaign-details name" >'+obj.campaignname+'</td>'+
                             '<td class="campaign-details" > '+obj.state+' </td>'+
                             '<td class="campaign-details date" > Created '+obj.created+'</td>'+
                         '</tr>'+

@@ -219,6 +219,7 @@ public function getSavedCampaigns($columnid){
         $arr->$campaignid->campaignstart = date('m/d/Y',strtotime($start));
         $arr->$campaignid->campaignend = date('m/d/Y',strtotime($end));
         $arr->$campaignid->totalinfluencers = $totalInfluencers;
+        if($totalInfluencers == 0) $totalInfluencers = 1;
         $arr->$campaignid->average_impressions = $totalimpressions/$totalInfluencers;
         $arr->$campaignid->average_engagement = $totalengagement/$totalInfluencers; 
         $state = $this->check_in_range($arr->$campaignid->campaignstart,$arr->$campaignid->campaignend);
