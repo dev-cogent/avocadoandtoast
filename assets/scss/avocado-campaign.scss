@@ -40,22 +40,18 @@ min-width: 300px;
 
 
 .btn-campaign-options{
-   @extend .secondary-button;
-    width: 140px;
+    @extend .secondary-button;
+    width: 152px;
     height: 35px;
-    margin-right:1%;
+    margin-right:1px;
     margin-bottom:20px;
 }
 
 .btn-campaign-options-primary{
-    width: 180px;
+    @extend .primary-button;
+    width: 100px;
     height: 35px;
-    background-color:#73C48D;
-    color:white;
-    border:0px;
-    font-size:12px;
     margin-right:5px;
-    font-family:'montserratlight';
     margin-bottom:20px;
 }
 .button-container{
