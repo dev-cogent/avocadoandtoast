@@ -11,15 +11,14 @@
 <script src="/assets/uislider/nouislider.js"></script>
 <link rel="stylesheet" href="/assets/css/discover.css">
 <link rel="stylesheet" href="/assets/css/edit-campaign.css">
+<link rel="stylesheet" href="/assets/css/footer.css">
 </head>
-
-<body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
 <?php include '../php/avocado-nav.php';?>
+<body class="col-xs-12 col-s-6">
 
 
-
-<div class="center-form-content" >
-
+<div class="center-form-content">
+<div class="white-space"></div>
 <div class="desc-header" id="edit-campaign-name">Edit </div>
 <div  class="input-container">
 
@@ -53,18 +52,15 @@
 
     <label class="title" style="visibility:hidden;">Buttons</label>
     
-    <div class="col-xs-12">
+     <div class="col-xs-12">
         <button class="col-xs-5 avo-btn-edit avo-btn-edit-secondary" id="delete-campaign" >DELETE</button>
         <button class="col-xs-5 avo-btn-edit avo-btn-edit-primary" id="submit-campaign" >SUBMIT</button>
-    </div>
-
-
-    <br/>
-
-
-</div>
-
-</div>
+        </div> 
+       
+    </div>  
+ </div>
+    <?php include 'footer.php'; ?>
+</body class="col-s-6">
 
 <script>
 const campaignid = '<?php echo $campaignid; ?>';
