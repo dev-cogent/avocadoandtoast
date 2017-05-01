@@ -142,28 +142,6 @@ span.token-label {
 
 /* Overlay styiling  */
 
-.overlay {
-    height: 0%;
-    width: 100%;
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    overflow-y: hidden;
-    a {
-        padding: 8px;
-        text-decoration: none;
-        font-size: 36px;
-        color: #818181;
-        display: block;
-        transition: 0.3s;
-        &:hover,
-         :focus {
-            color: #f1f1f1;
-        }
-    }
-}
 
 
 @media screen and (max-height: 450px) {
@@ -242,13 +220,6 @@ span.token-label {
 
 
 
-#loading {
-    display: none;
-    top: 31%;
-    left: 43%;
-    position: fixed;
-    z-index: 1001;
-}
 
 
 

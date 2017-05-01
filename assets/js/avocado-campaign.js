@@ -170,98 +170,12 @@ function setCampaignInfluencers(campaignJSON){
                 setPostInfo(key, postsContainer, account.post, idx, handleSet);
             }
         })
-
-
-        
-        //    $('.found-influencers').append( '<div  class="influencer-box col-xs-12 col-sm-6 col-md-4 col-lg-3" data-id="'+key+'"'+
-        //         'data-t-post="'+obj.twitter_post+'" data-f-post="'+obj.facebook_post+'" data-i-post="'+obj.instagram_post+'" data-t-impressions="'+obj.twitter_impressions+'" data-f-impressions="'+obj.facebook_impressions+'" data-i-impressions="'+obj.instagram_impressions+'"'+
-        //         'data-t-engagement="'+obj.twitter_engagement+'" data-i-engagement="'+obj.instagram_engagement+'" data-f-engagement="'+obj.facebook_engagement+'">'+
-        //         '<div class="influencer-card-discover">'+
-        //         '<a href="/profile.php/?id=' + key + '"><img class="influencer-image-card" src="http://cogenttools.com/' + obj.image + '" onerror="this.src=`/assets/images/default-photo.png`"> </a>' +
-        //         '<div class="col-xs-12 influ-bottom" style="" data-id="' + key + '">' +
-        //         '<!-- insthandle stuff -->' +
-        //         '<div class="influencer-icons col-xs-12">' +
-        //         '<i class="switch show-instagram influencer-card-icon icon bd-instagram ig-info active-platform" data-id="' + key + '" data-platform="instagram" aria-hidden="true"></i>' +
-        //         '<i class="switch show-facebook influencer-card-icon icon bd-facebook fb-info " data-id="' + key + '" data-platform="facebook" aria-hidden="true"></i>' +
-        //         '<i class="switch show-twitter influencer-card-icon icon bd-twitter tw-info " data-id="' + key + '" data-platform="twitter" aria-hidden="true"></i>' +
-        //         '</div>' +
-        //         '<div class="col-xs-12 handle-info">' +
-        //         '<!--icon here -->' +
-        //         '<div class="instagram-handle handle-text ig-info" data-id="' + key + '">' + obj.instagram.handle + '</div>' +
-        //         '<div class="facebook-handle handle-text fb-info" data-id="' + key + '" >' + obj.facebook.handle + '</div>' +
-        //         '<div class="twitter-handle handle-text tw-info" data-id="' + key + '" >' + obj.twitter.handle + '</div>' +
-        //         '</div>' +
-        //         ' <!-- followers -->' +
-        //         '<div class="col-xs-12">' +
-        //         '<div class="follower-count">Total Reach: '+abbrNum(obj.total)+'</div>'+
-        //         '' +
-        //         '<div class="facebook-follower-count follower-count fb-info"  data-id="' + key + '">Likes: ' + abbrNum(obj.facebook.followers) + ' </div>' +
-        //         '<div class="twitter-follower-count follower-count tw-info"  data-id="' + key + '">Followers: ' + abbrNum(obj.twitter.followers) + ' </div>' +
-        //         '</div>' +
-        //         '<!-- Engagement ?-->' +
-        //         '<div class="col-xs-12">' +
-        //         '<div class="instagram-engagement follower-count ig-info" data-id="' + key + '">Engagement: ' + abbrNum(obj.instagram.engagement) + '</div>' +
-        //         '<div class="facebook-engagement follower-count fb-info" data-id="' + key + '">Engagement: ' + abbrNum(obj.facebook.engagement) + '</div>' +
-        //         '<div class="twitter-engagement follower-count tw-info" data-id="' + key + '">Engagement: ' + abbrNum(obj.twitter.engagement) + '</div>' +
-        //         '</div>' +
-        //         '<div class="col-xs-12">' +
-        //         '<div class="col-xs-12 invite  avocado-focus" data-id="' + key + '" data-image="' + obj.image + '"></div>' +
-        //         '</div></div></div> </div>');
-        //         checkExistencePlatform(key, obj);
-
- 
-        });
+    });
 }
 
 
 
 
-
- function checkExistencePlatform (id, influencerObj) {
-        
-         var instagramUrl = influencerObj.instagram.url;
-         var facebookUrl = influencerObj.facebook.url;
-         var twitterUrl = influencerObj.twitter.url;
-
-         
-
-         if(!instagramUrl){
-            hidePlatform(id,'.ig-info');
-         }
-         if(!facebookUrl){
-            hidePlatform(id,'.fb-info');
-         }
-         if(!twitterUrl){
-            hidePlatform(id,'.tw-info');
-         }         
- }
-
-
-function hidePlatform(id, platform) {
-    console.log(id);
-    $(platform+'[data-id="'+id+'"]').css('display','none');
-
-
-    // if(platform = "instagram"){
-    //     var platform1= "facebook";
-    //     var platform2= "twitter";
-
-    // }
-    // if(platform == "facebook"){
-    //     var platform1= "twitter";
-
-    // }
-    // if(platform == "twitter"){
-
-
-    // }
-    //     $('.show-' + platform + '[data-id="'+id+'"]').toggle();
-    //     //$('.show-' + platform1 + '[data-id="'+id+'"]').addClass('active-platform');
-    //     $('.' + platform +'-handle[data-id="'+id+'"]').toggle();
-    //     $('.' + platform1 +'-handle[data-id="'+id+'"]').toggle();
-
-
-}
 
 
 
@@ -394,6 +308,7 @@ $(document).on('click','.remove-influencer',function(){
 
 
 $(document).on('click','#save-button',function(){
+    setLoading();
     var urlParams = new URLSearchParams(window.location.search);
     var campaignid = urlParams.getAll('id');
         $.ajax({
@@ -405,13 +320,19 @@ $(document).on('click','#save-button',function(){
             },
             success: function (jqXHR, textStatus, errorThrown) {
                 dialog = bootbox.dialog({
-                    message: '<div class="bootbox-body">' +
+                    message: '<div class="bootbox-body"><div class="modal-close-button">x</div>' +
                     '<div class="icon-popup-div"> <img src="/assets/images/chasing_2.gif" class="success-popup-icon"/> </div>' +
                     '<div class="row"> <div class="col-xs-12 popup-detail success">   <span class="yay"> YAY! </span> <br/> Your Campaign has been updated </div>' +
                     '</div> </div>',
-                    closeButton: true
+                    closeButton: false
                 });
                 dialog.modal();
+                $('.modal-close-button').click(function(){
+                    dialog.modal('hide');
+                    location.reload();
+
+                });
+                unsetLoading();
             } // end success  
         }); // end ajax request*/
 
@@ -433,21 +354,31 @@ undoInfluencer();
  */
 function removeInfluencerFromCampaign(id,card){
     card.fadeOut(); //Taking the influencer card and making it fadeOut/Disappear... like magic :) 
- 
     var reach = parseInt($('#total-reach').attr('data-number')); //reach is also the totalImpressions. 
-    var numberOfInfluencers = parseInt($('#influnum').text());
+    var numberOfInfluencers = parseInt($('#influnum').text() - 1);
     var totalPost = parseInt($('#total-posts').text());
     var totalInfluencerImpressions = parseInt(card.attr('data-t-impressions')) + parseInt(card.attr('data-f-impressions')) + parseInt(card.attr('data-i-impressions'));
     console.log(totalInfluencerImpressions);
-    var totalEngagement = $('#total-engagement').attr('data-number');
+    var totalEngagement = parseInt($('#total-engagement').attr('data-number'));
     var totalInfluencerEngagement = parseInt(card.attr('data-t-engagement')) + parseInt(card.attr('data-f-engagement')) + parseInt(card.attr('data-i-engagement'));
     var totalInfluencerPost = parseInt(card.attr('data-t-post')) + parseInt(card.attr('data-i-post')) + parseInt(card.attr('data-f-post'));
     var newEngagement = totalEngagement - totalInfluencerEngagement;
-    var newAvgEngagement = newEngagement/(numberOfInfluencers - 1);
+    var newAvgEngagement = newEngagement/(numberOfInfluencers);
     var newreach = reach - totalInfluencerImpressions;
-    var newAvgImpressions = newreach /(numberOfInfluencers-1); 
-
-    $('#influnum').text(numberOfInfluencers - 1);     //Changing the influencer number
+    var newAvgImpressions = newreach /(numberOfInfluencers); 
+    
+    if(!numberOfInfluencers){
+        $('#influnum').text('0');     //Changing the influencer number
+        $('#total-posts').text('0');     //changing the totalpost number 
+        $('#total-reach').attr('data-number','0'); //changing reach 
+        $('#total-reach').text('0');
+        $('#total-engagement').text('0'); // changing engagement 
+        $('#total-engagement').attr('0'); 
+        $('#avg-impressions').text('0'); // chaning avg impresions
+        $('#avg-engagement').text('0'); // changing avg engagement     
+    }else{
+    
+    $('#influnum').text(numberOfInfluencers);     //Changing the influencer number
     $('#total-posts').text(totalPost - totalInfluencerPost);     //changing the totalpost number 
     $('#total-reach').attr('data-number',newreach); //changing reach 
     $('#total-reach').text(abbrNum(newreach));
@@ -455,6 +386,7 @@ function removeInfluencerFromCampaign(id,card){
     $('#total-engagement').attr('data-number',newEngagement); 
     $('#avg-impressions').text(abbrNum(newAvgImpressions)); // chaning avg impresions
     $('#avg-engagement').text(abbrNum(newAvgEngagement)); // changing avg engagement
+    }
     deletedusers.push(id); //adding influcner to removed users array 
 
 }
