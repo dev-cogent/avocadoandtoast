@@ -24,14 +24,14 @@ $url = $_SERVER['REQUEST_URI'];
               
         </div>  
 
-                 <a href="javascript:void(0);" class="" id="search"> <i class="input-search-icon wb-search" aria-hidden="true"></i> </a>
+                 <a href="javascript:void(0);" class="close-search-bar"  id="search"> <i class="input-search-icon wb-search" aria-hidden="true"></i> </a>
 
 <div class="search-bar">
     <!--<div id=dismiss-button>x</div>-->
 	<!--<a href="javascript:void(0);" class="ion-android-close" id="close-search-bar"><i class="icon pe-close" aria-hidden="true"></i> </a>-->
     <div class="search-bar-position"> 
-        <input type="text" class="search-placeholder" placeholder="Search here..." />
-        <div id="search-dismiss">x</div>
+        <input type="text" class="search-placeholder search-global" placeholder="Search here..." />
+        <a href="javascript:void(0);" class="ion-android-close close-search-bar" ><div id="search-dismiss">x</div></a>
     </div>
 </div>
 
@@ -63,23 +63,21 @@ $url = $_SERVER['REQUEST_URI'];
 </div>
 <div class="avocado-nav-spacing"></div>
 <script>
+    $('.search-global').keydown(function(e){
+        if(e.which === 13 ){
+            var searchVal = $(this).val();
+            window.location = '/discover.php?q='+searchVal;
+        }
+    });
     $(document).ready(function() {
 	$('a#search').on('click', function() {
 		$('div.search-bar').slideDown('1500');
 	});
 	
-	$('div.search-bar a#close-search-bar').on('click', function() {
+	$('div.search-bar .close-search-bar').on('click', function() {
 		$('div.search-bar').slideUp('1500');
 	});
 
-    // $(window).on("scroll", function() {
-    //     var scrollHeight = $(document).height(); 
-    //         if ($(window).scrollTop() - $(window).height() < scrollHeight - 100) {
-    //             $('div.search-bar').css('margin-top', '0');
-    //             $('body.pace-done').css('margin-top', '70px');
-    //             console.log('working')
-    //         } 
-    // })
 });
 
 

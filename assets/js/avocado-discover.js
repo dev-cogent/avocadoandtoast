@@ -77,16 +77,11 @@ $(document).on('click', '.filter-option', function () {
         $('.token-label').each(function () {
             keywordarr.push($(this).text()); // taking all of the keywords the user has submitted. 
         });
-        if (keywordarr.length !== 0) {
-            filters['keywords'] = keywordarr;
-            $('.dropdown').val('');
-        }
-        else {
-            var keyword = $('.dropdown').val();
-            filters['keywords'] = [keyword];
-        }
+        
+        filters['keywords'] = keywordarr;
         applyFilters(filters);
     });
+
 
     $('#slider-instagram').click(function () {
         filterSlider('instagram');
