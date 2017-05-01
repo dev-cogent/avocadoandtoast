@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="/assets/css/footer.css">
 </head>
 <?php include '../php/avocado-nav.php';?>
-<body class="col-xs-12 col-s-6">
+<body class="col-xs-12 col-s-6"style="padding-left:0px;padding-right:0px;">
 
 
 <div class="center-form-content">
@@ -52,14 +52,14 @@
 
     <label class="title" style="visibility:hidden;">Buttons</label>
     
-     <div class="col-xs-12">
+     <div class="col-xs-12 edit-buttons">
         <button class="col-xs-5 avo-btn-edit avo-btn-edit-secondary" id="delete-campaign" >DELETE</button>
         <button class="col-xs-5 avo-btn-edit avo-btn-edit-primary" id="submit-campaign" >SUBMIT</button>
         </div> 
        
     </div>  
  </div>
-    <?php include 'footer.php'; ?>
+    <?php include '../footer.php'; ?>
 </body class="col-s-6">
 
 <script>
