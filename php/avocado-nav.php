@@ -14,7 +14,7 @@ $url = $_SERVER['REQUEST_URI'];
           <div class="collapse-icon dropdown"><i class="fa fa-bars bar-settings" aria-hidden="true"></i>
             <div class="dropdown-content">
                 <a href="/discover.php">DISCOVER </a>
-                <a href="/dashboard.php">DASHBOARD</a>
+                <a href="/dashboard.php"> LISTS </a>
                 <a href="/contact.php">CONTACT</a>
                 <a href="/settings.php">SETTINGS</a>
                 <a href="/logout.php">LOGOUT</a>
@@ -36,7 +36,7 @@ $url = $_SERVER['REQUEST_URI'];
 </div>
 
           <div class="avo-navtabs"> <a href="/discover.php" class="link-pages <?php if($url == '/discover.php') echo 'active-tab';?>"> DISCOVER </a> </div>
-          <div class="avo-navtabs"> <a href="/dashboard.php" class="link-pages <?php if($url == '/dashboard.php') echo 'active-tab';?>">DASHBOARD </a> </div>
+          <div class="avo-navtabs"> <a href="/dashboard.php" class="link-pages <?php if($url == '/dashboard.php') echo 'active-tab';?>"> LISTS </a> </div>
           <div class="avo-navtabs"> <a href="/contact.php" class="link-pages <?php if($url == '/contact.php') echo 'active-tab';?>">  CONTACT </a></div>
           <div class="avo-navtabs dropdown"> <a href="/settings.php" class="link-pages <?php if($url == '/settings.php') echo 'active-tab';?>"> ACCOUNT </a>
           <div class="dropdown-content">

@@ -1,69 +1,99 @@
-$(document).ready(function(){
+$(document).ready(function() {
     $.ajax({
-        type: 'GET', 
+        type: 'GET',
         url: '/php/ajax/yourcampaigns-info.php',
-        success: function (jqXHR, textStatus, errorThrown) {
-            console.log(jqXHR);
+        success: function(jqXHR, textStatus, errorThrown) {
             campaignJSON = JSON.parse(jqXHR);
-            $.each(campaignJSON, function(key,obj){
-                
-            $('#campaign-container').append('<a href="/campaigns/?id='+key+'"><div class="campaign-block col-xs-12" data-id="'+key+'" data-desc="'+obj.description+'" data-name="'+obj.campaignname+'" data-start="'+obj.campaignstart+'" data-end="'+obj.campaignend+'" >'+
-                   '<table class="col-xs-12">'+
-                        '<tbody style="border-top:0px;">'+
-                        '<tr>'+
-                            '<td class="campaign-details name" >'+obj.campaignname+'</td>'+
-                            '<td class="campaign-details" > '+obj.state+' </td>'+
-                            '<td class="campaign-details date" > Created '+obj.created+'</td>'+
-                        '</tr>'+
-                       '<tr>'+
-                            '<td class="stats">'+obj.totalinfluencers+'</td>'+
-                            '<td class="stats mobile-off">'+obj.totalposts+'</td>'+
-                            '<td class="stats mobile-off">'+abbrNum(obj.average_impressions)+'</td>'+
-                            '<td class="stats mobile-off mobile-off-first">'+abbrNum(obj.average_engagement)+'</td>'+
-                            '<td class="stats">'+abbrNum(obj.totalimpressions)+'</td>'+
-                            '<td class="button-stats"><a href="/price/?id='+key+'"><button class="button-stats-bt">PRICE CAMPAIGN</button></a></td>'+
-                        '</tr>'+ 
-                        '<tr>'+
-                            '<td class="label-info">Influencers</td>'+
-                            '<td class="label-info mobile-off">Posts</td>'+
-                            '<td class="label-info mobile-off">Avg Impressions</td>'+
-                            '<td class="label-info mobile-off mobile-off-first">Avg Engagement</td>'+
-                            '<td class="label-info">Reach</td>'+
-                        '</tr>'+
-                        '</tbody>'+
-                    '</table>'+
-                '</div></a>');
+            $.each(campaignJSON, function(key, obj) {
+                $('#campaign-container').append('<div class="campaign-block col-xs-12" data-id="' + key + '" data-desc="' + obj.description + '" data-name="' + obj.campaignname + '" data-start="' + obj.campaignstart + '" data-end="' + obj.campaignend + '" >' +
+                    '<table class="dashboard-table col-xs-12">' +
+                    '<tbody style="border-top:0px;">' +
+                    '<tr>' +
+                    '<td class="campaign-details name" ><a href="/campaigns/?id=' + key + '" class="campaign-details">' + obj.campaignname + ' </a></td>' +
+                    '<td class="campaign-details" > ' + obj.state + ' </td>' +
+                    '<td class="campaign-details date" > Created ' + obj.created + '</td>' +
+                    '<td class="blank-td"></td> <td class="blank-td mobile"> </td>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td class="stats"><a class="stats" href="/campaigns/?id=' + key + '">' + obj.totalinfluencers + '</a></td>' +
+                    '<td class="stats mobile-off"><a class="stats" href="/campaigns/?id=' + key + '">' + obj.totalposts + '</a></td>' +
+                    '<td class="stats mobile-off impressions"><a class="stats" href="/campaigns/?id=' + key + '">' + abbrNum(obj.average_impressions) + '</a></td>' +
+                    '<td class="stats mobile-off mobile-off-first"><a class="stats" href="/campaigns/?id=' + key + '">' + abbrNum(obj.average_engagement) + '</a></td>' +
+                    '<td class="stats reach"><a class="stats" href="/campaigns/?id=' + key + '">' + abbrNum(obj.totalimpressions) + '</a></td>' +
+                    '<td class="button-stats"><button onclick="location.href=`/price/?id=' + key + '`" class="primary-button button-stats-bt">PRICE CAMPAIGN</button></td>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td class="label-info">Influencers</td>' +
+                    '<td class="label-info mobile-off">Posts</td>' +
+                    '<td class="label-info mobile-off impressions">Avg Impressions</td>' +
+                    '<td class="label-info mobile-off mobile-off-first">Avg Engagement</td>' +
+                    '<td class="label-info reach">Reach</td>' +
+                    '<td class="delete-btn-area"> <a href="#" data-campaignid="' + key + '" id="delete-campaign"> <i class="icon pe-trash list-dashboard" aria-hidden="true"></i> </a> </td>' +
+                    '</tr>' +
+                    '</tbody>' +
+                    '</table>' +
+                    '</div></a>');
+
             });
         }
+
+    }); // end ajax request*/
+
+
+});
+
+
+$(document).on('click', '#delete-campaign', function() {
+    var camapignid = $(this).attr('data-campaignid');
+    console.log('yooo wus good ');
+    $.ajax({
+        type: 'POST',
+        url: '/php/ajax/deletecampaign.php',
+        data: {
+            campaignid: campaignid,
+        },
+        success: function(jqXHR, textStatus, errorThrown) {
+            dialog = bootbox.dialog({
+                message: '<div class="bootbox-body">' +
+                    '<div class="icon-popup-div"> <img src="https://68.media.tumblr.com/0abd1f3bfd0a2594ea81787691cb6af2/tumblr_o33ti7IZMI1t4twpao1_500.gif" class="success-popup-icon"/> </div>' +
+                    '<div class="row"> <div class="col-xs-12 popup-detail success"> <br/> Your campaign has been deleted. </div><div class="popup-btn-div"> <a href="/dashboard.php"><button id="applyall" class="submit-btn" style="margin-bottom: 50px;">VIEW CAMPAIGNS </button></a></div>' +
+                    '</div> </div>',
+                closeButton: true
+            });
+            dialog.modal();
+
+        }
+
     }); // end ajax request*/
 
 });
+
 var target = $("#campaign-info").offset().top;
 var sidebar = false;
-$(document).on('click','.campaign-block',function(){
+$(document).on('click', '.campaign-block', function() {
     $('#campaign-info').empty();
     var name = $(this).attr('data-name');
     var desc = $(this).attr('data-desc');
     var id = $(this).attr('data-id');
     var start = $(this).attr('data-start');
     var end = $(this).attr('data-end');
-    
-    
+
+
     $('#campaign-info').append(
-        '<div id="campaign-details" style="max-width: 330px;">'+
-       '<p id="campaign-title">'+name+'</p>'+
-      ' <p class="title"> Campaign Summary</p>'+
-       '<p id="summary">'+desc+'</p>'+
-       '<p class="title">Campaign Schedule</p>'+
-       '<p id="schedule"> '+start+' - '+end+ ''+
-       '<div id="button-container">'+
-           '<a style="color:#76838f;"href="/edit/?id='+id+'"><button class="option-button avocado-hover avocado-focus" id="'+id+'"> Edit Campaign </button></a>'+
-           '<a style="color:#76838f;"href="/campaigns/?id='+id+'"><button class="option-button avocado-hover avocado-focus" name="campaign" value="'+id+'">View Campaign </button></a>'+
-    '</div>');
+        '<div id="campaign-details" style="max-width: 330px;">' +
+        '<p id="campaign-title">' + name + '</p>' +
+        ' <p class="title"> Campaign Summary</p>' +
+        '<p id="summary">' + desc + '</p>' +
+        '<p class="title">Campaign Schedule</p>' +
+        '<p id="schedule"> ' + start + ' - ' + end + '' +
+        '<div id="button-container">' +
+        '<a style="color:#76838f;"href="/edit/?id=' + id + '"><button class="option-button avocado-hover avocado-focus" id="' + id + '"> Edit Campaign </button></a>' +
+        '<a style="color:#76838f;"href="/campaigns/?id=' + id + '"><button class="option-button avocado-hover avocado-focus" name="campaign" value="' + id + '">View Campaign </button></a>' +
+        '</div>');
 });
 
 function abbrNum(number, decPlaces = 1) {
-    if(number < 1000){
+    if (number < 1000) {
         number = parseInt(number);
         return number;
     }
@@ -86,9 +116,9 @@ function abbrNum(number, decPlaces = 1) {
             // Here, we multiply by decPlaces, round, and then divide by decPlaces.
             // This gives us nice rounding to a particular decimal place.
             var number = Math.round(number * decPlaces / size) / decPlaces;
-            
+
             // instHandle special case where we round up to the next abbreviation
-            if((number == 1000) && (i < abbrev.length - 1)) {
+            if ((number == 1000) && (i < abbrev.length - 1)) {
                 number = 1;
                 i++;
             }
@@ -98,7 +128,7 @@ function abbrNum(number, decPlaces = 1) {
             // We are done... stop
             break;
         }
-        
+
     }
     console.log(number);
     return number;

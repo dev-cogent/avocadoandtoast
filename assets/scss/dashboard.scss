@@ -1,197 +1,245 @@
- @import 'utility';
+
+@import 'utility';
+.dashboard-table {
+    margin-left: 1%;
+
 a:hover{
     text-decoration:none;
 }
-#allcampaigns{
+
+#allcampaigns {
     font-size: 22px;
-    font-family: 'open sans';
+    font-family: $secondary-font;
     color: #515862;
     letter-spacing: 1px;
 }
 
-.divider-top{
-    border-bottom:1px solid rgb(210,215,220);
-    padding-bottom:20px;
-    border-right:1px solid rgb(210,215,220);
+.divider-top {
+    border-bottom: 1px solid rgb(210, 215, 220);
+    padding-bottom: 20px;
+    border-right: 1px solid rgb(210, 215, 220);
 }
 
-#campaign-details{
+#campaign-details {
     position: fixed;
     width: 100%;
-    border-left: 1px solid rgb(210,215,220);
+    border-left: 1px solid rgb(210, 215, 220);
     margin-left: -14px;
     padding-left: 14px;
     margin-bottom: 20px;
     padding-bottom: 100%;
 }
 
-td.campaign-details.name{
-  max-width: 180px;
-  text-overflow: ellipsis;
-  overflow: hidden;
+td.campaign-details.name {
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
-.stats{
-    color: #73C48D;
-    font-family: 'montserratsemibold';
+.stats {
+    color: $avo-green;
+    font-family: $main-font-semi;
     font-size: 35px;
     font-weight: 600;
     padding-top: 10px;
-    width: 100px;
-    max-width: 100px;
-
-
+    width: 16%;
 }
 
-.button-stats{
-       max-width: 100px; 
-       padding-right: 17px;
-       padding-top: 10px;
-       width: 100px;
+.button-stats {
+    width: 17%;
 }
-    
-.button-stats-bt{
-    @extend .primary-button;
-    width: 150px;
+
+
+.button-stats-bt {
+    width: 100%;
+    max-width: 145px;
     height: 35px;
+    border: 0px;
+    font-size: 12px;
     margin-right: 5px;
     font-family: $main-font-skinny;
-    }
+}
 
-.label-info{
-
-    color: rgb(29, 40, 76);
+.label-info {
+    color: $navy-text;
     font-weight: 600;
     font-size: 15px;
-    font-family: 'open sans';
+    font-family: $secondary-font;
     padding-bottom: 10px;
-
-
 }
 
-.campaign-block{
-    border-bottom: 1px solid rgb(210,215,220);
+.campaign-block {
+    border-bottom: 1px solid rgb(210, 215, 220);
     padding-bottom: 10px;
     padding-top: 0px;
-    border-right:1px solid rgb(210,215,220);
+    border-right: 1px solid rgb(210, 215, 220);
+    &:hover {
+        background-color: #eaeaea;
+    }
 }
 
-#campaign-title{
-color: rgb(29, 40, 76);
-font-size: 20px;
-font-family:'open sans';
-
-} 
-
-.title{
-    font-weight:600;
-    font-family:'open sans';
-    font-size:15px;
-    color:rgb(29, 40, 76);
+#campaign-title {
+    color: $navy-text;
+    font-size: 20px;
+    font-family: $secondary-font;
 }
 
-#summary{
-    color:#515862;
-    font-size:13px;
+.title {
+    font-weight: 600;
+    font-family: $secondary-font;
+    font-size: 15px;
+    color: $navy-text;
+}
+
+#summary {
+    color: #515862;
+    font-size: 13px;
     width: 70%;
 }
 
-.option-button{
+.option-button {
     border: 1px solid black;
     border-radius: 0px;
     background-color: white;
     font-size: 13px;
-    font-family: 'Montserrat';
+    font-family: $main-font;
     padding-left: 1px;
     margin-right: 5px;
-    height: 40px; 
+    height: 40px;
     width: 130px;
 }
-.campaign-block:hover{
-    background-color:#eaeaea;
+
+i.icon.pe-trash.list-dashboard {
+    text-align: -webkit-center;
+    font-size: 21px;
+    width: 130px;
+    font-weight: bold;
+    color: $header-grey;
+}
+
+.view-button-area {
+    vertical-align: bottom;
+}
+
+.view-campaign-btn {
+    width: 130px;
+    height: 35px;
+}
+
+.campaign-block {
+    background-color: #fcfcfc;
+}
+
+button:focus {
+    outline: none;
+}
+
+.campaign-details {
+    font-size: 17px;
+    color: $navy-text;
+    font-family: $secondary-font;
+    padding-top: 30px;
 }
 
 
-table{
-    margin-left: 11px;
-}
-.campaign-block{
-    background-color:#fcfcfc;
-
-}
-button:focus{
-    outline:none;
-}
-
-.campaign-details{
-font-size:17px;
-color:rgb(29, 40, 76);
-font-family:'open sans';
-padding-top: 30px;
-width:20%;
-}
-
-i.fa.fa-exclamation-triangle {
-  font-size: 22px;
-  color: #EC3241;
-}
+/*Added css for mobile - Gaby */
 
 
-
-/*Added css for mobile - Bashir */
 /*Laptop to Tablet */
+
 @media only screen and (max-width: 1024px) and (min-width:768px) {
     .stats {
-        font-size:30px;
+        font-size: 30px;
     }
-    .campaign-details{
-        font-size:15px;
+    .campaign-details {
+        font-size: 15px;
     }
-    .label-info{
-        font-size:15px;
+    .label-info {
+        font-size: 15px;
     }
-    .mobile-off-first{
-        display:none;
-    }
-
 }
 
-/*Laptop to a smaller size. Still large enough to keep all info on screen but we have to make it just a bit smaller. */ 
+
+/*Laptop to a smaller size. Still large enough to keep all info on screen but we have to make it just a bit smaller. */
+
 @media only screen and (max-width: 768px) and (min-width:600px) {
     .stats {
-        font-size:20px;
+        font-size: 20px;
+        width: 22%;
     }
-    .campaign-details{
-        font-size:13px;
+    .campaign-details,
+    .label-info {
+        font-size: 13px;
     }
-    .label-info{
-        font-size:13px;
-    }
-    .mobile-off-first{
-        display:none;
-    }
-
 }
+
 
 /*Anything smaller then we start getting rid of some information */
+
 @media only screen and (max-width: 600px) {
     .stats {
-        font-size:25px;
+        font-size: 20px;
     }
-    .campaign-details{
-        font-size:14px;
+    .campaign-block {
+        padding: 0;
     }
-    .label-info{
-        font-size:14px;
+    .campaign-details {
+        padding-top: 2.5%;
     }
-
-    .mobile-off{
-        display:none;
+    .campaign-details,
+    .label-info {
+        font-size: 13px;
     }
-    .button-stats-bt{
-        width:115px;
-        font-size:11px;
+    .delete-btn-area {
+        width: 20%;
     }
-
+    .blank-td.mobile,
+    .stats.mobile-off.impressions,
+    .label-info.mobile-off.impressions,
+    .label-info.reach,
+    .blank-td,
+    .blank-td.mobile,
+    .stats.reach {
+        display: none;
+    }
+    .button-stats-bt,
+    .view-campaign-btn {
+        width: 135px;
+        font-size: 11px;
+    }
 }
+
+@media (max-width:480px) {
+    .dashboard-table {
+        margin-left: 5px;
+    }
+    .button-stats-bt {
+        width: 85%;
+        margin-left: 2%;
+        font-size: 10px;
+    }
+    td.stats,
+    .label-info,
+    .campaign-details,
+    .delete-btn-area {
+        text-align: -webkit-center;
+    }
+    .campaign-details,
+    .delete-btn-area,
+    td.campaign-details.name,
+    .stats {
+        width: 15%;
+        max-width: 0;
+    }
+    .button-stats {
+        max-width: 0;
+        padding-right: 0;
+        width: 27%;
+    }
+    i.icon.pe-trash.list-dashboard {
+        width: 0;
+        margin-left: -30%;
+    }
+}
+
+
 /*END MOBILE CSS */
