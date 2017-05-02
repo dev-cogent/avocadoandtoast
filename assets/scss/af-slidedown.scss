@@ -1,12 +1,27 @@
 @import 'utility';
-$af-margin-size: 12px;
+ 
+
+
+@mixin input-margins($val){
+    &:first-child {
+      margin-right: $val;
+    }
+    &:nth-of-type(2) {
+      margin-left: $val;
+    }
+}
+$af-margin-size: 6px;
 #af-link {
-  color: $header-grey;
+  color: $inactive-grey;
+  font-size:13px;
   text-decoration: underline;
+  font-family:$secondary-font;
+  text-align: center;
+  
   @include green-hover;
 }
 #af-slidedown {
-  margin-top: $af-margin-size;
+  margin-top: $af-margin-size * 2;
   padding-bottom: $af-margin-size / 2;
   display: none;
   #af-header {
@@ -24,12 +39,13 @@ $af-margin-size: 12px;
       font-size: 30px;
       @include green-hover;
       margin-right: 20px;
+      color:$inactive-grey;
     }
     i:last-child {
       margin-right: 0;
     }
     .af-active-icon {
-      color: $avo-green-active;
+      color: $avo-green;
     }
   }
   .af-slider-container {
@@ -37,30 +53,83 @@ $af-margin-size: 12px;
     .af-slider-text {
       text-align: center;
       font-size: 14px;
+      font-family:$main-font-skinny;
+      text-transform: capitalize;
+      label{
+        margin-bottom:0;
+      }
     }
     %af-range {
       width: 60%;
       display: inline-block;
+
+      @media (max-width:576px){
+          width: 60%;
+      }
+      @media (min-width: 576px) {
+          width:57.5%;
+      }
+
+      @media (min-width: 768px) { 
+        width:55%;
+        }
+
+      @media (min-width: 992px) {
+        width:52.5%;
+      }
+      
+      @media (min-width: 1200px) { 
+          width:50%;
+
+        } 
     }
+
     .af-inputs {
       width: 100%;
       text-align: center;
       input {
-        color: $avo-green-active;
+        @extend %basic-input;
+        font-family: $secondary-font;
+        font-size:19px;
+        color: $avo-green;
         text-align: center;
         display: inline-block;
         width: 10%;
-        &:first-child {
-          margin-right: 2%;
+        
+
+
+        @media (max-width:576px){
+          border:none;
+          width: 15%;
+          font-size: 15px;
+          @include input-margins(2.7%);
         }
-        &:nth-of-type(2) {
-          margin-left: 2%;
+
+        @media (min-width: 576px) {
+            width:11%;
+            @include input-margins(2%);
         }
-        &:focus {
-          border: none;
-          outline: none;
-          box-shadow: 0 0 3px $avo-green-active;
+
+        @media (min-width: 768px) { 
+          width:10%;
+          @include input-margins(2%);
+         }
+
+        @media (min-width: 992px) {
+          width:8%;
+          @include input-margins(1.5%);
         }
+        
+        @media (min-width: 1200px) { 
+            width:5.7%;
+            @include input-margins(1%);
+         }      
+
+
+
+
+
+
       }
       #follower-range {
         @extend %af-range;
@@ -69,18 +138,29 @@ $af-margin-size: 12px;
         @extend %af-range;
       }
     }
-    .ui-slider-handle {
-      border-radius: 100%;
-      &:hover {
-        cursor: pointer;
-      }
+
+
+    .ui-slider{
+      height: 12px;
     }
+
+    .ui-slider-handle {
+        border-radius: 100%;
+        height:23px;
+        width:23px;
+        margin-left: -11.5px;
+        &:hover {
+          cursor: pointer;
+        }
+    }
+  
+
     .ui-state-focus {
       outline: none;
     }
     .ui-state-active {
       border: none;
-      background: $avo-green-active;
+      background: $avo-green;
     }
   }
 }

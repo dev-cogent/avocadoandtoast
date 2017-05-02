@@ -1,5 +1,6 @@
 @import 'utility'; 
 
+
 .engagement-count {
     text-align: center;
     font-size: 14px;
@@ -77,6 +78,12 @@
     display: inline;
     margin-right: 15px;
     margin-bottom: 5px;
+    color:$inactive-grey;
+    @include green-hover;
+}
+
+.active-card-icon{
+    color:$avo-green;
 }
 
 .invite {
@@ -89,6 +96,7 @@
     text-align: center;
     float: none;
     margin-top:10px;
+    cursor: pointer;
 }
 
 .total-post {
