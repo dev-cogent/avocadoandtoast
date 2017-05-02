@@ -44,12 +44,12 @@ td.campaign-details.name{
 }
 
 .button-stats{
-       max-width: 100px; 
+       max-width: 100px;
        padding-right: 17px;
        padding-top: 10px;
        width: 100px;
 }
-    
+
 .button-stats-bt{
     @extend .primary-button;
     width: 150px;
@@ -81,7 +81,7 @@ color: rgb(29, 40, 76);
 font-size: 20px;
 font-family:'open sans';
 
-} 
+}
 
 .title{
     font-weight:600;
@@ -104,7 +104,7 @@ font-family:'open sans';
     font-family: 'Montserrat';
     padding-left: 1px;
     margin-right: 5px;
-    height: 40px; 
+    height: 40px;
     width: 130px;
 }
 .campaign-block:hover{
@@ -156,7 +156,7 @@ i.fa.fa-exclamation-triangle {
 
 }
 
-/*Laptop to a smaller size. Still large enough to keep all info on screen but we have to make it just a bit smaller. */ 
+/*Laptop to a smaller size. Still large enough to keep all info on screen but we have to make it just a bit smaller. */
 @media only screen and (max-width: 768px) and (min-width:600px) {
     .stats {
         font-size:20px;

@@ -22,6 +22,8 @@ function addPlatformChangeHandler() {
   $('#af-icon-container').children().click(function() {
     $('#af-icon-container').children().removeClass('af-active-icon');
     $(this).addClass('af-active-icon');
+    
+    setSliderFilters();
   })
 }
 
