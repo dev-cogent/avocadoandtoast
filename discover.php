@@ -121,7 +121,7 @@ include 'php/numberAbbreviation.php';
                                 </div>
                     </div>
                     <div class="button-container">
-                
+
                         <button class="search-button primary-button" id="search-keyword">SEARCH</button>
 
             </div>
@@ -219,7 +219,7 @@ include 'php/numberAbbreviation.php';
 
         <div class="found-influencers col-xs-12">
             <?php
-                //If this is a get request, then we will make a script here to collect the parameters from the GET request. Afterwards we will apply this script at the end of the page. 
+                //If this is a get request, then we will make a script here to collect the parameters from the GET request. Afterwards we will apply this script at the end of the page.
                 if($_GET['q']){
                     $queryArr = explode(' ' ,$_GET['q']);
                     $queryArr = json_encode($queryArr);
@@ -234,7 +234,7 @@ include 'php/numberAbbreviation.php';
                         });
                     </script>
                     ";
-                } 
+                }
             ?>
         </div>
     </div>
