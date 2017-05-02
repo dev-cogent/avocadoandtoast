@@ -181,20 +181,6 @@ div.search-bar {
 }
 
 
-a#close-search-bar {
-    @extend %x-button;
-    position: absolute;
-    right: 25px;
-    top: 15px;
-    color: white;
-    background: transparent;
-    width: 50px;
-    text-align: -webkit-center;
-    padding-top: 3px;
-    transition: all 0.2s ease-in-out;
-    font-weight: bold;
-}
-
 
 input[type=text].search-placeholder {
     margin: 15px auto;

@@ -12,7 +12,6 @@ $avo-green: #73C48D;
 $avo-green-active: #63AB80;
 $header-grey: #30363F;
 $body-black: #1F232A;
-$navy-text: #1d284c;
 $inactive-grey: #A2A8B1;
 $separator-grey: #d2d7dc;
 $separator-lightgrey: #efefef;
@@ -55,8 +54,6 @@ $social-following-red: rgb(231, 72, 69);
 
 // PLACEHOLDER CLASSES
 
-
-
 %basic-input{
     border-radius: 1px;    
     border:1px solid $inactive-grey;
@@ -71,6 +68,7 @@ $social-following-red: rgb(231, 72, 69);
 
 }
 
+
 %basic-button {
     border-radius: 1px;
     font-family: $main-font;
@@ -83,17 +81,19 @@ $social-following-red: rgb(231, 72, 69);
 }
 
 %x-button {
-    font-size: 21px;
-    color: $avo-green;
-    font-family: $secondary-font;
-    font-weight: 100;
-    border: 2px solid;
-    border-radius: 50%;
-    transition: color .5s ease;
-    cursor: pointer;
-    &:hover {
-        color: $social-following-red;
-    }
+  font-size: 21px;
+  color: $avo-green;
+  font-family: $secondary-font;
+  font-weight: 100;
+  border: 2px solid;
+  border-radius: 50%;
+  transition: color .5s ease;
+
+  cursor: pointer;
+
+  &:hover {
+    color: $social-following-red;
+  }
 }
 
 //ACTUAL BUTTON CLASSES
@@ -112,8 +112,8 @@ $social-following-red: rgb(231, 72, 69);
     color: $header-grey;
     @include button-box-shadow($avo-green-active);
     &:hover {
-        color: $avo-green-active;
-        border: 1px solid $avo-green-active;
+      color: $avo-green-active;
+      border: 1px solid $avo-green-active;
     }
 }
 
@@ -126,7 +126,6 @@ $social-following-red: rgb(231, 72, 69);
     }
 }
 
-
 @mixin green-hover{
     transition: color .4s;
     &:hover{
@@ -134,4 +133,3 @@ $social-following-red: rgb(231, 72, 69);
         color:$avo-green;
     }
 }
-

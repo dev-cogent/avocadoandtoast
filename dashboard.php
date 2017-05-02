@@ -31,5 +31,5 @@
 </body>
 
 <script src="/assets/js/avocado-dashboard.js"></script>
-<script src="/assets/js/editcampaign.js"></script>
+
 
