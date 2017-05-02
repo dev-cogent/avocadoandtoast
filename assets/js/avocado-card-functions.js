@@ -22,11 +22,11 @@ $(document).on('click', '.switch', function () {
         platform3 = 'facebook';
     }
 
-    $(this).css('color', '#73C48D');
+    $(this).addClass('active-card-icon');
     //setting all the other colors to grey
-    $('.show-' + platform1 + '[data-id=' + id + ']').css('color', '#76838f');
-    $('.show-' + platform2 + '[data-id=' + id + ']').css('color', '#76838f');
-    $('.show-' + platform3 + '[data-id=' + id + ']').css('color', '#76838f');
+    $('.show-' + platform1 + '[data-id=' + id + ']').removeClass('active-card-icon');
+    $('.show-' + platform2 + '[data-id=' + id + ']').removeClass('active-card-icon');
+    $('.show-' + platform3 + '[data-id=' + id + ']').removeClass('active-card-icon');
     //Showing the proper handles
     $('.' + platform + '-handle[data-id=' + id + ']').show();
     $('.' + platform1 + '-handle[data-id=' + id + ']').css('display', 'none');

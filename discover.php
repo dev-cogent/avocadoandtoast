@@ -87,25 +87,21 @@ include 'php/numberAbbreviation.php';
             <div class="desc-header">
                 <div class="discover-header">DISCOVER</div>
                 <div class="filter-text">Search by influencer handles and keywords</div>
-                    <input type="text" class="filter-input form-control category avocado-focus" id="tokenfield" placeholder="keyword" style="height:40px;"/>
-                    <div class="description-text">Separate tags with commas or by pressing "tab" in the above field. Use double quotes for multi-word tags (e.g. "avocado toast")</div>
-                    <div class="button-container">
-                        <button class="search-button primary-button" id="search-keyword">SEARCH</button>
-                        <div  id="af-link"> Advanced Filtering </div>
+                    <input type="text" class="filter-input" id="tokenfield" placeholder="keyword"/>
+                    <div class="description-text">Separate tags with commas or by pressing "tab" in the above field.<br> Use double quotes for multi-word tags (e.g. "avocado toast")</div>
+                                            <div  id="af-link"> Advanced Filtering </div>
                         <!-- Filtering options will go here -->
                             <div id="af-slidedown">
-                                <div id="af-header">
-                                FILTER INFLUENCERS
-                                </div>
+
                                 <div id="af-icon-container">
                                 <i class="fa fa-instagram" aria-hidden="true" data-platform="instagram"></i>
                                 <i class="fa fa-facebook" aria-hidden="true" data-platform="facebook"></i>
                                 <i class="fa fa-twitter" aria-hidden="true" data-platform="twitter"></i>
-                                <i class="fa fa-youtube" aria-hidden="true" data-platform="youtube"></i>
+                                <i class="bd-youtube" aria-hidden="true" data-platform="youtube"></i>
                                 </div>
                                 <div class="af-slider-container">
                                 <div class="af-slider-text">
-                                    <label for="num-followers">Followers:</label>
+                                    <label for="num-followers">FOLLOWERS:</label>
                                 </div>
                                 <div class="af-inputs">
                                     <input type="text" id="num-followers1">
@@ -115,7 +111,7 @@ include 'php/numberAbbreviation.php';
                                 </div>
                                 <div class="af-slider-container">
                                 <div class="af-slider-text">
-                                    <label for="num-engagement">Engagement:</label>
+                                    <label for="num-engagement">ENGAGEMENT:</label>
                                 </div>
                                 <div class="af-inputs">
                                     <input type="text" id="num-engagement1">
@@ -124,6 +120,10 @@ include 'php/numberAbbreviation.php';
                                 </div>
                                 </div>
                     </div>
+                    <div class="button-container">
+                
+                        <button class="search-button primary-button" id="search-keyword">SEARCH</button>
+
             </div>
 
 </div>

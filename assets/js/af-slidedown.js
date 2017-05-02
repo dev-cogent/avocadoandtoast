@@ -43,7 +43,7 @@ function disabbreviate(string) {
 function addRangeInputs(slider, category) {
   var val1, val2;
   $('#num-' + category + '1').change(function() {
-    console.log(disabbreviate($(this).val()));
+
     val1 = disabbreviate($(this).val());
     val2 = disabbreviate($('#num-' + category + '2').val());
     slider.slider( "option", "values", [ val1, val2 ] );
@@ -59,8 +59,9 @@ function addRangeSliders() {
   var followerSlider = $('#follower-range').slider({
     range: true,
     min: 0,
-    max: 300000000,
-    values: [0, 300000000],
+    max: 1000000,
+    step:100,
+    values: [0, 1000000],
     slide: function(event, ui) {
       $( "#num-followers1" ).val(abbrNum(ui.values[ 0 ]));
       $( "#num-followers2" ).val(abbrNum(ui.values[ 1 ]));
@@ -89,10 +90,28 @@ function addRangeSliders() {
 
 }
 
+var numFollowers1 = 0, numFollowers2 = 1000000, numEngagement1 = 0, numEngagement2 = 10;
+function populateValues() {
+    numFollowers1 = disabbreviate($('#num-followers1').val());
+    numFollowers2 = disabbreviate($('#num-followers2').val());
+    numEngagement1 = disabbreviate($('#num-engagement1').val());
+    numEngagement2 = disabbreviate($('#num-engagement2').val());
+  }
+
 function addRangeButtonHandlers(){
   //focus out should only work if value has been changed.
+  var initialVal;
+  var mouseDown = false;
+
+    $('#num-followers1, #num-followers2, #num-engagement1, #num-engagement2').focus(function(){
+        initialVal = $(this).val();
+    });
+
     $('#num-followers1, #num-followers2, #num-engagement1, #num-engagement2').focusout(function(){
-        setSliderFilters();
+        var valueNow = $(this).val();
+        if (valueNow != initialVal) {
+          setSliderFilters();
+        }
     });
 
       $('#num-followers1, #num-followers2, #num-engagement1, #num-engagement2').keypress(function(e){
@@ -101,8 +120,25 @@ function addRangeButtonHandlers(){
           }
       });
 
-      $('.ui-slider-handle').mouseup(function(){
-            setSliderFilters();
+      $('.ui-slider-handle').mouseup(function() {
+        nf1Now = disabbreviate($('#num-followers1').val());
+        nf2Now = disabbreviate($('#num-followers2').val());
+        ne1Now = disabbreviate($('#num-engagement1').val());
+        ne2Now = disabbreviate($('#num-engagement2').val());
+        if (nf1Now != numFollowers1 || nf2Now != numFollowers2 || ne1Now != numEngagement1 || ne2Now != numEngagement2) {
+          setSliderFilters();
+        }
+      })
+
+      $('.ui-slider-handle').mousedown(function(){
+            mouseDown = true;
+      });
+
+      $(document).mouseup(function(){
+            if(mouseDown) {
+              setSliderFilters();
+            }
+            mouseDown = false;
       });
 }
 
@@ -110,6 +146,8 @@ function addRangeButtonHandlers(){
 
 
 function setSliderFilters(){
+  populateValues();
+
   var platform = $('.af-active-icon').attr('data-platform');
   filters['min'] = disabbreviate($('#num-followers1').val());
   filters['max'] = disabbreviate($('#num-followers2').val());

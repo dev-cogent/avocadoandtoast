@@ -277,7 +277,6 @@ function appendCards(campaignJSON){
         var accounts = [obj.instagram, obj.facebook, obj.twitter, obj.youtube];
         var handleSet = false;
         accounts.forEach(function(account, idx) {
-            console.log(account);
             if (account.handle) { 
                 setHandle(key, account.handle, handleContainer, handleSet); 
                 handleSet = true;

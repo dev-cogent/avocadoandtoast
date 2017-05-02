@@ -52,6 +52,7 @@ class youtubeAPI{
         $key = $this->getYoutubeAPIKey();
         $url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&channelId='.$channelID.'&maxResults=12&order=date&key='.$key;
         $apiData = $this->curl($url);
+        print_r($apiData);
         foreach ($apiData['items'] as $info){
             $videoID = $info['id']['videoId'];
             array_push($videoArr,$videoID);
@@ -100,9 +101,9 @@ class youtubeAPI{
 
 }
 //test youtube channel 
-$youtube = new youtubeAPI();
-//$meh = $youtube->getYoutubeVideos('UCYEK6xds6eo-3tr4xRdflmQ');
-$meh = $youtube->getChannelTopicDetails('biolayne');
+// $youtube = new youtubeAPI();
+// $meh = $youtube->getYoutubeVideos('UCYEK6xds6eo-3tr4xRdflmQ');
+//$meh = $youtube->getChannelTopicDetails('biolayne');
 
 
 
