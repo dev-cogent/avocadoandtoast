@@ -1,0 +1,86 @@
+@import 'utility';
+$af-margin-size: 12px;
+#af-link {
+  color: $header-grey;
+  text-decoration: underline;
+  @include green-hover;
+}
+#af-slidedown {
+  margin-top: $af-margin-size;
+  padding-bottom: $af-margin-size / 2;
+  display: none;
+  #af-header {
+    margin-bottom: $af-margin-size;
+    text-align: center;
+    font-family: $main-font;
+    font-weight: 600;
+    font-size: 23px;
+    color: $header-grey;
+  }
+  #af-icon-container {
+    text-align: center;
+    margin-bottom: $af-margin-size;
+    i {
+      font-size: 30px;
+      @include green-hover;
+      margin-right: 20px;
+    }
+    i:last-child {
+      margin-right: 0;
+    }
+    .af-active-icon {
+      color: $avo-green-active;
+    }
+  }
+  .af-slider-container {
+    margin-bottom: $af-margin-size;
+    .af-slider-text {
+      text-align: center;
+      font-size: 14px;
+    }
+    %af-range {
+      width: 60%;
+      display: inline-block;
+    }
+    .af-inputs {
+      width: 100%;
+      text-align: center;
+      input {
+        color: $avo-green-active;
+        text-align: center;
+        display: inline-block;
+        width: 10%;
+        &:first-child {
+          margin-right: 2%;
+        }
+        &:nth-of-type(2) {
+          margin-left: 2%;
+        }
+        &:focus {
+          border: none;
+          outline: none;
+          box-shadow: 0 0 3px $avo-green-active;
+        }
+      }
+      #follower-range {
+        @extend %af-range;
+      }
+      #engagement-range {
+        @extend %af-range;
+      }
+    }
+    .ui-slider-handle {
+      border-radius: 100%;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .ui-state-focus {
+      outline: none;
+    }
+    .ui-state-active {
+      border: none;
+      background: $avo-green-active;
+    }
+  }
+}

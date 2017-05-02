@@ -13,6 +13,7 @@ include 'php/numberAbbreviation.php';
     <title>Discover | Avocado & Toast</title>
     <script src="/bootbox/bootbox.js"></script>
     <script src="/global/vendor/bootstrap/bootstrap.js"></script>
+    <script src="/global/js/jquery-ui-slider/jquery-ui.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700" rel="stylesheet">
     <script src="/assets/js/abbreviatenumber.js"></script>
     <script src="/assets/wnumb/wNumb.js"></script>
@@ -22,12 +23,15 @@ include 'php/numberAbbreviation.php';
     <script src="/assets/js/avocado-card-functions.js"></script>
     <script src="/assets/js/avocado-calculate.js"></script>
     <script src="assets/js/influencer_pullout.js"></script>
+    <script src="assets/js/af-slidedown.js"></script>
     <link rel="stylesheet" href="/assets/js/tokenfield/dist/css/bootstrap-tokenfield.css">
     <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
     <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
     <link rel="stylesheet" href="assets/css/pullout.css">
     <link rel="stylesheet" href="assets/css/influencer-card.css">
     <link rel="stylesheet" href="/assets/css/discover.css">
+    <link rel="stylesheet" href="/assets/css/af-slidedown.css">
+    <link rel="stylesheet" href="/global/js/jquery-ui-slider/jquery-ui.min.css">
 </head>
 
 <body>
@@ -87,8 +91,38 @@ include 'php/numberAbbreviation.php';
                     <div class="description-text">Separate tags with commas or by pressing "tab" in the above field. Use double quotes for multi-word tags (e.g. "avocado toast")</div>
                     <div class="button-container">
                         <button class="search-button primary-button" id="search-keyword">SEARCH</button>
-                        <div class="advanced-filter"> Advanced Filtering </div>
+                        <div  id="af-link"> Advanced Filtering </div>
                         <!-- Filtering options will go here -->
+                            <div id="af-slidedown">
+                                <div id="af-header">
+                                FILTER INFLUENCERS
+                                </div>
+                                <div id="af-icon-container">
+                                <i class="fa fa-instagram" aria-hidden="true" data-platform="instagram"></i>
+                                <i class="fa fa-facebook" aria-hidden="true" data-platform="facebook"></i>
+                                <i class="fa fa-twitter" aria-hidden="true" data-platform="twitter"></i>
+                                <i class="fa fa-youtube" aria-hidden="true" data-platform="youtube"></i>
+                                </div>
+                                <div class="af-slider-container">
+                                <div class="af-slider-text">
+                                    <label for="num-followers">Followers:</label>
+                                </div>
+                                <div class="af-inputs">
+                                    <input type="text" id="num-followers1">
+                                    <div id="follower-range"></div>
+                                    <input type="text" id="num-followers2">
+                                </div>
+                                </div>
+                                <div class="af-slider-container">
+                                <div class="af-slider-text">
+                                    <label for="num-engagement">Engagement:</label>
+                                </div>
+                                <div class="af-inputs">
+                                    <input type="text" id="num-engagement1">
+                                    <div id="engagement-range"></div>
+                                    <input type="text" id="num-engagement2">
+                                </div>
+                                </div>
                     </div>
             </div>
 
@@ -97,9 +131,15 @@ include 'php/numberAbbreviation.php';
 
 
 
-<div class="influencer-results-container col-xs-12">
-         <div class="influencer-header">FILTER INFLUENCERS</div>
+<!--<div class="influencer-results-container col-xs-12">-->
 
+
+
+
+
+
+
+<!--
         <div class="filter-button-container" id="button-filter">
              <i class="filter-option button-icon button-icon-active icon bd-instagram"  data-platform="instagram" aria-hidden="true"></i>
             <i class="filter-option button-icon icon bd-facebook"  data-platform="facebook" aria-hidden="true"></i>
@@ -109,7 +149,7 @@ include 'php/numberAbbreviation.php';
 
 
 <!-- Slider Rows -->
-        <div class="slider-container">
+        <!--<div class="slider-container">
                 <div class="measure-text">FOLLOWERS</div>
                         <div class="sliders"  data-platform="instagram">
                             <input  class="col-xs-1 input-filter " type="text" id="min-instagram">
@@ -151,10 +191,10 @@ include 'php/numberAbbreviation.php';
                 <input  class="col-xs-1 input-filter engagement-slider" type="text" id="min-twitter-engagement">
                 <div style="margin-top:20px;" id="slider-twitter-engagement" class="col-xs-10"></div>
                 <input id="max-twitter-engagement" class="col-xs-1 input-filter engagement-slider"style="display:inline; padding-left:2%; padding-right:0px;" type="text">
-            </div>
+            </div>-->
 
 
-            </div>
+            <!--</div>-->
 
 
 
@@ -169,8 +209,9 @@ include 'php/numberAbbreviation.php';
 
 <!--end slider rows -->
 
-
+    <hr>
     <br>
+
     <div class="influencer-header">INFLUENCER RESULTS</div>
 
 

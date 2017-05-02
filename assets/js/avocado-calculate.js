@@ -1,3 +1,33 @@
+var campaignResults = {};
+
+$(document).on('click','#price-campaign',function(){
+
+    selectedusers.forEach(function(element) {
+        //instagram
+        var platformStats =  {
+            instagramPost:  $('.instagraminput[data-id="'+element+'"]').val(),
+            instagramImpressions: $('.impression-instagram-blue[data-id="'+element+'"]').attr('data-number'),
+            instagramEngagement: $('.impression-instagram-blue[data-id="'+element+'"]').attr('data-number'),
+            facebookPost:$('.facebookinput[data-id="'+element+'"]').val(),
+            facebookImpression: $('.impression-facebook-blue[data-id="'+element+'"]').attr('data-number'),
+            facebookEngagement:$('.engagement-orange-facebook[data-id="'+element+'"]').attr('data-number'),
+            twitterPost: $('.twitterinput[data-id="'+element+'"]').val(),
+            twitterImpression: $('.impression-twitter-blue[data-id="'+element+'"]').attr('data-number'),
+            twitterEngagement: $('.engagement-orange-twitter[data-id="'+element+'"]').attr('data-number')
+        };
+        campaignResults[element]  = platformStats;   
+    });
+    console.log(campaignResults);
+    campaignResults = JSON.stringify(campaignResults);
+    console.log(campaignResults);
+    localStorage.setItem('price-campaign-influencer-stats',campaignResults);
+    //window.location='/price/';
+    
+
+});
+
+
+
 $(document).on('change', '.campaignfocus', function () {
 
     var posts = [];
