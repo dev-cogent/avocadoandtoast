@@ -11,6 +11,10 @@
 
 }
 
+.close-search-bar {
+  @include green-hover;
+}
+
 
 .search-bar-position{
     position:relative;
@@ -43,6 +47,7 @@
     line-height: 65px;
     padding-right: 20px;
     .link-pages {
+      @include green-hover;
         text-decoration: none;
         color: rgb(70, 70, 70);
          :hover {

@@ -115,8 +115,8 @@ $id = $_GET['id'];
                                         <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$id.'">1.5K Likes per post</p>
                                         <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$id.'">1.5K Likes per post</p>
                                     </div>
-                             
-                                  
+
+
                                 </div>
                             </div>
                     </div>';
@@ -124,7 +124,7 @@ $id = $_GET['id'];
                     <!-- Influencer box has ended -->
 
                     <div class="tag-container">
-                        <?php 
+                        <?php
                         $tags = explode(',',$tags);
                         foreach($tags as $tag){
                             echo '<div class="tag-1 tag col-lg-4 col-xs-6"> <a href="/discover.php?q='.$tag.'" class="tag-btn"> '.$tag.'</a> </div>';
@@ -138,30 +138,30 @@ $id = $_GET['id'];
 
 <div class="col-xs-12 col-sm-12 col-md-8 social-collage">
 <!-- social buttons and stats -->
-<?php echo ' 
+<?php echo '
 <div class="container-fluid social-stats-container">
     <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 platform-container">
         <div class="social-container">
             <div class="inf-number"><a href="'.$instagramurl.'" target="_blank">'.numberAbbreviation($instagramcount).'</a>
-                <br> 
-                <span class="followers-text"> Followers </span> 
+                <br>
+                <span class="followers-text"> Followers </span>
             </div>
-            <a class="social-profile-tab" data-platform="instagram" data-handle="'.$insthandle.'" > 
-                <i class="switch show-instagram inst-icon icon bd-instagram influencer-prof" data-id="NB4gltv" data-platform="instagram" style="" aria-hidden="true"></i> 
-            </a> 
-        </div> 
+            <a class="social-profile-tab" data-platform="instagram" data-handle="'.$insthandle.'" >
+                <i class="switch show-instagram inst-icon icon bd-instagram influencer-prof" data-id="NB4gltv" data-platform="instagram" style="" aria-hidden="true"></i>
+            </a>
+        </div>
     </div>
 
  <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 platform-container">
   <a href="'.$facebookurl.'">
     <div class="social-container">
-        <div class="inf-number">'.numberAbbreviation($facebookcount).' 
-            <br> 
-            <span class="followers-text"> Likes </span> 
+        <div class="inf-number">'.numberAbbreviation($facebookcount).'
+            <br>
+            <span class="followers-text"> Likes </span>
         </div>
-    <a class="social-profile-tab" data-platform="facebook" data-handle="'.$facebookhandle.'"> 
-        <i class="switch show-facebook inst-icon icon bd-facebook influencer-prof" data-id="NB4gltv" data-platform="facebook" aria-hidden="true"></i> </a>  
-    </div> 
+    <a class="social-profile-tab" data-platform="facebook" data-handle="'.$facebookhandle.'">
+        <i class="switch show-facebook inst-icon icon bd-facebook influencer-prof" data-id="NB4gltv" data-platform="facebook" aria-hidden="true"></i> </a>
+    </div>
     </a>
   </div>
 
@@ -171,12 +171,12 @@ $id = $_GET['id'];
     <a href="'.$twitterurl.'">
         <div class="inf-number">'.numberAbbreviation($twittercount).'
             <br>
-            <span class="followers-text"> Followers </span> 
+            <span class="followers-text"> Followers </span>
         </div>
-        <a class="social-profile-tab" data-platform="twitter" data-handle="'.$twitterhandle.'"> 
+        <a class="social-profile-tab" data-platform="twitter" data-handle="'.$twitterhandle.'">
             <i class="switch show-twitter inst-icon icon bd-twitter influencer-prof" data-id="NB4gltv" data-platform="twitter" aria-hidden="true"></i>  
-        </a> 
-        </div> 
+        </a>
+        </div>
     </a>
  </div>
 
@@ -184,45 +184,27 @@ $id = $_GET['id'];
     <div class="social-container">
         <a href="'.$youtubeurl.'">
             <div class="inf-number youtube"> '.numberAbbreviation($youtubecount).'
-                <br> 
-                <span class="followers-text"> Subscribers </span> 
+                <br>
+                <span class="followers-text"> Subscribers </span>
             </div>
-        <a class="social-profile-tab" data-platform="youtube" data-handle="">  
-            <i class="switch show-twitter inst-icon icon bd-youtube influencer-prof yt" data-id="NB4gltv" data-platform="youtube" aria-hidden="true"></i> 
-        </a>  
-        </div> 
+        <a class="social-profile-tab" data-platform="youtube" data-handle="">
+            <i class="switch show-twitter inst-icon icon bd-youtube influencer-prof yt" data-id="NB4gltv" data-platform="youtube" aria-hidden="true"></i>
+        </a>
+        </div>
      </a>
 </div>
 
 </div>
     <div class="col-xs-12 col-sm-12 col-lg-12 social-buttons">';
     //Start looking for instagram
-         if($instagramurl == NULL || $instagramurl == ''){
-             echo '
-            <div class="col-xs-4 button-container" style="display:none;">
-                <button class="col-xs-12 social-button instagram-platform" data-platform="instagram" data-handle="'.$insthandle.'" style="background-color: rgb(115, 196, 141);"><div class="button-option-text"> <i class="button-icon icon bd-instagram"  data-platform="instagram" aria-hidden="true"></i> <div class="social-btn-text"> INSTAGRAM </div> </div></button>
-            </div>';
-         }
-         else{
+         if($instagramurl !== NULL || $instagramurl != ''){
              echo '
              <div class="col-xs-4 button-container">
                 <button class="col-xs-12 social-button instagram-platform" data-platform="instagram" data-handle="'.$insthandle.'" style="background-color: rgb(115, 196, 141);"><div class="button-option-text"> <i class="button-icon icon bd-instagram"  data-platform="instagram" aria-hidden="true"></i> <div class="social-btn-text"> INSTAGRAM</div> </div></button>
             </div>';
          }
          //Start facebook
-         if($facebookurl == NULL || $facebookurl == ''){
-          echo '<div class="col-xs-4 button-container" style="display:none;">
-                <button class="col-xs-12 social-button facebook-platform" data-platform="facebook" data-handle="'.$facebookhandle.'"><div class="button-option-text"> <i class="button-icon icon bd-facebook"  data-platform="facebook" aria-hidden="true"></i> <div class="social-btn-text"> FACEBOOK </div></div>
-                </button>
-            </div>';
-         }
-        elseif(($instagramurl == NULL || $instagramurl == '') && ($facebookurl != NULL)){
-          echo '<div class="col-xs-4 button-container" style="background-color:rgb(115, 196, 141);">
-                <button class="col-xs-12 social-button facebook-platform" data-platform="facebook" data-handle="'.$facebookhandle.'"><div class="button-option-text"> <i class="button-icon icon bd-facebook"  data-platform="facebook" aria-hidden="true"></i> <div class="social-btn-text"> FACEBOOK </div> </div>
-                </button>
-            </div>';
-        }
-        else{
+         if($facebookurl !== NULL || $facebookurl != ''){
             echo '<div class="col-xs-4 button-container">
                 <button class="col-xs-12 social-button facebook-platform" data-platform="facebook" data-handle="'.$facebookhandle.'"><div class="button-option-text"> <i class="button-icon icon bd-facebook"  data-platform="facebook" aria-hidden="true"></i> <div class="social-btn-text"> FACEBOOK </div> </div>
                 </button>
@@ -230,18 +212,7 @@ $id = $_GET['id'];
 
         }
         //Start Twitter
-        if($twitterurl == NULL || $twitterurl == ''){
-        echo '
-           <div class="col-xs-4 button-container twitter-platform" style="display:none;">
-                <button class="col-xs-12 social-button" data-platform="twitter" data-handle="'.$twitterhandle.'"><div class="button-option-text"> <i class="button-icon icon bd-twitter"  data-platform="twitter" aria-hidden="true"></i> <div class="social-btn-text"> TWITTER </div> </div></button>
-            </div>';
-        }
-        elseif(($instagramurl == NULL || $instagramurl == '') && ($facebookurl == NULL || $facebookurl == '') && ($twitterurl != '' || $twitterurl != NULL)){
-        echo '   <div class="col-xs-4 button-container twitter-platform" style="background-color:rgb(115, 196, 141);">
-                <button class="col-xs-12 social-button" data-platform="twitter" data-handle="'.$twitterhandle.'"><div class="button-option-text"> <i class="button-icon icon bd-twitter"  data-platform="twitter" aria-hidden="true"></i> <div class="social-btn-text"> TWITTER </div> </div></button>
-            </div>';
-        }
-        else{
+        if($twitterurl != NULL || $twitterurl !== ''){
         echo '   <div class="col-xs-4 button-container twitter-platform">
                 <button class="col-xs-12 social-button" data-platform="twitter" data-handle="'.$twitterhandle.'"><div class="button-option-text"> <i class="button-icon icon bd-twitter"  data-platform="twitter" aria-hidden="true"></i> <div class="social-btn-text"> TWITTER </div> </div></button>
             </div>';
