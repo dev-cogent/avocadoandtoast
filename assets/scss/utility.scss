@@ -47,15 +47,34 @@ $social-following-red: rgb(231, 72, 69);
     }
 }
 
+
+@mixin trans($action){
+    transition: $action .4s;
+
+}
+
 // PLACEHOLDER CLASSES
-%basic-input {
-    border: 1px solid $avo-green;
+
+
+
+%basic-input{
+    border-radius: 1px;    
+    border:1px solid $inactive-grey;
     outline: none;
+    @include trans(border);
+    &:focus {
+        border: none;
+        outline: none;
+        // box-shadow: 0 0 3px $avo-green;
+        border:1px solid $avo-green;
+    }
+
 }
 
 %basic-button {
     border-radius: 1px;
     font-family: $main-font;
+    text-transform: capitalize;
     transition: background .4s, box-shadow .4s, color .4s, border .4s;
     cursor: pointer;
     &:focus {
@@ -106,3 +125,13 @@ $social-following-red: rgb(231, 72, 69);
         clear: both;
     }
 }
+
+
+@mixin green-hover{
+    transition: color .4s;
+    &:hover{
+        cursor:pointer;
+        color:$avo-green;
+    }
+}
+

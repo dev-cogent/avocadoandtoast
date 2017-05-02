@@ -65,7 +65,9 @@ class addInfluencers
         $stmt->bind_result($id, $instagrampost, $instagramimp, $instagrameng,
                         $twitterpost, $twitterimp, $twittereng,
                         $facebookpost, $facebookimp, $facebookeng);
+        $i = 1;
         while ($stmt->fetch()) {
+            $campaignstats['influencers'] += $i;
             $campaignstats['total_instagram_impressions'] += $instagramimp;
             $campaignstats['total_instagram_engagement'] += $instagrameng;
             $campaignstats['total_twitter_impressions'] += $twitterimp;
@@ -105,12 +107,13 @@ class addInfluencers
                     `total_twitter_engagement` = ?,
                     `total_facebook_engagement` = ?,
                     `total_engagement` = ?,
-                    `total_post` = ? 
+                    `total_post` = ?,
+                    `total_influencers` = ? 
                      WHERE `campaign_id` = ? ");
 
-        $stmt->bind_param('ssssssssis', $stats['total_instagram_impressions'], $stats['total_twitter_impressions'], $stats['total_facebook_impressions'], $stats['total_impressions'],
+        $stmt->bind_param('ssssssssiss', $stats['total_instagram_impressions'], $stats['total_twitter_impressions'], $stats['total_facebook_impressions'], $stats['total_impressions'],
                                $stats['total_instagram_engagement'], $stats['total_twitter_engagement'], $stats['total_facebook_engagement'],
-                               $stats['total_engagement'], $stats['total_post'], $campaignid);
+                               $stats['total_engagement'], $stats['total_post'], $stats['influencers'],$campaignid);
         if ($stmt->execute()) {
             return true;
         } else {

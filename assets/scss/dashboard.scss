@@ -1,6 +1,10 @@
+
 @import 'utility';
 .dashboard-table {
     margin-left: 1%;
+
+a:hover{
+    text-decoration:none;
 }
 
 #allcampaigns {
@@ -43,6 +47,7 @@ td.campaign-details.name {
 .button-stats {
     width: 17%;
 }
+
 
 .button-stats-bt {
     width: 100%;

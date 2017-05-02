@@ -16,6 +16,7 @@ error_reporting(-1);
 <link rel="stylesheet" href="/assets/css/discover.css">
 <link rel="stylesheet" href="/assets/css/sidebar.css">
 <link rel="stylesheet" href="/assets/css/campaign-calculator.css">
+
 <style>
 .stats{
     color: #73C48D;
@@ -145,6 +146,10 @@ padding-top: 45px;
                   <tbody id="all-influencers">
                   
                    
+
+
+
+
 
 
                     </tbody>

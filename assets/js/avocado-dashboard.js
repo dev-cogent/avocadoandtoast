@@ -33,6 +33,7 @@ $(document).ready(function() {
                     '</tbody>' +
                     '</table>' +
                     '</div></a>');
+
             });
         }
 
