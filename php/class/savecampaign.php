@@ -219,6 +219,7 @@ public function getSavedCampaigns($columnid){
         $arr->$campaignid->campaignstart = date('m/d/Y',strtotime($start));
         $arr->$campaignid->campaignend = date('m/d/Y',strtotime($end));
         $arr->$campaignid->totalinfluencers = $totalInfluencers;
+        if($totalInfluencers == 0) $totalInfluencers = 1;
         $arr->$campaignid->average_impressions = $totalimpressions/$totalInfluencers;
         $arr->$campaignid->average_engagement = $totalengagement/$totalInfluencers; 
         $state = $this->check_in_range($arr->$campaignid->campaignstart,$arr->$campaignid->campaignend);
@@ -243,39 +244,42 @@ public function getSavedCampaigns($columnid){
                                     l5o0c8t4_save_campaign.$campaignid.instagram_engagement,l5o0c8t4_save_campaign.$campaignid.facebook_engagement,l5o0c8t4_save_campaign.$campaignid.twitter_engagement,
                                     l5o0c8t4_General_Information.Influencer_Information.image_url, l5o0c8t4_General_Information.Influencer_Information.instagram_count, l5o0c8t4_General_Information.Influencer_Information.instagram_url,
                                     l5o0c8t4_General_Information.Influencer_Information.twitter_url,l5o0c8t4_General_Information.Influencer_Information.twitter_count, l5o0c8t4_General_Information.Influencer_Information.facebook_count,l5o0c8t4_General_Information.Influencer_Information.facebook_url,
-                                    l5o0c8t4_General_Information.Influencer_Information.engagement FROM l5o0c8t4_save_campaign.$campaignid INNER JOIN l5o0c8t4_General_Information.Influencer_Information
+                                    l5o0c8t4_General_Information.Influencer_Information.engagement,l5o0c8t4_General_Information.Influencer_Information.total FROM l5o0c8t4_save_campaign.$campaignid INNER JOIN l5o0c8t4_General_Information.Influencer_Information
                                     ON l5o0c8t4_save_campaign.$campaignid.influencer_id = l5o0c8t4_General_Information.Influencer_Information.id
                                     ORDER BY  l5o0c8t4_General_Information.Influencer_Information.total DESC LIMIT $position, $influencernumber");
     $stmt->execute();
-    $stmt->bind_result($id,$facebookpost,$instagrampost,$twitterpost,$instagramimpressions,$facebookimpressions,$twitterimpressions,$instagramengagement,$facebookengagement,$twitterengagement,$image,$instagramcount,$instagramurl,$twitterurl,$twittercount,$facebookcount,$facebookurl,$engagement);
+    $stmt->bind_result($id,$facebookpost,$instagrampost,$twitterpost,$instagramimpressions,$facebookimpressions,$twitterimpressions,$instagramengagement,$facebookengagement,$twitterengagement,$image,$instagramcount,$instagramurl,$twitterurl,$twittercount,$facebookcount,$facebookurl,$engagement,$total);
     while($stmt->fetch()){
         $infoarr->$id = new stdClass;
+        $infoarr->$id->instagram = new stdClass;
+        $infoarr->$id->facebook = new stdClass;
+        $infoarr->$id->twitter = new stdClass;
         $handles = $this->getHandles($instagramurl,$twitterurl,$facebookurl);
         $insthandle = $handles->instagram;
         $twitterhandle = $handles->twitter;
         $facebookhandle = $handles->facebook;
-
         $engagement = json_decode($engagement,true);
         $infoarr->$id->image = $image;
-        $infoarr->$id->instagram_count = $instagramcount;
-        $infoarr->$id->instagram_url = $instagramurl;
-        $infoarr->$id->instagram_handle = $insthandle;
-        $infoarr->$id->instagram_post = $instagrampost;
-        $infoarr->$id->instagram_impressions = $instagramimpressions;
-        $infoarr->$id->instagram_engagement = $instagramengagement;
-        $infoarr->$id->facebook_count = $facebookcount;
-        $infoarr->$id->facebook_url = $facebookurl;
-        $infoarr->$id->facebook_handle = $facebookhandle;
-        $infoarr->$id->facebook_post = $facebookpost;
-        $infoarr->$id->facebook_impressions = $facebookimpressions;
-        $infoarr->$id->facebook_engagement = $facebookengagement;
-        $infoarr->$id->twitter_count = $twittercount;
-        $infoarr->$id->twitter_url = $twitterurl;
-        $infoarr->$id->twitter_handle = $twitterhandle;
-        $infoarr->$id->twitter_post = $twitterpost;
-        $infoarr->$id->twitter_impressions = $twitterimpressions;
-        $infoarr->$id->twitter_engagement = $twitterengagement;
-
+        $infoarr->$id->instagram->followers = $instagramcount;
+        $infoarr->$id->instagram->url = $instagramurl;
+        $infoarr->$id->instagram->handle = $insthandle;
+        $infoarr->$id->instagram->post = $instagrampost;
+        $infoarr->$id->instagram->impressions = $instagramimpressions;
+        $infoarr->$id->instagram->engagement = $instagramengagement;
+        $infoarr->$id->facebook->likes = $facebookcount;
+        $infoarr->$id->facebook->url = $facebookurl;
+        $infoarr->$id->facebook->handle = $facebookhandle;
+        $infoarr->$id->facebook->post = $facebookpost;
+        $infoarr->$id->facebook->impressions = $facebookimpressions;
+        $infoarr->$id->facebook->engagement = $facebookengagement;
+        $infoarr->$id->twitter->followers = $twittercount;
+        $infoarr->$id->twitter->url = $twitterurl;
+        $infoarr->$id->twitter->handle = $twitterhandle;
+        $infoarr->$id->twitter->post = $twitterpost;
+        $infoarr->$id->twitter->impressions = $twitterimpressions;
+        $infoarr->$id->twitter->engagement = $twitterengagement;
+        $infoarr->$id->total = $total;
+        
     }
 
     unset($saved);

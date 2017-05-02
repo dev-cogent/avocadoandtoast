@@ -1,4 +1,4 @@
-
+@import 'utility';
 .center-form-content{
     padding-left:20%;
     padding-right:20%;
@@ -13,21 +13,19 @@
 .avo-btn-edit{
     height:40px;
     border-radius: 1px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: $main-font;
 }
 
 .avo-btn-edit-secondary{
     float: left;
     background-color:white; 
-    border:1px solid #30363C; 
-    color:#30363C;
+    border:1px solid $header-grey; 
+    color:$header-grey;
 }
 
 .avo-btn-edit-primary{
-    border:0px;
+    @extend .primary-button;
     float: right;
-    color: white;
-    background-color: #73C48D;
 }
 
 .avo-date{
@@ -45,7 +43,7 @@
 }
 
 .desc-header{
-    font-family:'Montserrat', sans-serif;
+    font-family:$main-font;
 }
 
 #edit-campaign-name{
@@ -64,7 +62,7 @@
 
  .pricing{
     height: 50px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: $main-font;
     margin-top: 20px;
     margin-bottom: 20px;
  }
@@ -78,10 +76,21 @@
     display:inline;
     padding-left:20px;
     padding-right:20px;
-    color: #1F232A;
+    color:$body-black;
     font-family: 'open sans';
     font-size:15px;
 
+}
+.white-space{
+    margin-bottom: -8%;
+}
+.edit-buttons {
+    margin-bottom: 2%;
+}
+
+
+body.pace-done {
+    padding-bottom: 1%;
 }
 /*There is too much empty space at this point so we start to widen things out just a bit ;) */
 @media only screen and (max-width: 1500px) and (min-width:1000px) {

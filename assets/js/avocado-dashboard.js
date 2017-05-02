@@ -3,23 +3,25 @@ $(document).ready(function(){
         type: 'GET', 
         url: '/php/ajax/yourcampaigns-info.php',
         success: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR);
             campaignJSON = JSON.parse(jqXHR);
             $.each(campaignJSON, function(key,obj){
-            $('#campaign-container').append('<div class="campaign-block col-xs-12" data-id="'+key+'" data-desc="'+obj.description+'" data-name="'+obj.campaignname+'" data-start="'+obj.campaignstart+'" data-end="'+obj.campaignend+'" >'+
+                
+            $('#campaign-container').append('<a href="/campaigns/?id='+key+'"><div class="campaign-block col-xs-12" data-id="'+key+'" data-desc="'+obj.description+'" data-name="'+obj.campaignname+'" data-start="'+obj.campaignstart+'" data-end="'+obj.campaignend+'" >'+
                    '<table class="col-xs-12">'+
                         '<tbody style="border-top:0px;">'+
                         '<tr>'+
-                            '<td class="campaign-details name" ><a href="/campaigns/?id='+key+'" class="campaign-details">'+obj.campaignname+' </a></td>'+
+                            '<td class="campaign-details name" >'+obj.campaignname+'</td>'+
                             '<td class="campaign-details" > '+obj.state+' </td>'+
                             '<td class="campaign-details date" > Created '+obj.created+'</td>'+
                         '</tr>'+
                        '<tr>'+
-                            '<td class="stats"><a class="stats" href="/campaigns/?id='+key+'">'+obj.totalinfluencers+'</a></td>'+
-                            '<td class="stats mobile-off"><a class="stats" href="/campaigns/?id='+key+'">'+obj.totalposts+'</a></td>'+
-                            '<td class="stats mobile-off"><a class="stats" href="/campaigns/?id='+key+'">'+abbrNum(obj.average_impressions)+'</a></td>'+
-                            '<td class="stats mobile-off mobile-off-first"><a class="stats" href="/campaigns/?id='+key+'">'+abbrNum(obj.average_engagement)+'</a></td>'+
-                            '<td class="stats"><a class="stats" href="/campaigns/?id='+key+'">'+abbrNum(obj.totalimpressions)+'</a></td>'+
-                            '<td class="button-stats"><button onclick="location.href=`/price/?id='+key+'`" class="button-stats-bt">PRICE CAMPAIGN</button></td>'+
+                            '<td class="stats">'+obj.totalinfluencers+'</td>'+
+                            '<td class="stats mobile-off">'+obj.totalposts+'</td>'+
+                            '<td class="stats mobile-off">'+abbrNum(obj.average_impressions)+'</td>'+
+                            '<td class="stats mobile-off mobile-off-first">'+abbrNum(obj.average_engagement)+'</td>'+
+                            '<td class="stats">'+abbrNum(obj.totalimpressions)+'</td>'+
+                            '<td class="button-stats"><a href="/price/?id='+key+'"><button class="button-stats-bt">PRICE CAMPAIGN</button></a></td>'+
                         '</tr>'+ 
                         '<tr>'+
                             '<td class="label-info">Influencers</td>'+

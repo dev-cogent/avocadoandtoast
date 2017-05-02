@@ -9,23 +9,27 @@ include '../php/verify-campaign.php';
 <head>
   <?php include '../html/head.html' ?>
     <title>Campaign | Avocado & Toast</title>
+<script src="/assets/js/avocado-card-function.js"></script>
 <script src="/assets/js/abbreviatenumber.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/assets/js/avocado-campaign.js"></script>
-
+<script src="/assets/js/loading.js"></script>
 <link rel="stylesheet" href="/assets/js/tokenfield/dist/css/bootstrap-tokenfield.css">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
-<link rel="stylesheet" href="/assets/css/discover.css">
 <link rel="stylesheet" href="/assets/css/sidebar.css">
 <link rel="stylesheet" href="/assets/css/avocado-campaign.css">
+<link rel="stylesheet" href="/assets/css/influencer-card.css">
+
+
 </head>
 <?php include '../php/avocado-nav.php';?>
 
 <body>
 
-
+<div id="loading"><img style="height:250px; width:250px;"src="/assets/images/loading.gif"/></div>
+<div id="myNav" class="overlay"></div>
 
 <!-- Add side bar here -->
  
@@ -41,13 +45,13 @@ include '../php/verify-campaign.php';
 
 
 <div class="button-container col-xs-12">
-   <button class="btn-campaign-options avocado-hover avocado-focus" onclick="location.href='/edit/?id=<?php echo $campaignid;?>'">  EDIT CAMPAIGN  </button></a>
-   <button class="btn-campaign-options avocado-hover avocado-focus pdf" data-id="<?php echo $campaignid; ?>">  EXPORT CAMPAIGN  </button></a>
-   <button class="btn-campaign-options avocado-hover avocado-focus" onclick="location.href='/price/?id=<?php echo $campaignid;?>'">  PRICE CAMPAIGN  </button></a>
-   <button class="btn-campaign-options avocado-hover avocado-focus" onclick="location.href='/recalculate.php?id=<?php echo $campaignid;?>'">  RECALCULATE CAMPAIGN  </button></a>
+   <button class="btn-campaign-options avocado-hover avocado-focus" onclick="location.href='/edit/?id=<?php echo $campaignid;?>'">  EDIT   </button></a>
+   <button class="btn-campaign-options avocado-hover avocado-focus pdf" data-id="<?php echo $campaignid; ?>">  EXPORT </button></a>
+   <button class="btn-campaign-options avocado-hover avocado-focus" onclick="location.href='/price/?id=<?php echo $campaignid;?>'">  PRICE </button></a>
+   <button class="btn-campaign-options avocado-hover avocado-focus" onclick="location.href='/recalculate.php?id=<?php echo $campaignid;?>'">  RECALCULATE  </button></a>
    <button class="btn-campaign-options-primary  avocado-focus" id="undo-button" style="visibility:hidden;">UNDO</button></a>
    <button class="btn-campaign-options-primary  avocado-focus" id="save-button" style="visibility:hidden;">SAVE</button></a>
-</div>
+</div> 
 
 
   <!--  <div class="user-campaign-inf-count"> <span class="campaign-inf-count"><?php// echo $influencerinfo['campaign_count'];?> </span> Influencers Invited to this Campaign </div> -->
@@ -101,11 +105,11 @@ include '../php/verify-campaign.php';
                                     <div class="col-xs-12" style="height:170px; box-shadow: rgb(115, 196, 141) 0px -10px 0px;">
                                         <!-- insthandle stuff -->
                                     <!--
-                                        <div class="icons col-xs-12"></div>
-                                        <div class="col-xs-12 insthandle-info">
-                                                <p class="instagram-handle insthandle-text" data-id=""></p>
-                                                <p class="facebook-handle insthandle-text" data-id="" style="display:none;"></p>
-                                                <p class="twitter-handle insthandle-text" data-id="" style="display:none;"></p>                                            
+                                        <div class="influencer-icons col-xs-12"></div>
+                                        <div class="col-xs-12 handle-info">
+                                                <p class="instagram-handle handle-text" data-id=""></p>
+                                                <p class="facebook-handle handle-text" data-id="" style="display:none;"></p>
+                                                <p class="twitter-handle handle-text" data-id="" style="display:none;"></p>                                            
                                         </div>
                                     <!-- followers -->
                                     <!--
@@ -156,9 +160,8 @@ var page = 0;
 var selectedusers = [];
 var deletedusers = [];
 var filters = {};
-var target2 = $('#stuff').offset().top;
 var sidebar = false;
-console.log(target2);
+
 
 $(document).on('click','.sidebar-left',function(){
 
@@ -185,11 +188,13 @@ sidebar = false;
 });
 
 $(document).on('click','.pdf',function(){
+    console.log('here');
 var id = $(this).attr('data-id');
-window.location='/assets/pdf/pdf.php?id='+id;
+window.location='/php/pdf/pdf.php?id='+id;
 
 
 });
 $('#tokenfield').tokenfield();
 </script>
 
+ 

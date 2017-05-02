@@ -9,26 +9,29 @@ include 'php/numberAbbreviation.php';
 <html class="no-js css-menubar" lang="en">
 <head>
     <link rel="stylesheet" href="/assets/uislider/nouislider.css">
-  <?php include 'html/head.html' ?>
+    <?php include 'html/head.html' ?>
     <title>Discover | Avocado & Toast</title>
-<script src="/bootbox/bootbox.js"></script>
-<script src="/global/vendor/bootstrap/bootstrap.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700" rel="stylesheet">
-<script src="/assets/js/abbreviatenumber.js"></script>
-<script src="/assets/wnumb/wNumb.js"></script>
-<script src="/assets/uislider/nouislider.js"></script>
-<script src="/assets/js/tokenfield/dist/bootstrap-tokenfield.js"></script>
-<script src="/assets/js/loading.js"></script>
-<script src="/assets/js/avocado-card-functions.js"></script>
-<script src="/assets/js/avocado-calculate.js"></script>
-<script src="assets/js/influencer_pullout.js"></script>
-<link rel="stylesheet" href="/assets/js/tokenfield/dist/css/bootstrap-tokenfield.css">
-<link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
-<link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
-<link rel="stylesheet" href="/assets/css/sidebar.css">
-<link rel="stylesheet" href="assets/css/pullout.css">
-
-
+    <script src="/bootbox/bootbox.js"></script>
+    <script src="/global/vendor/bootstrap/bootstrap.js"></script>
+    <script src="/global/js/jquery-ui-slider/jquery-ui.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700" rel="stylesheet">
+    <script src="/assets/js/abbreviatenumber.js"></script>
+    <script src="/assets/wnumb/wNumb.js"></script>
+    <script src="/assets/uislider/nouislider.js"></script>
+    <script src="/assets/js/tokenfield/dist/bootstrap-tokenfield.js"></script>
+    <script src="/assets/js/loading.js"></script>
+    <script src="/assets/js/avocado-card-functions.js"></script>
+    <script src="/assets/js/avocado-calculate.js"></script>
+    <script src="assets/js/influencer_pullout.js"></script>
+    <script src="assets/js/af-slidedown.js"></script>
+    <link rel="stylesheet" href="/assets/js/tokenfield/dist/css/bootstrap-tokenfield.css">
+    <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
+    <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/pullout.css">
+    <link rel="stylesheet" href="assets/css/influencer-card.css">
+    <link rel="stylesheet" href="/assets/css/discover.css">
+    <link rel="stylesheet" href="/assets/css/af-slidedown.css">
+    <link rel="stylesheet" href="/global/js/jquery-ui-slider/jquery-ui.min.css">
 </head>
 
 <body>
@@ -37,15 +40,12 @@ include 'php/numberAbbreviation.php';
 <!-- right side bar -->
     <div id="influencers-pullout">
       <img id="pulltab" src="assets/images/pulltab_icon.png" alt="">
-
-
       <header>
-        <div id="num-influencers">__</div>
-        <div id="header-text">
-          Influencers in current campaign
-        </div>
-        <div id=dismiss-button>x</div>
-
+            <div id="num-influencers">__</div>
+            <div id="header-text">
+            Influencers in current campaign
+            </div>
+            <div id=dismiss-button>x</div>
       </header>
 
       <button type="button" name="button" id="calculate">Calculate campaign</button>
@@ -91,8 +91,38 @@ include 'php/numberAbbreviation.php';
                     <div class="description-text">Separate tags with commas or by pressing "tab" in the above field. Use double quotes for multi-word tags (e.g. "avocado toast")</div>
                     <div class="button-container">
                         <button class="search-button primary-button" id="search-keyword">SEARCH</button>
-                        <div class="advanced-filter"> Advanced Filtering </div>
+                        <div  id="af-link"> Advanced Filtering </div>
                         <!-- Filtering options will go here -->
+                            <div id="af-slidedown">
+                                <div id="af-header">
+                                FILTER INFLUENCERS
+                                </div>
+                                <div id="af-icon-container">
+                                <i class="fa fa-instagram" aria-hidden="true" data-platform="instagram"></i>
+                                <i class="fa fa-facebook" aria-hidden="true" data-platform="facebook"></i>
+                                <i class="fa fa-twitter" aria-hidden="true" data-platform="twitter"></i>
+                                <i class="fa fa-youtube" aria-hidden="true" data-platform="youtube"></i>
+                                </div>
+                                <div class="af-slider-container">
+                                <div class="af-slider-text">
+                                    <label for="num-followers">Followers:</label>
+                                </div>
+                                <div class="af-inputs">
+                                    <input type="text" id="num-followers1">
+                                    <div id="follower-range"></div>
+                                    <input type="text" id="num-followers2">
+                                </div>
+                                </div>
+                                <div class="af-slider-container">
+                                <div class="af-slider-text">
+                                    <label for="num-engagement">Engagement:</label>
+                                </div>
+                                <div class="af-inputs">
+                                    <input type="text" id="num-engagement1">
+                                    <div id="engagement-range"></div>
+                                    <input type="text" id="num-engagement2">
+                                </div>
+                                </div>
                     </div>
             </div>
 
@@ -101,9 +131,15 @@ include 'php/numberAbbreviation.php';
 
 
 
-<div class="influencer-results-container col-xs-12">
-         <div class="influencer-header">FILTER INFLUENCERS</div>
+<!--<div class="influencer-results-container col-xs-12">-->
 
+
+
+
+
+
+
+<!--
         <div class="filter-button-container" id="button-filter">
              <i class="filter-option button-icon button-icon-active icon bd-instagram"  data-platform="instagram" aria-hidden="true"></i>
             <i class="filter-option button-icon icon bd-facebook"  data-platform="facebook" aria-hidden="true"></i>
@@ -113,7 +149,7 @@ include 'php/numberAbbreviation.php';
 
 
 <!-- Slider Rows -->
-        <div class="slider-container">
+        <!--<div class="slider-container">
                 <div class="measure-text">FOLLOWERS</div>
                         <div class="sliders"  data-platform="instagram">
                             <input  class="col-xs-1 input-filter " type="text" id="min-instagram">
@@ -155,10 +191,10 @@ include 'php/numberAbbreviation.php';
                 <input  class="col-xs-1 input-filter engagement-slider" type="text" id="min-twitter-engagement">
                 <div style="margin-top:20px;" id="slider-twitter-engagement" class="col-xs-10"></div>
                 <input id="max-twitter-engagement" class="col-xs-1 input-filter engagement-slider"style="display:inline; padding-left:2%; padding-right:0px;" type="text">
-            </div>
+            </div>-->
 
 
-            </div>
+            <!--</div>-->
 
 
 
@@ -173,8 +209,9 @@ include 'php/numberAbbreviation.php';
 
 <!--end slider rows -->
 
-
+    <hr>
     <br>
+
     <div class="influencer-header">INFLUENCER RESULTS</div>
 
 
@@ -182,74 +219,25 @@ include 'php/numberAbbreviation.php';
 
         <div class="found-influencers col-xs-12">
             <?php
-                $stmt = $conn->prepare('SELECT `id`,`image_url`,`instagram_url`,`instagram_count`,`facebook_url`,`facebook_handle`,`facebook_count`,`twitter_url`,`twitter_count`,`engagement`,`total` FROM `Influencer_Information` ORDER BY `total`  DESC LIMIT 0,24');
-                $stmt->execute();
-                $stmt->bind_result($id,$image,$instagramurl,$instagramcount,$facebookurl,$facebookhandle,$facebookcount,$twitterurl,$twittercount,$engagement,$total);
-                while($stmt->fetch()){
-                $insthandle = explode('.com/',$instagramurl);
-                $insthandle = explode('/',$insthandle[1]);
-                $insthandle = explode('?',$insthandle[0]);
-                $insthandle = $insthandle[0];
-                //Facebook handle
-                if($facebookhandle == NULL){
-                $facebookhandle = explode('.com/',$facebookurl);
-                $facebookhandle = explode('/',$facebookhandle[1]);
-                $facebookhandle = explode('?',$facebookhandle[0]);
-                $facebookhandle = $facebookhandle[0];
-                }
-                //twitter handle
-                $twitterhandle = explode('.com/',$twitterurl);
-                $twitterhandle = explode('/',$twitterhandle[1]);
-                $twitterhandle = explode('?',$twitterhandle[0]);
-                $twitterhandle = $twitterhandle[0];
-                $engagement = json_decode($engagement,true);
-
-                $twitterengagement = number_format((($engagement['twitter']['average_engagement']/$twittercount)*100),2,'.','');
-                $instagramengagement = number_format((($engagement['instagram']['average_engagement']/$instagramcount)*100),2,'.','');
-                $facebookengagement = number_format((($engagement['facebook']['average_engagement']/$facebookcount)*100),2,'.','');
-                echo '
-                    <div  class="influencer-box col-xs-9 col-sm-5 col-md-4 col-lg-3">
-                            <div class="influencer-card-discover">
-                                <a href="/profile.php/?id='.$id.'"><img class="influencer-image-card" src="http://cogenttools.com/'.$image.'" onerror="this.src=`/assets/images/default-photo.png`"> </a>
-                                <div class="col-xs-12 influ-bottom" style="" data-id="'.$id.'">
-                                    <!-- insthandle stuff -->
-                                        <div class="icons col-xs-12">
-                                            <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram"  aria-hidden="true"></i>
-                                            <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true"></i>
-                                            <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true"></i>
-                                        </div>
-                                        <div class="col-xs-12 insthandle-info">
-                                            <!--icon here -->
-                                            <div class="instagram-handle insthandle-text" data-id="'.$id.'" >'.$insthandle.'</div>
-                                            <div class="facebook-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</div>
-                                            <div class="twitter-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</div>
-                                        </div>
-                                    <!-- followers -->
-                                    <div class="col-xs-12">
-                                        <div class="follower-count">Total Reach: '.numberAbbreviation($total).'</div>
-                                        <div class="instagram-follower-count follower-count" data-id="'.$id.'" style="display:none">Followers: '.numberAbbreviation($instagramcount).' </div>
-                                        <div class="facebook-follower-count follower-count" style="display:none" data-id="'.$id.'">Likes: '.numberAbbreviation($facebookcount).' </div>
-                                        <div class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">Followers: '.numberAbbreviation($twittercount).' </div>
-                                    </div>
-                                    <!-- Engagement -->
-                                    <div class="col-xs-12">
-                                        <div class="instagram-engagement follower-count" data-id="'.$id.'" style="display:none">Engagement: '.$instagramengagement.'%</div>
-                                        <div class="facebook-engagement follower-count" style="display:none"data-id="'.$id.'">Engagement: '.$facebookengagement.'%</div>
-                                        <div class="twitter-engagement follower-count" style="display:none"data-id="'.$id.'">Engagement: '.$twitterengagement.'%</div>
-                                    </div>
-                                    <div class="col-xs-12">
-
-                                        <div class="col-xs-12 invite  avocado-focus" data-id="'.$id.'" data-image="'.$image.'"></div>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                    <!-- Influencer box has ended -->';
-                }
-                    ?>
+                //If this is a get request, then we will make a script here to collect the parameters from the GET request. Afterwards we will apply this script at the end of the page. 
+                if($_GET['q']){
+                    $queryArr = explode(' ' ,$_GET['q']);
+                    $queryArr = json_encode($queryArr);
+                    $javaquery = "
+                    <script>
+                        var keywordsarr = '$queryArr';
+                        keywordsarr = JSON.parse(keywordsarr);
+                        filters['keywords'] = keywordsarr;
+                        applyFilters(filters);
+                        keywordsarr.forEach(function(element){
+                            $('#tokenfield').tokenfield('createToken', element);
+                        });
+                    </script>
+                    ";
+                } 
+            ?>
         </div>
-</div>
-
+    </div>
 </div>
 
 
@@ -261,8 +249,13 @@ var calculate = false;
 var page = 0;
 var selectedusers = [];
 var filters = {};
-
 </script>
 <script src="/assets/js/avocado-slider.js"></script>
 <script src="/assets/js/avocado-discover.js"></script>
 <script src="/assets/js/create-campaign.js"></script>
+<?php if($javaquery) {echo $javaquery;}
+      else{
+          echo '<script> applyFilters(filters,false); </script>';
+      }
+
+ ?>

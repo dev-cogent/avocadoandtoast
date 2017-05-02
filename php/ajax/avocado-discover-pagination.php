@@ -97,7 +97,7 @@ while($stmt->fetch()){
                                 <a href="/profile.php?id='.$id.'"><img class="influencer-image-card" src="http://cogenttools.com/'.$image.'" onerror="this.src=`/assets/images/default-photo.png/`"></a>
                                 <div class="col-xs-12 influ-bottom" style="height:170px; " data-id="'.$id.'">
                                     <!-- insthandle stuff -->
-                                        <div class="icons col-xs-12">';
+                                        <div class="influencer-icons col-xs-12">';
 
                                         if(strpos($where,'instagram_count') !== FALSE){
                                             echo checkDisplayInstagram($instagramurl,$id,true);
@@ -253,22 +253,22 @@ function makeValuesReferenced($arr){
 }
 
 function checkDisplayInstagram($url,$id, $filtered){
-if($url == NULL || $url == '') return '<a> <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" style="display:none;" aria-hidden="true"></i></a>';
-if(!$filtered) return '<a> <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" aria-hidden="true"></i></a>';
-else return '<a> <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" aria-hidden="true"  style="color:#73C48D"></i></a>';
+if($url == NULL || $url == '') return '<a> <i class="switch show-instagram influencer-card-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" style="display:none;" aria-hidden="true"></i></a>';
+if(!$filtered) return '<a> <i class="switch show-instagram influencer-card-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" aria-hidden="true"></i></a>';
+else return '<a> <i class="switch show-instagram influencer-card-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" aria-hidden="true"  style="color:#73C48D"></i></a>';
 }
 
 function checkDisplayFacebook($url,$id,$filtered){
-if($url == NULL || $url == '') return '<a> <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" style="display:none;" aria-hidden="true"></i></a>';
-if(!$filtered) return '<a> <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true" ></i></a>';
-else return '<a> <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true" style="color:#73C48D"></i></a>';
+if($url == NULL || $url == '') return '<a> <i class="switch show-facebook influencer-card-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" style="display:none;" aria-hidden="true"></i></a>';
+if(!$filtered) return '<a> <i class="switch show-facebook influencer-card-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true" ></i></a>';
+else return '<a> <i class="switch show-facebook influencer-card-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true" style="color:#73C48D"></i></a>';
 }
 
 
 function checkDisplayTwitter($url,$id,$filtered){
-if($url == NULL || $url == '') return '<a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true" style="display:none;"></i></a>';
-if(!$filtered)return '<a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true"></i></a>';
-else return '<a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true" style="color:#73C48D"></i></a>';
+if($url == NULL || $url == '') return '<a> <i class="switch show-twitter influencer-card-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true" style="display:none;"></i></a>';
+if(!$filtered)return '<a> <i class="switch show-twitter influencer-card-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true"></i></a>';
+else return '<a> <i class="switch show-twitter influencer-card-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true" style="color:#73C48D"></i></a>';
 }
 
 
@@ -276,11 +276,11 @@ function buildCard($platform,$id,$insthandle,$instagramcount,$instagramengagemen
         if($platform == 'instagram'){
             echo '
                 </div>
-                <div class="col-xs-12 insthandle-info">
+                <div class="col-xs-12 handle-info">
                 <!--icon here -->
-                <p class="instagram-handle insthandle-text" data-id="'.$id.'">'.$insthandle.'</p>
-                <p class="facebook-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</p>
-                <p class="twitter-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</p>
+                <p class="instagram-handle handle-text" data-id="'.$id.'">'.$insthandle.'</p>
+                <p class="facebook-handle handle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</p>
+                <p class="twitter-handle handle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</p>
                 </div>
                 <!-- followers -->
                 <div class="col-xs-12">
@@ -306,11 +306,11 @@ function buildCard($platform,$id,$insthandle,$instagramcount,$instagramengagemen
         if($platform == 'facebook'){
         echo '
             </div>
-            <div class="col-xs-12 insthandle-info">
+            <div class="col-xs-12 handle-info">
             <!--icon here -->     
-            <p class="instagram-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$insthandle.'</p>
-            <p class="facebook-handle insthandle-text" data-id="'.$id.'">'.$facebookhandle.'</p>
-            <p class="twitter-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</p>
+            <p class="instagram-handle handle-text" data-id="'.$id.'" style="display:none;">'.$insthandle.'</p>
+            <p class="facebook-handle handle-text" data-id="'.$id.'">'.$facebookhandle.'</p>
+            <p class="twitter-handle handle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</p>
             </div>
             <!-- followers -->
             <div class="col-xs-12">
@@ -335,11 +335,11 @@ function buildCard($platform,$id,$insthandle,$instagramcount,$instagramengagemen
         if($platform == 'twitter'){
             echo '
                 </div>
-                <div class="col-xs-12 insthandle-info">
+                <div class="col-xs-12 handle-info">
                 <!--icon here -->
-                <p class="instagram-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$insthandle.'</p>
-                <p class="facebook-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</p>
-                <p class="twitter-handle insthandle-text" data-id="'.$id.'">'.$twitterhandle.'</p>
+                <p class="instagram-handle handle-text" data-id="'.$id.'" style="display:none;">'.$insthandle.'</p>
+                <p class="facebook-handle handle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</p>
+                <p class="twitter-handle handle-text" data-id="'.$id.'">'.$twitterhandle.'</p>
                 </div>
                 <!-- followers -->
                 <div class="col-xs-12">
@@ -367,12 +367,12 @@ function buildCard($platform,$id,$insthandle,$instagramcount,$instagramengagemen
 function buildCardAll($id,$instagramurl,$insthandle,$instagramcount,$instagramengagement,$facebookurl,$facebookhandle,$facebookcount,$facebookengagement,$twitterurl,$twitterhandle,$twittercount,$twitterengagement){
                     echo '
                     </div>
-                    <div class="col-xs-12 insthandle-info">
+                    <div class="col-xs-12 handle-info">
                         <!--icon here -->';
                                 if($instagramurl  != NULL){
-                                    echo '<p class="instagram-handle insthandle-text" data-id="'.$id.'">'.$insthandle.'</p>
-                                        <p class="facebook-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</p>
-                                        <p class="twitter-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</p>
+                                    echo '<p class="instagram-handle handle-text" data-id="'.$id.'">'.$insthandle.'</p>
+                                        <p class="facebook-handle handle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</p>
+                                        <p class="twitter-handle handle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</p>
                                         </div>
                                     <!-- followers -->
                                     <div class="col-xs-12">
@@ -395,9 +395,9 @@ function buildCardAll($id,$instagramurl,$insthandle,$instagramcount,$instagramen
                                     <!-- Influencer box has ended -->';
                                 }
                                 elseif($facebookurl != NULL){
-                                    echo '<p class="instagram-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$insthandle.'</p>
-                                        <p class="facebook-handle insthandle-text" data-id="'.$id.'">'.$facebookhandle.'</p>
-                                        <p class="twitter-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</p>
+                                    echo '<p class="instagram-handle handle-text" data-id="'.$id.'" style="display:none;">'.$insthandle.'</p>
+                                        <p class="facebook-handle handle-text" data-id="'.$id.'">'.$facebookhandle.'</p>
+                                        <p class="twitter-handle handle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</p>
                                         </div>
                                         <!-- followers -->
                                         <div class="col-xs-12">  
@@ -423,9 +423,9 @@ function buildCardAll($id,$instagramurl,$insthandle,$instagramcount,$instagramen
                                         ';
                                 }
                                 elseif($twitterurl != NULL){
-                                    echo '<p class="instagram-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$insthandle.'</p>
-                                        <p class="facebook-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</p>
-                                        <p class="twitter-handle insthandle-text" data-id="'.$id.'">'.$twitterhandle.'</p>
+                                    echo '<p class="instagram-handle handle-text" data-id="'.$id.'" style="display:none;">'.$insthandle.'</p>
+                                        <p class="facebook-handle handle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</p>
+                                        <p class="twitter-handle handle-text" data-id="'.$id.'">'.$twitterhandle.'</p>
                                         </div>
                                         <!-- followers -->
                                         <div class="col-xs-12">                
@@ -454,32 +454,32 @@ function buildCardAll($id,$instagramurl,$insthandle,$instagramcount,$instagramen
 function checkDisplayAll($instagramurl,$facebookurl,$twitterurl,$id){
 $html ='';
 if($instagramurl == NULL || $instagramurl == ''){
-    $html .= '<a> <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" style="display:none;" aria-hidden="true"></i></a>';
+    $html .= '<a> <i class="switch show-instagram influencer-card-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" style="display:none;" aria-hidden="true"></i></a>';
 }
 else{
-    $html .='<a> <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" aria-hidden="true"  style="color:#73C48D"></i></a>';
+    $html .='<a> <i class="switch show-instagram influencer-card-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" aria-hidden="true"  style="color:#73C48D"></i></a>';
 }
 
 
 //For facebook
 if($facebookurl == NULL || $facebookurl == ''){
-    $html .= '<a> <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" style="display:none;" aria-hidden="true"></i></a>';
+    $html .= '<a> <i class="switch show-facebook influencer-card-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" style="display:none;" aria-hidden="true"></i></a>';
 }
 elseif($instagramurl == NULL || $instagramurl == '' && $facebookurl != NULL){
-    $html .= '<a> <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true" style="color:#73C48D"></i></a>';
+    $html .= '<a> <i class="switch show-facebook influencer-card-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true" style="color:#73C48D"></i></a>';
 }
 else {
-    $html .= '<a> <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true"></i></a>';
+    $html .= '<a> <i class="switch show-facebook influencer-card-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true"></i></a>';
 }
 
 if($twitterurl == NULL || $twitterurl == ''){
-    $html .= '<a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true" style="display:none;"></i></a>';
+    $html .= '<a> <i class="switch show-twitter influencer-card-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true" style="display:none;"></i></a>';
 }
 elseif((($facebookurl == NULL || $facebookurl) == '' && ($twitterurl == NULL || $twitterurl == '')) && ($twitterurl != NULL || $twitterurl !== '') ){
-    $html .= '<a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true" style="color:#73C48D"></i></a>';
+    $html .= '<a> <i class="switch show-twitter influencer-card-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true" style="color:#73C48D"></i></a>';
 }
 else{
-    $html .= '<a> <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true"></i></a>';
+    $html .= '<a> <i class="switch show-twitter influencer-card-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true"></i></a>';
 }
 
 return $html;

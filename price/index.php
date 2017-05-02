@@ -20,6 +20,7 @@ $company = $_SESSION['company'];
         <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
         <link rel="stylesheet" href="/assets/css/discover.css">
         <link rel="stylesheet" href="/assets/css/edit-campaign.css">
+        
     </head>
 
     <body>

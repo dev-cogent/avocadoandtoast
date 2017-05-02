@@ -110,3 +110,11 @@ $social-following-red: rgb(231, 72, 69);
         clear: both;
     }
 }
+
+@mixin green-hover{
+    transition: color .4s;
+    &:hover{
+        cursor:pointer;
+        color:$avo-green-active;
+    }
+}

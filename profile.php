@@ -13,24 +13,24 @@ $id = $_GET['id'];
 <html class="no-js css-menubar" lang="en">
 <head>
   <?php include 'html/head.html' ?>
-    <title>Blank Page | Project Social</title>
+    <title>Profile | Avocado & Toast</title>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700" rel="stylesheet">
 <script src="/assets/wnumb/wNumb.js"></script>
 <script src="/assets/js/profile.js"></script>
-<script src="/assets/js/avocado-discover.js"></script>
 <link rel="stylesheet" href="/assets/css/influencer-profile.css">
 
 <link rel="stylesheet" href="/assets/uislider/nouislider.css">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
+<link rel="stylesheet" href="/assets/css/influencer-card.css">
 
 
 
 </head>
 <?php include 'php/avocado-nav.php';?>
-<body class="col-xs-12" style="padding-left:0px;padding-right:0px;">
+<body style="padding-left:0px;padding-right:0px;">
     <!-- Facebook scripts and stuff -->
 <script>
   window.fbAsyncInit = function() {
@@ -66,10 +66,10 @@ $id = $_GET['id'];
 
 <div class="col-xs-12 col-sm-9 col-md-3 influencer-card-container">
     <?php
-    $stmt = $conn->prepare('SELECT `id`,`image_url`,`instagram_url`,`instagram_count`,`facebook_url`,`facebook_count`,`twitter_count`,`twitter_url` FROM `Influencer_Information` WHERE `id` = ?' );
+    $stmt = $conn->prepare('SELECT `id`,`image_url`,`instagram_url`,`instagram_count`,`facebook_url`,`facebook_count`,`twitter_count`,`twitter_url`,`youtube_count`,`youtube_url`,`tags`, `total` FROM `Influencer_Information` WHERE `id` = ?' );
     $stmt->bind_param('s',$id);
     $stmt->execute();
-    $stmt->bind_result($id,$image,$instagramurl,$instagramcount,$facebookurl,$facebookcount,$twittercount,$twitterurl);
+    $stmt->bind_result($id,$image,$instagramurl,$instagramcount,$facebookurl,$facebookcount,$twittercount,$twitterurl,$youtubecount,$youtubeurl,$tags,$total);
     $stmt->fetch();
     $insthandle = explode('.com/',$instagramurl);
     $insthandle = explode('/',$insthandle[1]);
@@ -86,28 +86,28 @@ $id = $_GET['id'];
     $twitterhandle = explode('?',$twitterhandle[0]);
     $twitterhandle = $twitterhandle[0];
     echo '
-                    <div  class="influencer-box col-xs-12 ">
+                    <div  class="influencer-box col-xs-10 col-sm-12  ">
                             <div class="card-discover profile-tag-margin">
                                 <img class="influencer-image-card" src="http://cogenttools.com/'.$image.'">
                                 <div class="col-xs-12 profile-card" style="">
                                     <!-- insthandle stuff -->
-                                        <div class="icons col-xs-12">
-                                            <i class="switch show-instagram inst-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram" style="color:#73C48D" aria-hidden="true"></i>
-                                            <i class="switch show-facebook inst-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true"></i>
-                                            <i class="switch show-twitter inst-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true"></i>
+                                        <div class="influencer-icons col-xs-12">
+                                            <i class="switch show-instagram influencer-card-icon icon bd-instagram" data-id="'.$id.'" data-platform="instagram"  aria-hidden="true"></i>
+                                            <i class="switch show-facebook influencer-card-icon icon bd-facebook" data-id="'.$id.'" data-platform="facebook" aria-hidden="true"></i>
+                                            <i class="switch show-twitter influencer-card-icon icon bd-twitter" data-id="'.$id.'" data-platform="twitter" aria-hidden="true"></i>
                                         </div>
-                                        <div class="col-xs-12 insthandle-info">
+                                        <div class="col-xs-12 handle-info">
                                             <!--icon here -->
-
-                                            <p class="instagram-handle insthandle-text" data-id="'.$id.'">'.$insthandle.'</p>
-                                            <p class="facebook-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</p>
-                                            <p class="twitter-handle insthandle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</p>
+                                            <p class="instagram-handle handle-text" data-id="'.$id.'">'.$insthandle.'</p>
+                                            <p class="facebook-handle handle-text" data-id="'.$id.'" style="display:none;">'.$facebookhandle.'</p>
+                                            <p class="twitter-handle handle-text" data-id="'.$id.'" style="display:none;">'.$twitterhandle.'</p>
                                         </div>
                                     <!-- followers -->
                                     <div class="col-xs-12">
-                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'">'.numberAbbreviation($instagramcount).' Followers</p>
-                                        <p class="facebook-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($facebookcount).' Likes</p>
-                                        <p class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">'.numberAbbreviation($twittercount).' Followers</p>
+                                        <div class="instagram-follower-count follower-count" data-id="'.$id.'">Total Reach: '.numberAbbreviation($total).'</div>
+                                        <p class="instagram-follower-count follower-count" data-id="'.$id.'">Followers: '.numberAbbreviation($instagramcount).' </p>
+                                        <p class="facebook-follower-count follower-count" style="display:none" data-id="'.$id.'">Likes: '.numberAbbreviation($facebookcount).' </p>
+                                        <p class="twitter-follower-count follower-count" style="display:none" data-id="'.$id.'">Followers: '.numberAbbreviation($twittercount).' </p>
                                     </div>
                                     <!-- Engagement ?-->
                                     <div class="col-xs-12">
@@ -115,9 +115,8 @@ $id = $_GET['id'];
                                         <p class="facebook-engagement engagement-count" style="display:none"data-id="'.$id.'">1.5K Likes per post</p>
                                         <p class="twitter-engagement engagement-count" style="display:none"data-id="'.$id.'">1.5K Likes per post</p>
                                     </div>
-                                    <div class="col-xs-12">
-                                    <div style="display:inline;" class="col-xs-12 invite checkmark-profile  avocado-focus" data-id="kixN6FS" data-image="images/kixN6FS.jpg"></div>
-                                    </div>
+                             
+                                  
                                 </div>
                             </div>
                     </div>';
@@ -125,15 +124,12 @@ $id = $_GET['id'];
                     <!-- Influencer box has ended -->
 
                     <div class="tag-container">
-
-                        <div class="tag-1 tag col-lg-4 col-xs-6"> <a href="#" class="tag-btn"> #soccer </a> </div>
-                        <div class="tag-2 tag col-lg-4 col-xs-6"> <a href="#" class="tag-btn"> #athlete </a> </div>
-                        <div class="tag-1 tag col-lg-4 col-xs-6"> <a href="#" class="tag-btn"> #soccer </a> </div>
-
-
-                        <div class="tag-1 tag col-lg-4 col-xs-6"> <a href="#" class="tag-btn"> #soccer </a> </div>
-                        <div class="tag-1 tag col-lg-4 col-xs-6"> <a href="#" class="tag-btn"> #soccer </a> </div>
-                        <div class="tag-1 tag col-lg-4 col-xs-6"> <a href="#" class="tag-btn"> #soccer </a> </div>
+                        <?php 
+                        $tags = explode(',',$tags);
+                        foreach($tags as $tag){
+                            echo '<div class="tag-1 tag col-lg-4 col-xs-6"> <a href="/discover.php?q='.$tag.'" class="tag-btn"> '.$tag.'</a> </div>';
+                        }
+                        ?>
 
                     </div>
 
@@ -142,26 +138,61 @@ $id = $_GET['id'];
 
 <div class="col-xs-12 col-sm-12 col-md-8 social-collage">
 <!-- social buttons and stats -->
-<?php echo ' <div class="container-fluid social-stats-container">
-  <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 platform-container">
- <div class="social-container">
- <div class="inf-number"> 93.3m <br> <span class="followers-text"> followers </span> </div>
-   <img src="/assets/images/instagram-logo-green.png" class="instagram-logo-green"> </div> </div>
+<?php echo ' 
+<div class="container-fluid social-stats-container">
+    <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 platform-container">
+        <div class="social-container">
+            <div class="inf-number"><a href="'.$instagramurl.'" target="_blank">'.numberAbbreviation($instagramcount).'</a>
+                <br> 
+                <span class="followers-text"> Followers </span> 
+            </div>
+            <a class="social-profile-tab" data-platform="instagram" data-handle="'.$insthandle.'" > 
+                <i class="switch show-instagram inst-icon icon bd-instagram influencer-prof" data-id="NB4gltv" data-platform="instagram" style="" aria-hidden="true"></i> 
+            </a> 
+        </div> 
+    </div>
 
  <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 platform-container">
-  <div class="social-container">
-  <div class="inf-number"> 51.3m <br><span class="followers-text"> followers </span> </div>
-    <img src="/assets/images/twitter-logo-green.png" class="twitter-logo-green"> </div> </div>
+  <a href="'.$facebookurl.'">
+    <div class="social-container">
+        <div class="inf-number">'.numberAbbreviation($facebookcount).' 
+            <br> 
+            <span class="followers-text"> Likes </span> 
+        </div>
+    <a class="social-profile-tab" data-platform="facebook" data-handle="'.$facebookhandle.'"> 
+        <i class="switch show-facebook inst-icon icon bd-facebook influencer-prof" data-id="NB4gltv" data-platform="facebook" aria-hidden="true"></i> </a>  
+    </div> 
+    </a>
+  </div>
 
-  <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 platform-container">
-   <div class="social-container">
-   <div class="inf-number facebook"> 93.3m <br> <span class="followers-text"> followers </span> </div>
-     <img src="/assets/images/fb-logo-green.png" class="facebook-logo-green"> </div> </div>
+
+ <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 platform-container">
+    <div class="social-container">
+    <a href="'.$twitterurl.'">
+        <div class="inf-number">'.numberAbbreviation($twittercount).'
+            <br>
+            <span class="followers-text"> Followers </span> 
+        </div>
+        <a class="social-profile-tab" data-platform="twitter" data-handle="'.$twitterhandle.'"> 
+            <i class="switch show-twitter inst-icon icon bd-twitter influencer-prof" data-id="NB4gltv" data-platform="twitter" aria-hidden="true"></i>  
+        </a> 
+        </div> 
+    </a>
+ </div>
 
    <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 platform-container">
     <div class="social-container">
-    <div class="inf-number youtube"> 200k <br> <span class="followers-text"> followers </span> </div>
-      <img src="/assets/images/youtube-icon-green.png" class="youtube-logo-green"> </div> </div>
+        <a href="'.$youtubeurl.'">
+            <div class="inf-number youtube"> '.numberAbbreviation($youtubecount).'
+                <br> 
+                <span class="followers-text"> Subscribers </span> 
+            </div>
+        <a class="social-profile-tab" data-platform="youtube" data-handle="">  
+            <i class="switch show-twitter inst-icon icon bd-youtube influencer-prof yt" data-id="NB4gltv" data-platform="youtube" aria-hidden="true"></i> 
+        </a>  
+        </div> 
+     </a>
+</div>
 
 </div>
     <div class="col-xs-12 col-sm-12 col-lg-12 social-buttons">';
@@ -271,14 +302,6 @@ $id = $_GET['id'];
     }
 
 
-
-    // $facebookpost = array();
-    // foreach($info['posts']['data'] as $id ){
-    //     array_push($facebookpost,$id['permalink_url']);
-    // }
-    // foreach($facebookpost as $id){
-    //     echo '<div class="col-xs-6 img-responsive facebook-feed"><div class="fb-post" data-href="'.$id.'" data-width="500" data-height="500" style="max-width:500px; max-height:610px;"></div></div>';
-    // }
 }
     ?>
 </div>
