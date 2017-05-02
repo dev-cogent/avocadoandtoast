@@ -12,24 +12,23 @@ $(document).ready(function() {
                     '<td class="campaign-details name" ><a href="/campaigns/?id=' + key + '" class="campaign-details">' + obj.campaignname + ' </a></td>' +
                     '<td class="campaign-details" > ' + obj.state + ' </td>' +
                     '<td class="campaign-details date" > Created ' + obj.created + '</td>' +
-                    '<td class="blank-td"></td> <td class="blank-td"> </td>' +
-                    '<td class="view-button-area">  <button class="view-campaign-btn secondary-button" onclick="/campaigns/?id=' + key + '"> VIEW </button>  </td>' +
+                    '<td class="blank-td"></td> <td class="blank-td mobile"> </td>' +
                     '</tr>' +
                     '<tr>' +
                     '<td class="stats"><a class="stats" href="/campaigns/?id=' + key + '">' + obj.totalinfluencers + '</a></td>' +
                     '<td class="stats mobile-off"><a class="stats" href="/campaigns/?id=' + key + '">' + obj.totalposts + '</a></td>' +
-                    '<td class="stats mobile-off"><a class="stats" href="/campaigns/?id=' + key + '">' + abbrNum(obj.average_impressions) + '</a></td>' +
+                    '<td class="stats mobile-off impressions"><a class="stats" href="/campaigns/?id=' + key + '">' + abbrNum(obj.average_impressions) + '</a></td>' +
                     '<td class="stats mobile-off mobile-off-first"><a class="stats" href="/campaigns/?id=' + key + '">' + abbrNum(obj.average_engagement) + '</a></td>' +
                     '<td class="stats reach"><a class="stats" href="/campaigns/?id=' + key + '">' + abbrNum(obj.totalimpressions) + '</a></td>' +
-                    '<td class="button-stats"><button onclick="location.href=`/price/?id=' + key + '`" class="button-stats-bt">PRICE CAMPAIGN</button></td>' +
+                    '<td class="button-stats"><button onclick="location.href=`/price/?id=' + key + '`" class="primary-button button-stats-bt">PRICE CAMPAIGN</button></td>' +
                     '</tr>' +
                     '<tr>' +
                     '<td class="label-info">Influencers</td>' +
                     '<td class="label-info mobile-off">Posts</td>' +
-                    '<td class="label-info mobile-off">Avg Impressions</td>' +
+                    '<td class="label-info mobile-off impressions">Avg Impressions</td>' +
                     '<td class="label-info mobile-off mobile-off-first">Avg Engagement</td>' +
                     '<td class="label-info reach">Reach</td>' +
-                    '<td class="delete-btn-area"> <a href="#" data-campaignid="' + key + '" id="#delete-campaign"> <i class="icon pe-trash list-dashboard" aria-hidden="true"></i> </a> </td>' +
+                    '<td class="delete-btn-area"> <a href="#" data-campaignid="' + key + '" id="delete-campaign"> <i class="icon pe-trash list-dashboard" aria-hidden="true"></i> </a> </td>' +
                     '</tr>' +
                     '</tbody>' +
                     '</table>' +
