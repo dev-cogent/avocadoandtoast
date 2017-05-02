@@ -12,6 +12,7 @@ $avo-green: #73C48D;
 $avo-green-active: #63AB80;
 $header-grey: #30363F;
 $body-black: #1F232A;
+$navy-text: rgb(29, 40, 76); 
 $inactive-grey: #A2A8B1;
 $separator-grey: #d2d7dc;
 $separator-lightgrey: #efefef;
@@ -55,7 +56,7 @@ $social-following-red: rgb(231, 72, 69);
 // PLACEHOLDER CLASSES
 
 %basic-input{
-    border-radius: 1px;    
+    border-radius: 1px;
     border:1px solid $inactive-grey;
     outline: none;
     @include trans(border);
