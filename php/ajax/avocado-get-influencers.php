@@ -48,7 +48,7 @@ echo '
 
 
   <div class="campaign-calc-btn-container tablet"> 
-    <button class="info-button secondary-button mobile sm-mobile" style="">SUBMIT FOR PRICING</button>
+    <button class="info-button secondary-button mobile sm-mobile" id="price-campaign" style="">SUBMIT FOR PRICING</button>
     <button class="info-button main-button primary-button mobile sm-mobile" id="createcampaign">CREATE CAMPAIGN </button>
     </div> 
 
