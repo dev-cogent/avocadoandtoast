@@ -18,6 +18,7 @@ $separator-lightgrey: #efefef;
 $impression-blue: rgb(50, 157, 223);
 $engagement-orange: rgb(255, 139, 104);
 $social-following-red: rgb(231, 72, 69);
+$navy-text:rgb(29, 40, 76);
 //SEPARATORS:
 // usage:
 // .some-element { @include separator("bottom", $separator-grey); }
@@ -55,7 +56,7 @@ $social-following-red: rgb(231, 72, 69);
 // PLACEHOLDER CLASSES
 
 %basic-input{
-    border-radius: 1px;    
+    border-radius: 1px;
     border:1px solid $inactive-grey;
     outline: none;
     @include trans(border);

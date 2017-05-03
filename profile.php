@@ -85,6 +85,9 @@ $id = $_GET['id'];
     $twitterhandle = explode('/',$twitterhandle[1]);
     $twitterhandle = explode('?',$twitterhandle[0]);
     $twitterhandle = $twitterhandle[0];
+    //https://www.youtube.com/user/animdude
+    $youtubehandle = explode('/',$youtubeurl);
+    $youtubehandle = $youtubehandle[4];
     echo '
                     <div  class="influencer-box col-xs-10 col-sm-12  ">
                             <div class="card-discover profile-tag-margin">
@@ -122,7 +125,7 @@ $id = $_GET['id'];
                     </div>';
                     ?>
                     <!-- Influencer box has ended -->
-
+                  
                     <div class="tag-container">
                         <?php
                         $tags = explode(',',$tags);
@@ -174,7 +177,7 @@ $id = $_GET['id'];
             <span class="followers-text"> Followers </span>
         </div>
         <a class="social-profile-tab" data-platform="twitter" data-handle="'.$twitterhandle.'">
-            <i class="switch show-twitter inst-icon icon bd-twitter influencer-prof" data-id="NB4gltv" data-platform="twitter" aria-hidden="true"></i>  
+            <i class="switch show-twitter inst-icon icon bd-twitter influencer-prof" data-id="NB4gltv" data-platform="twitter" aria-hidden="true"></i>
         </a>
         </div>
     </a>
@@ -187,7 +190,7 @@ $id = $_GET['id'];
                 <br>
                 <span class="followers-text"> Subscribers </span>
             </div>
-        <a class="social-profile-tab" data-platform="youtube" data-handle="">
+        <a class="social-profile-tab" data-platform="youtube" data-handle="'.$youtubehandle.'">
             <i class="switch show-twitter inst-icon icon bd-youtube influencer-prof yt" data-id="NB4gltv" data-platform="youtube" aria-hidden="true"></i>
         </a>
         </div>
@@ -281,7 +284,15 @@ $id = $_GET['id'];
 
 
 </div>
-<!-- <div class="arrow-btn-container"> <div class="arrow-1"> <i class="icon fa-caret-left" aria-hidden="true"></i> <a href="#" class""> </a>  </div> <div class="arrow-2"> <a href="#" class""> <i class="icon fa-caret-right" aria-hidden="true"></i>  </a>  </div>  </div>  -->
+
+<div id="youtube" style="display:none;margin-bottom:50px;" class="col-lg-12">
+
+
+</div>
+
+
+
+
 
 </div>
 

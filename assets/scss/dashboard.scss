@@ -135,7 +135,59 @@ i.fa.fa-exclamation-triangle {
   font-size: 22px;
   color: #EC3241;
 }
+/* No campaigns made yet css */
 
+.no-campaign-container {
+  text-align: center;
+  margin-bottom: 8%;
+  .no-campaign{
+    max-width: 100%;
+  }
+  .opps-message {
+    font-family: $main-font;
+    font-size: 22px;
+    text-align: -webkit-center;
+    margin-bottom: 1%;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    color: $navy-text;
+    @media (max-width: 768px){
+      width: 85%;
+    }
+  }
+  .no-campaign-btn{
+    height: 50px;
+    width: 25%;
+    @media (max-width: 768px){
+      width: 33%;
+      margin-top: 2%;
+    }
+  }
+
+
+}
+
+
+
+@media (max-width:480px) {
+
+  .no-campaign{
+    height: 350px;
+    object-fit: cover;
+    margin-top: 5%;
+  }
+  .no-campaign-btn.mobile{
+    height: 45px;
+    width: 50%;
+    margin-top: 3%;
+  }
+  .opps-message.mobile{
+    width: 85%;
+    font-size: 18px;
+  }
+
+}
 
 
 /*Added css for mobile - Bashir */

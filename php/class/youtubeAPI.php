@@ -32,11 +32,11 @@ class youtubeAPI{
         $url = 'https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername='.$user.'&key='.$key;
         $apiData = $this->curl($url);
         $basicInfo->channelID = $apiData['items'][0]['id'];
-        $basicInfo->viewCount = $apiData['items'][0]['viewCount'];
-        $basicInfo->commentCount = $apiData['items'][0]['commentCount'];
-        $basicInfo->subscriberCount = $apiData['items'][0]['subscriberCount'];
-        $basicInfo->videoCount = $apiData['items'][0]['videoCount'];
-        return $channelID;
+        $basicInfo->viewCount = $apiData['items'][0]['statistics']['viewCount'];
+        $basicInfo->commentCount = $apiData['items'][0]['statistics']['commentCount'];
+        $basicInfo->subscriberCount = $apiData['items'][0]['statistics']['subscriberCount'];
+        $basicInfo->videoCount = $apiData['items'][0]['statistics']['videoCount'];
+        $this->basicInfo = $basicInfo;
     }
 
     public function searchInfluencer($user){
@@ -49,7 +49,7 @@ class youtubeAPI{
     public function getYoutubeVideos($channelID){
         $videoArr = array();
         $key = $this->getYoutubeAPIKey();
-        $url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&channelId='.$channelID.'&maxResults=12&order=date&key='.$key;
+        $url = 'https://www.googleapis.com/youtube/v3/search?part=snippet,id&type=video&channelId='.$channelID.'&maxResults=12&order=date&key='.$key;
         $apiData = $this->curl($url);
         foreach ($apiData['items'] as $info){
             $videoID = $info['id']['videoId'];

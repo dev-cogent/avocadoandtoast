@@ -1,12 +1,16 @@
 $(document).ready(function(){
     $.ajax({
-        type: 'GET', 
+        type: 'GET',
         url: '/php/ajax/yourcampaigns-info.php',
         success: function (jqXHR, textStatus, errorThrown) {
-            console.log(jqXHR);
+
+            if(jqXHR == '0'){
+              console.log(jqXHR);
+              noCampaigns();
+            }
             campaignJSON = JSON.parse(jqXHR);
             $.each(campaignJSON, function(key,obj){
-                
+
             $('#campaign-container').append('<a href="/campaigns/?id='+key+'"><div class="campaign-block col-xs-12" data-id="'+key+'" data-desc="'+obj.description+'" data-name="'+obj.campaignname+'" data-start="'+obj.campaignstart+'" data-end="'+obj.campaignend+'" >'+
                    '<table class="col-xs-12">'+
                         '<tbody style="border-top:0px;">'+
@@ -22,7 +26,7 @@ $(document).ready(function(){
                             '<td class="stats mobile-off mobile-off-first">'+abbrNum(obj.average_engagement)+'</td>'+
                             '<td class="stats">'+abbrNum(obj.totalimpressions)+'</td>'+
                             '<td class="button-stats"><a href="/price/?id='+key+'"><button class="button-stats-bt">PRICE CAMPAIGN</button></a></td>'+
-                        '</tr>'+ 
+                        '</tr>'+
                         '<tr>'+
                             '<td class="label-info">Influencers</td>'+
                             '<td class="label-info mobile-off">Posts</td>'+
@@ -47,8 +51,8 @@ $(document).on('click','.campaign-block',function(){
     var id = $(this).attr('data-id');
     var start = $(this).attr('data-start');
     var end = $(this).attr('data-end');
-    
-    
+
+
     $('#campaign-info').append(
         '<div id="campaign-details" style="max-width: 330px;">'+
        '<p id="campaign-title">'+name+'</p>'+
@@ -86,7 +90,7 @@ function abbrNum(number, decPlaces = 1) {
             // Here, we multiply by decPlaces, round, and then divide by decPlaces.
             // This gives us nice rounding to a particular decimal place.
             var number = Math.round(number * decPlaces / size) / decPlaces;
-            
+
             // instHandle special case where we round up to the next abbreviation
             if((number == 1000) && (i < abbrev.length - 1)) {
                 number = 1;
@@ -98,8 +102,21 @@ function abbrNum(number, decPlaces = 1) {
             // We are done... stop
             break;
         }
-        
+
     }
     console.log(number);
     return number;
+}
+
+
+function noCampaigns(){
+    $('#campaign-container').empty();
+    $.ajax({
+        type: 'GET',
+        url: '/html/ajax/noCampaign.html',
+        success: function (jqXHR, textStatus, errorThrown) {
+              $('#campaign-container').append(jqXHR);
+      }
+    }); // end ajax request*/
+
 }
