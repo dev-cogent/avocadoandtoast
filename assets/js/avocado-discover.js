@@ -38,10 +38,10 @@ $(document).on('click', '.filter-option', function () {
     $('.sliders[data-platform=' + platform3 + '-engagement]').css('display', 'none');
 
 });
-    
-    
+
+
     /**
-     * Function when the user clicks on the "Calculate Campaign button" all javascript pertaining that page can be found at avocado-calculate.js 
+     * Function when the user clicks on the "Calculate Campaign button" all javascript pertaining that page can be found at avocado-calculate.js
      * @return NULL
      */
     $(document).on('click', '#calculate', function () {
@@ -64,27 +64,33 @@ $(document).on('click', '.filter-option', function () {
                 $('#discover-container').empty();
                 $('#discover-container').append(jqXHR);
                 unsetLoading();
-               
+
             }
         }); // end ajax request*/
     });
 
- 
+
 
     /**
-     * Function to get all the filters in the 2 input fields. This includes tags and influencers names/handles. 
-     * 
+     * Function to get all the filters in the 2 input fields. This includes tags and influencers names/handles.
+     *
      */
     $(document).on('click', '#search-keyword', function () {
-        var keywordarr = [];
-        $('.token-label').each(function () {
-            keywordarr.push($(this).text()); // taking all of the keywords the user has submitted. 
-        });
-        
-        filters['keywords'] = keywordarr;
+        var inputVal = $('.filter-input').val();
+        inputVal = inputVal.split(' ');
+        filters['keywords'] = inputVal;
         applyFilters(filters);
     });
 
+
+    $('.filter-input').keypress(function (e) {
+      if(e.which == 13){
+        var inputVal = $('.filter-input').val();
+        inputVal = inputVal.split(' ');
+        filters['keywords'] = inputVal;
+        applyFilters(filters);
+      }
+    });
 
     $('#slider-instagram').click(function () {
         filterSlider('instagram');
@@ -113,7 +119,7 @@ $(document).on('click', '.filter-option', function () {
 
     /**
      * @About function to filter all slider options
-     * @param {string} platform 
+     * @param {string} platform
      */
     function filterSlider(platform) {
         filters['eng-min'] = $('#min-' + platform + '-engagement').attr('data-number');
@@ -126,7 +132,7 @@ $(document).on('click', '.filter-option', function () {
 
 
     /**
-     * Function for pagination. 
+     * Function for pagination.
      */
     $(window).scroll(function () {
         //The reason why we check for calculate is because when we switch to a new page it will still try to get new influencers with the pagination function
@@ -151,12 +157,12 @@ $(document).on('click', '.filter-option', function () {
 
 
     /**
-     * 
-     * @ABOUT applyFilters takes an object of filters and then applies it. Returning JSON. That JSON goes to the appendCards function and that provieds the content. 
-     * @param {object} filters 
+     *
+     * @ABOUT applyFilters takes an object of filters and then applies it. Returning JSON. That JSON goes to the appendCards function and that provieds the content.
+     * @param {object} filters
      */
-    function applyFilters(filters, loading = true) {
-        if(loading) setLoading();
+    function applyFilters(filters, loading = false) {
+        Pace.restart();
         page = 0;
         $.ajax({
             type: 'POST',
@@ -166,16 +172,28 @@ $(document).on('click', '.filter-option', function () {
                 page: page
             },
             success: function (jqXHR, textStatus, errorThrown) {
+                var stringFilters = JSON.stringify(filters);
+                localStorage.setItem('discover-filters', stringFilters);
                 $('.found-influencers').empty();
                 campaignJSON = JSON.parse(jqXHR);
                 appendCards(campaignJSON);
-                unsetLoading();
+
             }
         });
     }
 
 
+function appendImagePullOut(selectedusers){
+  selectedusers.forEach(function(influencer){
+    console.log(influencer);
+    var influencerString = '<img class="influencer-pullout-image image-selected" data-id="'+influencer+'" onerror="this.src=`/assets/images/default-photo.png`" src="http://cogenttools.com/images/'+influencer+'.jpg">';
+    console.log(influencerString);
+    $('#influencer-pullout-image-container').append(influencerString);
+  });
+  var numOfInfluencers = selectedusers.length;
+  $('#num-influencers').text(numOfInfluencers);
 
+}
 
 
 
@@ -191,7 +209,7 @@ var PLATFORMS = {
 
 function setIcon(id, container, platform) {
     var icon = $('<i class="influencer-card-icon switch">');
-    
+
     icon
         .addClass('show-' + PLATFORMS[platform])
         .addClass('bd-' + PLATFORMS[platform])
@@ -217,7 +235,7 @@ function setFollowInfo(id,container,account,platform, handleSet){
     }else{
         var followInfo = $('<div class="follower-count">').html('Likes: ' + abbrNum(followers));
     }
-    
+
     followInfo
         .addClass(PLATFORMS[platform]+'-follower-count')
         .attr('data-id',id);
@@ -242,7 +260,18 @@ function setEngageInfo(id,container,engagement,platform, handleSet){
 }
 
 
+function showFilters(filters){
+  var valKeywords = filters.keywords.join(' ');
+  $('.filter-input').val(valKeywords);
+  var item = $('#af-icon-container').children();
+  $.each(item,function(key, element){
+      var elementPlatform = $(element).attr('data-platform');
+      if(elementPlatform == filters.platform){
+        $(element).addClass('af-active-icon');
+      }
+  })
 
+}
 
 
 function appendCards(campaignJSON){
@@ -265,10 +294,10 @@ function appendCards(campaignJSON){
         var followContainer = $('<div class= "col-xs-12">');
         var engageContainer = $('<div class= "col-xs-12">');
         var inviteContainer = $('<div class= "col-xs-12">');
-        
+
         var totalReach = $('<div class="follower-count">').html('Total Reach: '+ abbrNum(obj.total));
         followContainer.append(totalReach);
-        
+
         var inviteButton = $('<div class="col-xs-12 invite avocado-focus">').attr('data-id', key).attr('data-image',obj.image);
         inviteContainer.append(inviteButton);
 
@@ -277,8 +306,8 @@ function appendCards(campaignJSON){
         var accounts = [obj.instagram, obj.facebook, obj.twitter, obj.youtube];
         var handleSet = false;
         accounts.forEach(function(account, idx) {
-            if (account.handle) { 
-                setHandle(key, account.handle, handleContainer, handleSet); 
+            if (account.handle) {
+                setHandle(key, account.handle, handleContainer, handleSet);
                 handleSet = true;
                 setIcon(key,iconContainer,idx);
                 setFollowInfo(key,followContainer,account,idx, handleSet);
@@ -287,15 +316,3 @@ function appendCards(campaignJSON){
         })
     });
 }
-
-
-
-
-
-
-
-
- 
-
-  
-

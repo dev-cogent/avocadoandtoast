@@ -148,12 +148,9 @@ function addRangeButtonHandlers(){
 
 
 function setSliderFilters(){
-  var keywordarr = [];
-  $('.token-label').each(function () {
-      keywordarr.push($(this).text()); // taking all of the keywords the user has submitted.
-  });
-
-  filters['keywords'] = keywordarr;
+  var inputVal = $('.filter-input').val();
+  inputVal = inputVal.split(' ');
+  filters['keywords'] = inputVal;
   populateValues();
   var platform = $('.af-active-icon').attr('data-platform');
   filters['min'] = disabbreviate($('#num-followers1').val());

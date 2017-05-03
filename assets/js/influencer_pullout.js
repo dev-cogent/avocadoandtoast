@@ -45,6 +45,8 @@ $(document).ready(function () {
       $(".invite[data-id='" + id + "']").css('background-color', '#e0e0e0');
       $('.influ-bottom[data-id="' + id + '"]').css('box-shadow', 'none');
     }
+    var stringSelectedusers = JSON.stringify(selectedusers);
+    localStorage.setItem('selected-influencers', stringSelectedusers);
 
   }
 
@@ -118,7 +120,7 @@ $(document).ready(function () {
     $('#remove-all-button').click(function () { removeAll(); })
     $('#undo-button').click(function () { undo(); })
 
-    $('#calculate').click(function() { 
+    $('#calculate').click(function() {
       if(selectedusers.length != 0) { dismissPullout(); }
     });
   }

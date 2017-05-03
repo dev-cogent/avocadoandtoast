@@ -125,7 +125,7 @@ $id = $_GET['id'];
                     </div>';
                     ?>
                     <!-- Influencer box has ended -->
-                  
+
                     <div class="tag-container">
                         <?php
                         $tags = explode(',',$tags);
@@ -156,9 +156,9 @@ $id = $_GET['id'];
     </div>
 
  <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 platform-container">
-  <a href="'.$facebookurl.'">
+
     <div class="social-container">
-        <div class="inf-number">'.numberAbbreviation($facebookcount).'
+        <div class="inf-number"><a href="'.$facebookurl.'">'.numberAbbreviation($facebookcount).'</a>
             <br>
             <span class="followers-text"> Likes </span>
         </div>
