@@ -43,12 +43,12 @@ include 'php/numberAbbreviation.php';
       <header>
             <div id="num-influencers">__</div>
             <div id="header-text">
-            Influencers in current campaign
+            Influencers in current List
             </div>
             <div id=dismiss-button>x</div>
       </header>
 
-      <button type="button" name="button" id="calculate">Calculate campaign</button>
+      <button type="button" name="button" id="calculate">Calculate List</button>
 
 
       <div  id="influencer-pullout-image-container">
@@ -84,10 +84,10 @@ include 'php/numberAbbreviation.php';
 
 
 <div class="filter-section col-xs-12">
-            <div class="desc-header">
+            <div class="desc-header search-header">
                 <div class="discover-header">DISCOVER</div>
                 <div class="filter-text">Search by influencer handles and keywords</div>
-                    <input type="text" class="filter-input" id="tokenfield" placeholder="keyword"/>
+                    <input type="text" class="filter-input" placeholder="keyword"/>
                     <div class="description-text">Separate tags with commas or by pressing "tab" in the above field.<br> Use double quotes for multi-word tags (e.g. "avocado toast")</div>
                                             <div  id="af-link"> Advanced Filtering </div>
                         <!-- Filtering options will go here -->
@@ -223,7 +223,7 @@ include 'php/numberAbbreviation.php';
                 if($_GET['q']){
                     $queryArr = explode(' ' ,$_GET['q']);
                     $queryArr = json_encode($queryArr);
-                    $javaquery = "
+                    $getParameter = "
                     <script>
                         var keywordsarr = '$queryArr';
                         keywordsarr = JSON.parse(keywordsarr);
@@ -249,13 +249,37 @@ var calculate = false;
 var page = 0;
 var selectedusers = [];
 var filters = {};
+
+
+
 </script>
-<script src="/assets/js/avocado-slider.js"></script>
 <script src="/assets/js/avocado-discover.js"></script>
 <script src="/assets/js/create-campaign.js"></script>
-<?php if($javaquery) {echo $javaquery;}
+<script>
+if(localStorage.getItem('selected-influencers') !== null){
+  tempselectedusers = localStorage.getItem('selected-influencers');
+  selectedusers = JSON.parse(tempselectedusers);
+  appendImagePullOut(selectedusers);
+}
+</script>
+<?php if($getParameter) {echo $getParameter;}
       else{
-          echo '<script> applyFilters(filters,false); </script>';
+          ?>
+          <script>
+          //If there is no $getParameter then we will then check if localStorage is still there for filters.
+          if(localStorage.getItem('discover-filters') !== null && localStorage.getItem('discover-filters') !== 'undefined'){
+            tempFilters = localStorage.getItem('discover-filters');
+            filters = JSON.parse(tempFilters);
+            applyFilters(filters);
+            showFilters(filters);
+          }else{
+            //if not we apply default filters
+            applyFilters();
+          }
+          </script>
+
+
+        <?php
       }
 
  ?>
