@@ -1,6 +1,6 @@
             /*styling for avocado-get-influencers.php */
             /* using SCSS variables to store breakpoints  note that sc stands for screen */
-            
+
             @import 'utility';
             $sc-sm-mobile: 320px;
             $sc-md-mobile: 375px;
@@ -11,11 +11,11 @@
             .info-container {
                 height: 150px;
             }
-            
+
             .campaign-info {
                 margin-top: 2%;
             }
-            
+
             .camapaign-label-container {
                 float: left;
                 margin-left: 9%;
@@ -23,40 +23,40 @@
                     margin-bottom: 5%;
                 }
             }
-            
+
             .campaign-info-index {
                 margin-top: -20px;
                 text-align: justify;
                 direction: rtl;
                 padding-right: 5%;
             }
-            
+
             .index-name {
                 font-size: 16px;
             }
-            
+
             .posts-green {
                 color: $avo-green;
             }
-            
+
             .impression-blue {
                 color: $impression-blue;
             }
-            
+
             .engagement-orange {
                 color: $engagement-orange;
             }
-            
+
             .social-following-red {
                 color: $social-following-red;
             }
-            
+
             @media (max-width:767px) {
                 .campaign-info-index {
                     margin-top: 0.5%;
                 }
             }
-            
+
             .info-button {
                 @extend .primary-button;
                 float: right;
@@ -67,7 +67,7 @@
                 max-width: 175px;
                 width: 100%;
             }
-            
+
             .save-btn {
                 font-family: $main-font;
                 height: 36px;
@@ -77,31 +77,31 @@
                 margin-left: -2px;
                 float: left;
             }
-            
+
             i.icon.ti-plus.black-plus {
                 color: $header-grey;
                 font-weight: 800;
                 font-size: 14px;
             }
-            
+
             .select-campaign-container {
                 position: relative;
                 right: calc(100% - 384px);
             }
-            
+
             #campaign-select-text {
                 width: 165px;
                 font-family: $main-font;
             }
-            
+
             .add-to-existing-container {
                 display: flex;
             }
-            
+
             select.form-control.category.avocado-focus.campaign-dropdown.col-xs-12 {
                 width: 145px;
             }
-            
+
             @media (min-width:$sc-lg-mobile) and (max-width:$sc-tablet) {
                 /*  tablet  */
                 .nav-bottom {
@@ -145,7 +145,7 @@
                     margin-right: -2%;
                 }
             }
-            
+
             @media (min-width:481px) and (max-width:615px) {
                 .mobile-apply {
                     position: relative;
@@ -157,7 +157,7 @@
                     margin-right: -13%;
                 }
             }
-            
+
             @media (min-width:1px) and (max-width:480px) {
                 /*  mobile  */
                 .nav-bottom {
@@ -224,7 +224,7 @@
                     margin-top: 6%;
                 }
             }
-            
+
             @media (min-width:351px) and (max-width:410px) {
                 /* minor edits for smaller screen mobile  */
                 .info-button.sm-mobile {
@@ -241,7 +241,7 @@
                     margin-right: 20%;
                 }
             }
-            
+
             @media (min-width:300px) and (max-width:350px) {
                 button.info-button.sm-mobile {
                     max-width: 75%;
@@ -266,14 +266,14 @@
                     overflow: hidden;
                 }
             }
-            
+
             .campaign-desc-label {
                 float: left;
                 margin-left: 12.5%;
                 margin-top: 3%;
                 color: $header-grey;
             }
-            
+
             .campaign-desc-textarea {
                 height: 50px;
                 width: 70%;
@@ -281,7 +281,7 @@
                 margin-top: 1%;
                 float: left;
             }
-            
+
             #apply {
                 height: 40px;
                 width: 180px;
@@ -292,12 +292,12 @@
                     outline: none;
                 }
             }
-            
+
             .post-container {
                 padding-left: 4%;
                 padding-right: 4%;
             }
-            
+
             table {
                 table-layout: fixed;
                 width: 100%;
@@ -307,18 +307,18 @@
                     @include separator(top, $separator-grey);
                 }
             }
-            
+
             .insta-logo,
             .fb-logo {
                 max-width: 30px;
                 max-height: 30px;
             }
-            
+
             .twitter-logo2 {
                 max-width: 25px;
                 max-height: 25px;
             }
-            
+
             td.insta-column,
             td.twit-column,
             td.face-column,
@@ -329,35 +329,35 @@
                 padding-bottom: 1.5%;
                 position: relative;
             }
-            
+
             .influencer-info-container {
                 // max-width: 180px;
                 padding-top: 5px;
                 margin-left: 20%;
                 display: inline-block
             }
-            
+
             .influencer-campaign-image {
                 max-width: 65px;
                 max-height: 65px;
                 width: 100%;
                 height: 100%;
             }
-            
+
             .influencer-handle-text {
                 font-size: 15px;
                 color: $header-grey;
                 font-weight: 100;
                 margin-top: 5%;
             }
-            
+
             .post-results-container {
                 color: $header-grey;
                 font-size: 12px;
                 margin-left: -8%;
                 font-family: $main-font;
             }
-            
+
             .results-mini-col {
                 text-align: -webkit-right;
                 margin-top: -30%;
@@ -365,12 +365,12 @@
                 font-size: 16px;
                 font-family: $main-font-semi;
             }
-            
+
             tr.influencer-result-row {
                 text-align: center;
                 @include separator(bottom, $separator-lightgrey);
             }
-            
+
             th.text-center {
                 text-transform: uppercase;
                 font-size: 18px;
@@ -381,14 +381,14 @@
                 letter-spacing: 0.5px;
                 @include separator(top, $separator-grey);
             }
-            
+
             @media (min-width:769px) and (max-width:1000px) {
                 .results-mini-col {
                     margin-top: -40%;
                     margin-right: -11%;
                 }
             }
-            
+
             @media (min-width:1001px) and (max-width:1200px) {
                 .results-mini-col {
                     margin-top: -29%;
@@ -400,26 +400,26 @@
                     margin-top: -60px;
                 }
             }
-            
+
             @media (min-width:1201px) and (max-width:1399px) {
                 .index-name {
                     font-size: 14px;
                 }
             }
-            
+
             @media (min-width:1400px) and (max-width:1650px) {
                 .results-mini-col {
                     margin-top: -24%;
                 }
             }
-            
+
             @media (min-width:1651px) and (max-width:1850px) {
                 .results-mini-col {
                     margin-top: -22%;
                     margin-right: 18%;
                 }
             }
-            
+
             @media (min-width:1851px) and (max-width:2100px) {
                 div.results-mini-col {
                     margin-top: -19%;
@@ -429,43 +429,43 @@
                     margin-left: -5%;
                 }
             }
-            
+
             @media (min-width:2101px) and (max-width:3100px) {
                 .results-mini-col {
                     margin-top: -17%;
                     margin-right: 22%
                 }
             }
-            
+
             .campaign-select {
                 padding-top: 20px;
             }
-            
+
             .campaign-calc-btn-container {
                 width: calc(100% - 30px);
             }
-            
+
             .campaign-dropdown {
                 display: inline;
                 width: 20%;
             }
-            
+
             .go-back-btn-div,
             .user-campaign-name,
             .user-campaign-inf-count {
                 display: inline-block;
             }
-            
+
             .go-back-btn-div,
             .user-campaign-name {
                 font-family: $main-font-skinny;
             }
-            
+
             .campaign-inf-count,
             .user-campaign-inf-count {
                 font-family: $main-font-semi;
             }
-            
+
             .back-btn {
                 font-size: 15px;
                 text-transform: uppercase;
@@ -473,14 +473,14 @@
                 padding: 10px 35px 10px 35px;
                 border: 1px solid black;
             }
-            
+
             .go-back-btn-div {
                 margin-top: 2%;
                 margin-bottom: 4%;
                 margin-left: 1%;
                 vertical-align: -webkit-baseline-middle;
             }
-            
+
             .user-campaign-name {
                 font-size: 28px;
                 margin-left: 2%;
@@ -488,18 +488,18 @@
                 color: #515862;
                 vertical-align: sub;
             }
-            
+
             .campaign-inf-count {
                 font-size: 4rem;
                 color: $avo-green;
             }
-            
+
             .user-campaign-inf-count {
                 font-size: 16px;
                 color: $header-grey;
                 vertical-align: sub;
             }
-            
+
             #campaign-select-text {
                 color: $header-grey;
                 padding-left: 25px;
@@ -507,14 +507,14 @@
                 padding-top: 7px;
                 font-size: 14px;
             }
-            
+
             .number-posts-text {
                 color: $header-grey;
                 font-size: 12px;
                 display: inline;
                 padding-left: 10px;
             }
-            
+
             .campaignfocus {
                 font-weight: 600;
                 background-color: transparent;
@@ -531,13 +531,13 @@
                     color: rgba(0, 0, 44, 0.37);
                 }
             }
-            
+
             .result-name {
                 font-size: 16px;
                 font-family: $main-font;
                 color: $header-grey;
             }
-            
+
             .results-text {
                 color: $avo-green;
                 font-family: $main-font-semi;
@@ -545,13 +545,13 @@
                 padding-right: 17px;
                 font-weight: 600;
             }
-            
+
             #campaign-label {
                 font-family: $main-font;
                 color: $header-grey;
                 padding-right: 10px;
             }
-            
+
             #campaign-name {
                 border: 0;
                 @include separator (bottom, $separator-lightgrey);
@@ -560,139 +560,4 @@
                 &:focus {
                     outline: none;
                 }
-            }
-            /*create campaign popups*/
-            
-            .modal-body {
-                padding: 0;
-            }
-            
-            .modal-content {
-                min-height: 550px;
-            }
-            
-            .popup-detail {
-                text-transform: uppercase;
-                font-size: 22px;
-                margin-bottom: 4%;
-                margin-top: -4%;
-                color: black;
-            }
-            
-            .input-div {
-                display: inline-block;
-                text-align: -webkit-center;
-            }
-            
-            .input-popup {
-                margin-top: 10%;
-                text-align: right;
-                max-width: 60px;
-                font-size: 36px;
-                color: $header-grey;
-                border: none;
-                background-color: rgba(220, 220, 220, 0.2);
-                font-family: 'montserratsemibold';
-                border-radius: 3px;
-            }
-            
-            .row,
-            .submit-btn-div {
-                text-align: center;
-                font-family: $main-font;
-            }
-            
-            .icon-popup-div {
-                text-align: center;
-            }
-            
-            .submit-btn {
-                font-size: 16px;
-                text-transform: uppercase;
-                padding: 10px 30px 10px 30px;
-                color: white;
-                background-color: $avo-green;
-                border: none;
-                min-width: 195px;
-            }
-            
-            .submit-btn-div {
-                padding-top: 5%;
-            }
-            
-            .avocado-popup-icon {
-                max-width: 255px;
-            }
-            
-            .fb-logo-popup,
-            .insta-logo-popup,
-            .twitter-icon-popup {
-                max-width: 25px;
-                max-height: 50px;
-                display: block;
-                text-align: center;
-            }
-            
-            .close {
-                opacity: 1;
-                font-size: 3rem;
-                margin-right: 10px;
-                color: #000;
-            }
-            
-            .col-xs-12.popup-detail.success {
-                margin-top: 0%;
-            }
-            
-            .col-xs-12.btn-col {
-                margin-top: -2%;
-            }
-            
-            .popup-btn-div {
-                padding-top: 3%;
-            }
-            
-            @media (max-width:500px) {
-                .popup-detail {
-                    font-size: 18px;
-                }
-                .input-popup {
-                    text-align: center;
-                }
-            }
-            
-            input[type="number"].input-popup:focus {
-                border: 1px solid #73C4A0;
-                outline: none;
-            }
-            
-            input[type=number]::-webkit-inner-spin-button,
-            input[type=number]::-webkit-outer-spin-button {
-                /*-webkit-appearance: none;*/
-                /*margin: 0;*/
-            }
-            
-            .success-popup-icon {
-                max-width: 375px;
-            }
-            
-            .yay {
-                font-size: 28px;
-            }
-            
-            .form-control {
-                font-size: 15px;
-                letter-spacing: 1px;
-            }
-            
-            .token-input::-webkit-input-placeholder {
-                /* Chrome/Opera/Safari */
-                color: $inactive-grey;
-                font-family: 'Open Sans';
-                letter-spacing: 1px;
-            }
-            
-            body {
-                margin: 0;
-                font-family: 'Lato', sans-serif;
             }

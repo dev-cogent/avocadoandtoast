@@ -1,4 +1,4 @@
-<?php 
+<?php
 include 'php/dbinfo.php';
 $code = $_GET['q'];
 $stmt = $conn->prepare('SELECT `userid` FROM `login_information` WHERE `confirmation_key` = ?');
@@ -11,7 +11,7 @@ if($userid !== NULL){
     $stmt->prepare("UPDATE `login_information` SET `confirmed` = ? WHERE `userid` = ?");
     $stmt->bind_param('ss',$confirmed,$userid);
     if($stmt->execute()){
-    header('Location: http://avocadoandtoast.com/login');
+    header('Location: http://avocadoandtoast.com/login.php');
     }
     else{
     echo 'no';

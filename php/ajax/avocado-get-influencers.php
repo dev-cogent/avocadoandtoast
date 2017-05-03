@@ -27,46 +27,46 @@ echo '
     <div class="campaign-label-div">
     <label id="campaign-label" class="campaign-label">CAMPAIGN NAME:</label><input id="campaign-name" class="mobile" type="text" placeholder="Untitled Campaign"> </div>
 
-  
-     <div class="select-campaign-container small"> 
+
+     <div class="select-campaign-container small">
             <div id="campaign-select-text" class="col-xs-12 col-md-1">ADD TO EXISTING: </div>
             <div class="add-to-existing-container">
             <select class="form-control category avocado-focus  campaign-dropdown col-xs-12">
                 <option class="option" value=""> None</option>
-                '.$options.'    
-            </select> 
+                '.$options.'
+            </select>
             <button class="save-btn" id="add-existing"> <i class="icon ti-plus black-plus" aria-hidden="true"></i> </button>
-          
-      </div>     
-            </div> 
+
+      </div>
+            </div>
 
     </div></div>
-    
+
 
 
 <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 campaign-select">
 
 
-  <div class="campaign-calc-btn-container tablet"> 
+  <div class="campaign-calc-btn-container tablet">
     <button class="info-button secondary-button mobile sm-mobile" id="price-campaign" style="">SUBMIT FOR PRICING</button>
     <button class="info-button main-button primary-button mobile sm-mobile" id="createcampaign">CREATE CAMPAIGN </button>
-    </div> 
+    </div>
 
-          
+
             </div>
             </div>
     </div>
 
-    <div class="row"> 
+    <div class="row">
 
-      
+
         <div class="campaign-info-index col-xs-12">
       <div class="posts-green index-name"> POSTS </div>
       <div class="impression-blue index-name"> IMPRESSION </div>
       <div class="engagement-orange index-name"> ENGAGEMENT </div>
       <div class="social-following-red index-name"> SOCIAL FOLLOWING </div>
     </div>
-    
+
     </div>
 
 
@@ -114,7 +114,7 @@ echo '
                   echo'
                     <tr class="influencer-result-row">
                         <td class="influencer-column" data-label="Name" style="width:15%; padding-left:0%;">
-                                <div class="influencer-info-container mobile"> 
+                                <div class="influencer-info-container mobile">
                             <img src="http://cogenttools.com/'.$image.'" onerror="this.src=`/assets/images/default-photo.png`" class="influencer-campaign-image ">
                             <div class="influencer-handle-text handle">@'.$displayhandle.'</div>
                             <div class="influencer-handle-text location-text">'.$location.'</div>

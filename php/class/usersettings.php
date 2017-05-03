@@ -1,13 +1,13 @@
-<?php 
-error_reporting(0);
+<?php
+
 class userSettings extends userOptions{
 
 
 
 
 /**
-*@param {string} $userid - user id from login 
-*@return {array} $arr - information about the user 
+*@param {string} $userid - user id from login
+*@return {array} $arr - information about the user
 */
 public function getUserInformation($userid,$conn = NULL){
 if($conn === NULL)
@@ -19,14 +19,15 @@ if($conn === NULL)
     $stmt->bind_result($arr['email'],$arr['company'],$arr['account_type'],$arr['name']);
     $stmt->fetch();
     return $arr;
-} 
+}
 
 
 /**
-*@param {array} $info - user information 
+*@param {array} $info - user information
 *@return {bool}
 */
 public function updateGeneralInfo($info,$files,$userid){
+error_reporting(0);
 $conn = $this->dbinfo();
 $email = $info['email'];
 $check = $this->checkEmail($email);
@@ -40,14 +41,14 @@ $stmt->bind_param('sssss',$email,$firstname,$lastname,$company,$userid);
 if($stmt->execute())
     return true;
 else
-    return false; 
-    
+    return false;
+
 }
 
 
 
 /**
-*@param {string} - checkemail 
+*@param {string} - checkemail
 *@return {bool}
 */
 public function checkEmail($email){
@@ -62,7 +63,7 @@ else
 
 
 /**
-*@param {string} password 
+*@param {string} password
 *@return {bool}
 */
 public function verifyPassword($inputpassword,$conn = NULL){
@@ -85,8 +86,8 @@ else
 }
 
 /**
-*@param {string} - new password 
-*@param {array} - conn -optional 
+*@param {string} - new password
+*@param {array} - conn -optional
 *@return {bool}
 */
 public function changePassword($oldpassword, $newpassword,$userid){
@@ -108,8 +109,8 @@ else
 
 /**
 *@param {string} - $password
-*@param {string} - salt 
-*@return {string} - returns string if salt is given. {array} -returns array if salt is not given in arr is salt and password. 
+*@param {string} - salt
+*@return {string} - returns string if salt is given. {array} -returns array if salt is not given in arr is salt and password.
 */
 public function createPassword($password,$salt = NULL){
 if($salt === NULL){
@@ -130,7 +131,7 @@ $password = hash_pbkdf2("sha256", $password, $salt, 1000, 20);
 }
 
 /**
-*@param {string} - password 
+*@param {string} - password
 *@return {bool}
 */
 function checkPassword($password){
@@ -148,7 +149,7 @@ else
 
 /**
 *
-*@param {String} email 
+*@param {String} email
 *
 */
 public function checkNewEmail($email,$userid){
@@ -159,16 +160,16 @@ $stmt->execute();
 $stmt->bind_result($realemail);
 $stmt->fetch();
 
-if($realemail == NULL) return false; 
+if($realemail == NULL) return false;
 if($email !== $realemail){
     newEmail($email,$userid);
 }
-  return true;  
+  return true;
 }
 
 /**
-*@about putting in the database your new email address and sending a confirmation email to that email address. 
-*@param {String} email 
+*@about putting in the database your new email address and sending a confirmation email to that email address.
+*@param {String} email
 *@param {string} userid
 *
 *
@@ -176,7 +177,7 @@ if($email !== $realemail){
 public function newEmail($email,$userid){
 /*The way this works is that it sends the user an email to their new email address. Unless they confirm their new email, their email stays to the one previous given */
 $conn = $this->dbinfo();
-$confirmation = false; 
+$confirmation = false;
 $confirmationkey = $this->createConfirmationKey();
 $stmt = $conn->prepare("UPDATE `login_information` SET `new_email` = ?, `confirmation_key` = ? WHERE `userid` = ?");
 $stmt->bind_param('sss',$email,$confirmationkey,$userid);
@@ -192,7 +193,7 @@ if($stmt->execute()){
 /**
 *@about if the confirmation key exist then we are going to change the email.
 *@param {string} confirmation key
-*@return {bool} 
+*@return {bool}
 */
 public function changeEmail($confirmationkey){
     $conn = $this->dbinfo();
@@ -236,20 +237,20 @@ return false;
 
 /**
 *@param none
-*@return {array} $conn - database connection  
+*@return {array} $conn - database connection
 */
 public function dbinfo(){
 date_default_timezone_set('EST'); # setting timezone
-$dbusername ='l5o0c8t4_blaze'; 
-$password = 'Platinum1!'; 
-$db = 'l5o0c8t4_General_Information'; 
-$servername = '162.144.181.131'; 
+$dbusername ='l5o0c8t4_blaze';
+$password = 'Platinum1!';
+$db = 'l5o0c8t4_General_Information';
+$servername = '162.144.181.131';
 $conn = new mysqli($servername, $dbusername, $password, $db);
 $date = new DateTime();
 $last_updated = $date->getTimestamp();
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} 
+}
 return $conn;
 }
 
