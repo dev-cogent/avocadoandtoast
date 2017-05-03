@@ -192,13 +192,12 @@ a.navbar-brand {
 
 a {
     color:inherit;
-    transition: color .4s;
-    &:hover {
-        color:$avo-green;
-        text-decoration: none;
-        cursor:pointer;
+    @include green-hover;
+    text-decoration: none;
+    &:focus , &:hover{
+      text-decoration: none !important;
+      color:$avo-green !important;
     }
-    
 }
 
 .influencer-card {
@@ -1554,7 +1553,7 @@ textarea.form-control.category.avocado-focus {
 .update-profile-btn {
    @extend .primary-button;
     height: 50px;
-   
+
 }
 
 .switch-div {

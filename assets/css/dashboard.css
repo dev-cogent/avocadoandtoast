@@ -2,6 +2,7 @@
   border-radius: 1px;
   font-family: "Montserrat", sans-serif;
   text-transform: capitalize;
+  -webkit-transition: background .4s, box-shadow .4s, color .4s, border .4s;
   transition: background .4s, box-shadow .4s, color .4s, border .4s;
   cursor: pointer; }
   .primary-button:focus, .secondary-button:focus {
@@ -144,6 +145,50 @@ button:focus {
   color: #1d284c;
   font-family: "Open Sans", sans-serif;
   padding-top: 30px; }
+
+
+/* No campaigns made yet css */
+.no-campaign-container {
+  text-align: center;
+  margin-bottom: 8%; }
+  .no-campaign-container .no-campaign {
+    max-width: 100%; }
+  .no-campaign-container .opps-message {
+    font-family: "Montserrat", sans-serif;
+    font-size: 22px;
+    text-align: -webkit-center;
+    margin-bottom: 1%;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    color: #1d284c; }
+    @media (max-width: 768px) {
+      .no-campaign-container .opps-message {
+        width: 85%; } }
+  .no-campaign-container .no-campaign-btn {
+    height: 50px;
+    width: 25%; }
+    @media (max-width: 768px) {
+      .no-campaign-container .no-campaign-btn {
+        width: 33%;
+        margin-top: 2%; } }
+
+@media (max-width: 480px) {
+  .no-campaign {
+    height: 350px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    margin-top: 5%; }
+  .no-campaign-btn.mobile {
+    height: 45px;
+    width: 50%;
+    margin-top: 3%; }
+  .opps-message.mobile {
+    width: 85%;
+    font-size: 18px; } }
+
+/*Added css for mobile - Bashir */
+/*Laptop to Tablet */
 
 @media only screen and (max-width: 1024px) and (min-width: 768px) {
   .stats {
