@@ -104,6 +104,7 @@ padding-left: 1px;
 margin-right: 5px;
 height: 40px;
 width: 130px;
+
 }
 
 
@@ -136,9 +137,65 @@ color: rgb(29, 40, 76);
 font-family: $secondary-font;
 padding-top: 30px;
 }
+/* No campaigns made yet css */
+
+.no-campaign-container {
+  text-align: center;
+  margin-bottom: 8%;
+  .no-campaign{
+    max-width: 100%;
+  }
+  .opps-message {
+    font-family: $main-font;
+    font-size: 22px;
+    text-align: -webkit-center;
+    margin-bottom: 1%;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    color: $navy-text;
+    @media (max-width: 768px){
+      width: 85%;
+    }
+  }
+  .no-campaign-btn{
+    height: 50px;
+    width: 25%;
+    @media (max-width: 768px){
+      width: 33%;
+      margin-top: 2%;
+    }
+  }
+
+
+}
 
 
 // /*Laptop to Tablet */
+
+
+@media (max-width:480px) {
+
+  .no-campaign{
+    height: 350px;
+    object-fit: cover;
+    margin-top: 5%;
+  }
+  .no-campaign-btn.mobile{
+    height: 45px;
+    width: 50%;
+    margin-top: 3%;
+  }
+  .opps-message.mobile{
+    width: 85%;
+    font-size: 18px;
+  }
+
+}
+
+
+/*Added css for mobile - Bashir */
+/*Laptop to Tablet */
 
 @media only screen and (max-width: 1024px) and (min-width:768px) {
 .stats {

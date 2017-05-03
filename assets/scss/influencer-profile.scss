@@ -33,9 +33,7 @@
 
 .influencer-prof {
     font-size: 28px;
-    &:hover {
-        color: $avo-green;
-    }
+    @include green-hover;
 }
 
 .influencer-prof.yt {
@@ -108,7 +106,7 @@
 }
 
 .tag-btn {
-    color: $header-grey;
+  color:$header-grey;
 }
 
 .tag {

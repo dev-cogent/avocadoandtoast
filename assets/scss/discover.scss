@@ -2,6 +2,11 @@
 
 @import 'utility';
 
+
+
+.search-header{
+  text-align: center;
+}
 .noUi-connect {
     background: $header-grey;
     box-shadow: inset 0 0 3px rgba(51, 51, 51, 0.45);
@@ -112,7 +117,7 @@
     max-width: 600px !important;
     min-width: 150px;
     margin-top: 15px !important;
-    border-radius: 1px !important;    
+    border-radius: 1px !important;
     border:1px solid $inactive-grey !important;
     outline: none !important;
     @include trans(border);
@@ -132,6 +137,7 @@
     color: $header-grey;
     font-family: $secondary-font;
     font-weight: 600;
+    margin: 2px 5px 5px 0 !important;
     &:hover {
         border: 1px solid $avo-green !important;
         color: $avo-green;
@@ -157,7 +163,7 @@ span.token-label {
 
 .button-icon-active {
     color: $avo-green;
-} 
+}
 
 .description-text {
     padding-bottom: 4px;
@@ -198,12 +204,23 @@ span.token-label {
 }
 
 .filter-input {
-    max-width: 600px;
-    margin: 0 auto;
-    margin-top: 15px;
+  @extend %basic-input;
     height: 40px;
-    visibility: hidden;
-    @extend %basic-input;
+    width: 100%;
+    max-width: 600px ;
+    min-width: 150px;
+    margin-top: 15px;
+    border:1px solid $inactive-grey !important;
+    outline: none !important;
+    font-size:16px;
+    padding-left: 10px;
+  @include trans(border);
+  // .focus {
+  //     border: none !important;
+  //     outline: none !important;
+  //     border:1px solid $avo-green !important;
+  //     border-color: $avo-green !important;
+  // }
 }
 
 .influencer-header {

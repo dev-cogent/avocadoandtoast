@@ -22,7 +22,7 @@ function addPlatformChangeHandler() {
   $('#af-icon-container').children().click(function() {
     $('#af-icon-container').children().removeClass('af-active-icon');
     $(this).addClass('af-active-icon');
-    
+
     setSliderFilters();
   })
 }
@@ -148,8 +148,10 @@ function addRangeButtonHandlers(){
 
 
 function setSliderFilters(){
+  var inputVal = $('.filter-input').val();
+  inputVal = inputVal.split(' ');
+  filters['keywords'] = inputVal;
   populateValues();
-
   var platform = $('.af-active-icon').attr('data-platform');
   filters['min'] = disabbreviate($('#num-followers1').val());
   filters['max'] = disabbreviate($('#num-followers2').val());

@@ -1,4 +1,7 @@
 <?php
+
+include'verify-login.php';
+
 $url = $_SERVER['REQUEST_URI'];
 ?>
 
@@ -19,6 +22,12 @@ $url = $_SERVER['REQUEST_URI'];
                 <a href="/contact.php">CONTACT</a>
                 <a href="/settings.php">SETTINGS</a>
                 <a href="/logout.php">LOGOUT</a>
+
+                <?php if($isLoggedin) echo'<a href="/logout.php">LOGOUT</a>';
+                      else echo '<a href="/login.php">LOGIN</a>';
+                ?>
+
+
             </div>
 
 
@@ -46,11 +55,18 @@ $url = $_SERVER['REQUEST_URI'];
           <div class="avo-navtabs"> <a href="/contact.php" class="link-pages <?php if($url == '/contact.php') echo 'active-tab';?>">  CONTACT </a></div>
           <div class="avo-navtabs dropdown"> <a href="/settings.php" class="link-pages <?php if($url == '/settings.php') echo 'active-tab';?>"> ACCOUNT </a>
           <div class="dropdown-content">
+
                 <a href="/settings.php">SETTINGS <i class="icon wb-settings nav-bar" aria-hidden="true"></i></a>
-                <a href="/logout.php">LOGOUT <i class="icon fa-power-off nav-bar" aria-hidden="true"></i></a>
+               
+             <?php if($isLoggedin) echo' <a href="/logout.php">LOGOUT <i class="icon fa-power-off nav-bar" aria-hidden="true"></i></a>';
+                      else echo '<a href="/login.php">LOGIN</a>';
+                ?>
+            
+      
           </div>
 
           </div>
+
 
 
           <!--<div class="avo-navtabs">
