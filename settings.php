@@ -41,9 +41,9 @@ a:focus{
         <div class="upload-img">
           <div class="uploaded-img-square"><img id="uploaded-img" src="http://avocadoandtoast.com/images/user/<?php echo $userid ;?>.jpg" onerror="this.src=`/assets/images/default-photo.png`"> </div>
           <div class="profile-title"> Your Avatar </div>
-          <input type="file" class="upload-img-btn avocado-hover avocado-focus" name="image"></input> 
+          <input type="file" class="upload-img-btn avocado-hover avocado-focus" name="image"></input>
           <div class="image-title"> Upload Image </div>
-        
+
         </div>
 
       <label class="title"> Company Name </label>
@@ -66,12 +66,9 @@ a:focus{
     </input>
 
       <button class="update-profile-btn col-xs-12"  style="margin-top:30px;" id="submit" type="submit" name="profile"> Update Profile </button>
-       <button class="update-password-btn col-xs-12"  style="margin-top:30px;" id="getPassword" type="submit" name="profile"> Change Password </button>
+       <button class="update-password-btn col-xs-12"  style="margin-top:30px;" id="getPassword" type="button" name="profile"> Change Password </button>
       </form>
     </div>
     <div class="col-xs-1 col-sm-2 col-lg-3"></div>
   </div>
   </div>
-
-
- 

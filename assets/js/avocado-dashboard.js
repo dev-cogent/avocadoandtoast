@@ -25,7 +25,7 @@ $(document).ready(function() {
                             '<td class="stats mobile-off">'+abbrNum(obj.average_impressions)+'</td>'+
                             '<td class="stats mobile-off mobile-off-first">'+abbrNum(obj.average_engagement)+'</td>'+
                             '<td class="stats">'+abbrNum(obj.totalimpressions)+'</td>'+
-                            '<td class="button-stats"><a href="/price/?id='+key+'"><button class="button-stats-bt">PRICE CAMPAIGN</button></a></td>'+
+                            '<td class="button-stats"><a href="/price/?id='+key+'"><button class="primary-button button-stats-bt">PRICE CAMPAIGN</button></a></td>'+
                         '</tr>'+
                         '<tr>'+
                             '<td class="label-info">Influencers</td>'+

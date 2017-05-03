@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 include '../dbinfo.php';
 $stmt = $conn->prepare("SELECT `email`,`firstname`,`lastname`,`company` FROM `login_information` WHERE `userid` = ?");
@@ -41,4 +41,5 @@ unset($conn);
   </input>
 
     <button class="update-profile-btn col-xs-12"  style="margin-top:30px;" id="submit" type="submit" name="profile"> Update Profile </button>
+    <button class="update-password-btn col-xs-12"  style="margin-top:30px;" id="getPassword" type="button" name="profile"> Change Password </button>
     </form>
