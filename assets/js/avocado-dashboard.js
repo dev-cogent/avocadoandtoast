@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function() {
     $.ajax({
         type: 'GET',
         url: '/php/ajax/yourcampaigns-info.php',
@@ -37,14 +37,16 @@ $(document).ready(function(){
                         '</tbody>'+
                     '</table>'+
                 '</div></a>');
+
             });
         }
+
     }); // end ajax request*/
 
 });
 var target = $("#campaign-info").offset().top;
 var sidebar = false;
-$(document).on('click','.campaign-block',function(){
+$(document).on('click', '.campaign-block', function() {
     $('#campaign-info').empty();
     var name = $(this).attr('data-name');
     var desc = $(this).attr('data-desc');
@@ -54,20 +56,20 @@ $(document).on('click','.campaign-block',function(){
 
 
     $('#campaign-info').append(
-        '<div id="campaign-details" style="max-width: 330px;">'+
-       '<p id="campaign-title">'+name+'</p>'+
-      ' <p class="title"> Campaign Summary</p>'+
-       '<p id="summary">'+desc+'</p>'+
-       '<p class="title">Campaign Schedule</p>'+
-       '<p id="schedule"> '+start+' - '+end+ ''+
-       '<div id="button-container">'+
-           '<a style="color:#76838f;"href="/edit/?id='+id+'"><button class="option-button avocado-hover avocado-focus" id="'+id+'"> Edit Campaign </button></a>'+
-           '<a style="color:#76838f;"href="/campaigns/?id='+id+'"><button class="option-button avocado-hover avocado-focus" name="campaign" value="'+id+'">View Campaign </button></a>'+
-    '</div>');
+        '<div id="campaign-details" style="max-width: 330px;">' +
+        '<p id="campaign-title">' + name + '</p>' +
+        ' <p class="title"> Campaign Summary</p>' +
+        '<p id="summary">' + desc + '</p>' +
+        '<p class="title">Campaign Schedule</p>' +
+        '<p id="schedule"> ' + start + ' - ' + end + '' +
+        '<div id="button-container">' +
+        '<a style="color:#76838f;"href="/edit/?id=' + id + '"><button class="option-button avocado-hover avocado-focus" id="' + id + '"> Edit Campaign </button></a>' +
+        '<a style="color:#76838f;"href="/campaigns/?id=' + id + '"><button class="option-button avocado-hover avocado-focus" name="campaign" value="' + id + '">View Campaign </button></a>' +
+        '</div>');
 });
 
 function abbrNum(number, decPlaces = 1) {
-    if(number < 1000){
+    if (number < 1000) {
         number = parseInt(number);
         return number;
     }
@@ -92,7 +94,7 @@ function abbrNum(number, decPlaces = 1) {
             var number = Math.round(number * decPlaces / size) / decPlaces;
 
             // instHandle special case where we round up to the next abbreviation
-            if((number == 1000) && (i < abbrev.length - 1)) {
+            if ((number == 1000) && (i < abbrev.length - 1)) {
                 number = 1;
                 i++;
             }
