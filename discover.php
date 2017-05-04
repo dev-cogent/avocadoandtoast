@@ -8,6 +8,7 @@ include 'php/numberAbbreviation.php';
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
 <head>
+    <script src="/assets/autofill/script.js"></script>
     <link rel="stylesheet" href="/assets/uislider/nouislider.css">
     <?php include 'html/head.html' ?>
     <title>Discover | Avocado & Toast</title>
@@ -24,6 +25,8 @@ include 'php/numberAbbreviation.php';
     <script src="/assets/js/avocado-calculate.js"></script>
     <script src="assets/js/influencer_pullout.js"></script>
     <script src="assets/js/af-slidedown.js"></script>
+    
+    <link rel="stylesheet" href="assets/autofill/autofill.css">
     <link rel="stylesheet" href="/assets/js/tokenfield/dist/css/bootstrap-tokenfield.css">
     <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
     <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
@@ -87,7 +90,8 @@ include 'php/numberAbbreviation.php';
             <div class="desc-header search-header">
                 <div class="discover-header">DISCOVER</div>
                 <div class="filter-text">Search by influencer handles and keywords</div>
-                    <input type="text" class="filter-input" placeholder="Search..."/>
+                    <input onkeyup="hello()" type="text" class="filter-input" placeholder="Search..."/>
+                    <!--<ul id="content"></ul>-->
                     <!--<div class="description-text">Separate tags with commas or by pressing "tab" in the above field.<br> Use double quotes for multi-word tags (e.g. "avocado toast")</div>-->
                     <!-- TAKE OUT INLINE STYING IF WE DECIDE TO KEEP THE DESCRIPTION TEXT -->
                                             <div  id="af-link" style="margin-top:10px;"> Advanced Filtering </div>
