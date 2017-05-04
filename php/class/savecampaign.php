@@ -3,7 +3,7 @@
 
 include 'campaign.php';
 class saveCampaign extends campaignCalculator{
- 
+
 
 /**
 *@param {array} - influencers ids
@@ -18,7 +18,7 @@ if($genconn === NULL)
     $genconn = $this->dbinfo();
 if($saveconn === NULL)
     $saveconn = $this->savedDB();
-if($campaignname == NULL || $campaignname == "") 
+if($campaignname == NULL || $campaignname == "")
     return 0;
 
 #Get the column id
@@ -26,7 +26,7 @@ $columnid = $this->getUserColumnID($userid);
 #Insert into campaign link
 $campaignid = $this->randomString(20);
 
-//Inserting comments into mysql 
+//Inserting comments into mysql
 $influencerCount = count($arr);
 $genstmt = $genconn->prepare("INSERT INTO `campaign_save_link` (`campaign_name`,`column_id`,`campaign_id`,`created_date`,`total_instagram_impressions`,`total_twitter_impressions`
 ,`total_facebook_impressions`,`total_impressions`,`total_instagram_engagement`,`total_twitter_engagement`,`total_facebook_engagement`,`total_engagement`,`total_post`,`total_influencers`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?) ");
@@ -90,7 +90,7 @@ foreach($arr as $influencerid => $info){
     `twitter_engagement` = ?,
     `facebook_post` = ?,
     `facebook_impressions` = ?,
-    `facebook_engagement` = ? 
+    `facebook_engagement` = ?
      WHERE `influencer_id` = ?");
      $camstmt->bind_param('ssssssssss',$info['instagrampost'],$info['instagramimpressions'],$info['instagramengagement'],$info['twitterpost'],$info['twitterimpressions'],$info['twitterengagement'],$info['facebookpost'],$info['facebookimpressions'],$info['facebookengagement'],$influencerid);
         if($camstmt->execute() === false)
@@ -100,7 +100,7 @@ foreach($arr as $influencerid => $info){
 
 
 $stmt = $genconn->prepare("UPDATE `campaign_save_link` SET
-                           `total_instagram_impressions` = ?, 
+                           `total_instagram_impressions` = ?,
                            `total_twitter_impressions` = ?,
                            `total_facebook_impressions` = ?,
                            `total_impressions` = ?,
@@ -153,17 +153,17 @@ public function updateCampaignDescription($campaignid,$columnid,$description = N
 /**
 *@About Function to update the campaign, this includes the name, summary, request, start and end date of the campaign
 *@param {string} - campaignid
-*@param {string} - campaign name 
+*@param {string} - campaign name
 *@param {string} - campaign summary default NULL
-*@param {string} - campaign request  default NULL 
-*@param {string} - campaignstart default NULL 
+*@param {string} - campaign request  default NULL
+*@param {string} - campaignstart default NULL
 *@param {string} - campaignend default NULL
 *@return {bool}
 */
 public function updateCampaign($campaignid,$campaignname,$brandname,$campaigndesc = NULL, $campaignrequest = NULL, $campaignstart = NULL, $campaignend = NULL){
     $conn = $this->dbinfo();
     $saveconn = $this->savedDB();
-    //First we will change the name for the campaign name 
+    //First we will change the name for the campaign name
     $campaignname = trim($campaignname);
     $stmt = $conn->prepare("UPDATE `campaign_save_link` SET `campaign_name` = ?, `brand_name` = ?, `campaign_desc` = ?, `campaign_request` = ?, `start_date` = ?, `end_date` = ?  WHERE `campaign_id` = ?");
     $stmt->bind_param('sssssss',$campaignname,$brandname,$campaigndesc,$campaignrequest,$campaignstart,$campaignend,$campaignid);
@@ -178,7 +178,7 @@ public function updateCampaign($campaignid,$campaignname,$brandname,$campaigndes
 
 
 
- 
+
 /**
 *
 *@return {array} - database connection.
@@ -202,12 +202,14 @@ return $conn;
 
 public function getSavedCampaigns($columnid){
     $arr = new stdClass;
+    $campaignExist = false;
     $generalconn = $this->dbinfo();
     $stmt = $generalconn->prepare('SELECT `campaign_name`,`campaign_id`,`campaign_desc`,`created_date`,`start_date`,`end_date`,`total_impressions`,`total_engagement`,`total_post`,`total_influencers` FROM `campaign_save_link` WHERE `column_id` = ?');
     $stmt->bind_param('s',$columnid);
     $stmt->execute();
     $stmt->bind_result($campaignname,$campaignid,$campaigndesc,$created,$start,$end,$totalimpressions,$totalengagement,$totalpost,$totalInfluencers);
     while($stmt->fetch()){
+        $campaignExist = true;
         $arr->$campaignid = new stdClass;
         $arr->$campaignid->campaignname = $campaignname;
         $arr->$campaignid->campaignid = $campaignid;
@@ -219,8 +221,9 @@ public function getSavedCampaigns($columnid){
         $arr->$campaignid->campaignstart = date('m/d/Y',strtotime($start));
         $arr->$campaignid->campaignend = date('m/d/Y',strtotime($end));
         $arr->$campaignid->totalinfluencers = $totalInfluencers;
+        if($totalInfluencers == 0) $totalInfluencers = 1;
         $arr->$campaignid->average_impressions = $totalimpressions/$totalInfluencers;
-        $arr->$campaignid->average_engagement = $totalengagement/$totalInfluencers; 
+        $arr->$campaignid->average_engagement = $totalengagement/$totalInfluencers;
         $state = $this->check_in_range($arr->$campaignid->campaignstart,$arr->$campaignid->campaignend);
         if($state) $state = 'Campaign in progress';
         else $state = 'Campaign not in progress';
@@ -229,11 +232,14 @@ public function getSavedCampaigns($columnid){
 
 
     }
+    if(!$campaignExist){
+      return false;
+    }
     unset($listconn);
     return $arr;
 }
 
- 
+
 
  public function getCampaign($campaignid, $position = 0, $influencernumber = 30){
     $infoarr = new stdClass;
@@ -278,7 +284,7 @@ public function getSavedCampaigns($columnid){
         $infoarr->$id->twitter->impressions = $twitterimpressions;
         $infoarr->$id->twitter->engagement = $twitterengagement;
         $infoarr->$id->total = $total;
-        
+
     }
 
     unset($saved);
@@ -310,7 +316,7 @@ public function getHandles($instagramurl,$twitterurl,$facebookurl){
         $handles->instagram = $insthandle;
         $handles->facebook = $facebookhandle;
         $handles->twitter = $twitterhandle;
-        return $handles; 
+        return $handles;
 
 
 }
@@ -327,7 +333,7 @@ if($check === $campaignid)
 else
     return false;
 }
- 
+
 
 public function getCampaignInfo($campaignid){
     $campaignInfo = new stdClass;
@@ -355,7 +361,7 @@ public function getCampaignInfo($campaignid){
     $campaignInfo->campaignstart = $start;
     $campaignInfo->campaignend = $end;
     $campaignInfo->total_influencers = $totalinfluencers;
-    
+
     return json_encode($campaignInfo);
 }
 

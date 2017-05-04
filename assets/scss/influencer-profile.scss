@@ -1,4 +1,9 @@
 @import 'utility';
+
+
+.active-tab{
+    color:$avo-green;
+}
 .influencer-card-container {
     padding-top: 35px;
     margin-left: 55px;
@@ -28,9 +33,7 @@
 
 .influencer-prof {
     font-size: 28px;
-    &:hover {
-        color: $avo-green;
-    }
+    @include green-hover;
 }
 
 .influencer-prof.yt {
@@ -103,7 +106,7 @@
 }
 
 .tag-btn {
-    color: $header-grey;
+  color:$header-grey;
 }
 
 .tag {

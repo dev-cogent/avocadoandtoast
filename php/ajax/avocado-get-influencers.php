@@ -25,48 +25,48 @@ echo '
     <div class="col-sm-12 col-md-6 col-lg-6 campaign-info" style="">
     <div class="camapaign-label-container mobile">
     <div class="campaign-label-div">
-    <label id="campaign-label" class="campaign-label">CAMPAIGN NAME:</label><input id="campaign-name" class="mobile" type="text" placeholder="Untitled Campaign"> </div>
+    <label id="campaign-label" class="campaign-label">LIST NAME:</label><input id="campaign-name" class="mobile" type="text" placeholder="Untitled List"> </div>
 
-  
-     <div class="select-campaign-container small"> 
+
+     <div class="select-campaign-container small">
             <div id="campaign-select-text" class="col-xs-12 col-md-1">ADD TO EXISTING: </div>
             <div class="add-to-existing-container">
             <select class="form-control category avocado-focus  campaign-dropdown col-xs-12">
                 <option class="option" value=""> None</option>
-                '.$options.'    
-            </select> 
+                '.$options.'
+            </select>
             <button class="save-btn" id="add-existing"> <i class="icon ti-plus black-plus" aria-hidden="true"></i> </button>
-          
-      </div>     
-            </div> 
+
+      </div>
+            </div>
 
     </div></div>
-    
+
 
 
 <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 campaign-select">
 
 
-  <div class="campaign-calc-btn-container tablet"> 
-    <button class="info-button secondary-button mobile sm-mobile" style="">SUBMIT FOR PRICING</button>
-    <button class="info-button main-button primary-button mobile sm-mobile" id="createcampaign">CREATE CAMPAIGN </button>
-    </div> 
+  <div class="campaign-calc-btn-container tablet">
+    <button class="info-button secondary-button mobile sm-mobile" id="price-campaign" style="">SUBMIT FOR PRICING</button>
+    <button class="info-button main-button primary-button mobile sm-mobile" id="createcampaign">CREATE LIST </button>
+    </div>
 
-          
+
             </div>
             </div>
     </div>
 
-    <div class="row"> 
+    <div class="row">
 
-      
+
         <div class="campaign-info-index col-xs-12">
       <div class="posts-green index-name"> POSTS </div>
       <div class="impression-blue index-name"> IMPRESSION </div>
       <div class="engagement-orange index-name"> ENGAGEMENT </div>
       <div class="social-following-red index-name"> SOCIAL FOLLOWING </div>
     </div>
-    
+
     </div>
 
 
@@ -114,7 +114,7 @@ echo '
                   echo'
                     <tr class="influencer-result-row">
                         <td class="influencer-column" data-label="Name" style="width:15%; padding-left:0%;">
-                                <div class="influencer-info-container mobile"> 
+                                <div class="influencer-info-container mobile">
                             <img src="http://cogenttools.com/'.$image.'" onerror="this.src=`/assets/images/default-photo.png`" class="influencer-campaign-image ">
                             <div class="influencer-handle-text handle">@'.$displayhandle.'</div>
                             <div class="influencer-handle-text location-text">'.$location.'</div>
@@ -170,7 +170,7 @@ echo '
                         <tr class="result-row influencer-result-row">
                         <td class="influencer-column" scope="row" data-label="Name" style="width:15%;">
                             <div class="influencer-info-container">
-                                <p class="result-name mobile">  CAMPAIGN ENGAGEMENT</p>
+                                <p class="result-name mobile">  LIST ENGAGEMENT</p>
                             </div>
                       <td  class="insta-column"  data-label="Instagram" style="width:15%;" > <p class="instagram-posts results-text mobile" id="instagram-engagement" data-number="0"> 0 </p> </td>
                       <td  class="twit-column" data-label="Twitter" style="width:15%;"> <p class="facebook-posts results-text mobile" id="facebook-engagement" data-number="0"> 0 </p> </td>
@@ -182,7 +182,7 @@ echo '
                         <tr class="result-row influencer-result-row">
                         <td class="influencer-column" style="width:15%;" scope="row" data-label="Name">
                             <div class="influencer-info-container">
-                            <p class="result-name mobile"> CAMPAIGN IMPRESSIONS</p>
+                            <p class="result-name mobile"> LIST IMPRESSIONS</p>
                             </div>
                       <td  class="insta-column" data-label="Instagram" style="width:15%;"><p class="instagram-posts results-text mobile" id="instagram-impressions" data-number="0"> 0 </p> </td>
                       <td  class="twit-column" data-label="Twitter" style="width:15%;"> <p class="facebook-posts results-text mobile" id="facebook-impressions" data-number="0"> 0 </p> </td>

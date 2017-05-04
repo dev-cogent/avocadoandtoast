@@ -11,6 +11,10 @@
 
 }
 
+.close-search-bar {
+  @include green-hover;
+}
+
 
 .search-bar-position{
     position:relative;
@@ -43,6 +47,7 @@
     line-height: 65px;
     padding-right: 20px;
     .link-pages {
+      @include green-hover;
         text-decoration: none;
         color: rgb(70, 70, 70);
          :hover {
@@ -91,7 +96,9 @@
     background-color: #f9f9f9;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    margin-top: -10px;
+    width: 200px;
+    margin-right: -30px;
+    // margin-top: -10px;
 }
 
 .dropdown-content a {
@@ -101,6 +108,7 @@
     font-size: 16px;
     font-weight: 400;
     height: 20px;
+    float: left;
     letter-spacing: 1px;
     margin-left: 5px;
     padding: 15px 20px 60px 20px;

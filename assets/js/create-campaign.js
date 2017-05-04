@@ -25,6 +25,7 @@ $(document).on('click', '#createcampaign', function () {
         },
         success: function (jqXHR, textStatus, errorThrown) {
             unsetLoading();
+            localStorage.clear();
             if (jqXHR != 0 || jqXHR != '0') {
                 dialog = bootbox.dialog({
                     message: '<div class="bootbox-body">' +
