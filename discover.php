@@ -234,9 +234,11 @@ include 'php/numberAbbreviation.php';
                         keywordsarr = JSON.parse(keywordsarr);
                         filters['keywords'] = keywordsarr;
                         applyFilters(filters);
+                        var inputString = '';
                         keywordsarr.forEach(function(element){
-                            $('#tokenfield').tokenfield('createToken', element);
+                            inputString += element + ' ';
                         });
+                        $('.filter-input').val(inputString);
                     </script>
                     ";
                 }
@@ -252,7 +254,9 @@ include 'php/numberAbbreviation.php';
 $('#tokenfield').tokenfield();
 var calculate = false;
 var page = 0;
-var selectedusers = [];
+if(!selectedusers){
+    var selectedusers = [];
+}
 var filters = {};
 
 
@@ -260,13 +264,7 @@ var filters = {};
 </script>
 <script src="/assets/js/avocado-discover.js"></script>
 <script src="/assets/js/create-campaign.js"></script>
-<script>
-if(localStorage.getItem('selected-influencers') !== null){
-  tempselectedusers = localStorage.getItem('selected-influencers');
-  selectedusers = JSON.parse(tempselectedusers);
-  appendImagePullOut(selectedusers);
-}
-</script>
+
 <?php if($getParameter) {echo $getParameter;}
       else{
           ?>

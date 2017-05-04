@@ -5,11 +5,12 @@ var removedInfluencers = {
 
 
 $(document).ready(function(){
+    
     getCampaignInformation(campaignid);
     getCampaignInfluencers(campaignid);
 
 });
-
+ 
 
 function getCampaignInformation(campaignid){
     $.ajax({
