@@ -1,4 +1,9 @@
 $(document).ready(function () {
+    if(localStorage.getItem('selected-influencers') !== null){
+      tempselectedusers = localStorage.getItem('selected-influencers');
+      selectedusers = JSON.parse(tempselectedusers);
+      appendImagePullOut(selectedusers);
+    }
   var pulledOut = false;
   var breakSmall = 600;
   var vw, vh, leftVal;  //viewport width and left value for pulled out state

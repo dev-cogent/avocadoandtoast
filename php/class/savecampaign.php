@@ -247,13 +247,14 @@ public function getSavedCampaigns($columnid){
     $stmt = $saved->prepare("SELECT l5o0c8t4_save_campaign.$campaignid.influencer_id, l5o0c8t4_save_campaign.$campaignid.facebook_post,l5o0c8t4_save_campaign.$campaignid.instagram_post,l5o0c8t4_save_campaign.$campaignid.twitter_post,
                                     l5o0c8t4_save_campaign.$campaignid.instagram_impressions,l5o0c8t4_save_campaign.$campaignid.facebook_impressions,l5o0c8t4_save_campaign.$campaignid.twitter_impressions,
                                     l5o0c8t4_save_campaign.$campaignid.instagram_engagement,l5o0c8t4_save_campaign.$campaignid.facebook_engagement,l5o0c8t4_save_campaign.$campaignid.twitter_engagement,
-                                    l5o0c8t4_General_Information.Influencer_Information.image_url, l5o0c8t4_General_Information.Influencer_Information.instagram_count, l5o0c8t4_General_Information.Influencer_Information.instagram_url,
-                                    l5o0c8t4_General_Information.Influencer_Information.twitter_url,l5o0c8t4_General_Information.Influencer_Information.twitter_count, l5o0c8t4_General_Information.Influencer_Information.facebook_count,l5o0c8t4_General_Information.Influencer_Information.facebook_url,
-                                    l5o0c8t4_General_Information.Influencer_Information.engagement,l5o0c8t4_General_Information.Influencer_Information.total FROM l5o0c8t4_save_campaign.$campaignid INNER JOIN l5o0c8t4_General_Information.Influencer_Information
+                                    l5o0c8t4_General_Information.Influencer_Information.image_url, l5o0c8t4_General_Information.Influencer_Information.instagram_count, l5o0c8t4_General_Information.Influencer_Information.instagram_url,l5o0c8t4_General_Information.Influencer_Information.instagram_eng,
+                                    l5o0c8t4_General_Information.Influencer_Information.twitter_url,l5o0c8t4_General_Information.Influencer_Information.twitter_count, l5o0c8t4_General_Information.Influencer_Information.twitter_eng, 
+                                    l5o0c8t4_General_Information.Influencer_Information.facebook_count,l5o0c8t4_General_Information.Influencer_Information.facebook_url,l5o0c8t4_General_Information.Influencer_Information.facebook_eng,
+                                    l5o0c8t4_General_Information.Influencer_Information.total FROM l5o0c8t4_save_campaign.$campaignid INNER JOIN l5o0c8t4_General_Information.Influencer_Information
                                     ON l5o0c8t4_save_campaign.$campaignid.influencer_id = l5o0c8t4_General_Information.Influencer_Information.id
                                     ORDER BY  l5o0c8t4_General_Information.Influencer_Information.total DESC LIMIT $position, $influencernumber");
     $stmt->execute();
-    $stmt->bind_result($id,$facebookpost,$instagrampost,$twitterpost,$instagramimpressions,$facebookimpressions,$twitterimpressions,$instagramengagement,$facebookengagement,$twitterengagement,$image,$instagramcount,$instagramurl,$twitterurl,$twittercount,$facebookcount,$facebookurl,$engagement,$total);
+    $stmt->bind_result($id,$facebookpost,$instagrampost,$twitterpost,$instagramimpressions,$facebookimpressions,$twitterimpressions,$instagramengagement,$facebookengagement,$twitterengagement,$image,$instagramcount,$instagramurl,$insteng,$twitterurl,$twittercount,$twittereng,$facebookcount,$facebookurl,$faceeng,$total);
     while($stmt->fetch()){
         $infoarr->$id = new stdClass;
         $infoarr->$id->instagram = new stdClass;
@@ -271,19 +272,23 @@ public function getSavedCampaigns($columnid){
         $infoarr->$id->instagram->post = $instagrampost;
         $infoarr->$id->instagram->impressions = $instagramimpressions;
         $infoarr->$id->instagram->engagement = $instagramengagement;
+        $infoarr->$id->instagram->eng_decimal = $insteng;
         $infoarr->$id->facebook->likes = $facebookcount;
         $infoarr->$id->facebook->url = $facebookurl;
         $infoarr->$id->facebook->handle = $facebookhandle;
         $infoarr->$id->facebook->post = $facebookpost;
         $infoarr->$id->facebook->impressions = $facebookimpressions;
         $infoarr->$id->facebook->engagement = $facebookengagement;
+        $infoarr->$id->facebook->eng_decimal = $faceeng;
         $infoarr->$id->twitter->followers = $twittercount;
         $infoarr->$id->twitter->url = $twitterurl;
         $infoarr->$id->twitter->handle = $twitterhandle;
         $infoarr->$id->twitter->post = $twitterpost;
         $infoarr->$id->twitter->impressions = $twitterimpressions;
         $infoarr->$id->twitter->engagement = $twitterengagement;
+        $infoarr->$id->twitter->eng_decimal = $twittereng;
         $infoarr->$id->total = $total;
+
 
     }
 
@@ -293,6 +298,8 @@ public function getSavedCampaigns($columnid){
 
 
  }
+
+
 
 
 

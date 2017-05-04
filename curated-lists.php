@@ -371,7 +371,7 @@ include 'php/numberAbbreviation.php';
                </div>
 
                <div class="curated-btn-container">
-                 <button class="secondary-button view-btn-curated"> VIEW </button>
+                 <a href="/curated-lists/?id=XNpGJVM6cc4PAKBZUVS2"><button class="secondary-button view-btn-curated"> VIEW </button></a>
 
                </div>
              </div>
@@ -432,19 +432,3 @@ include 'php/numberAbbreviation.php';
 
 </body>
 </html>
-<script>
-$('#tokenfield').tokenfield();
-var calculate = false;
-var page = 0;
-var selectedusers = [];
-var filters = {};
-</script>
-<script src="/assets/js/avocado-slider.js"></script>
-<script src="/assets/js/avocado-discover.js"></script>
-<script src="/assets/js/create-campaign.js"></script>
-<?php if($javaquery) {echo $javaquery;}
-      else{
-          echo '<script> applyFilters(filters,false); </script>';
-      }
-
- ?>

@@ -5,7 +5,7 @@ $(document).ready(function() {
         success: function(jqXHR, textStatus, errorThrown) {
             campaignJSON = JSON.parse(jqXHR);
             $.each(campaignJSON, function(key, obj) {
-                $('#campaign-container').append('<a href="/campaigns/?id='+key+'>"<div class="campaign-block col-xs-12" data-id="' + key + '" data-desc="' + obj.description + '" data-name="' + obj.campaignname + '" data-start="' + obj.campaignstart + '" data-end="' + obj.campaignend + '" >' +
+                $('#campaign-container').append('<a href="/campaigns/?id='+key+'"><div class="campaign-block col-xs-12" data-id="' + key + '" data-desc="' + obj.description + '" data-name="' + obj.campaignname + '" data-start="' + obj.campaignstart + '" data-end="' + obj.campaignend + '" >' +
                     '<table class="dashboard-table col-xs-12">' +
                     '<tbody style="border-top:0px;">' +
                     '<tr>' +

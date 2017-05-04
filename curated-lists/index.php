@@ -1,34 +1,60 @@
 <?php
 session_start();
 error_reporting(0);
-include '../php/verify-campaign.php';
-//If all is good, we continue.
+$campaignid = $_GET['id'];
 ?>
 <!DOCTYPE html>
-<html class="no-js css-menubar" lang="en">
+<html class="no-js css-menubar" lang="en"> 
 <head>
   <?php include '../html/head.html' ?>
-    <title>Campaign | Avocado & Toast</title>
+    <title>Curated List | Avocado & Toast</title>
 <script src="/assets/js/avocado-card-function.js"></script>
 <script src="/assets/js/abbreviatenumber.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/assets/js/curated-list.js"></script>
+<script src="/assets/js/influencer_pullout.js"></script>
 <script src="/assets/js/loading.js"></script>
-<link rel="stylesheet" href="/assets/js/tokenfield/dist/css/bootstrap-tokenfield.css">
+<link rel="stylesheet" href="/assets/css/pullout.css">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/global/fonts/font-awesome/font-awesome.css">
-<link rel="stylesheet" href="/assets/css/sidebar.css">
 <link rel="stylesheet" href="/assets/css/avocado-campaign.css">
 <link rel="stylesheet" href="/assets/css/influencer-card.css">
-<link rel="stylesheet" href="assets/css/curated-lists.css">
+<link rel="stylesheet" href="/assets/css/curated-lists.css">
 
 
 </head>
 <?php include '../php/avocado-nav.php';?>
 
 <body>
+<!-- right side bar -->
+    <div id="influencers-pullout">
+      <img id="pulltab" src="/assets/images/pulltab_icon.png" alt="">
+      <header>
+            <div id="num-influencers">__</div>
+            <div id="header-text">
+            Influencers in current List
+            </div>
+            <div id=dismiss-button>x</div>
+      </header>
 
+      <button type="button" name="button" id="calculate">Calculate List</button>
+
+
+      <div  id="influencer-pullout-image-container">
+
+
+ <!-- images go here -->
+
+
+      </div>
+
+      <div id="action-buttons">
+        <button id="remove-button" class="greyed-out" type="button" name="button">Remove selected</button>
+        <button id="remove-all-button" class="greyed-out" type="button" name="button">Remove all</button>
+        <button id="undo-button" class="greyed-out" type="button" name="button"> Undo</button>
+      </div>
+    </div>
 <div id="loading"><img style="height:250px; width:250px;"src="/assets/images/loading.gif"/></div>
 <div id="myNav" class="overlay"></div>
 
@@ -44,38 +70,6 @@ include '../php/verify-campaign.php';
 
 
 
-
-  <!--  <div class="user-campaign-inf-count"> <span class="campaign-inf-count"><?php// echo $influencerinfo['campaign_count'];?> </span> Influencers Invited to this Campaign </div> -->
-
-    <div class="col-xs-12" id="campaign-breakdown">
-        <div class="col-xs-12 campaign-border">
-        <div class="campaign-block col-xs-12"  >
-        <table class="col-xs-12">
-            <tbody style="border-top:0px;">
-            <tr>
-                <td class="stats" id="influnum"></td>
-                <td class="stats" id="total-posts"></td>
-                <td class="stats mobile-off" id="avg-impressions" data-number="0"></td>
-                <td class="stats mobile-off" id="avg-engagement" data-number="0"></td>
-                <td class="stats"id="total-reach" data-number="0"></td>
-                <td class="stats"id="total-engagement" data-number="0"></td>
-            </tr>
-            <tr>
-                <td class="label-info">Influencers</td>
-                <td class="label-info">Posts</td>
-                <td class="label-info mobile-off">Avg Impressions</td>
-                <td class="label-info mobile-off"> Avg Engagement</td>
-                <td class="label-info">Reach</td>
-                <td class="label-info">Engagement</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-        </div>
-
-
-
-    </div>
 
 
 
@@ -154,36 +148,6 @@ var filters = {};
 var sidebar = false;
 
 
-$(document).on('click','.sidebar-left',function(){
-
-if(sidebar == false){
-$(this).animate({
-'max-width':'300px',
- 'width':'300px'
-}, 'slow');
-$('#li-container').fadeIn();
-sidebar = true;
-}
-
-else{
-    $(this).animate({
-    'width':'55px',
-    'max-width':'55px'
-},'slow');
-$('#li-container').fadeOut();
-sidebar = false;
-}
 
 
-
-});
-
-$(document).on('click','.pdf',function(){
-    console.log('here');
-var id = $(this).attr('data-id');
-window.location='/php/pdf/pdf.php?id='+id;
-
-
-});
-$('#tokenfield').tokenfield();
 </script>
