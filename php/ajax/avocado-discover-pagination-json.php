@@ -16,7 +16,7 @@ $engmin = $filters['eng-min'];
 $engmax = $filters['eng-max'];
 $max = intval($filters['max']);
 $min = intval($filters['min']);
-$platform = $filters['platform'];
+$platforms = $filters['platform'];
 $position = $_POST['page'] * 24;
 $users = array();
 $where = "";
@@ -25,12 +25,11 @@ $arr = array();
 
 if($bio !== NULL) $temparr = checkBio($bio, $searchoptions, $options, $where, $arr);
 // if($searchuser !== NULL) $temparr = checkUser($searchuser, $where, $arr);
-if($platform !== NULL) $temparr =checkPlatform($min,$max,$engmin,$engmax, $where, $arr,$platform);
+if($platforms !== NULL) $temparr =checkPlatform($min,$max,$engmin,$engmax, $where, $arr,$platforms);
 $binding = array();
 $params = $arr['term'];
 if($position < 0) $position = 0;
 unset($stmt);
-
 
 $stmt = $conn->prepare("SELECT `id`, `image_url` , `instagram_count`, `instagram_url`, `twitter_url`, `twitter_count`, `facebook_count`,`facebook_url`,`facebook_handle`,`youtube_url`,`youtube_count`,`engagement`,`total` FROM `Influencer_Information` $where LIMIT $position, 24");
 if($where != ''){
@@ -138,15 +137,31 @@ function checkBio($bio, $searchoptions, $options, &$where, &$arr){
 
 
 
-function checkPlatform($mininstagram,$maxinstagram,$mineng,$maxeng, &$where, &$arr,$platform){
-    if(checkWhere($where))
-    $where .= 'AND (`'.$platform.'_count` >= ? AND `'.$platform.'_count` <= ?) AND (`'.$platform.'_eng` >= ? AND `'.$platform.'_eng` <= ?)  ORDER BY `'.$platform.'_count` DESC ';
-    else
-    $where .= 'WHERE (`'.$platform.'_count` >= ? AND `'.$platform.'_count` <= ?) AND (`'.$platform.'_eng` >= ? AND `'.$platform.'_eng` <= ?)  ORDER BY `'.$platform.'_count` DESC ';
-    $arr['term'][] = $mininstagram;
-    $arr['term'][] = $maxinstagram;
-    $arr['term'][] = $mineng;
-    $arr['term'][] = $maxeng;
+function checkPlatform($mincount,$maxcount,$mineng,$maxeng, &$where, &$arr,$platforms){
+    $i = 1;
+    foreach($platforms as $platform){
+
+        $query = '`'.$platform.'_count` >= ? AND `'.$platform.'_count` <= ?) AND (`'.$platform.'_eng` >= ? AND `'.$platform.'_eng` <= ?';
+        $arr['term'][] = $mincount;
+        $arr['term'][] = $maxcount;
+        $arr['term'][] = $mineng;
+        $arr['term'][] = $maxeng;
+
+       if(checkWhere($where)){
+          if($i == 1){
+            $where .= "AND (($query) ";
+            $i = 0;
+          }else{
+            $where .= "AND ($query) ";
+          }
+       }else{
+          $where .= "WHERE (($query) ";
+          $i = 0;
+       }
+
+    }
+
+    $where = $where.')';
     return $arr;
 }
 

@@ -87,9 +87,10 @@ include 'php/numberAbbreviation.php';
             <div class="desc-header search-header">
                 <div class="discover-header">DISCOVER</div>
                 <div class="filter-text">Search by influencer handles and keywords</div>
-                    <input type="text" class="filter-input" placeholder="keyword"/>
-                    <div class="description-text">Separate tags with commas or by pressing "tab" in the above field.<br> Use double quotes for multi-word tags (e.g. "avocado toast")</div>
-                                            <div  id="af-link"> Advanced Filtering </div>
+                    <input type="text" class="filter-input" placeholder="Search..."/>
+                    <!--<div class="description-text">Separate tags with commas or by pressing "tab" in the above field.<br> Use double quotes for multi-word tags (e.g. "avocado toast")</div>-->
+                    <!-- TAKE OUT INLINE STYING IF WE DECIDE TO KEEP THE DESCRIPTION TEXT -->
+                                            <div  id="af-link" style="margin-top:10px;"> Advanced Filtering </div>
                         <!-- Filtering options will go here -->
                             <div id="af-slidedown">
 

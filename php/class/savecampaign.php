@@ -204,7 +204,7 @@ public function getSavedCampaigns($columnid){
     $arr = new stdClass;
     $campaignExist = false;
     $generalconn = $this->dbinfo();
-    $stmt = $generalconn->prepare('SELECT `campaign_name`,`campaign_id`,`campaign_desc`,`created_date`,`start_date`,`end_date`,`total_impressions`,`total_engagement`,`total_post`,`total_influencers` FROM `campaign_save_link` WHERE `column_id` = ?');
+    $stmt = $generalconn->prepare('SELECT `campaign_name`,`campaign_id`,`campaign_desc`,`created_date`,`start_date`,`end_date`,`total_impressions`,`total_engagement`,`total_post`,`total_influencers` FROM `campaign_save_link` WHERE `column_id` = ? ORDER BY `created_date` DESC');
     $stmt->bind_param('s',$columnid);
     $stmt->execute();
     $stmt->bind_result($campaignname,$campaignid,$campaigndesc,$created,$start,$end,$totalimpressions,$totalengagement,$totalpost,$totalInfluencers);

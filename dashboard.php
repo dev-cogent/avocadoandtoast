@@ -4,11 +4,13 @@
   <?php include 'html/head.html' ?>
     <title>Dashboard</title>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
+<script src="/bootbox/bootbox.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700" rel="stylesheet">
 <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
 <link rel="stylesheet" href="/assets/css/discover.css">
 <link rel="stylesheet" href="/assets/css/dashboard.css">
 <link rel="stylesheet" href="/assets/css/footer.css">
+
 </head>
 
 <?php include 'php/avocado-nav.php'; ?>

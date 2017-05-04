@@ -5,7 +5,7 @@ $(document).ready(function() {
         success: function(jqXHR, textStatus, errorThrown) {
             campaignJSON = JSON.parse(jqXHR);
             $.each(campaignJSON, function(key, obj) {
-                $('#campaign-container').append('<div class="campaign-block col-xs-12" data-id="' + key + '" data-desc="' + obj.description + '" data-name="' + obj.campaignname + '" data-start="' + obj.campaignstart + '" data-end="' + obj.campaignend + '" >' +
+                $('#campaign-container').append('<a href="/campaigns/?id='+key+'>"<div class="campaign-block col-xs-12" data-id="' + key + '" data-desc="' + obj.description + '" data-name="' + obj.campaignname + '" data-start="' + obj.campaignstart + '" data-end="' + obj.campaignend + '" >' +
                     '<table class="dashboard-table col-xs-12">' +
                     '<tbody style="border-top:0px;">' +
                     '<tr>' +
@@ -20,7 +20,7 @@ $(document).ready(function() {
                     '<td class="stats mobile-off impressions"><a class="stats" href="/campaigns/?id=' + key + '">' + abbrNum(obj.average_impressions) + '</a></td>' +
                     '<td class="stats mobile-off mobile-off-first"><a class="stats" href="/campaigns/?id=' + key + '">' + abbrNum(obj.average_engagement) + '</a></td>' +
                     '<td class="stats reach"><a class="stats" href="/campaigns/?id=' + key + '">' + abbrNum(obj.totalimpressions) + '</a></td>' +
-                    '<td class="button-stats"><button onclick="location.href=`/price/?id=' + key + '`" class="primary-button button-stats-bt">PRICE CAMPAIGN</button></td>' +
+                    '<td class="button-stats"><a href="/price/?id=' + key + '"><button class="primary-button button-stats-bt">PRICE CAMPAIGN</button> </a></td>' +
                     '</tr>' +
                     '<tr>' +
                     '<td class="label-info">Influencers</td>' +
@@ -28,7 +28,7 @@ $(document).ready(function() {
                     '<td class="label-info mobile-off impressions">Avg Impressions</td>' +
                     '<td class="label-info mobile-off mobile-off-first">Avg Engagement</td>' +
                     '<td class="label-info reach">Reach</td>' +
-                    '<td class="delete-btn-area"> <a href="#" data-campaignid="' + key + '" id="delete-campaign"> <i class="icon pe-trash list-dashboard" aria-hidden="true"></i> </a> </td>' +
+                    '<td class="delete-btn-area"> <a href="#" data-campaign="' + key + '" class="delete-campaign"> <i class="icon pe-trash list-dashboard" aria-hidden="true"></i> </a> </td>' +
                     '</tr>' +
                     '</tbody>' +
                     '</table>' +
@@ -40,8 +40,8 @@ $(document).ready(function() {
     }); // end ajax request*/
 
 });
-var target = $("#campaign-info").offset().top;
-var sidebar = false;
+
+
 $(document).on('click', '.campaign-block', function() {
     $('#campaign-info').empty();
     var name = $(this).attr('data-name');
@@ -62,6 +62,35 @@ $(document).on('click', '.campaign-block', function() {
         '<a style="color:#76838f;"href="/edit/?id=' + id + '"><button class="option-button avocado-hover avocado-focus" id="' + id + '"> Edit Campaign </button></a>' +
         '<a style="color:#76838f;"href="/campaigns/?id=' + id + '"><button class="option-button avocado-hover avocado-focus" name="campaign" value="' + id + '">View Campaign </button></a>' +
         '</div>');
+});
+
+
+$(document).on('click','.delete-campaign',function(){
+        var campaignid = $(this).attr('data-campaign');
+        $.ajax({
+        type: 'POST',
+        url: '/php/ajax/deletecampaign.php',
+        data: {
+            campaignid : campaignid,
+        },
+        success: function (jqXHR, textStatus, errorThrown) {
+          dialog = bootbox.dialog({
+              message: '<div class="bootbox-body">' +
+              '<div class="icon-popup-div"> <img src="/assets/images/chasing_2.gif" class="success-popup-icon"/> </div>' +
+              '<div class="row"> <div class="col-xs-12 popup-detail success">   <span class="yay"> SUCCESS!</span> <br/>Your Campaign has been deleted sucessfully.  </div>' +
+              '<div class="col-xs-12 btn-col"><div class="popup-btn-div"> <a href="/dashboard"></a></div>' +
+              '</div> </div>',
+              closeButton: true
+          });
+
+          dialog.modal();
+          setTimeout(function () {
+            location.href="/dashboard.php";
+          }, 3000);
+        }
+
+    }); // end ajax request*/
+
 });
 
 function abbrNum(number, decPlaces = 1) {
@@ -102,7 +131,6 @@ function abbrNum(number, decPlaces = 1) {
         }
 
     }
-    console.log(number);
     return number;
 }
 
