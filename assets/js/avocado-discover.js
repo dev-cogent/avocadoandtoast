@@ -92,43 +92,7 @@ $(document).on('click', '.filter-option', function () {
       }
     });
 
-    $('#slider-instagram').click(function () {
-        filterSlider('instagram');
-    });
 
-    $('#slider-instagram-engagement').click(function () {
-        filterSlider('instagram');
-    });
-
-    $('#slider-twitter').click(function () {
-        filterSlider('twitter');
-    });
-
-    $('#slider-twitter-engagement').click(function () {
-        filterSlider('twitter');
-    });
-
-    $('#slider-facebook').click(function () {
-        filterSlider('facebook');
-    });
-
-    $('#slider-facebook-engagement').click(function () {
-        filterSlider('facebook');
-    });
-
-
-    /**
-     * @About function to filter all slider options
-     * @param {string} platform
-     */
-    function filterSlider(platform) {
-        filters['eng-min'] = $('#min-' + platform + '-engagement').attr('data-number');
-        filters['eng-max'] = $('#max-' + platform + '-engagement').attr('data-number');
-        filters['min'] = $('#min-' + platform).attr('data-number');
-        filters['max'] = $('#max-' + platform).attr('data-number');
-        filters['platform'] = platform;
-        applyFilters(filters);
-    }
 
 
     /**

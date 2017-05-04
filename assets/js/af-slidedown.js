@@ -20,9 +20,18 @@ function addAFLinkHandler() {
 
 function addPlatformChangeHandler() {
   $('#af-icon-container').children().click(function() {
-    $('#af-icon-container').children().removeClass('af-active-icon');
-    $(this).addClass('af-active-icon');
-
+    var boolRemoveClass = false;
+    var elementClasses = $(this).attr('class').split(' ');
+    elementClasses.forEach(function(element) {
+      if(element == 'af-active-icon'){
+        boolRemoveClass = true;
+      }
+    });
+    if(boolRemoveClass){
+      $(this).removeClass('af-active-icon');
+    }else{
+      $(this).addClass('af-active-icon');
+    }
     setSliderFilters();
   })
 }
@@ -146,18 +155,24 @@ function addRangeButtonHandlers(){
 
 
 
-
+ 
 function setSliderFilters(){
   var inputVal = $('.filter-input').val();
+  var platforms = [];
   inputVal = inputVal.split(' ');
   filters['keywords'] = inputVal;
   populateValues();
-  var platform = $('.af-active-icon').attr('data-platform');
+
+  var activePlatforms = $('.af-active-icon');
+  $.each(activePlatforms, function(key, obj){
+    platforms.push($(obj).attr('data-platform'));
+  });
+
   filters['min'] = disabbreviate($('#num-followers1').val());
   filters['max'] = disabbreviate($('#num-followers2').val());
   filters['eng-min'] = disabbreviate($('#num-engagement1').val());
   filters['eng-max'] = disabbreviate($('#num-engagement2').val());
-  filters['platform'] = platform;
+  filters['platform'] = platforms;
   applyFilters(filters);
 
 }
