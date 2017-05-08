@@ -28,6 +28,35 @@ $(document).ready(function () {
     checkNumInfluencers();
   });
 
+  /**
+   * Function when the user clicks on the "Calculate Campaign button" all javascript pertaining that page can be found at avocado-calculate.js
+   * @return NULL
+   */
+  $(document).on('click', '#calculate', function () {
+      setLoading();
+      if (selectedusers.length == 0) {
+          console.log('THERE ARE NO INFLUENCERS SELECTED');
+          unsetLoading();
+          return 0;
+      }
+      calculate = true;
+      $.ajax({
+          type: 'POST',
+          url: '/php/ajax/avocado-get-influencers.php',
+          data: {
+              influencers: selectedusers
+          },
+          success: function (jqXHR, textStatus, errorThrown) {
+
+              calculate = true;
+              $('body').empty();
+              $('body').append(jqXHR);
+              unsetLoading();
+
+          }
+      }); // end ajax request*/
+  });
+
 
   function selectInfluencer(id, element) {
 

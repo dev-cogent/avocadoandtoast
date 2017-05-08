@@ -3,7 +3,51 @@ session_start();
 error_reporting(0);
 include '../dbinfo.php';
 include '../numberAbbreviation.php';
+?>
+<?php include '../avocado-nav.php'; ?>
+<!-- right side bar -->
+<link rel="stylesheet" href="/assets/css/campaign-calculator.css">
+<script src="/assets/js/avocado-calculate.js"></script>
+<script src="/assets/js/create-campaign.js"></script>
+    <div id="influencers-pullout">
+      <img id="pulltab" src="/assets/images/pulltab_icon.png" alt="">
+      <header>
+            <div id="num-influencers">__</div>
+            <div id="header-text">
+            Influencers in current List
+            </div>
+            <div id=dismiss-button>x</div>
+      </header>
 
+      <button type="button" name="button" id="calculate">Calculate List</button>
+
+
+      <div  id="influencer-pullout-image-container">
+
+
+ <!-- images go here -->
+
+
+      </div>
+
+      <div id="action-buttons">
+        <button id="remove-button" class="greyed-out" type="button" name="button">Remove selected</button>
+        <button id="remove-all-button" class="greyed-out" type="button" name="button">Remove all</button>
+        <button id="undo-button" class="greyed-out" type="button" name="button"> Undo</button>
+      </div>
+    </div>
+
+<!-- end right side bar -->
+
+<!-- Add side bar here -->
+<div id="loading"><img style="height:250px; width:250px;"src="/assets/images/loading.gif"/></div>
+
+
+
+<!-- The third nav bar , we might be able to take this out. In the mean time, we'll keep it here -->
+
+<div id="myNav" class="overlay"></div>
+<?php
 $stmt = $conn->prepare("SELECT `campaign_name`,`campaign_id` FROM `campaign_save_link` WHERE `column_id` = ?");
 $stmt->bind_param('s',$_SESSION['column_id']);
 $stmt->execute();
@@ -14,7 +58,7 @@ while($stmt->fetch()){
 unset($stmt);
 
 echo '
- <link rel="stylesheet" href="/assets/css/campaign-calculator.css">
+
  <div class="container-fluid">
 <div class="info-container">
 
@@ -76,10 +120,10 @@ echo '
                 <thead class="campaign-calc-table">
                   <tr class="cat-in-influencer-result-row">
                       <th class="text-center" scope="col"><button class="secondary-button mobile-apply small" id="apply">Apply Posts to All</button></th>
-                      <th class="text-center" scope="col"> <img src="assets/images/ig_black.png" class="insta-logo" />
+                      <th class="text-center" scope="col"> <img src="/assets/images/ig_black.png" class="insta-logo" />
                    </th>
-                      <th class="text-center" scope="col"> <img src="assets/images/fb_black.png" class="fb-logo" /> <p class="number-posts-text"> </p> </th>
-                      <th class="text-center" scope="col"> <img src="assets/images/twitter_black.png" class="twitter-logo2" />  </th>
+                      <th class="text-center" scope="col"> <img src="/assets/images/fb_black.png" class="fb-logo" /> <p class="number-posts-text"> </p> </th>
+                      <th class="text-center" scope="col"> <img src="/assets/images/twitter_black.png" class="twitter-logo2" />  </th>
                         <th class="text-center total-heading" scope="col">  TOTAL  </th>
                     </tr>
                   </thead>
