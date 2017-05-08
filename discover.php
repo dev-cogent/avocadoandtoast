@@ -22,10 +22,10 @@ include 'php/numberAbbreviation.php';
     <script src="/assets/js/tokenfield/dist/bootstrap-tokenfield.js"></script>
     <script src="/assets/js/loading.js"></script>
     <script src="/assets/js/avocado-card-functions.js"></script>
-    <script src="/assets/js/avocado-calculate.js"></script>
     <script src="assets/js/influencer_pullout.js"></script>
-    <script src="assets/js/af-slidedown.js"></script>
-    
+    <script src="/assets/js/af-slidedown.js"></script>
+    <script src="/assets/js/advanced-filters.js"></script>
+
     <link rel="stylesheet" href="assets/autofill/autofill.css">
     <link rel="stylesheet" href="/assets/js/tokenfield/dist/css/bootstrap-tokenfield.css">
     <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.css">
@@ -35,10 +35,15 @@ include 'php/numberAbbreviation.php';
     <link rel="stylesheet" href="/assets/css/discover.css">
     <link rel="stylesheet" href="/assets/css/af-slidedown.css">
     <link rel="stylesheet" href="/global/js/jquery-ui-slider/jquery-ui.min.css">
+    <link rel="stylesheet" href="/assets/css/advanced-filters.css">
+
 </head>
 
 <body>
 <?php include 'php/avocado-nav.php'; ?>
+
+
+
 
 <!-- right side bar -->
     <div id="influencers-pullout">
@@ -217,12 +222,78 @@ include 'php/numberAbbreviation.php';
     <hr>
     <br>
 
-    <div class="influencer-header">INFLUENCER RESULTS</div>
+    <div class="influencer-header">INFLUENCERS <span id="influencer-results-number"></div>
+      <div class="col-xs-4 col-sm-1" ></div>
+      <div class="col-xs-4 col-sm-1" id="af-container">
+            <div id="reset-button" class="af-header">
+              RESET ALL
+            </div>
+            <div id="af-platforms">
+              <div class="af-header"> Platforms:</div>
+              <div id="af-icon-container">
+                <i class="fa fa-instagram af-platform" data-platform="instagram" aria-hidden="true"></i>
+                <i class="fa fa-facebook af-platform" data-platform="facebook" aria-hidden="true"></i>
+                <i class="fa fa-twitter af-platform" data-platform="twitter" aria-hidden="true"></i>
+                <i class="fa fa-youtube af-platform" data-platform="youtube" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div id="influencer-reach">
+              <div class="af-header">
+                Reach:
+              </div>
+              <div class="influencer-category-container">
+                <div class="influencer-category" data-category="celeb"
+                  data-tip="Celebrities have at least one million followers">Celebrity</div>
+                <div class="category-options">
 
+                </div>
+              </div>
+              <div class="influencer-category-container">
+                <div class="influencer-category" data-category="macro"
+                  data-tip="Macro influencers have at least 500k followers">Macro–Influencer</div>
+                <div class="category-options">
+
+                </div>
+              </div>
+              <div class="influencer-category-container">
+                <div class="influencer-category" data-category="micro"
+                  data-tip="Micro influencers have less than 500k followers">Micro–Influencer</div>
+                <div class="category-options">
+
+                </div>
+
+              </div>
+            </div>
+            <div id="influencer-engagement">
+              <div class="af-header"> Engagement:</div>
+              <div class="engagement-input-container">
+                <span class="engagement-label"> Min: </span> <input class="engagement-input" id="engagement-min" type="number" step="0.01" name="min" value="0.00">
+              </div>
+              <div class="engagement-input-container">
+                <span class="engagement-label"> Max: </span> <input class="engagement-input" id="engagement-max" type="number" step="0.01" name="max" value="10.00">
+              </div>
+              <div id="engagement-error-message">
+                Min should be less than max!
+              </div>
+            </div>
+            <div id="influencer-gender">
+              <div class="af-header"> Gender:</div>
+              <div class="gender-block" data-gender="female">
+                <div class="check"></div> Female
+              </div>
+              <div class="gender-block" data-gender="male">
+                <div class="check"></div> Male
+              </div>
+            </div>
+            <div id="influencer-location">
+              <div class="af-header"> Location: </div>
+              <input id="location-input" type="text" name="" value="" placeholder="LOCATION">
+            </div>
+          </div>
 
        <!-- <div class="influencer-header">INFLUENCER RESULTS</div>-->
 
-        <div class="found-influencers col-xs-12">
+        <div class="found-influencers col-xs-11">
             <?php
                 //If this is a get request, then we will make a script here to collect the parameters from the GET request. Afterwards we will apply this script at the end of the page.
                 if($_GET['q']){
@@ -257,7 +328,16 @@ var page = 0;
 if(!selectedusers){
     var selectedusers = [];
 }
-var filters = {};
+var filters = {
+  engagement:{
+    min:0,
+    max:10
+  },
+  followers:{
+    min:1,
+    max:1000000000
+  }
+};
 
 
 
@@ -277,7 +357,7 @@ var filters = {};
             showFilters(filters);
           }else{
             //if not we apply default filters
-            applyFilters();
+            applyFilters(filters);
           }
           </script>
 

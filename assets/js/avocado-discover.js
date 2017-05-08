@@ -40,34 +40,7 @@ $(document).on('click', '.filter-option', function () {
 });
 
 
-    /**
-     * Function when the user clicks on the "Calculate Campaign button" all javascript pertaining that page can be found at avocado-calculate.js
-     * @return NULL
-     */
-    $(document).on('click', '#calculate', function () {
-        setLoading();
-        if (selectedusers.length == 0) {
-            console.log('THERE ARE NO INFLUENCERS SELECTED');
-            unsetLoading();
-            return 0;
-        }
-        calculate = true;
-        $.ajax({
-            type: 'POST',
-            url: '/php/ajax/avocado-get-influencers.php',
-            data: {
-                influencers: selectedusers
-            },
-            success: function (jqXHR, textStatus, errorThrown) {
 
-                calculate = true;
-                $('#discover-container').empty();
-                $('#discover-container').append(jqXHR);
-                unsetLoading();
-
-            }
-        }); // end ajax request*/
-    });
 
 
 
@@ -120,6 +93,8 @@ $(document).on('click', '.filter-option', function () {
     });
 
 
+
+
     /**
      *
      * @ABOUT applyFilters takes an object of filters and then applies it. Returning JSON. That JSON goes to the appendCards function and that provieds the content.
@@ -141,6 +116,19 @@ $(document).on('click', '.filter-option', function () {
                 $('.found-influencers').empty();
                 campaignJSON = JSON.parse(jqXHR);
                 appendCards(campaignJSON);
+
+            }
+        });
+
+        $.ajax({
+            type: 'POST',
+            url: '/php/ajax/avocado-discover-get-filter-results.php',
+            data: {
+                filters: filters,
+            },
+            success: function (jqXHR, textStatus, errorThrown) {
+                influencerResults = JSON.parse(jqXHR);
+                $('#influencer-results-number').html('('+influencerResults+')').fadeIn(333);
 
             }
         });
@@ -239,6 +227,8 @@ function showFilters(filters){
 
 
 function appendCards(campaignJSON){
+
+  $('#influencer-results-number').html(abbrNum(campaignJSON.influencerResults));
     $.each(campaignJSON, function (key, obj) {
 
         var bsbox = $('<div  class="influencer-box col-xs-12 col-sm-6 col-md-4 col-lg-3" data-id="'+key+'">');
@@ -279,4 +269,5 @@ function appendCards(campaignJSON){
             }
         })
     });
+
 }

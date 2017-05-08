@@ -1,0 +1,135 @@
+@import 'utility';
+
+$af-margin: 4px;
+
+@mixin padSeparator {
+  padding-bottom: $af-margin;
+  @include separator("bottom", $separator-grey);
+}
+
+@mixin checkable {
+  @include green-hover;
+  &:hover {
+    .check {
+      background: $avo-green;
+    }
+  }
+  .check {
+    display: inline-block;
+    width:.7em;
+    height: .7em;
+    border-radius:2px;
+    background: grey;
+    cursor: pointer;
+    transition: background .4s;
+  }
+  &.checked {
+    .check {
+      background: $avo-green;
+    }
+  }
+}
+
+@mixin afInput {
+  height: 2em;
+  margin-top: $af-margin;
+  @extend %basic-input;
+  padding-left: $af-margin;
+}
+
+#af-container {
+  position: fixed;
+  font-family: $secondary-font;
+  .af-header {
+    text-transform: uppercase;
+    padding-top: $af-margin;
+    font-weight: bold;
+  }
+  #reset-button {
+    cursor: pointer;
+    @include green-hover;
+    @include padSeparator;
+  }
+  #af-platforms {
+    #af-icon-container {
+      margin: $af-margin 0 0 0;
+      i {
+        font-size: 22px;
+        margin-right: $af-margin;
+        @include green-hover;
+        &.selected {
+          color: $avo-green;
+        }
+      }
+    }
+    @include padSeparator;
+  }
+  #influencer-reach {
+    .influencer-category-container {
+      .influencer-category {
+        cursor: pointer;
+        @include green-hover;
+        &.selected {
+          color: $avo-green;
+        }
+      }
+      .category-options {
+        display: none;
+        transform: translateX($af-margin * 4);
+        &::before {
+          content: "Followers:"
+        }
+        .subcategory-block {
+          @include checkable;
+        }
+      }
+    }
+
+    @include padSeparator;
+  }
+
+  #influencer-engagement {
+    .engagement-input-container {
+      margin-bottom: $af-margin;
+      .engagement-label {
+        display: inline-block;
+        width: 2.4em;
+      }
+      input {
+        width: calc(100% - 2.7em);
+        @include afInput;
+      }
+    }
+    #engagement-error-message {
+      display: none;
+      font-size: 10px;
+      color: $social-following-red;
+    }
+    @include padSeparator;
+  }
+
+  #influencer-gender {
+    .gender-block {
+      @include checkable;
+    }
+    @include padSeparator;
+  }
+
+  #influencer-location {
+    input {
+      @include afInput;
+      width: 100%;
+    }
+  }
+}
+//
+.tip {
+  display:none;
+  color: $header-grey;
+  position: absolute;
+  background: white;
+  padding: 5px;
+  border-radius: 2px;
+  box-shadow: 2px -2px 10px $avo-green;
+  opacity: .975;
+}
