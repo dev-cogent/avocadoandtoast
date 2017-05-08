@@ -1,4 +1,4 @@
-@import 'utility'; 
+@import 'utility';
 
 
 .engagement-count {
@@ -34,11 +34,13 @@
 }
 
 
+
 .influencer-image-card {
     max-width: 100%;
     width: 100%;
     -o-object-fit: cover;
     object-fit: cover;
+    height: 320px;
     -o-object-position: 0 33%;
     object-position: 0 33%;
 }
@@ -46,7 +48,7 @@
 .influ-bottom {
     height: 170px;
 }
- 
+
 
 .influencer-icons {
     text-align: center;
