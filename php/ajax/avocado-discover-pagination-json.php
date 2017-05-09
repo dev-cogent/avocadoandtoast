@@ -36,6 +36,7 @@ $binding = array();
 $params = $arr['term'];
 if($position < 0) $position = 0;
 unset($stmt);
+
 $stmt = $conn->prepare("SELECT `id`, `image_url` , `instagram_count`, `instagram_url`, `twitter_url`, `twitter_count`, `facebook_count`,`facebook_url`,`facebook_handle`,`youtube_url`,`youtube_count`,`engagement`,`total` FROM `Influencer_Information` $where LIMIT $position, 24");
 if($where != ''){
 $types = '';
@@ -198,7 +199,7 @@ function checkPlatform($mincount,$maxcount,$mineng,$maxeng, &$where, &$arr,$plat
               $where .= "AND (($query ";
             }
           }else{
-            $where .= "WHERE (($query) ";
+            $where .= "WHERE (($query ";
             $i = 0;
           }
 
