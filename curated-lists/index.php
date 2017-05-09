@@ -4,7 +4,7 @@ error_reporting(0);
 $campaignid = $_GET['id'];
 ?>
 <!DOCTYPE html>
-<html class="no-js css-menubar" lang="en"> 
+<html class="no-js css-menubar" lang="en">
 <head>
   <?php include '../html/head.html' ?>
     <title>Curated List | Avocado & Toast</title>

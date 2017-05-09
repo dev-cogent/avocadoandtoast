@@ -181,7 +181,7 @@ function setCampaignInfluencers(campaignJSON){
         var accounts = [obj.instagram, obj.facebook, obj.twitter, obj.youtube];
         var handleSet = false;
         accounts.forEach(function(account, idx) {
-            
+
             if (account && account.handle) {
                 setHandle(key, account.handle, handleContainer, handleSet);
                 handleSet = true;
@@ -189,7 +189,7 @@ function setCampaignInfluencers(campaignJSON){
                 setFollowInfo(key,followContainer,account,idx, handleSet);
                 setEngageInfo(key,engageContainer,account.eng_decimal,idx, handleSet);
             }else{
-                
+
             }
         })
     });
@@ -207,11 +207,10 @@ function setCampaignInfluencers(campaignJSON){
 // same ajax call but calling a different php file that contains different bootstrap styling
 // for the view campaigns onscroll pagination
     $(window).scroll(function () {
-        if(calculate == false){
+
         if ($(window).scrollTop() == $(document).height() - $(window).height()) {
             page = page + 1;
             console.log(page);
-            console.log(filters);
             $.ajax({
                 type: 'POST',
                 url: '/php/ajax/avocado-campaign-pagination.php',
@@ -226,7 +225,6 @@ function setCampaignInfluencers(campaignJSON){
                 }
 
             }); // end ajax request*/
-        }
         }
     });
 
@@ -316,10 +314,3 @@ $(document).on('click','.filter-option',function(){
     $('.sliders[data-platform='+platform2+'-engagement]').css('display','none');
 
 });
-
-
-
-
-
-
-

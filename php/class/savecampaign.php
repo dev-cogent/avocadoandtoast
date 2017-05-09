@@ -241,14 +241,14 @@ public function getSavedCampaigns($columnid){
 
 
 
- public function getCampaign($campaignid, $position = 0, $influencernumber = 30){
+ public function getCampaign($campaignid, $position = 0, $influencernumber = 32){
     $infoarr = new stdClass;
     $saved = $this->savedDB();
     $stmt = $saved->prepare("SELECT l5o0c8t4_save_campaign.$campaignid.influencer_id, l5o0c8t4_save_campaign.$campaignid.facebook_post,l5o0c8t4_save_campaign.$campaignid.instagram_post,l5o0c8t4_save_campaign.$campaignid.twitter_post,
                                     l5o0c8t4_save_campaign.$campaignid.instagram_impressions,l5o0c8t4_save_campaign.$campaignid.facebook_impressions,l5o0c8t4_save_campaign.$campaignid.twitter_impressions,
                                     l5o0c8t4_save_campaign.$campaignid.instagram_engagement,l5o0c8t4_save_campaign.$campaignid.facebook_engagement,l5o0c8t4_save_campaign.$campaignid.twitter_engagement,
                                     l5o0c8t4_General_Information.Influencer_Information.image_url, l5o0c8t4_General_Information.Influencer_Information.instagram_count, l5o0c8t4_General_Information.Influencer_Information.instagram_url,l5o0c8t4_General_Information.Influencer_Information.instagram_eng,
-                                    l5o0c8t4_General_Information.Influencer_Information.twitter_url,l5o0c8t4_General_Information.Influencer_Information.twitter_count, l5o0c8t4_General_Information.Influencer_Information.twitter_eng, 
+                                    l5o0c8t4_General_Information.Influencer_Information.twitter_url,l5o0c8t4_General_Information.Influencer_Information.twitter_count, l5o0c8t4_General_Information.Influencer_Information.twitter_eng,
                                     l5o0c8t4_General_Information.Influencer_Information.facebook_count,l5o0c8t4_General_Information.Influencer_Information.facebook_url,l5o0c8t4_General_Information.Influencer_Information.facebook_eng,
                                     l5o0c8t4_General_Information.Influencer_Information.total FROM l5o0c8t4_save_campaign.$campaignid INNER JOIN l5o0c8t4_General_Information.Influencer_Information
                                     ON l5o0c8t4_save_campaign.$campaignid.influencer_id = l5o0c8t4_General_Information.Influencer_Information.id

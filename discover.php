@@ -22,7 +22,6 @@ include 'php/numberAbbreviation.php';
     <script src="/assets/js/loading.js"></script>
     <script src="/assets/js/avocado-card-functions.js"></script>
     <script src="assets/js/influencer_pullout.js"></script>
-    <script src="/assets/js/af-slidedown.js"></script>
     <script src="/assets/js/advanced-filters.js"></script>
     <script src="/assets/js/getKeywords.js"></script>
     <link rel="stylesheet" href="/assets/js/tokenfield/dist/css/bootstrap-tokenfield.css">
@@ -31,7 +30,6 @@ include 'php/numberAbbreviation.php';
     <link rel="stylesheet" href="assets/css/pullout.css">
     <link rel="stylesheet" href="assets/css/influencer-card.css">
     <link rel="stylesheet" href="/assets/css/discover.css">
-    <link rel="stylesheet" href="/assets/css/af-slidedown.css">
     <link rel="stylesheet" href="/global/js/jquery-ui-slider/jquery-ui.min.css">
     <link rel="stylesheet" href="/assets/css/advanced-filters.css">
 
