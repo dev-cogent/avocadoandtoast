@@ -128,7 +128,7 @@ $(document).on('click', '.filter-option', function () {
             },
             success: function (jqXHR, textStatus, errorThrown) {
                 influencerResults = JSON.parse(jqXHR);
-                $('#influencer-results-number').html('('+influencerResults+')').fadeIn(333);
+                $('#influencer-results-number').html('('+abbrNum(influencerResults)+')').fadeIn(333);
 
             }
         });
@@ -217,11 +217,34 @@ function showFilters(filters){
   $('.filter-input').val(valKeywords);
   var item = $('#af-icon-container').children();
   $.each(item,function(key, element){
+
       var elementPlatform = $(element).attr('data-platform');
       if(elementPlatform == filters.platform){
-        $(element).addClass('af-active-icon');
+        console.log(elementPlatform);
+        $(element).addClass('af-active-icon selected');
       }
   })
+  if(filters.category){
+    $('.influencer-category[data-category="'+filters.category+'"]').addClass('selected');
+    var parentObj = $('.influencer-category[data-category="'+filters.category+'"]').parent()[0]['childNodes'][3];
+    $(parentObj).toggle();
+    setTimeout(function(){
+      $('.subcategory-block[data-subcategory="'+filters.followers.min+'"]').click();
+    },600);
+  }
+
+  if(filters.engagement){
+    $('#engagement-min').val(filters.engagement.min);
+    $('#engagement-max').val(filters.engagement.max);
+  }
+
+  if(filters.location){
+    $('#location-input').val(filters.location);
+  }
+
+  if(filters.gender){
+    $('.gender-block[data-gender="'+filters.gender[0]+'"]').addClass('checked');
+  }
 
 }
 

@@ -170,7 +170,7 @@ function categoryDropdowns() {
         filters['followers']['max'] = 100000;
 
       }
-
+      filters['category'] = categorySelected;
       applyFilters(filters);
 
 
