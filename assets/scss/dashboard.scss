@@ -137,13 +137,43 @@ button:focus {
 }
 
 .campaign-details {
-  font-size: 17px; 
+  font-size: 17px;
   color: rgb(29, 40, 76);
   font-family: $secondary-font;
   padding-top: 30px;
 }
 
 
+/*Are you sure delete button pop up */
+.delete-icon-popup-div{
+  margin-top: 3%;
+  text-align: -webkit-center;
+}
+.trash-icon {
+  max-width: 100px;
+}
+.delete-list-text{
+font-size: 24px;
+}
+.delete-popup-detail {
+  text-transform: uppercase;
+  font-size: 18px;
+  color: black;
+}
+.delete-btn-div{
+  padding-top: 1%;
+  margin-bottom: 3%;
+}
+
+.delete-yes.primary-button {
+background: rgb(226,92,101);
+}
+
+.delete-yes, .delete-no {
+  width: 130px;
+  height: 35px;
+  margin-left: 1%;
+}
 /*Laptop to Tablet */
 
 @media only screen and (max-width: 1024px) and (min-width:768px) {
