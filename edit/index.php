@@ -3,13 +3,13 @@
 
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
-<head> 
+<head>
   <?php include '../html/head.html' ?>
     <title>Avocado & Toast</title>
 <script src="/bootbox/bootbox.js"></script>
 <script src="/global/vendor/bootstrap/bootstrap.js"></script>
 <script src="/assets/uislider/nouislider.js"></script>
-<link rel="stylesheet" href="/assets/css/discover.css">
+<link rel="stylesheet" href="/assets/css/dashboard.css">
 <link rel="stylesheet" href="/assets/css/edit-campaign.css">
 <link rel="stylesheet" href="/assets/css/footer.css">
 </head>
@@ -46,18 +46,18 @@
     <br/>
 
         <input type="date" class="col-xs-5 category avocado-focus avo-date" id="campaign-start" value="">
-        <div id="date-seperate" class="col-xs-2">TO</div> 
+        <div id="date-seperate" class="col-xs-2">TO</div>
         <input type="date" class="col-xs-5 category avocado-focus avo-date"  id="campaign-end"  value="">
         <br/>
 
     <label class="title" style="visibility:hidden;">Buttons</label>
-    
+
      <div class="col-xs-12 edit-buttons">
         <button class="col-xs-5 avo-btn-edit avo-btn-edit-secondary" id="delete-campaign" >DELETE</button>
         <button class="col-xs-5 avo-btn-edit avo-btn-edit-primary" id="submit-campaign" >SUBMIT</button>
-        </div> 
-       
-    </div>  
+        </div>
+
+    </div>
  </div>
     <?php include '../footer.php'; ?>
 </body class="col-s-6">
