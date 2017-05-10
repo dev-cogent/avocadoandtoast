@@ -205,6 +205,7 @@ span.token-label {
     color: $header-grey;
     font-family: $secondary-font;
     font-weight: 400;
+    margin-top: -5px;
     padding-left: 0px;
     min-width: 135px;
     text-align: center;
@@ -216,7 +217,7 @@ span.token-label {
     width: 100%;
     max-width: 600px ;
     min-width: 150px;
-    margin-top: 15px;
+    margin-top: 10px;
     margin-bottom:15px;
     border:1px solid $inactive-grey !important;
     outline: none !important;
@@ -236,8 +237,7 @@ span.token-label {
     font-family: $main-font;
     font-weight: 600;
     font-size: 23px;
-    padding-left: 12px;
-    padding-bottom: 20px;
+    padding-bottom: 12px;
 }
 
 .influencer-results-container {
@@ -258,7 +258,7 @@ span.token-label {
 }
 
 .filter-section {
-    padding-top: 20px;
+    padding-top: 12px;
 }
 
 
@@ -269,7 +269,6 @@ span.token-label {
     height: 45px;
     font-size: 16px;
     margin-bottom: 5px;
-    margin-top:10px;
 }
 
 .slider-container {

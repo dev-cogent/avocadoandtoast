@@ -106,91 +106,12 @@ include 'php/numberAbbreviation.php';
 
 
 
-
-<!--<div class="influencer-results-container col-xs-12">-->
-
-
-
-
-
-
-
-<!--
-        <div class="filter-button-container" id="button-filter">
-             <i class="filter-option button-icon button-icon-active icon bd-instagram"  data-platform="instagram" aria-hidden="true"></i>
-            <i class="filter-option button-icon icon bd-facebook"  data-platform="facebook" aria-hidden="true"></i>
-            <i class="filter-option button-icon icon bd-twitter"  data-platform="twitter" aria-hidden="true"></i>
-            <i class="filter-option button-icon icon bd-youtube"  data-platform="youtube" aria-hidden="true"></i>
-        </div>
-
-
-<!-- Slider Rows -->
-        <!--<div class="slider-container">
-                <div class="measure-text">FOLLOWERS</div>
-                        <div class="sliders"  data-platform="instagram">
-                            <input  class="col-xs-1 input-filter " type="text" id="min-instagram">
-                            <div id="slider-instagram" class="col-xs-10"></div>
-                            <input id="max-instagram" class="col-xs-1 input-filter"style="display:inline; padding-left:2%; padding-right:0px;" type="text">
-                        </div>
-
-            <div class="sliders" data-platform="facebook" style="display:none;">
-                <input  class="col-xs-1 input-filter" type="text" id="min-facebook">
-                <div  id="slider-facebook" class="col-xs-10"></div>
-                <input id="max-facebook" class="col-xs-1 input-filter"style="display:inline; padding-left:2%; padding-right:0px;" type="text">
-            </div>
-
-            <div class="sliders" data-platform="twitter" style="display:none;">
-                <input  class="col-xs-1 input-filter" type="text" id="min-twitter">
-                <div id="slider-twitter" class="col-xs-10"></div>
-                <input id="max-twitter" class="col-xs-1 input-filter"style="display:inline; padding-left:2%; padding-right:0px;" type="text">
-            </div>
-
-
-
-
-            </div>
-
-        <div class="slider-container" >
-                <div class="measure-text" id="engagement-text" >ENGAGEMENT %</div>
-            <div class="sliders" data-platform="instagram-engagement">
-                <input  class="col-xs-1 input-filter engagement-slider " type="text" id="min-instagram-engagement">
-                <div style="margin-top:20px;" id="slider-instagram-engagement" class="col-xs-10"></div>
-                <input id="max-instagram-engagement" class="col-xs-1 input-filter engagement-slider"style="display:inline; padding-left:2%; padding-right:0px;" type="text">
-            </div>
-            <div class="sliders" data-platform="facebook-engagement" style="display:none;">
-                <input  class="col-xs-1 input-filter engagement-slider" type="text" id="min-facebook-engagement">
-                <div  style="margin-top:20px;" id="slider-facebook-engagement" class="col-xs-10"></div>
-                <input id="max-facebook-engagement" class="col-xs-1 input-filter engagement-slider"style="display:inline; padding-left:2%; padding-right:0px;" type="text">
-            </div>
-
-            <div class="sliders" data-platform="twitter-engagement" style="display:none;">
-                <input  class="col-xs-1 input-filter engagement-slider" type="text" id="min-twitter-engagement">
-                <div style="margin-top:20px;" id="slider-twitter-engagement" class="col-xs-10"></div>
-                <input id="max-twitter-engagement" class="col-xs-1 input-filter engagement-slider"style="display:inline; padding-left:2%; padding-right:0px;" type="text">
-            </div>-->
-
-
-            <!--</div>-->
-
-
-
-
-
-
-
-
-
-
-
-
-<!--end slider rows -->
-
     <hr>
     <br>
 
-    <div class="influencer-header">INFLUENCERS <span id="influencer-results-number"></div>
-      <div class="col-xs-4 col-sm-1" ></div>
-      <div class="col-xs-4 col-sm-1" id="af-container">
+
+      <div class="col-xs-4 col-md-2 col-lg-1" ></div>
+      <div class="col-xs-4 col-md-2 col-lg-1" id="af-container">
             <div id="reset-button" class="af-header">
               RESET ALL
             </div>
@@ -259,7 +180,10 @@ include 'php/numberAbbreviation.php';
 
        <!-- <div class="influencer-header">INFLUENCER RESULTS</div>-->
 
-        <div class="found-influencers col-xs-11">
+        <div class="col-md-10 col-lg-11">
+          <div class="influencer-header">INFLUENCERS <span id="influencer-results-number"></div>
+          <div class="found-influencers">
+            <br/>
             <?php
                 //If this is a get request, then we will make a script here to collect the parameters from the GET request. Afterwards we will apply this script at the end of the page.
                 if($_GET['q']){
@@ -280,6 +204,7 @@ include 'php/numberAbbreviation.php';
                     ";
                 }
             ?>
+          </div>
         </div>
     </div>
 </div>
@@ -309,7 +234,6 @@ var filters = {
 
 </script>
 <script src="/assets/js/avocado-discover.js"></script>
-<script src="/assets/js/create-campaign.js"></script>
 
 <?php if($getParameter) {echo $getParameter;}
       else{
