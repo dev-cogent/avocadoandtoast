@@ -145,23 +145,36 @@ button:focus {
 
 
 /*Are you sure delete button pop up */
+.modal-content.delete {
+  min-height: 230px;
+  max-width: 500px;
+}
+
+
 .delete-icon-popup-div{
-  margin-top: 3%;
+  margin-top: 10%;
   text-align: -webkit-center;
 }
 .trash-icon {
-  max-width: 100px;
+  max-width: 80px;
+  margin-top: 4%;
+  margin-left: 5%;
+  &.margin{
+    margin-top: 6%;
+    margin-bottom: 1%;
+  }
 }
 .delete-list-text{
-font-size: 24px;
+  font-size: 26px;
 }
+
 .delete-popup-detail {
   text-transform: uppercase;
   font-size: 18px;
   color: black;
 }
 .delete-btn-div{
-  padding-top: 1%;
+  padding-top: 2%;
   margin-bottom: 3%;
 }
 
