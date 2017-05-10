@@ -20,7 +20,7 @@ $(document).ready(function() {
                     '<td class="stats mobile-off impressions"><a class="stats" href="/campaigns/?id=' + key + '">' + abbrNum(obj.average_impressions) + '</a></td>' +
                     '<td class="stats mobile-off mobile-off-first"><a class="stats" href="/campaigns/?id=' + key + '">' + abbrNum(obj.average_engagement) + '</a></td>' +
                     '<td class="stats reach"><a class="stats" href="/campaigns/?id=' + key + '">' + abbrNum(obj.totalimpressions) + '</a></td>' +
-                    '<td class="button-stats"><a href="/price/?id=' + key + '"><button class="primary-button button-stats-bt">PRICE CAMPAIGN</button> </a></td>' +
+                    '<td class="button-stats"><a href="/price/?id=' + key + '"><button class="primary-button button-stats-bt">PRICE LIST</button> </a></td>' +
                     '</tr>' +
                     '<tr>' +
                     '<td class="label-info">Influencers</td>' +
@@ -72,7 +72,7 @@ $(document).on('click','.delete-campaign',function(){
   dialog = bootbox.dialog({
     message:   '<div class="bootbox-body">'+
       '<div class="delete-icon-popup-div"> <img src="/assets/images/delete.png" class="trash-icon"/> </div>'+
-      '<div class="row"> <div class="delete-popup-detail">   <span class="delete-list-text"> DELETE LIST?  </span> <br/> Once deleted this action cannot be undone </div>'+
+      '<div class="row popup"> <div class="delete-popup-detail">   <span class="delete-list-text"> DELETE LIST?  </span> <br/> Once deleted this action cannot be undone </div>'+
       '<div class="delete-btn-div"> <button class="delete-yes primary-button" type="button" data-name="'+ campaignname + '" data-campaign="'+campaignid+'"> DELETE '+
       '</button> <button class="delete-no secondary-button" type="button"> NOPE </button></div>'+
       '</div>',
@@ -98,15 +98,15 @@ $(document).on('click','.delete-yes', function(){
     dialog = bootbox.dialog({
       message: '<div class="bootbox-body">' +
       '<div class="delete-icon-popup-div"> <img src="/assets/images/delete.png" class="trash-icon margin"/> </div>' +
-      '<div class="row"> <div class="delete-popup-detail"> <span class="delete-list-text"> SUCCESS! </span> <br> Your '+ campaignname+ ' List has been deleted sucessfully  </div>' +
+      '<div class="row popup"> <div class="delete-popup-detail"> <span class="delete-list-text"> SUCCESS! </span> <br> Your '+ campaignname+ ' List has been deleted sucessfully  </div>' +
       '<div class="delete-btn-div"> <a href="/campaigns/?id=' + campaignid + '"></a></div>' +
       '</div>',
         closeButton: true
     });
-    dialog.modal();
-    setTimeout(function () {
-      location.href="/dashboard.php";
-    }, 3000);
+    // dialog.modal();
+    // setTimeout(function () {
+    //   location.href="/dashboard.php";
+    // }, 2000);
   }
 
 }); // end ajax request*/

@@ -57,12 +57,12 @@ $url = $_SERVER['REQUEST_URI'];
           <div class="dropdown-content">
 
                 <a href="/settings.php">SETTINGS <i class="icon wb-settings nav-bar" aria-hidden="true"></i></a>
-               
+
              <?php if($isLoggedin) echo' <a href="/logout.php">LOGOUT <i class="icon fa-power-off nav-bar" aria-hidden="true"></i></a>';
                       else echo '<a href="/login.php">LOGIN</a>';
                 ?>
-            
-      
+
+
           </div>
 
           </div>

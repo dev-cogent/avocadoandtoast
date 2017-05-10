@@ -25,6 +25,14 @@
     padding:0px;
 }
 
+/* removes margin on pop ups to fit width of phones */ 
+.row.popup{
+  @media (max-width: 480px){
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 .modal-close-button{
     @extend %x-button;
     position: fixed;
