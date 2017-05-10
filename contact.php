@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
-<head> 
+<head>
   <?php include 'html/head.html' ?>
     <title>Avocado & Toast</title>
 <script src="/bootbox/bootbox.js"></script>
@@ -16,6 +16,27 @@
 
 
 <div class="center-form-content" >
+<style>
+
+/* no results found error */ 
+.no-results-body {
+  text-align: center;
+}
+.no-results-icon {
+  max-width: 425px;
+}
+.no-results-detail{
+  font-size: 20px;
+  color: black;
+}
+
+</style>
+
+   <div class="no-results-body">
+    <div class="no-results-icon-div"> <img src="/assets/images/error-page.gif" class="no-results-icon"/> </div>
+    <div class="row"> <div class="no-results-detail"> <span class="delete-list-text"> SORRY! LOOKS LIKE NO RESULTS WERE FOUND  </span>
+       <br>  PLEASE TRY AGAIN OR  <a href="#"> CONTACT US </a>   </div>
+    </div>
 
 <div class="desc-header" id="edit-campaign-name" style="font-family: 'montserratsemibold'; color:#515862;">CONTACT US</div>
 <div  class="input-container">
@@ -42,4 +63,3 @@
 </div>
 
 </div>
-

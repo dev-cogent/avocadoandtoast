@@ -37,7 +37,7 @@
     dialog:
       "<div class='bootbox modal' tabindex='-1' role='dialog' aria-hidden='true'>" +
         "<div class='modal-dialog'>" +
-          "<div class='modal-content'>" +
+          "<div class='modal-content delete sucessful-delete successful-campaign name edit no-results'>" +
             "<div class='modal-body'><div class='bootbox-body'></div></div>" +
           "</div>" +
         "</div>" +

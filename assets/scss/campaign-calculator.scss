@@ -1,563 +1,617 @@
-            /*styling for avocado-get-influencers.php */
-            /* using SCSS variables to store breakpoints  note that sc stands for screen */
+    /*styling for avocado-get-influencers.php */
+    /* using SCSS variables to store breakpoints  note that sc stands for screen */
 
-            @import 'utility';
-            $sc-sm-mobile: 320px;
-            $sc-md-mobile: 375px;
-            $sc-lg-mobile: 480px;
-            $sc-tablet: 768px;
-            $sc-md: 992px;
-            $sc-lg: 1200px;
-            .info-container {
-                height: 150px;
-            }
+    @import 'utility';
+    $sc-sm-mobile: 320px;
+    $sc-md-mobile: 375px;
+    $sc-lg-mobile: 480px;
+    $sc-tablet: 768px;
+    $sc-md: 992px;
+    $sc-lg: 1200px;
+    .info-container {
+        height: 150px;
+    }
 
-            .campaign-info {
-                margin-top: 2%;
-            }
+    .campaign-info {
+        margin-top: 2%;
+    }
 
-            .camapaign-label-container {
-                float: left;
-                margin-left: 9%;
-                .campaign-label-div {
-                    margin-bottom: 5%;
-                }
-            }
+    .camapaign-label-container {
+        float: left;
+        margin-left: 9%;
+        .campaign-label-div {
+            margin-bottom: 5%;
+        }
+    }
 
-            .campaign-info-index {
-                margin-top: -20px;
-                text-align: justify;
-                direction: rtl;
-                padding-right: 5%;
-            }
+    .campaign-info-index {
+        margin-top: -20px;
+        text-align: justify;
+        direction: rtl;
+        padding-right: 5%;
+    }
 
-            .index-name {
-                font-size: 16px;
-            }
+    .index-name {
+        font-size: 16px;
+    }
 
-            .posts-green {
-                color: $avo-green;
-            }
+    .posts-green {
+        color: $avo-green;
+    }
 
-            .impression-blue {
-                color: $impression-blue;
-            }
+    .impression-blue {
+        color: $impression-blue;
+    }
 
-            .engagement-orange {
-                color: $engagement-orange;
-            }
+    .engagement-orange {
+        color: $engagement-orange;
+    }
 
-            .social-following-red {
-                color: $social-following-red;
-            }
+    .social-following-red {
+        color: $social-following-red;
+    }
 
-            @media (max-width:767px) {
-                .campaign-info-index {
-                    margin-top: 0.5%;
-                }
-            }
+    @media (max-width:767px) {
+        .campaign-info-index {
+            margin-top: 0.5%;
+        }
+    }
 
-            .info-button {
-                @extend .primary-button;
-                float: right;
-                margin-top: 1%;
-                margin-bottom: 2%;
-                height: 45px;
-                margin-right: 3%;
-                max-width: 175px;
-                width: 100%;
-            }
+    .info-button {
+        @extend .primary-button;
+        float: right;
+        margin-top: 1%;
+        margin-bottom: 2%;
+        height: 45px;
+        margin-right: 3%;
+        max-width: 175px;
+        width: 100%;
+    }
 
-            .save-btn {
-                font-family: $main-font;
-                height: 36px;
-                background-color: white;
-                border: 1px solid $header-grey;
-                padding: 9px 12px;
-                margin-left: -2px;
-                float: left;
-            }
+    .save-btn {
+        font-family: $main-font;
+        height: 36px;
+        background-color: white;
+        border: 1px solid $header-grey;
+        padding: 9px 12px;
+        margin-left: -2px;
+        float: left;
+    }
 
-            i.icon.ti-plus.black-plus {
-                color: $header-grey;
-                font-weight: 800;
-                font-size: 14px;
-            }
+    i.icon.ti-plus.black-plus {
+        color: $header-grey;
+        font-weight: 800;
+        font-size: 14px;
+    }
 
-            .select-campaign-container {
-                position: relative;
-                right: calc(100% - 384px);
-            }
+    .select-campaign-container {
+        position: relative;
+        right: calc(100% - 384px);
+    }
 
-            #campaign-select-text {
-                width: 165px;
-                font-family: $main-font;
-            }
+    #campaign-select-text {
+        width: 165px;
+        font-family: $main-font;
+    }
 
-            .add-to-existing-container {
-                display: flex;
-            }
+    .add-to-existing-container {
+        display: flex;
+    }
 
-            select.form-control.category.avocado-focus.campaign-dropdown.col-xs-12 {
-                width: 145px;
-            }
+    select.form-control.category.avocado-focus.campaign-dropdown.col-xs-12 {
+        width: 145px;
+    }
 
-            @media (min-width:$sc-lg-mobile) and (max-width:$sc-tablet) {
-                /*  tablet  */
-                .nav-bottom {
-                    height: 25px;
-                }
-                .post-container.tablet {
-                    padding-left: 1%;
-                    padding-right: 1%;
-                }
-                .select-campaign-container {
-                    right: 0;
-                }
-                .camapaign-label-container {
-                    margin-left: 0;
-                }
-                button#apply.secondary-button {
-                    width: 145px;
-                    font-size: 13px;
-                }
-                .index-name {
-                    font-size: 14px;
-                }
-                .campaign-calc-btn-container.tablet {
-                    width: 100%;
-                }
-                .influencer-info-container {
-                    display: inline-block;
-                    margin-left: 0;
-                }
-                td.influencer-column .influencer-handle-text {
-                    padding-left: 0;
-                    min-width: 0;
-                }
-                .info-button {
-                    font-size: 13px;
-                    max-width: 160px;
-                }
-                .results-mini-col.tablet {
-                    font-size: 12px;
-                    margin-top: -39%;
-                    margin-right: -2%;
-                }
-            }
+    /*  Error handling  popup for when user tries to create list without name and other popups */
+    .modal-content.name {
+      min-height: 380px;
+      max-width: 520px;
+      @media (max-width:480px){
+        min-height: 450px;
+      }
+    }
+    .view-campaign-div, .add-details-div {
+      display: inline-block;
+      margin-left: 1%;
+      @media (max-width: 480px){
+        // margin-top: 4%; 
+      }
+    }
+    .view-campaign-btn, .add-details-btn {
+      height: 37px;
+      width: 140px;
+      margin-left: 1%;
+    }
 
-            @media (min-width:481px) and (max-width:615px) {
-                .mobile-apply {
-                    position: relative;
-                    top: -55px;
-                    font-size: 13px;
-                }
-                .results-mini-col.tm {
-                    margin-top: -57%;
-                    margin-right: -13%;
-                }
-            }
+    .campaign-name-error-gif {
+      max-width: 250px;
+    }
+    .no-name-popup-div {
+      text-align: center;
+    }
+    .no-name-error{
+      font-size: 25px;
+    }
+    .successful-list-detail {
+      text-transform: uppercase;
+      font-size: 18px;
+      margin-bottom: 3%;
+      margin-top: -4%;
+      color: black;
+    }
+    .name-popup-detail {
+      text-transform: uppercase;
+      font-size: 17px;
+      margin-bottom: 4%;
+      margin-top: -1%;
+      color: black;
+      @media (max-width: 480px){
+        margin-top: 5%;
+      }
+    }
 
-            @media (min-width:1px) and (max-width:480px) {
-                /*  mobile  */
-                .nav-bottom {
-                    height: 15px;
-                }
-                .results-mini-col.mobile {
-                    display: none;
-                }
-                .campaign-select {
-                    text-align: -webkit-center;
-                }
-                #campaign-name.mobile {
-                    font-size: 18px;
-                    width: 50%;
-                }
-                .camapaign-label-container.mobile {
-                    float: none;
-                    margin-left: auto;
-                    margin-right: auto;
-                }
-                .post-container.mobile {
-                    padding-left: 0;
-                    padding-right: 0;
-                }
-                .post-results-container.mobile {
-                    text-align: -webkit-right;
-                }
-                .influencer-info-container.mobile {
-                    margin-left: 0;
-                    display: block;
-                }
-                #apply.secondary-button.small {
-                    width: 150px;
-                    font-size: 14px;
-                }
-                .info-button.mobile {
-                    max-width: 160px;
-                    font-size: 13px;
-                }
-                .mobile-apply {
-                    position: relative;
-                    top: -55px;
-                    font-size: 13px;
-                }
-                .influencer-handle-text {
-                    font-size: 13px;
-                    text-overflow: ellipsis;
-                    min-width: 65px;
-                    white-space: nowrap;
-                    overflow: hidden;
-                }
-                .results-text.mobile {
-                    float: right;
-                    font-size: 2.4em;
-                }
-                .index-name {
-                    font-size: 14px;
-                }
-                .result-name.mobile {
-                    font-size: 12px;
-                    margin-left: -30%;
-                }
-                .campaign-info-index {
-                    margin-top: 6%;
-                }
-            }
+    .submit-button {
+      height: 38px;
+      min-width: 140px;
+      margin-bottom: 5%;
+    }
 
-            @media (min-width:351px) and (max-width:410px) {
-                /* minor edits for smaller screen mobile  */
-                .info-button.sm-mobile {
-                    max-width: 148px;
-                    font-size: 12px;
-                }
-                .select-campaign-container.small {
-                    right: 9px;
-                }
-                .campaignfocus.mobile {
-                    width: 108px;
-                }
-                .post-results-container.tm {
-                    margin-right: 20%;
-                }
-            }
+    @media (min-width:$sc-lg-mobile) and (max-width:$sc-tablet) {
+        /*  tablet  */
+        .nav-bottom {
+            height: 25px;
+        }
+        .post-container.tablet {
+            padding-left: 1%;
+            padding-right: 1%;
+        }
+        .select-campaign-container {
+            right: 0;
+        }
+        .camapaign-label-container {
+            margin-left: 0;
+        }
+        button#apply.secondary-button {
+            width: 145px;
+            font-size: 13px;
+        }
+        .index-name {
+            font-size: 14px;
+        }
+        .campaign-calc-btn-container.tablet {
+            width: 100%;
+        }
+        .influencer-info-container {
+            display: inline-block;
+            margin-left: 0;
+        }
+        td.influencer-column .influencer-handle-text {
+            padding-left: 0;
+            min-width: 0;
+        }
+        .info-button {
+            font-size: 13px;
+            max-width: 160px;
+        }
+        .results-mini-col.tablet {
+            font-size: 12px;
+            margin-top: -39%;
+            margin-right: -2%;
+        }
+    }
 
-            @media (min-width:300px) and (max-width:350px) {
-                button.info-button.sm-mobile {
-                    max-width: 75%;
-                }
-                div.select-campaign-container.small {
-                    right: 30px;
-                }
-                .campaignfocus.mobile {
-                    width: 85px;
-                }
-                #campaign-select-text {
-                    width: 130px;
-                }
-                #apply.secondary-button.small {
-                    width: 135px;
-                }
-                p.result-name.mobile {
-                    max-width: 65px;
-                    margin-left: -16px;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                    overflow: hidden;
-                }
-            }
+    @media (min-width:481px) and (max-width:615px) {
+        .mobile-apply {
+            position: relative;
+            top: -55px;
+            font-size: 13px;
+        }
+        .results-mini-col.tm {
+            margin-top: -57%;
+            margin-right: -13%;
+        }
+    }
 
-            .campaign-desc-label {
-                float: left;
-                margin-left: 12.5%;
-                margin-top: 3%;
-                color: $header-grey;
-            }
+    @media (min-width:1px) and (max-width:480px) {
+        /*  mobile  */
+        .nav-bottom {
+            height: 15px;
+        }
+        .results-mini-col.mobile {
+            display: none;
+        }
+        .campaign-select {
+            text-align: -webkit-center;
+        }
+        #campaign-name.mobile {
+            font-size: 18px;
+            width: 50%;
+        }
+        .camapaign-label-container.mobile {
+            float: none;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .post-container.mobile {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .post-results-container.mobile {
+            text-align: -webkit-right;
+        }
+        .influencer-info-container.mobile {
+            margin-left: 0;
+            display: block;
+        }
+        #apply.secondary-button.small {
+            width: 150px;
+            font-size: 14px;
+        }
+        .info-button.mobile {
+            max-width: 160px;
+            font-size: 13px;
+        }
+        .mobile-apply {
+            position: relative;
+            top: -55px;
+            font-size: 13px;
+        }
+        .influencer-handle-text {
+            font-size: 13px;
+            text-overflow: ellipsis;
+            min-width: 65px;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .results-text.mobile {
+            float: right;
+            font-size: 2.4em;
+        }
+        .index-name {
+            font-size: 14px;
+        }
+        .result-name.mobile {
+            font-size: 12px;
+            margin-left: -30%;
+        }
+        .campaign-info-index {
+            margin-top: 6%;
+        }
+    }
 
-            .campaign-desc-textarea {
-                height: 50px;
-                width: 70%;
-                margin-left: 12.5%;
-                margin-top: 1%;
-                float: left;
-            }
+    @media (min-width:351px) and (max-width:410px) {
+        /* minor edits for smaller screen mobile  */
+        .info-button.sm-mobile {
+            max-width: 148px;
+            font-size: 12px;
+        }
+        .select-campaign-container.small {
+            right: 9px;
+        }
+        .campaignfocus.mobile {
+            width: 108px;
+        }
+        .post-results-container.tm {
+            margin-right: 20%;
+        }
+    }
 
-            #apply {
-                height: 40px;
-                width: 180px;
-                font-size: 15px;
-                font-family: $main-font;
-                margin-right: 46%;
-                &focus {
-                    outline: none;
-                }
-            }
+    @media (min-width:300px) and (max-width:350px) {
+        button.info-button.sm-mobile {
+            max-width: 75%;
+        }
+        div.select-campaign-container.small {
+            right: 30px;
+        }
+        .campaignfocus.mobile {
+            width: 85px;
+        }
+        #campaign-select-text {
+            width: 130px;
+        }
+        #apply.secondary-button.small {
+            width: 135px;
+        }
+        p.result-name.mobile {
+            max-width: 65px;
+            margin-left: -16px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+    }
 
-            .post-container {
-                padding-left: 4%;
-                padding-right: 4%;
-            }
+    .campaign-desc-label {
+        float: left;
+        margin-left: 12.5%;
+        margin-top: 3%;
+        color: $header-grey;
+    }
 
-            table {
-                table-layout: fixed;
-                width: 100%;
-                margin: 0;
-                padding: 0;
-                tbody {
-                    @include separator(top, $separator-grey);
-                }
-            }
+    .campaign-desc-textarea {
+        height: 50px;
+        width: 70%;
+        margin-left: 12.5%;
+        margin-top: 1%;
+        float: left;
+    }
 
-            .insta-logo,
-            .fb-logo {
-                max-width: 30px;
-                max-height: 30px;
-            }
+    #apply {
+        height: 40px;
+        width: 180px;
+        font-size: 15px;
+        font-family: $main-font;
+        margin-right: 46%;
+        &focus {
+            outline: none;
+        }
+    }
 
-            .twitter-logo2 {
-                max-width: 25px;
-                max-height: 25px;
-            }
+    .post-container {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
 
-            td.insta-column,
-            td.twit-column,
-            td.face-column,
-            td.influencer-column {
-                border-left: hidden;
-                border-right: hidden;
-                padding-top: 1.5%;
-                padding-bottom: 1.5%;
-                position: relative;
-            }
+    table {
+        table-layout: fixed;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        tbody {
+            @include separator(top, $separator-grey);
+        }
+    }
 
-            .influencer-info-container {
-                // max-width: 180px;
-                padding-top: 5px;
-                margin-left: 20%;
-                display: inline-block
-            }
+    .insta-logo,
+    .fb-logo {
+        max-width: 30px;
+        max-height: 30px;
+    }
 
-            .influencer-campaign-image {
-                max-width: 65px;
-                max-height: 65px;
-                width: 100%;
-                height: 100%;
-            }
+    .twitter-logo2 {
+        max-width: 25px;
+        max-height: 25px;
+    }
 
-            .influencer-handle-text {
-                font-size: 15px;
-                color: $header-grey;
-                font-weight: 100;
-                margin-top: 5%;
-            }
+    td.insta-column,
+    td.twit-column,
+    td.face-column,
+    td.influencer-column {
+        border-left: hidden;
+        border-right: hidden;
+        padding-top: 1.5%;
+        padding-bottom: 1.5%;
+        position: relative;
+    }
 
-            .post-results-container {
-                color: $header-grey;
-                font-size: 12px;
-                margin-left: -8%;
-                font-family: $main-font;
-            }
+    .influencer-info-container {
+        // max-width: 180px;
+        padding-top: 5px;
+        margin-left: 20%;
+        display: inline-block
+    }
 
-            .results-mini-col {
-                text-align: -webkit-right;
-                margin-top: -30%;
-                margin-right: 15%;
-                font-size: 16px;
-                font-family: $main-font-semi;
-            }
+    .influencer-campaign-image {
+        max-width: 65px;
+        max-height: 65px;
+        width: 100%;
+        height: 100%;
+    }
 
-            tr.influencer-result-row {
-                text-align: center;
-                @include separator(bottom, $separator-lightgrey);
-            }
+    .influencer-handle-text {
+        font-size: 15px;
+        color: $header-grey;
+        font-weight: 100;
+        margin-top: 5%;
+    }
 
-            th.text-center {
-                text-transform: uppercase;
-                font-size: 18px;
-                font-family: $main-font-semi;
-                color: $header-grey;
-                padding-top: 2%;
-                padding-bottom: 2%;
-                letter-spacing: 0.5px;
-                @include separator(top, $separator-grey);
-            }
+    .post-results-container {
+        color: $header-grey;
+        font-size: 12px;
+        margin-left: -8%;
+        font-family: $main-font;
+    }
 
-            @media (min-width:769px) and (max-width:1000px) {
-                .results-mini-col {
-                    margin-top: -40%;
-                    margin-right: -11%;
-                }
-            }
+    .results-mini-col {
+        text-align: -webkit-right;
+        margin-top: -30%;
+        margin-right: 15%;
+        font-size: 16px;
+        font-family: $main-font-semi;
+    }
 
-            @media (min-width:1001px) and (max-width:1200px) {
-                .results-mini-col {
-                    margin-top: -29%;
-                }
-                .index-name {
-                    font-size: 14px;
-                }
-                .campaign-info-index {
-                    margin-top: -60px;
-                }
-            }
+    tr.influencer-result-row {
+        text-align: center;
+        @include separator(bottom, $separator-lightgrey);
+    }
 
-            @media (min-width:1201px) and (max-width:1399px) {
-                .index-name {
-                    font-size: 14px;
-                }
-            }
+    th.text-center {
+        text-transform: uppercase;
+        font-size: 18px;
+        font-family: $main-font-semi;
+        color: $header-grey;
+        padding-top: 2%;
+        padding-bottom: 2%;
+        letter-spacing: 0.5px;
+        @include separator(top, $separator-grey);
+    }
 
-            @media (min-width:1400px) and (max-width:1650px) {
-                .results-mini-col {
-                    margin-top: -24%;
-                }
-            }
+    @media (min-width:769px) and (max-width:1000px) {
+        .results-mini-col {
+            margin-top: -40%;
+            margin-right: -11%;
+        }
+    }
 
-            @media (min-width:1651px) and (max-width:1850px) {
-                .results-mini-col {
-                    margin-top: -22%;
-                    margin-right: 18%;
-                }
-            }
+    @media (min-width:1001px) and (max-width:1200px) {
+        .results-mini-col {
+            margin-top: -29%;
+        }
+        .index-name {
+            font-size: 14px;
+        }
+        .campaign-info-index {
+            margin-top: -60px;
+        }
+    }
 
-            @media (min-width:1851px) and (max-width:2100px) {
-                div.results-mini-col {
-                    margin-top: -19%;
-                    margin-right: 23%
-                }
-                .post-results-container {
-                    margin-left: -5%;
-                }
-            }
+    @media (min-width:1201px) and (max-width:1399px) {
+        .index-name {
+            font-size: 14px;
+        }
+    }
 
-            @media (min-width:2101px) and (max-width:3100px) {
-                .results-mini-col {
-                    margin-top: -17%;
-                    margin-right: 22%
-                }
-            }
+    @media (min-width:1400px) and (max-width:1650px) {
+        .results-mini-col {
+            margin-top: -24%;
+        }
+    }
 
-            .campaign-select {
-                padding-top: 20px;
-            }
+    @media (min-width:1651px) and (max-width:1850px) {
+        .results-mini-col {
+            margin-top: -22%;
+            margin-right: 18%;
+        }
+    }
 
-            .campaign-calc-btn-container {
-                width: calc(100% - 30px);
-            }
+    @media (min-width:1851px) and (max-width:2100px) {
+        div.results-mini-col {
+            margin-top: -19%;
+            margin-right: 23%
+        }
+        .post-results-container {
+            margin-left: -5%;
+        }
+    }
 
-            .campaign-dropdown {
-                display: inline;
-                width: 20%;
-            }
+    @media (min-width:2101px) and (max-width:3100px) {
+        .results-mini-col {
+            margin-top: -17%;
+            margin-right: 22%
+        }
+    }
 
-            .go-back-btn-div,
-            .user-campaign-name,
-            .user-campaign-inf-count {
-                display: inline-block;
-            }
+    .campaign-select {
+        padding-top: 20px;
+    }
 
-            .go-back-btn-div,
-            .user-campaign-name {
-                font-family: $main-font-skinny;
-            }
+    .campaign-calc-btn-container {
+        width: calc(100% - 30px);
+    }
 
-            .campaign-inf-count,
-            .user-campaign-inf-count {
-                font-family: $main-font-semi;
-            }
+    .campaign-dropdown {
+        display: inline;
+        width: 20%;
+    }
 
-            .back-btn {
-                font-size: 15px;
-                text-transform: uppercase;
-                color: $header-grey;
-                padding: 10px 35px 10px 35px;
-                border: 1px solid black;
-            }
+    .go-back-btn-div,
+    .user-campaign-name,
+    .user-campaign-inf-count {
+        display: inline-block;
+    }
 
-            .go-back-btn-div {
-                margin-top: 2%;
-                margin-bottom: 4%;
-                margin-left: 1%;
-                vertical-align: -webkit-baseline-middle;
-            }
+    .go-back-btn-div,
+    .user-campaign-name {
+        font-family: $main-font-skinny;
+    }
 
-            .user-campaign-name {
-                font-size: 28px;
-                margin-left: 2%;
-                margin-right: 2%;
-                color: #515862;
-                vertical-align: sub;
-            }
+    .campaign-inf-count,
+    .user-campaign-inf-count {
+        font-family: $main-font-semi;
+    }
 
-            .campaign-inf-count {
-                font-size: 4rem;
-                color: $avo-green;
-            }
+    .back-btn {
+        font-size: 15px;
+        text-transform: uppercase;
+        color: $header-grey;
+        padding: 10px 35px 10px 35px;
+        border: 1px solid black;
+    }
 
-            .user-campaign-inf-count {
-                font-size: 16px;
-                color: $header-grey;
-                vertical-align: sub;
-            }
+    .go-back-btn-div {
+        margin-top: 2%;
+        margin-bottom: 4%;
+        margin-left: 1%;
+        vertical-align: -webkit-baseline-middle;
+    }
 
-            #campaign-select-text {
-                color: $header-grey;
-                padding-left: 25px;
-                display: inline;
-                padding-top: 7px;
-                font-size: 14px;
-            }
+    .user-campaign-name {
+        font-size: 28px;
+        margin-left: 2%;
+        margin-right: 2%;
+        color: #515862;
+        vertical-align: sub;
+    }
 
-            .number-posts-text {
-                color: $header-grey;
-                font-size: 12px;
-                display: inline;
-                padding-left: 10px;
-            }
+    .campaign-inf-count {
+        font-size: 4rem;
+        color: $avo-green;
+    }
 
-            .campaignfocus {
-                font-weight: 600;
-                background-color: transparent;
-                border: none;
-                text-align: center;
-                font-size: 2.4em;
-                width: 110px;
-                height: 45px;
-                color: $avo-green;
-                font-family: $main-font;
-                &:focus {
-                    outline: none;
-                    background-color: transparent;
-                    color: rgba(0, 0, 44, 0.37);
-                }
-            }
+    .user-campaign-inf-count {
+        font-size: 16px;
+        color: $header-grey;
+        vertical-align: sub;
+    }
 
-            .result-name {
-                font-size: 16px;
-                font-family: $main-font;
-                color: $header-grey;
-            }
+    #campaign-select-text {
+        color: $header-grey;
+        padding-left: 25px;
+        display: inline;
+        padding-top: 7px;
+        font-size: 14px;
+    }
 
-            .results-text {
-                color: $avo-green;
-                font-family: $main-font-semi;
-                font-size: 3em;
-                padding-right: 17px;
-                font-weight: 600;
-            }
+    .number-posts-text {
+        color: $header-grey;
+        font-size: 12px;
+        display: inline;
+        padding-left: 10px;
+    }
 
-            #campaign-label {
-                font-family: $main-font;
-                color: $header-grey;
-                padding-right: 10px;
-            }
+    .campaignfocus {
+        font-weight: 600;
+        background-color: transparent;
+        border: none;
+        text-align: center;
+        font-size: 2.4em;
+        width: 110px;
+        height: 45px;
+        color: $avo-green;
+        font-family: $main-font;
+        &:focus {
+            outline: none;
+            background-color: transparent;
+            color: rgba(0, 0, 44, 0.37);
+        }
+    }
 
-            #campaign-name {
-                border: 0;
-                @include separator (bottom, $separator-lightgrey);
-                font-size: 24px;
-                color: $inactive-grey;
-                &:focus {
-                    outline: none;
-                }
-            }
+    .result-name {
+        font-size: 16px;
+        font-family: $main-font;
+        color: $header-grey;
+    }
+
+    .results-text {
+        color: $avo-green;
+        font-family: $main-font-semi;
+        font-size: 3em;
+        padding-right: 17px;
+        font-weight: 600;
+    }
+
+    #campaign-label {
+        font-family: $main-font;
+        color: $header-grey;
+        padding-right: 10px;
+    }
+
+    #campaign-name {
+        border: 0;
+        @include separator (bottom, $separator-lightgrey);
+        font-size: 24px;
+        color: $inactive-grey;
+        &:focus {
+            outline: none;
+        }
+    }
