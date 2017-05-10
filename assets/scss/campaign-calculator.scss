@@ -100,6 +100,7 @@
 
     select.form-control.category.avocado-focus.campaign-dropdown.col-xs-12 {
         width: 145px;
+        border: 1px solid black; 
     }
 
     /*  Error handling  popup for when user tries to create list without name and other popups */
@@ -114,7 +115,7 @@
       display: inline-block;
       margin-left: 1%;
       @media (max-width: 480px){
-        // margin-top: 4%; 
+        // margin-top: 4%;
       }
     }
     .view-campaign-btn, .add-details-btn {
