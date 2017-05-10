@@ -102,14 +102,20 @@
         width: 145px;
     }
 
-    /*  Error handling  popup for when user tries to create list without name */
+    /*  Error handling  popup for when user tries to create list without name and other popups */
     .modal-content.name {
       min-height: 380px;
       max-width: 520px;
+      @media (max-width:480px){
+        min-height: 450px;
+      }
     }
     .view-campaign-div, .add-details-div {
       display: inline-block;
       margin-left: 1%;
+      @media (max-width: 480px){
+        // margin-top: 4%; 
+      }
     }
     .view-campaign-btn, .add-details-btn {
       height: 37px;
@@ -139,6 +145,15 @@
       margin-bottom: 4%;
       margin-top: -1%;
       color: black;
+      @media (max-width: 480px){
+        margin-top: 5%;
+      }
+    }
+
+    .submit-button {
+      height: 38px;
+      min-width: 140px;
+      margin-bottom: 5%;
     }
 
     @media (min-width:$sc-lg-mobile) and (max-width:$sc-tablet) {

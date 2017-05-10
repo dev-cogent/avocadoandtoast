@@ -44,9 +44,8 @@ $(document).on('click','#submit-campaign',function(){
         success: function (jqXHR, textStatus, errorThrown) {
           dialog = bootbox.dialog({
               message: '<div class="bootbox-body">' +
-              '<div class="icon-popup-div"> <img src="/assets/images/chasing_2.gif" class="success-popup-icon"/> </div>' +
-              '<div class="row"> <div class="col-xs-12 popup-detail success">   <span class="yay"> YAY! </span> <br/> Campaign created sucessfully  </div>' +
-              '<div class="col-xs-12 btn-col"><div class="popup-btn-div"> <a href="/campaigns/?id=' + campaignid + '"><button class="submit-btn">VIEW CAMPAIGN </button></a></div>' +
+              '<div class="icon-popup-div"> <img src="/assets/images/breakdance_3.gif" class="success-popup-icon"/> </div>' +
+              '<div class="row popup"> <div class="col-xs-12 popup-detail success">   <span class="yay"> WOO WOO! </span> <br/> Your changes have been made </div>' +
               '</div> </div>',
               closeButton: true
           });
@@ -54,7 +53,7 @@ $(document).on('click','#submit-campaign',function(){
           dialog.modal();
           setTimeout(function () {
             location.href="/campaigns/?id="+campaignid;
-          }, 3000);
+          }, 2000);
         }
 
     }); // end ajax request*/
@@ -67,7 +66,7 @@ $(document).on('click','#delete-campaign',function(){
   dialog = bootbox.dialog({
     message:   '<div class="bootbox-body">'+
       '<div class="delete-icon-popup-div"> <img src="/assets/images/delete.png" class="trash-icon"/> </div>'+
-      '<div class="row"> <div class="delete-popup-detail">   <span class="delete-list-text"> DELETE LIST?  </span> <br/> Once deleted this action cannot be undone </div>'+
+      '<div class="row popup"> <div class="delete-popup-detail">   <span class="delete-list-text"> DELETE LIST?  </span> <br/> Once deleted this action cannot be undone </div>'+
       '<div class="delete-btn-div"> <button class="delete-yes primary-button" type="button"> DELETE '+
       '</button> <button class="delete-no secondary-button" type="button"> NOPE </button></div>'+
       '</div>',
@@ -94,7 +93,7 @@ $(document).on('click','.delete-yes', function(){
     dialog = bootbox.dialog({
       message: '<div class="bootbox-body">' +
       '<div class="delete-icon-popup-div"> <img src="/assets/images/delete.png" class="trash-icon margin"/> </div>' +
-      '<div class="row"> <div class="delete-popup-detail"> <span class="delete-list-text"> SUCCESS! </span> <br>  List has been deleted sucessfully  </div>' +
+      '<div class="row popup"> <div class="delete-popup-detail"> <span class="delete-list-text"> SUCCESS! </span> <br>  List has been deleted sucessfully  </div>' +
       '<div class="delete-btn-div"> <a href="/campaigns/?id=' + campaignid + '"></a></div>' +
       '</div>',
         closeButton: true
@@ -102,7 +101,7 @@ $(document).on('click','.delete-yes', function(){
     dialog.modal();
     setTimeout(function () {
       location.href="/dashboard.php";
-    }, 3000);
+    }, 2000);
   }
 
 }); // end ajax request*/

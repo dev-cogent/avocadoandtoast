@@ -5,12 +5,12 @@ var removedInfluencers = {
 
 
 $(document).ready(function(){
-    
+
     getCampaignInformation(campaignid);
     getCampaignInfluencers(campaignid);
 
 });
- 
+
 
 function getCampaignInformation(campaignid){
     $.ajax({
@@ -333,7 +333,7 @@ $(document).on('click','#save-button',function(){
                 dialog = bootbox.dialog({
                     message: '<div class="bootbox-body"><div class="modal-close-button">x</div>' +
                     '<div class="icon-popup-div"> <img src="/assets/images/chasing_2.gif" class="success-popup-icon"/> </div>' +
-                    '<div class="row"> <div class="col-xs-12 popup-detail success">   <span class="yay"> YAY! </span> <br/> Your Campaign has been updated </div>' +
+                    '<div class="row popup"> <div class="col-xs-12 popup-detail success">   <span class="yay"> YAY! </span> <br/> Your Campaign has been updated </div>' +
                     '</div> </div>',
                     closeButton: false
                 });
