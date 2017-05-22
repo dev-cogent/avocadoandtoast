@@ -1,12 +1,12 @@
 <?php
- 
+
 
 include 'favorite.php';
 
 class signUp extends favorite{
 
  function register($arr){
-	 
+
     $first = $arr['firstname'];
     $last = $arr['lastname'];
     $email = $arr['email'];
@@ -157,7 +157,7 @@ return md5($this->randomString(10));
 
 public function forgotPasswordKey(){
 return hash_pbkdf2("sha256", $this->randomString(20), $salt, 1000, 20);
-} 
+}
 
 
 public function forgotPassword($email){
@@ -254,18 +254,18 @@ public function emailWelcome($link){
 				<tr>
 					<td width="100%" bgcolor="#ffffff">
 
-<div style="display:none;font-size:1px;color:#333333;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">  Welcome To Avocado and Toast!  Please confirm your email so you can get started!   <br>     
+<div style="display:none;font-size:1px;color:#333333;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">  Welcome To Avocado and Toast!  Please confirm your email so you can get started!   <br>
 </div>
 <div style="display:none;font-size:1px;color:#333333;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">
- <br>     
- 
+ <br>
+
 </div>
 
 					</td>
 				</tr>
 			</table><!-- End Header -->
 
-			<!-- One Column  Header Title  --> 
+			<!-- One Column  Header Title  -->
 			<table width="800" class="deviceWidth" border="0" cellpadding="0" cellspacing="0" align="center" bgcolor="white" style="margin:0 auto;">
 				<tr>
 					<td valign="top" style="padding-bottom:10px;" bgcolor="#ffffff">
@@ -274,21 +274,21 @@ public function emailWelcome($link){
 				</tr>
                 <tr>
                     <td style="font-size: 14px; color: #959595; font-weight: normal; text-align: center; font-family: Helvetica, Times, serif; line-height: 24px; vertical-align: top; padding:0px 0px 0px 0px" bgcolor="">
-		
+
 <table width="600" class="deviceWidth" border="0" cellpadding="0" cellspacing="0" align="center" bgcolor="" style="margin:0 auto;">
-		
+
                 <tr>
                     <td style="font-size: 14px; color: #959595; font-weight: normal; text-align:center; font-family: Helvetica, Times, serif; line-height: 24px; vertical-align: top; padding:0px 0px 0px 0px" bgcolor="">
-		
+
                         <table>
                             <tr>
                                 <td valign="top" style="padding:0 0px 0px 0 text-align:center;">
                                     <a href="#"> <img src="https://gallery.mailchimp.com/bb1e624c1a86ff7a7fe97f3b0/images/51cbbde0-786f-499d-b369-09058ef014f0.gif" style="width:50%; padding: 0px 0px 0px 0px;" alt="" border="0" align="center"></a>
                                 </td>
-                                <td valign="middle" style="padding:0 0px 0px 0"><a href="#" style="text-decoration: none; color: #272727; font-size: 16px; color: black; font-weight:bold; font-family:Helvetica, sans-serif ">  </a>  
-                                
+                                <td valign="middle" style="padding:0 0px 0px 0"><a href="#" style="text-decoration: none; color: #272727; font-size: 16px; color: black; font-weight:bold; font-family:Helvetica, sans-serif ">  </a>
+
                                 </td>
-                            </tr>      
+                            </tr>
                         </table>
                     </td>
                </tr>
@@ -297,31 +297,31 @@ public function emailWelcome($link){
 
  	<!-- One Column Copy text  -->
 			<table width="400" class="deviceWidth" border="0" cellpadding="0" cellspacing="0" align="center" bgcolor="white" style="margin:0 auto;">
-		
+
                 <tr>
                     <td style="font-size: 20px; color: #000000; font-weight: normal; text-align:center; font-family: Helvetica, Times, serif; line-height: 26px; vertical-align: top; padding:0px 0px 0px 0px" bgcolor="">
-		
+
                         <table>
                            <tbody>
 														<tr>
-															<td class="center" style="text-align: center;" valign="top"> 
-                    <div style="height:20px;margin:0 auto;">&nbsp;</div><!-- spacer -->                            
-                <span style="font-size:44px; color:#73c48d;font-weight:600;letter-spacing:1px;" class="smallFont">WELCOME!  </span> 
+															<td class="center" style="text-align: center;" valign="top">
+                    <div style="height:20px;margin:0 auto;">&nbsp;</div><!-- spacer -->
+                <span style="font-size:44px; color:#73c48d;font-weight:600;letter-spacing:1px;" class="smallFont">WELCOME!  </span>
                              <div style="height:8px;margin:0 auto;">&nbsp;</div><!-- spacer -->
                                                             We are so glad to have you on board!
-														
+
 
  <div style="height:30px;margin:0 auto;">&nbsp;</div><!-- spacer -->
- <a href="http://avocadoandtoast.com/confirmation?q='.$link.'" style="padding: 15px 50px;text-transform:uppercase;borer-radius:3px;font-family:\'Helvetica\';font-size:16px;letter-spacing:1px; color:white; background-color:#73C48d;text-decoration:none; "> Verify your email </a> <br> 
- 
+ <a href="http://avocadoandtoast.com/confirmation.php?q='.$link.'" style="padding: 15px 50px;text-transform:uppercase;borer-radius:3px;font-family:\'Helvetica\';font-size:16px;letter-spacing:1px; color:white; background-color:#73C48d;text-decoration:none; "> Verify your email </a> <br>
+
   <div style="height:30px;margin:0 auto;">&nbsp;</div><!-- spacer -->
-Can\'t click on button above? Copy and paste this link to your browser: <br> <br> 
-	http://avocadoandtoast.com/confirmation?q='.$link.'
+Can\'t click on button above? Copy and paste this link to your browser: <br> <br>
+	http://avocadoandtoast.com/confirmation.php?q='.$link.'
 
  </td>
 														</tr>
-                                                        
-                         
+
+
 													</tbody>
                         </table>
                     </td>
@@ -337,7 +337,7 @@ Can\'t click on button above? Copy and paste this link to your browser: <br> <br
 
 <div style="height:30px;margin:0 auto;">&nbsp;</div><!-- spacer -->
 
-            
+
             <!-- 2 Column Images 3rd & fourth image if in a four grid stack - -->
 			<table width="600" border="0" cellpadding="0" cellspacing="0" align="center" class="deviceWidth" bgcolor="white" style="margin:0 auto;">
 				<tr>
@@ -373,35 +373,35 @@ Can\'t click on button above? Copy and paste this link to your browser: <br> <br
 
 		<!-- One Column  image 1-->
 			<table width="600" class="deviceWidth" border="0" cellpadding="0" cellspacing="0" align="center" bgcolor="" style="margin:0 auto;">
-		
+
                 <tr>
                     <td style="font-size: 14px; color: #959595; font-weight: normal; text-align: left; font-family: Helvetica, Times, serif; line-height: 24px; vertical-align: top; padding:0px 0px 0px 0px" bgcolor="">
-		
+
                         <table>
                             <tr>
                                 <td valign="top" style="padding:0 0px 0px 0">
                                     <a href="#"> <img src="https://gallery.mailchimp.com/bb1e624c1a86ff7a7fe97f3b0/images/47f788a9-ce5c-489a-a34f-8c1a00ae7c9d.png" style="display:block; width:100%; padding: 0px 0px 0px 0px;" alt="" border="0" align="left"></a>
                                 </td>
-                                <td valign="middle" style="padding:0 0px 0px 0"><a href="#" style="text-decoration: none; color: #272727; font-size: 16px; color: black; font-weight:bold; font-family:Helvetica, sans-serif ">  </a>  
-                                
+                                <td valign="middle" style="padding:0 0px 0px 0"><a href="#" style="text-decoration: none; color: #272727; font-size: 16px; color: black; font-weight:bold; font-family:Helvetica, sans-serif ">  </a>
+
                                 </td>
-                            </tr>      
+                            </tr>
                         </table>
                          <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" class="deviceWidth">
                                             <tr>
                                                 <td valign="top" style="font-size: 12px; color: #f1f1f1; font-weight: normal; font-family: Helvetica, Times, serif; line-height: 25px; vertical-align: top; text-align:center;" class="center">
 
-                                                   
+
                                                     <a href="https://www.facebook.com/AvocadoAndToast/"><img src="https://gallery.mailchimp.com/bb1e624c1a86ff7a7fe97f3b0/images/54a4092b-e403-43bd-b351-e05337e9ff85.png" width="130" height="100" alt="Facebook" title="Facebook" border="0"></a>
 
-                             
+
                                                                  <a href="https://www.instagram.com/avocadoandtoast/"><img src="https://gallery.mailchimp.com/bb1e624c1a86ff7a7fe97f3b0/images/e4f4bcd9-cc3c-404c-bf04-d73ded229b8a.png" title="Instagram" alt="Instagram" border="0" width="130" height="100"></a>
                                                                                <a href="#"><img src="https://gallery.mailchimp.com/bb1e624c1a86ff7a7fe97f3b0/images/584cf4d4-4c50-4dbf-ab82-c8a20103de01.png" title="Twitter" alt="Twitter" border="0" width="130" height="100"></a>
 
 
 
 
-                                       
+
 
                                 </td>
                                             </tr>
@@ -409,8 +409,8 @@ Can\'t click on button above? Copy and paste this link to your browser: <br> <br
                     </td>
                </tr>
 			</table><!-- End One Column image  -->
-            
-          
+
+
 
 <div style="height:15px;margin:0 auto;">&nbsp;</div><!-- spacer -->
 
@@ -425,15 +425,15 @@ Can\'t click on button above? Copy and paste this link to your browser: <br> <br
                                 <td>
                                         <table width="80%" cellpadding="0" cellspacing="0" border="0" align="left" class="deviceWidth">
                                             <tr>
-                                                <td valign="top" style="font-size: 12px;  color:000000; font-family: Arial, sans-serif; padding-bottom:5px" class="center"> <br> 
-                                       
+                                                <td valign="top" style="font-size: 12px;  color:000000; font-family: Arial, sans-serif; padding-bottom:5px" class="center"> <br>
+
 
 <em>Copyright &copy; *|CURRENT_YEAR|* *|LIST:COMPANY|*, All rights reserved.</em><br>
 *|IFNOT:ARCHIVE_PAGE|* *|LIST:DESCRIPTION|*<br>
                                                  This email is an advertisement of Way of Wade products.<br>
-                                          
 
-                                                  
+
+
                 Want to change how you receive these emails?<br>
 You can <a href="*|UPDATE_PROFILE|*">update your preferences</a> or <a href="*|UNSUB|*">unsubscribe from this list</a><br>
 
@@ -445,20 +445,20 @@ You can <a href="*|UPDATE_PROFILE|*">update your preferences</a> or <a href="*|U
                                         <table width="20%" cellpadding="0" cellspacing="0" border="0" align="right" class="deviceWidth">
                                             <tr>
                                                 <td valign="top" style="font-size: 12px; color: #f1f1f1; font-weight: normal; font-family: Helvetica, Times, serif; line-height: 25px; vertical-align: top; text-align:center;" class="center">
-<br> <br> 
-        <a href="http://www.avocadoandtoast.com"><img src="https://gallery.mailchimp.com/bb1e624c1a86ff7a7fe97f3b0/images/20820bc5-6e08-48c3-a60f-668c74095b16.png" alt="" border="0" width="50" height="50" style="margin-top:-1px;"></a> 
+<br> <br>
+        <a href="http://www.avocadoandtoast.com"><img src="https://gallery.mailchimp.com/bb1e624c1a86ff7a7fe97f3b0/images/20820bc5-6e08-48c3-a60f-668c74095b16.png" alt="" border="0" width="50" height="50" style="margin-top:-1px;"></a>
           <div style="height:5px;margin:0 auto;">&nbsp;</div><!-- spacer -->
                                                 <a href="#" style="text-decoration: none; color: #000000; font-weight: normal; margin-bottom:"> 150 5th Ave  <br> New York, NY 10011</a><br>
-                                                              
-                                                    
-                                            
 
-                                       
+
+
+
+
 
                                 </td>
                                             </tr>
                                         </table>
-	</td></tr></table></td></tr></table></footer> 
+	</td></tr></table></td></tr></table></footer>
                         		</td>
                         	</tr>
                         </table>
@@ -468,8 +468,8 @@ You can <a href="*|UPDATE_PROFILE|*">update your preferences</a> or <a href="*|U
 
 
 
-		
-	
+
+
  <!-- End Wrapper -->
 
 <div style="display:none; white-space:nowrap; font:15px courier; color:#ffffff;">

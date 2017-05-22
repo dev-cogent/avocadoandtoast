@@ -2,6 +2,11 @@
 
 @import 'utility';
 
+
+
+.search-header{
+  text-align: center;
+}
 .noUi-connect {
     background: $header-grey;
     box-shadow: inset 0 0 3px rgba(51, 51, 51, 0.45);
@@ -47,6 +52,12 @@
     min-width: 150px;
 }
 
+#influencer-results-number{
+  display: none;
+  color:$avo-green;
+  opacity: 0.7;
+}
+
 #slider-instagram {
     height: 12px;
     margin-top: 5px;
@@ -89,6 +100,7 @@
     padding-right: 0px;
 }
 
+
 .engagement-slider {
     margin-top: 13px;
 }
@@ -110,15 +122,17 @@
     height: 40px !important;
     margin: 0 auto !important;
     max-width: 600px !important;
-    border: 1px solid $header-grey;
-    border-radius: 1px;
-    color: $body-black;
-    font-family: $secondary-font;
     min-width: 150px;
     margin-top: 15px !important;
-    &.focus {
+    border-radius: 1px !important;
+    border:1px solid $inactive-grey !important;
+    outline: none !important;
+    @include trans(border);
+    .focus {
+        border: none !important;
         outline: none !important;
-        border: 1px solid $avo-green;
+        border:1px solid $avo-green !important;
+        border-color: $avo-green !important;
     }
 }
 
@@ -130,6 +144,7 @@
     color: $header-grey;
     font-family: $secondary-font;
     font-weight: 600;
+    margin: 2px 5px 5px 0 !important;
     &:hover {
         border: 1px solid $avo-green !important;
         color: $avo-green;
@@ -142,28 +157,6 @@ span.token-label {
 
 /* Overlay styiling  */
 
-.overlay {
-    height: 0%;
-    width: 100%;
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    overflow-y: hidden;
-    a {
-        padding: 8px;
-        text-decoration: none;
-        font-size: 36px;
-        color: #818181;
-        display: block;
-        transition: 0.3s;
-        &:hover,
-         :focus {
-            color: #f1f1f1;
-        }
-    }
-}
 
 
 @media screen and (max-height: 450px) {
@@ -177,10 +170,10 @@ span.token-label {
 
 .button-icon-active {
     color: $avo-green;
-} 
+}
 
 .description-text {
-    padding-bottom: 10px;
+    padding-bottom: 4px;
     padding-top: 10px;
     color: $inactive-grey;
     font-weight: 100;
@@ -193,7 +186,7 @@ span.token-label {
 .discover-header {
     color: #515862;
     text-align: center;
-    font-size: 45px;
+    font-size: 40px;
     font-family: $main-font;
     font-weight: 600;
     letter-spacing: 2px;
@@ -212,16 +205,31 @@ span.token-label {
     color: $header-grey;
     font-family: $secondary-font;
     font-weight: 400;
+    margin-top: -5px;
     padding-left: 0px;
     min-width: 135px;
     text-align: center;
 }
 
 .filter-input {
-    max-width: 600px;
-    margin: 0 auto;
-    margin-top: 15px;
+  @extend %basic-input;
     height: 40px;
+    width: 100%;
+    max-width: 600px ;
+    min-width: 150px;
+    margin-top: 10px;
+    margin-bottom:15px;
+    border:1px solid $inactive-grey !important;
+    outline: none !important;
+    font-size:16px;
+    padding-left: 10px;
+  @include trans(border);
+  // .focus {
+  //     border: none !important;
+  //     outline: none !important;
+  //     border:1px solid $avo-green !important;
+  //     border-color: $avo-green !important;
+  // }
 }
 
 .influencer-header {
@@ -229,8 +237,7 @@ span.token-label {
     font-family: $main-font;
     font-weight: 600;
     font-size: 23px;
-    padding-left: 12px;
-    padding-bottom: 20px;
+    padding-bottom: 12px;
 }
 
 .influencer-results-container {
@@ -242,13 +249,6 @@ span.token-label {
 
 
 
-#loading {
-    display: none;
-    top: 31%;
-    left: 43%;
-    position: fixed;
-    z-index: 1001;
-}
 
 
 
@@ -258,23 +258,17 @@ span.token-label {
 }
 
 .filter-section {
-    padding-top: 20px;
+    padding-top: 12px;
 }
 
 
 
 
 .search-button {
-    width: 300px;
-    border-radius: 1px;
-    border: 0px;
-    color: white;
-    background-color: white;
-    height: 50px;
+    width: 260px;
+    height: 45px;
     font-size: 16px;
-    font-family: $main-font;
-    background-color: $avo-green;
-    margin-bottom: 30px;
+    margin-bottom: 5px;
 }
 
 .slider-container {

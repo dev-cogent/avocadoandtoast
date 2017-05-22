@@ -12,12 +12,14 @@ $avo-green: #73C48D;
 $avo-green-active: #63AB80;
 $header-grey: #30363F;
 $body-black: #1F232A;
+$navy-text: rgb(29, 40, 76);
 $inactive-grey: #A2A8B1;
 $separator-grey: #d2d7dc;
 $separator-lightgrey: #efefef;
 $impression-blue: rgb(50, 157, 223);
 $engagement-orange: rgb(255, 139, 104);
 $social-following-red: rgb(231, 72, 69);
+$navy-text:rgb(29, 40, 76);
 //SEPARATORS:
 // usage:
 // .some-element { @include separator("bottom", $separator-grey); }
@@ -46,18 +48,33 @@ $social-following-red: rgb(231, 72, 69);
     }
 }
 
+
+@mixin trans($action){
+    transition: $action .4s;
+
+}
+
 // PLACEHOLDER CLASSES
 
 %basic-input{
-    
-    border: 1px solid $avo-green;
+    border-radius: 1px;
+    border:1px solid $inactive-grey;
     outline: none;
+    @include trans(border);
+    &:focus {
+        border: none;
+        outline: none;
+        // box-shadow: 0 0 3px $avo-green;
+        border:1px solid $avo-green;
+    }
+
 }
 
 
 %basic-button {
     border-radius: 1px;
     font-family: $main-font;
+    text-transform: capitalize;
     transition: background .4s, box-shadow .4s, color .4s, border .4s;
     cursor: pointer;
     &:focus {
@@ -86,6 +103,7 @@ $social-following-red: rgb(231, 72, 69);
     border: none;
     @extend %basic-button;
     background: $avo-green;
+    text-transform: uppercase;
     color: white;
     @include button-box-shadow($avo-green-active);
 }
@@ -108,5 +126,13 @@ $social-following-red: rgb(231, 72, 69);
         content: "";
         display: table;
         clear: both;
+    }
+}
+
+@mixin green-hover{
+    transition: color .4s;
+    &:hover{
+        cursor:pointer;
+        color:$avo-green;
     }
 }

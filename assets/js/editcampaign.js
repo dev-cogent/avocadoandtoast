@@ -1,6 +1,6 @@
 $(document).ready(function(){
         $.ajax({
-            type: 'POST', 
+            type: 'POST',
             url: '/php/ajax/getCampaignInfo.php',
             data: {
                 campaignid: campaignid
@@ -42,41 +42,69 @@ $(document).on('click','#submit-campaign',function(){
             brandname:brandname
         },
         success: function (jqXHR, textStatus, errorThrown) {
-            dialog = bootbox.dialog({
-                message: '<div class="bootbox-body">'+
-            '<div class="icon-popup-div"> <img src="https://68.media.tumblr.com/0abd1f3bfd0a2594ea81787691cb6af2/tumblr_o33ti7IZMI1t4twpao1_500.gif" class="success-popup-icon"/> </div>'+
-            '<div class="row"> <div class="col-xs-12 popup-detail success"> <br/> Your campaign has been edited. </div><div class="popup-btn-div"> <a href="/campaigns/?id='+campaignid+'"><button id="applyall" class="submit-btn" style="margin-bottom: 50px;">VIEW CAMPAIGN </button></a></div>'+
-            '</div> </div>',
-                closeButton: true
-            });
-            dialog.modal();
+          dialog = bootbox.dialog({
+              message: '<div class="bootbox-body">' +
+              '<div class="icon-popup-div"> <img src="/assets/images/breakdance_3.gif" class="success-popup-icon"/> </div>' +
+              '<div class="row popup"> <div class="col-xs-12 popup-detail success">   <span class="yay"> WOO WOO! </span> <br/> Your changes have been made </div>' +
+              '</div> </div>',
+              closeButton: true
+          });
 
+          dialog.modal();
+          setTimeout(function () {
+            location.href="/campaigns/?id="+campaignid;
+          }, 2000);
         }
 
     }); // end ajax request*/
 
 });
 
-
+/*DELETE BUTTON IS HERE */
 $(document).on('click','#delete-campaign',function(){
-        $.ajax({
-        type: 'POST',
-        url: '/php/ajax/deletecampaign.php',
-        data: {
-            campaignid : campaignid,
-        },
-        success: function (jqXHR, textStatus, errorThrown) {
-            dialog = bootbox.dialog({
-                message: '<div class="bootbox-body">'+
-            '<div class="icon-popup-div"> <img src="https://68.media.tumblr.com/0abd1f3bfd0a2594ea81787691cb6af2/tumblr_o33ti7IZMI1t4twpao1_500.gif" class="success-popup-icon"/> </div>'+
-            '<div class="row"> <div class="col-xs-12 popup-detail success"> <br/> Your campaign has been deleted. </div><div class="popup-btn-div"> <a href="/dashboard.php"><button id="applyall" class="submit-btn" style="margin-bottom: 50px;">VIEW CAMPAIGNS </button></a></div>'+
-            '</div> </div>',
-                closeButton: true
-            });
-            dialog.modal();
 
-        }
+  dialog = bootbox.dialog({
+    message:   '<div class="bootbox-body">'+
+      '<div class="delete-icon-popup-div"> <img src="/assets/images/delete.png" class="trash-icon"/> </div>'+
+      '<div class="row popup"> <div class="delete-popup-detail">   <span class="delete-list-text"> DELETE LIST?  </span> <br/> Once deleted this action cannot be undone </div>'+
+      '<div class="delete-btn-div"> <button class="delete-yes primary-button" type="button"> DELETE '+
+      '</button> <button class="delete-no secondary-button" type="button"> NOPE </button></div>'+
+      '</div>',
+    closeButton: true
+  });
 
-    }); // end ajax request*/
+  dialog.modal();
+
+
+});
+
+/*WHEN DELETE BUTTON IS CLICKED ON THIS HAPPENS */
+$(document).on('click','.delete-yes', function(){
+  var campaignid = $(this).attr('data-campaign');
+  var campaignname = $(this).attr('data-name');
+  $.ajax({
+  type: 'POST',
+  url: '/php/ajax/deletecampaign.php',
+  data: {
+      campaignid : campaignid,
+      campaignname: campaignname,
+  },
+  success: function (jqXHR, textStatus, errorThrown) {
+    dialog = bootbox.dialog({
+      message: '<div class="bootbox-body">' +
+      '<div class="delete-icon-popup-div"> <img src="/assets/images/delete.png" class="trash-icon margin"/> </div>' +
+      '<div class="row popup"> <div class="delete-popup-detail"> <span class="delete-list-text"> SUCCESS! </span> <br>  List has been deleted sucessfully  </div>' +
+      '<div class="delete-btn-div"> <a href="/campaigns/?id=' + campaignid + '"></a></div>' +
+      '</div>',
+        closeButton: true
+    });
+    dialog.modal();
+    setTimeout(function () {
+      location.href="/dashboard.php";
+    }, 2000);
+  }
+
+}); // end ajax request*/
+
 
 });

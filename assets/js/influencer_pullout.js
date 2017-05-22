@@ -1,4 +1,9 @@
 $(document).ready(function () {
+    if(localStorage.getItem('selected-influencers') !== null){
+      tempselectedusers = localStorage.getItem('selected-influencers');
+      selectedusers = JSON.parse(tempselectedusers);
+      appendImagePullOut(selectedusers);
+    }
   var pulledOut = false;
   var breakSmall = 600;
   var vw, vh, leftVal;  //viewport width and left value for pulled out state
@@ -23,6 +28,35 @@ $(document).ready(function () {
     checkNumInfluencers();
   });
 
+  /**
+   * Function when the user clicks on the "Calculate Campaign button" all javascript pertaining that page can be found at avocado-calculate.js
+   * @return NULL
+   */
+  $(document).on('click', '#calculate', function () {
+      setLoading();
+      if (selectedusers.length == 0) {
+          console.log('THERE ARE NO INFLUENCERS SELECTED');
+          unsetLoading();
+          return 0;
+      }
+      calculate = true;
+      $.ajax({
+          type: 'POST',
+          url: '/php/ajax/avocado-get-influencers.php',
+          data: {
+              influencers: selectedusers
+          },
+          success: function (jqXHR, textStatus, errorThrown) {
+
+              calculate = true;
+              $('body').empty();
+              $('body').append(jqXHR);
+              unsetLoading();
+
+          }
+      }); // end ajax request*/
+  });
+
 
   function selectInfluencer(id, element) {
 
@@ -45,6 +79,8 @@ $(document).ready(function () {
       $(".invite[data-id='" + id + "']").css('background-color', '#e0e0e0');
       $('.influ-bottom[data-id="' + id + '"]').css('box-shadow', 'none');
     }
+    var stringSelectedusers = JSON.stringify(selectedusers);
+    localStorage.setItem('selected-influencers', stringSelectedusers);
 
   }
 
@@ -118,7 +154,7 @@ $(document).ready(function () {
     $('#remove-all-button').click(function () { removeAll(); })
     $('#undo-button').click(function () { undo(); })
 
-    $('#calculate').click(function() { 
+    $('#calculate').click(function() {
       if(selectedusers.length != 0) { dismissPullout(); }
     });
   }

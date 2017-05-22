@@ -1,0 +1,39 @@
+
+.influencer-card-discover.curated-list {
+  @media (max-width: 767px) {
+    width: 88%;
+  }
+}
+.curated-list-image-card {
+  max-width: 100%;
+  object-fit: cover;
+  height: 100%;
+  width: 500px;
+  max-height: 275px;
+  object-position:  0 33%;
+}
+
+.curated-text-area {
+  height: 100px;
+}
+
+.curated-list-container {
+  margin-left: 4%;
+}
+
+.curated-btn-container {
+  text-align: -webkit-center;
+}
+
+.view-btn-curated {
+width: 120px;
+margin-top: 3%;
+}
+.handle-text.curated {
+  margin-top:1%;
+  font-weight: 800;
+}
+
+.add-button-container{
+  background-color: red; 
+}

@@ -1,5 +1,18 @@
 $(document).ready(function(){
-    var totalIgImpressions = 0 ; 
+    $.ajax({
+    type: 'POST',
+    url: '../php/ajax/getCampaignInfo.php',
+    data: {
+        campaignid: campaignid,
+    },
+    success: function (jqXHR, textStatus, errorThrown) {
+       campaignInfoJSON = JSON.parse(jqXHR);
+       $('.campaign-label').append(campaignInfoJSON.campaignname);
+    }
+  });
+
+
+    var totalIgImpressions = 0 ;
     var totalFbImpressions = 0;
     var totalTwImpressions = 0;
     var totalOverallImpressions = 0;
@@ -19,7 +32,6 @@ $(document).ready(function(){
 
             $.each(campaignJSON, function (key, obj) {
             selectedusers.push(key);
-            console.log(obj);
             var igPost = parseInt(obj.instagram.post);
             var fbPost = parseInt(obj.facebook.post);
             var twPost = parseInt(obj.twitter.post);
@@ -34,8 +46,7 @@ $(document).ready(function(){
 
             var totalImpressions = igImpressions + fbImpressions + twImpressions;
                 totalOverallImpressions += parseInt(totalImpressions);
-                console.log(totalImpressions);
-                console.log(totalOverallImpressions);
+
 
             var igEngagement = parseInt(obj.instagram.engagement);
                 totalIgEngagement += igEngagement;
@@ -51,12 +62,15 @@ $(document).ready(function(){
             var fbFollowers = parseInt(obj.facebook.likes);
             var twFollowers = parseInt(obj.twitter.followers);
             var totalFollowers = igFollowers + fbFollowers + twFollowers;
-            $('#all-influencers').append('<tr class="campaign-list-table">'+ 
-                        '<td class="campaign-tablerow" style="width:15%; padding-left:0%;">'+
-                                '<div class="information">'+
-                            '<img src="http://cogenttools.com/'+obj.image+'" onerror="this.src=`/assets/images/default-photo.png`" class="influencer-campaign-image ">'+
-                            '<h4 class="influencer-handle-text handle">@'+obj.instagram.handle+'</h4>'+
-                            '<h4 class="influencer-handle-text location-text">Location</h4></div></td>'+
+
+
+            $('#all-influencers').append('<tr class="influencer-result-row">'+
+                            '<td class="influencer-column" data-label="Name" style="width:15%; padding-left:0%;">'+
+                              '<div class="influencer-info-container mobile">'+
+                              '<img src="http://cogenttools.com/'+obj.image+'" onerror="this.src=`/assets/images/default-photo.png`" class="influencer-campaign-image ">'+
+                              '<div class="influencer-handle-text handle">@'+obj.instagram.handle+'</div>'+
+                              '<div class="influencer-handle-text location-text"></div>'+
+                        '</div></td>'+
                       '<td data-id="'+key+'" class="insta-column" style="width:15%;">'+
                           '<div class="posts-res-div">'+
                             '<input data-id="'+key+'" data-platform="instagram" class="instagraminput campaignfocus" type="number"  value="'+obj.instagram.post+'"max="100" min="0">'+
@@ -87,7 +101,7 @@ $(document).ready(function(){
                             '<div class="impression-res impression-blue impression-total-blue" data-id="'+key+'" data-number="'+( totalImpressions )+'" >'+abbrNum(totalImpressions)+'</div>'+
                             '<div class="engagement-res engagement-orange engagement-orange-total"  data-id="'+key+'" data-number="'+(totalEngagement)+'" >'+abbrNum(totalEngagement)+'</div>'+
                             '<div class="social-following-res social-following-red">'+ abbrNum(totalFollowers)+' </div></div></td></tr>');
-            
+
 
             });
         $('#all-influencers').append('<tr class="result-row influencer-result-row">'+
@@ -99,7 +113,7 @@ $(document).ready(function(){
                       '<td  class="twit-column" data-label="Twitter" style="width:15%;"> <p class="facebook-posts results-text mobile" id="facebook-engagement" data-number="'+totalFbEngagement+'">'+abbrNum(totalFbEngagement)+'</p> </td>'+
                       '<td  class="face-column" data-label="Facebook" style="width:15%;"> <p class="twitter-posts results-text mobile" id="twitter-engagement" data-number="'+totalTwEngagement+'">'+abbrNum(totalTwEngagement)+' </p></td>'+
                       '<td  class="face-column" data-label="Total" style="width:15%;"> <p class="total-posts results-text mobile" id="total-engagement" data-number="'+totalOverallEngagement+'" > '+abbrNum(totalOverallEngagement)+'</p>  </td>'+
-                    '</tr>'+        
+                    '</tr>'+
                     '<tr class="result-row influencer-result-row">'+
                         '<td class="influencer-column" style="width:15%;" scope="row" data-label="Name">'+
                             '<div class="influencer-info-container">'+
@@ -170,7 +184,7 @@ getCalculation('twitter',twitterposts,selectedusers);
 
 
 
- 
+
 $(document).on('change', '.campaignfocus', function () {
 
     var posts = [];
@@ -201,8 +215,6 @@ $(document).on('change', '.campaignfocus', function () {
 });
 
 function getCalculation(type, posts, selectedusers) {
-    console.log(selectedusers);
-    console.log(posts);
     $.ajax({
         type: 'POST',
         url: '/php/ajax/calculate.php',
@@ -309,48 +321,10 @@ function getTotal(selectedusers){
 }
 
 
-function abbrNum(number, decPlaces = 1) {
-    var orig = number;
-    var dec = decPlaces;
-    // 2 decimal places => 100, 3 => 1000, etc
-    decPlaces = Math.pow(10, decPlaces);
-
-    // Enumerate number abbreviations
-    var abbrev = ["k", "m", "b", "t"];
-
-    // Go through the array backwards, so we do the largest first
-    for (var i = abbrev.length - 1; i >= 0; i--) {
-
-        // Convert array index to "1000", "1000000", etc
-        var size = Math.pow(10, (i + 1) * 3);
-
-        // If the number is bigger or equal do the abbreviation
-        if (size <= number) {
-            // Here, we multiply by decPlaces, round, and then divide by decPlaces.
-            // This gives us nice rounding to a particular decimal place.
-            var number = Math.round(number * decPlaces / size) / decPlaces;
-
-            // instHandle special case where we round up to the next abbreviation
-            if((number == 1000) && (i < abbrev.length - 1)) {
-                number = 1;
-                i++;
-            }
-
-            // console.log(number);
-            // Add the letter for the abbreviation
-            number += abbrev[i];
-
-            // We are done... stop
-            break;
-        }
-    }
-
-    return number;
-}
 
 
 $(document).on('click', '#savecampaign', function () {
-    //setLoading();
+    setLoading();
     var campaignid = urlParams.get('id');
     var arr = {};
     for (i = 0; i < selectedusers.length; i++) {
@@ -370,16 +344,21 @@ $(document).on('click', '#savecampaign', function () {
             info: JSON.stringify(arr)
         },
         success: function (jqXHR, textStatus, errorThrown) {
+            unsetLoading();
             if (jqXHR != 0 || jqXHR != '0') {
                 dialog = bootbox.dialog({
                     message: '<div class="bootbox-body">' +
                     '<div class="icon-popup-div"> <img src="assets/images/chasing_2.gif" class="success-popup-icon"/> </div>' +
                     '<div class="row"> <div class="col-xs-12 popup-detail success">   <span class="yay"> YAY! </span> <br/> Campaign created sucessfully  </div>' +
-                    '<div class="col-xs-12 btn-col"><div class="popup-btn-div"> <a href="/campaigns/?id=' + jqXHR + '"><button id="applyall" class="submit-btn">VIEW CAMPAIGN </button></a></div> <div class="col-xs-12"><div class="submit-btn-div"><a href="/edit/?id=' + jqXHR + '"> <button id="applyall" class="submit-btn"> ADD  DETAILS </button></a></div>' +
+                    '<div class="col-xs-12 btn-col"><div class="popup-btn-div"> <a href="/campaigns/?id=' + campaignid + '"><button class="submit-btn">VIEW CAMPAIGN </button></a></div>' +
                     '</div> </div>',
                     closeButton: true
                 });
+
                 dialog.modal();
+                setTimeout(function () {
+                  location.href="/campaigns/?id="+campaignid;
+                }, 4000);
             }
         }
     }); // end ajax request*/
