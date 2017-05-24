@@ -49,20 +49,18 @@
 </div>
 </header>
 
-<div class="header-container">
+<div class="container-fluid">
 <div class="background-img">
   <img src="assets/images/avoc1.jpg" class="main-img-header img-responsive">
-  <div class="text-container">
-  <div class="main-banner-header large"> Two things that go well together:  </div>
-  <div class="main-banner-det"> AVOCADO <i class="icon wb-plus list-icon avo med lg" aria-hidden="true"></i> TOAST <br>
+  <div class="flex-container">
+  <div class="main-banner-header"> Two things that go well together:  </div>
+  <div class="main-banner-det"> AVOCADO <i class="icon wb-plus list-icon avo med lg" aria-hidden="true"> </i> TOAST <br>
   INFLUENCER <i class="icon wb-plus list-icon avo med lg" aria-hidden="true"></i> BRANDS</div>
   <div class="home-buttons">  
   <button class="get-started"> GET STARTED </button> 
   <button class="learn-more"> LEARN MORE </button>
-  <div class="dashboard-img-div">
-    <!-- <img src="assets/images/dashboard-main.png" class="dashboard-img img-responsive shadow-grey"> -->
   </div>
-      </div>
+  </div>
 
 </div>
 </div>
