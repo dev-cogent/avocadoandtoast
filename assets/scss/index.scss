@@ -7,3 +7,52 @@
    -webkit-flex-direction: column;
    flex-direction: column;
 }
+
+.banner-container {
+    z-index: 1;
+    width:100%;
+
+}
+
+
+.header.avocado-header {
+    position: relative;
+}
+
+img.image-header {
+    width: 100%;
+}
+
+
+.second-index-col {
+    z-index: 2;
+}
+
+.home-btn {
+    display: inline;
+}
+
+
+
+/* index2.php css*/
+
+.avocado-toast-1{
+    width:100%;
+    
+}
+
+.row.avocado-row {
+    z-index: 99999;
+}
+
+.row.avocado-row {
+    width: 100%;
+    position: absolute;
+    z-index:999;
+}
+
+.intro-banner{
+    font-family: 'Nothing You Could Do', cursive;
+    font-size: 34px;
+    color: black;
+}

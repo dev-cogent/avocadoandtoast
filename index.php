@@ -4,40 +4,28 @@
     <title>Avocado & Toast</title>
     <link rel="stylesheet" href="/assets/css/homepage.css">
 </head>
-
-
-  <header class="header avocado-header">
-
-
-    <!--test -->
-      <!-- <div class="container-fluid avocado-container"> -->
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="row avocado-row">
-
+<body>
+    <div class="row avocado-row">
         <nav class="navbar">
-            <div class="container-fluid">
                 <div class="navbar-header">
                    <a class="navbar-brand" href="/"><img src="assets/images/at-logo-black.png" class="logo-nav-index"> </a>
-             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
-               <span class="sr-only"> Toggle Navigation </span>
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                       <span class="sr-only"> Toggle Navigation </span>
                       <span class="icon-bar"> </span>
-                        <span class="icon-bar"> </span>
+                      <span class="icon-bar"> </span>
                       <i class="icon wb-menu" style=""></i>
-                          <span class="icon-bar"> </span>
-             </button>
+                      <span class="icon-bar"> </span>
+                       </button>
            </div>
-
-
-
-   <div class="collapse navbar-collapse" id="myNavBar">
-      <ul class="nav navbar-nav avocado-ul center-ul">
-          <li class="nav-href"><a href="#" class="main-nav-dark"> Influencers </li>
-          <li class="nav-href"><a href="/agency.php" class="main-nav-dark"> Agencies </li>
-          <li class="nav-href"><a href="#" class="about-us main-nav-dark"> About Us </li>
-          </ul>
-
-      <ul class="nav navbar-nav navbar-right login-sect">
-          <li class="login border-dark"> <a href="/login.php" class="login-nav main-nav-dark"> LOGIN </a> </li>
+         
+                  <div class="collapse navbar-collapse" id="myNavBar">
+                     <ul class="nav navbar-nav avocado-ul center-ul">
+                     <li class="nav-href"><a href="#" class="main-nav-dark"> Influencers </li>
+                     <li class="nav-href"><a href="/agency.php" class="main-nav-dark"> Agencies </li>
+                     <li class="nav-href"><a href="#" class="about-us main-nav-dark"> About Us </li>
+                    </ul>
+                     <ul class="nav navbar-nav navbar-right login-sect">
+                  <li class="login border-dark"> <a href="/login.php" class="login-nav main-nav-dark"> LOGIN </a> </li>
         </ul>
 
       </div>
@@ -141,3 +129,6 @@
 
 
     <?php include 'html/main-footer.html'; ?>
+
+
+    </body>

@@ -130,6 +130,7 @@
 .row.avocado-row {
     width: 100%;
     position: absolute;
+    
 }
 
 img.avocado-img-header {
@@ -336,10 +337,10 @@ a.view-btn {
     letter-spacing: 0.1px;
 }
 
-.row.first-sect {
+/*.row.first-sect {
     margin-top: -15%;
     padding-bottom: 4%;
-}
+} */
 
 .row.second-sect {
     background-color: rgb(245, 245, 245);
@@ -477,9 +478,9 @@ li.footer-links {
         margin-left: 25%;
         margin-top: 14%;
     }
-    .row.first-sect {
+    /*.row.first-sect {
         margin-top: -16%;
-    }
+    } */
     img.img-responsive.discover-screen {
         min-width: 525px;
     }
@@ -544,9 +545,9 @@ li.footer-links {
         max-width: 0;
         margin-bottom: 3%;
     }
-    .first-sect-header {
+    /*.first-sect-header {
         margin-top: -32%;
-    }
+    } */
     .influencers-first.sm-lapt,
     .brands-second.sm-lapt,
     .agency-third.sm-lapt {
@@ -702,9 +703,9 @@ span.software {
     color: #73c48d;
 }
 
-.first-sect-header {
+/*.first-sect-header {
     margin-top: -22%;
-}
+}*/
 
 .second-sect-index {
     background-color: rgb(245, 245, 245);
@@ -737,7 +738,7 @@ span.software {
     z-index: 2;
 }
 
-.second-sect-word {
+/*.second-sect-word {
     padding-left: 10%;
     font-size: 28px;
     max-width: 400px;
@@ -747,7 +748,7 @@ span.software {
     top: -40px;
     font-family: $main-font;
     color: rgb(70, 70, 70);
-}
+} */
 
 .second-word-det {
     padding-left: 10%;
@@ -1082,10 +1083,12 @@ span.software {
         margin-top: 34px;
     }
     .discover-screen {}
-    .row.first-sect {
+    
+    
+    /*.row.first-sect {
         margin-top: -24%;
         padding-bottom: 5%;
-    }
+    }*/
     .discover-details {
         font-size: 16px;
     }
@@ -1118,7 +1121,7 @@ span.software {
 
 /*iphone 5*/
 
-@media (min-width:1px) and (max-width:359px) {
+/*@media (min-width:1px) and (max-width:359px) {
     ul.nav.navbar-nav {
         padding: 0;
     }
@@ -1434,7 +1437,7 @@ span.software {
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
     /*iphone 6 landscape */
-    .navbar-toggle {
+  /*  .navbar-toggle {
         padding-top: 17px;
     }
     img.at-logo-nav {
@@ -1488,7 +1491,7 @@ span.software {
         top: -218px;
     }
 }
-
+*/ 
 
 /*settings page */
 
