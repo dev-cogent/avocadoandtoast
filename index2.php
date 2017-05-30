@@ -38,20 +38,45 @@
 </header>
                 <section class="avocado-toast-image">
                 <img class="avocado-toast-1"src="assets/images/avoc1.jpg">
-               </section>
+             
                 <div class="container-fluid">
                     <div class="row">
                          <div class="col-sm-12 col-md-12">
+                             <div class="main-banner">
                             <div class="intro-banner">Two things that go well together:</div>
                             <div class="intro-banner-2"> AVOCADO <i class="icon wb-plus list-icon avo med lg" aria-hidden="true"> </i> TOAST <br>
                             INFLUENCER <i class="icon wb-plus list-icon avo med lg" aria-hidden="true"></i> BRANDS</div>
                              <div class="home-buttons">  
                              <button class="get-started"> GET STARTED </button> 
                              <button class="learn-more"> LEARN MORE </button>
+                             </div>
                             </div>
            
            
             </div>
+       </div>
+   </div>
+</section>
+        <section class="launch-campaign"> 
+            <div class="row">
+               <div class="col-s-4 col-md-6 col-lg-4">
+             <img src="assets/images/analytics-screen.png">
+             </div>
+          </div>
+        <div class="row">
+            <div class="col-s-4 col-md-6 col-lg-4">
+            <div class="launch-intro">
+            <div class="number-02">02 </div>
+            <div class="launch-1"> Launch Multiple Strategic Campaigns Simultaneously. </div>
+            <div class="launch-2"> We aren't just a platform. We are a community. Join and get access to brands, agencies, and exclusive events for you to connect, get free
+              product, get paid and grow your personal brand. </div>
+            </div>
      </div>
 </div>
-        
+ </section>
+
+
+
+
+
+</body>

@@ -53,6 +53,58 @@ img.image-header {
 
 .intro-banner{
     font-family: 'Nothing You Could Do', cursive;
-    font-size: 34px;
+    font-size: 36px;
     color: black;
+}
+.main-banner {
+    position: absolute;
+    margin: 0 auto;
+    top: -675px;
+    left: -630px;
+    width: 100%;
+    height: 100%;
+}
+
+.intro-banner-2{
+    font-size:34px;
+    line-height: 48px;
+    font-family: 'montserratsemibold', sans-serif;
+    color:black;
+}
+
+.get-started {
+    width: 10%;
+    font-size: 18px;
+    height: 40px;
+}
+
+.learn-more {
+    width: 10%;
+    font-size: 18px;
+    height: 40px;
+    
+}
+
+.home-buttons {
+    padding-top: 40px;
+}
+
+ img.analytics-mockup {
+    padding-top:25px;
+    }
+.second-word-det {
+    padding-left: 6%;
+    font-size: 20px;
+    line-height: 30px;
+    max-width: 460px;
+    margin-top: 0%;
+}
+
+.launch-1{
+    font-size: 36px;
+    line-height: 60px;
+}
+
+.launch-2{
+    font-size: 22px;
 }
