@@ -135,7 +135,7 @@ public function updateCampaignName($campaignid,$columnid,$campaignname = NULL){
 
 public function updateCampaignDescription($campaignid,$columnid,$description = NULL){
     $saveconn = $this->savedDB();
-    $stmt = $saveconn->prepare("SELECT table_comment FROM INFORMATION_SCHEMA.TABLES WHERE table_schema='l5o0c8t4_save_campaign' AND table_name='$campaignid'");
+    $stmt = $saveconn->prepare("SELECT table_comment FROM INFORMATION_SCHEMA.TABLES WHERE table_schema='DBNAME_save_campaign' AND table_name='$campaignid'");
     $stmt->execute();
     $stmt->bind_result($comment);
     $stmt->fetch();
@@ -185,9 +185,9 @@ public function updateCampaign($campaignid,$campaignname,$brandname,$campaigndes
 */
 public function savedDB(){
 date_default_timezone_set('EST'); # setting timezone
-$dbusername ='l5o0c8t4_blaze';
+$dbusername ='DBNAME_blaze';
 $password = 'Platinum1!';
-$db = 'l5o0c8t4_save_campaign';
+$db = 'DBNAME_save_campaign';
 $servername = '162.144.181.131';
 $conn = new mysqli($servername, $dbusername, $password, $db);
 $date = new DateTime();
@@ -244,15 +244,15 @@ public function getSavedCampaigns($columnid){
  public function getCampaign($campaignid, $position = 0, $influencernumber = 32){
     $infoarr = new stdClass;
     $saved = $this->savedDB();
-    $stmt = $saved->prepare("SELECT l5o0c8t4_save_campaign.$campaignid.influencer_id, l5o0c8t4_save_campaign.$campaignid.facebook_post,l5o0c8t4_save_campaign.$campaignid.instagram_post,l5o0c8t4_save_campaign.$campaignid.twitter_post,
-                                    l5o0c8t4_save_campaign.$campaignid.instagram_impressions,l5o0c8t4_save_campaign.$campaignid.facebook_impressions,l5o0c8t4_save_campaign.$campaignid.twitter_impressions,
-                                    l5o0c8t4_save_campaign.$campaignid.instagram_engagement,l5o0c8t4_save_campaign.$campaignid.facebook_engagement,l5o0c8t4_save_campaign.$campaignid.twitter_engagement,
-                                    l5o0c8t4_General_Information.Influencer_Information.image_url, l5o0c8t4_General_Information.Influencer_Information.instagram_count, l5o0c8t4_General_Information.Influencer_Information.instagram_url,l5o0c8t4_General_Information.Influencer_Information.instagram_eng,
-                                    l5o0c8t4_General_Information.Influencer_Information.twitter_url,l5o0c8t4_General_Information.Influencer_Information.twitter_count, l5o0c8t4_General_Information.Influencer_Information.twitter_eng,
-                                    l5o0c8t4_General_Information.Influencer_Information.facebook_count,l5o0c8t4_General_Information.Influencer_Information.facebook_url,l5o0c8t4_General_Information.Influencer_Information.facebook_eng,
-                                    l5o0c8t4_General_Information.Influencer_Information.total FROM l5o0c8t4_save_campaign.$campaignid INNER JOIN l5o0c8t4_General_Information.Influencer_Information
-                                    ON l5o0c8t4_save_campaign.$campaignid.influencer_id = l5o0c8t4_General_Information.Influencer_Information.id
-                                    ORDER BY  l5o0c8t4_General_Information.Influencer_Information.total DESC LIMIT $position, $influencernumber");
+    $stmt = $saved->prepare("SELECT DBNAME_save_campaign.$campaignid.influencer_id, DBNAME_save_campaign.$campaignid.facebook_post,DBNAME_save_campaign.$campaignid.instagram_post,DBNAME_save_campaign.$campaignid.twitter_post,
+                                    DBNAME_save_campaign.$campaignid.instagram_impressions,DBNAME_save_campaign.$campaignid.facebook_impressions,DBNAME_save_campaign.$campaignid.twitter_impressions,
+                                    DBNAME_save_campaign.$campaignid.instagram_engagement,DBNAME_save_campaign.$campaignid.facebook_engagement,DBNAME_save_campaign.$campaignid.twitter_engagement,
+                                    DBNAME_General_Information.Influencer_Information.image_url, DBNAME_General_Information.Influencer_Information.instagram_count, DBNAME_General_Information.Influencer_Information.instagram_url,DBNAME_General_Information.Influencer_Information.instagram_eng,
+                                    DBNAME_General_Information.Influencer_Information.twitter_url,DBNAME_General_Information.Influencer_Information.twitter_count, DBNAME_General_Information.Influencer_Information.twitter_eng,
+                                    DBNAME_General_Information.Influencer_Information.facebook_count,DBNAME_General_Information.Influencer_Information.facebook_url,DBNAME_General_Information.Influencer_Information.facebook_eng,
+                                    DBNAME_General_Information.Influencer_Information.total FROM DBNAME_save_campaign.$campaignid INNER JOIN DBNAME_General_Information.Influencer_Information
+                                    ON DBNAME_save_campaign.$campaignid.influencer_id = DBNAME_General_Information.Influencer_Information.id
+                                    ORDER BY  DBNAME_General_Information.Influencer_Information.total DESC LIMIT $position, $influencernumber");
     $stmt->execute();
     $stmt->bind_result($id,$facebookpost,$instagrampost,$twitterpost,$instagramimpressions,$facebookimpressions,$twitterimpressions,$instagramengagement,$facebookengagement,$twitterengagement,$image,$instagramcount,$instagramurl,$insteng,$twitterurl,$twittercount,$twittereng,$facebookcount,$facebookurl,$faceeng,$total);
     while($stmt->fetch()){
